@@ -9,7 +9,7 @@
 	},
 	"url": "https://github.com/is-aka-konor/black-flag",
 	"manifest": "https://github.com/is-aka-konor/black-flag/releases/latest/download/system.json",
-	"download": "",
+	"download": "https://github.com/is-aka-konor/black-flag/releases/latest/download/black-flag-rus-1.3.2.zip",
 	"license": "LICENSE",
 	"readme": "README.md",
 	"authors": [
