@@ -7,8 +7,8 @@
 		"minimum": "12.331",
 		"verified": "13"
 	},
-	"url": "https://github.com/koboldpress/black-flag/",
-	"manifest": "https://github.com/koboldpress/black-flag/releases/latest/download/system.json",
+	"url": "https://github.com/is-aka-konor/black-flag",
+	"manifest": "https://github.com/is-aka-konor/black-flag/releases/latest/download/system.json",
 	"download": "",
 	"license": "LICENSE",
 	"readme": "README.md",
