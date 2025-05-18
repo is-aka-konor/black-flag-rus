@@ -340,6 +340,12 @@
 			"name": "English",
 			"path": "./lang/en.json",
 			"flags": {}
+		},
+		{
+			"lang": "ru",
+			"name": "Russian",
+			"path": "./lang/ru.json",
+			"flags": {}
 		}
 	],
 	"background": "systems/black-flag/artwork/branding/background.webp",
