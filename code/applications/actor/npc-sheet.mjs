@@ -1,5 +1,5 @@
 import { formatCR, getPluralRules, numberFormat } from "../../utils/_module.mjs";
-import BaseStatblockSheet from "./base-statblock-sheet.mjs";
+import BaseStatblockSheet from "./deprecated/base-statblock-sheet.mjs";
 import NPCSpellcastingConfig from "./config/npc-spellcasting-config.mjs";
 
 export default class NPCSheet extends BaseStatblockSheet {

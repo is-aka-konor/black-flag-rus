@@ -7,6 +7,14 @@ import IdentityConfig from "../identity-config.mjs";
  */
 export default function DocumentSheetMixin(Base) {
 	return class BlackFlagDocumentSheet extends Base {
+		constructor(...args) {
+			foundry.utils.logCompatibilityWarning(
+				"The `DocumentSheetMixin` mixin has been deprecated and replaced with `PrimarySheetMixin`.",
+				{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+			);
+			super(...args);
+		}
+
 		/**
 		 * Sheet modes that can be active.
 		 * @type {Record<string, boolean>}

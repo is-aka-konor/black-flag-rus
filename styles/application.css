@@ -11,7 +11,7 @@
 	margin: 0;
 	padding: 0;
 
-	button {
+	button:not(.link-button) {
 		--button-hover-background-color: var(--bf-blue);
 		--button-hover-border-color: var(--bf-color-border-black);
 		line-height: 28px;

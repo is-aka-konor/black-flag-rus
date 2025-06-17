@@ -1,5 +1,5 @@
 import { numberFormat } from "../../utils/_module.mjs";
-import BaseStatblockSheet from "./base-statblock-sheet.mjs";
+import BaseStatblockSheet from "./deprecated/base-statblock-sheet.mjs";
 
 /**
  * Sheet for vehicle actors.

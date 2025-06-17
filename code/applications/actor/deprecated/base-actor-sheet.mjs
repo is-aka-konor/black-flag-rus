@@ -1,27 +1,37 @@
-import BlackFlagActiveEffect from "../../documents/active-effect.mjs";
-import { formatWeight } from "../../utils/_module.mjs";
-import EffectsElement from "../components/effects.mjs";
-import InventoryElement from "../components/inventory.mjs";
-import NotificationTooltip from "../notification-tooltip.mjs";
-import DocumentSheetMixin from "../mixins/document-sheet-mixin.mjs";
-import AbilityConfig from "./config/ability-config.mjs";
-import ArmorClassConfig from "./config/armor-class-config.mjs";
-import HealthConfig from "./config/health-config.mjs";
-import InitiativeConfig from "./config/initiative-config.mjs";
-import LanguageConfig from "./config/language-config.mjs";
-import LuckConfig from "./config/luck-config.mjs";
-import MovementConfig from "./config/movement-config.mjs";
-import ProficiencyConfig from "./config/proficiency-config.mjs";
-import ResistanceConfig from "./config/resistance-config.mjs";
-import SensesConfig from "./config/senses-config.mjs";
-import SkillConfig from "./config/skill-config.mjs";
-import ToolConfig from "./config/tool-config.mjs";
-import TypeConfig from "./config/type-config.mjs";
+import BlackFlagActiveEffect from "../../../documents/active-effect.mjs";
+import { formatWeight } from "../../../utils/_module.mjs";
+import EffectsElement from "../../components/effects.mjs";
+import InventoryElement from "../../components/inventory.mjs";
+import NotificationTooltip from "../../notification-tooltip.mjs";
+import DocumentSheetMixin from "../../mixins/document-sheet-mixin.mjs";
+import AbilityConfig from "../config/ability-config.mjs";
+import ArmorClassConfig from "../config/armor-class-config.mjs";
+import HealthConfig from "../config/health-config.mjs";
+import InitiativeConfig from "../config/initiative-config.mjs";
+import LanguageConfig from "../config/language-config.mjs";
+import LuckConfig from "../config/luck-config.mjs";
+import MovementConfig from "../config/movement-config.mjs";
+import ProficiencyConfig from "../config/proficiency-config.mjs";
+import ResistanceConfig from "../config/resistance-config.mjs";
+import SensesConfig from "../config/senses-config.mjs";
+import SkillConfig from "../config/skill-config.mjs";
+import ToolConfig from "../config/tool-config.mjs";
+import TypeConfig from "../config/type-config.mjs";
 
 /**
  * Sheet class containing implementation shared across all actor types.
  */
 export default class BaseActorSheet extends DocumentSheetMixin(foundry.appv1.sheets.ActorSheet) {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The `BaseActorSheet` application has been deprecated and replaced with `BaseActorSheetV2`.",
+			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+		);
+		super(...args);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * Fields that will be enriched during data preparation.
 	 * @type {object}

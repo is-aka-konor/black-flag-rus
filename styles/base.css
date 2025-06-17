@@ -12,10 +12,12 @@
 .link-button, .application .link-button {
 	height: unset;
 	width: unset;
+	min-height: unset;
 	margin: 0;
 	padding: 0;
 	display: inline;
 	border: none;
+	border-radius: 0;
 	background: none;
 	color: inherit;
 	font-size: inherit;

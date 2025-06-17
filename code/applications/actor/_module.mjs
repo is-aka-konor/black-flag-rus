@@ -1,6 +1,4 @@
 export { default as AbilityAssignmentDialog } from "./ability-assignment-dialog.mjs";
-export { default as BaseActorSheet } from "./base-actor-sheet.mjs";
-export { default as BaseStatblockSheet } from "./base-statblock-sheet.mjs";
 export { default as ConceptSelectionDialog } from "./concept-selection-dialog.mjs";
 export { default as LairSheet } from "./lair-sheet.mjs";
 export { default as LevelUpDialog } from "./level-up-dialog.mjs";
@@ -28,6 +26,9 @@ export { default as SensesConfig } from "./config/senses-config.mjs";
 export { default as SkillConfig } from "./config/skill-config.mjs";
 export { default as ToolConfig } from "./config/tool-config.mjs";
 export { default as TypeConfig } from "./config/type-config.mjs";
+
+export { default as BaseActorSheet } from "./deprecated/base-actor-sheet.mjs";
+export { default as BaseStatblockSheet } from "./deprecated/base-statblock-sheet.mjs";
 
 export { default as BaseRestDialog } from "./rest/base-rest-dialog.mjs";
 export { default as LongRestDialog } from "./rest/long-rest-dialog.mjs";

@@ -1,4 +1,4 @@
-import BaseStatblockSheet from "./base-statblock-sheet.mjs";
+import BaseStatblockSheet from "./deprecated/base-statblock-sheet.mjs";
 
 /**
  * Sheet for siege weapon actors.

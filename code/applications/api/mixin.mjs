@@ -18,6 +18,9 @@ export default function ApplicationV2Mixin(Base) {
 	class BaseApplication extends HandlebarsApplicationMixin(Base) {
 		/** @override */
 		static DEFAULT_OPTIONS = {
+			actions: {
+				toggleCollapsed: BaseApplication.#toggleCollapsed
+			},
 			classes: ["black-flag"],
 			dragDropHandlers: {
 				dragstart: null,
@@ -36,6 +39,20 @@ export default function ApplicationV2Mixin(Base) {
 		 * @type {Record<string, HandlebarsTemplatePart & ApplicationContainerParts>}
 		 */
 		static PARTS = {};
+
+		/* <><><><> <><><><> <><><><> <><><><> */
+		/*              Properties             */
+		/* <><><><> <><><><> <><><><> <><><><> */
+
+		/**
+		 * Expanded states for collapsible sections to persist between renders.
+		 * @type {Map<string, boolean>}
+		 */
+		#expandedSections = new Map();
+
+		get expandedSections() {
+			return this.#expandedSections;
+		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */
 		/*           Initialization            */
@@ -66,6 +83,20 @@ export default function ApplicationV2Mixin(Base) {
 		/** @inheritDoc */
 		async _preparePartContext(partId, context, options) {
 			return { ...(await super._preparePartContext(partId, context, options)) };
+		}
+
+		/* <><><><> <><><><> <><><><> <><><><> */
+
+		/** @inheritDoc */
+		_replaceHTML(result, content, options) {
+			for (const part of Object.values(result)) {
+				for (const element of part.querySelectorAll("[data-expand-id]")) {
+					element
+						.querySelector(".collapsible")
+						?.classList.toggle("collapsed", !this.#expandedSections.get(element.dataset.expandId));
+				}
+			}
+			super._replaceHTML(result, content, options);
 		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */
@@ -183,7 +214,22 @@ export default function ApplicationV2Mixin(Base) {
 			);
 		}
 
-		/* -------------------------------------------- */
+		/* <><><><> <><><><> <><><><> <><><><> */
+
+		/**
+		 * Handle toggling the collapsed state of collapsible sections.
+		 * @this {BaseApplication}
+		 * @param {Event} event - Triggering click event.
+		 * @param {HTMLElement} target - Button that was clicked.
+		 */
+		static #toggleCollapsed(event, target) {
+			if (event.target.closest(".collapsible-content")) return;
+			target.classList.toggle("collapsed");
+			this.#expandedSections.set(
+				target.closest("[data-expand-id]")?.dataset.expandId,
+				!target.classList.contains("collapsed")
+			);
+		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */
 		/*             Drag & Drop             */

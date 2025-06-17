@@ -1,60 +1,37 @@
 .black-flag.lair.sheet {
-	min-block-size: 200px;
-	min-inline-size: 366px;
 	max-block-size: 90vh;
-
 	container: sheet / inline-size;
 
-	@container sheet (width <= 550px) {
-		.window-header .header-button > span {
-			position: absolute;
-			left: -1000px;
-			opacity: 0%;
-			inline-size: 1px;
-			block-size: 1px;
-			overflow: hidden;
-		}
+	&:not(.minimized, .minimizing, .maximizing) {
+		min-block-size: 200px;
+		min-inline-size: 366px;
 	}
 
-	.sheet-head {
-		display: flex;
+	.window-content { gap: 8px; }
+
+	.sheet-header {
 		gap: 12px;
+		--header-size: 48px;
 
 		.profile {
-			width: 48px;
-			height: 48px;
+			width: var(--header-size);
+			height: var(--header-size);
 			object-fit: cover;
+		}
+		.document-name {
+			color: var(--bf-text-color-blue);
+			font-size: 32px;
+			font-family: var(--bf-font-header);
+		}
+		input.document-name {
+			border: 1px solid var(--bf-color-border-blue);
+			border-radius: 0;
+			block-size: var(--header-size);
 		}
 	}
 
 	.sheet-body {
-		.editor {
-			&:has(> .editor-edit) {
-				min-block-size: 40px;
-				&:not(.prosemirror) .editor-content > p:first-child {
-					text-indent: 20px;
-					> * { text-indent: 0; }
-				}
-			}
-			.editor-edit {
-				inset-inline-start: 0;
-				inset-inline-end: unset;
-				display: block;
-				border: .5px solid var(--bf-color-border-blue);
-				background: var(--bf-color-fill);
-				color: var(--bf-blue);
-				font-size: var(--font-size-12);
-				&:hover {
-					text-shadow: 0 0 8px var(--bf-text-shadow-blue);
-				}
-			}
-			&.prosemirror {
-				block-size: 300px;
-				max-inline-size: calc(100% + 16px);
-				margin-block-start: 4px;
-				margin-inline: -8px;
-			}
-		}
+		.editor.prosemirror { margin-block: 8px; }
 		.items {
 			margin-block-start: 0;
 			li {
@@ -66,36 +43,15 @@
 				& + p { display: inline; }
 			}
 			.controls {
-				display: inline-block;
-			}
-		}
-	}
-
-	h1 {
-		flex-grow: 1;
-		margin: 0;
-		border: none;
-
-		input[name="name"] {
-			block-size: 100%;
-			inline-size: 100%;
-			border: 1px solid var(--bf-color-border-blue);
-			border-radius: 0;
-			color: var(--bf-text-color-blue);
-			font-family: var(--bf-font-header);
-
-			&:disabled {
-				border-color: transparent;
-				background: none;
-				text-transform: uppercase;
-				&:hover {
-					box-shadow: none;
-				}
+				display: inline-flex;
+				gap: 8px;
+				margin-inline-end: 4px;
 			}
 		}
 	}
 
 	h2 {
+		margin-block-start: 8px;
 		margin-block-end: 0;
 		border-block-end: .5px solid currentcolor;
 		color: var(--bf-text-color-blue);

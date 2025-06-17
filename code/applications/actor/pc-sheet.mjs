@@ -1,22 +1,25 @@
 import { Trait } from "../../utils/_module.mjs";
 import AbilityAssignmentDialog from "./ability-assignment-dialog.mjs";
-import BaseActorSheet from "./base-actor-sheet.mjs";
+import BaseActorSheet from "./api/base-actor-sheet.mjs";
 import ConceptSelectionDialog from "./concept-selection-dialog.mjs";
 import LevelUpDialog from "./level-up-dialog.mjs";
 
 export default class PCSheet extends BaseActorSheet {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			classes: ["black-flag", "actor", "sheet", "pc"],
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		actions: {
+			// TODO
+		},
+		classes: ["pc"],
+		position: {
 			width: 820,
-			height: 880,
-			tabs: [
-				{ group: "primary", navSelector: 'nav[data-group="primary"]', contentSelector: ".sheet-body", initial: "main" }
-			],
-			scrollY: [".window-content"]
-		});
-	}
+			height: 880
+		}
+		// tabs: [
+		// 	{ group: "primary", navSelector: 'nav[data-group="primary"]', contentSelector: ".sheet-body", initial: "main" }
+		// ],
+		// scrollY: [".window-content"]
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 

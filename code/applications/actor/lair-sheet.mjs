@@ -1,16 +1,31 @@
-import BaseActorSheet from "./base-actor-sheet.mjs";
+import BaseActorSheet from "./api/base-actor-sheet.mjs";
 
+/**
+ * Actor sheet representing Lair actors.
+ */
 export default class LairSheet extends BaseActorSheet {
 	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			classes: ["black-flag", "actor", "sheet", "lair"],
-			dragDrop: [{ dragSelector: "[data-item-id]" }],
-			width: 520,
-			height: null,
-			scrollY: [".window-content"]
-		});
-	}
+	static DEFAULT_OPTIONS = {
+		actions: {
+			addItem: LairSheet.#addItem,
+			enterInitiative: LairSheet.#enterInitiative
+		},
+		classes: ["lair"],
+		position: {
+			width: 520
+		},
+		window: {
+			controls: [
+				{
+					action: "enterInitiative",
+					icon: "fa-solid fa-bolt",
+					label: "BF.Initiative.Action.Enter",
+					ownership: "OWNER",
+					visible: LairSheet.#canEnterInitiative
+				}
+			]
+		}
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -23,22 +38,60 @@ export default class LairSheet extends BaseActorSheet {
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static PARTS = {
+		header: {
+			template: "systems/black-flag/templates/actor/lair-header.hbs"
+		},
+		body: {
+			template: "systems/black-flag/templates/actor/lair-body.hbs"
+		}
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData(options) {
-		const context = await super.getData(options);
+	async _preparePartContext(partId, context, options) {
+		context = await super._preparePartContext(partId, context, options);
+		switch (partId) {
+			case "body":
+				return this._prepareBodyContext(context, options);
+			case "header":
+				return this._prepareHeaderContext(context, options);
+			default:
+				return context;
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareBodyContext(context, options) {
+		context.enriched = await this._prepareDescriptions(context);
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async prepareItem(item, context, section) {
-		await super.prepareItem(item, context, section);
+	async _prepareHeaderContext(context, options) {
+		context = await super._prepareHeaderContext(context, options);
+		context.portrait = this._preparePortrait(context);
+		return context;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*       Item Preparation Helpers      */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareItem(item, context, section) {
+		await super._prepareItem(item, context, section);
 		context.activity = item.system.activities.find(a => a.activation.primary) ?? item.system.activities.contents[0];
-		context.description = await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+		context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 			item.system.description.value,
 			{
 				relativeTo: item,
@@ -50,51 +103,44 @@ export default class LairSheet extends BaseActorSheet {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	_getHeaderButtons() {
-		const buttons = super._getHeaderButtons();
-		if (this.actor.isOwner && !this.actor.pack) {
-			buttons.splice(buttons.findIndex(b => b.class === "toggle-editing-mode") + 1, 0, {
-				label: "BF.Initiative.Action.Enter",
-				class: "initiative",
-				icon: "fa-solid fa-bolt",
-				onclick: () => this.actor.configureInitiativeRoll()
-			});
-		}
-		return buttons;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	async activateEditor(name, options = {}, initialContent = "") {
-		options.relativeLinks = true;
-		options.plugins = {
-			menu: ProseMirror.ProseMirrorMenu.build(ProseMirror.defaultSchema, {
-				compact: true,
-				destroyOnSave: true,
-				onSave: () => this.saveEditor(name, { remove: true })
-			})
-		};
-		return super.activateEditor(name, options, initialContent);
+	/**
+	 * Handle adding a new item to this lair.
+	 * @this {LairSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #addItem(event, target) {
+		Item.implementation.createDialog(
+			{ "system.type.category": "monsters", "system.type.value": target.dataset.type },
+			{ parent: this.actor, pack: this.actor.pack, types: ["feature"] }
+		);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	async _onAction(event, dataset) {
-		const { action, type } = dataset ?? event.currentTarget.dataset;
-		switch (action) {
-			case "add":
-				Item.implementation.createDialog(
-					{ "system.type.category": "monsters", "system.type.value": type },
-					{ parent: this.actor, pack: this.actor.pack, types: ["feature"] }
-				);
-				return;
-		}
-		return super._onAction(event, dataset);
+	/**
+	 * Handle adding the lair to initiative.
+	 * @this {LairSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #enterInitiative(event, target) {
+		this.actor.configureInitiativeRoll();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Helpers               */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Control whether the Enter Initiative button is visible.
+	 * @this {LairSheet}
+	 * @returns {boolean}
+	 */
+	static #canEnterInitiative() {
+		return !this.document.inCompendium;
 	}
 }

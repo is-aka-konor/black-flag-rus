@@ -1,10 +1,20 @@
-import { getPluralRules, numberFormat } from "../../utils/_module.mjs";
+import { getPluralRules, numberFormat } from "../../../utils/_module.mjs";
 import BaseActorSheet from "./base-actor-sheet.mjs";
 
 /**
  * Base sheet for handling sheets in the stat block-style.
  */
 export default class BaseStatblockSheet extends BaseActorSheet {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The `BaseStatblockSheet` application has been deprecated and replaced with `BaseStatblockSheetV2`.",
+			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+		);
+		super(...args);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {

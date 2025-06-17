@@ -1,9 +1,19 @@
-import DocumentSheetMixin from "../mixins/document-sheet-mixin.mjs";
+import DocumentSheetMixin from "../../mixins/document-sheet-mixin.mjs";
 
 /**
  * Sheet upon which all other item sheets are based.
  */
 export default class BaseItemSheet extends DocumentSheetMixin(foundry.appv1.sheets.ItemSheet) {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The `BaseItemSheet` application has been deprecated and replaced with `BaseItemSheetV2`.",
+			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+		);
+		super(...args);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
