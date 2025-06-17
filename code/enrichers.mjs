@@ -1,13 +1,7 @@
 import AttackRollConfigurationDialog from "./applications/dice/attack-configuration-dialog.mjs";
+import DefaultMap from "./data/utility/default-map.mjs";
 import Activity from "./documents/activity/activity.mjs";
-import {
-	DefaultMap,
-	getSelectedTokens,
-	getTargetDescriptors,
-	log,
-	simplifyBonus,
-	simplifyFormula
-} from "./utils/_module.mjs";
+import { getSelectedTokens, getTargetDescriptors, log, simplifyBonus, simplifyFormula } from "./utils/_module.mjs";
 
 const slugify = value => value?.slugify().replaceAll("-", "").replaceAll("(", "").replaceAll(")", "");
 
@@ -592,7 +586,7 @@ async function enrichCheck(config, label, options) {
 	}
 	delete config.values;
 
-	const groups = new DefaultMap([], () => []);
+	const groups = new DefaultMap(() => []);
 	let invalid = false;
 
 	const anything = config.ability || config.skill.length || config.tool.length || config.vehicle.length;

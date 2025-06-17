@@ -1,3 +1,5 @@
+import DefaultMap from "./data/utility/default-map.mjs";
+
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 /*                     Message Rolls                     */
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -8,7 +10,7 @@ class MessageRegistry {
 	 * the originating message and contains sets of IDs for each roll type.
 	 * @type {Map<string, Map<string, Set<string>>}
 	 */
-	static #messages = new Map();
+	static #messages = new DefaultMap(() => new DefaultMap(() => new Set()));
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -19,8 +21,8 @@ class MessageRegistry {
 	 * @returns {BlackFlagChatMessage[]}
 	 */
 	static get(origin, type) {
+		if (!MessageRegistry.#messages.has(origin)) return [];
 		const originMap = MessageRegistry.#messages.get(origin);
-		if (!originMap) return [];
 		let ids;
 		if (type) ids = Array.from(originMap.get(type) ?? []);
 		else
@@ -43,10 +45,7 @@ class MessageRegistry {
 		const origin = message.getFlag(game.system.id, "originatingMessage");
 		const type = message.getFlag(game.system.id, "roll.type");
 		if (!origin || !type) return;
-		if (!MessageRegistry.#messages.has(origin)) MessageRegistry.#messages.set(origin, new Map());
-		const originMap = MessageRegistry.#messages.get(origin);
-		if (!originMap.has(type)) originMap.set(type, new Set());
-		originMap.get(type).add(message.id);
+		MessageRegistry.#messages.get(origin).get(type).add(message.id);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -58,7 +57,7 @@ class MessageRegistry {
 	static untrack(message) {
 		const origin = message.getFlag(game.system.id, "originatingMessage");
 		const type = message.getFlag(game.system.id, "roll.type");
-		MessageRegistry.#messages.get(origin)?.get(type)?.delete(message.id);
+		MessageRegistry.#messages.get(origin).get(type).delete(message.id);
 	}
 }
 
@@ -72,7 +71,7 @@ class SummonRegistry {
 	 * summoner while the set contains UUID of actors that have been summoned.
 	 * @type {Map<string, Set<string>>}
 	 */
-	static #creatures = new Map();
+	static #creatures = new DefaultMap(() => new Set());
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -82,7 +81,8 @@ class SummonRegistry {
 	 * @returns {BlackFlagActor[]}
 	 */
 	static creatures(actor) {
-		return Array.from(SummonRegistry.#creatures.get(actor.uuid) ?? []).map(uuid => fromUuidSync(uuid));
+		if (!SummonRegistry.#creatures.has(actor.uuid)) return [];
+		return Array.from(SummonRegistry.#creatures.get(actor.uuid)).map(uuid => fromUuidSync(uuid));
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -94,7 +94,6 @@ class SummonRegistry {
 	 */
 	static track(summoner, summoned) {
 		if (summoned.startsWith("Compendium.")) return;
-		if (!SummonRegistry.#creatures.has(summoner)) SummonRegistry.#creatures.set(summoner, new Set());
 		SummonRegistry.#creatures.get(summoner).add(summoned);
 	}
 
@@ -106,7 +105,7 @@ class SummonRegistry {
 	 * @param {string} summoned - UUID of the summoned creature to stop tracking.
 	 */
 	static untrack(summoner, summoned) {
-		SummonRegistry.#creatures.get(summoner)?.delete(summoned);
+		SummonRegistry.#creatures.get(summoner).delete(summoned);
 	}
 }
 

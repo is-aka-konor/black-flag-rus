@@ -1,10 +1,14 @@
 /**
  * Version of Map that includes a default value that will be used whenever retrieving a value if its key doesn't exist.
  */
-export class DefaultMap extends Map {
-	constructor(iterable, makeDefault) {
+export default class DefaultMap extends Map {
+	constructor(makeDefault, iterable) {
 		super(iterable);
-		this.#makeDefault = makeDefault;
+		if (foundry.utils.getType(makeDefault) === "function") {
+			this.#makeDefault = makeDefault;
+		} else {
+			this.#makeDefault = () => foundry.utils.deepClone(makeDefault);
+		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -19,7 +23,7 @@ export class DefaultMap extends Map {
 
 	/** @inheritDoc */
 	get(key) {
-		if ( !this.has(key) ) this.set(key, this.#makeDefault(this));
+		if (!this.has(key)) this.set(key, this.#makeDefault(this));
 		return super.get(key);
 	}
 }
