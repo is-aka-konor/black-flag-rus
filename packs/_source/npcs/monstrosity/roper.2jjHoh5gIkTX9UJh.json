@@ -106,7 +106,7 @@
         }
       },
       "type": {
-        "value": "humanoid",
+        "value": "monstrosity",
         "tags": [],
         "custom": [],
         "swarm": ""
@@ -1399,9 +1399,9 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "1.3.067",
     "createdTime": 1729607939811,
-    "modifiedTime": 1729607939811,
+    "modifiedTime": 1751581154720,
     "lastModifiedBy": "blackflag0000000"
   },
   "sort": 0,
