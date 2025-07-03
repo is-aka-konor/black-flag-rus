@@ -224,6 +224,11 @@
 		}
 		a { color: var(--bf-text-color-blue); }
 	}
+
+	.roll-table-embed h4 {
+		border: none;
+		font-size: var(--font-size-16);
+	}
 }
 
 .black-flag, .black-flag-journal {
