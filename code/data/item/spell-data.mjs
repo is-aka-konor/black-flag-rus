@@ -321,11 +321,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 			enumerable: false
 		});
 
-		Object.defineProperty(this.circle, "toString", {
-			value: () => String(this.circle.value ?? this.circle.base),
-			configurable: true,
-			enumerable: false
-		});
+		this.circle = new SpellCircleData(this.circle);
 
 		Object.defineProperty(this.components, "label", {
 			get() {
@@ -568,5 +564,19 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/** @inheritDoc */
 	_validConsumptionTypes(types) {
 		return types.filter(t => t.key !== "spellSlots");
+	}
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+class SpellCircleData {
+	constructor(data) {
+		Object.assign(this, data);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	toString() {
+		return this.value ?? this.base;
 	}
 }

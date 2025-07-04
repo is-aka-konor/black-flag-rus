@@ -13,17 +13,6 @@ export default class Proficiency {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Calculate an actor's proficiency modifier based on level or CR.
-	 * @param {number} level - Level or CR To use for calculating proficiency modifier.
-	 * @returns {number} - Proficiency modifier.
-	 */
-	static calculateMod(level) {
-		return Math.floor((level + 7) / 4);
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*             Properties              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -112,6 +101,36 @@ export default class Proficiency {
 				2: "BF.Proficiency.Level.Expertise"
 			}[this.multiplier]
 		);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Methods               */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Calculate an actor's proficiency modifier based on level or CR.
+	 * @param {number} level - Level or CR To use for calculating proficiency modifier.
+	 * @returns {number} - Proficiency modifier.
+	 */
+	static calculateMod(level) {
+		return Math.floor((level + 7) / 4);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Return a clone of this proficiency with any changes applied.
+	 * @param {object} [updates={}]
+	 * @param {number} updates.proficiency - Actor's flat proficiency bonus based on their current level.
+	 * @param {number} updates.multiplier - Value by which to multiply the actor's base proficiency value.
+	 * @param {string} updates.rounding - Should half-values be rounded up or down?
+	 * @returns {Proficiency}
+	 */
+	clone({ proficiency, multiplier, rounding } = {}) {
+		proficiency ??= this.#baseProficiency;
+		multiplier ??= this.multiplier;
+		rounding ??= this.rounding === "down";
+		return new this.constructor(proficiency, multiplier, rounding);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
