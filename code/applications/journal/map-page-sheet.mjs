@@ -30,7 +30,9 @@ export default class MapLocationPageSheet extends (foundry.appv1?.sheets?.Journa
 			input.name = "system.code";
 			input.type = "text";
 			input.value = this.document.system.code ?? "";
-			editingHeader.insertAdjacentElement("afterbegin", input);
+			const div = document.createElement("div");
+			div.append(input, editingHeader.querySelector('[name="name"]'));
+			editingHeader.insertAdjacentElement("afterbegin", div);
 		} else if (viewingHeader && this.document.system.code) {
 			viewingHeader.dataset.mapLocationCode = this.document.system.code;
 		}

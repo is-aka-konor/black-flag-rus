@@ -2,6 +2,12 @@
 	.journal-header {
 		gap: 1rem;
 
+		> div {
+			flex: 1;
+			display: flex;
+			gap: 1rem;
+		}
+
 		[name="system.code"] {
 			block-size: 100%;
 			inline-size: 3em;
