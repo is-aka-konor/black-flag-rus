@@ -183,10 +183,11 @@ export default class BasicRoll extends Roll {
 		const messageId = config.event?.target.closest("[data-message-id]")?.dataset.messageId;
 		if (messageId) foundry.utils.setProperty(message, `data.flags.${game.system.id}.originatingMessage`, messageId);
 
-		if (rolls?.length && config.evaluate !== false && message.create !== false) {
+		if (rolls?.length && config.evaluate !== false) {
 			if (foundry.utils.getType(message.preCreate) === "function") message.preCreate(rolls, config, message);
-			message.document = await this.toMessage(rolls, message.data, {
-				rollMode: message.rollMode ?? rolls.reduce((mode, r) => mode ?? r.options.rollMode)
+			message[message.create !== false ? "document" : "data"] = await this.toMessage(rolls, message.data, {
+				create: message.create,
+				rollMode: message.rollMode
 			});
 		}
 
@@ -242,16 +243,18 @@ export default class BasicRoll extends Roll {
 	 * @param {BasicRoll[]} rolls - Rolls to add to the message.
 	 * @param {object} messageData - The data object to use when creating the message
 	 * @param {options} [options] - Additional options which modify the created message.
-	 * @param {string} [options.rollMode] - The template roll mode to use for the message from CONFIG.Dice.rollModes
 	 * @param {boolean} [options.create=true] - Whether to automatically create the chat message, or only return the
 	 *                                          prepared chatData object.
+	 * @param {string} [options.rollMode] - The template roll mode to use for the message from CONFIG.Dice.rollModes.
 	 * @returns {Promise<ChatMessage|object>} - A promise which resolves to the created ChatMessage document if create is
 	 *                                         true, or the Object of prepared chatData otherwise.
 	 */
-	static async toMessage(rolls, messageData = {}, { rollMode, create = true } = {}) {
+	static async toMessage(rolls, messageData = {}, { create = true, rollMode } = {}) {
 		for (const roll of rolls) {
-			if (!roll._evaluated) await roll.evaluate();
+			if (!roll._evaluated) await roll.evaluate({ allowInteractive: rollMode !== CONST.DICE_ROLL_MODES.BLIND });
+			rollMode ??= roll.options.rollMode;
 		}
+		rollMode ??= game.settings.get("core", "rollMode");
 
 		// Prepare chat data
 		messageData = foundry.utils.mergeObject(
@@ -262,6 +265,7 @@ export default class BasicRoll extends Roll {
 			messageData
 		);
 		messageData.rolls = rolls;
+		this._prepareMessageData(rolls, messageData);
 
 		// Either create the message or just return the chat data
 		const cls = getDocumentClass("ChatMessage");
@@ -274,4 +278,14 @@ export default class BasicRoll extends Roll {
 			return msg.toObject();
 		}
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Perform specific changes to message data before creating message.
+	 * @param {BasicRoll[]} rolls - Rolls to add to the message.
+	 * @param {object} messageData - The data object to use when creating the message.
+	 * @protected
+	 */
+	static _prepareMessageData(rolls, messageData) {}
 }
