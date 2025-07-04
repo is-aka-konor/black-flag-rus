@@ -390,7 +390,7 @@ export default Base =>
 		 * @returns {Promise<PseudoDocument>} - This PseudoDocument after updates have been applied.
 		 */
 		async update(data = {}, context = {}) {
-			await this.item.updateEmbeddedDocuments(this.documentName, [{ ...data, _id: this.id }], context);
+			await this.item.updateEmbeddedDocuments(this.documentName, [{ type: this.type, ...data, _id: this.id }], context);
 			if (context.render !== false) this.render();
 			return this;
 		}

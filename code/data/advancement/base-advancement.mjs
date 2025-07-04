@@ -47,12 +47,13 @@ export default class BaseAdvancement extends foundry.abstract.DataModel {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @override */
 	static defineSchema() {
 		return {
 			_id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
 			configuration: new TypeField(
 				{
-					modelLookup: type => this.metadata.dataModels?.configuration ?? null
+					modelLookup: () => this.metadata.dataModels?.configuration ?? null
 				},
 				{ required: true }
 			),

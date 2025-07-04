@@ -196,6 +196,11 @@ ul.configuration-list {
 		&.wildcard {
 			font-style: italic;
 			font-weight: bold;
+
+			input {
+				font-style: normal;
+				font-weight: normal;
+			}
 		}
 		> input[type="checkbox"] {
 			flex-grow: unset;

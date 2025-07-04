@@ -212,14 +212,10 @@ export default class TraitConfig extends AdvancementConfig {
 	 * @returns {Promise<BlackFlagItem>} - The updated parent Item after the application re-renders.
 	 */
 	static async #onAddChoice(event, target) {
-		this.config.choices.push({ count: 1 });
-		this.selected = this.config.choices.length - 1;
-		this.config.grants = Array.from(this.advancement.configuration.grants);
-		this.config.choices.forEach(c => {
-			if (!c.pool) return;
-			c.pool = Array.from(c.pool);
-		});
-		await this.advancement.update({ configuration: this.config });
+		const config = this.advancement.configuration.toObject();
+		config.choices.push({ count: 1 });
+		this.selected = config.choices.length - 1;
+		await this.advancement.update({ configuration: config });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -234,14 +230,10 @@ export default class TraitConfig extends AdvancementConfig {
 	static async #onDeleteChoice(event, target) {
 		const input = target.closest("li").querySelector("[name='selectedIndex']");
 		const selectedIndex = Number(input.value);
-		this.config.choices.splice(selectedIndex, 1);
+		const config = this.advancement.configuration.toObject();
+		config.choices.splice(selectedIndex, 1);
 		if (selectedIndex <= this.selected) this.selected -= 1;
-		this.config.grants = Array.from(this.advancement.configuration.grants);
-		this.config.choices.forEach(c => {
-			if (!c.pool) return;
-			c.pool = Array.from(c.pool);
-		});
-		await this.advancement.update({ configuration: this.config });
+		await this.advancement.update({ configuration: config });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -305,11 +297,6 @@ export default class TraitConfig extends AdvancementConfig {
 			delete configuration.count;
 		}
 
-		// TODO: Remove when https://github.com/foundryvtt/foundryvtt/issues/7706 is resolved
-		choicesCollection.forEach(c => {
-			if (!c.pool) return;
-			c.pool = Array.from(c.pool);
-		});
 		configuration.choices = choicesCollection;
 		configuration.grants ??= Array.from(this.config.grants);
 
