@@ -1,4 +1,4 @@
-.content-embed .spell-header {
+:is(.content-embed, document-embed) .spell-header {
 	p {
 		margin-block: 0.25em;
 	}

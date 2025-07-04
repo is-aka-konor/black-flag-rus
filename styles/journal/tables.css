@@ -1,4 +1,4 @@
-:is(.black-flag-journal, .black-flag .description, .content-embed) {
+:is(.black-flag-journal, .black-flag .description, .content-embed, document-embed) {
 	table {
 		margin-block-start: 1rem;
 		border-block: 2px solid var(--bf-color-border-blue);

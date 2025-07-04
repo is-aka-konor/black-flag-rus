@@ -249,7 +249,7 @@
 	.reference-link .content-link i { display: none; }
 }
 
-.content-embed {
+.content-embed, document-embed {
 	&.caption-top {
 		display: flex;
 		flex-direction: column;
