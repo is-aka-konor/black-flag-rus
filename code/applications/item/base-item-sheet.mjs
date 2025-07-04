@@ -90,7 +90,9 @@ export default class BaseItemSheet extends DocumentSheetMixin(foundry.appv1?.she
 	_disableFields(form) {
 		super._disableFields(form);
 		form.querySelectorAll("blackflag-multiselect").forEach(e => (e.disabled = true));
-		form.querySelectorAll('[data-action="view"], .interface-only').forEach(b => (b.disabled = false));
+		form
+			.querySelectorAll('[data-action="view"], .interface-only, :is(document-embed, secret-block) button')
+			.forEach(b => (b.disabled = false));
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
