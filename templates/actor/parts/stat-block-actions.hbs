@@ -1,8 +1,10 @@
 <blackFlag-actions>
 	{{#if editable}}
-		<button type="button" class="light-button" data-action="add-feature">
-			<i class="fa-solid fa-plus" inert></i> {{ localize "BF.Feature.Action.Add" }}
-		</button>
+		<div class="main-add-button">
+			<button type="button" class="light-button" data-action="add">
+				<i class="fa-solid fa-plus" inert></i> {{ localize "BF.Feature.Action.Add" }}
+			</button>
+		</div>
 	{{/if}}
 
 	<div class="features passive">

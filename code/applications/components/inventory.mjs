@@ -303,7 +303,7 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 			new Set(
 				sections?.flatMap(s => {
 					const filter = s.filters.find(f => f.k === "type");
-					return foundry.utils.getType(filter?.v) === "string" ? [filter.v] : filter.v;
+					return filter ? (foundry.utils.getType(filter?.v) === "string" ? [filter.v] : filter.v) : [];
 				})
 			)
 		).filter(t => t);
@@ -425,11 +425,15 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 	async _onExpand(item, target) {
 		const row = target.closest("[data-item-id]");
 		let expanded = row?.nextElementSibling?.dataset.expandFor === item.id ? row.nextElementSibling : null;
-		if (!this.app.expanded || !expanded) return;
+		if (!(this.app.expanded || this.app.expandedSections) || !expanded) return;
 
 		// Collapsed if already expanded
-		if (this.app.expanded.has(item.id)) {
-			this.app.expanded.delete(item.id);
+		if (
+			(this.app.expanded && this.app.expanded.has(item.id)) ||
+			(this.app.expandedSections && this.app.expandedSections.get(item.id))
+		) {
+			if (this.app.expanded) this.app.expanded.delete(item.id);
+			else this.app.expandedSections.set(item.id, false);
 			expanded.classList.add("collapsed");
 		} else {
 			// If no summary section exists yet, render and insert one
@@ -442,7 +446,8 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 				div.innerHTML = summary;
 				expanded.querySelector("td .wrapper").append(div.querySelector(".item-summary"));
 			}
-			this.app.expanded.add(item.id);
+			if (this.app.expanded) this.app.expanded.add(item.id);
+			else this.app.expandedSections.set(item.id, true);
 			requestAnimationFrame(() => {
 				expanded.querySelector(".item-summary")?.getBoundingClientRect();
 				expanded.classList.remove("collapsed");

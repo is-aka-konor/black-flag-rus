@@ -13,14 +13,8 @@ blackFlag-actions {
 		}
 	}
 
-	button[data-action]:not(.link-button) {
-		inline-size: unset;
-		block-size: 2em;
-		margin-inline: 0.5rem;
-		padding-inline: 0.5em;
-		font-size: var(--font-size-11);
-		line-height: 1em;
-		text-transform: uppercase;
+	[data-action="add"] {
+		margin-block-end: 8px;
 	}
 
 	.name {

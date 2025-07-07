@@ -206,18 +206,6 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 	@container inventory (inline-size < 500px) {
 		.uses { display: none; }
 	}
-
-	.main-add-button {
-		display: flex;
-		justify-content: space-between;
-		[data-action="add"] {
-			width: max-content;
-			margin-inline-start: auto;
-			padding-inline: 10px;
-			display: flex;
-			align-items: center;
-		}
-	}
 }
 
 .add-currency.locked-tooltip {

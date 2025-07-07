@@ -22,6 +22,7 @@
 	color: inherit;
 	font-size: inherit;
 	line-height: inherit;
+	text-align: start;
 
 	&:not([disabled]) {
 		&:hover, &:focus-visible {

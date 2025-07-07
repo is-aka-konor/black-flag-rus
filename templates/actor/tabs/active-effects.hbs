@@ -1,0 +1,70 @@
+<section class="tab flex-tab {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+	<blackFlag-effects>
+		<table>
+			{{#each effects}}
+				<tbody data-section="{{ @key }}">
+					<tr class="table-header">
+						<td class="name">{{ localize label }}</td>
+						<th class="source" scope="col">{{ localize "BF.EFFECT.Source" }}</th>
+						<th class="duration" scope="col">{{ localize "BF.EFFECT.Duration" }}</th>
+						<td class="controls">
+							<div class="layout">
+								{{#if @root.editable}}
+									<button type="button" class="link-button" data-action="add"
+													data-tooltip="BF.EFFECT.Action.Add" aria-label="{{ localize 'BF.EFFECT.Action.Add' }}">
+										<i class="fa-solid fa-plus" inert></i>
+									</button>
+								{{/if}}
+							</div>
+						</td>
+					</tr>
+					{{#each effects}}
+						<tr data-effect-id="{{ id }}" {{~#if parentId}} data-parent-id="{{ parentId }}"{{/if}}>
+							<th class="name" scope="row">
+								<div class="layout" scope="row">
+									<img class="icon" src="{{ img }}" alt="{{ name }}">
+									<span>{{ name }}</span>
+								</div>
+							</th>
+							<td class="source">
+								{{ sourceName }}
+								{{#if suppressionReason}}
+									<div class="notification-badge" data-tooltip="{{ suppressionReason }}"
+											 data-notification-level="info"><i class="fa-solid fa-info" inert></i></div>
+								{{/if}}
+							</td>
+							<td class="duration">{{ duration.label }}</td>
+							<td class="controls">
+								<div class="layout">
+									{{#if @root.editable}}
+										<button type="button" class="link-button" data-action="edit"
+														data-tooltip="BF.EFFECT.Action.Edit" aria-label="{{ localize 'BF.EFFECT.Action.Edit' }}">
+											<i class="fa-solid fa-edit" inert></i>
+										</button>
+										<button type="button" class="link-button" data-action="delete"
+														data-tooltip="BF.EFFECT.Action.Delete" aria-label="{{ localize 'BF.EFFECT.Action.Delete' }}">
+											<i class="fa-solid fa-trash" inert></i>
+										</button>
+									{{else}}
+										<button type="button" class="link-button" data-action="view"
+														data-tooltip="BF.EFFECT.Action.View" aria-label="{{ localize 'BF.EFFECT.Action.View' }}">
+											<i class="fa-solid fa-eye" inert></i>
+										</button>
+										<button type="button" class="link-button" data-action="toggle"
+														data-tooltip="BF.EFFECT.Action.{{ ifThen disabled 'Enable' 'Disable' }}"
+														aria-label="{{ localize (concat "BF.EFFECT.Action." (ifThen disabled 'Enable' 'Disable')) }}">
+											<i class="fa-solid fa-{{ifThen disabled 'check' 'times'}}" inert></i>
+										</button>
+									{{/if}}
+									<button type="button" class="link-button" data-context-menu
+													data-tooltip="BF.AdditionalControls" aria-label="{{ localize 'BF.AdditionalControls' }}">
+										<i class="fa-solid fa-ellipsis-vertical" inert></i>
+									</button>
+								</div>
+							</td>
+						</tr>
+					{{/each}}
+			{{/each}}
+		</table>
+	</blackFlag-effects>
+</section>

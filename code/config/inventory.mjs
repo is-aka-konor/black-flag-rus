@@ -326,7 +326,7 @@ export const sheetSections = {
 			id: "features",
 			tab: "features",
 			label: "BF.Item.Category.Feature.Label",
-			filters: []
+			filters: [{ k: "type", o: "in", v: ["feature", "ammunition", "weapon", "gear"] }]
 		}
 	],
 	vehicle: [

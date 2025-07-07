@@ -51,13 +51,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	static enrichedFields = {};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	// get template() {
-	// 	return `systems/black-flag/templates/actor/${this.actor.type}.hbs`;
-	// }
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*             Properties              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -92,18 +85,24 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 
 		await this._prepareActions(context);
 		await this._prepareItems(context);
+		await this._prepareTraits(context);
 
 		// 		context.appID = this.id;
-		//
-		// 		context.effects = EffectsElement.prepareActorContext(this.document.allApplicableEffects());
-		//
-		// 		await this.prepareTraits(context);
 
-		// 		context.editorSelected = this.editorSelected;
-		//
-		// 		const token = this.actor.isToken ? this.actor.token : this.actor.prototypeToken;
-		// 		context.showTokenArtwork = this.modes.editing || this.actor.img !== token.texture.src;
+		return context;
+	}
 
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Prepare rendering context for the effects tab.
+	 * @param {ApplicationRenderContext} context - Context being prepared.
+	 * @param {HandlebarsRenderOptions} options - Options which configure application rendering behavior.
+	 * @returns {ApplicationRenderContext}
+	 * @protected
+	 */
+	async _prepareEffectsContext(context, options) {
+		context.effects = EffectsElement.prepareActorContext(this.document.allApplicableEffects());
 		return context;
 	}
 
@@ -145,31 +144,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		activeTab.active = true;
 		return context;
 	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	// 	async _renderOuter() {
-	// 		const jQuery = await super._renderOuter();
-	//
-	// 		// Adjust header button HTML to allow for more precise styling
-	// 		for (const button of jQuery[0].querySelectorAll(".header-button")) {
-	// 			let content = "";
-	// 			for (const node of button.childNodes) {
-	// 				if (node instanceof Text) {
-	// 					if (!node.textContent.trim().replaceAll("\n", "")) content += node.textContent;
-	// 					else {
-	// 						content += `<span>${node.textContent}</span>`;
-	// 						button.dataset.tooltip = node.textContent.trim();
-	// 						button.setAttribute("aria-label", node.textContent.trim());
-	// 					}
-	// 				} else content += node.outerHTML;
-	// 			}
-	// 			button.innerHTML = content;
-	// 		}
-	//
-	// 		return jQuery;
-	// 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*      Actor Preparation Helpers      */
@@ -273,9 +247,10 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		const token = this.actor.isToken ? this.actor.token : this.actor.prototypeToken;
 		const defaultArtwork = Actor.implementation.getDefaultArtwork(this.actor._source)?.img;
 		return {
-			token: showTokenPortrait,
+			path: showTokenPortrait ? (this.actor.isToken ? "" : "prototypeToken.texture.src") : "img",
+			showBoth: context.editable || this.actor.img !== token.texture.src,
 			src: showTokenPortrait ? token.texture.src : this.actor.img ?? defaultArtwork,
-			path: showTokenPortrait ? (this.actor.isToken ? "" : "prototypeToken.texture.src") : "img"
+			token: showTokenPortrait
 		};
 	}
 
@@ -283,10 +258,10 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 
 	/**
 	 * Prepare various traits that might be displayed on the actor's sheet.
-	 * @param {object} context - Context object for rendering the sheet. **Will be mutated.**
+	 * @param {ApplicationRenderContext} context - Context being prepared.
 	 * @protected
 	 */
-	// async _prepareTraits(context) {}
+	async _prepareTraits(context) {}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*       Item Preparation Helpers      */
@@ -327,7 +302,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 				icon: `<i class="fa-regular ${item.enabled ? "fa-square-check" : "fa-square"}"></i>`
 			});
 
-		if (this.expandedSections.has(item.id)) {
+		if (this.expandedSections.get(item.id)) {
 			context.expanded = await item.getSummaryContext({ secrets: this.actor.isOwner });
 		}
 
@@ -387,9 +362,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		}
 
 		if (this._mode !== BaseActorSheet.MODES.EDIT) {
-			// for (const element of this.element.querySelectorAll(".profile")) {
-			// 	element.addEventListener("click", this._onShowArtwork.bind(this));
-			// }
 			// TODO: See if this is needed
 			// this.element.querySelectorAll('input[type="text"][data-dtype="Number"]')
 			// 	.forEach(i => i.addEventListener("change", this._onChangeInputDelta.bind(this)));
@@ -423,33 +395,32 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	 * @param {DOMStringMap} [dataset] - Dataset to use instead of that of the event target.
 	 * @returns {Promise}
 	 */
-	// async _onAction(event, dataset) {
-	// 	const { action, subAction, ...properties } = dataset ?? event.currentTarget.dataset;
-	// 	switch (action) {
-	// 		case "effect":
-	// 			return BlackFlagActiveEffect.onEffectAction.bind(this)(event);
-	// 		case "item":
-	// 			const itemId = properties.itemId ?? event.target.closest("[data-item-id]")?.dataset.itemId;
-	// 			const item = this.actor.items.get(itemId);
-	// 			switch (subAction) {
-	// 				case "delete":
-	// 					return item?.deleteDialog();
-	// 				case "edit":
-	// 				case "view":
-	// 					return item?.sheet.render(true);
-	// 			}
-	// 			break;
-	// 	}
-	// }
+	async _onAction(event, dataset) {
+		// 	const { action, subAction, ...properties } = dataset ?? event.currentTarget.dataset;
+		// 	switch (action) {
+		// 		case "effect":
+		// 			return BlackFlagActiveEffect.onEffectAction.bind(this)(event);
+		// 		case "item":
+		// 			const itemId = properties.itemId ?? event.target.closest("[data-item-id]")?.dataset.itemId;
+		// 			const item = this.actor.items.get(itemId);
+		// 			switch (subAction) {
+		// 				case "delete":
+		// 					return item?.deleteDialog();
+		// 				case "edit":
+		// 				case "view":
+		// 					return item?.sheet.render(true);
+		// 			}
+		// 			break;
+		// 	}
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Handle changes to the HP and damage on character sheets.
 	 * @param {Event} event - Triggering event.
-	 * @returns {Promise}
 	 */
-	async _onChangeHP(event) {
+	_onChangeHP(event) {
 		event.stopPropagation();
 		let value = event.target.value.trim();
 		let delta;
@@ -459,8 +430,8 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 			delta = parseInt(value) - foundry.utils.getProperty(this.actor, event.target.name);
 		}
 
-		const changed = await this.actor.applyDamage(delta, { multiplier: -1 });
-		if (!changed) event.target.value = foundry.utils.getProperty(this.actor, event.target.name);
+		this.actor.applyDamage(delta, { multiplier: -1 });
+		event.target.value = foundry.utils.getProperty(this.actor, event.target.name);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

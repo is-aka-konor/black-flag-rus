@@ -1,0 +1,7 @@
+<header class="sheet-header flexrow">
+	{{#if editable}}
+		{{ formInput name.field value=name.editable classes="document-name" placeholder=(localize "Name") }}
+	{{else}}
+		<div class="document-name">{{ name.value }}</div>
+	{{/if}}
+</header>

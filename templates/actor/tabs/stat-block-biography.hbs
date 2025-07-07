@@ -1,0 +1,36 @@
+<section class="tab {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+	<div class="artwork">
+		<figure class="icon">
+			<figcaption>{{ localize "BF.Actor.Artwork.Portrait" }}</figcaption>
+			<img class="profile" src="{{ actor.img }}" title="{{ actor.name }}"
+			     {{~#if editable}} data-action="editImage" data-edit="img"
+			     {{~else}} data-action="showArtwork"{{/if}}>
+		</figure>
+		{{#if portrait.showBoth}}
+			<figure class="icon">
+				<figcaption>{{ localize "BF.Actor.Artwork.Token" }}</figcaption>
+				{{#if actor.isToken}}
+					<img class="profile" src="{{ actor.token.texture.src }}" title="{{ actor.name }}"
+					     {{~#if editable}} data-action="editImage" data-edit="token.texture.src"
+					     {{~else}} data-action="showArtwork"{{/if}}>
+				{{else}}
+					<img class="profile" src="{{ actor.prototypeToken.texture.src }}" title="{{ actor.name }}"
+					     {{~#if editable}} data-action="editImage" data-edit="prototypeToken.texture.src"
+					     {{~else}} data-action="showArtwork"{{/if}}>
+				{{/if}}
+			</figure>
+		{{/if}}
+	</div>
+
+	<prose-mirror name="system.description.value" value="{{ source.description.value }}"
+	              data-document-uuid="{{ document.uuid }}" collaborate toggled>{{{ enriched.description }}}</prose-mirror>
+
+	<label class="source">
+		<span class="hinted-label" data-tooltip="BF.SOURCE.FIELDS.description.source.book.hint">
+			{{ localize "BF.SOURCE.Label" }}
+		</span>
+		<span>{{ source.description.source.label }}</span>
+	</label>
+</section>
+{{~#if editable}} data-action="editImage" {{~#if portrait.path}} data-edit="{{ portrait.path }}"{{/if}}
+ {{~else}} data-action="showArtwork" data-src="img"{{/if}}

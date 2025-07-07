@@ -1,0 +1,9 @@
+<nav class="sheet-navigation tabs {{ classes }}" data-group="primary"
+     aria-roledescription="{{ localize 'SHEETS.FormNavLabel' }}">
+	{{#each tabs}}
+	<a class="{{#if active}}active {{/if}}{{ cssClass }}" data-action="tab" data-group="primary" data-tab="{{ tab }}">
+		{{ localize label }}
+		{{ blackFlag-notificationBadge @root.actor section=tab }}
+	</a>
+	{{/each}}
+</nav>

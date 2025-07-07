@@ -14,3 +14,15 @@
 @import "sorting.css";
 
 blackFlag-advancement, blackFlag-uses { display: contents; }
+blackFlag-actions, blackFlag-inventory {
+	.main-add-button {
+		display: flex;
+		[data-action="add"] {
+			width: max-content;
+			margin-inline-start: auto;
+			padding-inline: 10px;
+			display: flex;
+			align-items: center;
+		}
+	}
+}

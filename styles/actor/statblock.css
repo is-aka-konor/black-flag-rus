@@ -1,4 +1,4 @@
-.black-flag.actor.sheet .statblock-tab, :is(.black-flag, .black-flag-journal) .statblock:is(.npc, .vehicle) {
+.black-flag.actor.sheet :is(.statblock-tab, .stat-block-tab), :is(.black-flag, .black-flag-journal) .statblock:is(.npc, .vehicle) {
 	label {
 		display: flex;
 		gap: 0.25em;
@@ -42,6 +42,7 @@
 		input, select {
 			width: 6em;
 			height: unset;
+			line-height: unset;
 			border: 1px solid var(--bf-color-border-blue);
 			background: rgb(255 255 255 / 0.05);
 		}
