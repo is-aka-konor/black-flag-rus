@@ -14,7 +14,7 @@ export default Base => {
 		/** @inheritDoc */
 		async _createInlineEmbed(content, config, options) {
 			const section = await super._createInlineEmbed(content, config, options);
-			if (config.label && section.children[0]) {
+			if (config?.label && section.children[0]) {
 				const inlineCaption = document.createElement("strong");
 				inlineCaption.classList.add("inline-caption");
 				inlineCaption.innerText = config.label;

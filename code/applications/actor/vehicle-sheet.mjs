@@ -12,7 +12,7 @@ export default class VehicleSheet extends BaseStatBlockSheet {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
+	/** @override */
 	static enrichedFields = {
 		description: "system.description.value"
 	};
@@ -45,6 +45,8 @@ export default class VehicleSheet extends BaseStatBlockSheet {
 				CONFIG.BlackFlag.vehicles.localized[context.system.traits.type.value] ?? ""
 			} (${dimensions})`
 		};
+
+		context.showCurrency = true;
 
 		return context;
 	}

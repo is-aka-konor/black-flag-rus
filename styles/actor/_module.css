@@ -6,11 +6,7 @@
 @import "base.css";
 @import "lair.css";
 @import "stat-block.css";
-@import "npc-vehicle.css";
 @import "pc.css";
-
-@import "statblock.css";
-@import "xp-bar.css";
 
 @import "config/armor-class-config.css";
 @import "config/health-config.css";

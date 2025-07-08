@@ -12,6 +12,7 @@
 @import "inventory.css";
 @import "multi-select.css";
 @import "sorting.css";
+@import "xp-bar.css";
 
 blackFlag-advancement, blackFlag-uses { display: contents; }
 blackFlag-actions, blackFlag-inventory {

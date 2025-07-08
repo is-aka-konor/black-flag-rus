@@ -1,7 +1,7 @@
-<section>
+<section class="tab {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 	<div class="type">
-		{{#if modes.editing}}
-			<button type="button" class="link-button" data-action="config" data-type="type"
+		{{#if editable}}
+			<button type="button" class="link-button" data-action="showConfiguration" data-type="type"
 			        data-tooltip="BF.Size.Action.Configure"
 			        aria-label="{{ localize 'BF.Size.Action.Configure' }}">
 				<i class="fa-solid fa-cog" inert></i>
@@ -13,8 +13,8 @@
 	<div class="stats">
 		<label>
 			<span>
-				{{#if modes.editing}}
-					<button type="button" class="link-button" data-action="config" data-type="armor-class"
+				{{#if editable}}
+					<button type="button" class="link-button" data-action="showConfiguration" data-type="armor-class"
 					        data-tooltip="BF.ArmorClass.Action.Configure"
 					        aria-label="{{ localize 'BF.ArmorClass.Action.Configure' }}">
 						<i class="fa-solid fa-cog" inert></i>
@@ -30,11 +30,11 @@
 				{{/with}}
 			</span>
 		</label>
-		{{> "blackFlag.statblock-hit-points" }}
+		{{> "systems/black-flag/templates/actor/parts/stat-block-hit-points.hbs" }}
 		<label>
 			<span>
-				{{#if modes.editing}}
-					<button type="button" class="link-button" data-action="config" data-type="movement"
+				{{#if editable}}
+					<button type="button" class="link-button" data-action="showConfiguration" data-type="movement"
 					        data-tooltip="BF.Speed.Action.Configure"
 					        aria-label="{{ localize 'BF.Speed.Action.Configure' }}">
 						<i class="fa-solid fa-cog" inert></i>
@@ -42,7 +42,7 @@
 				{{/if}}
 				{{ localize "BF.Speed.Label" }}
 			</span>
-			{{#if modes.editing}}
+			{{#if editable}}
 				<input type="number" name="system.traits.movement.base" value="{{ source.traits.movement.base }}">
 			{{else}}
 				<span>{{ traits.speed }}</span>
@@ -52,7 +52,7 @@
 			<span>
 				{{ localize "BF.Skill.Perception.Label" }}
 			</span>
-			{{#if modes.editing}}
+			{{#if editable}}
 				<input type="number" name="system.attributes.perception" value="{{ source.attributes.perception }}"
 				       placeholder="{{ placeholders.perception }}">
 			{{else}}
@@ -63,18 +63,18 @@
 			<span>
 				{{ localize "BF.Skill.Stealth.Label" }}
 			</span>
-			{{#if modes.editing}}
+			{{#if editable}}
 				<input type="number" name="system.attributes.stealth" value="{{ source.attributes.stealth }}"
 				       placeholder="{{ placeholders.stealth }}">
 			{{else}}
 				<span>{{ stealthLabel }}</span>
 			{{/if}}
 		</label>
-		{{> "blackFlag.statblock-resistances" }}
+		{{> "systems/black-flag/templates/actor/parts/stat-block-resistances.hbs" }}
 		<label>
 			<span>
-				{{#if modes.editing}}
-					<button type="button" class="link-button" data-action="config" data-type="senses"
+				{{#if editable}}
+					<button type="button" class="link-button" data-action="showConfiguration" data-type="senses"
 					        data-tooltip="BF.SENSES.Action.Configure"
 					        aria-label="{{ localize 'BF.SENSES.Action.Configure' }}">
 						<i class="fa-solid fa-cog" inert></i>
@@ -86,8 +86,8 @@
 		</label>
 		<label>
 			<span>
-				{{#if modes.editing}}
-					<button type="button" class="link-button" data-action="config" data-type="language"
+				{{#if editable}}
+					<button type="button" class="link-button" data-action="showConfiguration" data-type="language"
 					        data-tooltip="BF.Language.Action.Configure"
 					        aria-label="{{ localize 'BF.Language.Action.Configure' }}">
 						<i class="fa-solid fa-cog" inert></i>
@@ -105,6 +105,6 @@
 			</button>
 		</label>
 	</div>
-	{{> "blackFlag.statblock-abilities" }}
-	{{> "blackFlag.statblock-actions" }}
+	{{> "systems/black-flag/templates/actor/parts/stat-block-abilities.hbs" }}
+	{{> "systems/black-flag/templates/actor/parts/stat-block-actions.hbs" }}
 </section>

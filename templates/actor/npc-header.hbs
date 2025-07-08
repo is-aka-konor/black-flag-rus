@@ -1,0 +1,13 @@
+<header class="sheet-header flexrow">
+	{{#if editable}}
+		{{ formInput name.field value=name.editable classes="document-name" placeholder=(localize "Name") }}
+	{{else}}
+		<div class="document-name">{{ name.value }}</div>
+	{{/if}}
+	<label data-tooltip="{{ localize 'BF.ExperiencePoints.LabelSpecific' value=system.xpValue }}<br>
+				 {{ blackFlag-number system.attributes.proficiency sign=true }}"
+				 data-tooltip-direction="RIGHT">
+		<span>{{ localize "BF.ChallengeRating.Abbreviation" }}</span>
+		<input type="text" name="system.attributes.cr" value="{{ cr }}" {{ disabled (not editable) }}>
+	</label>
+</header>

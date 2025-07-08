@@ -310,7 +310,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 		}
 		if (!config.statblock) return super.toEmbed(config, options);
 
-		const context = await this.parent.sheet.getData();
+		const context = await this.parent.sheet._prepareContext();
 		context.name = config.label || this.parent.name;
 		if (config.cite === true) {
 			context.anchor = this.parent.toAnchor({ name: context.name }).outerHTML;

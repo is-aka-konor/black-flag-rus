@@ -1,20 +1,55 @@
 import { formatCR, getPluralRules, numberFormat } from "../../utils/_module.mjs";
-import BaseStatblockSheet from "./deprecated/base-statblock-sheet.mjs";
+import BaseStatBlockSheet from "./api/base-stat-block-sheet.mjs";
 import NPCSpellcastingConfig from "./config/npc-spellcasting-config.mjs";
 
-export default class NPCSheet extends BaseStatblockSheet {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			classes: ["black-flag", "actor", "sheet", "npc", "statblock"]
-		});
-	}
+/**
+ * Sheet for NPC actors.
+ */
+export default class NPCSheet extends BaseStatBlockSheet {
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		actions: {
+			longRest: NPCSheet.#longRest,
+			shortRest: NPCSheet.#shortRest
+		},
+		classes: ["npc"],
+		window: {
+			controls: [
+				{
+					action: "shortRest",
+					icon: "fa-solid fa-utensils",
+					label: "BF.Rest.Type.Short.Label",
+					ownership: "OWNER"
+				},
+				{
+					action: "longRest",
+					icon: "fa-solid fa-campground",
+					label: "BF.Rest.Type.Long.Label",
+					ownership: "OWNER"
+				}
+			]
+		}
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static enrichedFields = {
+		biography: "system.biography.value"
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	static enrichedFields = {
-		biography: "system.biography.value"
+	static PARTS = {
+		...super.PARTS,
+		header: {
+			template: "systems/black-flag/templates/actor/npc-header.hbs"
+		},
+		main: {
+			...super.PARTS.main,
+			template: "systems/black-flag/templates/actor/tabs/npc-main.hbs"
+		}
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -22,8 +57,8 @@ export default class NPCSheet extends BaseStatblockSheet {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData(options) {
-		const context = await super.getData(options);
+	async _prepareContext(options) {
+		const context = await super._prepareContext(options);
 
 		context.cr = formatCR(context.system.attributes.cr);
 
@@ -38,6 +73,8 @@ export default class NPCSheet extends BaseStatblockSheet {
 			stealth: 10 + (context.system.abilities.dexterity?.mod ?? 0)
 		};
 
+		context.showCurrency = true;
+
 		context.stealthLabel = numberFormat(context.system.attributes.stealth);
 		if (context.system.attributes.baseStealth)
 			context.stealthLabel = game.i18n.format("BF.Armor.StealthReduction", {
@@ -49,10 +86,12 @@ export default class NPCSheet extends BaseStatblockSheet {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*      Actor Preparation Helpers      */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async prepareActions(context) {
-		await super.prepareActions(context);
+	async _prepareActions(context) {
+		await super._prepareActions(context);
 
 		// Legendary Actions
 		if (context.actions.legendary) {
@@ -72,8 +111,8 @@ export default class NPCSheet extends BaseStatblockSheet {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async prepareTraits(context) {
-		super.prepareTraits(context);
+	async _prepareTraits(context) {
+		super._prepareTraits(context);
 		const { proficiencies } = context.system;
 		context.traits.speed = this.actor.system.traits.movement.label?.toLowerCase() || "—";
 		context.traits.senses = this.actor.system.traits.senses.label?.toLowerCase() || "—";
@@ -81,42 +120,51 @@ export default class NPCSheet extends BaseStatblockSheet {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	_getHeaderButtons() {
-		const buttons = super._getHeaderButtons();
-		if (this.actor.isOwner && !game.packs.get(this.actor.pack)?.locked) {
-			buttons.splice(
-				buttons.findIndex(b => b.class === "toggle-editing-mode") + 1,
-				0,
-				{
-					label: "BF.Rest.Type.Short.Label",
-					class: "short-rest",
-					icon: "fa-solid fa-utensils",
-					onclick: () => this.actor.shortRest()
-				},
-				{
-					label: "BF.Rest.Type.Long.Label",
-					class: "long-rest",
-					icon: "fa-solid fa-campground",
-					onclick: () => this.actor.longRest()
-				}
-			);
-		}
-		return buttons;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	_getSubmitData(updateData = {}) {
-		const data = super._getSubmitData(updateData);
+	/**
+	 * Handle resting the actor.
+	 * @this {NPCSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #longRest(event, target) {
+		// TODO: Figure out why this is not getting the individual context menu entry
+		this.actor.rest({ type: "long" });
+	}
 
-		// TODO: Convert to custom NumberField
-		if ("system.attributes.cr" in data) {
-			let cr = data["system.attributes.cr"];
+	/**
+	 * Handle resting the actor.
+	 * @this {NPCSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #shortRest(event, target) {
+		// TODO: Figure out why this is not getting the individual context menu entry
+		this.actor.rest({ type: "short" });
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _showConfiguration(event, target) {
+		if (target.dataset.type === "spellcasting") {
+			new NPCSpellcastingConfig({ document: this.actor }).render({ force: true });
+			return false;
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	_processFormData(event, form, formData) {
+		const submitData = super._processFormData(event, form, formData);
+
+		if (submitData.system?.attributes?.cr !== undefined) {
+			let cr = submitData.system.attributes.cr;
 			cr =
 				{
 					"": null,
@@ -130,28 +178,14 @@ export default class NPCSheet extends BaseStatblockSheet {
 				}[cr] ?? parseFloat(cr);
 			if (Number.isNaN(cr)) cr = null;
 			else if (cr > 1) cr = parseInt(cr);
-			data["system.attributes.cr"] = cr;
+			submitData.system.attributes.cr = cr;
 		}
 
-		if ("system.attributes.legendary.value" in data)
-			data["system.attributes.legendary.spent"] =
-				this.actor.system.attributes.legendary.max - parseInt(data["system.attributes.legendary.value"]);
-
-		return data;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	async _onAction(event, dataset) {
-		const { action, ...properties } = dataset ?? event.currentTarget.dataset;
-		switch (action) {
-			case "config":
-				switch (properties.type) {
-					case "spellcasting":
-						return new NPCSpellcastingConfig({ document: this.actor }).render({ force: true });
-				}
+		if (Number.isNumeric(submitData.system?.attributes?.legendary?.value)) {
+			submitData.system.attributes.legendaryy.spent =
+				this.actor.system.attributes.legendary.max - parseInt(submitData.system.attributes.legendary.value);
 		}
-		return super._onAction(event, dataset);
+
+		return submitData;
 	}
 }

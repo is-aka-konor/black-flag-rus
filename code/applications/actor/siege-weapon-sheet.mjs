@@ -11,7 +11,7 @@ export default class SiegeWeaponSheet extends BaseStatBlockSheet {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
+	/** @override */
 	static enrichedFields = {
 		description: "system.description.value"
 	};
