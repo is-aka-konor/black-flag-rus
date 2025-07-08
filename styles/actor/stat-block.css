@@ -120,16 +120,5 @@
 			flex-grow: 1;
 			min-height: 150px;
 		}
-
-		.source {
-			display: flex;
-			flex: 0;
-			gap: 8px;
-			align-items: center;
-
-			> span:first-child {
-				min-width: max-content;
-			}
-		}
 	}
 }

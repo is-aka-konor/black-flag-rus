@@ -1,16 +1,14 @@
-import { numberFormat } from "../../utils/_module.mjs";
-import BaseStatblockSheet from "./deprecated/base-statblock-sheet.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
+import BaseStatBlockSheet from "./api/base-stat-block-sheet.mjs";
 
 /**
  * Sheet for vehicle actors.
  */
-export default class VehicleSheet extends BaseStatblockSheet {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			classes: ["black-flag", "actor", "sheet", "vehicle", "statblock"]
-		});
-	}
+export default class VehicleSheet extends BaseStatBlockSheet {
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		classes: ["vehicle"]
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -20,16 +18,27 @@ export default class VehicleSheet extends BaseStatblockSheet {
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static PARTS = {
+		...super.PARTS,
+		main: {
+			...super.PARTS.main,
+			template: "systems/black-flag/templates/actor/tabs/vehicle-main.hbs"
+		}
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData(options) {
-		const context = await super.getData(options);
+	async _prepareContext(options) {
+		const context = await super._prepareContext(options);
 
 		const dimensions = game.i18n.format("BF.VEHICLE.Dimensions", {
-			length: numberFormat(context.system.traits.dimensions.length, { unit: context.system.traits.dimensions.units }),
-			width: numberFormat(context.system.traits.dimensions.width, { unit: context.system.traits.dimensions.units })
+			length: formatNumber(context.system.traits.dimensions.length, { unit: context.system.traits.dimensions.units }),
+			width: formatNumber(context.system.traits.dimensions.width, { unit: context.system.traits.dimensions.units })
 		});
 		context.labels = {
 			sizeAndType: `${game.i18n.localize(CONFIG.BlackFlag.sizes[context.system.traits.size]?.label ?? "")} ${
@@ -41,10 +50,12 @@ export default class VehicleSheet extends BaseStatblockSheet {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*      Actor Preparation Helpers      */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @override */
-	async prepareActions(context) {
-		await super.prepareActions(context);
+	/** @inheritDoc */
+	async _prepareActions(context) {
+		await super._prepareActions(context);
 		const descriptions = {
 			action: "system.description.actions",
 			bonus: "system.description.bonusActions",
@@ -61,8 +72,8 @@ export default class VehicleSheet extends BaseStatblockSheet {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async prepareTraits(context) {
-		super.prepareTraits(context);
+	async _prepareTraits(context) {
+		super._prepareTraits(context);
 		context.traits.speed = this.actor.system.traits.movement.label || "—";
 	}
 }

@@ -57,7 +57,7 @@ export default class SiegeWeaponSheet extends BaseStatBlockSheet {
 	/*      Actor Preparation Helpers      */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @override */
+	/** @inheritDoc */
 	async _prepareActions(context) {
 		await super._prepareActions(context);
 		for (const [key, { items }] of Object.entries(context.actions)) {

@@ -143,19 +143,6 @@
 						.editor-content { padding-inline: 12px; }
 					}
 				}
-
-				.source {
-					display: flex;
-					gap: 0.5rem;
-					align-items: first baseline;
-					margin-inline-end: 1rem;
-
-					> span {
-						font-size: var(--font-size-12);
-						font-variant: small-caps;
-						font-weight: 700;
-					}
-				}
 			}
 		}
 

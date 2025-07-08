@@ -25,12 +25,5 @@
 	<prose-mirror name="system.description.value" value="{{ source.description.value }}"
 	              data-document-uuid="{{ document.uuid }}" collaborate toggled>{{{ enriched.description }}}</prose-mirror>
 
-	<label class="source">
-		<span class="hinted-label" data-tooltip="BF.SOURCE.FIELDS.description.source.book.hint">
-			{{ localize "BF.SOURCE.Label" }}
-		</span>
-		<span>{{ source.description.source.label }}</span>
-	</label>
+	{{> "blackFlag.document-source" }}
 </section>
-{{~#if editable}} data-action="editImage" {{~#if portrait.path}} data-edit="{{ portrait.path }}"{{/if}}
- {{~else}} data-action="showArtwork" data-src="img"{{/if}}

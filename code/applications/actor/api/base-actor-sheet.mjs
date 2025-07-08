@@ -524,7 +524,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	static #showConfiguration(event, target) {
 		if (this._showConfiguration(event, target) === false) return;
 		const options = { document: this.actor, selectedId: target.dataset.key };
-		switch (properties.type) {
+		switch (target.dataset.type) {
 			case "ability":
 				return new AbilityConfig(options).render({ force: true });
 			case "armor-class":

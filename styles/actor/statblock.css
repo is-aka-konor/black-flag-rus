@@ -143,6 +143,7 @@
 			padding-inline-start: 2px;
 			background: var(--bf-background-color-gray);
 			color: var(--bf-text-color-blue);
+			font-family: var(--bf-font-primary);
 			font-size: var(--font-size-14);
 			text-transform: uppercase;
 			break-inside: avoid;

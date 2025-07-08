@@ -36,6 +36,7 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 			container: { classes: ["sheet-body"], id: "main" },
 			template: "systems/black-flag/templates/actor/tabs/stat-block-main.hbs",
 			templates: [
+				"systems/black-flag/templates/actor/parts/stat-block-abilities.hbs",
 				"systems/black-flag/templates/actor/parts/stat-block-actions.hbs",
 				"systems/black-flag/templates/actor/parts/stat-block-hit-points.hbs",
 				"systems/black-flag/templates/actor/parts/stat-block-resistances.hbs"

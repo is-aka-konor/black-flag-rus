@@ -316,3 +316,17 @@ hr, .application hr {
 		gap: 2px;
 	}
 }
+
+.document-source {
+	display: flex;
+	gap: 8px;
+	align-items: first baseline;
+
+	> span {
+		font-size: var(--font-size-12);
+		font-variant: small-caps;
+		font-weight: 700;
+		&:first-child { min-width: max-content; }
+		&.source-label { flex: 1; }
+	}
+}

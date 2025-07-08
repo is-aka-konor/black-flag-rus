@@ -1,6 +1,12 @@
-<label class="source">
+<label class="document-source">
 	<span class="hinted-label" data-tooltip="BF.SOURCE.FIELDS.description.source.book.hint">
 		{{ localize "BF.SOURCE.Label" }}
 	</span>
-	<span>{{ system.description.source.label }}</span>
+	<span class="source-label">{{ system.description.source.label }}</span>
+	{{#if editable}}
+		<button type="button" class="link-button" data-action="configureIdentity" data-tooltip
+						aria-label="{{ localize 'BF.Identity.Configure' }}">
+			<i class="fa-solid fa-cog" inert></i>
+		</button>
+	{{/if}}
 </label>
