@@ -1,3 +1,5 @@
+import BaseActorSheet from "../actor/api/base-actor-sheet.mjs";
+
 /**
  * Base class for the advancement interface displayed in the progression tab that should be subclassed by
  * individual advancement types.
@@ -105,11 +107,14 @@ export default class AdvancementFlow extends FormApplication {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	getData() {
+		const editable =
+			this.advancement.actor.sheet.isEditable && this.advancement.actor.sheet._mode === BaseActorSheet.MODES.EDIT;
 		return {
 			appId: this.id,
 			accentColor: this.advancement.item.accentColor,
 			advancement: this.advancement,
-			modes: { editing: this.advancement.actor.sheet.modes.editing ?? false },
+			editable,
+			modes: { editing: editable },
 			type: this.advancement.constructor.typeName,
 			title: this.advancement.titleForLevel(this.levels, { flow: true }),
 			icon: this.advancement.icon,

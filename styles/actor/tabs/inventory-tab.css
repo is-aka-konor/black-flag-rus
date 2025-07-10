@@ -23,6 +23,7 @@
 		.max { width: calc(1.25em + 6px); }
 		input.max {
 			background: rgb(0 0 0 / 0.1);
+			line-height: unset;
 		}
 
 		.notification-badge {

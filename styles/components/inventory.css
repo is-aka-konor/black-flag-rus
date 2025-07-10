@@ -11,7 +11,8 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 			tr {
 				:is(td, th) {
 					position: relative;
-					padding-inline: 0.25rem;
+					padding-block: 3px;
+					padding-inline: 4px;
 					font-size: var(--font-size-13);
 				}
 				:is(td, th):not(:first-child, :last-child)::after {
@@ -77,13 +78,15 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 	}
 
 	> table {
+		margin: 0;
+
 		> thead {
 			border: none;
 			background: none;
 			color: var(--color-text-dark-1);
 			text-shadow: none;
 
-			tr:has(blackFlag-filters) {
+			tr.filters {
 				th {
 					padding: 0;
 					padding-inline: 4px;
@@ -182,6 +185,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 			input {
 				border: none;
 				height: 1.65em;
+				text-align: inherit;
 			}
 		}
 		&.uses, &.weight, &.cost {

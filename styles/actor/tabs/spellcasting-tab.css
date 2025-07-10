@@ -13,9 +13,11 @@
 
 		h3 {
 			border-block-end: 1px solid var(--item-color);
+			padding-block: 4px;
 			padding-inline: 6px;
 			font-family: var(--bf-font-header);
 			font-size: var(--font-size-16);
+			font-weight: normal;
 			text-align: center;
 		}
 
@@ -62,6 +64,7 @@
 			justify-content: flex-end;
 			gap: 4px;
 		}
+		input { line-height: unset; }
 		input.value {
 			inline-size: 2em;
 			font-weight: inherit;

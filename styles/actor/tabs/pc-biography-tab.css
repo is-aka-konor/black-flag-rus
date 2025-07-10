@@ -1,20 +1,18 @@
 .black-flag.pc.sheet .sheet-body [data-tab="biography"] {
-	> section {
+	&.active {
 		display: grid;
 		gap: 12px;
 		grid-template-areas:
 			"artwork characteristics"
 			"artwork biography";
+		grid-template-rows: max-content auto;
 		> .artwork { grid-area: artwork; }
 		> .biography { grid-area: biography; }
 		> .characteristics { grid-area: characteristics; }
 	}
 
-	.artwork {
-		.icon {
-			width: 160px;
-		}
-	}
+	.artwork .icon { width: 160px; }
+
 	.characteristics {
 		padding-block: 8px;
 
@@ -47,13 +45,14 @@
 		h3 {
 			border-block-end: 1px solid var(--bf-color-border-blue);
 			font-family: var(--bf-font-header);
+			font-size: var(--font-size-18);
+			font-weight: 400;
 		}
 		.editor:not(.prosemirror) {
-			margin-block-end: 1em;
-			margin-inline: 16px;
+			margin-block-end: 12px;
 			min-block-size: 50px;
 		}
-		.editor.prosemirror {
+		prose-mirror {
 			min-block-size: 200px;
 		}
 	}

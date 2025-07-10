@@ -18,6 +18,7 @@ blackFlag-advancement, blackFlag-uses { display: contents; }
 blackFlag-actions, blackFlag-inventory {
 	.main-add-button {
 		display: flex;
+		margin-block-start: 8px;
 		[data-action="add"] {
 			width: max-content;
 			margin-inline-start: auto;

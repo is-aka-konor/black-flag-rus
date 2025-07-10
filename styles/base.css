@@ -217,6 +217,7 @@
 img.icon, figure.icon img {
 	object-fit: cover;
 	object-position: top center;
+	box-shadow: none;
 }
 
 img.icon, figure.icon {

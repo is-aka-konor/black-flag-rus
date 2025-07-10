@@ -19,7 +19,7 @@
 						</td>
 					</tr>
 					{{#each effects}}
-						<tr data-effect-id="{{ id }}" {{~#if parentId}} data-parent-id="{{ parentId }}"{{/if}}>
+						<tr class="draggable" data-effect-id="{{ id }}" {{~#if parentId}} data-parent-id="{{ parentId }}"{{/if}}>
 							<th class="name" scope="row">
 								<div class="layout" scope="row">
 									<img class="icon" src="{{ img }}" alt="{{ name }}">

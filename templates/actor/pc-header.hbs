@@ -1,0 +1,30 @@
+<header class="sheet-header">
+	<img class="profile icon" src="{{ ifThen editable img.editable img.value }}" alt="{{ name.value }}"
+	     {{~#if editable}} data-action="editImage" {{~#if portrait.path}} data-edit="{{ portrait.path }}"{{/if}}
+	     {{~else}} data-action="showArtwork" data-src="img"{{/if}}>
+	{{#if editable}}
+		<input name="name" type="text" class="document-name" value="{{ name.editable }}" placeholder="{{ localize 'Name' }}"
+					 aria-label="{{ localize 'Name' }}" form="{{ formID }}" {{ disabled (not editable) }}>
+	{{else}}
+		<div class="document-name">{{ name.value }}</div>
+	{{/if}}
+	<fieldset class="proficiency-bonus">
+		<legend>{{ localize "BF.Proficiency.Abbreviation" }}</legend>
+		<span>{{ blackFlag-number system.attributes.proficiency sign=true }}</span>
+	</fieldset>
+	<fieldset class="progression" data-group="progression">
+		<legend>
+			{{ localize "BF.Progression.Label" }}
+			{{ blackFlag-notificationBadge actor section="progression" }}
+		</legend>
+		<button type="button" class="link-button" data-action="toggleProgression">
+			{{#unless progressionView}}
+				<span class="text">{{ localize "BF.Level.Specific" level=system.progression.level }}</span>
+				<span class="icon"><i class="fa-solid fa-arrow-down-up-across-line" inert></i></span>
+			{{else}}
+				<span class="text">{{ localize "BF.Progression.Action.Return" }}</span>
+				<span class="icon"><i class="fa-solid fa-reply" inert></i></span>
+			{{/unless}}
+		</button>
+	</fieldset>
+</header>

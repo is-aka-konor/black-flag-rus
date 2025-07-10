@@ -1,3 +1,5 @@
+import BlackFlagDragDrop from "../drag-drop.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
 /**
@@ -22,6 +24,7 @@ export default function ApplicationV2Mixin(Base) {
 				toggleCollapsed: BaseApplication.#toggleCollapsed
 			},
 			classes: ["black-flag"],
+			dragDrop: true,
 			dragDropHandlers: {
 				dragstart: null,
 				dragend: BaseApplication.#onDragEnd,
@@ -139,7 +142,7 @@ export default function ApplicationV2Mixin(Base) {
 				const element = this.element.querySelector(`[data-application-part="${part}"]`);
 				if (!element) continue;
 				if (!containers[config.container.id]) {
-					const div = document.createElement("div");
+					const div = document.createElement(config.container.tag ?? "div");
 					div.dataset.containerId = config.container.id;
 					div.classList.add(...(config.container.classes ?? []));
 					containers[config.container.id] = div;
@@ -156,7 +159,7 @@ export default function ApplicationV2Mixin(Base) {
 			super._onRender(context, options);
 
 			// Attach draggable
-			if (this.options.dragSelectors.length) {
+			if (this.options.dragDrop && this.options.dragSelectors.length) {
 				const drag = this.#onDragEvent.bind(this);
 				for (const selector of this.options.dragSelectors) {
 					for (const element of this.element.querySelectorAll(selector)) {
@@ -192,13 +195,15 @@ export default function ApplicationV2Mixin(Base) {
 		/** @inheritDoc */
 		_attachFrameListeners() {
 			super._attachFrameListeners();
-
-			const drag = this.#onDragEvent.bind(this);
-			this.element.addEventListener("dragenter", drag);
-			this.element.addEventListener("dragleave", drag);
-			this.element.addEventListener("dragover", drag);
-			this.element.addEventListener("drop", drag);
 			this.element.addEventListener("plugins", this._onConfigurePlugins.bind(this));
+
+			if (this.options.dragDrop) {
+				const drag = this.#onDragEvent.bind(this);
+				this.element.addEventListener("dragenter", drag);
+				this.element.addEventListener("dragleave", drag);
+				this.element.addEventListener("dragover", drag);
+				this.element.addEventListener("drop", drag);
+			}
 		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */
@@ -242,7 +247,7 @@ export default function ApplicationV2Mixin(Base) {
 		#onDragEvent(event) {
 			const handler = this.options.dragDropHandlers[event.type];
 			if (!handler) return;
-			handler.call(this, event, DragDrop);
+			handler.call(this, event, BlackFlagDragDrop);
 		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */

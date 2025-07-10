@@ -1,322 +1,363 @@
-{{!-- Top Section --}}
-<section class="top">
+<section class="tab grid-tab {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
+		{{!-- Top Section --}}
+		<section class="top">
 
-	<fieldset class="abilities">
-		<legend>
-			{{ localize "BF.Ability.Label[other]" }}
-			{{#if modes.editing}}
-				<button type="button" class="link-button" data-action="config" data-type="ability"
-				        data-tooltip="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Ability.Label[other]') }}"
-				        aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Ability.Label[other]') }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/if}}
-			{{ blackFlag-notificationBadge actor category="abilities" }}
-		</legend>
-		{{#each system.abilities}}
-			<div class="ability" data-key="{{ @key }}">
-				<div class="ability-score">
-					<span class="value">
-						<label>
-							<span class="label">{{ localize labels.full }}</span>
-							<span class="score">{{#if valid}}{{ value }}{{else}}&mdash;{{/if}}</span>
-						</label>
-					</span>
-				</div>
-				<div class="ability-mod">
-					<button type="button" class="value" data-action="roll" data-sub-action="ability-check"
-					        data-ability="{{ @key }}" aria-label="{{ localize 'BF.Roll.Action.RollSpecific' type=(
-									localize 'BF.Ability.Action.CheckSpecific' ability=(localize labels.full)) }}">
-						{{#if valid}}{{ blackFlag-number check.mod sign=true }}{{else}}&mdash;{{/if}}
-					</button>
-				</div>
-				<div class="ability-save">
-					<div class="proficiency-selector" data-multiplier="{{ save.proficiency.multiplier }}"
-						data-rounding="{{ save.proficiency.rounding }}" aria-label="{{ save.proficiency.label }}">
-						<blackFlag-icon src="systems/black-flag/artwork/interface/proficiency.svg" inert></blackFlag-icon>
-						<input type="hidden" name="system.abilities.{{ @key }}.save.proficiency.multiplier"
-						       value="{{ _source.save.proficiency.multiplier }}">
-					</div>
-					<button type="button" class="value" data-action="roll" data-sub-action="ability-save"
-					        data-ability="{{ @key }}" aria-label="{{ localize 'BF.Roll.Action.RollSpecific' type=(
-									localize 'BF.Ability.Action.SaveSpecificShort' ability=(localize labels.full)) }}">
-						<svg class="label" viewBox="0 0 55 55" xmlns="http://www.w3.org/2000/svg"
-						     xmlns:xlink="http://www.w3.org/1999/xlink"
-						     aria-label="{{ localize 'BF.SavingThrow.LabelShort[one]' }}">
-							<defs>
-								<path id="path-0" d="M 45.5 27.5 A 18 18 0 0 1 27.5 45.5 A 18 18 0 0 1 9.5 27.5 A 18 18 0 0 1 27.5 9.5 A 18 18 0 0 1 45.5 27.5 Z"/>
-							</defs>
-							<text inert>
-								<textPath xlink:href="#path-0">{{ localize "BF.SavingThrow.LabelShort[one]" }}</textPath>
-							</text>
-						</svg>
-						<span class="mod">
-							{{#if valid}}{{ blackFlag-number save.mod sign=true }}{{else}}&mdash;{{/if}}
-						</span>
-					</a>
-				</div>
-			</div>
-		{{/each}}
-	</fieldset>
-
-</section>
-
-
-{{!-- Left Column --}}
-<section class="left">
-
-	<fieldset class="armor-class">
-		<legend>
-			{{ localize "BF.ArmorClass.Label" }}
-			{{#if modes.editing}}
-				<button type="button" class="link-button" data-action="config" data-type="armor-class"
-				        data-tooltip="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.ArmorClass.Label') }}"
-				        aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.ArmorClass.Label') }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/if}}
-			{{ blackFlag-notificationBadge actor category="armor-class" }}
-		</legend>
-		<div class="ac-shield">
-			<blackFlag-icon src="systems/black-flag/artwork/interface/armor-class.svg"
-			                class="frame" inert></blackFlag-icon>
-			<span class="value">{{ system.attributes.ac.value }}</span>
-		</div>
-		<div class="ac-label">
-			{{ localize system.attributes.ac.label }}
-		</div>
-	</fieldset>
-
-	{{#*inline ".proficiencySection"}}
-		<div class="{{ type }} stat-block" data-key="{{ @key }}">
-			<div class="proficiency-selector" data-multiplier="{{ proficiency.multiplier }}"
-				 	data-rounding="{{ proficiency.rounding }}" aria-label="{{ proficiency.label }}">
-				<blackFlag-icon src="systems/black-flag/artwork/interface/proficiency.svg" inert></blackFlag-icon>
-				<input type="hidden" name="system.proficiencies.{{ category }}.{{ @key }}.proficiency.multiplier"
-						 	value="{{ _source.proficiency.multiplier }}">
-			</div>
-			<button type="button" class="unbutton" data-action="roll" data-sub-action="{{ type }}"
-			        data-{{ type }}="{{ @key }}">
-				<span class="name">{{ localize label }}</span>
-				<span class="ability">{{ lookup @root.CONFIG.abilities.localizedAbbreviations ability }}</span>
-				<span class="mod">{{#if valid}}{{ blackFlag-number mod }}{{/if}}</span>
-			</button>
-		</div>
-	{{/inline}}
-
-	<fieldset class="skills">
-		<legend>
-			{{ localize "BF.Skill.Label[other]" }}
-			{{#if modes.editing}}
-			{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
-							type=(localize 'BF.Skill.Label[one]'))) as |label| }}
-				<button type="button" class="link-button" data-action="config" data-type="skill"
-				        data-tooltip="{{ label }}" aria-label="{{ label }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/with}}
-			{{/if}}
-			{{ blackFlag-notificationBadge actor category="skills" }}
-		</legend>
-		{{#each system.proficiencies.skills}}
-			{{~> ".proficiencySection" type="skill" category="skills" label=labels.name }}
-		{{/each}}
-	</fieldset>
-
-	<fieldset class="tools">
-		<legend>
-			{{ localize "BF.Tool.Label[other]" }}
-			{{#if editable}}
-			{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
-							type=(localize 'BF.Tool.Label[one]'))) as |label| }}
-				<button type="button" class="link-button" data-action="config" data-type="tool"
-				        data-tooltip="{{ label }}" aria-label="{{ label }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/with}}
-			{{/if}}
-			{{ blackFlag-notificationBadge actor category="tools" }}
-		</legend>
-		{{#each system.proficiencies.tools}}
-			{{~> ".proficiencySection" type="tool" category="tools" label=label }}
-		{{/each}}
-	</fieldset>
-
-	<fieldset class="vehicles">
-		<legend>
-			{{ localize "BF.VEHICLE.Label[other]" }}
-			{{#if editable}}
-			{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
-			        type=(localize 'BF.VEHICLE.Label[one]'))) as |label| }}
-				<button type="button" class="link-button" data-action="config" data-type="vehicle"
-				        data-tooltip="{{ label }}" aria-label="{{ label }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/with}}
-			{{/if}}
-			{{ blackFlag-notificationBadge actor category="vehicles" }}
-		</legend>
-		{{#each system.proficiencies.vehicles}}
-			{{~> ".proficiencySection" type="vehicle" category="vehicles" label=label }}
-		{{/each}}
-	</fieldset>
-
-</section>
-
-
-{{!-- Center Column --}}
-<section class="center">
-
-	<fieldset class="luck">
-		<legend>
-			{{ localize "BF.Luck.Label" }}
-			{{#if editable}}
-				<button type="button" class="link-button" data-action="config" data-type="luck"
-				        data-tooltip="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Luck.Label') }}"
-								aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Luck.Label') }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/if}}
-		</legend>
-		{{#if editable}}
-			<button type="button" class="link-button" data-action="luck" data-sub-action="remove"
-			        data-tooltip="BF.Luck.Action.Remove" aria-label="{{ localize 'BF.Luck.Action.Remove' }}">
-				<i class="fa-solid fa-minus" inert></i>
-			</button>
-		{{/if}}
-		<ol class="luck-points">
-			{{#each luckPoints}}
-				<li class="luck-point{{#if selected}} selected{{/if}}"></li>
-			{{/each}}
-		</ol>
-		{{#unless editable}}
-			<button type="button" class="link-button" data-action="luck" data-sub-action="add"
-		        	data-tooltip="BF.Luck.Action.Add" aria-label="{{ localize 'BF.Luck.Action.Add' }}">
-				<i class="fa-solid fa-plus" inert></i>
-			</button>
-		{{/unless}}
-	</fieldset>
-
-	<fieldset class="hit-points">
-		<legend>
-			{{ localize "BF.HitPoint.Label[other]" }}
-			{{#if editable}}
-				<button type="button" class="link-button" data-action="config" data-type="health"
-								data-tooltip="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Health.Label') }}"
-								aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Health.Label') }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/if}}
-		</legend>
-		<div class="main-hit-points stat-block">
-			<label class="current-hit-points">
-				<span class="light label">{{ localize "BF.HitPoint.Current.LabelShort" }}</span>
-				<input class="value" type="text" name="system.attributes.hp.value" value="{{ system.attributes.hp.value }}">
-			</label>
-			<div class="separator"></div>
-			<label class="max-hit-points">
-				<span class="light label">{{ localize "BF.HitPoint.Max.LabelShort" }}</span>
-				<span class="value">{{ ifThen editable system.attributes.hp.baseMax system.attributes.hp.max }}</span>
-			</label>
-		</div>
-		{{#unless (and (not system.attributes.hp.value) system.attributes.hp.max)}}
-			<div class="other-hit-points stat-block">
-				<label class="temp-hit-points">
-					<span class="light label">{{ localize "BF.HitPoint.Temp.LabelShort" }}</span>
-					<input class="value" type="text" name="system.attributes.hp.temp" value="{{ system.attributes.hp.temp }}">
-				</label>
-				{{#if editable}}
-					<div class="separator"></div>
-					<label class="temp-max-hit-points">
-						<span class="light label">{{ localize "BF.HitPoint.TempMax.LabelShort" }}</span>
-						<input class="value" type="text" name="system.attributes.hp.tempMax"
-						       value="{{ source.attributes.hp.tempMax }}">
-					</label>
-				{{/if}}
-			</div>
-		{{else}}
-			<div class="death-saves stat-block simple">
-				<span>{{ localize "BF.Death.Label[other]" }}</span>
-				<blackflag-deathSaves>
-					<input type="number" name="system.attributes.death.success" value="{{ system.attributes.death.success }}"
-						     min=0 step=1>
-					<input type="number" name="system.attributes.death.failure" value="{{ system.attributes.death.failure }}"
-								 min=0 step=1>
-				</blackflag-deathSaves>
-			</div>
-		{{/unless}}
-		<div class="hit-dice">
-			{{#each system.attributes.hd.d as |data denomination|}}
-				<div class="denomination stat-block">
-					<label class="label">d{{ denomination }}</label>
-					{{#if @root.modes.editing}}
-						<input class="value" type="number" name="system.attributes.hd.d.{{ denomination }}.available"
-						       value="{{ data.available }}" step=1 min=0 max={{ data.max }}>
-					{{else}}
-						<span class="value">{{ blackFlag-number data.available }}</span>
-					{{/if}}
-					<div class="separator"></div>
-					<span class="max">{{ blackFlag-number data.max }}</span>
-					<button type="button" class="unbutton" data-action="roll" data-sub-action="hit-die"
-					        data-denomination="{{ denomination }}" {{ disabled (eq data.available 0) }} aria-label="
-									{{~ localize 'BF.Roll.Action.RollSpecific' type=(
-									localize 'BF.HitDie.LabelSpecific' denom=denomination) }}">
-						<blackFlag-icon src="systems/black-flag/artwork/interface/dice/d{{ denomination }}.svg"
-						                class="die-icon blue" aria-hidden="true"></blackFlag-icon>
-					</button>
-				</div>
-			{{/each}}
-		</div>
-	</fieldset>
-
-	<fieldset class="initiative">
-		<legend>
-			{{localize "BF.Initiative.Label"}}
-			{{#if editable}}
-				<button type="button" class="link-button" data-action="config" data-type="initiative"
-				        data-tooltip="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Initiative.Label') }}"
-				        aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Initiative.Label') }}">
-					<i class="fa-solid fa-cog" inert></i>
-				</button>
-			{{/if}}
-		</legend>
-		<div class="stat-block">
-			<span class="value">{{ blackFlag-number system.attributes.initiative.mod sign=true }}</span>
-			<button class="unbutton" type="button" data-action="roll" data-sub-action="initiative" aria-label="
-			        {{~localize 'BF.Roll.Action.RollSpecific' type=(localize 'BF.Initiative.Label')}}">
-				<blackFlag-icon src="systems/black-flag/artwork/interface/dice/d20.svg"
-				                class="die-icon blue" aria-hidden="true"></blackFlag-icon>
-			</button>
-		</div>
-	</fieldset>
-
-	<fieldset class="traits">
-		<legend>{{ localize "BF.Trait.Label[other]" }}</legend>
-		{{#each traits}}
-			<div class="trait stat-block {{ key }} {{ classes }}">
-				<label>
-					<span class="light label">{{ localize label }}</span>
-					{{#if (and @root.modes.editing config)}}
-						<button type="button" class="link-button" data-action="config" data-type="{{ config }}"
-						        aria-label="{{ localize 'Configure' }}">
+			<fieldset class="abilities">
+				<legend>
+					{{ localize "BF.Ability.Label[other]" }}
+					{{#if editable}}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="ability" data-tooltip
+						        aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Ability.Label[other]') }}">
 							<i class="fa-solid fa-cog" inert></i>
 						</button>
 					{{/if}}
-				</label>
-				<span>{{ value }}</span>
-			</div>
-		{{/each}}
-	</fieldset>
+					{{ blackFlag-notificationBadge actor category="abilities" }}
+				</legend>
+				{{#each system.abilities}}
+					<div class="ability" data-key="{{ @key }}">
+						<div class="ability-score">
+							<span class="value">
+								<label>
+									<span class="label">{{ localize labels.full }}</span>
+									<span class="score">{{#if valid}}{{ value }}{{else}}&mdash;{{/if}}</span>
+								</label>
+							</span>
+						</div>
+						<div class="ability-mod">
+							<button type="button" class="value" data-action="roll" data-sub-action="ability-check"
+											data-ability="{{ @key }}" aria-label="{{ localize 'BF.Roll.Action.RollSpecific' type=(
+											localize 'BF.Ability.Action.CheckSpecific' ability=(localize labels.full)) }}">
+								{{#if valid}}{{ blackFlag-number check.mod sign=true }}{{else}}&mdash;{{/if}}
+							</button>
+						</div>
+						<div class="ability-save">
+							<div class="proficiency-selector" data-multiplier="{{ save.proficiency.multiplier }}"
+								data-rounding="{{ save.proficiency.rounding }}" aria-label="{{ save.proficiency.label }}">
+								<blackFlag-icon src="systems/black-flag/artwork/interface/proficiency.svg" inert></blackFlag-icon>
+								<input type="hidden" name="system.abilities.{{ @key }}.save.proficiency.multiplier"
+											value="{{ _source.save.proficiency.multiplier }}">
+							</div>
+							<button type="button" class="value" data-action="roll" data-sub-action="ability-save"
+											data-ability="{{ @key }}" aria-label="{{ localize 'BF.Roll.Action.RollSpecific' type=(
+											localize 'BF.Ability.Action.SaveSpecificShort' ability=(localize labels.full)) }}">
+								<svg class="label" viewBox="0 0 55 55" xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink"
+										aria-label="{{ localize 'BF.SavingThrow.LabelShort[one]' }}">
+									<defs>
+										<path id="path-0" d="M 45.5 27.5 A 18 18 0 0 1 27.5 45.5 A 18 18 0 0 1 9.5 27.5 A 18 18 0 0 1 27.5 9.5 A 18 18 0 0 1 45.5 27.5 Z"/>
+									</defs>
+									<text inert>
+										<textPath xlink:href="#path-0">{{ localize "BF.SavingThrow.LabelShort[one]" }}</textPath>
+									</text>
+								</svg>
+								<span class="mod">
+									{{#if valid}}{{ blackFlag-number save.mod sign=true }}{{else}}&mdash;{{/if}}
+								</span>
+							</a>
+						</div>
+					</div>
+				{{/each}}
+			</fieldset>
 
-</section>
+		</section>
 
 
-{{!-- Right Column --}}
-<section class="right">
+		{{!-- Left Column --}}
+		<section class="left">
 
-	<fieldset class="actions">
-		<legend>{{ localize "BF.ACTIVATION.Type.Action[other]" }}</legend>
-		{{> "blackFlag.pc-actions" }}
-	</fieldset>
+			<fieldset class="armor-class">
+				<legend>
+					{{ localize "BF.ArmorClass.Label" }}
+					{{#if editable}}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="armor-class"
+										data-tooltip
+										aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.ArmorClass.Label') }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/if}}
+					{{ blackFlag-notificationBadge actor category="armor-class" }}
+				</legend>
+				<div class="ac-shield">
+					<blackFlag-icon src="systems/black-flag/artwork/interface/armor-class.svg"
+													class="frame" inert></blackFlag-icon>
+					<span class="value">{{ system.attributes.ac.value }}</span>
+				</div>
+				<div class="ac-label">
+					{{ localize system.attributes.ac.label }}
+				</div>
+			</fieldset>
 
+			{{#*inline ".proficiencySection"}}
+				<div class="{{ type }} stat-block" data-key="{{ @key }}">
+					<div class="proficiency-selector" data-multiplier="{{ proficiency.multiplier }}"
+							data-rounding="{{ proficiency.rounding }}" aria-label="{{ proficiency.label }}">
+						<blackFlag-icon src="systems/black-flag/artwork/interface/proficiency.svg" inert></blackFlag-icon>
+						<input type="hidden" name="system.proficiencies.{{ category }}.{{ @key }}.proficiency.multiplier"
+									value="{{ _source.proficiency.multiplier }}">
+					</div>
+					<button type="button" class="unbutton" data-action="roll" data-sub-action="{{ type }}"
+									data-{{ type }}="{{ @key }}">
+						<span class="name">{{ localize label }}</span>
+						<span class="ability">{{ lookup @root.CONFIG.abilities.localizedAbbreviations ability }}</span>
+						<span class="mod">{{#if valid}}{{ blackFlag-number mod }}{{/if}}</span>
+					</button>
+				</div>
+			{{/inline}}
+
+			<fieldset class="skills">
+				<legend>
+					{{ localize "BF.Skill.Label[other]" }}
+					{{#if editable}}
+					{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
+									type=(localize 'BF.Skill.Label[one]'))) as |label| }}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="skill"
+										data-tooltip aria-label="{{ label }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/with}}
+					{{/if}}
+					{{ blackFlag-notificationBadge actor category="skills" }}
+				</legend>
+				{{#each system.proficiencies.skills}}
+					{{~> ".proficiencySection" type="skill" category="skills" label=labels.name }}
+				{{/each}}
+			</fieldset>
+
+			<fieldset class="tools">
+				<legend>
+					{{ localize "BF.Tool.Label[other]" }}
+					{{#if editable}}
+					{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
+									type=(localize 'BF.Tool.Label[one]'))) as |label| }}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="tool"
+										data-tooltip aria-label="{{ label }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/with}}
+					{{/if}}
+					{{ blackFlag-notificationBadge actor category="tools" }}
+				</legend>
+				{{#each system.proficiencies.tools}}
+					{{~> ".proficiencySection" type="tool" category="tools" label=label }}
+				{{/each}}
+			</fieldset>
+
+			<fieldset class="vehicles">
+				<legend>
+					{{ localize "BF.VEHICLE.Label[other]" }}
+					{{#if editable}}
+					{{#with (localize 'BF.Action.Configure.Specific' type=(localize 'BF.Proficiency.LabelSpecific[other]'
+									type=(localize 'BF.VEHICLE.Label[one]'))) as |label| }}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="vehicle"
+										data-tooltip aria-label="{{ label }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/with}}
+					{{/if}}
+					{{ blackFlag-notificationBadge actor category="vehicles" }}
+				</legend>
+				{{#each system.proficiencies.vehicles}}
+					{{~> ".proficiencySection" type="vehicle" category="vehicles" label=label }}
+				{{/each}}
+			</fieldset>
+
+		</section>
+
+
+		{{!-- Center Column --}}
+		<section class="center">
+
+			<fieldset class="luck">
+				<legend>
+					{{ localize "BF.Luck.Label" }}
+					{{#if editable}}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="luck" data-tooltip
+						        aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Luck.Label') }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/if}}
+				</legend>
+				{{#if editable}}
+					<button type="button" class="link-button" data-action="removeLuck"
+									data-tooltip aria-label="{{ localize 'BF.Luck.Action.Remove' }}">
+						<i class="fa-solid fa-minus" inert></i>
+					</button>
+				{{/if}}
+				<ol class="luck-points">
+					{{#each luckPoints}}
+						<li class="luck-point{{#if selected}} selected{{/if}}"></li>
+					{{/each}}
+				</ol>
+				{{#unless editable}}
+					<button type="button" class="link-button" data-action="addLuck"
+									data-tooltip aria-label="{{ localize 'BF.Luck.Action.Add' }}">
+						<i class="fa-solid fa-plus" inert></i>
+					</button>
+				{{/unless}}
+			</fieldset>
+
+			<fieldset class="hit-points">
+				<legend>
+					{{ localize "BF.HitPoint.Label[other]" }}
+					{{#if editable}}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="health" data-tooltip
+										aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Health.Label') }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/if}}
+				</legend>
+				<div class="main-hit-points stat-block">
+					<label class="current-hit-points">
+						<span class="light label">{{ localize "BF.HitPoint.Current.LabelShort" }}</span>
+						<input class="value" type="text" name="system.attributes.hp.value" value="{{ system.attributes.hp.value }}">
+					</label>
+					<div class="separator"></div>
+					<label class="max-hit-points">
+						<span class="light label">{{ localize "BF.HitPoint.Max.LabelShort" }}</span>
+						<span class="value">{{ ifThen editable system.attributes.hp.baseMax system.attributes.hp.max }}</span>
+					</label>
+				</div>
+				{{#unless (and (not system.attributes.hp.value) system.attributes.hp.max)}}
+					<div class="other-hit-points stat-block">
+						<label class="temp-hit-points">
+							<span class="light label">{{ localize "BF.HitPoint.Temp.LabelShort" }}</span>
+							<input class="value" type="text" name="system.attributes.hp.temp" value="{{ system.attributes.hp.temp }}">
+						</label>
+						{{#if editable}}
+							<div class="separator"></div>
+							<label class="temp-max-hit-points">
+								<span class="light label">{{ localize "BF.HitPoint.TempMax.LabelShort" }}</span>
+								<input class="value" type="text" name="system.attributes.hp.tempMax"
+											value="{{ source.attributes.hp.tempMax }}">
+							</label>
+						{{/if}}
+					</div>
+				{{else}}
+					<div class="death-saves stat-block simple">
+						<span>{{ localize "BF.Death.Label[other]" }}</span>
+						<blackflag-deathSaves>
+							<input type="number" name="system.attributes.death.success" value="{{ system.attributes.death.success }}"
+										min=0 step=1>
+							<input type="number" name="system.attributes.death.failure" value="{{ system.attributes.death.failure }}"
+										min=0 step=1>
+						</blackflag-deathSaves>
+					</div>
+				{{/unless}}
+				<div class="hit-dice">
+					{{#each system.attributes.hd.d as |data denomination|}}
+						<div class="denomination stat-block">
+							<label class="label">d{{ denomination }}</label>
+							{{#if @root.editable}}
+								<input class="value" type="number" name="system.attributes.hd.d.{{ denomination }}.available"
+											value="{{ data.available }}" step=1 min=0 max={{ data.max }}>
+							{{else}}
+								<span class="value">{{ blackFlag-number data.available }}</span>
+							{{/if}}
+							<div class="separator"></div>
+							<span class="max">{{ blackFlag-number data.max }}</span>
+							<button type="button" class="unbutton" data-action="roll" data-sub-action="hit-die"
+											data-denomination="{{ denomination }}" {{ disabled (eq data.available 0) }} aria-label="
+											{{~ localize 'BF.Roll.Action.RollSpecific' type=(
+											localize 'BF.HitDie.LabelSpecific' denom=denomination) }}">
+								<blackFlag-icon src="systems/black-flag/artwork/interface/dice/d{{ denomination }}.svg"
+																class="die-icon blue" aria-hidden="true"></blackFlag-icon>
+							</button>
+						</div>
+					{{/each}}
+				</div>
+			</fieldset>
+
+			<fieldset class="initiative">
+				<legend>
+					{{ localize "BF.Initiative.Label" }}
+					{{#if editable}}
+						<button type="button" class="link-button" data-action="showConfiguration" data-type="initiative"
+										data-tooltip aria-label="{{ localize 'BF.Action.Configure.Specific' type=(localize 'BF.Initiative.Label') }}">
+							<i class="fa-solid fa-cog" inert></i>
+						</button>
+					{{/if}}
+				</legend>
+				<div class="stat-block">
+					<span class="value">{{ blackFlag-number system.attributes.initiative.mod sign=true }}</span>
+					<button class="unbutton" type="button" data-action="roll" data-sub-action="initiative" aria-label="
+									{{~localize 'BF.Roll.Action.RollSpecific' type=(localize 'BF.Initiative.Label')}}">
+						<blackFlag-icon src="systems/black-flag/artwork/interface/dice/d20.svg"
+														class="die-icon blue" aria-hidden="true"></blackFlag-icon>
+					</button>
+				</div>
+			</fieldset>
+
+			<fieldset class="traits">
+				<legend>{{ localize "BF.Trait.Label[other]" }}</legend>
+				{{#each traits}}
+					<div class="trait stat-block {{ key }} {{ classes }}">
+						<label>
+							<span class="light label">{{ localize label }}</span>
+							{{#if (and @root.editable config)}}
+								<button type="button" class="link-button" data-action="showConfiguration" data-type="{{ config }}"
+												aria-label="{{ localize 'Configure' }}">
+									<i class="fa-solid fa-cog" inert></i>
+								</button>
+							{{/if}}
+						</label>
+						<span>{{ value }}</span>
+					</div>
+				{{/each}}
+			</fieldset>
+
+		</section>
+
+
+		{{!-- Right Column --}}
+		<section class="right">
+
+			<fieldset class="actions">
+				<legend>{{ localize "BF.ACTIVATION.Type.Action[other]" }}</legend>
+				<blackFlag-actions>
+					<table>
+						<thead>
+							<!-- Filters here -->
+						</thead>
+						{{#each actions}}
+							<tbody>
+								<tr>
+									<th colspan="5">
+										{{ label }}
+									</th>
+								</tr>
+								{{#each activities}}
+									<tr {{~#if activity}} data-activity="{{ activity.uuid }}" data-activity-id="{{ activity.id }}"{{/if}}
+											{{~#if item }} data-item-id="{{ item.id }}"{{/if}}>
+										<td class="control">
+											<button type="button" class="heavy-button"
+															{{~#if dataset}} {{ blackFlag-dataset dataset }}{{/if}}
+															{{~#unless dataset.action}} data-action="activate"{{/unless}}
+															{{~#if activationTooltip}} data-tooltip="{{ activationTooltip }}"{{/if}}>
+												{{ localize label }}
+											</button>
+										</td>
+										<td class="name">
+											{{#if name}}<h5>{{ localize name }}</h5>{{else}}
+												{{#if item}}<h5>{{ item.name }}</h5>{{/if}}
+												{{#if activity}}<h6>{{ activity.name }}</h6>{{/if}}
+											{{/if}}
+										</td>
+										<td class="uses">
+											{{{ usesColumn }}}
+										</td>
+										<td class="challenge">
+											{{{ challengeColumn }}}
+										</td>
+										<td class="effect">
+											{{{ effectColumn }}}
+										</td>
+									</tr>
+								{{/each}}
+							</tbody>
+						{{/each}}
+					</table>
+				</blackFlag-actions>
+			</fieldset>
+
+		</section>
 </section>

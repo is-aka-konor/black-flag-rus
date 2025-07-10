@@ -21,6 +21,8 @@
 		> :last-child { flex-grow: 1; }
 	}
 
+	input { line-height: unset; }
+
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Abilities              */
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -105,8 +107,9 @@
 				background-color: var(--bf-color-border-blue);
 				border-radius: 100%;
 				z-index: 3;
-	
+
 				.value {
+					height: unset;
 					font-size: var(--font-size-16);
 				}
 			}
@@ -117,7 +120,7 @@
 				width: 4rem;
 				height: 4rem;
 				z-index: 1;
-	
+
 				.proficiency-selector {
 					position: absolute;
 					left: -0.7rem;
@@ -130,7 +133,7 @@
 					display: flex;
 					flex-direction: column;
 					contain: layout;
-	
+
 					.label {
 						position: absolute;
 						top: 0px;
@@ -183,7 +186,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	
+
 		.ac-shield {
 			width: 4.5rem;
 			height: 4.5rem;
@@ -191,7 +194,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-	
+
 			.value {
 				z-index: 1;
 				font-size: var(--font-size-24);
@@ -373,23 +376,6 @@
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-	/*               Resting               */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	.resting {
-		flex-direction: row;
-		flex-grow: 0 !important;
-		gap: 0.25rem;
-	
-		button {
-			flex: 50% 1 1;
-			width: unset;
-			font-size: var(--font-size-11);
-			line-height: 1.25em;
-		}
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Skills & Tools           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -402,7 +388,7 @@
 			justify-content: space-between;
 			gap: 4px;
 			padding-inline-start: 4px;
-	
+
 			.proficiency-selector {
 				display: block;
 				padding: 0;
@@ -412,6 +398,7 @@
 			button {
 				flex-grow: 1;
 				min-height: unset;
+				height: unset;
 				display: flex;
 				align-items: first baseline;
 				gap: 0.25rem;

@@ -1,13 +1,14 @@
 .black-flag.pc.sheet {
-	min-block-size: 500px;
-	min-inline-size: 700px;
+	&:not(.minimized, .minimizing, .maximizing) {
+		min-block-size: 500px;
+		min-inline-size: 700px;
+	}
 
-	.sheet-container {
+	.window-content {
 		container: sheet / inline-size;
-
-		display: flex;
-		flex-direction: column;
 		gap: 0.5rem;
+		padding-inline-end: 8px;
+		scrollbar-gutter: stable;
 	}
 
 	.profile {
@@ -15,19 +16,8 @@
 		border-radius: 0;
 		cursor: pointer;
 
-		&[data-edit] {
+		&[data-action="editImage"] {
 			border-color: var(--bf-color-border-blue);
-		}
-	}
-
-	input[name="name"] {
-		border: 1px solid var(--bf-color-border-blue);
-		border-radius: 0;
-
-		&:disabled {
-			border-width: 2px;
-			background: none;
-			color: black;
 		}
 	}
 
@@ -53,12 +43,12 @@
 				padding-block: 0.15rem;
 				padding-inline: 0.5rem;
 			}
-	
+
 			button {
 				background: none;
 				border: none;
 				line-height: unset;
-	
+
 				&:disabled {
 					opacity: 0.25;
 				}
@@ -66,7 +56,7 @@
 		}
 	}
 
-	.sheet-head {
+	.sheet-header {
 		display: flex;
 		gap: 0.5rem;
 
@@ -75,21 +65,26 @@
 			inline-size: 60px;
 		}
 
-		h1 {
+		.document-name {
 			flex: 1 0 50%;
 			margin: 0;
-			border: none;
-	
-			[name="name"] {
+			border: 2px solid var(--bf-color-border-blue);
+			border-radius: 0;
+			align-content: center;
+			font-size: var(--font-size-24);
+			text-align: center;
+
+			&input {
 				height: 100%;
-				text-align: center;
+				background: none;
+				border-width: 1px;
 			}
 		}
 
 		.proficiency-bonus {
 			flex: 0 0 10%;
 			position: relative;
-	
+
 			> span {
 				position: absolute;
 				inset: 0;
@@ -139,17 +134,8 @@
 		}
 	}
 
-	nav.tabs {
-		margin-block-start: 0;
-	}
+	&[data-progression] :is(.sheet-navigation, .sheet-body) { display: none; }
+	&:not([data-progression]) [data-application-part="progression"] { display: none; }
 
-	form.front {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-	}
-
-	.sheet-body {
-		flex-grow: 1;
-	}
+	.sheet-body { flex-grow: 1; }
 }

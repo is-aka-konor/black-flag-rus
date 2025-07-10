@@ -1,4 +1,3 @@
-import BlackFlagActiveEffect from "../../../documents/active-effect.mjs";
 import { formatWeight } from "../../../utils/_module.mjs";
 import ApplicationV2Mixin from "../../api/mixin.mjs";
 import PrimarySheetMixin from "../../api/primary-sheet-mixin.mjs";
@@ -34,6 +33,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 			showConfiguration: BaseActorSheet.#showConfiguration
 		},
 		classes: ["actor", "standard-form"],
+		dragDrop: false,
 		form: {
 			submitOnChange: true
 		},
@@ -86,8 +86,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		await this._prepareActions(context);
 		await this._prepareItems(context);
 		await this._prepareTraits(context);
-
-		// 		context.appID = this.id;
 
 		return context;
 	}
@@ -342,13 +340,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	_onFirstRender(context, options) {
-		super._onFirstRender(context, options);
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 
@@ -359,12 +350,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		// Hit Points
 		for (const element of this.element.querySelectorAll('[name$=".hp.value"]')) {
 			element.addEventListener("change", this._onChangeHP.bind(this));
-		}
-
-		if (this._mode !== BaseActorSheet.MODES.EDIT) {
-			// TODO: See if this is needed
-			// this.element.querySelectorAll('input[type="text"][data-dtype="Number"]')
-			// 	.forEach(i => i.addEventListener("change", this._onChangeInputDelta.bind(this)));
 		}
 
 		// Prevent default middle-click scrolling when locking a tooltip
@@ -379,16 +364,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	// _disableFields(form) {
-	// 	super._disableFields(form);
-	// 	for (const button of form.querySelectorAll('[data-action="expand"], [data-action="view"]')) {
-	// 		button.disabled = false;
-	// 	}
-	// }
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
 	/**
 	 * Handle a click on an action link.
 	 * @param {ClickEvent} event - Triggering click event.
@@ -396,22 +371,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	 * @returns {Promise}
 	 */
 	async _onAction(event, dataset) {
-		// 	const { action, subAction, ...properties } = dataset ?? event.currentTarget.dataset;
-		// 	switch (action) {
-		// 		case "effect":
-		// 			return BlackFlagActiveEffect.onEffectAction.bind(this)(event);
-		// 		case "item":
-		// 			const itemId = properties.itemId ?? event.target.closest("[data-item-id]")?.dataset.itemId;
-		// 			const item = this.actor.items.get(itemId);
-		// 			switch (subAction) {
-		// 				case "delete":
-		// 					return item?.deleteDialog();
-		// 				case "edit":
-		// 				case "view":
-		// 					return item?.sheet.render(true);
-		// 			}
-		// 			break;
-		// 	}
+		if (dataset.action === "rest") this.actor.rest({ type: dataset.type });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -448,41 +408,18 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @override */
-	// _onEditImage(event) {
-	// 	const attr = event.currentTarget.dataset.edit;
-	// 	const current = foundry.utils.getProperty(this.object, attr);
-	// 	const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {};
-	// 	const fp = new foundry.applications.apps.FilePicker({
-	// 		current,
-	// 		type: "image",
-	// 		redirectToRoot: img ? [img] : [],
-	// 		callback: path => {
-	// 			event.currentTarget.src = path;
-	// 			if (this.options.submitOnChange) return this._onSubmit(event, { updateData: { [attr]: path } });
-	// 		},
-	// 		top: this.position.top + 40,
-	// 		left: this.position.left + 10,
-	// 		document: this.document
-	// 	});
-	// 	return fp.browse();
-	// }
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
 	/**
 	 * Handle rolling from the sheet.
 	 * @this {BaseActorSheet}
 	 * @param {Event} event - Triggering click event.
 	 * @param {HTMLElement} target - Button that was clicked.
-	 * @returns {any}
 	 */
 	static #roll(event, target) {
 		// if ( !target.classList.contains("rollable") ) return;
 		if (this._roll(event, target) === false) return;
 		const { action: _, subAction, ...properties } = target.dataset;
 		properties.event = event;
-		return this.actor.roll(subAction, properties);
+		this.actor.roll(subAction, properties);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -576,11 +513,11 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		const submitData = super._processFormData(event, form, formData);
 
 		// Preserve item updates to send to items
-		// const itemUpdates = Object.entries(updates.item ?? {}).map(([_id, data]) => {
-		// 	return { _id, ...data };
-		// });
-		// delete updates.item;
-		// await this.actor.updateEmbeddedDocuments("Item", itemUpdates);
+		const itemUpdates = Object.entries(submitData.item ?? {}).map(([_id, data]) => {
+			return { _id, ...data };
+		});
+		delete submitData.item;
+		this.actor.updateEmbeddedDocuments("Item", itemUpdates);
 
 		return submitData;
 	}
@@ -590,24 +527,24 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	// 	async _onDrop(event) {
-	// 		const { data } = CONFIG.ux.DragDrop.getDragData(event);
-	//
-	// 		// TODO: Handle folders
-	// 		// Forward dropped effects to the effects element
-	// 		if (data.type === "ActiveEffect") {
-	// 			if (Hooks.call("dropActorSheetData", this.actor, this, data) === false) return;
-	// 			EffectsElement.dropEffects(event, this.actor, [await ActiveEffect.implementation.fromDropData(data)]);
-	// 			return;
-	// 		}
-	//
-	// 		// Forward dropped items to the inventory element
-	// 		else if (data.type === "Item") {
-	// 			if (Hooks.call("dropActorSheetData", this.actor, this, data) === false) return;
-	// 			InventoryElement.dropItems(event, this.actor, [await Item.implementation.fromDropData(data)]);
-	// 			return;
-	// 		}
-	//
-	// 		super._onDrop(event);
-	// 	}
+	async _onDrop(event) {
+		const { data } = CONFIG.ux.DragDrop.getDragData(event);
+
+		// TODO: Handle folders
+		// Forward dropped effects to the effects element
+		if (data.type === "ActiveEffect") {
+			if (Hooks.call("dropActorSheetData", this.actor, this, data) === false) return;
+			EffectsElement.dropEffects(event, this.actor, [await ActiveEffect.implementation.fromDropData(data)]);
+			return;
+		}
+
+		// Forward dropped items to the inventory element
+		else if (data.type === "Item") {
+			if (Hooks.call("dropActorSheetData", this.actor, this, data) === false) return;
+			InventoryElement.dropItems(event, this.actor, [await Item.implementation.fromDropData(data)]);
+			return;
+		}
+
+		super._onDrop(event);
+	}
 }

@@ -37,6 +37,8 @@
 
 	> h4 {
 		margin: 0;
+		font-family: var(--font-body);
 		font-size: var(--font-size-14);
+		font-weight: normal;
 	}
 }

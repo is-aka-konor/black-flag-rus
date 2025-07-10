@@ -5,6 +5,7 @@ blackFlag-xpBar {
 	flex: 1 1 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
 	gap: 0.5rem;
 	font-family: var(--bf-font-primary);
 	font-weight: 100;
@@ -30,6 +31,7 @@ blackFlag-xpBar {
 		border-radius: calc(var(--bar-height) - var(--bar-inset) * 2);
 		transition: inset-inline-end 300ms ease-in-out;
 	}
+	/* label, .values { align-content: center; } */
 	label {
 		margin-inline-start: var(--bar-height);
 	}
