@@ -335,7 +335,7 @@
 			"Type": "Only {type} can be selected for this choice."
 		}
 	},
-	
+
 	"ChooseSpells": {
 		"FIELDS": {
 			"allowDrops": {
@@ -1211,7 +1211,7 @@
 
 "BF.CONSUMPTION": {
 	"FIELDS": {
-		
+
 	},
 	"Type": {
 		"Label": "Type",
@@ -3139,6 +3139,7 @@
 		"Equipment": "Black Flag Equipment Sheet",
 		"Feature": "Black Flag Feature Sheet",
 		"Journal": "Black Flag Journal Sheet",
+		"JournalLegacy": "Black Flag Legacy Journal Sheet",
 		"Map": "Black Flag Map Location Journal Page Sheet",
 		"NPC": "Black Flag NPC Sheet",
 		"PC": "Black Flag PC Sheet",
@@ -3260,7 +3261,7 @@
 	"Action": {
 		"Configure": "Configure Speed"
 	}
-},	
+},
 
 "BF.Spell": {
 	"Action": {

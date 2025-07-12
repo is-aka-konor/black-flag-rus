@@ -79,13 +79,24 @@ Hooks.once("setup", function () {
 	applications.registerSheets(Actor);
 	applications.registerSheets(Item);
 	applications.registerSheets(JournalEntryPage);
-	(foundry.applications?.apps?.DocumentSheetConfig ?? DocumentSheetConfig).registerSheet(
+	foundry.applications.apps.DocumentSheetConfig.registerSheet(
+		JournalEntry,
+		"black-flag",
+		applications.journal.BlackFlagJournalEntrySheet,
+		{
+			makeDefault: true,
+			label: "BF.Sheet.Default.Journal"
+		}
+	);
+	foundry.applications.apps.DocumentSheetConfig.registerSheet(
 		JournalEntry,
 		"black-flag",
 		applications.journal.BlackFlagJournalSheet,
 		{
-			makeDefault: true,
-			label: "BF.Sheet.Default.Journal"
+			makeDefault: false,
+			canConfigure: false,
+			canBeDefault: false,
+			label: "BF.Sheet.Default.JournalLegacy"
 		}
 	);
 
@@ -125,6 +136,6 @@ Hooks.on("hotReload", file => {
 });
 
 Hooks.on("renderSettings", (app, jQuery, options) => settings.renderSettingsSidebar(jQuery));
-Hooks.on("renderJournalPageSheet", applications.journal.BlackFlagJournalSheet.onRenderJournalPageSheet);
+Hooks.on("renderJournalEntryPageSheet", applications.journal.BlackFlagJournalEntrySheet.onRenderJournalPageSheet);
 
 export { applications, config, data, dice, documents, enrichers, registry, settings, utils };

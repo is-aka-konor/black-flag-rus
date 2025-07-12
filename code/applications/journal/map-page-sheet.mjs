@@ -1,41 +1,33 @@
+const { JournalEntryPageProseMirrorSheet } = foundry.applications.sheets.journal;
+
 /**
  * Journal entry page to display a special map marker.
  */
-export default class MapLocationPageSheet extends foundry.appv1.sheets.JournalTextPageSheet {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		const options = super.defaultOptions;
-		options.classes.push("black-flag", "map");
-		return options;
-	}
+export default class MapLocationPageSheet extends JournalEntryPageProseMirrorSheet {
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		classes: ["text", "map"]
+	};
 
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	get template() {
-		return `templates/journal/page-text-${this.isEditable ? "edit" : "view"}.html`;
-	}
+	async _onRender(context, options) {
+		await super._onRender(context, options);
+		const code = this.document.system.code ?? "";
 
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	async _renderInner(...args) {
-		const jQuery = await super._renderInner(...args);
-		const editingHeader = jQuery[0].querySelector(".journal-header");
-		const viewingHeader = jQuery[0].querySelector(":is(h1, h2, h3)");
-
-		if (editingHeader) {
-			const input = document.createElement("input");
-			input.name = "system.code";
-			input.type = "text";
-			input.value = this.document.system.code ?? "";
+		if (this.isView) {
+			this.element.querySelector(".journal-page-header :first-child").dataset.mapLocationCode = code;
+		} else {
+			const header = this.element.querySelector(".journal-header");
+			const name = header.querySelector("input");
 			const div = document.createElement("div");
-			div.append(input, editingHeader.querySelector('[name="name"]'));
-			editingHeader.insertAdjacentElement("afterbegin", div);
-		} else if (viewingHeader && this.document.system.code) {
-			viewingHeader.dataset.mapLocationCode = this.document.system.code;
+			const input = document.createElement("input");
+			Object.assign(input, { name: "system.code", type: "text", value: code });
+			div.append(input, name);
+			header.insertAdjacentElement("afterbegin", div);
 		}
-
-		return jQuery;
 	}
 }

@@ -1,7 +1,4 @@
-<form class="flexcol" autocomplete="off">
-	{{> journalEntryPageHeader }}
-	{{ editor editor.content target="text.content" class="journal-page-content" button=false editable=true
-						engine=editor.engine collaborate=editor.collaborate }}
+<section>
 	<div class="separator">
 		<h3>{{ localize "BF.Rule.Tooltip" }}</h3>
 		<label>
@@ -11,6 +8,5 @@
 			</select>
 		</label>
 	</div>
-	{{ editor enrichedTooltip target="system.tooltip" class="journal-page-content" button=false editable=true
-						engine=editor.engine collaborate=editor.collaborate }}
-</form>
+	<prose-mirror name="system.tooltip" value="{{ source.system.tooltip }}" class="journal-page-content"></prose-mirror>
+</section>

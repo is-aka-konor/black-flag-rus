@@ -1,7 +1,18 @@
+import BlackFlagJournalEntrySheet from "./journal-entry-sheet.mjs";
+
 /**
  * Variant of the standard journal sheet to handle custom TOC numbering.
  */
 export default class BlackFlagJournalSheet extends foundry.appv1.sheets.JournalSheet {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The BlackFlagJournalSheet application has been deprecated and replaced with BlackFlagJournalEntrySheet."
+		);
+		super(...args);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	static get defaultOptions() {
 		const options = super.defaultOptions;
@@ -14,37 +25,15 @@ export default class BlackFlagJournalSheet extends foundry.appv1.sheets.JournalS
 	/** @inheritDoc */
 	_getPageData() {
 		const pageData = super._getPageData();
-
-		let adjustment = 0;
-		for (const page of pageData) {
-			const pageDocument = this.document.pages.get(page._id);
-			let needsAdjustment = true;
-			const numbering = pageDocument.system.adjustTOCNumbering?.(page.number);
-			if (numbering) {
-				page.number = numbering.number;
-				adjustment += numbering.adjustment ?? 0;
-				needsAdjustment = false;
-			}
-			if (needsAdjustment) page.number += adjustment;
-		}
-
+		BlackFlagJournalEntrySheet._adjustTOCNumbering(
+			this.document,
+			Object.fromEntries(
+				pageData.map(p => {
+					p.id = p._id;
+					return [p.id, p];
+				})
+			)
+		);
 		return pageData;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Add Black Flag class to individual journal pages.
-	 * @param {JournalPageSheet} page - The journal page application.
-	 * @param {jQuery} jQuery - The rendered Application HTML.
-	 * @param {object} context - Rendering context provided.
-	 */
-	static onRenderJournalPageSheet(page, jQuery, context) {
-		if (page.object.parent.sheet instanceof BlackFlagJournalSheet) {
-			let element;
-			if (context.editable) element = jQuery[0];
-			else element = jQuery[0].parentElement;
-			element?.classList.add("black-flag-journal");
-		}
 	}
 }

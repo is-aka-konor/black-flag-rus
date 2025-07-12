@@ -6,7 +6,7 @@
 export default Base => {
 	let created = class extends Base {};
 
-	for (const method of ["toEmbed", "_buildEmbedHTML", "_createFigureEmbed", "_createInlineEmbed"]) {
+	for (const method of ["toEmbed", "onEmbed", "_buildEmbedHTML", "_createFigureEmbed", "_createInlineEmbed"]) {
 		created.prototype[method] ??= Actor.prototype[method];
 	}
 

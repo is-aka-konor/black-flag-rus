@@ -1,38 +1,35 @@
+const { JournalEntryPageProseMirrorSheet } = foundry.applications.sheets.journal;
+
 /**
  * Journal entry page that displays a controls for editing rule page tooltip & type.
  */
-export default class JournalRulePageSheet extends foundry.appv1.sheets.JournalTextPageSheet {
-	/** @inheritdoc */
-	static get defaultOptions() {
-		const options = super.defaultOptions;
-		options.classes.push("rule");
-		options.includeTOC = false;
-		return options;
-	}
+export default class JournalRulePageSheet extends JournalEntryPageProseMirrorSheet {
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		classes: ["text", "rule"],
+		includeTOC: false
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritdoc */
-	get template() {
-		return this.isEditable
-			? "systems/black-flag/templates/journal/rule-page-edit.hbs"
-			: "templates/journal/page-text-view.html";
-	}
+	/** @override */
+	static EDIT_PARTS = {
+		header: super.EDIT_PARTS.header,
+		content: super.EDIT_PARTS.content,
+		tooltip: {
+			template: "systems/black-flag/templates/journal/rule-page-edit.hbs"
+		},
+		footer: super.EDIT_PARTS.footer
+	};
 
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritdoc */
-	async getData(options) {
-		const context = await super.getData(options);
+	async _prepareContext(options) {
+		const context = await super._prepareContext(options);
 		context.CONFIG = CONFIG.BlackFlag;
-		context.enrichedTooltip = await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-			this.object.system.tooltip,
-			{
-				relativeTo: this.object,
-				secrets: this.object.isOwner,
-				async: true
-			}
-		);
 		return context;
 	}
 }
