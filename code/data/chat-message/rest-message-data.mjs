@@ -63,10 +63,9 @@ export default class RestMessageData extends ChatMessageDataModel {
 	async _prepareContext() {
 		const context = {
 			actor: this.actor,
-			content: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-				this.parent.content,
-				{ rollData: this.parent.getRollData() }
-			)
+			content: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.parent.content, {
+				rollData: this.parent.getRollData()
+			})
 		};
 
 		if (context.actor?.isOwner) {

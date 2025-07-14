@@ -16,7 +16,7 @@ export function registerSheets(documentType, categories) {
 		if (!category.sheet) continue;
 		const filtered = category.types.filter(t => !t.metadata?.sheet).map(f => f.fullType);
 		filtered.forEach(f => registered.add(f));
-		(foundry.applications?.apps?.DocumentSheetConfig ?? DocumentSheetConfig).registerSheet(
+		foundry.applications.apps.DocumentSheetConfig.registerSheet(
 			documentType,
 			game.system.id,
 			category.sheet.application,
@@ -32,19 +32,14 @@ export function registerSheets(documentType, categories) {
 		const metadata = models[type]?.metadata?.sheet;
 		if (!metadata) continue;
 		registered.add(type);
-		(foundry.applications?.apps?.DocumentSheetConfig ?? DocumentSheetConfig).registerSheet(
-			documentType,
-			game.system.id,
-			metadata.application,
-			{
-				types: [type],
-				makeDefault: true,
-				label: metadata.label
-			}
-		);
+		foundry.applications.apps.DocumentSheetConfig.registerSheet(documentType, game.system.id, metadata.application, {
+			types: [type],
+			makeDefault: true,
+			label: metadata.label
+		});
 		log(`Registered ${type} sheet`);
 	}
-	(foundry.applications?.apps?.DocumentSheetConfig ?? DocumentSheetConfig).unregisterSheet(
+	foundry.applications.apps.DocumentSheetConfig.unregisterSheet(
 		documentType,
 		"core",
 		{ name: `${documentType.name}Sheet` },

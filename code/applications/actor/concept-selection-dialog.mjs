@@ -119,10 +119,10 @@ export default class ConceptSelectionDialog extends BFApplication {
 		const optionContext = {
 			document: doc,
 			enriched: {
-				description: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-					doc.system.description.short,
-					{ secrets: false, async: true }
-				)
+				description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.description.short, {
+					secrets: false,
+					async: true
+				})
 			},
 			system: doc.system
 		};

@@ -355,7 +355,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 						level,
 						document,
 						name: doc.name,
-						description: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+						description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 							doc.system.description.value,
 							{
 								relativeTo: doc,
@@ -386,7 +386,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 				level: CONFIG.BlackFlag.subclassLevel,
 				name: game.i18n.format("BF.Subclass.LabelSpecific", { class: item.name }),
 				description: this.document.system.description.subclassAdvancement
-					? await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+					? await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 							this.document.system.description.subclassAdvancement,
 							{
 								relativeTo: item,
@@ -430,7 +430,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 					return {
 						document,
 						name: document.name,
-						description: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+						description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 							document.system.description.value,
 							{
 								relativeTo: document,

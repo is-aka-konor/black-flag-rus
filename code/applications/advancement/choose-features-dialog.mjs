@@ -120,10 +120,10 @@ export default class ChooseFeaturesDialog extends BFApplication {
 	async getChoiceData(doc) {
 		const optionContext = { document: doc, system: doc.system };
 		optionContext.enriched = {
-			description: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-				doc.system.description.value,
-				{ secrets: false, async: true }
-			)
+			description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.description.value, {
+				secrets: false,
+				async: true
+			})
 		};
 		if (doc.system.restriction) {
 			optionContext.prerequisite = doc.system.createPrerequisiteLabel(this.advancement.actor);
@@ -180,7 +180,7 @@ export default class ChooseFeaturesDialog extends BFApplication {
 	 * @returns {Promise}
 	 */
 	static async #onDrop(event, dragDrop) {
-		const data = (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).getDragEventData(event);
+		const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
 		if (data?.type !== "Item") return false;
 		const item = await Item.implementation.fromDropData(data);
 

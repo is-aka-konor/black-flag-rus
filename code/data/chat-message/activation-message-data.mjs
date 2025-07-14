@@ -86,10 +86,9 @@ export default class ActivationMessageData extends ChatMessageDataModel {
 	/** @override */
 	async _prepareContext(options) {
 		return {
-			content: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-				this.parent.content,
-				{ rollData: this.parent.getRollData() }
-			),
+			content: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.parent.content, {
+				rollData: this.parent.getRollData()
+			}),
 			effects: this.effects
 				.map(id => this.item?.effects.get(id))
 				.filter(e => e && (game.user.isGM || e.transfer & (this.author.id === game.user.id)))

@@ -295,7 +295,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 	 */
 	async _prepareIdentityContext(context, options) {
 		context.tab = context.tabs.identity;
-		context.description = await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+		context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 			context.source.description ?? "",
 			{
 				relativeTo: this.activity,

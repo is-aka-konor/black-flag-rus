@@ -159,7 +159,7 @@ export default class ItemDataModel extends BaseDataModel {
 		const rollData = this.parent.getRollData();
 		const context = {
 			item: this.parent,
-			description: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(description, {
+			description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(description, {
 				rollData,
 				relativeTo: this.parent,
 				...enrichmentOptions

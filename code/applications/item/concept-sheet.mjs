@@ -96,7 +96,7 @@ export default class ConceptSheet extends BaseItemSheet {
 	/** @inheritDoc */
 	async _onDrop(event) {
 		event.preventDefault();
-		const data = (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).getDragEventData(event);
+		const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
 
 		switch (data.type) {
 			case "Advancement":

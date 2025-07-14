@@ -57,15 +57,12 @@ export default class GrantFeaturesAdvancement extends Advancement {
 				const item = await fromUuid(f.uuid);
 				return [
 					item,
-					await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
-						item.system.description.value,
-						{
-							...options,
-							relativeTo: this,
-							_embedDepth: (options._embedDepth ?? 0) + 1,
-							async: true
-						}
-					)
+					await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description.value, {
+						...options,
+						relativeTo: this,
+						_embedDepth: (options._embedDepth ?? 0) + 1,
+						async: true
+					})
 				];
 			})
 		);

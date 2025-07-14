@@ -39,7 +39,7 @@ export default class RuleJournalPageData extends BaseDataModel {
 		const context = {
 			page: this.parent,
 			type: CONFIG.BlackFlag.ruleTypes.localized[this.type],
-			content: await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+			content: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 				this.tooltip || this.parent.text.content,
 				{
 					relativeTo: this.parent,
