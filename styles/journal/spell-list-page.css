@@ -2,6 +2,7 @@
 	.grouping {
 		font-size: var(--font-size-12);
 		select {
+			width: unset;
 			block-size: 1.75em;
 			margin-inline-start: 4px;
 		}
@@ -17,24 +18,27 @@
 	}
 }
 
-.journal-entry-page.sheet.spell-list {
-	min-block-size: 450px;
-	min-inline-size: 550px;
+.journal-entry-page.sheet.spells {
+	&:not(.minimized, .minimizing, .maximizing) {
+		min-block-size: 450px;
+		min-inline-size: 550px;
+	}
 
-	form {
+	.journal-header { margin: 0; }
+
+	.window-content {
 		display: grid;
 		grid-template-columns: auto 250px;
 		overflow: hidden;
+		padding-inline: 0;
 
+		> .left { margin: 1rem; }
 		> .right { overflow-y: auto; }
 		h3 { margin-block-start: 1rem; }
-		.editor { margin-inline-end: .5rem; }
 
 		.items-list {
-			margin-block-end: 1em;
-			margin-inline-end: 10px;
-			padding-inline-start: 0;
-			list-style: none;
+			margin-inline: 8px;
+			.item:not(:last-of-type) { border: none; }
 			.item-controls { flex: 0; }
 		}
 	}

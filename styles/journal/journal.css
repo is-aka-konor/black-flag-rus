@@ -2,7 +2,7 @@
 	&.journal-entry .journal-entry-content, &.journal-entry-page .window-content {
 		background: var(--bf-journal-background);
 	}
-	&.journal-entry .scrollable, &.journal-entry-page.editor-content {
+	&.journal-entry .scrollable, &.journal-entry-page {
 		scrollbar-width: thin;
 		scrollbar-color: var(--bf-blue) transparent;
 
