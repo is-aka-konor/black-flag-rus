@@ -1,0 +1,9 @@
+<div class="form-group">
+	<label {{~#if hint}} class="hinted-label" data-tooltip="{{ hint }}"{{/if}}>
+		{{ localize label }}
+	</label>
+	<button type="button" class="heavy-button" data-action="launchTextEditor"
+					data-target="{{ keyPath }}">
+		<i class="fa-solid fa-edit" inert></i> {{ localize "BF.JournalPage.Edit" }}
+	</button>
+</div>

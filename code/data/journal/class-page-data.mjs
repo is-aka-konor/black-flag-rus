@@ -1,4 +1,4 @@
-import ClassPageSheet from "../../applications/journal/class-page-sheet.mjs";
+import JournalClassPageSheet from "../../applications/journal/class-page-sheet.mjs";
 import BaseDataModel from "../abstract/base-data-model.mjs";
 
 const { DocumentUUIDField, HTMLField, NumberField, SchemaField, SetField } = foundry.data.fields;
@@ -25,7 +25,7 @@ export default class ClassJournalPageData extends BaseDataModel {
 			type: "class",
 			localization: "BF.JournalPage.Type.Class",
 			sheet: {
-				application: ClassPageSheet,
+				application: JournalClassPageSheet,
 				label: "BF.Sheet.Default.ClassPage"
 			}
 		};

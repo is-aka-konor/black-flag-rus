@@ -2,31 +2,49 @@ import Proficiency from "../../documents/proficiency.mjs";
 import { linkForUUID, log, numberFormat, Trait } from "../../utils/_module.mjs";
 import JournalEditor from "./journal-editor.mjs";
 
+const { JournalEntryPageHandlebarsSheet } = foundry.applications.sheets.journal;
+
 /**
  * Journal entry page that displays an automatically generated summary of a class along with additional description.
  */
-export default class ClassPageSheet extends foundry.appv1.sheets.JournalPageSheet {
+export default class JournalClassPageSheet extends JournalEntryPageHandlebarsSheet {
 	/** @inheritDoc */
-	static get defaultOptions() {
-		const options = foundry.utils.mergeObject(super.defaultOptions, {
-			dragDrop: [{ dropSelector: ".drop-target" }],
-			height: "auto",
-			width: 500,
-			submitOnChange: true
-		});
-		options.classes.push("class-editor");
-		return options;
-	}
+	static DEFAULT_OPTIONS = {
+		actions: {
+			deleteItem: JournalClassPageSheet.#deleteItem,
+			launchTextEditor: JournalClassPageSheet.#launchTextEditor
+		},
+		classes: ["black-flag", "class"],
+		includeTOC: true,
+		position: {
+			width: 600
+		}
+	};
+
+	/* -------------------------------------------- */
+
+	/** @override */
+	static EDIT_PARTS = {
+		header: super.EDIT_PARTS.header,
+		config: {
+			classes: ["standard-form"],
+			template: "systems/black-flag/templates/journal/{type}-page-edit.hbs",
+			templates: ["systems/black-flag/templates/journal/parts/launch-text-editor-field.hbs"]
+		}
+	};
+
+	/* -------------------------------------------- */
+
+	/** @override */
+	static VIEW_PARTS = {
+		content: {
+			root: true,
+			template: "systems/black-flag/templates/journal/{type}-page-view.hbs"
+		}
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Properties             */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @override */
-	get template() {
-		return `systems/black-flag/templates/journal/${this.type}-page-${this.isEditable ? "edit" : "view"}.hbs`;
-	}
-
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
@@ -38,30 +56,37 @@ export default class ClassPageSheet extends foundry.appv1.sheets.JournalPageShee
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	toc = {};
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData(options = {}) {
-		const context = await super.getData(options);
+	_configureRenderParts(options) {
+		const parts = super._configureRenderParts(options);
+		Object.values(parts).forEach(p => (p.template = p.template.replace("{type}", this.type)));
+		return parts;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareContext(options = {}) {
+		const context = await super._prepareContext(options);
 		context.system = context.document.system;
 
-		context.title = Object.fromEntries(
-			Array.fromRange(4, 1).map(n => [
-				`level${n}`,
-				(context.data.system.headingLevel || context.data.title.level) + n - 1
-			])
-		);
-
-		context.internalHeadingLevels = {
-			...context.headingLevels,
-			4: game.i18n.format("JOURNALENTRYPAGE.Level", { level: 4 })
+		context.title = {
+			...context.title,
+			...Object.fromEntries(
+				Array.fromRange(4, 1).map(n => [`level${n}`, (context.system.headingLevel || context.title.level) + n - 1])
+			)
 		};
+
+		context.headingLevelOptions = [
+			{ value: "", label: game.i18n.localize("BF.JournalPage.Class.HeadingLevel.Inherit"), rule: true },
+			...Array.fromRange(4, 1).map(level => ({
+				value: level,
+				label: game.i18n.format("JOURNALENTRYPAGE.Level", { level })
+			}))
+		];
 
 		const linked = await fromUuid(this.document.system.item);
 		const subclasses =
@@ -171,9 +196,9 @@ export default class ClassPageSheet extends foundry.appv1.sheets.JournalPageShee
 		return Object.fromEntries(
 			await Promise.all(
 				Object.entries(page.system.description ?? {}).map(async ([id, text]) => {
-					const enriched = await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(text, {
-						relativeTo: this.object,
-						secrets: this.object.isOwner,
+					const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(text, {
+						relativeTo: this.document,
+						secrets: this.document.isOwner,
 						async: true
 					});
 					return [id, enriched];
@@ -421,65 +446,57 @@ export default class ClassPageSheet extends foundry.appv1.sheets.JournalPageShee
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Life-Cycle Handlers         */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _renderInner(...args) {
-		const html = await super._renderInner(...args);
-		this.toc = JournalEntryPage.buildTOC(html.get());
-		return html;
+	async _onRender(context, options) {
+		await super._onRender(context, options);
+		new CONFIG.ux.DragDrop({
+			permissions: { drop: this._canDragDrop.bind(this) },
+			callbacks: { drop: this._onDrop.bind(this) }
+		}).bind(this.element);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	activateListeners(jQuery) {
-		super.activateListeners(jQuery);
-		const html = jQuery[0];
-
-		for (const element of html.querySelectorAll("[data-action]")) {
-			element.addEventListener("click", this._onAction.bind(this));
+	/**
+	 * Handle deleting a dropped item.
+	 * @this {JournalClassPageSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static async #deleteItem(event, target) {
+		const container = target.closest("[data-item-uuid]");
+		const uuidToDelete = container?.dataset.itemUuid;
+		if (!uuidToDelete) return;
+		switch (container.dataset.itemType) {
+			case "linked":
+				await this.document.update({ "system.item": "" });
+				break;
+			case "subclass":
+				const subclassCollection = this.document.system.subclasses;
+				subclassCollection.delete(uuidToDelete);
+				await this.document.update({ "system.subclasses": Array.from(subclassCollection) });
+				break;
 		}
 	}
 
-	/* <><><><> <><><><> <><><><> <><><><> */
+	/* -------------------------------------------- */
 
 	/**
-	 * Handle an action.
+	 * Handle launching the individual text editing window.
+	 * @this {JournalClassPageSheet}
 	 * @param {Event} event - Triggering click event.
-	 * @returns {Promise}
+	 * @param {HTMLElement} target - Button that was clicked.
 	 */
-	async _onAction(event) {
-		const { action, ...properties } = event.currentTarget.dataset;
-		switch (action) {
-			case "delete":
-				const container = event.currentTarget.closest("[data-item-uuid]");
-				const uuidToDelete = container?.dataset.itemUuid;
-				if (!uuidToDelete) return;
-				switch (container.dataset.itemType) {
-					case "linked":
-						await this.document.update({ "system.item": "" });
-						return this.render();
-					case "subclass":
-						const subclassCollection = this.document.system.subclasses;
-						subclassCollection.delete(uuidToDelete);
-						await this.document.update({ "system.subclasses": Array.from(subclassCollection) });
-						return this.render();
-				}
-				break;
-			case "launch-text-editor":
-				const label = event.target.closest("label");
-				return new JournalEditor({
-					document: this.document,
-					textKeyPath: properties.target,
-					window: {
-						title: label?.querySelector("span")?.innerText
-					}
-				}).render({ force: true });
-			default:
-				return log(`Unrecognized action: ${action}`, { level: "warn" });
-		}
+	static #launchTextEditor(event, target) {
+		const textKeyPath = target.dataset.target;
+		const label = event.target.closest(".form-group").querySelector("label");
+		const editor = new JournalEditor({ document: this.document, textKeyPath, window: { title: label?.innerText } });
+		editor.render({ force: true });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -495,7 +512,7 @@ export default class ClassPageSheet extends foundry.appv1.sheets.JournalPageShee
 
 	/** @override */
 	async _onDrop(event) {
-		const data = (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).getDragEventData(event);
+		const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
 
 		if (data?.type !== "Item") return false;
 		const item = await Item.implementation.fromDropData(data);

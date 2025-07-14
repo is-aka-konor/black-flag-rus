@@ -2276,6 +2276,7 @@
 			"Hint": "Text added at the end of the page."
 		},
 		"Introduction": {
+			"Label": "Introduction",
 			"Hint": "Primary description of the subclass that will appear first."
 		},
 		"Item": {

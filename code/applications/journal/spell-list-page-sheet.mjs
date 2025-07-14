@@ -92,7 +92,7 @@ export default class JournalSpellListPageSheet extends JournalEntryPageHandlebar
 
 		context.enriched = {};
 		for (const key of ["conclusion", "introduction"]) {
-			context.enriched[key] = await (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).enrichHTML(
+			context.enriched[key] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 				context.system.description[key],
 				{ relativeTo: this }
 			);
@@ -203,15 +203,6 @@ export default class JournalSpellListPageSheet extends JournalEntryPageHandlebar
 		if (this.isView) {
 			this.element.querySelector('[name="grouping"]')?.addEventListener("change", this._onChangeGroup.bind(this));
 		}
-
-		// FIXME: Workaround for core bug.
-		// else if ( options.parts.includes("config") ) {
-		// 	const editor = foundry.applications.elements.HTMLProseMirrorElement.create({
-		// 		name: "system.description.value",
-		// 		value: this.document.system._source.description.value
-		// 	});
-		// 	this.element.querySelector('[data-application-part="config"]').append(editor);
-		// }
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -272,7 +263,7 @@ export default class JournalSpellListPageSheet extends JournalEntryPageHandlebar
 
 	/** @inheritDoc */
 	async _onDrop(event) {
-		const data = (foundry.applications?.ux?.TextEditor?.implementation ?? TextEditor).getDragEventData(event);
+		const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
 		let spells;
 		switch (data?.type) {
 			case "Folder":
