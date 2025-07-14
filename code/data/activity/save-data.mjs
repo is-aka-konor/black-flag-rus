@@ -95,7 +95,6 @@ export class SaveData extends ActivityDataModel {
 
 	/** @inheritDoc */
 	prepareData() {
-		this.applyShims();
 		if (!this.isSpell && !this.save.dc.ability) this.save.dc.ability = "custom";
 	}
 
@@ -112,25 +111,5 @@ export class SaveData extends ActivityDataModel {
 				this.save.dc.final = this.actor.system.spellcasting.dc;
 			}
 		} else this.save.dc.final = rollData.abilities?.[this.parent.dcAbility]?.dc;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*                Shims                */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Add shims for removed properties.
-	 */
-	applyShims() {
-		Object.defineProperty(this, "dc", {
-			get() {
-				foundry.utils.logCompatibilityWarning("The `dc` properties on `SaveData` has been moved to `save.dc`", {
-					since: "Black Flag 0.10.046",
-					until: "Black Flag 0.10.051"
-				});
-				return this.save.dc;
-			},
-			configurable: true
-		});
 	}
 }

@@ -53,20 +53,6 @@ export default class AttackActivity extends Activity {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Ability used to make attack rolls for this activity.
-	 * @type {string|null}
-	 */
-	get attackAbility() {
-		foundry.utils.logCompatibilityWarning(
-			"The `attackAbility` property on `AttackActivity` has been moved to `ability`",
-			{ since: "Black Flag 0.10.042", until: "Black Flag 0.10.047" }
-		);
-		return this.system.ability;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
 	 * Contents of the challenge column in the action table.
 	 * @type {string}
 	 */

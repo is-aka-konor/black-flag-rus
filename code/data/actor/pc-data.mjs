@@ -616,17 +616,6 @@ export default class PCData extends ActorDataModel.mixin(
 	 * Prepare final spellcasting.
 	 */
 	prepareDerivedSpellcasting() {
-		Object.defineProperty(this.spellcasting, "circles", {
-			get() {
-				foundry.utils.logCompatibilityWarning("`spellcasting.circles` has been migrated to `spellcasting.slots`.", {
-					since: "Black Flag 0.9.034",
-					until: "Black Flag 0.9.038"
-				});
-				return this.slots;
-			},
-			enumerable: false
-		});
-
 		this.spellcasting.hasSpellcastingAdvancement = false;
 
 		// Combine class spellcasting data to total progression

@@ -297,7 +297,6 @@ export default class WeaponData extends ItemDataModel.mixin(
 
 	/** @inheritDoc */
 	prepareBaseData() {
-		this.applyShims();
 		super.prepareBaseData();
 
 		Object.defineProperty(this.type, "classification", {
@@ -361,48 +360,5 @@ export default class WeaponData extends ItemDataModel.mixin(
 	_preCreateActivities(data, options, user) {
 		if (data._id || foundry.utils.hasProperty(data, "system.activities")) return;
 		this._createInitialActivities([{ type: "attack" }]);
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*                Shims                */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Add shims for removed properties.
-	 */
-	applyShims() {
-		const log = () =>
-			foundry.utils.logCompatibilityWarning("The `damage` data on `WeaponData` has been moved to `damage.base`", {
-				since: "Black Flag 0.10.042",
-				until: "Black Flag 0.10.047"
-			});
-		Object.defineProperty(this.damage, "number", {
-			get() {
-				log();
-				return this.damage.base.number;
-			},
-			configurable: true
-		});
-		Object.defineProperty(this.damage, "denomination", {
-			get() {
-				log();
-				return this.damage.base.denomination;
-			},
-			configurable: true
-		});
-		Object.defineProperty(this.damage, "type", {
-			get() {
-				log();
-				return this.damage.base.type;
-			},
-			configurable: true
-		});
-		Object.defineProperty(this.damage, "additionalTypes", {
-			get() {
-				log();
-				return this.damage.base.additionalTypes;
-			},
-			configurable: true
-		});
 	}
 }

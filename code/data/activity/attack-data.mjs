@@ -149,7 +149,6 @@ export class AttackData extends ActivityDataModel {
 
 	/** @inheritDoc */
 	prepareData() {
-		this.applyShims();
 		this.parent.setProperty("system.attack.type.value", "system.type.value");
 		this.parent.setProperty("system.attack.type.classification", "system.type.classification");
 		this.attack.type.value ??= "melee";
@@ -171,36 +170,6 @@ export class AttackData extends ActivityDataModel {
 			value: this.parent.getAttackDetails().formula,
 			configurable: true,
 			enumerable: false
-		});
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*                Shims                */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Add shims for removed properties.
-	 */
-	applyShims() {
-		Object.defineProperty(this, "type", {
-			get() {
-				foundry.utils.logCompatibilityWarning("The `type` properties on `AttackData` has been moved to `attack.type`", {
-					since: "Black Flag 0.10.042",
-					until: "Black Flag 0.10.047"
-				});
-				return this.attack.type;
-			},
-			configurable: true
-		});
-		Object.defineProperty(this.damage, "includeBaseDamage", {
-			get() {
-				foundry.utils.logCompatibilityWarning(
-					"The `damage.includeBaseDamage` property on `AttackData` has been moved to `damage.includeBase`",
-					{ since: "Black Flag 0.10.042", until: "Black Flag 0.10.047" }
-				);
-				return this.damage.includeBase;
-			},
-			configurable: true
 		});
 	}
 }

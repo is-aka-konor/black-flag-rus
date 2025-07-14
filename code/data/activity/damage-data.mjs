@@ -52,33 +52,4 @@ export class DamageData extends ActivityDataModel {
 			}
 		}
 	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*           Data Preparation          */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	prepareData() {
-		this.applyShims();
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*                Shims                */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Add shims for removed properties.
-	 */
-	applyShims() {
-		Object.defineProperty(this.damage, "allowCritical", {
-			get() {
-				foundry.utils.logCompatibilityWarning(
-					"The `damage.allowCritical` property on `DamageData` has been moved to `damage.critical.allow`",
-					{ since: "Black Flag 0.10.042", until: "Black Flag 0.10.047" }
-				);
-				return this.damage.critical.allow;
-			},
-			configurable: true
-		});
-	}
 }

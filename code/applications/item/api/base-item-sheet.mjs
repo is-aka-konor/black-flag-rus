@@ -193,7 +193,10 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 			secrets: this.item.isOwner
 		};
 		context.enriched = await Object.entries(this.constructor.ENRICHED_FIELDS).reduce(async (enriched, [key, path]) => {
-			enriched[key] = await TextEditor.enrichHTML(foundry.utils.getProperty(context, path), enrichmentContext);
+			enriched[key] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+				foundry.utils.getProperty(context, path),
+				enrichmentContext
+			);
 			return enriched;
 		}, {});
 		return context;
