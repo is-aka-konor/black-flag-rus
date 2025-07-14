@@ -12,7 +12,7 @@ import BaseActorSheet from "../actor/api/base-actor-sheet.mjs";
 export default class AdvancementFlow extends FormApplication {
 	constructor(actor, advancement, levels, options = {}) {
 		foundry.utils.logCompatibilityWarning(
-			"The `AdvancementFlow` application has been deprecated and replaced with `AdvancementFlowV22`.",
+			"The `AdvancementFlow` application has been deprecated and replaced with `AdvancementFlowV2`.",
 			{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
 		);
 		super({}, options);
