@@ -16,6 +16,8 @@
 			> .link-button {
 				align-self: stretch;
 			}
+
+			select { width: unset; }
 		}
 
 		.advancement-controls {
@@ -28,6 +30,7 @@
 		}
 	}
 	.advancement-summary {
+		&:empty { display: none; }
 		.replaced > .content-link {
 			text-decoration-color: color-mix(in oklab, currentcolor, transparent 50%);
 			text-decoration-line: line-through;

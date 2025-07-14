@@ -8,7 +8,7 @@ export default class BaseStatblockSheet extends BaseActorSheet {
 	constructor(...args) {
 		foundry.utils.logCompatibilityWarning(
 			"The `BaseStatblockSheet` application has been deprecated and replaced with `BaseStatblockSheetV2`.",
-			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+			{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
 		);
 		super(...args);
 	}

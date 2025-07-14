@@ -1,35 +1,64 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 
 /**
  * Inline application that presents hit points selection upon level up.
  */
 export default class HitPointsFlow extends AdvancementFlow {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/hit-points-flow.hbs"
-		});
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration)
+			context.actions.push(
+				{
+					type: "submit",
+					classes: "light-button",
+					action: "takeAverage",
+					label: `
+					${game.i18n.localize("BF.Advancement.HitPoints.Action.TakeAverage")}
+					<strong>${formatNumber(this.advancement.average, { sign: true })}</strong>
+				`
+				},
+				{
+					html: `<span class="or">${game.i18n.localize("BF.Advancement.HitPoints.Action.or")}</span>`
+				},
+				{
+					type: "submit",
+					classes: "light-button",
+					action: "roll",
+					label: `
+					${game.i18n.format("BF.Roll.Action.RollSpecific", { type: game.i18n.localize("BF.HitDie.Label[one]") })}
+					<strong>d${this.advancement.configuration.denomination}</strong>
+				`
+				}
+			);
+		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	getData() {
-		return foundry.utils.mergeObject(super.getData(), {
-			denomination: this.advancement.configuration.denomination,
-			isFirstLevel: this.levels.character === 1
-		});
+	async _prepareControlsContext(context, options) {
+		context = await super._prepareControlsContext(context, options);
+		context.showReverse = context.editable && this.levels.character !== 1;
+		return context;
 	}
 
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async _updateObject(event, formData) {
+	async _handleForm(event, form, formData) {
 		const action = event.submitter.dataset.action;
 		const level = this.advancement.relavantLevel(this.levels);
 
 		// Take the average value
-		if (action === "take-average") {
+		if (action === "takeAverage") {
 			return this.advancement.apply(this.levels, { [level]: "avg" });
 		} else if (action === "roll") {
 			const roll = new Roll(`1d${this.advancement.configuration.denomination}`);

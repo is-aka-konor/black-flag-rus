@@ -25,7 +25,7 @@ export const _advancementTypes = {
 		validItemTypes: new Set(),
 		sheetClasses: {
 			config: sheets.AdvancementConfig,
-			flow: sheets.AdvancementFlow
+			flow: sheets.AdvancementFlowV2
 		}
 	},
 	chooseFeatures: {

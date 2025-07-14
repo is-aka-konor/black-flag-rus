@@ -1,0 +1,19 @@
+<div>
+	{{#if needsConfiguration}}{{{ summary }}}{{/if}}
+	{{#each chosen as |choice|}}
+		<span class="choice-entry">
+			<span class="choice-name">{{ this.label }}</span>
+			{{~#if (or @root.editable @root.needsConfiguration)}}
+				<button type="button" class="link-button" data-action="removeChoice" data-key="{{ this.key }}"
+				        data-tooltip aria-label="{{ localize 'BF.Advancement.Trait.Action.RevertChoice' }}">
+					<i class="fa-solid fa-trash" inert></i>
+				</button>
+			{{/if}}
+		</span>
+	{{/each}}
+	{{#if needsConfiguration}}
+		<select name="added">
+			{{ blackFlag-groupedSelectOptions availableChoices blank=blankLabel }}
+		</select>
+	{{/if}}
+</div>

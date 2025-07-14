@@ -27,10 +27,12 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	/** @override */
 	static DEFAULT_OPTIONS = {
 		actions: {
+			deleteItem: BaseActorSheet.#deleteItem,
 			rest: BaseActorSheet.#rest,
 			roll: BaseActorSheet.#roll,
 			showArtwork: BaseActorSheet.#showArtwork,
-			showConfiguration: BaseActorSheet.#showConfiguration
+			showConfiguration: BaseActorSheet.#showConfiguration,
+			showItem: BaseActorSheet.#showItem
 		},
 		classes: ["actor", "standard-form"],
 		dragDrop: false,
@@ -397,6 +399,19 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Handle deleting an item.
+	 * @this {BaseActorSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #deleteItem(event, target) {
+		const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+		item?.deleteDialog();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Handle resting the actor.
 	 * @this {BaseActorSheet}
 	 * @param {Event} event - Triggering click event.
@@ -503,6 +518,19 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	 * @abstract
 	 */
 	_showConfiguration(event, target) {}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Handle showing an item's sheet.
+	 * @this {BaseActorSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #showItem(event, target) {
+		const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+		item?.sheet.render({ force: true });
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Form Submission           */

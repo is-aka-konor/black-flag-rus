@@ -1,27 +1,41 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
+
+const { StringField } = foundry.data.fields;
 
 /**
  * Inline application that presents ability selection for granting spells
  */
 export default class GrantSpellsFlow extends AdvancementFlow {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/grant-spells-flow.hbs",
-			submitOnChange: true
-		});
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration && this.advancement.configuration.spell.ability.size > 1)
+			context.actions.push({
+				field: new StringField(),
+				name: "ability",
+				options: [
+					{ value: "", label: game.i18n.localize("BF.Advancement.GrantSpells.Notification.Ability"), rule: true },
+					...Array.from(this.advancement.configuration.spell.ability).map(value => ({
+						value,
+						label: CONFIG.BlackFlag.abilities.localized[value]
+					}))
+				]
+			});
+		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	getData() {
-		return foundry.utils.mergeObject(super.getData(), {
-			abilities: Array.from(this.advancement.configuration.spell.ability).reduce((obj, key) => {
-				obj[key] = CONFIG.BlackFlag.abilities.localized[key];
-				return obj;
-			}, {}),
-			abilitySelection: this.advancement.configuration.spell.ability.size > 1
-		});
+	async _prepareControlsContext(context, options) {
+		context = await super._prepareControlsContext(context, options);
+		context.showReverse =
+			context.editable && !context.needsConfiguration && this.advancement.configuration.spell.ability.size > 1;
+		context.reverseLabel = "BF.Advancement.GrantSpells.Action.Reselect";
+		return context;
 	}
 }

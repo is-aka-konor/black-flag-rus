@@ -1,22 +1,36 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 import EquipmentDialog from "./equipment-dialog.mjs";
 
 /**
  * Inline application that adds the select equipment button if both a class & background are added.
  */
 export default class EquipmentFlow extends AdvancementFlow {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/equipment-flow.hbs"
-		});
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration)
+			context.actions = [
+				{
+					type: "submit",
+					classes: "light-button",
+					action: "selectEquipment",
+					label: game.i18n.localize("BF.Advancement.Equipment.Action.Select")
+				}
+			];
+		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async _updateObject(event, formData) {
-		if (event.submitter?.dataset.action === "select-equipment") {
+	async _handleForm(event, form, formData) {
+		if (event.submitter?.dataset.action === "selectEquipment") {
 			let result;
 			try {
 				result = await new Promise((resolve, reject) => {

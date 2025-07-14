@@ -161,12 +161,12 @@ export default class ChooseFeaturesAdvancement extends GrantFeaturesAdvancement 
 
 	/** @inheritDoc */
 	async reverse(levels, data, { render = true } = {}) {
-		if (!data) return super.reverse(levels);
+		if (!data?.id) return super.reverse(levels);
 		const level = this.relavantLevel(levels);
 
 		const keyPath = this.storagePath(level);
-		const addedCollection = foundry.utils.getProperty(this.value._source, keyPath).filter(a => a.document !== data);
-		await this.actor.deleteEmbeddedDocuments("Item", [data], { render: false });
+		const addedCollection = foundry.utils.getProperty(this.value._source, keyPath).filter(a => a.document !== data.id);
+		await this.actor.deleteEmbeddedDocuments("Item", [data.id], { render: false });
 		const valueData = { [`${this.valueKeyPath}.${keyPath}`]: addedCollection };
 
 		const replaced = this.value.replaced[level];

@@ -1,0 +1,11 @@
+<div>
+	{{~#each actions}}
+	{{#if (or (eq type "button") (eq type "submit")) }}
+	<button type="{{ type }}" class="{{ classes }}" data-action="{{ action }}">{{{ label }}}</button>
+	{{else if field}}
+	{{ formInput field name=name value=value input=input options=options localize=localize disabled=disabled }}
+	{{else if html}}
+	{{{ html }}}
+	{{/if}}
+	{{/each~}}
+</div>

@@ -1,39 +1,57 @@
 import ChooseFeaturesFlow from "./choose-features-flow.mjs";
 
+const { StringField } = foundry.data.fields;
+
 /**
  * Inline application that presents a list of spell choices.
  */
 export default class ChooseSpellsFlow extends ChooseFeaturesFlow {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/choose-spells-flow.hbs",
-			submitOnChange: true
-		});
-	}
-
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData() {
-		const context = await super.getData();
-		context.abilities = Array.from(this.advancement.configuration.spell.ability).reduce((obj, key) => {
-			obj[key] = CONFIG.BlackFlag.abilities.localized[key];
-			return obj;
-		}, {});
-		context.abilitySelection = this.advancement.configuration.spell.ability.size > 1;
-		context.needsAbilitySelection = context.abilitySelection && !this.advancement.value.ability;
-		context.isFirstLevel = this.advancement.relavantLevel(this.levels) === this.advancement.levels[0];
-		context.showReselectAbility =
-			context.modes.editing && context.abilitySelection && !context.needsAbilitySelection && context.isFirstLevel;
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		const needsAbilitySelection =
+			this.advancement.configuration.spell.ability.size > 1 && !this.advancement.value.ability;
+		if (needsAbilitySelection)
+			context.actions = [
+				{
+					field: new StringField(),
+					name: "ability",
+					options: [
+						{ value: "", label: game.i18n.localize("BF.Advancement.GrantSpells.Notification.Ability"), rule: true },
+						...Array.from(this.advancement.configuration.spell.ability).map(value => ({
+							value,
+							label: CONFIG.BlackFlag.abilities.localized[value]
+						}))
+					]
+				}
+			];
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @inheritDoc */
+	async _prepareControlsContext(context, options) {
+		context = await super._prepareControlsContext(context, options);
+		const abilitySelection = this.advancement.configuration.spell.ability.size > 1;
+		const needsAbilitySelection = abilitySelection && !this.advancement.value.ability;
+		const isFirstLevel = this.advancement.relavantLevel(this.levels) === this.advancement.levels[0];
+		context.showReverse = context.editable && abilitySelection && !needsAbilitySelection && isFirstLevel;
+		context.reverseLabel = "BF.Advancement.ChooseFeatures.Action.Revert";
+		return context;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @override */
-	async _updateObject(event, formData) {
-		if (formData.ability) this.advancement.apply(this.levels, formData);
-		else super._updateObject(event, formData);
+	async _handleForm(event, formData) {
+		if (formData.object.ability) this.advancement.apply(this.levels, formData.object);
+		else super._handleForm(event, formData);
 	}
 }

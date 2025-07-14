@@ -1,21 +1,35 @@
 import * as Trait from "../../utils/trait.mjs";
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 
 /**
  * Inline application that presents a trait choice.
  */
 export default class TraitFlow extends AdvancementFlow {
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/trait-flow.hbs",
-			submitOnChange: true
-		});
-	}
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		actions: {
+			removeChoice: TraitFlow.#removeChoice
+		}
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	getData(options) {
-		const context = super.getData(options);
+	/** @inheritDoc */
+	static PARTS = {
+		...super.PARTS,
+		content: {
+			...super.PARTS.content,
+			template: "systems/black-flag/templates/advancement/trait-flow-content.hbs"
+		}
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareContentContext(context, options) {
+		context = await super._prepareContentContext(context, options);
 		const { choices, label } = this.advancement.availableChoices() ?? {};
 		context.availableChoices = choices ?? {};
 		context.blankLabel = label;
@@ -27,22 +41,26 @@ export default class TraitFlow extends AdvancementFlow {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
-	activateListeners(jQuery) {
-		super.activateListeners(jQuery);
-		const html = jQuery[0];
-
-		for (const element of html.querySelectorAll('[data-action="remove-choice"]')) {
-			element.addEventListener("click", e => {
-				const key = e.target.closest("[data-key]").dataset.key;
-				this.advancement.reverse(this.levels, key);
-			});
-		}
+	/**
+	 * Handle removing an improvement choice.
+	 * @this {TraitFlow}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static async #removeChoice(event, target) {
+		const key = target.closest("[data-key]").dataset.key;
+		this.advancement.reverse(this.levels, { key });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _updateObject(event, formData) {
-		if (formData.added) this.advancement.apply(this.levels, new Set([formData.added]));
+	/** @inheritDoc */
+	async _handleForm(event, formData) {
+		if (formData.object.added) this.advancement.apply(this.levels, new Set([formData.object.added]));
 	}
 }

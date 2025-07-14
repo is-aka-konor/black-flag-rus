@@ -1,59 +1,101 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 import ChooseFeaturesDialog from "./choose-features-dialog.mjs";
 
 /**
  * Inline application that presents a list of feature choices.
  */
 export default class ChooseFeaturesFlow extends AdvancementFlow {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/choose-features-flow.hbs"
-		});
-	}
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		actions: {
+			removeChoice: ChooseFeaturesFlow.#removeChoice
+		}
+	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async getData() {
-		const context = await super.getData();
-		const level = this.advancement.relavantLevel(this.levels);
-		const config = this.advancement.configuration.choices[level];
-		context.chosen = [];
-		for (const data of this.advancement.value.added?.[level] ?? []) {
-			const doc = data.document ?? (await fromUuid(data.uuid));
-			context.chosen.push({
-				anchor: doc.toAnchor().outerHTML,
-				id: doc.id,
-				replaced: !data.document,
-				showDelete: (context.modes?.editing || context.needsConfiguration) && !!data.document
-			});
+	static PARTS = {
+		...super.PARTS,
+		content: {
+			classes: ["advancement-summary"],
+			template: "systems/black-flag/templates/advancement/choose-features-flow-content.hbs"
 		}
-		context.replacementAvailable = config?.replacement && !this.advancement.value.replaced?.[level];
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration)
+			context.actions.push({
+				type: "submit",
+				classes: "light-button",
+				action: "selectChoice",
+				label: game.i18n.localize("BF.Advancement.ChooseFeatures.Action.Choose")
+			});
+
+		const level = this.advancement.relavantLevel(this.levels);
+		const replacementAvailable =
+			this.advancement.configuration.choices[level]?.replacement && !this.advancement.value.replaced?.[level];
+		if (replacementAvailable)
+			context.actions.push({
+				type: "submit",
+				classes: "link-button",
+				action: "replaceChoice",
+				label: `
+				<i class="fa-solid fa-shuffle" inert></i>
+				${game.i18n.localize("BF.Advancement.ChooseFeatures.Action.Replace")}
+			`
+			});
+
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	activateListeners(jQuery) {
-		super.activateListeners(jQuery);
-		const html = jQuery[0];
-
-		for (const element of html.querySelectorAll('[data-action="remove-choice"]')) {
-			element.addEventListener("click", e => {
-				const id = e.target.closest("[data-id]").dataset.id;
-				this.advancement.reverse(this.levels, id);
+	async _prepareContentContext(context, options) {
+		context = await super._prepareContentContext(context, options);
+		context.chosen = [];
+		for (const data of this.advancement.value.added?.[this.advancement.relavantLevel(this.levels)] ?? []) {
+			const doc = data.document ?? (await fromUuid(data.uuid));
+			context.chosen.push({
+				anchor: doc.toAnchor().outerHTML,
+				id: doc.id,
+				replaced: !data.document,
+				showDelete: (context.editable || context.needsConfiguration) && !!data.document
 			});
 		}
+		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Handle removing an improvement choice.
+	 * @this {ChooseFeaturesFlow}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static async #removeChoice(event, target) {
+		const id = target.closest("[data-id]").dataset.id;
+		this.advancement.reverse(this.levels, { id });
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async _updateObject(event, formData) {
-		const isReplacement = event.submitter?.dataset.action === "replace-choice";
-		if (event.submitter?.dataset.action === "select-choice" || isReplacement) {
+	async _handleForm(event, formData) {
+		const isReplacement = event.submitter?.dataset.action === "replaceChoice";
+		if (event.submitter?.dataset.action === "selectChoice" || isReplacement) {
 			let choice;
 			let replaces;
 			try {

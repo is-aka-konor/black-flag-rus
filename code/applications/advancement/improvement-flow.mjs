@@ -1,56 +1,77 @@
-import { numberFormat } from "../../utils/_module.mjs";
-import AdvancementFlow from "./advancement-flow.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 import ChooseFeaturesDialog from "./choose-features-dialog.mjs";
+
+const { StringField } = foundry.data.fields;
 
 /**
  * Inline application that presents a ability & talent choices.
  */
 export default class ImprovementFlow extends AdvancementFlow {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/improvement-flow.hbs",
-			submitOnChange: true
-		});
-	}
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		actions: {
+			removeChoice: ImprovementFlow.#removeChoice
+		}
+	};
 
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	getData(options) {
-		const context = super.getData(options);
-		context.abilities = Object.entries(CONFIG.BlackFlag.abilities.localized).reduce((obj, [key, label]) => {
-			const ability = this.actor.system.abilities[key];
-			if (ability.value < ability.max) {
-				obj[key] = `${label}: ${numberFormat(ability.value)} → ${numberFormat(ability.value + 1)}`;
-			}
-			return obj;
-		}, {});
-		context.selectAbility = !this.advancement.configuredForLevel(this.levels);
-		context.selectTalent = foundry.utils.isEmpty(this.advancement.value.talent) && context.selectAbility;
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration) {
+			context.actions.push({
+				field: new StringField(),
+				name: "ability",
+				options: [
+					{ value: "", label: game.i18n.localize("BF.Advancement.Improvement.Notification.Ability"), rule: true },
+					...CONFIG.BlackFlag.abilities.localizedOptions
+						.filter(({ value }) => this.actor.system.abilities[value].value < this.actor.system.abilities[value].max)
+						.map(({ value, label }) => ({
+							value,
+							label: `${label}: ${formatNumber(this.actor.system.abilities[value].value)} → ${formatNumber(
+								this.actor.system.abilities[value].value + 1
+							)}`
+						}))
+				]
+			});
+			if (foundry.utils.isEmpty(this.advancement.value.talent))
+				context.actions.push({
+					type: "submit",
+					classes: "light-button",
+					action: "selectChoice",
+					label: game.i18n.localize("BF.Advancement.Improvement.Action.Choose")
+				});
+		}
+
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
-	activateListeners(jQuery) {
-		super.activateListeners(jQuery);
-		const html = jQuery[0];
-
-		for (const element of html.querySelectorAll('[data-action="remove-choice"]')) {
-			element.addEventListener("click", e => {
-				const key = e.target.closest("[data-key]").dataset.key;
-				this.advancement.reverse(this.levels, { key });
-			});
-		}
+	/**
+	 * Handle removing an improvement choice.
+	 * @this {ImprovementFlow}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static async #removeChoice(event, target) {
+		const key = target.closest("[data-key]").dataset.key;
+		this.advancement.reverse(this.levels, { key });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _updateObject(event, formData) {
-		if (event.submitter?.dataset.action === "select-choice") {
+	async _handleForm(event, formData) {
+		if (event.submitter?.dataset.action === "selectChoice") {
 			let choice;
 			try {
 				const promise = new Promise((resolve, reject) => {
@@ -62,7 +83,7 @@ export default class ImprovementFlow extends AdvancementFlow {
 			}
 			this.advancement.apply(this.levels, { talent: choice });
 		} else {
-			this.advancement.apply(this.levels, formData);
+			this.advancement.apply(this.levels, formData.object);
 		}
 	}
 }

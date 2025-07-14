@@ -7,7 +7,7 @@ export default class BaseItemSheet extends DocumentSheetMixin(foundry.appv1.shee
 	constructor(...args) {
 		foundry.utils.logCompatibilityWarning(
 			"The `BaseItemSheet` application has been deprecated and replaced with `BaseItemSheetV2`.",
-			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+			{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
 		);
 		super(...args);
 	}

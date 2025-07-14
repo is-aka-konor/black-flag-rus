@@ -116,26 +116,26 @@ export default class ChooseSpellsAdvancement extends ChooseFeaturesAdvancement {
 
 	/** @inheritDoc */
 	async reverse(levels, data, { render = true } = {}) {
-		if (!data) return GrantSpellsAdvancement.prototype.reverse.call(this, levels);
+		if (!data?.id) return GrantSpellsAdvancement.prototype.reverse.call(this, levels);
 		const level = this.relavantLevel(levels);
 
 		const keyPath = this.storagePath(level);
 		let addedCollection = foundry.utils.getProperty(this.value._source, keyPath);
-		const entry = addedCollection.find(a => a.document === data);
-		addedCollection = addedCollection.filter(a => a.document !== data);
+		const entry = addedCollection.find(a => a.document === data.id);
+		addedCollection = addedCollection.filter(a => a.document !== data.id);
 		if (entry.modified) {
 			await this.actor.updateEmbeddedDocuments(
 				"Item",
 				[
 					{
-						_id: data,
+						_id: data.id,
 						...this.configuration.spell.getReverseChanges(entry.document, data)
 					}
 				],
 				{ render: false }
 			);
 		} else {
-			await this.actor.deleteEmbeddedDocuments("Item", [data], { render: false });
+			await this.actor.deleteEmbeddedDocuments("Item", [data.id], { render: false });
 		}
 		const valueData = { [`${this.valueKeyPath}.${keyPath}`]: addedCollection };
 

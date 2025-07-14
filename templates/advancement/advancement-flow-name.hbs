@@ -1,0 +1,11 @@
+<div>
+	<figure class="icon">
+		<div class="advancement-origin" data-tooltip="{{ advancement.item.name }}"
+			style="--bf-advancement-color: {{ advancement.item.accentColor }};"></div>
+		<img src="{{ advancement.icon }}" alt="{{ advancement.title }}">
+	</figure>
+	<h4>
+		{{{ title }}}
+		{{ blackFlag-notificationBadge advancement.actor key=warningKey }}
+	</h4>
+</div>

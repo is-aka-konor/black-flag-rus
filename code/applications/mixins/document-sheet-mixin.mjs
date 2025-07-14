@@ -10,7 +10,7 @@ export default function DocumentSheetMixin(Base) {
 		constructor(...args) {
 			foundry.utils.logCompatibilityWarning(
 				"The `DocumentSheetMixin` mixin has been deprecated and replaced with `PrimarySheetMixin`.",
-				{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+				{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
 			);
 			super(...args);
 		}

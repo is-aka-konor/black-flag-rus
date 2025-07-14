@@ -1,30 +1,39 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
+
+const { StringField } = foundry.data.fields;
 
 /**
  * Inline application that presents a size choice.
  */
 export default class SizeFlow extends AdvancementFlow {
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/size-flow.hbs",
-			submitOnChange: true
-		});
-	}
-
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	getData(options) {
-		const context = super.getData(options);
-		context.sizes = this.advancement.configuration.options.reduce((obj, key) => {
-			obj[key] = CONFIG.BlackFlag.sizes[key].label;
-			return obj;
-		}, {});
+	/** @inheritDoc */
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
+		if (context.needsConfiguration)
+			context.actions.push({
+				field: new StringField(),
+				name: "size",
+				options: [
+					{ value: "", label: game.i18n.localize("BF.Advancement.Size.Notification"), rule: true },
+					...this.advancement.configuration.options.map(value => ({
+						value,
+						label: CONFIG.BlackFlag.sizes.localized[value]
+					}))
+				]
+			});
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _updateObject(event, formData) {
-		this.advancement.apply(this.levels, formData.size);
+	/** @inheritDoc */
+	async _prepareControlsContext(context, options) {
+		context = await super._prepareControlsContext(context, options);
+		context.showReverse = context.editable;
+		return context;
 	}
 }

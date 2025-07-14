@@ -1,0 +1,13 @@
+<div>
+	{{~#each chosen}}
+		<span class="choice-entry {{#if replaced}}replaced{{/if}}">
+			{{{ anchor }}}
+			{{#if showDelete}}
+				<button type="button" class="link-button" data-action="removeChoice" data-id="{{ id }}"
+								data-tooltip aria-label="{{ localize 'BF.Advancement.ChooseFeatures.Action.Revert' }}">
+					<i class="fa-solid fa-trash" inert></i>
+				</button>
+			{{/if}}
+		</span>
+	{{/each~}}
+</div>

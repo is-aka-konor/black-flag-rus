@@ -1,36 +1,49 @@
-import AdvancementFlow from "./advancement-flow.mjs";
+import AdvancementFlow from "./advancement-flow-v2.mjs";
 import SpellcastingDialog from "./spellcasting-dialog.mjs";
 
 /**
  * Inline application that presents spell learning at level up.
  */
 export default class SpellcastingFlow extends AdvancementFlow {
-	/** @inheritDoc */
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			template: "systems/black-flag/templates/advancement/spellcasting-flow.hbs"
-		});
-	}
-
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	getData(options = {}) {
-		const context = super.getData(options);
+	async _prepareActionsContext(context, options) {
+		context = await super._prepareActionsContext(context, options);
 		const level = this.advancement.relavantLevel(this.levels);
 		const stats = this.advancement.statsForLevel(this.levels);
 		const validLevel = this.advancement.learnsSpellsAt(level) || this.advancement.replacesSpellAt(level);
-		context.showLearnSpells = (validLevel && context.modes.editing) || stats.needToLearn;
-		context.showReplacement =
-			!context.showLearnSpells && this.advancement.replacesSpellAt(level) && stats.get("replacement").toLearn;
+
+		if ((validLevel && context.editable) || stats.needToLearn)
+			context.actions.push({
+				type: "submit",
+				classes: "light-button",
+				action: "learnSpells",
+				label: game.i18n.localize("BF.Advancement.Spellcasting.Action.LearnSpells")
+			});
+		else if (this.advancement.replacesSpellAt(level) && stats.get("replacement").toLearn)
+			context.actions.push({
+				type: "submit",
+				classes: "link-button",
+				action: "learnSpells",
+				label: `
+				<i class="fa-solid fa-shuffle" inert></i>
+				${game.i18n.localize("BF.Advancement.Spellcasting.Action.ReplaceSpell")}
+			`
+			});
+
 		return context;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Form Submission           */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async _updateObject(event, formData) {
+	async _handleForm(event, form, formData) {
 		const action = event.submitter.dataset.action;
-		if (action === "learn-spells") new SpellcastingDialog(this.advancement, this.levels).render({ force: true });
+		if (action === "learnSpells") new SpellcastingDialog(this.advancement, this.levels).render({ force: true });
 	}
 }

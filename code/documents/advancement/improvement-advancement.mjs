@@ -1,3 +1,4 @@
+import BaseActorSheet from "../../applications/actor/api/base-actor-sheet.mjs";
 import { ImprovementConfigurationData, ImprovementValueData } from "../../data/advancement/improvement-data.mjs";
 import { getPluralRules, linkForUUID, numberFormat, Search } from "../../utils/_module.mjs";
 import GrantFeaturesAdvancement from "./grant-features-advancement.mjs";
@@ -105,16 +106,17 @@ export default class ImprovementAdvancement extends GrantFeaturesAdvancement {
 					pushAbility(this.value.ability.two, p1, this.value.ability.one ? "ability.two" : undefined);
 			}
 			if (this.value.talent?.document) choices.push([linkForUUID(this.value.talent.document.uuid), "talent"]);
-			const displayDelete = this.actor.sheet.modes.editing || !this.configuredForLevel(levels);
+			const displayDelete =
+				(this.actor.sheet.isEditable && this.actor.sheet._mode === BaseActorSheet.MODES.EDIT) ||
+				!this.configuredForLevel(levels);
 			return choices
 				.map(
 					([label, key]) =>
 						`<span class="choice-entry">${label}${
 							displayDelete
 								? `
-								<button type="button" class="link-button" data-action="remove-choice" data-key="${key}"
-								        data-tooltip="BF.Advancement.Improvement.Action.Revert"
-												aria-label="${game.i18n.localize("BF.Advancement.Improvement.Action.Revert")}">
+								<button type="button" class="link-button" data-action="removeChoice" data-key="${key}"
+								        data-tooltip aria-label="${game.i18n.localize("BF.Advancement.Improvement.Action.Revert")}">
 									<i class="fa-solid fa-trash" inert></i>
 								</button>
 								`

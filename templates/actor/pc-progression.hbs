@@ -55,15 +55,14 @@
 					<img src="{{ img }}">
 				</figure>
 				<span>
-					<button type="button" class="link-button" data-action="item" data-sub-action="view" data-item-id="{{ id }}">
+					<button type="button" class="link-button" data-action="showItem" data-item-id="{{ id }}">
 						{{ name }}
 					</button>
 				</span>
 				{{#if @root.editable}}
 					<span class="controls">
-						<button type="button" class="link-button" data-action="item" data-sub-action="delete"
-						        data-item-id="{{ id }}" data-tooltip="BF.Item.Action.Delete"
-						        aria-label="{{ localize 'BF.Item.Action.Delete' }}">
+						<button type="button" class="link-button" data-action="deleteItem" data-item-id="{{ id }}"
+						        data-tooltip aria-label="{{ localize 'BF.Item.Action.Delete' }}">
 							<i class="fa-solid fa-trash" inert></i>
 						</button>
 					</span>
@@ -107,20 +106,19 @@
 					<img src="{{ data.document.img }}">
 				</figure>
 				<span>
-					<button type="button" class="link-button" data-action="item" data-sub-action="view"
+					<button type="button" class="link-button" data-action="showItem"
 					        data-item-id="{{data.document.id}}">
 						{{ data.document.name }}
 					</button>
 					{{#if data.subclass}}
 						<span class="subclass">
-							<button type="button" class="link-button" data-action="item" data-sub-action="view"
+							<button type="button" class="link-button" data-action="showItem"
 							        data-item-id="{{ data.subclass.id }}">
 								{{ data.subclass.name }}
 							</button>
 							{{#if @root.editable}}
-								<button type="button" class="link-button" data-action="item" data-sub-action="delete"
-								        data-item-id="{{ data.subclass.id }}" data-tooltip="BF.Item.Action.Delete"
-								        aria-label="{{ localize 'BF.Item.Action.Delete' }}">
+								<button type="button" class="link-button" data-action="deleteItem" data-item-id="{{ data.subclass.id }}"
+								        data-tooltip aria-label="{{ localize 'BF.Item.Action.Delete' }}">
 									<i class="fa-solid fa-trash" inert></i>
 								</button>
 							{{/if}}

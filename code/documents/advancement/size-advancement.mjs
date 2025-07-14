@@ -100,11 +100,11 @@ export default class SizeAdvancement extends Advancement {
 	async apply(levels, data, { initial = false, render = true } = {}) {
 		if (initial) {
 			if (this.configuration.options.size !== 1) return;
-			data = this.configuration.options.first();
+			data = { size: this.configuration.options.first() };
 		}
-		if (!data) return;
+		if (!data?.size) return;
 
-		return await this.actor.update({ [`${this.valueKeyPath}.selected`]: data }, { render });
+		return await this.actor.update({ [`${this.valueKeyPath}.selected`]: data.size }, { render });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
