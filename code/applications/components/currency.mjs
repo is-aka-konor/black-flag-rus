@@ -1,4 +1,3 @@
-import BFDialog from "../api/dialog.mjs";
 import InventoryElement from "./inventory.mjs";
 
 export default class CurrencyElement extends InventoryElement {
@@ -19,7 +18,7 @@ export default class CurrencyElement extends InventoryElement {
 
 		let formData;
 		try {
-			formData = await BFDialog.tooltipWait(
+			formData = await BlackFlag.applications.api.BFDialog.tooltipWait(
 				{ element: target, cssClass: "add-currency" },
 				{
 					content,

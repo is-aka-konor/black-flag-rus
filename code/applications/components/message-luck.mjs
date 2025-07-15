@@ -1,4 +1,3 @@
-import BFDialog from "../api/dialog.mjs";
 import MessageAssociatedElement from "./message-associated-element.mjs";
 
 /**
@@ -229,7 +228,7 @@ export default class MessageLuckElement extends MessageAssociatedElement {
 		let result = results[0];
 		if (resultValues.size > 1) {
 			// Prompt for which die to re-roll
-			result = await BFDialog.tooltipWait(
+			result = await BlackFlag.applications.api.BFDialog.tooltipWait(
 				{ element: event.currentTarget },
 				{
 					content: game.i18n.localize("BF.Luck.Reroll.Prompt"),

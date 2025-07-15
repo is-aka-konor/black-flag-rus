@@ -428,14 +428,23 @@ export default Base =>
 		 */
 		async deleteDialog(options = {}) {
 			const type = game.i18n.localize(this.metadata.title);
-			return Dialog.confirm({
-				title: `${game.i18n.format("DOCUMENT.Delete", { type })}: ${this.name || this.title}`,
-				content: `<h4>${game.i18n.localize("AreYouSure")}</h4><p>${game.i18n.format("SIDEBAR.DeleteWarning", {
-					type
-				})}</p>`,
-				yes: this.delete.bind(this),
-				options: options
-			});
+			return BlackFlag.applications.api.BFDialog.confirm(
+				foundry.utils.mergeObject(
+					{
+						content: `<p><strong>${game.i18n.localize("AreYouSure")}</strong>${game.i18n.format(
+							"SIDEBAR.DeleteWarning",
+							{
+								type
+							}
+						)}</p>`,
+						yes: { callback: () => this.delete() },
+						window: {
+							title: `${game.i18n.format("DOCUMENT.Delete", { type })}: ${this.name || this.title}`
+						}
+					},
+					options
+				)
+			);
 		}
 
 		/* <><><><> <><><><> <><><><> <><><><> */

@@ -480,12 +480,14 @@ export default class PCSheet extends BaseActorSheet {
 	 * @param {HTMLElement} target - Button that was clicked.
 	 */
 	static #levelDown(event, target) {
-		Dialog.confirm({
-			title: `${game.i18n.localize("BF.Progression.Action.LevelDown.Label")}: ${this.actor.name}`,
-			content: `<h4>${game.i18n.localize("AreYouSure")}</h4><p>${game.i18n.localize(
+		BlackFlag.applications.api.BFDialog.confirm({
+			content: `<p><strong>${game.i18n.localize("AreYouSure")}</strong> ${game.i18n.localize(
 				"BF.Progression.Action.LevelDown.Message"
 			)}</p>`,
-			yes: () => this.actor.system.levelDown()
+			yes: { callback: () => this.actor.system.levelDown() },
+			window: {
+				title: `${game.i18n.localize("BF.Progression.Action.LevelDown.Label")}: ${this.actor.name}`
+			}
 		});
 	}
 
