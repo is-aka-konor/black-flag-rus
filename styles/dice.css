@@ -6,7 +6,7 @@
 	block-size: var(--icon-size);
 	inline-size: var(--icon-size);
 
-	--die-blue-color: var(--bf-blue);
+	--die-blue-color: var(--bf-icon-color-blue);
 	--die-green-color: color-mix(in oklab, var(--bf-dice-color-critical-success), black 20%);
 	--die-red-color: color-mix(in oklab, var(--bf-dice-color-critical-failure), black 20%);
 

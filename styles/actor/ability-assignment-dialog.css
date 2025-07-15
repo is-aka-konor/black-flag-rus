@@ -90,17 +90,17 @@
 			> label {
 				flex: 100% 1 0;
 				justify-content: center;
-				border: 1px solid var(--bf-blue);
+				border: 1px solid var(--bf-border-color-blue);
 				border-radius: 5px;
 				font-size: var(--font-size-24);
 				cursor: pointer;
 
 				&:hover:not(.disabled) {
 					backdrop-filter: brightness(90%);
-					box-shadow: 0 0 3px var(--bf-blue);
+					box-shadow: 0 0 3px var(--bf-button-shadow-blue);
 				}
 				&.checked {
-					border: 1px solid black;
+					border: 1px solid var(--bf-border-color-black);
 					backdrop-filter: brightness(80%);
 				}
 				&.disabled {
@@ -117,7 +117,7 @@
 
 			> hr {
 				flex: 100% 1 0;
-				border: 0.5px solid var(--bf-blue);
+				border: 0.5px solid var(--bf-border-color-blue);
 				margin-inline: -0.25rem;
 			}
 		}
@@ -165,16 +165,16 @@
 				height: 1em;
 				border: 1px solid black;
 				border-radius: 3px;
-				background-color: var(--bf-blue);
+				background-color: var(--bf-background-color-blue);
 				box-shadow: 0 0 0 1px var(--bf-background-color-half-white);
 
 				&.spent {
-					background-color: color-mix(in oklab, var(--bf-blue), white 50%);
+					background-color: color-mix(in oklab, var(--bf-background-color-blue), white 50%);
 				}
 			}
 			.count {
 				flex: 100% 1 0;
-				color: var(--bf-blue);
+				color: var(--bf-text-color-blue);
 				font-size: var(--font-size-11);
 				font-weight: bold;
 				text-align: center;
@@ -222,7 +222,7 @@
 			> caption {
 				flex: 100% 1 0;
 				padding-block: 0.25em;
-				color: var(--bf-blue);
+				color: var(--bf-text-color-blue);
 				font-weight: 200;
 				text-transform: uppercase;
 			}
@@ -231,7 +231,7 @@
 				display: flex;
 				flex-direction: column;
 			}
-	
+
 			th { border: none; }
 
 			:is(th, td) {
@@ -241,7 +241,7 @@
 			}
 
 			> thead {
-				background-color: var(--bf-blue);
+				background-color: var(--bf-background-color-blue);
 				border-radius: 0;
 				color: var(--bf-text-color-white);
 				text-shadow: none;
@@ -253,7 +253,7 @@
 				display: flex;
 				& tr {
 					flex-grow: 1;
-					border-inline-end: 1px solid var(--bf-color-border-blue);
+					border-inline-end: 1px solid var(--bf-border-color-blue);
 
 					&:last-of-type {
 						border-inline-end-width: 2px;

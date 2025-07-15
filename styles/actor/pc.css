@@ -17,14 +17,14 @@
 		cursor: pointer;
 
 		&[data-action="editImage"] {
-			border-color: var(--bf-color-border-blue);
+			border-color: var(--bf-border-color-blue);
 		}
 	}
 
 	.block, .stat-block {
 		display: flex;
-		background: var(--bf-color-fill);
-		border: 1px solid var(--bf-color-border-gray);
+		background: var(--bf-background-color-white);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: 6px;
 
 		.label {
@@ -68,7 +68,7 @@
 		.document-name {
 			flex: 1 0 50%;
 			margin: 0;
-			border: 2px solid var(--bf-color-border-blue);
+			border: 2px solid var(--bf-border-color-blue);
 			border-radius: 0;
 			align-content: center;
 			font-size: var(--font-size-24);

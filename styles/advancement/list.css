@@ -15,7 +15,7 @@
 		gap: 0.5rem;
 
 		&:not(:last-of-type) {
-			border-block-end: 1px solid var(--bf-color-border-gray);
+			border-block-end: 1px solid var(--bf-border-color-gray);
 			padding-block-end: 0.25rem;
 		}
 
@@ -42,10 +42,10 @@
 
 	.choice-entry {
 		.choice-name, .content-link {
-			border: 1px solid color-mix(in oklab, var(--bf-item-color, var(--bf-blue)), black 35%);
+			border: 1px solid color-mix(in oklab, var(--bf-item-color, var(--bf-border-color-blue)), black 35%);
 			padding-inline: 0.25rem;
 			border-radius: 5px;
-			background-color: color-mix(in oklab, color-mix(in oklab, var(--bf-item-color, var(--bf-blue)), white 90%), transparent 50%);
+			background-color: color-mix(in oklab, color-mix(in oklab, var(--bf-item-color, var(--bf-border-color-blue)), white 90%), transparent 50%);
 			text-decoration: none;
 		}
 

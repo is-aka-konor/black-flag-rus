@@ -18,7 +18,7 @@ blackFlag-xpBar {
 		inline-size: 100%;
 		border: 1px solid black;
 		border-radius: var(--bar-height);
-		background-color: var(--bf-color-fill);
+		background-color: var(--bf-background-color-white);
 	}
 	[role="meter"]::after {
 		content: "";
@@ -27,7 +27,7 @@ blackFlag-xpBar {
 		max-inline-size: calc(100% - var(--bar-inset) * 2);
 		inset: var(--bar-inset);
 		inset-inline-end: calc((100% - var(--bar-inset) * 2) - var(--bar-percentage));
-		background-color: var(--bf-blue);
+		background-color: var(--bf-background-color-blue);
 		border-radius: calc(var(--bar-height) - var(--bar-inset) * 2);
 		transition: inset-inline-end 300ms ease-in-out;
 	}
@@ -44,9 +44,9 @@ blackFlag-xpBar {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		align-items: stretch;
-		border: 1px solid var(--bf-color-border-gray);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: var(--input-border-radius);
-		background: var(--bf-color-fill);
+		background: var(--bf-background-color-white);
 		> * {
 			block-size: unset;
 			inline-size: unset;
@@ -57,7 +57,7 @@ blackFlag-xpBar {
 			line-height: 1.5em;
 		}
 		input {
-			border-inline-end: 1px solid var(--bf-color-border-gray);
+			border-inline-end: 1px solid var(--bf-border-color-gray);
 			border-start-start-radius: var(--input-border-radius);
 			border-end-start-radius: var(--input-border-radius);
 		}

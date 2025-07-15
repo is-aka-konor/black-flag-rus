@@ -53,7 +53,7 @@
 	position: relative;
 	block-size: unset;
 	inline-size: 100%;
-	border: 1px solid var(--bf-color-border-blue);
+	border: 1px solid var(--bf-border-color-blue);
 	border-radius: var(--bf-button-border-radius);
 	padding-block: 1px;
 	padding-inline: 8px;
@@ -67,7 +67,7 @@
 		content: "";
 		position: absolute;
 		inset: var(--bf-button-inset);
-		border: 1px solid var(--bf-color-border-gray);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: calc(var(--bf-button-border-radius) - var(--bf-button-inset));
 	}
 
@@ -111,13 +111,13 @@
 
 .mini-button {
 	all: unset;
-	border: .5px solid var(--bf-color-border-blue);
+	border: .5px solid var(--bf-border-color-blue);
 	border-radius: 4px;
 	padding-inline-start: 2px;
 	padding-block: 1px;
-	background: var(--bf-color-fill);
+	background: var(--bf-background-color-white);
 	box-shadow: 0 0 1px var(--color-shadow-dark);
-	color: var(--bf-blue);
+	color: var(--bf-text-color-blue);
 	font-size: var(--font-size-12);
 	cursor: pointer;
 	&:hover, &:focus { box-shadow: none; }
@@ -140,7 +140,7 @@
 		position: relative;
 		margin-block-end: 8px;
 		margin-inline: 6px;
-		border: 1px solid var(--bf-color-border-blue);
+		border: 1px solid var(--bf-border-color-blue);
 		border-block-start-width: 0;
 		border-end-start-radius: 8px;
 		border-end-end-radius: 8px;
@@ -176,20 +176,20 @@
 	background: none;
 	border: 1px solid transparent;
 
-	&:hover:not(:disabled), &:focus { box-shadow: 0 0 4px var(--bf-color-border-light-blue); }
+	&:hover:not(:disabled), &:focus { box-shadow: 0 0 4px var(--bf-border-color-light-blue); }
 	&:hover:disabled { border: 1px solid transparent; }
-	&:focus { border-color: var(--bf-blue); }
+	&:focus { border-color: var(--bf-border-color-blue); }
 }
 
 .unlink {
 	&:hover, &:focus { text-shadow: none; }
 	&:hover, &:focus-visible {
-		.roll-link { text-shadow: 0 0 4px var(--bf-color-border-light-blue); }
+		.roll-link { text-shadow: 0 0 4px var(--bf-border-color-light-blue); }
 	}
 }
 .roll-link, .roll-link-group a {
 	text-decoration: underline;
-	&:hover, &:focus-visible { text-shadow: 0 0 4px var(--bf-color-border-light-blue); }
+	&:hover, &:focus-visible { text-shadow: 0 0 4px var(--bf-border-color-light-blue); }
 }
 .roll-link-group {
 	.extra-link {
@@ -258,7 +258,7 @@ table {
 
 	thead {
 		all: revert;
-		background: var(--bf-color-border-blue);
+		background: var(--bf-border-color-blue);
 		color: var(--bf-text-color-white);
 		th {
 			padding-block: 3px;
@@ -284,7 +284,7 @@ hr, .application hr {
 	width: 100%;
 	margin: 0;
 	border: none;
-	border-block-end: 2px dotted var(--bf-color-border-blue);
+	border-block-end: 2px dotted var(--bf-border-color-blue);
 	background: none;
 }
 
@@ -306,7 +306,7 @@ hr, .application hr {
 	flex-wrap: wrap;
 	gap: 4px;
 	.tag {
-		border: 1px solid var(--bf-color-border-gray);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: 3px;
 		padding-inline: 4px;
 		background: var(--bf-background-color-half-white);

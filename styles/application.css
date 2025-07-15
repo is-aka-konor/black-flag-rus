@@ -3,8 +3,8 @@
 /* <><><><> <><><><> <><><><> <><><><> */
 
 .black-flag.application {
-	--color-fieldset-border: var(--bf-blue);
-	--color-scrollbar: var(--bf-blue);
+	--color-fieldset-border: var(--bf-border-color-blue);
+	--color-scrollbar: var(--bf-scrollbar-color);
 	--color-shadow-primary: var(--bf-button-shadow-blue);
 	--fieldset-gap: 8px;
 	max-height: 85vh;
@@ -12,16 +12,16 @@
 	padding: 0;
 
 	button:not(.link-button) {
-		--button-hover-background-color: var(--bf-blue);
-		--button-hover-border-color: var(--bf-color-border-black);
+		--button-hover-background-color: var(--bf-button-background-color-regular);
+		--button-hover-border-color: var(--bf-border-color-black);
 		line-height: 28px;
 	}
 	input, select {
 		--input-focus-outline-color: var(--bf-button-shadow-blue);
 	}
 	input[type="checkbox"] {
-		--checkbox-checked-color: var(--bf-blue);
-		--checkbox-checkmark-color: var(--bf-color-fill);
+		--checkbox-checked-color: var(--bf-border-color-blue);
+		--checkbox-checkmark-color: var(--bf-background-color-white);
 	}
 	textarea:focus {
 		box-shadow: 0 0 6px var(--bf-button-shadow-blue);
@@ -68,19 +68,5 @@
 		gap: 0;
 
 		.hint { font-size: var(--font-size-12); }
-	}
-}
-
-.theme-dark .black-flag.application {
-	--bf-background-color-white: rgb(0 0 0);
-	--bf-background-color-half-white: rgb(0 0 0 / 0.5);
-	--bf-color-border-blue: color-mix(in oklab, var(--bf-blue), #89d3ff 25%);
-	--bf-text-color-blue: color-mix(in oklab, var(--bf-blue), #89d3ff 25%);
-
-	.hint {
-		color: var(--color-text-light-secondary);
-	}
-	textarea {
-		background: var(--color-cool-4);
 	}
 }

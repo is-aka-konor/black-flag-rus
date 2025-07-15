@@ -4,7 +4,7 @@
 export default class BlackFlagJournalEntrySheet extends foundry.applications.sheets.journal.JournalEntrySheet {
 	/** @override */
 	static DEFAULT_OPTIONS = {
-		classes: ["black-flag-journal"]
+		classes: ["black-flag"]
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -35,7 +35,7 @@ export default class BlackFlagJournalEntrySheet extends foundry.applications.she
 	 */
 	static onRenderJournalPageSheet(page, element) {
 		if (page.document.parent?.sheet instanceof BlackFlagJournalEntrySheet) {
-			element.classList.add("black-flag-journal");
+			element.classList.add("black-flag");
 		}
 	}
 

@@ -7,12 +7,12 @@ blackFlag-activities {
 	}
 
 	&[data-drop-status="valid"] > fieldset {
-		border-color: var(--bf-color-border-drop-valid);
+		border-color: var(--bf-border-color-drop-valid);
 	}
 	&[data-drop-status="invalid"] > fieldset {
-		border-color: var(--bf-color-border-drop-invalid);
+		border-color: var(--bf-border-color-drop-invalid);
 	}
 	&[data-drop-status="unknown"] > fieldset {
-		border-color: var(--bf-color-border-drop-unknown);
+		border-color: var(--bf-border-color-drop-unknown);
 	}
 }

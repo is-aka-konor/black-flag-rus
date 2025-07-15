@@ -24,7 +24,7 @@
 			font-family: var(--bf-font-header);
 		}
 		input.document-name {
-			border: 1px solid var(--bf-color-border-blue);
+			border: 1px solid var(--bf-border-color-blue);
 			border-radius: 0;
 			block-size: var(--header-size);
 		}

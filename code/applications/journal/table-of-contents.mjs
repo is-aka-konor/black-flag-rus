@@ -4,7 +4,7 @@
 export default class TableOfContentsCompendium extends foundry.applications.sidebar.apps.Compendium {
 	/** @override */
 	static DEFAULT_OPTIONS = {
-		classes: ["table-of-contents"],
+		classes: ["black-flag", "table-of-contents"],
 		window: {
 			resizable: true,
 			contentTag: "article"

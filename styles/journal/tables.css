@@ -1,7 +1,7 @@
-:is(.black-flag-journal, .black-flag .description, .content-embed, document-embed) {
+:is(.black-flag.journal-sheet, .black-flag .description, .content-embed, document-embed) {
 	table {
 		margin-block-start: 1rem;
-		border-block: 2px solid var(--bf-color-border-blue);
+		border-block: 2px solid var(--bf-border-color-blue);
 		background: var(--bf-background-color-half-white);
 		word-break: normal;
 
@@ -13,10 +13,10 @@
 		}
 
 		thead {
-			background: var(--bf-text-color-blue);
+			background: var(--bf-background-color-blue);
 			color: white;
 			text-shadow: none;
-	
+
 			th {
 				font-size: var(--font-size-14);
 				text-align: start;
@@ -26,7 +26,7 @@
 
 		tbody {
 			tr:not(:last-child) {
-				border-block-end: 0.5px solid var(--bf-color-border-blue);
+				border-block-end: 0.5px solid var(--bf-border-color-blue);
 			}
 			tr:nth-child(2n) {
 				background: lch(0% 0% 0deg / 0.05);

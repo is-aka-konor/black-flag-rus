@@ -8,15 +8,15 @@
 	.luck-point {
 		width: 1.5em;
 		height: 1.5em;
-		border: 1px solid var(--bf-color-border-gray);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: 100%;
 
 		&.selected {
-			background-color: color-mix(in oklab, var(--bf-blue), rgba(0, 0, 0, 0.25) 20%);
+			background-color: color-mix(in oklab, var(--bf-background-color-blue), rgba(0, 0, 0, 0.25) 20%);
 		}
 	}
 
 	&.cost .luck-point {
-		background-color: var(--bf-color-border-gray);
+		background-color: var(--bf-border-color-gray);
 	}
 }

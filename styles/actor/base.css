@@ -1,6 +1,6 @@
 .actor.sheet {
 	scrollbar-width: thin;
-	scrollbar-color: var(--bf-blue) transparent;
+	scrollbar-color: var(--bf-scrollbar-color) transparent;
 
 	.profile {
 		border: 1px solid transparent;
@@ -8,7 +8,7 @@
 		cursor: pointer;
 
 		&[data-edit] {
-			border-color: var(--bf-color-border-blue);
+			border-color: var(--bf-border-color-blue);
 		}
 	}
 }

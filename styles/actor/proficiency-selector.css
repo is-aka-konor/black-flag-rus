@@ -1,6 +1,6 @@
 .proficiency-selector {
-	--blank-color: rgba(0, 0, 0, 0.15);
-	--proficient-color: var(--bf-color);
+	--blank-color: color-mix(in oklab, var(--bf-text-color-black), transparent 85%);
+	--proficient-color: var(--bf-text-color-black);
 	--top-color: var(--blank-color);
 	--bottom-color: var(--blank-color);
 	--side-color: var(--blank-color);

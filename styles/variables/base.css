@@ -1,0 +1,61 @@
+/* <><><><> <><><><> <><><><> <><><><> */
+/*                Fonts                */
+/* <><><><> <><><><> <><><><> <><><><> */
+
+@font-face {
+	font-family: "Open Sans";
+	font-style: italic;
+	font-stretch: 75% 100%;
+	font-weight: 300 800;
+	src: url("fonts/Open_Sans/Open_Sans_i.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Open Sans";
+	font-style: normal;
+	font-stretch: 75% 100%;
+	font-weight: 300 800;
+	src: url("fonts/Open_Sans/Open_Sans.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Oswald";
+	font-style: normal;
+	font-weight: 200 700;
+	src: url("fonts/Oswald/Oswald.woff2") format("woff2");
+}
+
+/* <><><><> <><><><> <><><><> <><><><> */
+/*               Styles                */
+/* <><><><> <><><><> <><><><> <><><><> */
+
+:root {
+	--bf-color-blue: rgb(45 82 129);
+
+	--bf-blue: red;
+
+	--bf-button-border-radius: 4px;
+	--bf-button-inset: 1px;
+
+	--bf-context-option-color-destructive: rgb(255 65 65);
+
+	--bf-death-saves-failure-color: rgb(255 53 53);
+	--bf-death-saves-success-color: rgb(53 238 53);
+
+	--bf-dice-color-critical-failure: oklch(60% 0.259 27);
+	--bf-dice-color-critical-success: oklch(60% 0.259 142.41);
+	--bf-dice-color-failure: oklch(25% 75% 50deg);
+	--bf-dice-color-failure-background: oklch(90% 10% 25deg);
+	--bf-dice-color-success: oklch(25% 75% 120deg);
+	--bf-dice-color-success-background: oklch(90% 10% 125deg);
+
+	--bf-font-primary: "Open Sans", sans-serif;
+	--bf-font-header: "Oswald", sans-serif;
+
+	--bf-form-label-width: min(12em, 33%);
+
+	--bf-tray-transition: 250ms;
+
+	--font-size-8: 0.5rem;
+	--font-size-9: 0.5625rem;
+	--font-size-10: 0.625rem;
+}

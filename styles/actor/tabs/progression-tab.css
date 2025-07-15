@@ -93,9 +93,9 @@
 				padding-inline: 1rem;
 				padding-block: 0.25rem;
 				background: linear-gradient(
-					color-mix(in oklab, var(--bf-color-border-blue), white 30%),
-					color-mix(in oklab, var(--bf-color-border-blue), white 10%),
-					color-mix(in oklab, var(--bf-color-border-blue), black 20%)
+					color-mix(in oklab, var(--bf-border-color-blue), white 30%),
+					color-mix(in oklab, var(--bf-border-color-blue), white 10%),
+					color-mix(in oklab, var(--bf-border-color-blue), black 20%)
 				);
 				box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.25);
 				color: white;

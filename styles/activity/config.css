@@ -34,7 +34,7 @@
 			&::before, &::after {
 				content: "";
 				flex-basis: 50%;
-				border-top: 1px dotted var(--bf-color-border-blue);
+				border-top: 1px dotted var(--bf-border-color-blue);
 				align-self: center;
 			}
 		}
@@ -126,7 +126,7 @@
 		.content-link {
 			block-size: var(--input-height);
 			margin-block: 3px;
-			border: 1.5px dashed var(--bf-color-border-blue);
+			border: 1.5px dashed var(--bf-border-color-blue);
 			border-radius: 10px;
 			text-align: center;
 		}

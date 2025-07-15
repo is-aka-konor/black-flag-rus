@@ -10,7 +10,7 @@
 		position: relative;
 		padding: 8px;
 		background: var(--bf-background-color-half-white);
-		border: 1px solid var(--bf-color-border-gray);
+		border: 1px solid var(--bf-border-color-gray);
 		border-radius: 4px;
 		box-shadow: 0 0 4px rgb(0 0 0 / 15%);
 

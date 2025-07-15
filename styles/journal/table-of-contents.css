@@ -10,7 +10,7 @@
 		overflow: auto;
 
 		scrollbar-width: thin;
-		scrollbar-color: var(--bf-blue) transparent;
+		scrollbar-color: var(--bf-scrollbar-color) transparent;
 
 		&::-webkit-scrollbar-track {
 			box-shadow: none;
@@ -19,7 +19,7 @@
 
 		&::-webkit-scrollbar-thumb {
 			border: none;
-			background: var(--bf-blue);
+			background: var(--bf-scrollbar-color);
 		}
 	}
 

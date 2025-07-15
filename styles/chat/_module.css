@@ -15,7 +15,7 @@
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
-			border: 2px solid var(--bf-color-border-gray);
+			border: 2px solid var(--bf-border-color-gray);
 			border-radius: var(--card-border-radius);
 			background: var(--bf-background-color-half-white);
 
@@ -24,7 +24,7 @@
 				inline-size: 45px;
 				block-size: 45px;
 				padding: 2px;
-				border: 2px solid var(--bf-color-border-blue);
+				border: 2px solid var(--bf-border-color-blue);
 				border-radius: var(--card-border-radius);
 				object-fit: scale-down;
 			}
@@ -107,7 +107,7 @@
 		&::before, &::after {
 			content: "";
 			flex-basis: 50%;
-			border-block-start: 1px dotted var(--bf-color-border-blue);
+			border-block-start: 1px dotted var(--bf-border-color-blue);
 			align-self: center;
 		}
 	}
@@ -116,7 +116,7 @@
 .card-tray {
 	.effects, .targets {
 		margin-block: 4px;
-		border: 2px solid var(--bf-color-border-gray);
+		border: 2px solid var(--bf-border-color-gray);
 		border-radius: 4px;
 		background-color: var(--bf-background-color-half-white);
 
@@ -132,7 +132,7 @@
 				padding-block-start: 6px;
 			}
 			&:not(:last-child) {
-				border-block-end: 1px dashed var(--bf-color-border-blue);
+				border-block-end: 1px dashed var(--bf-border-color-blue);
 				padding-block-end: 6px;
 			}
 
@@ -179,7 +179,7 @@
 	.dice-tooltip {
 		position: relative;
 		margin-inline: 4px;
-		border-inline: 1px solid var(--bf-color-border-gray);
+		border-inline: 1px solid var(--bf-border-color-gray);
 		padding-inline: 4px;
 		box-shadow: 0 0 4px rgb(0 0 0 / 15%);
 		z-index: -1;

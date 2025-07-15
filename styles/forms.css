@@ -5,7 +5,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		border: 2px solid var(--bf-color-border-blue);
+		border: 2px solid var(--bf-border-color-blue);
 		border-radius: 0;
 		padding-block-start: 5px;
 		padding-block-end: 9px;
@@ -59,7 +59,7 @@
 			margin-inline: calc(var(--fieldset-padding) * -1);
 			padding-block: 3px 2px;
 			padding-inline: 10px;
-			background: var(--bf-color-border-blue);
+			background: var(--bf-border-color-blue);
 			color: var(--bf-text-color-white);
 		}
 	}
@@ -152,7 +152,7 @@
 	.drop-area {
 		.hint, &.hint {
 			flex: unset;
-			border: 1.5px dashed var(--bf-color-border-blue);
+			border: 1.5px dashed var(--bf-border-color-blue);
 			border-radius: 10px;
 			padding: 0.5rem;
 			font-family: var(--bf-font-primary);
@@ -164,16 +164,16 @@
 			margin-block-start: 0.5rem;
 		}
 		&.valid {
-			border-color: var(--bf-color-border-drop-valid);
+			border-color: var(--bf-border-color-drop-valid);
 		}
 		&.invalid {
-			border-color: var(--bf-color-border-drop-invalid);
+			border-color: var(--bf-border-color-drop-invalid);
 		}
 	}
 
 	.hinted-label {
 		text-decoration: underline;
-		text-decoration-color: var(--bf-color-border-blue);
+		text-decoration-color: var(--bf-border-color-blue);
 		text-decoration-style: dashed;
 		text-decoration-thickness: 1px;
 		cursor: help;
@@ -181,7 +181,7 @@
 		&::after {
 			content: "\f059";
 			display: var(--fa-display, inline-block);
-			color: var(--bf-color-border-blue);
+			color: var(--bf-border-color-blue);
 			font-family: var(--font-awesome);
 			font-size: var(--font-size-11);
 			font-style: normal;
@@ -202,7 +202,7 @@
 			flex-wrap: wrap;
 
 			.tag {
-				border: 1px solid var(--bf-color-border-blue);
+				border: 1px solid var(--bf-border-color-blue);
 				border-radius: 3px;
 				padding-block: 1px;
 				padding-inline: 4px;
@@ -214,9 +214,9 @@
 	}
 
 	range-picker input[type="range"] {
-		--range-thumb-background-color: var(--bf-blue);
-		--range-thumb-border-color: var(--bf-color-border-black);
-		--range-track-border-color: var(--bf-color-border-black);
+		--range-thumb-background-color: var(--bf-background-color-blue);
+		--range-thumb-border-color: var(--bf-border-color-black);
+		--range-track-border-color: var(--bf-border-color-black);
 
 		&:focus-visible {
 			&::-moz-range-track { box-shadow: 0 0 6px var(--bf-button-shadow-blue); }

@@ -21,7 +21,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 					right: 0;
 					top: 0;
 					bottom: 0;
-					border-inline-end: 1px solid var(--bf-color-border-gray);
+					border-inline-end: 1px solid var(--bf-border-color-gray);
 					mask-image: linear-gradient(to bottom, transparent, #000 30% 70%, transparent);
 				}
 			}
@@ -37,7 +37,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 				) var(--background-base-color);
 
 				&:nth-child(odd of [data-item-id]) {
-					--background-base-color: rgb(255 255 255 / .2);
+					--background-base-color: var(--bf-background-color-quarter-white);
 				}
 
 				.name {
@@ -97,7 +97,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 		> tbody {
 			> tr:first-child {
 				position: relative;
-				border: 2px inset color-mix(in oklab, var(--bf-color-border-blue), white 40%);
+				border: 2px inset color-mix(in oklab, var(--bf-border-color-blue), white 40%);
 				background-color: var(--bf-background-color-half-white);
 				font-family: var(--bf-font-header);
 				font-weight: 600;
@@ -106,7 +106,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 					content: "";
 					position: absolute;
 					inset: 3px;
-					border: 1px solid var(--bf-color-border-gray);
+					border: 1px solid var(--bf-border-color-gray);
 					box-shadow: 0px 0px 3px rgb(0 0 0 / 0.25);
 					z-index: 0;
 				}
@@ -236,9 +236,11 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 }
 
 .encumbrance[role="meter"] {
+	--bf-encumbrance-color-background: var(--bf-background-color-white);
+
 	isolation: isolate;
 	position: relative;
-	border: 1px solid var(--bf-color-border-blue);
+	border: 1px solid var(--bf-border-color-blue);
 	border-radius: 4px;
 	overflow: hidden;
 
@@ -248,8 +250,8 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 		inset-block: 0;
 		inset-inline-start: 0;
 		inset-inline-end: min(calc(100% - 5px), calc(100% - var(--bar-percentage)));
-		outline: 1px solid var(--bf-color-border-black);
-		background-color: var(--bf-color-encumbrance-bar);
+		outline: 1px solid var(--bf-border-color-black);
+		background-color: var(--bf-encumbrance-color-background);
 		box-shadow: 0 0 4px rgb(0 0 0 / 45%);
 		z-index: -1;
 	}
@@ -279,7 +281,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 		&::before, &::after {
 			position: absolute;
 			inset-inline-start: -3.5px;
-			color: var(--bf-color-border-blue);
+			color: var(--bf-border-color-blue);
 			font-family: var(--font-awesome);
 			font-size: 12px;
 			font-weight: bold;

@@ -10,7 +10,7 @@
 		display: flex;
 		align-items: center;
 		padding-inline-start: 8px;
-		border: 1px solid var(--bf-color-border-blue);
+		border: 1px solid var(--bf-border-color-blue);
 		border-radius: 4px;
 		gap: 2px;
 

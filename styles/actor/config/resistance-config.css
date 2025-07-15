@@ -16,7 +16,7 @@
 		&:has(td:nth-child(2):is(:hover, :focus-visible)) col.res,
 		&:has(td:nth-child(3):is(:hover, :focus-visible)) col.imm,
 		&:has(td:nth-child(4):is(:hover, :focus-visible)) col.vul {
-			background: color-mix(in oklab, var(--bf-blue), transparent 80%);
+			background: color-mix(in oklab, var(--bf-background-color-blue), transparent 80%);
 		}
 		td, th {
 			padding-inline: 3px;

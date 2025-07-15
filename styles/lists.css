@@ -69,7 +69,7 @@
 		padding-inline: 0;
 
 		&:not(:last-of-type) {
-			border-block-end: 1px solid var(--bf-color-border-gray);
+			border-block-end: 1px solid var(--bf-border-color-gray);
 			padding-block-end: 0.25rem;
 		}
 
@@ -135,7 +135,7 @@ ul.configuration-list {
 	list-style: none;
 
 	&:not(:last-child) {
-		border-block-end: 2px dotted var(--bf-color-border-blue);
+		border-block-end: 2px dotted var(--bf-border-color-blue);
 		padding-block-end: 8px;
 	}
 
@@ -150,7 +150,7 @@ ul.configuration-list {
 			padding-block-start: 8px;
 		}
 		&:not(:last-of-type) {
-			border-block-end: 2px dotted var(--bf-color-border-blue);
+			border-block-end: 2px dotted var(--bf-border-color-blue);
 			padding-block-end: 8px;
 		}
 

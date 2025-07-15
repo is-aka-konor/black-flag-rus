@@ -1,5 +1,5 @@
 .black-flag-tooltip:is(#tooltip, .locked-tooltip) {
-	border: 3px solid var(--bf-color-border-blue);
+	border: 3px solid var(--bf-border-color-blue);
 	border-radius: 6px;
 	background: var(--bf-background-color-white);
 	color: var(--bf-text-color-black);
@@ -19,7 +19,7 @@
 	}
 
 	&.locked-tooltip {
-		outline: 1px solid var(--bf-color-border-gray);
+		outline: 1px solid var(--bf-border-color-gray);
 		outline-offset: -1.5px;
 		z-index: calc(var(--z-index-tooltip) - 1);
 	}
@@ -46,7 +46,7 @@
 			overflow: hidden;
 			scrollbar-width: thin;
 			scrollbar-gutter: stable;
-			scrollbar-color: var(--bf-blue) transparent;
+			scrollbar-color: var(--bf-scrollbar-color) transparent;
 			font-size: var(--font-size-13);
 			line-height: normal;
 			text-align: start;
@@ -57,7 +57,7 @@
 			}
 			&::-webkit-scrollbar-thumb {
 				border: none;
-				background: var(--bf-blue);
+				background: var(--bf-scrollbar-color);
 			}
 
 			&.overflowing { mask-image: linear-gradient(to bottom, black 90%, transparent); }
@@ -76,7 +76,7 @@
 			display: flex;
 			align-items: first baseline;
 			justify-content: space-between;
-			border-block-end: 1px solid var(--bf-color-border-blue);
+			border-block-end: 1px solid var(--bf-border-color-blue);
 			padding-inline: 12px;
 			padding-block-start: 12px;
 

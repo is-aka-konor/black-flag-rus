@@ -1,10 +1,10 @@
-.black-flag-journal {
+.black-flag {
 	&.journal-entry .journal-entry-content, &.journal-entry-page .window-content {
 		background: var(--bf-journal-background);
 	}
 	&.journal-entry .scrollable, &.journal-entry-page {
 		scrollbar-width: thin;
-		scrollbar-color: var(--bf-blue) transparent;
+		scrollbar-color: var(--bf-scrollbar-color) transparent;
 
 		&::-webkit-scrollbar-track {
 			box-shadow: none;
@@ -13,12 +13,12 @@
 
 		&::-webkit-scrollbar-thumb {
 			border: none;
-			background: var(--bf-blue);
+			background: var(--bf-scrollbar-color);
 		}
 	}
 }
 
-:is(.black-flag-journal .journal-entry-content, .editor, .black-flag .description, .black-flag-tooltip .description) {
+:is(.black-flag .journal-entry-content, .editor, .black-flag .description, .black-flag-tooltip .description) {
 	h1 {
 		border: none;
 		color: var(--bf-text-color-blue);
@@ -27,7 +27,7 @@
 		text-transform: uppercase;
 	}
 	h2 {
-		border-block-end: 1px solid var(--bf-color-border-blue);
+		border-block-end: 1px solid currentcolor;
 		color: var(--bf-text-color-blue);
 		font-family: var(--bf-font-header);
 		font-size: var(--font-size-32);
@@ -43,7 +43,7 @@
 		text-transform: uppercase;
 	}
 	h4 {
-		border-block-end: 1px solid var(--bf-color-border-blue);
+		border-block-end: 1px solid currentcolor;
 		color: var(--bf-text-color-blue);
 		font-family: var(--bf-font-primary);
 		font-size: var(--font-size-20);
@@ -90,10 +90,10 @@
 
 	blockquote {
 		margin-inline: 4px;
-		border-block: 3px dotted var(--bf-blue);
+		border-block: 3px dotted var(--bf-border-color-blue);
 		border-inline: none;
 		padding-inline: 4px;
-		color: var(--bf-blue);
+		color: var(--bf-text-color-blue);
 		font-style: normal;
 	}
 
@@ -109,7 +109,7 @@
 
 	h4.solid {
 		padding-inline: 6px;
-		background: var(--bf-text-color-blue);
+		background: var(--bf-background-color-blue);
 		color: var(--bf-text-color-white);
 		font-size: var(--font-size-14);
 	}
@@ -128,9 +128,10 @@
 	}
 
 	h5.spell {
-		background: var(--bf-color-border-black);
+		background: var(--bf-background-color-dark-blue);
 		color: var(--bf-text-color-white);
 		padding-inline: 4px;
+		a { color: inherit }
 	}
 	h5.spell-list {
 		background: rgb(0 0 0 / .05);
@@ -231,12 +232,12 @@
 	}
 }
 
-.black-flag, .black-flag-journal {
+.black-flag {
 	.content-link, .inline-roll, a.content-link {
 		border: none;
 		padding: 0;
 		background: none;
-		text-decoration-color: var(--bf-blue);
+		text-decoration-color: var(--bf-text-color-blue);
 		text-decoration-line: underline;
 		text-decoration-style: dotted;
 		text-decoration-thickness: 1.5px;

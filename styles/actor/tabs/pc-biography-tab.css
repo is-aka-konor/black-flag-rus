@@ -33,17 +33,17 @@
 			text-transform: uppercase;
 		}
 		input {
-			border: 1px solid var(--bf-color-border-blue);
+			border: 1px solid var(--bf-border-color-blue);
 			padding-inline: 5px;
 			&[disabled] {
-				border-color: var(--bf-color-border-gray);
+				border-color: var(--bf-border-color-gray);
 				background: none;
 			}
 		}
 	}
 	.biography-block {
 		h3 {
-			border-block-end: 1px solid var(--bf-color-border-blue);
+			border-block-end: 1px solid var(--bf-border-color-blue);
 			font-family: var(--bf-font-header);
 			font-size: var(--font-size-18);
 			font-weight: 400;

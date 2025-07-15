@@ -13,7 +13,7 @@ blackFlag-damageApplication, blackFlag-effectApplication {
 			}
 			&:focus-visible {
 				border-radius: 2px;
-				outline: 1px solid var(--bf-color-border-blue);
+				outline: 1px solid var(--bf-border-color-blue);
 				outline-offset: 2px;
 			}
 		}
@@ -68,10 +68,10 @@ blackFlag-damageApplication {
 				padding-inline-end: 4px;
 				font-size: var(--font-size-14);
 				font-weight: bold;
-				color: var(--bf-color-application-damage);
-			
-				&.healing { color: var(--bf-color-application-healing); }
-				&.temp { color: var(--bf-color-application-temp); }
+				color: var(--bf-text-color-application-damage);
+
+				&.healing { color: var(--bf-text-color-application-healing); }
+				&.temp { color: var(--bf-text-color-application-temp); }
 			}
 		}
 
@@ -98,7 +98,7 @@ blackFlag-damageApplication {
 				align-items: center;
 				justify-content: center;
 				gap: 4px;
-				border: 1px solid var(--bf-color-border-gray);
+				border: 1px solid var(--bf-border-color-gray);
 				border-radius: 5px;
 				padding: 2px;
 				box-shadow: 0 0 4px rgb(0 0 0 / .15);
@@ -111,17 +111,17 @@ blackFlag-damageApplication {
 					display: block;
 					width: 8px;
 					height: 8px;
-					border: 1px solid var(--bf-color-border-gray);
+					border: 1px solid var(--bf-border-color-gray);
 					border-radius: 8px;
 				}
 
 				&[aria-pressed="true"] {
-					border-color: var(--bf-color-border-blue);
-					&::after { background-color: var(--bf-color-border-blue); }
+					border-color: var(--bf-border-color-blue);
+					&::after { background-color: var(--bf-border-color-blue); }
 				}
 
 				&:focus-visible {
-					outline: 1px solid var(--bf-color-border-blue);
+					outline: 1px solid var(--bf-border-color-blue);
 					outline-offset: 2px;
 					z-index: 4;
 				}

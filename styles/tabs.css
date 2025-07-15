@@ -1,7 +1,7 @@
 nav.tabs.tabs-separate {
 	--tab-gap: 6px;
 	--tab-background-active: transparent;
-	--tab-background-hover: color-mix(in oklab, var(--bf-blue), transparent 80%);
+	--tab-background-hover: color-mix(in oklab, var(--bf-background-color-blue), transparent 80%);
 	--tab-border-radius: 8px;
 
 	margin-block-start: 6px;
@@ -18,7 +18,7 @@ nav.tabs.tabs-separate {
 		max-width: 17em;
 		display: block;
 		border: 1px solid transparent;
-		border-block-end-color: var(--bf-color-border-blue);
+		border-block-end-color: var(--bf-border-color-blue);
 		border-start-start-radius: var(--tab-border-radius);
 		border-start-end-radius: var(--tab-border-radius);
 		padding-block: 4px 2px;
@@ -28,7 +28,7 @@ nav.tabs.tabs-separate {
 	}
 	a.active {
 		background: var(--tab-background-active);
-		border-color: var(--bf-color-border-blue);
+		border-color: var(--bf-border-color-blue);
 		border-block-end-color: transparent;
 	}
 	a:hover, a:focus-visible {
@@ -38,7 +38,7 @@ nav.tabs.tabs-separate {
 	a::after, a::before {
 		position: absolute;
 		inset-block: -1px;
-		border-block-end: 1px solid var(--bf-color-border-blue);
+		border-block-end: 1px solid var(--bf-border-color-blue);
 	}
 	a::after {
 		content: "";

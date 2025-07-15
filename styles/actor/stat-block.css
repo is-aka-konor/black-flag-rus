@@ -2,7 +2,7 @@
 	max-block-size: 90vh;
 	container: sheet / inline-size;
 	--end-border-radius: 18px;
-	--icon-fill: var(--bf-blue);
+	--icon-fill: var(--bf-icon-color-blue);
 
 	&:not(.minimized, .minimizing, .maximizing) {
 		min-block-size: 420px;
@@ -10,7 +10,7 @@
 	}
 
 	:is(input, select, textarea):is(:hover:not(:disabled), :focus) {
-		box-shadow: 0 0 4px 1px var(--bf-color-border-light-blue);
+		box-shadow: 0 0 4px 1px var(--bf-border-color-light-blue);
 	}
 
 	.sheet-header {
@@ -19,7 +19,7 @@
 		grid-template-columns: 1fr 4em;
 		border-start-end-radius: var(--end-border-radius);
 		border-end-end-radius: var(--end-border-radius);
-		background: var(--bf-dark-blue);
+		background: var(--bf-background-color-dark-blue);
 		color: var(--bf-text-color-white);
 		font-size: var(--font-size-16);
 		font-weight: bold;
@@ -76,11 +76,11 @@
 			text-decoration: none;
 		}
 		a:hover, a:focus {
-			border-color: var(--bf-color-border-gray);
+			border-color: var(--bf-border-color-gray);
 		}
 		a.active {
-			background: var(--bf-dark-blue);
-			border-color: var(--bf-color-border-blue);
+			background: var(--bf-background-color-dark-blue);
+			border-color: var(--bf-border-color-blue);
 			color: var(--bf-text-color-white);
 		}
 	}
@@ -137,7 +137,7 @@
 	}
 }
 
-.black-flag.actor.sheet .stat-block-tab, :is(.black-flag, .black-flag-journal) .stat-block {
+.black-flag.actor.sheet .stat-block-tab, .black-flag .stat-block {
 	label {
 		display: flex;
 		gap: 0.25em;
@@ -182,7 +182,7 @@
 			width: 6em;
 			height: unset;
 			line-height: unset;
-			border: 1px solid var(--bf-color-border-blue);
+			border: 1px solid var(--bf-border-color-blue);
 			background: rgb(255 255 255 / 0.05);
 		}
 		input[name^="system.attributes.hp"] {
@@ -208,9 +208,9 @@
 			--icon-fill: var(--bf-text-color-white);
 			blackFlag-icon {
 				filter:
-					drop-shadow(0 0 1px var(--bf-color-border-light-blue))
-					drop-shadow(0 0 3px var(--bf-color-border-light-blue))
-					drop-shadow(0 0 7px var(--bf-color-border-light-blue));
+					drop-shadow(0 0 1px var(--bf-border-color-light-blue))
+					drop-shadow(0 0 3px var(--bf-border-color-light-blue))
+					drop-shadow(0 0 7px var(--bf-border-color-light-blue));
 			}
 		}
 	}
@@ -225,7 +225,7 @@
 		grid-template-columns: repeat(6, 1fr);
 		grid-template-rows: max-content max-content max-content;
 		margin-block: 10px;
-		border-block: 2px solid var(--bf-color-border-blue);
+		border-block: 2px solid var(--bf-border-color-blue);
 		padding-block: 3px;
 		break-before: avoid;
 		break-inside: avoid;
@@ -311,7 +311,7 @@
 		}
 		textarea {
 			min-block-size: 100px;
-			border: 1px solid var(--bf-color-border-blue);
+			border: 1px solid var(--bf-border-color-blue);
 			margin-block-end: 8px;
 			resize: vertical;
 		}
@@ -341,7 +341,7 @@
 					width: unset;
 					height: calc(1em + 4px);
 					border: none;
-					outline: 1px solid var(--bf-color-border-blue);
+					outline: 1px solid var(--bf-border-color-blue);
 					background: rgb(255 255 255 / 0.05);
 				}
 				[name="system.spellcasting.dc"] {
@@ -362,7 +362,7 @@
 	}
 }
 
-:is(.black-flag, .black-flag-journal) {
+.black-flag {
 	--stat-block-column-width: 400px;
 
 	.stat-block {
@@ -374,11 +374,12 @@
 		h4.title {
 			margin: 0;
 			margin-block-end: 8px;
+			border: none;
 			border-start-end-radius: var(--end-border-radius);
 			border-end-end-radius: var(--end-border-radius);
 			padding-inline-start: 6px;
 			padding-inline-end: 12px;
-			background: var(--bf-text-color-blue);
+			background: var(--bf-background-color-blue);
 			color: var(--bf-text-color-white);
 			font-family: var(--bf-font-primary);
 			font-size: var(--font-size-16);

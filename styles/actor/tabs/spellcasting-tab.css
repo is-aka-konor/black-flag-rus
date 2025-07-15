@@ -8,7 +8,7 @@
 	.source-details {
 		border: 2px solid var(--item-color);
 		border-radius: 4px;
-		background: color-mix(in oklab, var(--bf-color-fill), transparent);
+		background: color-mix(in oklab, var(--bf-background-color-white), transparent);
 		box-shadow: 0 0 4px rgb(0 0 0 / 45%);
 
 		h3 {

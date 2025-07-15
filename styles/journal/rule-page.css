@@ -9,7 +9,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border-block-start: 2px dashed var(--bf-color-border-blue);
+		border-block-start: 2px dashed var(--bf-border-color-blue);
 		padding-block: 6px;
 		padding-inline: 12px;
 

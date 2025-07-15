@@ -14,7 +14,7 @@ blackFlag-deathSaves:not(#_) {
 		inline-size: 30px;
 		display: grid;
 		place-content: center;
-		border: 2px solid var(--bf-color-border-black);
+		border: 2px solid var(--bf-border-color-black);
 		border-radius: 100%;
 		background: var(--bf-gradiant-blue);
 		cursor: pointer;
@@ -22,7 +22,7 @@ blackFlag-deathSaves:not(#_) {
 		z-index: 4;
 
 		&:hover, &:focus-visible {
-			border-color: var(--bf-color-border-gray);
+			border-color: var(--bf-border-color-gray);
 		}
 		blackFlag-icon {
 			--icon-size: 20px;
@@ -40,7 +40,7 @@ blackFlag-deathSaves:not(#_) {
 
 		button {
 			grid-row: 1;
-			border: 1px solid var(--bf-color-border-blue);
+			border: 1px solid var(--bf-border-color-blue);
 			border-radius: 7px;
 			cursor: pointer;
 			filter: drop-shadow(0 0 3px rgb(0 0 0 / 15%));

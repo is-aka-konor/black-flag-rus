@@ -16,7 +16,7 @@ export default class BlackFlagJournalSheet extends foundry.appv1.sheets.JournalS
 	/** @inheritDoc */
 	static get defaultOptions() {
 		const options = super.defaultOptions;
-		options.classes.push("black-flag-journal");
+		options.classes.push("black-flag");
 		return options;
 	}
 
