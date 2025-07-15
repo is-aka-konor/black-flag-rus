@@ -25,7 +25,7 @@ export default class BaseActorSheet extends DocumentSheetMixin(foundry.appv1.she
 	constructor(...args) {
 		foundry.utils.logCompatibilityWarning(
 			"The `BaseActorSheet` application has been deprecated and replaced with `BaseActorSheetV2`.",
-			{ since: "Black Flag 2.0", until: "Black Flag 2.2", once: true }
+			{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
 		);
 		super(...args);
 	}

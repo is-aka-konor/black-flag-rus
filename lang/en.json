@@ -2427,7 +2427,10 @@
 		"Label": "Reset Formula",
 		"Hint": "Formula that will be rolled when luck exceeds maximum and is reset."
 	},
-	"RerollPrompt": "Which die should be re-rolled?",
+	"Reroll": {
+		"Prompt": "Which die should be re-rolled?",
+		"Title": "Re-roll"
+	},
 	"Warning": {
 		"Insufficient": "Insufficient luck points remaining.",
 		"OnlyOneReroll": "Only a single re-roll is allowed."

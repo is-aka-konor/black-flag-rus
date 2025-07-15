@@ -1,4 +1,4 @@
-import BlackFlagDialog from "../dialog.mjs";
+import BFDialog from "../api/dialog.mjs";
 import InventoryElement from "./inventory.mjs";
 
 export default class CurrencyElement extends InventoryElement {
@@ -19,20 +19,23 @@ export default class CurrencyElement extends InventoryElement {
 
 		let formData;
 		try {
-			formData = await BlackFlagDialog.tooltipWait(
+			formData = await BFDialog.tooltipWait(
 				{ element: target, cssClass: "add-currency" },
 				{
 					content,
-					buttons: {
-						addCurrency: {
-							label: `<i class="fas fa-coins"></i> ${game.i18n.localize("Add Currency")}`,
-							callback: html => new FormData(html.querySelector("form"))
+					buttons: [
+						{
+							action: "addCurrency",
+							label: "BF.Currency.Action.Add",
+							icon: "fas fa-coins",
+							default: true,
+							callback: (event, button, dialog) => new FormData(dialog.element.querySelector("form"))
 						}
-					},
-					default: "addCurrency",
-					render: true
-				},
-				{ jQuery: false }
+					],
+					window: {
+						title: "BF.Currency.Action.Add"
+					}
+				}
 			);
 		} catch (err) {
 			console.error(err);

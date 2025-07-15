@@ -1,4 +1,4 @@
-import BlackFlagDialog from "../dialog.mjs";
+import BFDialog from "../api/dialog.mjs";
 import MessageAssociatedElement from "./message-associated-element.mjs";
 
 /**
@@ -229,15 +229,18 @@ export default class MessageLuckElement extends MessageAssociatedElement {
 		let result = results[0];
 		if (resultValues.size > 1) {
 			// Prompt for which die to re-roll
-			result = await BlackFlagDialog.tooltipWait(
+			result = await BFDialog.tooltipWait(
 				{ element: event.currentTarget },
 				{
-					content: game.i18n.localize("BF.Luck.RerollPrompt"),
-					buttons: results.reduce((obj, r) => {
-						obj[r.result] = { label: r.result, callback: html => r };
-						return obj;
-					}, {}),
-					render: true
+					content: game.i18n.localize("BF.Luck.Reroll.Prompt"),
+					buttons: results.map(r => ({
+						action: `${r.result}`,
+						label: `${r.result}`,
+						callback: () => r
+					})),
+					window: {
+						title: "BF.Luck.Reroll.Title"
+					}
 				}
 			);
 		}

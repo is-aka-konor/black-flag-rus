@@ -1,4 +1,12 @@
 export default class BlackFlagDialog extends Dialog {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The `BlackFlagDialog` application has been deprecated and replaced with `BFDialog`.",
+			{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
+		);
+		super(...args);
+	}
+
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
