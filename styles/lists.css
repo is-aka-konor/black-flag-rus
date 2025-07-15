@@ -87,6 +87,8 @@
 
 		.icon {
 			margin: 0;
+			--icon-fill: var(--bf-icon-color-black);
+			--icon-size: var(--image-size);
 
 			img {
 				border: none;

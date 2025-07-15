@@ -274,8 +274,10 @@ table {
 	}
 	.item-title {
 		.item-image {
-			block-size: 28px;
-			inline-size: 28px;
+			--icon-fill: var(--bf-icon-color-black);
+			--icon-size: 28px;
+			block-size: var(--icon-size);
+			inline-size: var(--icon-size);
 		}
 	}
 }

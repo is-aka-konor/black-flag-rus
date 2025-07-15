@@ -25,6 +25,33 @@ function dataset(context, options) {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
+ * Create an icon element dynamically based on the provided icon string, supporting FontAwesome class strings
+ * or paths to SVG or other image types.
+ * @param {string} icon - Icon class or path.
+ * @param {object} [options={}]
+ * @param {string} [options.alt] - Alt text for the icon.
+ * @param {string} [options.classes] - Classes to add to the icon.
+ * @returns {HTMLElement|null}
+ */
+export function generateIcon(icon, { alt, classes }={}) {
+	let element;
+	if ( icon?.startsWith("fa") ) {
+		element = document.createElement("i");
+		element.className = icon;
+	} else if ( icon ) {
+		element = document.createElement(icon.endsWith(".svg") ? "blackFlag-icon" : "img");
+		element.src = icon;
+	} else {
+		return null;
+	}
+	if ( alt ) element[element.tagName === "IMG" ? "alt" : "ariaLabel"] = alt;
+	if ( classes ) element.classList.add(...classes.split(" "));
+	return element;
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
  * A helper to create a set of <option> elements in a <select> block grouped together
  * in <optgroup> based on the provided categories.
  *
@@ -157,6 +184,11 @@ export function registerHandlebarsHelpers() {
 	Handlebars.registerHelper({
 		"blackFlag-dataset": dataset,
 		"blackFlag-groupedSelectOptions": (choices, options) => groupedSelectOptions(choices, options.hash),
+		"blackFlag-icon": (icon, { hash: options }) => {
+			let element = generateIcon(icon, options);
+			if ( !element && options.fallback ) element = generateIcon(options.fallback, options);
+			return element ? new Handlebars.SafeString(element.outerHTML) : "";
+		},
 		"blackFlag-itemContext": itemContext,
 		"blackFlag-linkForUUID": (uuid, options) => new Handlebars.SafeString(linkForUUID(uuid, options.hash)),
 		"blackFlag-multiSelect": multiSelect,

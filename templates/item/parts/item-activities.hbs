@@ -5,10 +5,8 @@
 			{{#each system.activities}}
 				<li class="item activity-entry" data-activity-id="{{ id }}">
 					<div class="item-name activity-name">
-						<figure class="icon">
-							<img src="{{ img }}">
-						</figure>
-						<h4>{{ name }}</h4>
+						{{ blackFlag-icon img alt=name classes="icon" }}
+						<span class="item-name">{{ name }}</span>
 					</div>
 					<div class="item-controls activity-controls">
 						{{#if @root.editable}}
