@@ -24,7 +24,7 @@ export default class BaseCustomConfigSheet extends BaseConfigSheet {
 	 * @param {HTMLElement} target - Button that was clicked.
 	 */
 	static #addCustom(event, target) {
-		this.submit({ updateData: { newCustom: true } });
+		this.submit({ newCustom: true });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -36,7 +36,7 @@ export default class BaseCustomConfigSheet extends BaseConfigSheet {
 	 * @param {HTMLElement} target - Button that was clicked.
 	 */
 	static #deleteCustom(event, target) {
-		this.submit({ updateData: { deleteCustom: Number(target.dataset.index) } });
+		this.submit({ deleteCustom: Number(target.dataset.index) });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -57,11 +57,11 @@ export default class BaseCustomConfigSheet extends BaseConfigSheet {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _processSubmitData(event, form, submitData) {
-		if (submitData.newCustom || submitData.deleteCustom !== undefined) {
+	async _processSubmitData(event, form, submitData, options = {}) {
+		if (options.newCustom || options.deleteCustom !== undefined) {
 			const custom = foundry.utils.getProperty(submitData, this.options.customKeyPath) ?? [];
-			if (submitData.deleteCustom !== undefined) custom.splice(submitData.deleteCustom, 1);
-			if (submitData.newCustom) custom.push("");
+			if (options.deleteCustom !== undefined) custom.splice(options.deleteCustom, 1);
+			if (options.newCustom) custom.push("");
 			foundry.utils.setProperty(submitData, this.options.customKeyPath, custom);
 		}
 		super._processSubmitData(event, form, submitData);

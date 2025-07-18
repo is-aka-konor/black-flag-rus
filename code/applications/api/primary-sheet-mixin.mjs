@@ -129,7 +129,6 @@ export default function PrimarySheetMixin(Base) {
 					name: label,
 					icon: `<i class="${icon}" inert></i>`,
 					callback: li => {
-						console.log(li);
 						if (onClick) onClick(window.event);
 						else if (handler) handler.call(this, window.event, li);
 						else this._onClickAction(window.event, li);
