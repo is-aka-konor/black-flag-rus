@@ -447,29 +447,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 
 	/** @override */
 	async toEmbed(config, options = {}) {
-		const context = await this.parent.sheet.getData();
-
-		const localizationKey = this.circle.base === 0 ? "Cantrip" : this.tags.has("ritual") ? "Ritual" : "Standard";
-		context.circleType = game.i18n.format(`BF.Spell.CircleType.${localizationKey}`, {
-			circle: CONFIG.BlackFlag.spellCircles({ dashed: true })[this.circle.base],
-			school: CONFIG.BlackFlag.spellSchools.localized[this.school],
-			types: game.i18n
-				.getListFormatter({ style: "long" })
-				.format(Array.from(this.source).map(s => CONFIG.BlackFlag.spellSources.localized[s]))
-		});
-
-		context.rangeLabel = this.range.label;
-		if (this.range.units === "self") {
-			const templateLabel = TargetField.templateLabel(this.target, { style: "long" });
-			if (templateLabel) context.rangeLabel = `${context.rangeLabel} (${templateLabel})`;
-		}
-
-		context.durationLabel = this.tags.has("concentration")
-			? game.i18n.format("BF.Spell.Tag.Concentration.Formatted", {
-					duration: this.duration.label
-				})
-			: this.duration.label;
-
+		const context = await this.parent.sheet._prepareContext({ embed: true });
 		const section = document.createElement("section");
 		section.innerHTML = await foundry.applications.handlebars.renderTemplate(
 			"systems/black-flag/templates/item/embeds/spell-embed.hbs",
@@ -553,7 +531,37 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
+		if (options.embed) {
+			const localizationKey = this.circle.base === 0 ? "Cantrip" : this.tags.has("ritual") ? "Ritual" : "Standard";
+			context.circleType = game.i18n.format(`BF.Spell.CircleType.${localizationKey}`, {
+				circle: CONFIG.BlackFlag.spellCircles({ dashed: true })[this.circle.base],
+				school: CONFIG.BlackFlag.spellSchools.localized[this.school],
+				types: game.i18n
+					.getListFormatter({ style: "long" })
+					.format(Array.from(this.source).map(s => CONFIG.BlackFlag.spellSources.localized[s]))
+			});
+
+			context.rangeLabel = this.range.label;
+			if (this.range.units === "self") {
+				const templateLabel = TargetField.templateLabel(this.target, { style: "long" });
+				if (templateLabel) context.rangeLabel = `${context.rangeLabel} (${templateLabel})`;
+			}
+
+			context.durationLabel = this.tags.has("concentration")
+				? game.i18n.format("BF.Spell.Tag.Concentration.Formatted", {
+						duration: this.duration.label
+					})
+				: this.duration.label;
+
+			context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.description.value, {
+				...options,
+				relativeTo: this.parent
+			});
+
+			return;
+		}
+
 		const has = (data, key) => data?.includes?.(key) ?? data?.has?.(key);
 		context.descriptionParts = ["blackFlag.description-spell"];
 		context.detailsParts = ["blackFlag.details-spell"];

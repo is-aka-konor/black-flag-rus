@@ -121,7 +121,7 @@ export default class GearData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.detailsParts = ["blackFlag.details-gear"];
 	}
 }

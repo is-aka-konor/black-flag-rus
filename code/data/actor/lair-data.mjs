@@ -68,7 +68,7 @@ export default class LairData extends ActorDataModel.mixin(SourceTemplate) {
 
 	/** @override */
 	async toEmbed(config, options = {}) {
-		const context = await this.parent.sheet._prepareContext();
+		const context = await this.parent.sheet._prepareContext({ embed: true });
 		context.headerLevel = 4;
 		const section = document.createElement("section");
 		section.innerHTML = await foundry.applications.handlebars.renderTemplate(

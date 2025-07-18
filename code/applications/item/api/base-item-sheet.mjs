@@ -133,7 +133,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 		};
 		context.source = context.editable ? this.item.system._source : this.item.system;
 
-		await this.item.system.getSheetData?.(context);
+		await this.item.system.getSheetData?.(context, options);
 
 		return context;
 	}

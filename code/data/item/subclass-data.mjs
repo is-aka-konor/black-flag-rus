@@ -128,7 +128,7 @@ export default class SubclassData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.showClassSelector = context.editable;
 	}
 

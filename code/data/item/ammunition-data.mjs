@@ -122,7 +122,7 @@ export default class AmmunitionData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.detailsParts = ["blackFlag.details-ammunition"];
 	}
 }

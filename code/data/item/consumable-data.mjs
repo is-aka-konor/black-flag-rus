@@ -103,7 +103,7 @@ export default class ConsumableData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.detailsParts = ["blackFlag.details-consumable"];
 	}
 }

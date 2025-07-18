@@ -278,7 +278,7 @@ export default class ArmorData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.detailsParts = ["blackFlag.details-armor"];
 		// Hack to get around handlebars' weird behavior when calling methods
 		context.modifierHint = context.system.modifierHint?.();

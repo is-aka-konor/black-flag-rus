@@ -77,7 +77,7 @@ export default class TalentData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.descriptionParts = ["blackFlag.description-talent"];
 		context.detailsParts = ["blackFlag.details-talent"];
 

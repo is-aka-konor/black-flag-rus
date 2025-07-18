@@ -192,9 +192,10 @@ export default class ItemDataModel extends BaseDataModel {
 	/**
 	 * Prepare type-specific data for the Item sheet.
 	 * @param {ApplicationRenderContext} context - Sheet context data.
+	 * @param {HandlebarsRenderOptions} options - Options which configure application rendering behavior.
 	 * @returns {Promise<void>}
 	 */
-	async getSheetData(context) {}
+	async getSheetData(context, options) {}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 

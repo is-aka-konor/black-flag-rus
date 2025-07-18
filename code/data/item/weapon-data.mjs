@@ -343,7 +343,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		const has = (data, key) => data.includes?.(key) ?? data.has?.(key);
 		context.detailsParts = ["blackFlag.details-weapon"];
 		context.options = Object.entries(context.system.validOptions ?? {}).reduce((obj, [k, o]) => {

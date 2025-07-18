@@ -99,7 +99,7 @@ export default class FeatureData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.descriptionParts = ["blackFlag.description-feature"];
 		context.detailsParts = ["blackFlag.details-feature"];
 

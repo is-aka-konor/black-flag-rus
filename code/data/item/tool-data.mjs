@@ -110,7 +110,7 @@ export default class ToolData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	async getSheetData(context) {
+	async getSheetData(context, options) {
 		context.detailsParts = ["blackFlag.details-tool"];
 	}
 }

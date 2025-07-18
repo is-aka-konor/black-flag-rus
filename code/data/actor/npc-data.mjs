@@ -318,7 +318,7 @@ export default class NPCData extends ActorDataModel.mixin(
 		}
 		if (!config.statblock) return super.toEmbed(config, options);
 
-		const context = await this.parent.sheet._prepareContext();
+		const context = await this.parent.sheet._prepareContext({ embed: true });
 		context.cr = formatCR(context.system.attributes.cr, { narrow: false });
 		context.name = config.label || this.parent.name;
 		if (config.cite === true) {
