@@ -17,6 +17,7 @@
 		font-weight: bold;
 		&::before { content: "\f110"; }
 	}
+	&:not(.loading) { min-inline-size: 200px; }
 
 	&.locked-tooltip {
 		outline: 1px solid var(--bf-border-color-gray);
@@ -37,12 +38,10 @@
 			align-items: center;
 			gap: 8px;
 
-			.icon {
-				width: 64px;
-			}
+			.icon { inline-size: 64px; }
 		}
 		.description {
-			max-height: 450px;
+			max-block-size: 450px;
 			overflow: hidden;
 			scrollbar-width: thin;
 			scrollbar-gutter: stable;
@@ -50,15 +49,6 @@
 			font-size: var(--font-size-13);
 			line-height: normal;
 			text-align: start;
-
-			&::-webkit-scrollbar-track {
-				box-shadow: none;
-				border-radius: 0;
-			}
-			&::-webkit-scrollbar-thumb {
-				border: none;
-				background: var(--bf-scrollbar-color);
-			}
 
 			&.overflowing { mask-image: linear-gradient(to bottom, black 90%, transparent); }
 		}
@@ -69,7 +59,7 @@
 	}
 
 	&.rule-tooltip {
-		max-width: 450px;
+		max-block-size: 450px;
 		padding: 0;
 
 		header {
@@ -82,9 +72,7 @@
 
 			> * { margin-block-end: 4px; }
 			h2 { border: none; }
-			.type {
-				font-family: var(--bf-font-header);
-			}
+			.type { font-family: var(--bf-font-header); }
 		}
 		.description {
 			padding-inline: 12px;

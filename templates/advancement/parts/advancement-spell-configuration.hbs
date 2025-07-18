@@ -7,7 +7,7 @@
 	{{/if}}
 	<hr>
 	{{ formField spell.fields.origin value=spell.data.origin options=spell.originOptions classes="label-hinted"
-	             rootId=partId }}
+	             localize=true rootId=partId }}
 	{{ formField spell.fields.ability value=spell.data.ability options=CONFIG.abilities.localizedOptions rootId=partId }}
 	{{ formField spell.fields.source value=spell.data.source options=CONFIG.spellSources.localizedOptions blank=""
 	             classes="label-hinted" rootId=partId }}

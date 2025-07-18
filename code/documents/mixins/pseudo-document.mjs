@@ -431,7 +431,7 @@ export default Base =>
 			return BlackFlag.applications.api.BFDialog.confirm(
 				foundry.utils.mergeObject(
 					{
-						content: `<p><strong>${game.i18n.localize("AreYouSure")}</strong>${game.i18n.format(
+						content: `<p><strong>${game.i18n.localize("AreYouSure")}</strong> ${game.i18n.format(
 							"SIDEBAR.DeleteWarning",
 							{
 								type

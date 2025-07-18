@@ -6,7 +6,7 @@ import BaseConfigSheet from "../api/base-config-sheet.mjs";
 export default class LuckConfig extends BaseConfigSheet {
 	/** @override */
 	static DEFAULT_OPTIONS = {
-		classes: ["luck"],
+		classes: ["luck", "form-list"],
 		position: {
 			width: 400
 		}

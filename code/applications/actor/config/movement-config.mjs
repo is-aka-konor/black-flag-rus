@@ -7,7 +7,7 @@ import BaseCustomConfigSheet from "../api/base-custom-config-sheet.mjs";
 export default class MovementConfig extends BaseCustomConfigSheet {
 	/** @override */
 	static DEFAULT_OPTIONS = {
-		classes: ["movement"],
+		classes: ["movement", "form-list"],
 		position: {
 			width: 450
 		},
@@ -19,6 +19,7 @@ export default class MovementConfig extends BaseCustomConfigSheet {
 	/** @override */
 	static PARTS = {
 		config: {
+			classes: ["contents"],
 			template: "systems/black-flag/templates/actor/config/movement-config.hbs"
 		}
 	};

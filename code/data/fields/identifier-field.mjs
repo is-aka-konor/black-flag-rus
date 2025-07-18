@@ -7,7 +7,7 @@ export default class IdentifierField extends foundry.data.fields.StringField {
 	static get _defaults() {
 		return foundry.utils.mergeObject(super._defaults, {
 			label: "BF.Identifier.Label",
-			hint: "BF.Identiifer.Hint"
+			hint: "BF.Identifier.Hint"
 		});
 	}
 

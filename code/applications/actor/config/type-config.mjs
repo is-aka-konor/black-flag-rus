@@ -8,7 +8,7 @@ import BaseCustomConfigSheet from "../api/base-custom-config-sheet.mjs";
 export default class TypeConfig extends BaseCustomConfigSheet {
 	/** @override */
 	static DEFAULT_OPTIONS = {
-		classes: ["type"],
+		classes: ["type", "form-list"],
 		position: {
 			width: 500
 		},
@@ -20,6 +20,7 @@ export default class TypeConfig extends BaseCustomConfigSheet {
 	/** @override */
 	static PARTS = {
 		config: {
+			classes: ["contents"],
 			template: "systems/black-flag/templates/actor/config/type-config.hbs"
 		}
 	};

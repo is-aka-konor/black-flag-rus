@@ -112,7 +112,7 @@
 		}
 	}
 
-	.application .form-group {
+	.form-group {
 		min-block-size: var(--input-height);
 
 		> label {

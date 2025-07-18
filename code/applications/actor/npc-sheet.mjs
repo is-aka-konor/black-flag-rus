@@ -123,6 +123,17 @@ export default class NPCSheet extends BaseStatBlockSheet {
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @inheritDoc */
+	async _onAction(event, dataset) {
+		if (dataset.action === "config" && dataset.type === "spellcasting") {
+			new NPCSpellcastingConfig({ document: this.actor }).render({ force: true });
+			return;
+		}
+		return super._onAction(event, dataset);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * Handle resting the actor.
 	 * @this {NPCSheet}

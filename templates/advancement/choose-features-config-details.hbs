@@ -1,5 +1,5 @@
 <fieldset>
-	<legend>{{ localize "BF.Advancement.ChooseFeatures.ChoiceDetails" }}</legend>
+	<legend>{{ localize "BF.Advancement.ChooseFeatures.Details" }}</legend>
 	{{ formField configuration.fields.type value=configuration.data.type options=validTypeOptions rootId=partId }}
 	{{#if typeRestriction}}
 		{{ formField configuration.fields.restriction.fields.category value=configuration.data.restriction.category

@@ -39,16 +39,6 @@
 	.editor-container {
 		scrollbar-width: thin;
 		scrollbar-color: var(--bf-scrollbar-color) transparent;
-
-		&::-webkit-scrollbar-track {
-			box-shadow: none;
-			border-radius: 0;
-		}
-
-		&::-webkit-scrollbar-thumb {
-			border: none;
-			background: var(--bf-scrollbar-color);
-		}
 	}
 	> button.toggle {
 		width: unset;

@@ -4,6 +4,11 @@ const { DialogV2 } = foundry.applications.api;
  * Extended version of the default dialog with some additional styling and static constructors.
  */
 export default class BlackFlagDialog extends DialogV2 {
+	/** @override */
+	static DEFAULT_OPTIONS = {
+		classes: ["black-flag"]
+	};
+
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
