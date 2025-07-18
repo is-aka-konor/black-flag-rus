@@ -177,9 +177,9 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 					),
 					uses: this.prepareUsesDisplay(item, onlyActivity)
 				};
-				if (actionTypes.has("action")) context.actions.action.items.push(data);
+				if (firstActionType in context.actions) context.actions[firstActionType].items.push(data);
+				else if (actionTypes.has("action")) context.actions.action.items.push(data);
 				else if (firstActionType === "free" || !actionTypes.size) context.passive.push(data);
-				else if (firstActionType in context.actions) context.actions[firstActionType].items.push(data);
 				else context.actions.other.items.push(data);
 			}
 		}
