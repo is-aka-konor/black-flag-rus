@@ -1924,7 +1924,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	 * Set up any hooks relevant to actor rendering.
 	 */
 	static setupHooks() {
-		Hooks.on("getActorDirectoryEntryContext", this.getActorDirectoryEntryContext);
+		Hooks.on("getActorContextOptions", this.getActorDirectoryEntryContext);
 		Hooks.on("getUserContextOptions", this.getUserContextOptions);
 		game.socket.on(`system.${game.system.id}`, data => {
 			if (data?.operation === "advancementChangesComplete") game.actors.get(data.actorId)?.render();
@@ -1935,21 +1935,21 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/**
 	 * Display the "Grant Luck" context option for GMs on PC actors in sidebar.
-	 * @param {jQuery} jQuery - The Application's rendered HTML.
+	 * @param {HTMLElement} html - The Application's rendered HTML.
 	 * @param {ContextMenuEntry[]} menuItems - The array of menu items being rendered.
 	 */
-	static getActorDirectoryEntryContext(jQuery, menuItems) {
+	static getActorDirectoryEntryContext(html, menuItems) {
 		const ownershipIndex = menuItems.findIndex(o => o.icon.includes("fa-lock"));
 		menuItems.splice(ownershipIndex + 1, 0, {
 			name: "BF.Luck.Action.Grant",
 			icon: '<i class="fa-solid fa-clover"></i>',
 			condition: li => {
 				if (!game.user.isGM) return false;
-				const actor = game.actors.get(li[0].dataset.documentId);
+				const actor = game.actors.get(li.dataset.entryId);
 				return actor?.type === "pc";
 			},
 			callback: li => {
-				const actor = game.actors.get(li[0].dataset.documentId);
+				const actor = game.actors.get(li.dataset.entryId);
 				actor.system.addLuck();
 			},
 			group: "system"
@@ -1960,21 +1960,21 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/**
 	 * Display the "Grant Luck" context option for GMs on players.
-	 * @param {jQuery} jQuery - The Application's rendered HTML.
+	 * @param {HTMLElement} html - The Application's rendered HTML.
 	 * @param {ContextMenuEntry[]} menuItems - The array of menu items being rendered.
 	 */
-	static getUserContextOptions(jQuery, menuItems) {
+	static getUserContextOptions(html, menuItems) {
 		const viewAvatarIndex = menuItems.findIndex(o => o.icon.includes("fa-image"));
 		menuItems.splice(viewAvatarIndex + 1, 0, {
 			name: "BF.Luck.Action.Grant",
 			icon: '<i class="fa-solid fa-clover"></i>',
 			condition: li => {
 				if (!game.user.isGM) return false;
-				const user = game.users.get(li[0].dataset.userId);
+				const user = game.users.get(li.dataset.userId);
 				return user.character?.type === "pc";
 			},
 			callback: li => {
-				const actor = game.users.get(li[0].dataset.userId).character;
+				const actor = game.users.get(li.dataset.userId).character;
 				actor.system.addLuck();
 			}
 		});
