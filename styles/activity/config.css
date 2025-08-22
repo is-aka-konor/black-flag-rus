@@ -11,6 +11,7 @@
 	}
 
 	.additional-tray {
+		flex: 1 0 100%;
 		/* margin-block-start: 4px; */
 		transition: all 250ms ease;
 

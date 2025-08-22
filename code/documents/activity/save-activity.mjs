@@ -137,7 +137,7 @@ export default class SaveActivity extends Activity {
 	async createActivationMessage(message = {}) {
 		const messageConfig = foundry.utils.mergeObject(
 			{
-				"data.flags.black-flag.save": {
+				[`data.flags.${game.system.id}.save`]: {
 					dc: this.system.save.dc.final
 				}
 			},
@@ -145,6 +145,23 @@ export default class SaveActivity extends Activity {
 		);
 
 		return super.createActivationMessage(messageConfig);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*                Rolls                */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async rollDamage(config = {}, dialog = {}, message = {}) {
+		message = foundry.utils.mergeObject(
+			{
+				[`data.flags.${game.system.id}.roll`]: {
+					damageOnSave: this.system.damage.onSave
+				}
+			},
+			message
+		);
+		return super.rollDamage(config, dialog, message);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

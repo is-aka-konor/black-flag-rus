@@ -2971,11 +2971,22 @@
 },
 
 "BF.SAVE": {
-	"Title": "Save",
-	"Hint": "Force a saving throw and roll damage.",
 	"FIELDS": {
 		"damage": {
-			"label": "Save Damage"
+			"label": "Save Damage",
+			"onSave": {
+				"full": "Full Damage",
+				"half": "Half Damage",
+				"hint": "How much damage should be applied on a successful save?",
+				"label": "Damage on Save",
+				"none": "No Damage"
+			}
+		},
+		"effects": {
+			"onSave": {
+				"label": "Always Apply",
+				"hint": "This effect will always be applied, even if the target succeeds on its saving throw."
+			}
 		},
 		"save": {
 			"label": "Save Details",
@@ -2995,6 +3006,9 @@
 		}
 	},
 	"Challenge": "Challenge",
+	"Hint": "Force a saving throw and roll damage.",
+	"OnSave": "On Save",
+	"Title": "Save",
 	"Versus": "vs."
 },
 

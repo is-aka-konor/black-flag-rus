@@ -4,14 +4,24 @@ import { DamageField, FormulaField } from "../fields/_module.mjs";
 import BaseActivity from "./base-activity.mjs";
 import AppliedEffectField from "./fields/applied-effect-field.mjs";
 
-const { ArrayField, SchemaField, SetField, StringField } = foundry.data.fields;
+const { ArrayField, BooleanField, SchemaField, SetField, StringField } = foundry.data.fields;
+
+/**
+ * @import { EffectApplicationData } from "./fields/applied-effect-field.mjs";
+ */
+
+/**
+ * @typedef {EffectApplicationData} SaveEffectApplicationData
+ * @property {boolean} onSave - Should this effect still be applied on a successful save?
+ */
 
 /**
  * Configuration data for the save activity.
  *
  * @property {object} damage
+ * @property {string} damage.onSave - Amount of damage done for a actor that makes the save.
  * @property {ExtendedDamageData[]} damage.parts - Parts of damage to include.
- * @property {EffectApplicationData[]} effects - Effects to be applied.
+ * @property {SaveEffectApplicationData[]} effects - Effects to be applied.
  * @property {object} save
  * @property {string} save.ability - Abilities required when rolling a saving throw.
  * @property {object} save.dc
@@ -24,15 +34,22 @@ export class SaveData extends ActivityDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SAVE", "BF.DAMAGE"];
+	static LOCALIZATION_PREFIXES = ["BF.SAVE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	static defineSchema() {
 		return {
-			damage: new SchemaField({ parts: new ArrayField(new DamageField()) }),
-			effects: new ArrayField(new AppliedEffectField()),
+			damage: new SchemaField({
+				onSave: new StringField({ required: true, blank: false, initial: "half" }),
+				parts: new ArrayField(new DamageField())
+			}),
+			effects: new ArrayField(
+				new AppliedEffectField({
+					onSave: new BooleanField()
+				})
+			),
 			save: new SchemaField({
 				ability: new SetField(new StringField()),
 				dc: new SchemaField({
@@ -95,6 +112,7 @@ export class SaveData extends ActivityDataModel {
 
 	/** @inheritDoc */
 	prepareData() {
+		if (!this.damage.onSave) this.damage.onSave = this.isSpell && this.item.system.level === 0 ? "none" : "half";
 		if (!this.isSpell && !this.save.dc.ability) this.save.dc.ability = "custom";
 	}
 

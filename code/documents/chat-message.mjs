@@ -129,6 +129,7 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	 * @param {HTMLElement} html - Chat message HTML.
 	 */
 	async _renderStandardCard(html) {
+		html.classList.add("black-flag");
 		if (!this.isContentVisible) return;
 		for (const element of html.querySelectorAll(".blackFlag-icon")) {
 			const icon = document.createElement("blackFlag-icon");
@@ -238,6 +239,16 @@ export default class BlackFlagChatMessage extends ChatMessage {
 		);
 		html.querySelectorAll(".message-content .dice-roll").forEach(e => e.remove());
 		html.querySelector(".message-content").insertAdjacentHTML("afterbegin", rendered);
+
+		const damageOnSave = this.getFlag(game.system.id, "roll.damageOnSave");
+		if (damageOnSave) {
+			const p = document.createElement("p");
+			p.classList.add("supplement");
+			p.innerHTML = `<strong>${game.i18n.format("BF.SAVE.OnSave")}</strong> ${game.i18n.localize(
+				`BF.SAVE.FIELDS.damage.onSave.${damageOnSave}`
+			)}`;
+			html.querySelector(".chat-card, .message-content")?.appendChild(p);
+		}
 
 		// TODO: Add option to make this optionally visible to players
 		if (game.user.isGM) {

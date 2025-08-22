@@ -440,7 +440,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 			if (data) foundry.utils.setProperty(submitData, keyPath, Object.values(data));
 		}
 		if (foundry.utils.hasProperty(submitData, "appliedEffects")) {
-			const effects = submitData.effects ?? this.activity.toObject().system.effects;
+			const effects = submitData.system?.effects ?? this.activity.toObject().system.effects;
 			submitData.system ??= {};
 			submitData.system.effects = effects.filter(e => submitData.appliedEffects.includes(e._id));
 			for (const _id of submitData.appliedEffects) {

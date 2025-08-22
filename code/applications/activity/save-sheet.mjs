@@ -21,7 +21,8 @@ export default class SaveSheet extends ActivitySheet {
 				"systems/black-flag/templates/activity/parts/damage-part.hbs",
 				"systems/black-flag/templates/activity/parts/damage-parts.hbs",
 				"systems/black-flag/templates/activity/parts/save-damage.hbs",
-				"systems/black-flag/templates/activity/parts/save-details.hbs"
+				"systems/black-flag/templates/activity/parts/save-details.hbs",
+				"systems/black-flag/templates/activity/parts/save-effect-settings.hbs"
 			]
 		}
 	};
@@ -30,9 +31,18 @@ export default class SaveSheet extends ActivitySheet {
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @override */
+	_prepareAppliedEffectContext(context, effect) {
+		effect.additionalSettings = "systems/black-flag/templates/activity/parts/save-effect-settings.hbs";
+		return effect;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	async _prepareEffectContext(context) {
 		context = await super._prepareEffectContext(context);
+
 		const group = game.i18n.localize("BF.Formula.Default.DC");
 		context.abilityOptions = [
 			{ value: "custom", label: game.i18n.localize("BF.Formula.Custom.Label") },
@@ -49,6 +59,13 @@ export default class SaveSheet extends ActivitySheet {
 				{ rule: true }
 			);
 		}
+
+		context.onSaveOptions = [
+			{ value: "none", label: game.i18n.localize("BF.SAVE.FIELDS.damage.onSave.none") },
+			{ value: "half", label: game.i18n.localize("BF.SAVE.FIELDS.damage.onSave.half") },
+			{ value: "full", label: game.i18n.localize("BF.SAVE.FIELDS.damage.onSave.full") }
+		];
+
 		return context;
 	}
 }

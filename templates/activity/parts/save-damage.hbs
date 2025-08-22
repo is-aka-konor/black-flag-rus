@@ -1,4 +1,6 @@
 <fieldset>
 		<legend>{{ localize "BF.SAVE.FIELDS.damage.label" }}</legend>
+		{{ formField systemFields.damage.fields.onSave value=source.system.damage.onSave options=onSaveOptions
+		             rootId=partId }}
 		{{> "systems/black-flag/templates/activity/parts/damage-parts.hbs" }}
 </fieldset>

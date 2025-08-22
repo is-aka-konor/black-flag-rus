@@ -105,6 +105,8 @@ blackFlag-damageApplication {
 				cursor: pointer;
 				font-size: inherit;
 				line-height: unset;
+				min-height: unset;
+				height: unset;
 
 				&::after {
 					content: "";
@@ -113,6 +115,10 @@ blackFlag-damageApplication {
 					height: 8px;
 					border: 1px solid var(--bf-border-color-gray);
 					border-radius: 8px;
+				}
+
+				&:not(:hover, :focus-visible) {
+					background: unset;
 				}
 
 				&[aria-pressed="true"] {
