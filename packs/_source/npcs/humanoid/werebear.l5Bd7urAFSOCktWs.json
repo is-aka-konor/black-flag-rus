@@ -170,7 +170,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -235,7 +234,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -290,12 +296,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.KxYrP431EQTfMDuX",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 0,
       "ownership": {
@@ -407,12 +414,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.gOY84E2CGZ1cauwF",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 7700000,
       "ownership": {
@@ -631,12 +639,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.I7x76LkmXueM9UB5",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 7800000,
       "ownership": {
@@ -789,12 +798,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.Jr00Z1fIby1cJtbS",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 7900000,
       "ownership": {
@@ -942,12 +952,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.items.Item.9EAkaGqWPK0qFoDq",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!l5Bd7urAFSOCktWs.8shgV2uPkw5CFn6K"
     },
@@ -1064,12 +1075,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.OcvlV6gbt6xUtMed",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 6200000,
       "ownership": {
@@ -1194,12 +1206,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!l5Bd7urAFSOCktWs.GprH0bt2EMPBLjtO"
     }
@@ -1251,12 +1264,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.effects!l5Bd7urAFSOCktWs.J9o3WqgxwMPYli6T"
     }
@@ -1264,12 +1278,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
     "createdTime": 1729607939811,
     "modifiedTime": 1729607939811,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "sort": 0,
   "ownership": {

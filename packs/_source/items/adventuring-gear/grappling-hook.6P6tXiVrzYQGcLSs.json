@@ -44,12 +44,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.330",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.041",
     "createdTime": 1722101196440,
     "modifiedTime": 1722101246597,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "_key": "!items!6P6tXiVrzYQGcLSs"
 }

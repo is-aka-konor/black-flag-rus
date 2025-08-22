@@ -168,7 +168,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -233,7 +232,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -290,12 +296,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.GoznMPBy0gqwoh8Q",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": -100000,
       "ownership": {
@@ -381,12 +388,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!PgohhJx6393szUlk.lHxHPnB1Z1jmEZSL.2cdQA9F2slaKrThK"
         }
@@ -405,12 +413,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.lHxHPnB1Z1jmEZSL"
     },
@@ -518,12 +527,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.gOY84E2CGZ1cauwF",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "sort": 7700000,
       "ownership": {
@@ -748,12 +758,13 @@
       "_stats": {
         "compendiumSource": "Actor.TetKxxnDbgPphdGh.Item.w9oLTc3Ays8ExOeh",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.pen1bwAEx4y3k8lv"
     },
@@ -940,12 +951,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.wI8t6ZxymAU5SuTv"
     },
@@ -1103,12 +1115,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!PgohhJx6393szUlk.yccScRErlZzcPeiD.pn3JeNsWe9uDUK85"
         }
@@ -1127,12 +1140,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.jhMAM81keoyqBzsy",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.yccScRErlZzcPeiD"
     },
@@ -1287,12 +1301,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!PgohhJx6393szUlk.cWNJ0Yd1JN6UtHdS.Dwm0CIwWcOqfYvsO"
         }
@@ -1311,12 +1326,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.75HF18ljbTk7wZwC",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.cWNJ0Yd1JN6UtHdS"
     },
@@ -1455,12 +1471,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.z0bwd75DutQ7TOcY",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.B1dEftsjqQs3nMBX"
     },
@@ -1598,12 +1615,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.TgJgOsNetxkikvZa",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.Y1QnHvxBjj72oDzu"
     },
@@ -1782,12 +1800,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
           "type": "base",
@@ -1815,12 +1834,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.pw72u0bgcIKLtSBM",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.QcIl5GRJoJqCti8B"
     },
@@ -1984,12 +2004,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.t61I6zrmEDPdOLfw",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.LDFbmJijL5LTGAxf"
     },
@@ -2177,12 +2198,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!PgohhJx6393szUlk.sGarS3ihuDyqxdIh.mKgHbYahQqGnugbp"
         }
@@ -2206,12 +2228,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.9m3weZVFQcscp85O",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.sGarS3ihuDyqxdIh"
     },
@@ -2375,12 +2398,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.PKj2TSp0iwaPZulb",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.FBto2pZTM0d18keC"
     },
@@ -2535,12 +2559,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.29lF0OpdddD1nOn2",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.0p35WhiHvGKrVz13"
     },
@@ -2700,12 +2725,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.a79cPbF5G33jiDBa",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.qmnGudjDJvjAJ39M"
     },
@@ -2953,12 +2979,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "0.10.049",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!PgohhJx6393szUlk.pabgHHIvjU9a6StM.tsOaoxMRt50UThBg"
         }
@@ -2982,12 +3009,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.spells.Item.09Sensm5KJcvLdhx",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.pabgHHIvjU9a6StM"
     },
@@ -3156,12 +3184,13 @@
       "_stats": {
         "compendiumSource": "Item.HTmvpHlZsk6FlDoy",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.k7TGQjGqtjwwqr6J"
     },
@@ -3287,12 +3316,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.tLsO0jSRVBpBsPUe"
     },
@@ -3419,12 +3449,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "0.10.049",
         "createdTime": null,
         "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "exportSource": null
       },
       "_key": "!actors.items!PgohhJx6393szUlk.33Pb2G4I0ypqO5WA"
     }
@@ -3433,12 +3464,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
     "createdTime": 1729607939811,
     "modifiedTime": 1729607939811,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "sort": 0,
   "ownership": {

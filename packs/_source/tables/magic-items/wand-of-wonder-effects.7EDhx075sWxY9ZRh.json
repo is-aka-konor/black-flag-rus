@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "WK19yMNB0Yu530JH",
-      "text": "You cast slow.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast slow.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.WK19yMNB0Yu530JH"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "pasnYKlj2ajnptDU",
-      "text": "You cast faerie fire.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast faerie fire.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.pasnYKlj2ajnptDU"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "B9sLtdZZHMrHX3IW",
-      "text": "You are stunned until the start of your next turn, believing something awesome just happened.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You are stunned until the start of your next turn, believing something awesome just happened.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.B9sLtdZZHMrHX3IW"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "2l4EyWqw6hlYh3sD",
-      "text": "You cast gust of wind.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast gust of wind.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.2l4EyWqw6hlYh3sD"
     },
     {
@@ -73,10 +117,21 @@
       ],
       "drawn": false,
       "_id": "UjcCS7DLGAZNe8eH",
-      "text": "You cast detect thoughts on the target you chose. If you didn’t target a creature, you instead take [[/damage 1d6 psychic]] damage.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast detect thoughts on the target you chose. If you didn’t target a creature, you instead take [[/damage 1d6 psychic]] damage.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.UjcCS7DLGAZNe8eH"
     },
     {
@@ -88,10 +143,21 @@
       ],
       "drawn": false,
       "_id": "22Ip6Zkk9XvKY02j",
-      "text": "You cast stinking cloud.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast stinking cloud.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.22Ip6Zkk9XvKY02j"
     },
     {
@@ -103,10 +169,21 @@
       ],
       "drawn": false,
       "_id": "xJvHV2pQoRoUr20h",
-      "text": "Rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.xJvHV2pQoRoUr20h"
     },
     {
@@ -118,10 +195,21 @@
       ],
       "drawn": false,
       "_id": "my92ZyuysbRY7S6f",
-      "text": "An animal appears in the unoccupied space nearest the target. The animal isn’t under your control and acts as it normally would. Roll a [[/r d100]]: on a 01–25, a rhinoceros appears; on a 26–50, an elephant appears; and on a 51–100, a rat appears.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "An animal appears in the unoccupied space nearest the target. The animal isn’t under your control and acts as it normally would. Roll a [[/r d100]]: on a 01–25, a rhinoceros appears; on a 26–50, an elephant appears; and on a 51–100, a rat appears.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.my92ZyuysbRY7S6f"
     },
     {
@@ -133,10 +221,21 @@
       ],
       "drawn": false,
       "_id": "0qXiIpWfen8Afgx8",
-      "text": "You cast lightning bolt.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast lightning bolt.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.0qXiIpWfen8Afgx8"
     },
     {
@@ -148,10 +247,21 @@
       ],
       "drawn": false,
       "_id": "dbCvVvlu9QuiL6hZ",
-      "text": "A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterflies remain for 10 minutes.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterflies remain for 10 minutes.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.dbCvVvlu9QuiL6hZ"
     },
     {
@@ -163,10 +273,21 @@
       ],
       "drawn": false,
       "_id": "B7oWFJdRtwaLsBAO",
-      "text": "You enlarge the target as if you had cast enlarge/reduce. If the target can’t be affected by that spell, or if you didn’t target a creature, you become the target.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You enlarge the target as if you had cast enlarge/reduce. If the target can’t be affected by that spell, or if you didn’t target a creature, you become the target.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.B7oWFJdRtwaLsBAO"
     },
     {
@@ -178,10 +299,21 @@
       ],
       "drawn": false,
       "_id": "2opjRERDXUFCJKdA",
-      "text": "You cast darkness.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast darkness.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.2opjRERDXUFCJKdA"
     },
     {
@@ -193,10 +325,21 @@
       ],
       "drawn": false,
       "_id": "kcqEawrspXvI2Bf4",
-      "text": "Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgrown for 1 minute.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgrown for 1 minute.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.kcqEawrspXvI2Bf4"
     },
     {
@@ -208,10 +351,21 @@
       ],
       "drawn": false,
       "_id": "TGN7z1F16bnVEUyQ",
-      "text": "An object of the GM’s choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "An object of the GM’s choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.TGN7z1F16bnVEUyQ"
     },
     {
@@ -223,10 +377,21 @@
       ],
       "drawn": false,
       "_id": "upt4A4XNWYWFRqY2",
-      "text": "You shrink as if you had cast enlarge/reduce on yourself.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You shrink as if you had cast enlarge/reduce on yourself.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.upt4A4XNWYWFRqY2"
     },
     {
@@ -238,10 +403,21 @@
       ],
       "drawn": false,
       "_id": "dwdsngHBTRPJNnAg",
-      "text": "You cast fireball.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast fireball.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.dwdsngHBTRPJNnAg"
     },
     {
@@ -253,10 +429,21 @@
       ],
       "drawn": false,
       "_id": "G4PEV8kNH7l2uNa6",
-      "text": "You cast invisibility on yourself.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "You cast invisibility on yourself.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.G4PEV8kNH7l2uNa6"
     },
     {
@@ -268,10 +455,21 @@
       ],
       "drawn": false,
       "_id": "IPrywZa5Abg4owdd",
-      "text": "Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.IPrywZa5Abg4owdd"
     },
     {
@@ -283,10 +481,21 @@
       ],
       "drawn": false,
       "_id": "YaNP2XJfvkuJZj83",
-      "text": "A stream of [[/r 1d4 * 10]]{1d4 × 10} gems, each worth 1 gp, shoots from the wand’s tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A stream of [[/r 1d4 * 10]]{1d4 × 10} gems, each worth 1 gp, shoots from the wand’s tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.YaNP2XJfvkuJZj83"
     },
     {
@@ -298,10 +507,21 @@
       ],
       "drawn": false,
       "_id": "aVzfCyuWYU7Iruot",
-      "text": "A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a [[/save DC 15 CON]] save or become blinded for 1 minute. A creature can repeat the save at the end of each of its turns, ending the effect on itself on a success.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a [[/save DC 15 CON]] save or become blinded for 1 minute. A creature can repeat the save at the end of each of its turns, ending the effect on itself on a success.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.aVzfCyuWYU7Iruot"
     },
     {
@@ -313,10 +533,21 @@
       ],
       "drawn": false,
       "_id": "fyeheqvFEhn4Ith2",
-      "text": "The target’s skin turns blue for [[/r 1d10]] days. If you chose a point in space, the creature nearest to that point is affected.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "The target’s skin turns blue for [[/r 1d10]] days. If you chose a point in space, the creature nearest to that point is affected.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.fyeheqvFEhn4Ith2"
     },
     {
@@ -328,10 +559,21 @@
       ],
       "drawn": false,
       "_id": "RyvOFbc33cHeyRJd",
-      "text": "If you targeted a creature, it must make a [[/save DC 15 CON]] save. If you didn’t target a creature, you become the target and must make the save. If the save fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the save at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic.",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "If you targeted a creature, it must make a [[/save DC 15 CON]] save. If you didn’t target a creature, you become the target and must make the save. If the save fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the save at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic.",
+      "name": "",
       "_key": "!tables.results!7EDhx075sWxY9ZRh.RyvOFbc33cHeyRJd"
     }
   ],
@@ -343,12 +585,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426280211,
     "modifiedTime": 1729534678836,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d100",
   "_id": "7EDhx075sWxY9ZRh",

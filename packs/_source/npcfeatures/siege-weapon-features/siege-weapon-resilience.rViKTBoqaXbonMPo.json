@@ -147,12 +147,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.057",
         "createdTime": 1733771903170,
         "modifiedTime": 1733771918062,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "img": "icons/weapons/artillery/trebuchet-simple.webp",
       "type": "base",
@@ -168,12 +169,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "1.1.057",
     "createdTime": 1733771827179,
     "modifiedTime": 1733771858707,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "_key": "!items!rViKTBoqaXbonMPo"
 }

@@ -146,12 +146,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.055",
         "createdTime": 1733427612006,
         "modifiedTime": 1733427690894,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "img": "icons/environment/settlement/wagon.webp",
       "type": "base",
@@ -168,12 +169,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "1.1.055",
     "createdTime": 1733427465500,
     "modifiedTime": 1733427716814,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "_key": "!items!4mrsMh1wkqybueGe"
 }

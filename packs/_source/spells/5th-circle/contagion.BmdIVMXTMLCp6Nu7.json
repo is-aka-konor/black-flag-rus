@@ -215,14 +215,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -258,14 +259,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -307,14 +309,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.329",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": 1721673310878,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -350,14 +353,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -393,14 +397,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -436,14 +441,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/blood-cells-vessel-blue.webp",
       "type": "base",
@@ -460,11 +466,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.042",
-    "coreVersion": "12.330",
+    "coreVersion": "13.347",
     "createdTime": 1720285415283,
     "modifiedTime": 1723779463402,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!BmdIVMXTMLCp6Nu7"
 }

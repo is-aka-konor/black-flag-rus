@@ -45,11 +45,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.028",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1716239095729,
     "modifiedTime": 1716239336474,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!AwkFxBWOGLP5de8W"
 }

@@ -281,14 +281,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/creatures/fish/fish-fangtooth-skeletal-green.webp",
       "type": "base",
@@ -317,14 +318,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/magic/control/silhouette-hold-change-green.webp",
       "type": "base",
@@ -353,14 +355,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/creatures/claws/claw-hooked-purple.webp",
       "type": "base",
@@ -377,11 +380,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.042",
-    "coreVersion": "12.330",
+    "coreVersion": "13.347",
     "createdTime": 1717965611302,
     "modifiedTime": 1723697211561,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!P3e0uUb8bp9vnRO2"
 }

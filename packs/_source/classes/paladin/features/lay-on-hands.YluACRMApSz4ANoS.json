@@ -256,11 +256,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.036",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1718399639980,
     "modifiedTime": 1719168184818,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!YluACRMApSz4ANoS"
 }

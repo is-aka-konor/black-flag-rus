@@ -248,14 +248,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": 1727295345392,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/commodities/gems/pearl-turquoise.webp",
       "type": "base",
@@ -272,11 +273,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.046",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1717970337549,
     "modifiedTime": 1727217003819,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!ApZU8P5bWX1iNuGs"
 }

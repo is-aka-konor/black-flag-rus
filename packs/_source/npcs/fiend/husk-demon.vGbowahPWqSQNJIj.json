@@ -232,7 +232,6 @@
     "detectionModes": [],
     "flags": {},
     "randomImg": false,
-    "hexagonalShape": 0,
     "occludable": {
       "radius": 0
     },
@@ -247,7 +246,14 @@
         "scale": 1,
         "texture": null
       }
-    }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -293,9 +299,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.uS8axwG1NAgmQaLi"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -305,12 +308,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.018",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1709775043609,
         "modifiedTime": 1711423617770,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.uS8axwG1NAgmQaLi",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.6drN0HvEq92Dvno7"
     },
@@ -403,14 +407,15 @@
           "flags": {},
           "tint": "#ffffff",
           "_stats": {
-            "coreVersion": "12.328",
+            "coreVersion": "13.347",
             "systemId": null,
             "systemVersion": null,
             "createdTime": null,
             "modifiedTime": null,
             "lastModifiedBy": null,
             "compendiumSource": null,
-            "duplicateSource": null
+            "duplicateSource": null,
+            "exportSource": null
           },
           "img": "icons/creatures/unholy/demon-fire-horned-winged-roar.webp",
           "type": "base",
@@ -425,9 +430,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.30zXkRqsI6WEowjf"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -437,12 +439,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.018",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1709611708224,
         "modifiedTime": 1711423626598,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.30zXkRqsI6WEowjf",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.qUYU6lyl8QWlQzTQ"
     },
@@ -489,9 +492,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.jS7wIZVCAi6I2VMe"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -501,12 +501,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.018",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1709773734467,
         "modifiedTime": 1711423631302,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.jS7wIZVCAi6I2VMe",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.vD0W3bpoZgyMSVta"
     },
@@ -609,9 +610,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.stHC4ZVHK2UO1QMu"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -621,12 +619,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.018",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711420922343,
         "modifiedTime": 1711423641737,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.stHC4ZVHK2UO1QMu",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.w0mYqCEirHKKvCxN"
     },
@@ -774,9 +773,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.NKh3nW3uDwfXaCvG"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -786,12 +782,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711423663858,
         "modifiedTime": 1717263881057,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.NKh3nW3uDwfXaCvG",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.5OSQ5kt80NDgmGGO"
     },
@@ -916,12 +913,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.10.039",
-        "coreVersion": "12.329",
+        "coreVersion": "13.347",
         "createdTime": 1711423913797,
         "modifiedTime": 1721678520348,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!vGbowahPWqSQNJIj.6UzOYqhSMxBkiOtX"
     }
@@ -935,11 +933,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1709611922952,
     "modifiedTime": 1729607937641,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!actors!vGbowahPWqSQNJIj"
 }

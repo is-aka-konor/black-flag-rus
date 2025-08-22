@@ -14,10 +14,21 @@
       ],
       "drawn": false,
       "_id": "a6YLUKpcMz3bfu3k",
-      "text": "Adventuring is a way to stay ahead of the law, I hope.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to stay ahead of the law, I hope.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.a6YLUKpcMz3bfu3k"
     },
     {
@@ -29,10 +40,21 @@
       ],
       "drawn": false,
       "_id": "15k3EjUz9BpGbYdf",
-      "text": "Adventuring is how I’ll finally earn (or seize) my fortune.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is how I’ll finally earn (or seize) my fortune.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.15k3EjUz9BpGbYdf"
     },
     {
@@ -44,10 +66,21 @@
       ],
       "drawn": false,
       "_id": "r3qhRMUyq3uK3OiB",
-      "text": "Adventuring is a way to amass power and influence before my inevitable return home.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to amass power and influence before my inevitable return home.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.r3qhRMUyq3uK3OiB"
     },
     {
@@ -59,10 +92,21 @@
       ],
       "drawn": false,
       "_id": "de0egjBJFJhdTuVB",
-      "text": "Adventuring is how I’ll make amends for a life of wrongdoing.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is how I’ll make amends for a life of wrongdoing.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.de0egjBJFJhdTuVB"
     },
     {
@@ -74,10 +118,21 @@
       ],
       "drawn": false,
       "_id": "BjEe2AVTkcT8F9oN",
-      "text": "Adventuring is a way to master my skills without fear of ending up in a cell.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to master my skills without fear of ending up in a cell.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.BjEe2AVTkcT8F9oN"
     },
     {
@@ -89,10 +144,21 @@
       ],
       "drawn": false,
       "_id": "fXdri2NRl8Lrxa9B",
-      "text": "Adventuring is a way to make a name for myself that will be feared and respected.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to make a name for myself that will be feared and respected.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.fXdri2NRl8Lrxa9B"
     },
     {
@@ -104,10 +170,21 @@
       ],
       "drawn": false,
       "_id": "wlYHfVFaEoFqgmNN",
-      "text": "Adventuring is how I’ll track down the person who ruined my life.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is how I’ll track down the person who ruined my life.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.wlYHfVFaEoFqgmNN"
     },
     {
@@ -119,10 +196,21 @@
       ],
       "drawn": false,
       "_id": "sOqj55GaahDN98Qz",
-      "text": "Adventuring is a way to find a crew I can trust.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to find a crew I can trust.",
+      "name": "",
       "_key": "!tables.results!wQLmkpK6UmvFKX6R.sOqj55GaahDN98Qz"
     }
   ],
@@ -136,11 +224,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.8.011",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1706650240586,
     "modifiedTime": 1706650355844,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "formula": "1d8",
   "_key": "!tables!wQLmkpK6UmvFKX6R"

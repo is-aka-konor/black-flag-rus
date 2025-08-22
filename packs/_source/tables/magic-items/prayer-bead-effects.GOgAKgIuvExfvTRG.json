@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "TFG2DcqfcJxNsJux",
-      "text": "Blessing / Bless",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Blessing / Bless",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.TFG2DcqfcJxNsJux"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "brXw4TUUHGuFKurK",
-      "text": "Curing / Cure wounds (2nd-circle) or restoration",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Curing / Cure wounds (2nd-circle) or restoration",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.brXw4TUUHGuFKurK"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "PYnqSSEr26oGEiKS",
-      "text": "Favor / Greater restoration",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Favor / Greater restoration",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.PYnqSSEr26oGEiKS"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "Jc91p7yZWuDgpfRj",
-      "text": "Smiting / Branding smite",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Smiting / Branding smite",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.Jc91p7yZWuDgpfRj"
     },
     {
@@ -73,10 +117,21 @@
       ],
       "drawn": false,
       "_id": "ad4erbgtNxm26gRl",
-      "text": "Summons / Planar ally",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Summons / Planar ally",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.ad4erbgtNxm26gRl"
     },
     {
@@ -88,10 +143,21 @@
       ],
       "drawn": false,
       "_id": "C7ORfEWga2jl63fJ",
-      "text": "Wind walking / Wind walk",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Wind walking / Wind walk",
+      "name": "",
       "_key": "!tables.results!GOgAKgIuvExfvTRG.C7ORfEWga2jl63fJ"
     }
   ],
@@ -103,12 +169,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426277318,
     "modifiedTime": 1729534509000,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d20",
   "_id": "GOgAKgIuvExfvTRG",

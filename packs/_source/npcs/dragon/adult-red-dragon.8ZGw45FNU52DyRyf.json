@@ -229,7 +229,6 @@
     ],
     "flags": {},
     "randomImg": false,
-    "hexagonalShape": 0,
     "occludable": {
       "radius": 0
     },
@@ -244,7 +243,14 @@
         "scale": 1,
         "texture": null
       }
-    }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -294,20 +300,18 @@
           "relationship": {
             "enabled": true
           }
-        },
-        "core": {
-          "sourceId": "Compendium.black-flag.npcs.Actor.n7MQrAOMaaGucS5J.Item.IeWvFL8wmVuDW923"
         }
       },
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711667885943,
         "modifiedTime": 1711668112956,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcs.Actor.n7MQrAOMaaGucS5J.Item.IeWvFL8wmVuDW923",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.OFn68XTcPeylB5ND"
     },
@@ -421,9 +425,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.iql59XFWY8f42JPi"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -433,12 +434,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711668131577,
         "modifiedTime": 1713147630182,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.iql59XFWY8f42JPi",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.UkPQTUdfyOCv454Y"
     },
@@ -535,9 +537,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.stHC4ZVHK2UO1QMu"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -547,12 +546,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711420922343,
         "modifiedTime": 1711668366373,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.stHC4ZVHK2UO1QMu",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.EjyGgQms4uUqFY3F"
     },
@@ -700,9 +700,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -712,12 +709,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711504525397,
         "modifiedTime": 1717264298702,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.PAt0xPSK39nVAfnD"
     },
@@ -851,9 +849,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.2hYUlglK9czNmHNx"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -863,12 +858,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711503209924,
         "modifiedTime": 1717264312226,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.2hYUlglK9czNmHNx",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.g8NwMrDHwtX1wxtL"
     },
@@ -1002,9 +998,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.b8zfKznhQRxpJ1ru"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1014,12 +1007,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711504620199,
         "modifiedTime": 1717264317750,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.b8zfKznhQRxpJ1ru",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.fEQ4vD2DgUn6GBdk"
     },
@@ -1129,9 +1123,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.LzEUyc24v6yn18nE"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1141,12 +1132,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711668292383,
         "modifiedTime": 1711668349645,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.LzEUyc24v6yn18nE",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.T7XsItYiCPR22LZM"
     },
@@ -1283,9 +1275,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.fjq5Rf5e1ALoN5xc"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1295,12 +1284,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711667664884,
         "modifiedTime": 1713147644501,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.fjq5Rf5e1ALoN5xc",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.mgz7tsAKtfiza0Hm"
     },
@@ -1403,9 +1393,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.KD9TOijvhZXlxjOc"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1415,12 +1402,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711682312413,
         "modifiedTime": 1711682899098,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.KD9TOijvhZXlxjOc",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.8U6OVVicq1rgOpub"
     },
@@ -1523,9 +1511,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.Z5ji684AfGNgLEWj"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1535,12 +1520,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711682798316,
         "modifiedTime": 1711682902300,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.Z5ji684AfGNgLEWj",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.59CKIAdQrcJAw6pJ"
     },
@@ -1650,9 +1636,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.8R4XXpbwLn8tic0m"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1662,12 +1645,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711682938328,
         "modifiedTime": 1711683000564,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.8R4XXpbwLn8tic0m",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.DogrQAiZf4nOke5q"
     },
@@ -1792,9 +1776,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.EhzKBSBAraL7ifUf"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -1804,12 +1785,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.019",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711682683827,
         "modifiedTime": 1711683004110,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.EhzKBSBAraL7ifUf",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!8ZGw45FNU52DyRyf.7R7o3QK2uOUbwojP"
     }
@@ -1823,11 +1805,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1709616912548,
     "modifiedTime": 1729607937641,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!actors!8ZGw45FNU52DyRyf"
 }

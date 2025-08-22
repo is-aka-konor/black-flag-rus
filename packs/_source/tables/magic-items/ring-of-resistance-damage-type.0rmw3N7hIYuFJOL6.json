@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "uq7BiYOp4NYWhAVt",
-      "text": "Acid / Pearl",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Acid / Pearl",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.uq7BiYOp4NYWhAVt"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "CQs8TPjox73zvhiA",
-      "text": "Cold / Tourmaline",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cold / Tourmaline",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.CQs8TPjox73zvhiA"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "g7yGwhWfoRFqVYOc",
-      "text": "Fire / Garnet",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fire / Garnet",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.g7yGwhWfoRFqVYOc"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "fP7TOl72g5izgKjj",
-      "text": "Force / Sapphire",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Force / Sapphire",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.fP7TOl72g5izgKjj"
     },
     {
@@ -73,10 +117,21 @@
       ],
       "drawn": false,
       "_id": "sfBB2C8YpRaoksir",
-      "text": "Lightning / Citrine",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Lightning / Citrine",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.sfBB2C8YpRaoksir"
     },
     {
@@ -88,10 +143,21 @@
       ],
       "drawn": false,
       "_id": "mSxJmXGT6NNDIhow",
-      "text": "Necrotic / Jet",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Necrotic / Jet",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.mSxJmXGT6NNDIhow"
     },
     {
@@ -103,10 +169,21 @@
       ],
       "drawn": false,
       "_id": "epyGR9LFBCw2JeBP",
-      "text": "Poison / Amethyst",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Poison / Amethyst",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.epyGR9LFBCw2JeBP"
     },
     {
@@ -118,10 +195,21 @@
       ],
       "drawn": false,
       "_id": "SWuyE2ZrkmRLiA8t",
-      "text": "Psychic / Jade",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Psychic / Jade",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.SWuyE2ZrkmRLiA8t"
     },
     {
@@ -133,10 +221,21 @@
       ],
       "drawn": false,
       "_id": "I3MAlhDrFJQJjAsc",
-      "text": "Radiant / Topaz",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Radiant / Topaz",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.I3MAlhDrFJQJjAsc"
     },
     {
@@ -148,10 +247,21 @@
       ],
       "drawn": false,
       "_id": "nCBxFQEFddQMSUOC",
-      "text": "Thunder / Spinel",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Thunder / Spinel",
+      "name": "",
       "_key": "!tables.results!0rmw3N7hIYuFJOL6.nCBxFQEFddQMSUOC"
     }
   ],
@@ -163,12 +273,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426278858,
     "modifiedTime": 1729534623160,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d10",
   "_id": "0rmw3N7hIYuFJOL6",

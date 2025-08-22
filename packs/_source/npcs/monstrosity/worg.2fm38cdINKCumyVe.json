@@ -220,7 +220,6 @@
     "detectionModes": [],
     "flags": {},
     "randomImg": false,
-    "hexagonalShape": 1,
     "occludable": {
       "radius": 0
     },
@@ -235,7 +234,14 @@
         "scale": 1,
         "texture": null
       }
-    }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -365,12 +371,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1706473742673,
         "modifiedTime": 1713147994643,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!2fm38cdINKCumyVe.cTEgzaUZkfuIvRek"
     },
@@ -417,9 +424,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.vlGTuDphxCZw4xYF"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -429,12 +433,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1709773397125,
         "modifiedTime": 1712946420532,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.vlGTuDphxCZw4xYF",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!2fm38cdINKCumyVe.LkacuNJQtsOsEaIG"
     },
@@ -509,14 +514,15 @@
           "flags": {},
           "tint": "#ffffff",
           "_stats": {
-            "coreVersion": "12.328",
+            "coreVersion": "13.347",
             "systemId": null,
             "systemVersion": null,
             "createdTime": null,
             "modifiedTime": null,
             "lastModifiedBy": null,
             "compendiumSource": null,
-            "duplicateSource": null
+            "duplicateSource": null,
+            "exportSource": null
           },
           "img": "icons/creatures/magical/spirit-undead-winged-ghost.webp",
           "type": "base",
@@ -531,9 +537,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.XalovXeLAaACbyqk"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -543,12 +546,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1706473622104,
         "modifiedTime": 1712946425080,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.XalovXeLAaACbyqk",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!2fm38cdINKCumyVe.3a1SaKM9tQ0VVPzC"
     },
@@ -682,9 +686,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -694,12 +695,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1711504525397,
         "modifiedTime": 1717280879659,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!2fm38cdINKCumyVe.2b7Qqa4U0wJLz3WC"
     }
@@ -713,11 +715,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1706473281478,
     "modifiedTime": 1729607937641,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!actors!2fm38cdINKCumyVe"
 }

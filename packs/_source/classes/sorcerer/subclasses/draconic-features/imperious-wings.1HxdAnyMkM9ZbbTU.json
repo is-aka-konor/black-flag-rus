@@ -112,14 +112,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/creatures/abilities/wing-batlike-purple-blue.webp",
       "type": "base",
@@ -136,11 +137,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.036",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1718729435383,
     "modifiedTime": 1718729737388,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!1HxdAnyMkM9ZbbTU"
 }

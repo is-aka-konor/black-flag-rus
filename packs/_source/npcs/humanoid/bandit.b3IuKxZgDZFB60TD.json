@@ -213,7 +213,6 @@
     "detectionModes": [],
     "flags": {},
     "randomImg": false,
-    "hexagonalShape": 0,
     "occludable": {
       "radius": 0
     },
@@ -228,7 +227,14 @@
         "scale": 1,
         "texture": null
       }
-    }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -274,9 +280,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.npcfeatures.Item.kGLE0qowVsuDXElc"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -286,12 +289,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1713148593157,
         "modifiedTime": 1713148651057,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.kGLE0qowVsuDXElc",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!b3IuKxZgDZFB60TD.KXHV9NZgjEi1vRWd"
     },
@@ -433,9 +437,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.items.Item.MwYjehTr9oJlHb1Z"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -445,12 +446,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1701025022972,
         "modifiedTime": 1717281094732,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.MwYjehTr9oJlHb1Z",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!b3IuKxZgDZFB60TD.gq6S1EmLHbgg6o96"
     },
@@ -596,9 +598,6 @@
         "default": 0
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.black-flag.items.Item.Zu15sMMg2KvxhA3e"
-        },
         "black-flag": {
           "relationship": {
             "enabled": true
@@ -608,12 +607,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.031",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1701024638733,
         "modifiedTime": 1717281099213,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.Zu15sMMg2KvxhA3e",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!b3IuKxZgDZFB60TD.t5pk9gUbiVuv2Htg"
     },
@@ -732,12 +732,13 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.8.020",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1713148745291,
         "modifiedTime": 1713148819752,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "_key": "!actors.items!b3IuKxZgDZFB60TD.93AsPVLkmzFJr9mS"
     }
@@ -751,11 +752,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.049",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1709698448602,
     "modifiedTime": 1729607937641,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!actors!b3IuKxZgDZFB60TD"
 }

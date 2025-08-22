@@ -29,12 +29,14 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.030",
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "createdTime": 1700344550308,
         "modifiedTime": 1716518690012,
         "lastModifiedBy": "blackflag0000000",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
+      "category": null,
       "_key": "!journal.pages!k4RMFht4hY7ojcmF.vUn949CEEFzWc22W"
     },
     {
@@ -65,12 +67,14 @@
       "_stats": {
         "systemId": "black-flag",
         "systemVersion": "0.9.030",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "createdTime": 1716515535428,
         "modifiedTime": 1737394607577,
         "lastModifiedBy": "blackflag0000000",
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
+      "category": null,
       "_key": "!journal.pages!k4RMFht4hY7ojcmF.JdTMIEHaXriJpgs2"
     }
   ],
@@ -83,11 +87,13 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.030",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1716515309060,
     "modifiedTime": 1728426220256,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
+  "categories": [],
   "_key": "!journal!k4RMFht4hY7ojcmF"
 }

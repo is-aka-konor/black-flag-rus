@@ -143,14 +143,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.330",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": 1723605110906,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/magic/unholy/projectiles-binary-pink.webp",
       "type": "base",
@@ -167,11 +168,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.10.042",
-    "coreVersion": "12.330",
+    "coreVersion": "13.347",
     "createdTime": 1706932052775,
     "modifiedTime": 1723605091643,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!HorNiol8kDK0QGIo"
 }

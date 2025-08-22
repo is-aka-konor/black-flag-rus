@@ -14,10 +14,21 @@
       ],
       "drawn": false,
       "_id": "FJztnN24dVg1yBrF",
-      "text": "The creature uses all its movement to move in a random direction. To determine the direction, roll a [[/r d8]] and assign a direction to each die face. The creature doesn’t take an action this turn.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "The creature uses all its movement to move in a random direction. To determine the direction, roll a [[/r d8]] and assign a direction to each die face. The creature doesn’t take an action this turn.",
+      "name": "",
       "_key": "!tables.results!9jJuPmkPOrFBfzu8.FJztnN24dVg1yBrF"
     },
     {
@@ -29,10 +40,21 @@
       ],
       "drawn": false,
       "_id": "Vn8Ld0g1FNkjltrA",
-      "text": "The creature doesn’t move or take actions this turn.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "The creature doesn’t move or take actions this turn.",
+      "name": "",
       "_key": "!tables.results!9jJuPmkPOrFBfzu8.Vn8Ld0g1FNkjltrA"
     },
     {
@@ -44,10 +66,21 @@
       ],
       "drawn": false,
       "_id": "rPTuB2evEarts6U2",
-      "text": "The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within reach, the creature does nothing this turn.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within reach, the creature does nothing this turn.",
+      "name": "",
       "_key": "!tables.results!9jJuPmkPOrFBfzu8.rPTuB2evEarts6U2"
     },
     {
@@ -59,10 +92,21 @@
       ],
       "drawn": false,
       "_id": "hE9js5UEf8vbQ4H8",
-      "text": "The creature can act and move normally. At the end of each of its turns, an affected creature can make a [[/save wisdom]] save, ending the effect on itself on a success.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "The creature can act and move normally. At the end of each of its turns, an affected creature can make a [[/save wisdom]] save, ending the effect on itself on a success.",
+      "name": "",
       "_key": "!tables.results!9jJuPmkPOrFBfzu8.hE9js5UEf8vbQ4H8"
     }
   ],
@@ -76,11 +120,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.038",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1720284940249,
     "modifiedTime": 1720285044834,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "formula": "1d10",
   "_key": "!tables!9jJuPmkPOrFBfzu8"

@@ -90,14 +90,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/magic/earth/construct-stone.webp",
       "type": "base",
@@ -114,11 +115,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.033",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1717791110108,
     "modifiedTime": 1717793051550,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!jGPZ62M4TvLUKSL8"
 }

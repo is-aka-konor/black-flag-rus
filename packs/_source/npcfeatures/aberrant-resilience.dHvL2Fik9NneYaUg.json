@@ -76,14 +76,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
       "type": "base",
@@ -101,11 +102,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.8.020",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1709672456179,
     "modifiedTime": 1713149287714,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!dHvL2Fik9NneYaUg"
 }

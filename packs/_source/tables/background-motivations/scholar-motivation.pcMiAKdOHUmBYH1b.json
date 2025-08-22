@@ -14,10 +14,21 @@
       ],
       "drawn": false,
       "_id": "vxYtnRhYO1dSbiDf",
-      "text": "Adventuring supplies me with coin to fund my research.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring supplies me with coin to fund my research.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.vxYtnRhYO1dSbiDf"
     },
     {
@@ -29,10 +40,21 @@
       ],
       "drawn": false,
       "_id": "YNg2bLC8I7qcx6oM",
-      "text": "Adventuring allows me to gain field experience relevant to my field of study.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring allows me to gain field experience relevant to my field of study.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.YNg2bLC8I7qcx6oM"
     },
     {
@@ -44,10 +66,21 @@
       ],
       "drawn": false,
       "_id": "nPd1qFEwrJ011aor",
-      "text": "Adventuring is a way to actually experience and see the things I’ve read in books.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to actually experience and see the things I’ve read in books.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.nPd1qFEwrJ011aor"
     },
     {
@@ -59,10 +92,21 @@
       ],
       "drawn": false,
       "_id": "vAbJAeVrFsdpwWRd",
-      "text": "Adventuring is a way to make ends meet until I can prove the validity of my research.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to make ends meet until I can prove the validity of my research.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.vAbJAeVrFsdpwWRd"
     },
     {
@@ -74,10 +118,21 @@
       ],
       "drawn": false,
       "_id": "nlS5P8onYslaxmye",
-      "text": "Adventuring allows me to uncover lost or fobidden knowledge not found within typical institutions.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring allows me to uncover lost or fobidden knowledge not found within typical institutions.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.nlS5P8onYslaxmye"
     },
     {
@@ -89,10 +144,21 @@
       ],
       "drawn": false,
       "_id": "mxKbvOjQnFndTkcS",
-      "text": "Adventuring is the best way to collect data for my patron or employer.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is the best way to collect data for my patron or employer.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.mxKbvOjQnFndTkcS"
     },
     {
@@ -104,10 +170,21 @@
       ],
       "drawn": false,
       "_id": "REvPB1QBdIoDlbac",
-      "text": "Adventuring may lead me to the answers I desperately seek.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring may lead me to the answers I desperately seek.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.REvPB1QBdIoDlbac"
     },
     {
@@ -119,10 +196,21 @@
       ],
       "drawn": false,
       "_id": "WFr1VF8ae2ZyTLMP",
-      "text": "Adventuring is a way to escape a life of academia I never wanted.",
-      "documentId": null,
       "flags": {},
       "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Adventuring is a way to escape a life of academia I never wanted.",
+      "name": "",
       "_key": "!tables.results!pcMiAKdOHUmBYH1b.WFr1VF8ae2ZyTLMP"
     }
   ],
@@ -136,11 +224,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.8.011",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1706650243808,
     "modifiedTime": 1706650427420,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "formula": "1d8",
   "_key": "!tables!pcMiAKdOHUmBYH1b"

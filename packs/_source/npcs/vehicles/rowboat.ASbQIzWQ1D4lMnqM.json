@@ -140,7 +140,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -205,7 +204,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -355,12 +361,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "1.1.055",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "img": "icons/environment/settlement/wagon.webp",
           "type": "base",
@@ -383,12 +390,13 @@
       "_stats": {
         "duplicateSource": null,
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.4mrsMh1wkqybueGe",
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.055",
         "createdTime": 1733435440204,
         "modifiedTime": 1733435440224,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "_id": "1inCk4gUrPTiE5n4",
       "sort": 0,
@@ -449,12 +457,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.055",
         "createdTime": 1733435492780,
         "modifiedTime": 1733435540073,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "_key": "!actors.items!ASbQIzWQ1D4lMnqM.VaPrEkoVnKgmCqpS"
     },
@@ -561,12 +570,13 @@
       "_stats": {
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.aex3DaR0KYtAmxMN",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.055",
         "createdTime": 1733435646674,
         "modifiedTime": 1733435653642,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "_id": "n5xCftpPgOJU6o0d",
       "sort": 0,
@@ -646,12 +656,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.347",
             "systemId": "black-flag",
             "systemVersion": "1.1.055",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!ASbQIzWQ1D4lMnqM.Z569NoPjIXGChyct.TBjGqZeJ7sip50SU"
         }
@@ -671,12 +682,13 @@
       "_stats": {
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.VgVWo073DYpavk6d",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": "black-flag",
         "systemVersion": "1.1.055",
         "createdTime": 1733435850919,
         "modifiedTime": 1733435850935,
-        "lastModifiedBy": "blackflag0000000"
+        "lastModifiedBy": "blackflag0000000",
+        "exportSource": null
       },
       "_key": "!actors.items!ASbQIzWQ1D4lMnqM.Z569NoPjIXGChyct"
     }
@@ -689,12 +701,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "1.1.055",
     "createdTime": 1733435440163,
     "modifiedTime": 1733437751008,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "_key": "!actors!ASbQIzWQ1D4lMnqM"
 }

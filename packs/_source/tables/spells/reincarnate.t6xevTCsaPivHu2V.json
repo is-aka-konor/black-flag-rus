@@ -14,10 +14,21 @@
       ],
       "drawn": false,
       "_id": "PmjIeq7YrQy2cYqI",
-      "text": "Beastkin, Avian",
       "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Beastkin, Avian",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.PmjIeq7YrQy2cYqI"
     },
     {
@@ -29,10 +40,21 @@
       ],
       "drawn": false,
       "_id": "YxhDNFkeMgsZfP7m",
-      "text": "Beastkin, Agile",
       "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Beastkin, Agile",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.YxhDNFkeMgsZfP7m"
     },
     {
@@ -44,10 +66,21 @@
       ],
       "drawn": false,
       "_id": "ICRB1ehqM1rJGU6Y",
-      "text": "Beastkin, Aquatic",
       "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Beastkin, Aquatic",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.ICRB1ehqM1rJGU6Y"
     },
     {
@@ -59,10 +92,21 @@
       ],
       "drawn": false,
       "_id": "I8YtFBevY1hfPdO6",
-      "text": "Beastkin, Sturdy",
       "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Beastkin, Sturdy",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.I8YtFBevY1hfPdO6"
     },
     {
@@ -74,10 +118,21 @@
       ],
       "drawn": false,
       "_id": "PRsruuTYpFuHuIud",
-      "text": "Dwarf",
       "img": "icons/environment/wilderness/mine-interior-dungeon-door.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Dwarf",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.PRsruuTYpFuHuIud"
     },
     {
@@ -89,10 +144,21 @@
       ],
       "drawn": false,
       "_id": "IIubUmVFiaKrgKdA",
-      "text": "Elf",
       "img": "icons/environment/wilderness/tree-oak.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Elf",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.IIubUmVFiaKrgKdA"
     },
     {
@@ -104,10 +170,21 @@
       ],
       "drawn": false,
       "_id": "wzBqX1CX1cqo88RS",
-      "text": "Human",
       "img": "icons/environment/people/commoner.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Human",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.wzBqX1CX1cqo88RS"
     },
     {
@@ -119,10 +196,21 @@
       ],
       "drawn": false,
       "_id": "XWFjjWQj7SGl6ioD",
-      "text": "Orc",
       "img": "icons/creatures/eyes/lizard-single-slit-green.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Orc",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.XWFjjWQj7SGl6ioD"
     },
     {
@@ -134,10 +222,21 @@
       ],
       "drawn": false,
       "_id": "Rs9OlffzEbh6Ws2V",
-      "text": "Smallfolk, Gnome",
       "img": "icons/creatures/eyes/lizard-single-slit-green.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Smallfolk, Gnome",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.Rs9OlffzEbh6Ws2V"
     },
     {
@@ -149,10 +248,21 @@
       ],
       "drawn": false,
       "_id": "on8Vuq8R9FL4GWGn",
-      "text": "Smallfolk, Halfling",
       "img": "icons/creatures/magical/humanoid-silhouette-dashing-blue.webp",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Smallfolk, Halfling",
+      "name": "",
       "_key": "!tables.results!t6xevTCsaPivHu2V.on8Vuq8R9FL4GWGn"
     }
   ],
@@ -165,12 +275,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.330",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.042",
     "createdTime": 1723265447730,
     "modifiedTime": 1723265595902,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d100",
   "_key": "!tables!t6xevTCsaPivHu2V"

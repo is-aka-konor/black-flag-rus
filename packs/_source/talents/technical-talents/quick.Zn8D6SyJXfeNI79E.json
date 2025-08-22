@@ -101,14 +101,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.328",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
       "type": "base",
@@ -125,11 +126,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "0.9.029",
-    "coreVersion": "12.328",
+    "coreVersion": "13.347",
     "createdTime": 1716347807771,
     "modifiedTime": 1716348411095,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!Zn8D6SyJXfeNI79E"
 }

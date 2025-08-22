@@ -159,14 +159,15 @@
       "flags": {},
       "tint": "#ffffff",
       "_stats": {
-        "coreVersion": "12.331",
+        "coreVersion": "13.347",
         "systemId": null,
         "systemVersion": null,
         "createdTime": null,
         "modifiedTime": 1736380148126,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
-        "duplicateSource": null
+        "duplicateSource": null,
+        "exportSource": null
       },
       "img": "icons/skills/wounds/injury-face-impact-orange.webp",
       "type": "base",
@@ -183,11 +184,12 @@
   "_stats": {
     "systemId": "black-flag",
     "systemVersion": "1.2.059",
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "createdTime": 1717383139458,
     "modifiedTime": 1736380323922,
     "lastModifiedBy": "blackflag0000000",
-    "duplicateSource": null
+    "duplicateSource": null,
+    "exportSource": null
   },
   "_key": "!items!7wqTqzh8CYPFXqSW"
 }

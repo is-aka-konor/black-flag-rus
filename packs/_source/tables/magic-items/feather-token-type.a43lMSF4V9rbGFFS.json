@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "SA28yD2zGpmozv1l",
-      "text": "Anchor",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Anchor",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.SA28yD2zGpmozv1l"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "Ih2L4J7uBghQyXvD",
-      "text": "Bird",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Bird",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.Ih2L4J7uBghQyXvD"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "fDNzPy69QAlnIEsf",
-      "text": "Fan",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fan",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.fDNzPy69QAlnIEsf"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "mWPkAggwl6CnflQ6",
-      "text": "Swan boat",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Swan boat",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.mWPkAggwl6CnflQ6"
     },
     {
@@ -73,10 +117,21 @@
       ],
       "drawn": false,
       "_id": "Hd0FTtadqTryuceX",
-      "text": "Tree",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Tree",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.Hd0FTtadqTryuceX"
     },
     {
@@ -88,10 +143,21 @@
       ],
       "drawn": false,
       "_id": "guQlXCvBUXx3FcVg",
-      "text": "Whip",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Whip",
+      "name": "",
       "_key": "!tables.results!a43lMSF4V9rbGFFS.guQlXCvBUXx3FcVg"
     }
   ],
@@ -103,12 +169,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426271993,
     "modifiedTime": 1729534310863,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d100",
   "_id": "a43lMSF4V9rbGFFS",

@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "uq7BiYOp4NYWhAVt",
-      "text": "Acid",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Acid",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.uq7BiYOp4NYWhAVt"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "CQs8TPjox73zvhiA",
-      "text": "Cold",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Cold",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.CQs8TPjox73zvhiA"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "g7yGwhWfoRFqVYOc",
-      "text": "Fire",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Fire",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.g7yGwhWfoRFqVYOc"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "fP7TOl72g5izgKjj",
-      "text": "Force",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Force",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.fP7TOl72g5izgKjj"
     },
     {
@@ -73,10 +117,21 @@
       ],
       "drawn": false,
       "_id": "sfBB2C8YpRaoksir",
-      "text": "Lightning",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Lightning",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.sfBB2C8YpRaoksir"
     },
     {
@@ -88,10 +143,21 @@
       ],
       "drawn": false,
       "_id": "mSxJmXGT6NNDIhow",
-      "text": "Necrotic",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Necrotic",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.mSxJmXGT6NNDIhow"
     },
     {
@@ -103,10 +169,21 @@
       ],
       "drawn": false,
       "_id": "epyGR9LFBCw2JeBP",
-      "text": "Poison",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Poison",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.epyGR9LFBCw2JeBP"
     },
     {
@@ -118,10 +195,21 @@
       ],
       "drawn": false,
       "_id": "SWuyE2ZrkmRLiA8t",
-      "text": "Psychic",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Psychic",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.SWuyE2ZrkmRLiA8t"
     },
     {
@@ -133,10 +221,21 @@
       ],
       "drawn": false,
       "_id": "I3MAlhDrFJQJjAsc",
-      "text": "Radiant",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Radiant",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.I3MAlhDrFJQJjAsc"
     },
     {
@@ -148,10 +247,21 @@
       ],
       "drawn": false,
       "_id": "nCBxFQEFddQMSUOC",
-      "text": "Thunder",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Thunder",
+      "name": "",
       "_key": "!tables.results!bgRevVWGlfMiW19d.nCBxFQEFddQMSUOC"
     }
   ],
@@ -163,12 +273,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426269985,
     "modifiedTime": 1729534265434,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d10",
   "_id": "bgRevVWGlfMiW19d",

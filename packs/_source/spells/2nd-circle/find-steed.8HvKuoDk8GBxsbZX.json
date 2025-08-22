@@ -112,12 +112,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.329",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.039",
     "createdTime": 1721445131425,
     "modifiedTime": 1721446198443,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "_key": "!items!8HvKuoDk8GBxsbZX"
 }

@@ -13,10 +13,21 @@
       ],
       "drawn": false,
       "_id": "rznrL4tGXYIDC84h",
-      "text": "Clay / 30 days / 65,000 gp",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Clay / 30 days / 65,000 gp",
+      "name": "",
       "_key": "!tables.results!MIjqlvTD7YxhfGSB.rznrL4tGXYIDC84h"
     },
     {
@@ -28,10 +39,21 @@
       ],
       "drawn": false,
       "_id": "4LYLd6LWGn5KfsQc",
-      "text": "Flesh / 60 days / 50,000 gp",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Flesh / 60 days / 50,000 gp",
+      "name": "",
       "_key": "!tables.results!MIjqlvTD7YxhfGSB.4LYLd6LWGn5KfsQc"
     },
     {
@@ -43,10 +65,21 @@
       ],
       "drawn": false,
       "_id": "CyEH20RuNY63m4um",
-      "text": "Iron / 120 days / 100,000 gp",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Iron / 120 days / 100,000 gp",
+      "name": "",
       "_key": "!tables.results!MIjqlvTD7YxhfGSB.CyEH20RuNY63m4um"
     },
     {
@@ -58,10 +91,21 @@
       ],
       "drawn": false,
       "_id": "XIk7bKTIg4Hcsbgp",
-      "text": "Stone / 90 days / 80,000 gp",
       "img": "icons/svg/d20-black.svg",
-      "documentId": null,
       "flags": {},
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "description": "Stone / 90 days / 80,000 gp",
+      "name": "",
       "_key": "!tables.results!MIjqlvTD7YxhfGSB.XIk7bKTIg4Hcsbgp"
     }
   ],
@@ -73,12 +117,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.048",
     "createdTime": 1728426275278,
     "modifiedTime": 1729534461391,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d20",
   "_id": "MIjqlvTD7YxhfGSB",

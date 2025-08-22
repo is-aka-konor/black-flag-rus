@@ -6,7 +6,7 @@
   "description": "",
   "results": [
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         1,
@@ -14,15 +14,26 @@
       ],
       "drawn": false,
       "_id": "DIfOPrrPWOqUwktk",
-      "text": "Rat",
       "img": "systems/black-flag/artwork/tokens/rat.webp",
-      "documentId": "Wu2QaZI38nWZEZtb",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Rat",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.Wu2QaZI38nWZEZtb",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.DIfOPrrPWOqUwktk"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         2,
@@ -30,15 +41,26 @@
       ],
       "drawn": false,
       "_id": "OUPxDu0iwL3wlkM5",
-      "text": "Owl",
       "img": "modules/kp-tov-monster-vault/assets/tokens/Token-Owl.png",
-      "documentId": "tI2hsbBl6skqEkOp",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Owl",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.tI2hsbBl6skqEkOp",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.OUPxDu0iwL3wlkM5"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         3,
@@ -46,15 +68,26 @@
       ],
       "drawn": false,
       "_id": "Pibsa8KzxusaPkp5",
-      "text": "Mastiff",
       "img": "systems/black-flag/artwork/tokens/mastiff.webp",
-      "documentId": "ck0kqumkVqWznctK",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Mastiff",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.ck0kqumkVqWznctK",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.Pibsa8KzxusaPkp5"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         4,
@@ -62,15 +95,26 @@
       ],
       "drawn": false,
       "_id": "28Xp6bnt4dE9YWsP",
-      "text": "Goat",
       "img": "systems/black-flag/artwork/tokens/goat.webp",
-      "documentId": "sC5LVxumiNuA8EJH",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Goat",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.sC5LVxumiNuA8EJH",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.28Xp6bnt4dE9YWsP"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         5,
@@ -78,15 +122,26 @@
       ],
       "drawn": false,
       "_id": "GsnK7M3f4rxmlTIl",
-      "text": "Giant Goat",
       "img": "systems/black-flag/artwork/tokens/goat.webp",
-      "documentId": "X82CDCyHgR41wdQE",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Giant Goat",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.X82CDCyHgR41wdQE",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.GsnK7M3f4rxmlTIl"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         6,
@@ -94,15 +149,26 @@
       ],
       "drawn": false,
       "_id": "TJp2yoEY93rXoCEJ",
-      "text": "Giant Boar",
       "img": "systems/black-flag/artwork/tokens/boar.webp",
-      "documentId": "h1hoa6N6IlypbFz0",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Giant Boar",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.h1hoa6N6IlypbFz0",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.TJp2yoEY93rXoCEJ"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         7,
@@ -110,15 +176,26 @@
       ],
       "drawn": false,
       "_id": "qOE481B4RVdL5u4o",
-      "text": "Lion",
       "img": "systems/black-flag/artwork/tokens/lion.webp",
-      "documentId": "PIz6OxdTiqdlix0y",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Lion",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.PIz6OxdTiqdlix0y",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.qOE481B4RVdL5u4o"
     },
     {
-      "type": "pack",
+      "type": "document",
       "weight": 1,
       "range": [
         8,
@@ -126,11 +203,22 @@
       ],
       "drawn": false,
       "_id": "CeDtmk7d98YfCoiO",
-      "text": "Brown Bear",
       "img": "systems/black-flag/artwork/tokens/bear-grizzly.webp",
-      "documentId": "2Uyw9ZrqRJur5bwE",
       "flags": {},
-      "documentCollection": "black-flag.npcs",
+      "_stats": {
+        "coreVersion": "13.347",
+        "systemId": null,
+        "systemVersion": null,
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "name": "Brown Bear",
+      "documentUuid": "Compendium.black-flag.npcs.Actor.2Uyw9ZrqRJur5bwE",
+      "description": "",
       "_key": "!tables.results!QYp0wCFpn2yOgth6.CeDtmk7d98YfCoiO"
     }
   ],
@@ -143,12 +231,13 @@
   "flags": {},
   "_stats": {
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.347",
     "systemId": "black-flag",
     "systemVersion": "0.10.044",
     "createdTime": 1725739506318,
     "modifiedTime": 1730156928292,
-    "lastModifiedBy": "blackflag0000000"
+    "lastModifiedBy": "blackflag0000000",
+    "exportSource": null
   },
   "formula": "d8",
   "_key": "!tables!QYp0wCFpn2yOgth6"
