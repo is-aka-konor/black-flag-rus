@@ -4,8 +4,16 @@ import FormulaField from "../fields/formula-field.mjs";
 import IdentifierField from "../fields/identifier-field.mjs";
 import AppliedEffectField from "./fields/applied-effect-field.mjs";
 
-const { ArrayField, BooleanField, DocumentIdField, NumberField, SchemaField, SetField, StringField } =
-	foundry.data.fields;
+const {
+	ArrayField,
+	BooleanField,
+	DocumentIdField,
+	DocumentUUIDField,
+	NumberField,
+	SchemaField,
+	SetField,
+	StringField
+} = foundry.data.fields;
 
 /**
  * Information for a single summoned creature.
@@ -83,7 +91,7 @@ export class SummonData extends ActivityDataModel {
 					}),
 					name: new StringField(),
 					types: new SetField(new StringField()),
-					uuid: new StringField()
+					uuid: new DocumentUUIDField({ type: "Actor" })
 				})
 			),
 			summon: new SchemaField({

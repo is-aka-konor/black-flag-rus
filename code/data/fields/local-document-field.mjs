@@ -52,7 +52,11 @@ export default class LocalDocumentField extends foundry.data.fields.DocumentIdFi
 	 */
 	_findCollection(model, collection) {
 		if (!model.parent) return;
-		return model.parent[collection] ?? this._findCollection(model.parent, collection);
+		try {
+			return model.parent.getEmbeddedCollection(collection);
+		} catch (err) {
+			return model.parent[collection] ?? this._findCollection(model.parent, collection);
+		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

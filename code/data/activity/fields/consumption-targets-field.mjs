@@ -34,7 +34,7 @@ export default class ConsumptionTargetsField extends ArrayField {
 export class ConsumptionTargetData extends foundry.abstract.DataModel {
 	static defineSchema() {
 		return {
-			type: new StringField({ label: "BF.CONSUMPTION.Type.Label" }),
+			type: new StringField({ required: true, blank: false, initial: "activity", label: "BF.CONSUMPTION.Type.Label" }),
 			target: new StringField({ label: "BF.Consumption.Target.Label" }),
 			value: new FormulaField({ initial: "1", label: "BF.Consumption.Amount.Label" }),
 			scaling: new SchemaField({
