@@ -61,11 +61,19 @@ export default class AttackSheet extends ActivitySheet {
 	/** @inheritDoc */
 	async _prepareIdentityContext(context) {
 		context = await super._prepareIdentityContext(context);
-		const defaultType = CONFIG.BlackFlag.weaponTypes[this.item.system.type?.value]?.label;
+
+		if (this.item.system.validAttackTypes?.size)
+			context.defaultType = game.i18n.format("BF.Default.Specific", {
+				default: game.i18n
+					.getListFormatter({ type: "disjunction" })
+					.format(
+						Array.from(this.item.system.validAttackTypes).map(t =>
+							CONFIG.BlackFlag.weaponTypes.localized[t].toLowerCase()
+						)
+					)
+			});
+
 		const defaultClassification = CONFIG.BlackFlag.attackTypes[this.item.system.type?.classification];
-		context.defaultType = defaultType
-			? game.i18n.format("BF.Default.Specific", { default: game.i18n.localize(defaultType).toLowerCase() })
-			: null;
 		context.defaultClassification = defaultClassification
 			? game.i18n.format("BF.Default.Specific", { default: game.i18n.localize(defaultClassification).toLowerCase() })
 			: null;
