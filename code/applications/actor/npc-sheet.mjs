@@ -193,7 +193,7 @@ export default class NPCSheet extends BaseStatBlockSheet {
 		}
 
 		if (Number.isNumeric(submitData.system?.attributes?.legendary?.value)) {
-			submitData.system.attributes.legendaryy.spent =
+			submitData.system.attributes.legendary.spent =
 				this.actor.system.attributes.legendary.max - parseInt(submitData.system.attributes.legendary.value);
 		}
 
