@@ -91,7 +91,7 @@ export default class ActivationMessageData extends ChatMessageDataModel {
 			}),
 			effects: this.effects
 				.map(id => this.item?.effects.get(id))
-				.filter(e => e && (game.user.isGM || e.transfer & (this.author.id === game.user.id)))
+				.filter(e => e && (game.user.isGM || (e.transfer && this.parent.author.id === game.user.id)))
 		};
 	}
 
