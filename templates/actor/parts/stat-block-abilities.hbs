@@ -4,7 +4,7 @@
 			<label class="name" for="{{ @root.partId }}-ability-{{ @key }}">
 				{{ lookup @root.CONFIG.abilities.localizedAbbreviations @key }}</span>
 			</label>
-			{{#if @root.modes.editing}}
+			{{#if @root.editable}}
 				<input id="{{ @root.partId }}-ability-{{ @key }}" type="number" name="system.abilities.{{ @key }}.mod"
 							 value="{{ _source.mod }}" placeholder="—" step="1">
 				{{#if @root.system.abilities._supportsProficiency}}

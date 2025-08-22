@@ -5,7 +5,7 @@
 				{{!-- TODO: Filters by action type --}}
 			</thead>
 			{{#each sections.features as |section sectionId|}}
-				<tbody data-section="{{sectionId}}">
+				<tbody data-section="{{ sectionId }}">
 					<tr class="table-header">
 						<td class="name">{{ localize section.label }}</td>
 						<th class="uses">{{ localize "BF.Uses.Short" }}</th>
@@ -26,7 +26,7 @@
 							<td class="uses">{{ system.uses.label }}</td>
 							<td class="controls">
 								<div class="layout">
-									{{#if @root.modes.editing}}
+									{{#if @root.editable}}
 										<button type="button" class="link-button" data-action="edit"
 														data-tooltip="BF.Item.Action.Edit"
 														aria-label="{{ localize 'BF.Item.Action.Edit' }}">
@@ -65,7 +65,7 @@
 			</div>
 		{{/if}}
 	</blackFlag-inventory>
-	
+
 	{{#if showCurrency}}
 		{{> "blackFlag.currency" }}
 	{{/if}}

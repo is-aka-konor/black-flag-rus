@@ -259,9 +259,7 @@
 					align-self: center;
 				}
 				> input {
-					flex: 0 0 12px;
-					width: 12px;
-					height: 12px;
+					--checkbox-size: 12px;
 					margin: 0;
 				}
 			}
