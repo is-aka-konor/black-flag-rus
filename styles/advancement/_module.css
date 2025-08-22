@@ -28,7 +28,9 @@
 			background-color: var(--bf-advancement-color, black);
 		}
 
-		> img {
+		> :is(blackflag-icon, img) {
+			--icon-size: 1.5em;
+			--icon-fill: currentcolor;
 			width: 1.5em;
 			height: 1.5em;
 			border: none;
