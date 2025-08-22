@@ -65,13 +65,79 @@ export default Base =>
 		/* <><><><> <><><><> <><><><> <><><><> */
 
 		/** @override */
-		static async createDialog(data = {}, { parent = null, pack = null, types = null, ...options } = {}) {
-			const documentName = this.metadata.name;
+		static async createDialog(
+			data = {},
+			createOptions = {},
+			{ folders, types, template, context, ...dialogOptions } = {}
+		) {
+			const applicationOptions = {
+				top: "position",
+				left: "position",
+				width: "position",
+				height: "position",
+				scale: "position",
+				zIndex: "position",
+				title: "window",
+				id: "",
+				classes: "",
+				jQuery: ""
+			};
+
+			for (const [k, v] of Object.entries(createOptions)) {
+				if (k in applicationOptions) {
+					foundry.utils.logCompatibilityWarning(
+						"The ClientDocument.createDialog signature has changed. " +
+							"It now accepts database operation options in its second parameter, " +
+							"and options for DialogV2.prompt in its third parameter.",
+						{ since: 13, until: 15, once: true }
+					);
+					const dialogOption = applicationOptions[k];
+					if (dialogOption) foundry.utils.setProperty(dialogOptions, `${dialogOption}.${k}`, v);
+					else dialogOptions[k] = v;
+					delete createOptions[k];
+				}
+			}
+
+			const { parent, pack } = createOptions;
+			const documentName = this.documentName;
+			const cls = this.implementation;
+
+			// Identify allowed types
+			const documentTypes = [];
+			let defaultType = CONFIG[this.documentName]?.defaultType;
+			let defaultTypeAllowed = false;
+			let hasTypes = false;
+			if (this.TYPES.length > 1) {
+				if (types?.length === 0) throw new Error("The array of sub-types to restrict to must not be empty");
+
+				// Register supported types
+				for (const type of this.TYPES) {
+					if (type === foundry.CONST.BASE_DOCUMENT_TYPE) continue;
+					if (types && !types.includes(type)) continue;
+					let label = CONFIG[this.documentName]?.typeLabels?.[type];
+					label = label && game.i18n.has(label) ? game.i18n.localize(label) : type;
+					documentTypes.push({ value: type, label });
+					if (type === defaultType) defaultTypeAllowed = true;
+				}
+				if (!documentTypes.length) throw new Error("No document types were permitted to be created");
+
+				if (!defaultTypeAllowed) defaultType = documentTypes[0].value;
+				// Sort alphabetically
+				documentTypes.sort((a, b) => a.label.localeCompare(b.label, game.i18n.lang));
+				hasTypes = true;
+			}
 			types ??= foundry.utils.deepClone(game.documentTypes[documentName].filter(t => t !== CONST.BASE_DOCUMENT_TYPE));
 			const extraTypes = new Set(types);
-			if (!types.length) return null;
-			const collection = parent ? null : pack ? game.packs.get(pack) : game.collections.get(this.documentName);
-			const folders = collection?._formatFolderSelectOptions() ?? [];
+
+			// Identify destination collection
+			let collection;
+			if (!parent) {
+				if (pack) collection = game.packs.get(pack);
+				else collection = game.collections.get(this.documentName);
+			}
+
+			// Collect data
+			folders ??= collection?._formatFolderSelectOptions() ?? [];
 			const label = game.i18n.localize(this.metadata.label);
 			const title = game.i18n.format("DOCUMENT.Create", { type: label });
 
@@ -97,43 +163,54 @@ export default Base =>
 			}
 
 			// Render the document creation form
-			const html = await foundry.applications.handlebars.renderTemplate(
-				"systems/black-flag/templates/shared/document-create.hbs",
-				{
-					folders: folders
-						? [{ value: "", label: "" }, ...folders.map(({ id, name }) => ({ value: id, label: name }))]
-						: null,
-					name: data.name || game.i18n.format("DOCUMENT.New", { type: label }),
-					folder: data.folder,
-					hasFolders: folders.length >= 1,
-					type: selectedType,
-					categories,
-					types: extraTypes.reduce((obj, t) => {
-						const label = CONFIG[documentName]?.typeLabels?.[t] ?? t;
-						obj[t] = game.i18n.localize(label);
-						return obj;
-					}, {})
-				}
-			);
+			template ??= "systems/black-flag/templates/shared/document-create.hbs";
+			const content = document.createElement("div");
+			content.innerHTML = await foundry.applications.handlebars.renderTemplate(template, {
+				folders: folders
+					? [{ value: "", label: "" }, ...folders.map(({ id, name }) => ({ value: id, label: name }))]
+					: null,
+				name: data.name || game.i18n.format("DOCUMENT.New", { type: label }),
+				folder: data.folder,
+				hasFolders: folders.length >= 1,
+				type: selectedType,
+				categories,
+				types: extraTypes.reduce((obj, t) => {
+					const label = CONFIG[documentName]?.typeLabels?.[t] ?? t;
+					obj[t] = game.i18n.localize(label);
+					return obj;
+				}, {})
+			});
 
 			// Render the confirmation dialog window
-			return Dialog.prompt({
-				title: title,
-				content: html,
-				label: title,
-				callback: async html => {
-					const form = html[0].querySelector("form");
-					const fd = new foundry.applications.ux.FormDataExtended(form);
-					foundry.utils.mergeObject(data, fd.object, { inplace: true });
-					if (!data.folder) delete data.folder;
-					if (types.length === 1) data.type = types[0];
-					if (!data.name?.trim()) data.name = this.defaultName();
-					lastCreated[documentName] = data.type;
-					await game.user.setFlag(game.system.id, "lastCreatedTypes", lastCreated);
-					return this.create(data, { parent, pack, renderSheet: true });
-				},
-				rejectClose: false,
-				options
-			});
+			return foundry.applications.api.DialogV2.prompt(
+				foundry.utils.mergeObject(
+					{
+						content,
+						window: { title },
+						position: { width: 360 },
+						render: (event, dialog) => {
+							if (!hasTypes) return;
+							dialog.element.querySelector('[name="type"]').addEventListener("change", e => {
+								const nameInput = dialog.element.querySelector('[name="name"]');
+								nameInput.placeholder = cls.defaultName({ type: e.target.value, parent, pack });
+							});
+						},
+						ok: {
+							label: title,
+							callback: (event, button) => {
+								const fd = new foundry.applications.ux.FormDataExtended(button.form);
+								foundry.utils.mergeObject(data, fd.object);
+								if (!data.folder) delete data.folder;
+								if (types.length === 1) data.type = types[0];
+								if (!data.name?.trim()) data.name = this.defaultName({ type: data.type, parent, pack });
+								lastCreated[documentName] = data.type;
+								game.user.setFlag(game.system.id, "lastCreatedTypes", lastCreated);
+								return cls.create(data, { renderSheet: true, ...createOptions });
+							}
+						}
+					},
+					dialogOptions
+				)
+			);
 		}
 	};
