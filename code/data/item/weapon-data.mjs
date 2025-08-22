@@ -165,7 +165,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	get availableAbilities() {
 		const melee = CONFIG.BlackFlag.defaultAbilities.meleeAttack;
 		const ranged = CONFIG.BlackFlag.defaultAbilities.rangedAttack;
-		if (this.properties.has("finesse")) return new Set([melee, ranged]);
+		if (this.properties.has("finesse") || this.type.category === "natural") return new Set([melee, ranged]);
 		return new Set([this.type.value === "ranged" ? ranged : melee]);
 	}
 
@@ -243,6 +243,25 @@ export default class WeaponData extends ItemDataModel.mixin(
 			})
 			.replace("  ", " ")
 			.trim();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Attack types that can be used with this item by default.
+	 * @type {Set<string>}
+	 */
+	get validAttackTypes() {
+		const types = new Set();
+		const attackType = this.type.value;
+		if (this.type.value === "melee") types.add("melee");
+		if (
+			this.type.value === "ranged" ||
+			this.properties.has("thrown") ||
+			(this.type.category === "natural" && this.range.short)
+		)
+			types.add("ranged");
+		return types;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

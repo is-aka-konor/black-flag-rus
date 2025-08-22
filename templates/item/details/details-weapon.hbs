@@ -55,7 +55,7 @@
 			       step=1 min=1>
 		</label>
 	{{/if}}
-	{{#if (or (eq source.type.value "ranged") properties.thrown.selected)}}
+	{{#if (or (eq source.type.category "natural") (eq source.type.value "ranged") properties.thrown.selected)}}
 		<div class="range field-group">
 			<span>{{ localize "BF.RANGE.Label" }}</span>
 			<label>

@@ -84,7 +84,21 @@ export class AttackData extends ActivityDataModel {
 	 * @type {Set<string>}
 	 */
 	get availableAbilities() {
-		if (this.item.system.availableAbilities) return this.item.system.availableAbilities;
+		// Defer to item if available and matching attack classification
+		if (this.item.system.availableAbilities && this.item.type === this.attack.type.classification) {
+			return this.item.system.availableAbilities;
+		}
+
+		// Natural weapons also defer to the item if using any classification other than spell.
+		if (
+			this.item.system.availableAbilities &&
+			this.item.system.type?.category === "natural" &&
+			this.attack.type.classification !== "spell"
+		) {
+			return this.item.system.availableAbilities;
+		}
+
+		// Spell attack not associated with a single class, use highest spellcasting ability on actor
 		if (this.attack.type.classification === "spell")
 			return new Set(
 				[
@@ -93,6 +107,7 @@ export class AttackData extends ActivityDataModel {
 				].filter(a => a)
 			);
 
+		// Weapon & unarmed attacks uses melee or ranged ability depending on type, or both if actor is an NPC
 		const melee = CONFIG.BlackFlag.defaultAbilities.meleeAttack;
 		const ranged = CONFIG.BlackFlag.defaultAbilities.rangedAttack;
 		if (this.actor?.type === "npc") return new Set([melee, ranged]);
@@ -116,6 +131,18 @@ export class AttackData extends ActivityDataModel {
 				.join("/");
 
 		return null;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Potential attack types when attacking with this activity.
+	 * @type {Set<string>}
+	 */
+	get validAttackTypes() {
+		const sourceType = this._source.attack.type.value;
+		if (sourceType) return new Set([sourceType]);
+		return this.item.system.validAttackTypes ?? new Set();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

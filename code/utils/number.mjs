@@ -1,6 +1,10 @@
 import { getPluralRules } from "./localization.mjs";
 import { isValidUnit } from "./validation.mjs";
 
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+/*                      Conversion                       */
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
 /**
  * Convert the provided weight to another unit.
  * @param {number} value - The weight value to convert.
@@ -18,6 +22,8 @@ export function convertWeight(value, from, to) {
 		/ CONFIG.BlackFlag.weightUnits[to].conversion;
 }
 
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+/*                      Formatting                       */
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
@@ -231,7 +237,7 @@ export function formatWeight(value, unit, options={}) {
  * @returns {string}
  */
 function _formatSystemUnits(value, unit, config, options={}) {
-	options.unitDisplay ??= "long";
+	options.unitDisplay ??= "short";
 	if ( config?.counted ) {
 		const localizationKey = `${config.counted}.${options.unitDisplay}.${getPluralRules().select(value)}`;
 		return game.i18n.format(localizationKey, { number: formatNumber(value, options) });

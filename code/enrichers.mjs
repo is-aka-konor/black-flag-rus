@@ -274,6 +274,18 @@ function handleRollAction(event) {
  *   <i class="fa-solid fa-dice-d20" inert></i> +8
  * </a> to hit
  * ```
+ *
+ * @example Display the full attack section:
+ * ```[[/attack format=extended]]``` or ```[[/attack extended]]```
+ * becomes
+ * ```html
+ * <span class="attack-extended">
+ *   <em>Melee Attack Roll</em>:
+ *   <span class="roll-link-group" data-type="attack" data-formula="+16" data-activity-uuid="...uuid...">
+ *     <a class="roll-link"><i class="fa-solid fa-dice-d20" inert"></i> +16</a>
+ *   </span>, reach 15 ft, one target
+ * </span>
+ * ```
  */
 async function enrichAttack(config, label, options) {
 	if (config.activity && config.formula) {
@@ -285,6 +297,7 @@ async function enrichAttack(config, label, options) {
 	if (config.formula) formulaParts.push(config.formula);
 	for (const value of config.values) {
 		if (value in CONFIG.BlackFlag.attackModes) config.attackMode = value;
+		else if (value === "extended") config.format = "extended";
 		else formulaParts.push(value);
 	}
 	config.formula = Roll.defaultImplementation.replaceFormulaData(formulaParts.join(" "), options.rollData ?? {});
@@ -320,6 +333,32 @@ async function enrichAttack(config, label, options) {
 	span.innerHTML = game.i18n.format("BF.Enricher.Attack.Long", {
 		formula: createRollLink(displayFormula, config).outerHTML
 	});
+
+	if (config.format === "extended") {
+		const type = game.i18n
+			.format("BF.ATTACK.Formatted", {
+				type: game.i18n
+					.getListFormatter({ type: "disjunction" })
+					.format(
+						Array.from(activity?.system.validAttackTypes ?? []).map(t => CONFIG.BlackFlag.weaponTypes.localized[t])
+					),
+				classification: CONFIG.BlackFlag.attackTypes.localized[activity?.system.attack.type.classification] ?? ""
+			})
+			.trim();
+		const parts = [
+			span.outerHTML,
+			activity?.getRangeLabel(config.attackMode),
+			activity?.target?.affects.statblockLabel
+		];
+		const full = document.createElement("span");
+		full.className = "attack-extended";
+		full.innerHTML = game.i18n.format("BF.Enricher.Attack.Extended", {
+			type,
+			parts: game.i18n.getListFormatter({ type: "unit" }).format(parts.filter(_ => _))
+		});
+		return full;
+	}
+
 	return span;
 }
 
@@ -1057,12 +1096,14 @@ async function enrichDamage(configs, label, options) {
 		if (c.average) config.average = c.average;
 		if (c.magical) config.magical = true;
 		if (c.mode) config.attackMode = c.mode;
+		if (c.format) config.format = c.format;
 		if (c.formula) formulaParts.push(c.formula);
 		c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
 		for (const value of c.values) {
 			if (value in CONFIG.BlackFlag.damageTypes) c.type.push(value);
 			else if (value in CONFIG.BlackFlag.healingTypes) c.type.push(value);
 			else if (value === "average") config.average = true;
+			else if (value === "extended") config.format = "extended";
 			else if (value === "magical") config.magical = true;
 			else if (value === "versatile") config.attackMode ??= "twoHanded";
 			else formulaParts.push(value);
@@ -1074,6 +1115,8 @@ async function enrichDamage(configs, label, options) {
 			config.types.push(c.type.join("|"));
 		}
 	}
+	config.types = config.types.map(t => t?.replace("/", "|"));
+	if (config.format === "extended") config.average ??= true;
 
 	if (config.activity && config.formulas.length) {
 		log(`Activity ID and formulas found while enriching ${config._input}, only one is supported.`, { level: "warn" });
@@ -1153,6 +1196,14 @@ async function enrichDamage(configs, label, options) {
 	} else {
 		link.innerHTML = game.i18n.getListFormatter().format(parts);
 	}
+
+	if (config.format === "extended") {
+		const span = document.createElement("span");
+		span.className = "damage-extended";
+		span.innerHTML = game.i18n.format("BF.Enricher.Damage.Extended", { damage: link.outerHTML });
+		return span;
+	}
+
 	return link;
 }
 

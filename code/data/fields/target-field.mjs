@@ -99,6 +99,15 @@ export default class TargetField extends SchemaField {
 			enumerable: false
 		});
 
+		const affectsConfig = CONFIG.BlackFlag.targetTypes[obj.affects.type];
+		Object.defineProperty(obj.affects, "statblockLabel", {
+			value: game.i18n.format(
+				`${affectsConfig?.counted ?? "BF.TARGET.Type.Target.Counted"}[${getPluralRules().select(obj.affects.count || 1)}]`,
+				{ number: formatNumber(obj.affects.count || 1, { spelledOut: true }) }
+			),
+			enumerable: false
+		});
+
 		Object.defineProperty(obj.template, "label", {
 			get() {
 				return TargetField.templateLabel(obj);

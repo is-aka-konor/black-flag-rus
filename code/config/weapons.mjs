@@ -255,6 +255,9 @@ export const weapons = {
 				rules: "firearms"
 			}
 		}
+	},
+	natural: {
+		label: "BF.WEAPON.Category.Natural"
 	}
 };
 localizeConfig(weapons, { sort: false });

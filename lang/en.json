@@ -978,6 +978,7 @@
 			}
 		}
 	},
+	"Formatted": "{type} {classification} Attack",
 	"Mode": {
 		"Label": "Attack Mode",
 		"Offhand": "Offhand",
@@ -1725,6 +1726,7 @@
 		"Label": "Apply Status Effect"
 	},
 	"Attack": {
+		"Extended": "<em>{type}</em>: {parts}",
 		"Long": "{formula} to hit",
 		"Short": "{formula}"
 	},
@@ -1735,6 +1737,7 @@
 	},
 	"Damage": {
 		"Double": "{first} plus {second}",
+		"Extended": "<em>Hit:</em> {damage} damage",
 		"Long": "{average} ({formula}) {type}",
 		"Short": "{formula} {type}"
 	},
@@ -2765,7 +2768,6 @@
 },
 
 "BF.RANGE": {
-	"Label": "Range",
 	"FIELDS": {
 		"range": {
 			"label": "Range",
@@ -2792,6 +2794,11 @@
 			}
 		}
 	},
+	"Formatted": {
+		"Range": "range {range}",
+		"Reach": "reach {reach}"
+	},
+	"Label": "Range",
 	"Type": {
 		"Any": {
 			"Label": "Unlimited"
@@ -3888,33 +3895,51 @@
 	"Type": {
 		"Label": "Target Type",
 		"Ally": {
+			"Counted[one]": "{number} ally",
+			"Counted[other]": "{number} allies",
 			"Label[one]": "Ally",
 			"Label[other]": "Allies"
 		},
 		"Creature": {
+			"Counted[one]": "{number} creature",
+			"Counted[other]": "{number} creatures",
 			"Label[one]": "Creature",
 			"Label[other]": "Creatures"
 		},
 		"CreatureObject": {
+			"Counted[one]": "{number} creatures or object",
+			"Counted[other]": "{number} creautres or objects",
 			"Label[one]": "Creature or Object",
 			"Label[other]": "Creatures or Objects"
 		},
 		"Enemy": {
+			"Counted[one]": "{number} enemy",
+			"Counted[other]": "{number} enemies",
 			"Label[one]": "Enemy",
 			"Label[other]": "Enemies"
 		},
 		"Object": {
+			"Counted[one]": "{number} object",
+			"Counted[other]": "{number} objects",
 			"Label[one]": "Object",
 			"Label[other]": "Objects"
 		},
 		"ObjectNotWorn": {
+			"Counted[one]": "{number} object not being worn or carried",
+			"Counted[other]": "{number} objects not being worn or carried",
 			"Label[one]": "Object not being Worn or Carried",
 			"Label[other]": "Objects not being Worn or Carried"
 		},
 		"Special": {
 			"Label": "Special"
 		},
+		"Target": {
+			"Counted[one]": "{number} target",
+			"Counted[other]": "{number} targets"
+		},
 		"WillingCreature": {
+			"Counted[one]": "{number} willing creature",
+			"Counted[other]": "{number} willing creatures",
 			"Label[one]": "Willing Creature",
 			"Label[other]": "Willing Creatures"
 		}
@@ -4358,7 +4383,10 @@
 		"Simple[other]": "Simple Weapons",
 		"Martial": "Martial",
 		"Martial[one]": "Martial Weapon",
-		"Martial[other]": "Martial Weapons"
+		"Martial[other]": "Martial Weapons",
+		"Natural": "Natural",
+		"Natural[one]": "Natural Weapon",
+		"Natural[other]": "Natural Weapons"
 	},
 	"Details": "Weapon Details",
 	"FIELDS": {

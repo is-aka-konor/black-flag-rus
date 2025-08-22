@@ -1,6 +1,12 @@
 import AttackRollConfigurationDialog from "../../applications/dice/attack-configuration-dialog.mjs";
 import { AttackData } from "../../data/activity/attack-data.mjs";
-import { buildRoll, getTargetDescriptors, numberFormat, simplifyFormula } from "../../utils/_module.mjs";
+import {
+	buildRoll,
+	formatDistance,
+	getTargetDescriptors,
+	numberFormat,
+	simplifyFormula
+} from "../../utils/_module.mjs";
 import Activity from "./activity.mjs";
 
 /**
@@ -446,6 +452,45 @@ export default class AttackActivity extends Activity {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Create a label based on this activity's settings and, if contained in a weapon, additional details from the weapon.
+	 * @returns {string}
+	 */
+	getRangeLabel() {
+		if (this.item.type !== "weapon") return this.range.label ?? "";
+
+		const parts = [];
+
+		// Add reach for melee weapons, unless the activity is explicitly specified as a ranged attack
+		if (this.system.validAttackTypes.has("melee")) {
+			let { reach, units } = this.item.system.range;
+			// TODO: Convert units
+			// if ( !reach ) reach = convertLength(5, "ft", { to: units });
+			if (!reach) reach = 5;
+			parts.push(
+				game.i18n.format("BF.RANGE.Formatted.Reach", {
+					reach: formatDistance(reach, units, { strict: false })
+				})
+			);
+		}
+
+		// Add range for ranged or thrown weapons, unless the activity is explicitly specified as melee
+		if (this.system.validAttackTypes.has("ranged")) {
+			let range;
+			if (this.range.override) range = `${this.range.value} ${this.range.units ?? ""}`;
+			else {
+				const { short, long, units } = this.item.system.range;
+				if (long && short !== long) range = `${short}/${formatDistance(long, units, { strict: false })}`;
+				else range = formatDistance(short, units, { strict: false });
+			}
+			parts.push(game.i18n.format("BF.RANGE.Formatted.Range", { range }));
+		}
+
+		return game.i18n.getListFormatter({ type: "disjunction" }).format(parts.filter(_ => _));
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	_processDamagePart(damage, rollConfig, rollData, { modifierData = {}, ...config } = {}) {
 		if (!damage.base) return super._processDamagePart(damage, rollConfig, rollData, { ...config, modifierData });
@@ -463,7 +508,12 @@ export default class AttackActivity extends Activity {
 
 		if (this.item.type === "weapon") {
 			// Add `@mod` unless it is an off-hand attack with a positive modifier
-			if (!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mode < 0) roll.parts.push("@mod");
+			const isDeterministic = new Roll(roll.parts[0]).isDeterministic;
+			const includeMod =
+				(!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mod < 0) &&
+				!isDeterministic &&
+				!(this.system.attack.type.classification === "spell" && this.item.system.type.category === "natural");
+			if (includeMod && !roll.parts.some(p => p.includes("@mod"))) roll.parts.push("@mod");
 
 			// Add magical bonus
 			if (this.item.system.damageMagicalBonus) {

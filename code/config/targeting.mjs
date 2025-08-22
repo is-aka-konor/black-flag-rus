@@ -106,24 +106,31 @@ localizeConfig(rangeTypes);
  */
 export const targetTypes = {
 	creature: {
+		counted: "BF.TARGET.Type.Creature.Counted",
 		localization: "BF.TARGET.Type.Creature.Label"
 	},
 	ally: {
+		counted: "BF.TARGET.Type.Ally.Counted",
 		localization: "BF.TARGET.Type.Ally.Label"
 	},
 	enemy: {
+		counted: "BF.TARGET.Type.Enemy.Counted",
 		localization: "BF.TARGET.Type.Enemy.Label"
 	},
 	willing: {
+		counted: "BF.TARGET.Type.WillingCreature.Counted",
 		localization: "BF.TARGET.Type.WillingCreature.Label"
 	},
 	creatureObject: {
+		counted: "BF.TARGET.Type.CreatureObject.Counted",
 		localization: "BF.TARGET.Type.CreatureObject.Label"
 	},
 	object: {
+		counted: "BF.TARGET.Type.Object.Counted",
 		localization: "BF.TARGET.Type.Object.Label"
 	},
 	objectNotWorn: {
+		counted: "BF.TARGET.Type.ObjectNotWorn.Counted",
 		localization: "BF.TARGET.Type.ObjectNotWorn.Label"
 	},
 	special: {
