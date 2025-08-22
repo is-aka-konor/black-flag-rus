@@ -1495,7 +1495,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 				throw err;
 			}
 		} else {
-			rolls = Roll.create(rollConfig);
+			rolls = rollConfig.rolls?.map(c => Roll.fromConfig(c, rollConfig)) ?? [];
 		}
 
 		if (!rolls?.length) return;
