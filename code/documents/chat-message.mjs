@@ -129,6 +129,7 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	 * @param {HTMLElement} html - Chat message HTML.
 	 */
 	async _renderStandardCard(html) {
+		html.querySelectorAll(".black-flag").forEach(el => el.classList.remove("black-flag")); // Legacy
 		html.classList.add("black-flag");
 		if (!this.isContentVisible) return;
 		for (const element of html.querySelectorAll(".blackFlag-icon")) {

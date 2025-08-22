@@ -60,7 +60,7 @@
 
 @layer specific {
 	.themed.theme-light.black-flag,
-	.black-flag.chat-message {
+	.themed.theme-light .black-flag.chat-message {
 		--bf-background-color-blue: var(--bf-color-blue);
 		--bf-background-color-dark-blue: rgb(43 67 102);
 		--bf-background-color-gray: rgb(240 240 240);

@@ -158,7 +158,7 @@
 /*          Rest & Turn Cards          */
 /* <><><><> <><><><> <><><><> <><><><> */
 
-.black-flag.chat-card {
+.chat-card {
 	--card-gap: 8px;
 
 	section > .section-header {
