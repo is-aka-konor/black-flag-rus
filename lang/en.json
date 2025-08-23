@@ -1704,6 +1704,24 @@
 	"Duration": "Duration",
 	"Enabled": "Enabled",
 	"New": "New Effect",
+	"RIDER": {
+		"FIELDS": {
+			"rider": {
+				"statuses": {
+					"hint": "When this Active Effect is applied, these additional status conditions will be applied separately.",
+					"label": "Separate Status Conditions"
+				}
+			}
+		}
+	},
+	"STANDARD": {
+		"FIELDS": {
+			"magical": {
+				"hint": "This effect is from a magical source and should be disabled when magic isn't available.",
+				"label": "Magical"
+			}
+		}
+	},
 	"Source": "Source",
 	"SuppressionReason": {
 		"Description": "Effect suppressed because “{item}” is {reasons}.",
@@ -1714,12 +1732,19 @@
 	"Transferred": "Transferred",
 	"Type": {
 		"Enchantment[one]": "Enchantment",
-		"Enchantment[other]": "Enchantments"
+		"Enchantment[other]": "Enchantments",
+		"Standard[one]": "Effect",
+		"Standard[other]": "Effects"
 	}
 },
 
 "BF.ENCHANTMENT": {
-	"FIELDS": {},
+	"FIELDS": {
+		"magical": {
+			"hint": "This enchantment is magical and should be disabled when magic isn't available.",
+			"label": "Magical"
+		}
+	},
 	"Warning": {
 		"NotOnActor": "Enchantments can only be added to items, not actors."
 	}
@@ -4544,6 +4569,10 @@
 },
 
 "TYPES": {
+	"ActiveEffect": {
+		"enchantment": "Enchantment",
+		"standard": "Effect"
+	},
 	"ChatMessage": {
 		"activation": "Activation Message",
 		"rest": "Rest Message",

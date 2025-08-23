@@ -374,7 +374,7 @@ export default class SpellcastingDialog extends BFApplication {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-	/*  Event Listeners                    */
+	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**

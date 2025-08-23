@@ -210,8 +210,8 @@ export const statusEffects = {
  * @internal
  */
 export function _configureStatusEffects() {
-	const addEffect = (effects, data) => {
-		effects.push({ _id: staticID(`bf${data.id}`), ...data });
+	const addEffect = (effects, { icon: img, ...data }) => {
+		effects.push({ _id: staticID(`bf${data.id}`), img, ...data });
 		if ("special" in data) CONFIG.specialStatusEffects[data.special] = data.id;
 	};
 	CONFIG.statusEffects = Object.entries(statusEffects).reduce((arr, [id, data]) => {

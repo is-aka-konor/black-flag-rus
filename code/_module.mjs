@@ -54,7 +54,10 @@ Hooks.once("init", function () {
 	config._configureStatusEffects();
 	config.registration.setupHooks();
 	data.fields.applyEffectApplicationPatches();
-	data.registerDataModels(ActiveEffect, { enchantment: data.activeEffect.EnchantmentData });
+	data.registerDataModels(ActiveEffect, {
+		enchantment: data.activeEffect.EnchantmentData,
+		standard: data.activeEffect.StandardEffectData
+	});
 	data.registerDataModels(Actor);
 	data.registerDataModels(Item);
 	CONFIG.ChatMessage.dataModels = data.chatMessage.config;
@@ -135,6 +138,7 @@ Hooks.on("hotReload", file => {
 	}
 });
 
+Hooks.on("renderActiveEffectConfig", documents.BlackFlagActiveEffect.onRenderActiveEffectConfig);
 Hooks.on("renderSettings", (app, jQuery, options) => settings.renderSettingsSidebar(jQuery));
 Hooks.on("renderJournalEntryPageSheet", applications.journal.BlackFlagJournalEntrySheet.onRenderJournalPageSheet);
 

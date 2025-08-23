@@ -242,14 +242,17 @@ export default class EffectsElement extends DocumentSheetAssociatedElement {
 		const isItem = this.document instanceof Item;
 		this.document.createEmbeddedDocuments("ActiveEffect", [
 			{
-				type: isEnchantment ? "enchantment" : "base",
+				type: isEnchantment ? "enchantment" : "standard",
 				name: isItem ? this.document.name : game.i18n.localize("BF.EFFECT.New"),
 				icon: isItem ? this.document.img : "icons/svg/aura.svg",
 				origin: isEnchantment ? undefined : this.document.uuid,
 				duration: {
 					rounds: section === "temporary" ? 1 : undefined
 				},
-				disabled: section === "inactive"
+				disabled: section === "inactive",
+				system: {
+					magical: isItem && this.document.system.properties?.has("magical")
+				}
 			}
 		]);
 	}

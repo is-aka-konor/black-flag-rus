@@ -75,6 +75,21 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	_initializeSource(data, options = {}) {
+		if (data instanceof foundry.abstract.DataModel) data = data.toObject();
+
+		if (data.type === "base") {
+			data.type = "standard";
+		}
+
+		return super._initializeSource(data, options);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -215,6 +230,46 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Add modifications to the core ActiveEffect config.
+	 * @param {ActiveEffectConfig} app - The ActiveEffect config.
+	 * @param {HTMLElement} html - The ActiveEffect config element.
+	 * @param {ApplicationRenderContext} object - The app's rendering context.
+	 */
+	static onRenderActiveEffectConfig(app, html, context) {
+		if (app.document.system.onRenderActiveEffectConfig?.(app, html, context) === false) return;
+
+		const fields = app.document.system.schema.fields;
+		const magicalField = fields.magical?.toFormGroup(
+			{},
+			{
+				value: app.document.system._source.magical,
+				disabled: !context.editable
+			}
+		);
+		const statusesField = fields.rider?.fields?.statuses?.toFormGroup(
+			{},
+			{
+				value: app.document.system._source.rider?.statuses ?? [],
+				options: CONFIG.statusEffects.map(se => ({ value: se.id, label: se.name })),
+				disabled: !context.editable
+			}
+		);
+
+		const detailsTab = html.querySelector("[data-application-part=details]");
+		const statuses = detailsTab.querySelector("& > .form-group:has([name=statuses])");
+		if (statuses) {
+			if (magicalField) statuses?.before(magicalField);
+			if (statusesField) statuses?.after(statusesField);
+		} else {
+			detailsTab.append(...[magicalField, statusesField].filter(_ => _));
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -223,20 +278,27 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	 * @returns {Promise<BlackFlagActiveEffect[]>} - Created effects.
 	 */
 	async createRiderConditions() {
-		const riders = new Set(
-			this.statuses.reduce((arr, status) => {
-				const r = CONFIG.statusEffects.find(e => e.id === status)?.riders ?? [];
-				return arr.concat(r);
-			}, [])
-		);
+		const riders = new Set(this.system.rider?.statuses ?? []);
 
-		const created = [];
-		for (const rider of riders) {
-			const effect = await this.parent.toggleStatusEffect(rider, { active: true });
-			if (effect instanceof BlackFlagActiveEffect) created.push(effect);
+		for (const status of this.statuses) {
+			const r = CONFIG.statusEffects.find(e => e.id === status)?.riders ?? [];
+			r.forEach(p => riders.add(p));
 		}
 
-		return created;
+		if (!riders.size) return [];
+
+		const createRider = async id => {
+			const existing = this.parent.effects.get(staticID(`bf${id}`));
+			if (existing) return;
+			const effect = await BlackFlagActiveEffect.fromStatusEffect(id);
+			return effect.toObject();
+		};
+
+		const effectData = await Promise.all(Array.from(riders).map(createRider));
+		return BlackFlagActiveEffect.createDocuments(
+			effectData.filter(_ => _),
+			{ keepId: true, parent: this.parent }
+		);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -346,17 +408,17 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	 * @param {DocumentModificationContext} [options] - Additional options to pass to ActiveEffect instantiation.
 	 * @returns {BlackFlagActiveEffect|void}
 	 */
-	static fromStatusEffect(effectData, options = {}) {
-		if (typeof effectData === "string") effectData = CONFIG.statusEffects.find(e => e.id === effectData);
-		if (foundry.utils.getType(effectData) !== "Object") return;
-		const createData = {
-			...foundry.utils.deepClone(effectData),
-			_id: staticID(`bf${effectData.id}`),
-			name: game.i18n.localize(effectData.name),
-			statuses: [effectData.id, ...(effectData.statuses ?? [])]
-		};
-		this.migrateDataSafe(createData);
-		this.cleanData(createData);
-		return new this(createData, { keepId: true, ...options });
-	}
+	// static fromStatusEffect(effectData, options = {}) {
+	// 	if (typeof effectData === "string") effectData = CONFIG.statusEffects.find(e => e.id === effectData);
+	// 	if (foundry.utils.getType(effectData) !== "Object") return;
+	// 	const createData = {
+	// 		...foundry.utils.deepClone(effectData),
+	// 		_id: staticID(`bf${effectData.id}`),
+	// 		name: game.i18n.localize(effectData.name),
+	// 		statuses: [effectData.id, ...(effectData.statuses ?? [])]
+	// 	};
+	// 	this.migrateDataSafe(createData);
+	// 	this.cleanData(createData);
+	// 	return new this(createData, { keepId: true, ...options });
+	// }
 }

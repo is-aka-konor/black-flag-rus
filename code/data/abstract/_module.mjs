@@ -1,3 +1,4 @@
+export { default as ActiveEffectDataModel } from "./active-effect-data-model.mjs";
 export { default as ActivityDataModel } from "./activity-data-model.mjs";
 export { default as ActorDataModel } from "./actor-data-model.mjs";
 export { default as AdvancementDataModel } from "./advancement-data-model.mjs";

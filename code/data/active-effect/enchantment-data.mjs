@@ -1,9 +1,11 @@
-import BaseDataModel from "../abstract/base-data-model.mjs";
+import ActiveEffectDataModel from "../abstract/active-effect-data-model.mjs";
+
+const { BooleanField } = foundry.data.fields;
 
 /**
  * Data definition for Enchantment active effects.
  */
-export default class EchantmentData extends BaseDataModel {
+export default class EchantmentData extends ActiveEffectDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*         Model Configuration         */
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -29,7 +31,9 @@ export default class EchantmentData extends BaseDataModel {
 
 	/** @inheritDoc */
 	static defineSchema() {
-		return this.mergeSchema(super.defineSchema(), {});
+		return this.mergeSchema(super.defineSchema(), {
+			magical: new BooleanField({ initial: true })
+		});
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -57,19 +61,30 @@ export default class EchantmentData extends BaseDataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	onRenderActiveEffectConfig(app, html, context) {
+		const toRemove = html.querySelectorAll('.form-group:has([name="transfer"], [name="statuses"])');
+		toRemove.forEach(f => f.remove());
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
-		const result = await super._preCreate(data, options, user);
-		if (result === false) return false;
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		if (this.parent.parent instanceof Actor) {
 			ui.notifications.error("BF.ENCHANTMENT.Warning.NotOnActor", { localize: true });
 			return false;
 		}
 		// TODO: Validate enchantment restrictions
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	_onDelete(options, userId) {

@@ -30,7 +30,8 @@
 	],
 	"documentTypes": {
 		"ActiveEffect": {
-			"enchantment": {}
+			"enchantment": {},
+			"standard": {}
 		},
 		"Actor": {
 			"pc": {
