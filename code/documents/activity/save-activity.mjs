@@ -108,7 +108,7 @@ export default class SaveActivity extends Activity {
 					dc: this.system.save.dc.final,
 					ability: abilityId,
 					action: "rollSave",
-					visibility: "all"
+					visibility: this.system.save.visible ? "all" : undefined
 				}
 			});
 		};

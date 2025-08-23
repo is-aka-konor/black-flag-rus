@@ -1,7 +1,9 @@
 <section class="tab activity-{{ tab.id }} {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 	{{> "systems/black-flag/templates/activity/parts/activity-identity.hbs" }}
-	<fieldset>
-		<legend>{{ localize "BF.ACTIVITY.SECTION.Behavior" }}</legend>
-		{{ formField fields.target.fields.prompt value=source.target.prompt rootId=partId }}
-	</fieldset>
+	{{#if behaviorFields.length}}
+		<fieldset>
+			<legend>{{ localize "BF.ACTIVITY.SECTION.Behavior" }}</legend>
+			{{> "blackFlag.fieldlist" behaviorFields }}
+		</fieldset>
+	{{/if}}
 </section>

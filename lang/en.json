@@ -1115,7 +1115,7 @@
 			},
 			"visible": {
 				"label": "Visible to All",
-				"hint": "Should the rolling buttons be visible to all players?"
+				"hint": "Display the rolling button in chat for all players."
 			}
 		}
 	}
@@ -3009,6 +3009,10 @@
 				"formula": {
 					"label": "DC Formula"
 				}
+			},
+			"visible": {
+				"label": "Visible to All",
+				"hint": "Display the rolling button in chat for all players."
 			}
 		}
 	},
@@ -4237,11 +4241,11 @@
 			},
 			"prompt": {
 				"label": "Roll Prompt",
-				"hint": "Should the roll configuration dialog be displayed when rolling?"
+				"hint": "Display the roll configuration dialog when rolling."
 			},
 			"visible": {
 				"label": "Visible to All",
-				"hint": "Should the rolling button be visible to all players?"
+				"hint": "Display the rolling button in chat for all players."
 			}
 		}
 	}

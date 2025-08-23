@@ -68,4 +68,16 @@ export default class SaveSheet extends ActivitySheet {
 
 		return context;
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareIdentityContext(context) {
+		context = await super._prepareIdentityContext(context);
+		context.behaviorFields.push({
+			field: context.systemFields.save.fields.visible,
+			value: context.source.system.save.visible
+		});
+		return context;
+	}
 }

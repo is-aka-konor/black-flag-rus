@@ -18,10 +18,6 @@ export default class SummonSheet extends ActivitySheet {
 	/** @inheritDoc */
 	static PARTS = {
 		...super.PARTS,
-		identity: {
-			template: "systems/black-flag/templates/activity/summon-identity.hbs",
-			templates: super.PARTS.identity.templates
-		},
 		effect: {
 			template: "systems/black-flag/templates/activity/summon-effect.hbs",
 			templates: [
@@ -79,6 +75,18 @@ export default class SummonSheet extends ActivitySheet {
 				(lhs.name || lhs.document?.name || "").localeCompare(rhs.name || rhs.document?.name || "", game.i18n.lang)
 			);
 
+		return context;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareIdentityContext(context) {
+		context = await super._prepareIdentityContext(context);
+		context.behaviorFields.push({
+			field: context.systemFields.summon.fields.prompt,
+			value: context.source.system.summon.prompt
+		});
 		return context;
 	}
 

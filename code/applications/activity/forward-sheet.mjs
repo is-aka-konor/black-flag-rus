@@ -14,10 +14,6 @@ export default class ForwardSheet extends ActivitySheet {
 	/** @inheritDoc */
 	static PARTS = {
 		...super.PARTS,
-		identity: {
-			template: "systems/black-flag/templates/activity/forward-identity.hbs",
-			templates: super.PARTS.identity.templates
-		},
 		activation: {
 			template: "systems/black-flag/templates/activity/forward-activation.hbs",
 			templates: [
@@ -53,6 +49,15 @@ export default class ForwardSheet extends ActivitySheet {
 				.filter(a => a.type !== "forward")
 				.map(activity => ({ value: activity.id, label: activity.name }))
 		];
+		return context;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareIdentityContext(context) {
+		context = await super._prepareIdentityContext(context);
+		context.behaviorFields = [];
 		return context;
 	}
 

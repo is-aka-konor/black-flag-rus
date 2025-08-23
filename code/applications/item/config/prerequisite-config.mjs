@@ -28,7 +28,7 @@ export default class PrerequisiteConfig extends BFDocumentSheet {
 	/** @override */
 	static PARTS = {
 		general: {
-			template: "systems/black-flag/templates/shared/fieldset.hbs"
+			template: "systems/black-flag/templates/shared/fields/fieldset.hbs"
 		},
 		items: {
 			template: "systems/black-flag/templates/item/config/prerequisite-config-items.hbs"
@@ -37,13 +37,13 @@ export default class PrerequisiteConfig extends BFDocumentSheet {
 			template: "systems/black-flag/templates/item/config/prerequisite-config-abilities.hbs"
 		},
 		spellcasting: {
-			template: "systems/black-flag/templates/shared/fieldset.hbs"
+			template: "systems/black-flag/templates/shared/fields/fieldset.hbs"
 		},
 		proficiencies: {
-			template: "systems/black-flag/templates/shared/fieldset.hbs"
+			template: "systems/black-flag/templates/shared/fields/fieldset.hbs"
 		},
 		traits: {
-			template: "systems/black-flag/templates/shared/fieldset.hbs"
+			template: "systems/black-flag/templates/shared/fields/fieldset.hbs"
 		},
 		custom: {
 			template: "systems/black-flag/templates/item/config/prerequisite-config-custom.hbs"

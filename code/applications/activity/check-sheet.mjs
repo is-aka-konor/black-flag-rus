@@ -63,4 +63,16 @@ export default class CheckSheet extends ActivitySheet {
 
 		return context;
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareIdentityContext(context) {
+		context = await super._prepareIdentityContext(context);
+		context.behaviorFields.push({
+			field: context.systemFields.check.fields.visible,
+			value: context.source.system.check.visible
+		});
+		return context;
+	}
 }

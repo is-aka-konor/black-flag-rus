@@ -295,6 +295,12 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 	 */
 	async _prepareIdentityContext(context, options) {
 		context.tab = context.tabs.identity;
+		context.behaviorFields = [];
+		if (context.fields.target?.fields?.prompt)
+			context.behaviorFields.push({
+				field: context.fields.target.fields.prompt,
+				value: context.source.target.prompt
+			});
 		context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 			context.source.description ?? "",
 			{

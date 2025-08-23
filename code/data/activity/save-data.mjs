@@ -27,6 +27,7 @@ const { ArrayField, BooleanField, SchemaField, SetField, StringField } = foundry
  * @property {object} save.dc
  * @property {string} save.dc.ability - Ability used to calculate the DC if not automatically calculated.
  * @property {string} save.dc.formula - DC formula if manually set.
+ * @property {boolean} save.visible - Should the save rolling button be visible to all users?
  */
 export class SaveData extends ActivityDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -55,7 +56,8 @@ export class SaveData extends ActivityDataModel {
 				dc: new SchemaField({
 					ability: new StringField(),
 					formula: new FormulaField({ deterministic: true })
-				})
+				}),
+				visible: new BooleanField({ initial: true })
 			})
 		};
 	}

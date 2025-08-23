@@ -17,10 +17,6 @@ export default class CastSheet extends ActivitySheet {
 	/** @inheritDoc */
 	static PARTS = {
 		...super.PARTS,
-		identity: {
-			template: "systems/black-flag/templates/activity/cast-identity.hbs",
-			templates: super.PARTS.identity.templates
-		},
 		effect: {
 			template: "systems/black-flag/templates/activity/cast-effect.hbs",
 			templates: [
@@ -88,6 +84,12 @@ export default class CastSheet extends ActivitySheet {
 	/** @inheritDoc */
 	async _prepareIdentityContext(context) {
 		context = await super._prepareIdentityContext(context);
+		context.behaviorFields = [
+			{
+				field: context.systemFields.spell.fields.spellbook,
+				value: context.source.system.spell.spellbook
+			}
+		];
 		if (context.spell.document)
 			context.placeholder = {
 				name: context.spell.document.name,
