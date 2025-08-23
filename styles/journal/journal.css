@@ -158,6 +158,7 @@
 
 	img {
 		border: none;
+		box-shadow: none;
 		object-fit: scale-down;
 		object-position: center;
 	}
