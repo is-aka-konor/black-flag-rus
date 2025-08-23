@@ -4,6 +4,7 @@
 		             rootId=partId }}
 		{{ formField systemFields.check.fields.ability value=source.system.check.ability options=abilityOptions
 		             rootId=partId }}
+		{{ formField systemFields.check.fields.bonus value=source.system.check.bonus rootId=partId }}
 		{{#with systemFields.check.fields.dc.fields as |fields|}}
 			{{ formField fields.calculation value=../source.system.check.dc.calculation options=../calculationOptions
 			             rootId=partId }}
@@ -14,5 +15,4 @@
 				<input type="hidden" name="check.dc.formula" value="{{ ../source.system.check.dc.formula }}">
 			{{/if}}
 		{{/with}}
-		{{ formField systemFields.check.fields.visible value=source.system.check.visible rootId=partId }}
 </fieldset>

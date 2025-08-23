@@ -1095,27 +1095,31 @@
 		"check": {
 			"label": "Check Details",
 			"ability": {
-				"label": "Check Ability",
-				"hint": "Ability to use when making the check."
+				"hint": "Ability to use when making the check.",
+				"label": "Check Ability"
 			},
 			"associated": {
-				"label": "Associated Proficiency",
-				"hint": "Present ability checks using proficiency and bonuses with these skills, tools, or vehicles."
+				"hint": "Present ability checks using proficiency and bonuses with these skills, tools, or vehicles.",
+				"label": "Associated Proficiency"
+			},
+			"bonus": {
+				"hint": "Bonus added to all check rolls made using this activity.",
+				"label": "Check Bonus"
 			},
 			"dc": {
 				"label": "Difficulty Class",
 				"calculation": {
-					"label": "DC Calculation",
-					"hint": "Method or ability used to calculate the difficulty class."
+					"hint": "Method or ability used to calculate the difficulty class.",
+					"label": "DC Calculation"
 				},
 				"formula": {
-					"label": "DC Formula",
-					"hint": "Custom formula or flat value for defining the check DC."
+					"hint": "Custom formula or flat value for defining the check DC.",
+					"label": "DC Formula"
 				}
 			},
 			"visible": {
-				"label": "Visible to All",
-				"hint": "Display the rolling button in chat for all players."
+				"hint": "Display the rolling button in chat for all players.",
+				"label": "Visible to All"
 			}
 		}
 	}
@@ -2991,28 +2995,32 @@
 		},
 		"effects": {
 			"onSave": {
-				"label": "Always Apply",
-				"hint": "This effect will always be applied, even if the target succeeds on its saving throw."
+				"hint": "This effect will always be applied, even if the target succeeds on its saving throw.",
+				"label": "Always Apply"
 			}
 		},
 		"save": {
 			"label": "Save Details",
 			"ability": {
-				"label": "Opposed Abilities",
-				"hint": "Abilities that may be rolled to attempt to save."
+				"hint": "Abilities that may be rolled to attempt to save.",
+				"label": "Opposed Abilities"
+			},
+			"bonus": {
+				"hint": "Bonus added to all save rolls made using this activity.",
+				"label": "Save Bonus"
 			},
 			"dc": {
-				"label": "Difficulty Class",
 				"ability": {
 					"label": "DC Calculation"
 				},
 				"formula": {
 					"label": "DC Formula"
-				}
+				},
+				"label": "Difficulty Class"
 			},
 			"visible": {
-				"label": "Visible to All",
-				"hint": "Display the rolling button in chat for all players."
+				"hint": "Display the rolling button in chat for all players.",
+				"label": "Visible to All"
 			}
 		}
 	},

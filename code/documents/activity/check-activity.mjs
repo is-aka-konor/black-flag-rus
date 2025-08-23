@@ -104,11 +104,17 @@ export default class CheckActivity extends Activity {
 		let { ability, dc, skill, tool, vehicle } = target.dataset;
 		dc = parseInt(dc);
 		const rollConfig = { ability, event, target: Number.isFinite(dc) ? dc : this.system.check.dc.value };
+		const bonusData = CONFIG.Dice.BasicRoll.constructParts(
+			{ activityBonus: this.system.check.bonus },
+			this.getRollData()
+		);
+		bonusData.data = { activityBonus: bonusData.data.activityBonus };
 		const dialogConfig = {};
 		const messageConfig = { data: {} };
 
 		for (const token of targets) {
 			messageConfig.data.speaker = ChatMessage.getSpeaker({ scene: canvas.scene, token: token.document });
+			if (bonusData.parts.length) rollConfig.rolls = [bonusData];
 			if (skill) {
 				await token.actor.rollSkill({ ...rollConfig, skill }, dialogConfig, messageConfig);
 			} else if (tool) {

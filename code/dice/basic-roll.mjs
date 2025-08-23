@@ -1,4 +1,5 @@
 import BasicRollConfigurationDialog from "../applications/dice/basic-configuration-dialog.mjs";
+import { buildRoll } from "../utils/_module.mjs";
 
 /**
  * Configuration data for the process of rolling a basic roll.
@@ -93,6 +94,18 @@ export default class BasicRoll extends Roll {
 		config.options ??= {};
 		config.options.target ??= process.target;
 		return new this(formula, config.data, config.options);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Construct roll parts and populate its data object.
+	 * @param {object} parts - Information on the parts to be constructed.
+	 * @param {object} [data] - Roll data to use and populate while constructing the parts.
+	 * @returns {{ parts: string[], data: object }}
+	 */
+	static constructParts(parts, data = {}) {
+		return buildRoll(parts, data);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -288,4 +301,44 @@ export default class BasicRoll extends Roll {
 	 * @protected
 	 */
 	static _prepareMessageData(rolls, messageData) {}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Helpers               */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Merge two roll configurations in place.
+	 * @param {Partial<BasicRollConfiguration>} original - The initial configuration that will be merged into.
+	 * @param {Partial<BasicRollConfiguration>} other - The configuration to merge.
+	 * @returns {Partial<BasicRollConfiguration>} - The original instance.
+	 */
+	static mergeConfigs(original, other = {}) {
+		if (other.data) {
+			original.data ??= {};
+			Object.assign(original.data, other.data);
+		}
+
+		if (other.parts?.length) {
+			original.parts ??= [];
+			original.parts.unshift(...other.parts);
+		}
+
+		if (other.options) {
+			original.options = this.mergeOptions(original.options, other.options);
+		}
+
+		return original;
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Merge two roll options objects.
+	 * @param {Partial<BasicRollOptions>} [original] - The initial options that will be merged into.
+	 * @param {Partial<BasicRollOptions>} [other] - The options to merge.
+	 * @returns {Partial<BasicRollOptions>} - The merged version.
+	 */
+	static mergeOptions(original = {}, other = {}) {
+		return foundry.utils.mergeObject(original, other, { inplace: false });
+	}
 }

@@ -24,6 +24,7 @@ const { ArrayField, BooleanField, SchemaField, SetField, StringField } = foundry
  * @property {SaveEffectApplicationData[]} effects - Effects to be applied.
  * @property {object} save
  * @property {string} save.ability - Abilities required when rolling a saving throw.
+ * @property {string} save.bonus - Bonus added to all saves made through this activity.
  * @property {object} save.dc
  * @property {string} save.dc.ability - Ability used to calculate the DC if not automatically calculated.
  * @property {string} save.dc.formula - DC formula if manually set.
@@ -53,6 +54,7 @@ export class SaveData extends ActivityDataModel {
 			),
 			save: new SchemaField({
 				ability: new SetField(new StringField()),
+				bonus: new FormulaField(),
 				dc: new SchemaField({
 					ability: new StringField(),
 					formula: new FormulaField({ deterministic: true })

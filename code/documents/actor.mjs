@@ -918,19 +918,22 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		rollConfig.subject = this;
 		rollConfig.rolls = [
-			{
-				...buildRoll(
-					{
-						mod: ability?.mod,
-						prof: ability?.check.proficiency.hasProficiency ? ability?.check.proficiency.term : null,
-						bonus: this.system.buildBonus?.(ability?.check.modifiers.bonus, { rollData })
-					},
-					rollData
-				),
-				options: {
-					minimum: this.system.buildMinimum?.(ability?.check.modifiers.minimum, { rollData })
-				}
-			}
+			CONFIG.Dice.ChallengeRoll.mergeConfigs(
+				{
+					...buildRoll(
+						{
+							mod: ability?.mod,
+							prof: ability?.check.proficiency.hasProficiency ? ability?.check.proficiency.term : null,
+							bonus: this.system.buildBonus?.(ability?.check.modifiers.bonus, { rollData })
+						},
+						rollData
+					),
+					options: {
+						minimum: this.system.buildMinimum?.(ability?.check.modifiers.minimum, { rollData })
+					}
+				},
+				config.rolls?.shift()
+			)
 		].concat(config.rolls ?? []);
 
 		const type = game.i18n.format("BF.Ability.Action.CheckSpecific", {
@@ -1011,20 +1014,23 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		rollConfig.subject = this;
 		rollConfig.rolls = [
-			{
-				...buildRoll(
-					{
-						mod: ability?.mod,
-						prof: ability?.save.proficiency.hasProficiency ? ability?.save.proficiency.term : null,
-						bonus: this.system.buildBonus?.(ability?.save.modifiers.bonus, { rollData })
-					},
-					rollData
-				),
-				options: {
-					minimum: this.system.buildMinimum?.(ability?.save.modifiers.minimum, { rollData }),
-					target: config.target
-				}
-			}
+			CONFIG.Dice.ChallengeRoll.mergeConfigs(
+				{
+					...buildRoll(
+						{
+							mod: ability?.mod,
+							prof: ability?.save.proficiency.hasProficiency ? ability?.save.proficiency.term : null,
+							bonus: this.system.buildBonus?.(ability?.save.modifiers.bonus, { rollData })
+						},
+						rollData
+					),
+					options: {
+						minimum: this.system.buildMinimum?.(ability?.save.modifiers.minimum, { rollData }),
+						target: config.target
+					}
+				},
+				config.rolls?.shift()
+			)
 		].concat(config.rolls ?? []);
 
 		const type = game.i18n.format("BF.Ability.Action.SaveSpecificLong", {
@@ -1126,18 +1132,21 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		);
 		rollConfig.subject = this;
 		rollConfig.rolls = [
-			{
-				...buildRoll(
-					{
-						bonus: this.system.buildBonus?.(this.system.getModifiers?.(modifierData), { rollData })
-					},
-					rollData
-				),
-				options: {
-					minimum: this.system.buildMinimum?.(this.system.getModifiers?.(modifierData, "min"), { rollData }),
-					target: config.target ?? death.overrides.target ? death.overrides.target : CONFIG.BlackFlag.deathSave.target
-				}
-			}
+			CONFIG.Dice.ChallengeRoll.mergeConfigs(
+				{
+					...buildRoll(
+						{
+							bonus: this.system.buildBonus?.(this.system.getModifiers?.(modifierData), { rollData })
+						},
+						rollData
+					),
+					options: {
+						minimum: this.system.buildMinimum?.(this.system.getModifiers?.(modifierData, "min"), { rollData }),
+						target: config.target ?? death.overrides.target ? death.overrides.target : CONFIG.BlackFlag.deathSave.target
+					}
+				},
+				config.rolls?.shift()
+			)
 		].concat(config.rolls ?? []);
 
 		const type = game.i18n.localize("BF.Death.Label[one]");
@@ -1330,15 +1339,18 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		config.denomination = Number(config.denomination);
 		const rollConfig = foundry.utils.deepClone(config);
 		rollConfig.rolls = [
-			{
-				...buildRoll(
-					{
-						base: `max(0, ${die} + @abilities.${CONFIG.BlackFlag.defaultAbilities.hitPoints}.mod)`,
-						bonus: this.system.buildBonus?.(this.system.getModifiers?.(modifierData), { rollData })
-					},
-					rollData
-				)
-			}
+			CONFIG.Dice.BasicRollRoll.mergeConfigs(
+				{
+					...buildRoll(
+						{
+							base: `max(0, ${die} + @abilities.${CONFIG.BlackFlag.defaultAbilities.hitPoints}.mod)`,
+							bonus: this.system.buildBonus?.(this.system.getModifiers?.(modifierData), { rollData })
+						},
+						rollData
+					)
+				},
+				config.rolls?.shift()
+			)
 		].concat(config.rolls ?? []);
 
 		const type = game.i18n.localize("BF.HitDie.Label[one]");
@@ -1592,7 +1604,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		const { rollConfig: roll, rollNotes } = prepareSkillConfig(rollConfig, {});
 		rollConfig.subject = this;
-		rollConfig.rolls = [roll].concat(config.rolls ?? []);
+		rollConfig.rolls = [CONFIG.Dice.ChallengeRoll.mergeConfigs(roll, config.rolls?.shift())].concat(config.rolls ?? []);
 
 		const type = game.i18n.format("BF.Skill.Action.CheckSpecific", {
 			skill: game.i18n.localize(CONFIG.BlackFlag.skills[config.skill].label)
@@ -1719,7 +1731,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		const { rollConfig: roll, rollNotes } = prepareToolConfig(rollConfig, {});
 		rollConfig.subject = this;
-		rollConfig.rolls = [roll].concat(config.rolls ?? []);
+		rollConfig.rolls = [CONFIG.Dice.ChallengeRoll.mergeConfigs(roll, config.rolls?.shift())].concat(config.rolls ?? []);
 
 		const type = game.i18n.format("BF.Tool.Action.CheckSpecific", {
 			tool: game.i18n.localize(tool.label)
@@ -1851,7 +1863,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		const { rollConfig: roll, rollNotes } = prepareVehicleConfig(rollConfig, {});
 		rollConfig.subject = this;
-		rollConfig.rolls = [roll].concat(config.rolls ?? []);
+		rollConfig.rolls = [CONFIG.Dice.ChallengeRoll.mergeConfigs(roll, config.rolls?.shift())].concat(config.rolls ?? []);
 
 		const type = game.i18n.format("BF.VEHICLE.Action.CheckSpecific", {
 			vehicle: game.i18n.localize(vehicle.label)

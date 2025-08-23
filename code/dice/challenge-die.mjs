@@ -93,6 +93,6 @@ export default class ChallengeDie extends foundry.dice.terms.Die {
 	applyMinimum(minimum) {
 		this.options.minimum = minimum;
 		this.modifiers.findSplice(m => m.startsWith("min"));
-		if (minimum) this.modifiers.push(`min${minimum}`);
+		if (minimum && Number.isFinite(minimum)) this.modifiers.push(`min${minimum}`);
 	}
 }

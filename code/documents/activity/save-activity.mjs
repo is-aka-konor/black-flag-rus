@@ -192,18 +192,20 @@ export default class SaveActivity extends Activity {
 		const targets = this.getActionTargets();
 		if (!targets.length) return; // TODO: Display UI warning here
 		const dc = parseInt(target.dataset.dc);
+		const bonusData = CONFIG.Dice.BasicRoll.constructParts(
+			{ activityBonus: this.system.save.bonus },
+			this.getRollData()
+		);
+		bonusData.data = { activityBonus: bonusData.data.activityBonus };
 		for (const token of targets) {
 			const speaker = ChatMessage.getSpeaker({ scene: canvas.scene, token: token.document });
-			await token.actor.rollAbilitySave(
-				{
-					ability: target.dataset.ability ?? this.system.save.ability.first(),
-					event,
-					target: Number.isFinite(dc) ? dc : this.system.save.dc.final
-				},
-				{
-					data: { speaker }
-				}
-			);
+			const rollData = {
+				ability: target.dataset.ability ?? this.system.save.ability.first(),
+				event,
+				target: Number.isFinite(dc) ? dc : this.system.save.dc.final
+			};
+			if (bonusData.parts.length) rollData.rolls = [bonusData];
+			await token.actor.rollAbilitySave(rollData, {}, { data: { speaker } });
 		}
 	}
 

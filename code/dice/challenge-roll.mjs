@@ -231,4 +231,17 @@ export default class ChallengeRoll extends BasicRoll {
 		const { number, faces, ...data } = this.terms[0];
 		this.terms[0] = new CONFIG.Dice.ChallengeDie({ ...data, number, faces });
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Helpers               */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static mergeOptions(original = {}, other = {}) {
+		const merged = super.mergeOptions(original, other);
+		merged.advantage = original.advantage || other.advantage;
+		merged.disadvantage = original.disadvantage || other.disadvantage;
+		merged.minimum = Math.max(original.minimum ?? -Infinity, other.minimum ?? -Infinity);
+		return merged;
+	}
 }
