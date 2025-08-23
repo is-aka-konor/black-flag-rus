@@ -32,7 +32,7 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	/** @inheritDoc */
 	static defineSchema() {
 		return this.mergeSchema(super.defineSchema(), {
-			magical: new BooleanField({ initial: true })
+			magical: new BooleanField()
 		});
 	}
 
