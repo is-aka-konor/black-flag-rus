@@ -243,17 +243,21 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	 * @param {Partial<ActivityActivationConfiguration>} [config={}] - Configuration info for the activation.
 	 * @param {Partial<ActivityDialogConfiguration>} [dialog={}] - Configuration info for the configuration dialog.
 	 * @param {Partial<ActivityMessageConfiguration>} [message={}] - Configuration info for the chat message created.
+	 * @returns {Promise<ActivityActivationResults|ChatMessage|object|void>}
 	 */
 	async activate(config = {}, dialog = {}, message = {}) {
-		if (this.system.activities?.size && !this.pack) {
-			let activity = this.system.activities.contents[0];
+		if (this.pack) return;
+
+		const activities = this.system.activities?.filter(a => a.canUse);
+		if (activities?.length && !this.pack) {
+			let activity = activities[0];
 			// TODO: Handle proper skip-dialog keybindings
-			if (this.system.activities.size > 1 && !config.event?.shiftKey) {
+			if (activities.length > 1 && !config.event?.shiftKey) {
 				activity = await ActivityChoiceDialog.create(this);
 			}
-			activity?.activate(config, dialog, message);
+			return activity?.activate(config, dialog, message);
 		} else if (this.actor) {
-			this.postToChat(message);
+			return this.postToChat(message);
 		}
 	}
 

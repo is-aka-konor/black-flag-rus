@@ -69,7 +69,7 @@ export default class EquipmentSheet extends BaseItemSheet {
 			{ value: true, label: game.i18n.localize("BF.Proficiency.Override.Always") },
 			{ value: false, label: game.i18n.localize("BF.Proficiency.Override.Never") }
 		];
-		context.properties = Object.entries(context.system.validProperties ?? {}).reduce((obj, [k, label]) => {
+		context.properties = (context.system.validProperties?.entries() ?? []).reduce((obj, [k, label]) => {
 			obj[k] = { label, selected: has(context.source.properties, k) };
 			return obj;
 		}, {});

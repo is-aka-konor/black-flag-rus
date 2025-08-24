@@ -6,6 +6,7 @@ import { localizeConfig } from "../utils/_module.mjs";
  * Configuration data for activity types.
  *
  * @typedef {object} ActivityTypeConfig
+ * @property {boolean} [configurable] - Allow this activity type to be configured through the UI.
  * @property {typeof Activity} documentClass - Main document class that defines activity's behavior.
  * @property {object} sheetClasses
  * @property {typeof ActivitySheet} sheetClasses.config - Configuration sheet.

@@ -28,7 +28,10 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 		},
 		identity: {
 			template: "systems/black-flag/templates/activity/activity-identity.hbs",
-			templates: ["systems/black-flag/templates/activity/parts/activity-identity.hbs"]
+			templates: [
+				"systems/black-flag/templates/activity/parts/activity-identity.hbs",
+				"systems/black-flag/templates/activity/parts/activity-visibility.hbs"
+			]
 		},
 		activation: {
 			template: "systems/black-flag/templates/activity/activity-activation.hbs",
@@ -295,12 +298,14 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 	 */
 	async _prepareIdentityContext(context, options) {
 		context.tab = context.tabs.identity;
+
 		context.behaviorFields = [];
 		if (context.fields.target?.fields?.prompt)
 			context.behaviorFields.push({
 				field: context.fields.target.fields.prompt,
 				value: context.source.target.prompt
 			});
+
 		context.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 			context.source.description ?? "",
 			{
@@ -313,6 +318,33 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 			name: game.i18n.localize(this.activity.metadata.title),
 			img: this.activity.metadata.icon
 		};
+
+		const addField = (name, lockedValue) =>
+			name in context.fields.visibility.fields
+				? {
+						disabled: lockedValue !== undefined,
+						field: context.fields.visibility.fields[name],
+						value: lockedValue ?? context.source.visibility[name]
+					}
+				: null;
+		const itemSystem = this.activity.item.system;
+		context.visibilityFields = [
+			// Only show "Require Attunement" if item has an attunement option
+			itemSystem.attunable
+				? addField(
+						"requireAttunement",
+						// If item requires attunement, then the "Require Attunement" option is locked to the "Require Magic" option
+						itemSystem.attunement.value === "required" ? this.activity.visibility.requireMagic : undefined
+					)
+				: null,
+			// Only show "Require Magic" if item is magical or doesn't support the magical property
+			itemSystem.properties?.has("magical") || !itemSystem.validProperties?.has("magical")
+				? addField("requireMagic")
+				: null
+			// Only show "Require Identification" if item can be identified
+			// "identified" in this.activity.item.system ? addField("requireIdentification") : null
+		].filter(_ => _);
+
 		return context;
 	}
 

@@ -2,6 +2,7 @@ import { numberFormat, replaceFormulaData, simplifyBonus } from "../../utils/_mo
 import ActivationField from "../fields/activation-field.mjs";
 import DurationField from "../fields/duration-field.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+import IdentifierField from "../fields/identifier-field.mjs";
 import MappingField from "../fields/mapping-field.mjs";
 import RangeField from "../fields/range-field.mjs";
 import TargetField from "../fields/target-field.mjs";
@@ -15,6 +16,7 @@ const {
 	FilePathField,
 	HTMLField,
 	IntegerSortField,
+	NumberField,
 	ObjectField,
 	SchemaField,
 	StringField
@@ -50,6 +52,14 @@ const {
  * @property {boolean} target.prompt - Should template placement be checked by default?
  * @property {boolean} target.override - Should the item's targeting data be overridden?
  * @property {UsesField} uses
+ * @property {object} visibility
+ * @property {string} visibility.identifier - Class identifier that will be used to determine applicable level.
+ * @property {object} visibility.level
+ * @property {number} visibility.level.min - Minimum level at which this activity can be used.
+ * @property {number} visibility.level.max - Maximum level at which this activity can be used.
+ * @property {boolean} visibility.requireAttunement - Not usable if item requires attunement and isn't attuned.
+ * @property {boolean} visibility.requireIdentification - Not usable or visible if item isn't identified.
+ * @property {boolean} visibility.requireMagic - Not usable if magic isn't available.
  */
 export default class BaseActivity extends foundry.abstract.DataModel {
 	/**
@@ -137,7 +147,17 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 				prompt: new BooleanField({ initial: true }),
 				override: new BooleanField()
 			}),
-			uses: new UsesField({ consumeQuantity: false })
+			uses: new UsesField({ consumeQuantity: false }),
+			visibility: new SchemaField({
+				identifier: new IdentifierField({ label: null, hint: null }),
+				level: new SchemaField({
+					min: new NumberField({ integer: true, min: 0 }),
+					max: new NumberField({ integer: true, min: 0 })
+				}),
+				requireAttunement: new BooleanField(),
+				// requireIdentification: new BooleanField(),
+				requireMagic: new BooleanField()
+			})
 		};
 	}
 
@@ -150,7 +170,24 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	 * @type {boolean}
 	 */
 	get inheritMagical() {
-		return this.isSpell || "magical" in (this.item.system.validProperties ?? {});
+		return this.isSpell || this.item.system.validProperties?.has("magical");
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Determine the level used to determine visibility limits, based on the spell circle for spells or either the
+	 * character or class level, depending on whether `classIdentifier` is set.
+	 * @type {number}
+	 */
+	get relevantLevel() {
+		const keyPath =
+			this.item.type === "spell" && this.item.system.circle.base > 0
+				? "item.circle.base"
+				: this.visibility.identifier
+					? `progression.classes.${this.visibility.identifier}.levels`
+					: "progression.level";
+		return foundry.utils.getProperty(this.getRollData(), keyPath) ?? 0;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -165,6 +202,21 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	static _migrateCustomDamageFormula(source) {
 		if (foundry.utils.getType(source.custom) === "string") {
 			source.custom = { enabled: source.custom !== "", formula: source.custom };
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate summon identifier to global identifier.
+	 * Added in 2.0.068
+	 * @param {DamageField} source - Candidate source data for a summon identifier to migrate.
+	 */
+	static _migrateSummonIdentifier(source) {
+		if (source.system?.summon?.identifier) {
+			console.log("MIGRATE!");
+			foundry.utils.setProperty(source, "visibility.identifier", source.system.summon.identifier);
+			delete source.system.summon.identifier;
 		}
 	}
 
@@ -209,6 +261,18 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 			enumerable: false,
 			writable: false
 		});
+
+		if (this.visibility) {
+			if (!this.item.system.properties?.has("magical") && this.item.system.validProperties?.has("magical")) {
+				this.visibility.requireAttunement = false;
+				this.visibility.requireMagic = false;
+			} else if (this.item.system.attunement?.value === "required" && this.visibility.requireMagic) {
+				this.visibility.requireAttunement = true;
+			} else if (!this.item.system.attunable) {
+				this.visibility.requireAttunement = false;
+			}
+			// if ( !("identified" in this.item.system) ) this.visibility.requireIdentification == false;
+		}
 
 		prepareFinalValue("duration.value", "BF.DURATION.Label");
 		prepareFinalValue("target.affects.count", "BF.TARGET.Label[other]");

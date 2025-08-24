@@ -82,6 +82,10 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Should this item's actions be displayed on the actor sheet?
+	 * @type {boolean}
+	 */
 	get displayActions() {
 		return this.equipped;
 	}
@@ -114,19 +118,6 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	 */
 	get isPhysical() {
 		return true;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Are the magical properties of this item currently available?
-	 * @type {boolean}
-	 */
-	get magicAvailable() {
-		const attunement = this.attunement.value !== "required" || this.parent.actor?.type !== "pc"
-			|| this.parent.getFlag(game.system.id, "relationship.attuned") === true;
-		const property = !this.properties || ("magical" in this.validProperties && this.properties.has("magical"));
-		return attunement && property;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

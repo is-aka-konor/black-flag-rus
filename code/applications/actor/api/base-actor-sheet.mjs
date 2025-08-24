@@ -287,7 +287,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	 * @protected
 	 */
 	async _prepareItem(item, context, section) {
-		context.activities = item.system.activities?.map(a => this._prepareActivity(a));
+		context.activities = item.system.activities?.filter(a => a.canUse).map(a => this._prepareActivity(a));
 
 		context.buttons ??= [];
 		context.dataset ??= {};

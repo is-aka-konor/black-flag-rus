@@ -119,6 +119,18 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Should this activity be visible on the item sheet?
+	 * @type {boolean}
+	 */
+	get canConfigure() {
+		if (CONFIG.Activity.types[this.type]?.configurable === false) return false;
+		// if ( this.visibility?.requireIdentification && !this.item.system.identified && !game.user.isGM ) return false;
+		return true;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Is scaling possible with this activity?
 	 * @type {boolean}
 	 */
@@ -140,6 +152,22 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get canScaleDamage() {
 		return this.consumption.scale.allowed || this.isSpell;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Should this activity be able to be used?
+	 * @type {boolean}
+	 */
+	get canUse() {
+		if (this.visibility?.requireAttunement && !this.item.system.attuned) return false;
+		if (this.visibility?.requireMagic && !this.item.system.magicAvailable) return false;
+		// if ( this.visibility?.requireIdentification && !this.item.system.identified ) return false;
+		const level = this.relevantLevel;
+		if ((this.visibility?.level?.min ?? -Infinity) > level || (this.visibility?.level?.max ?? Infinity) < level)
+			return false;
+		return true;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -197,7 +225,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 * @type {boolean}
 	 */
 	get displayAction() {
-		return true;
+		return this.canUse;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

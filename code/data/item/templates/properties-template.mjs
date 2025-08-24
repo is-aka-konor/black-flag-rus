@@ -20,14 +20,14 @@ export default class PropertiesTemplate extends foundry.abstract.DataModel {
 
 	/**
 	 * Properties that can be applied to this object.
-	 * @type {object}
+	 * @type {Map<string, string>}
 	 */
 	get validProperties() {
 		const validProperties = CONFIG.BlackFlag[`${this.parent.type}Properties`];
-		if ( !validProperties ) return {};
-		return Object.entries(CONFIG.BlackFlag.itemProperties.localized).reduce((obj, [k, l]) => {
-			if ( validProperties.includes(k) ) obj[k] = l;
-			return obj;
-		}, {});
+		if ( !validProperties ) return new Map();
+		return Object.entries(CONFIG.BlackFlag.itemProperties.localized).reduce((map, [k, l]) => {
+			if ( validProperties.includes(k) ) map.set(k, l);
+			return map;
+		}, new Map());
 	}
 }

@@ -1,7 +1,6 @@
 import { localizeSchema } from "../../utils/_module.mjs";
 import ActivityDataModel from "../abstract/activity-data-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import IdentifierField from "../fields/identifier-field.mjs";
 import AppliedEffectField from "./fields/applied-effect-field.mjs";
 
 const {
@@ -48,7 +47,6 @@ const {
  * @property {boolean} match.saves - Match the save DC on summoned actor's abilities to the summoner.
  * @property {SummonsProfile[]} profiles - Information on creatures that can be summoned.
  * @property {object} summon
- * @property {string} summon.identifier - Class identifier that will be used to determine applicable level.
  * @property {""|"cr"} summon.mode - Method of determining what type of creature is summoned.
  * @property {boolean} summon.prompt - Should the player be prompted to place the summons?
  */
@@ -95,7 +93,6 @@ export class SummonData extends ActivityDataModel {
 				})
 			),
 			summon: new SchemaField({
-				identifier: new IdentifierField(),
 				mode: new StringField(),
 				prompt: new BooleanField({ initial: true })
 			})
@@ -128,23 +125,6 @@ export class SummonData extends ActivityDataModel {
 	get availableProfiles() {
 		const level = this.relevantLevel;
 		return this.profiles.filter(e => (e.level.min ?? -Infinity) <= level && level <= (e.level.max ?? Infinity));
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Determine the level used to determine profile limits, based on the spell circle for spells or either the
-	 * character or class level, depending on whether `classIdentifier` is set.
-	 * @type {number}
-	 */
-	get relevantLevel() {
-		const keyPath =
-			this.item.type === "spell" && this.item.system.circle.base > 0
-				? "item.circle.base"
-				: this.summon.identifier
-					? `progression.classes.${this.summon.identifier}.levels`
-					: "details.level";
-		return foundry.utils.getProperty(this.getRollData(), keyPath) ?? 0;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

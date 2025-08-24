@@ -79,6 +79,23 @@ export default class ItemDataModel extends BaseDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Are the magical properties of this item currently available?
+	 * @type {boolean}
+	 */
+	get magicAvailable() {
+		return (
+			(!("attunement" in this) || this.attuned || this.attunement.value !== "required") &&
+			(!("properties" in this) || this.properties.has("magical") || !this.validProperties?.has("magical"))
+		);
+		// const attunement = this.attunement.value !== "required" || this.parent.actor?.type !== "pc"
+		// 	|| this.parent.getFlag(game.system.id, "relationship.attuned") === true;
+		// const property = !this.properties || ("magical" in this.validProperties && this.properties.has("magical"));
+		// return attunement && property;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Item type specific scaling increase.
 	 * @type {number|null}
 	 */
