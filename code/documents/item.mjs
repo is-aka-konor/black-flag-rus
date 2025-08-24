@@ -494,6 +494,42 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Context Menus            */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Set up any hooks relevant to item rendering.
+	 */
+	static setupHooks() {
+		Hooks.on("getItemContextOptions", this.getContextOptions);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Display identification context options in the item sidebar.
+	 * @param {HTMLElement} html - The Application's rendered HTML.
+	 * @param {ContextMenuEntry[]} menuItems - The array of menu items being rendered.
+	 */
+	static getContextOptions(html, menuItems) {
+		const ownershipIndex = menuItems.findIndex(o => o.icon.includes("fa-lock"));
+		menuItems.splice(ownershipIndex + 1, 0, {
+			name: "BF.IDENTIFIABLE.Action.Toggle",
+			icon: '<i class="fa-solid fa-wand-sparkles"></i>',
+			condition: li => {
+				if (!game.user.isGM) return false;
+				const item = game.items.get(li.dataset.entryId);
+				return item?.system.identifiable === true;
+			},
+			callback: li => {
+				const item = game.items.get(li.dataset.entryId);
+				item?.update({ "system.unidentified.value": item.system.identified });
+			},
+			group: "system"
+		});
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

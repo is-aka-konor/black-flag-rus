@@ -65,6 +65,7 @@ Hooks.once("init", function () {
 	dice.registerDice();
 	documents.BlackFlagActiveEffect.registerHUDListeners();
 	documents.BlackFlagActor.setupHooks();
+	documents.BlackFlagItem.setupHooks();
 	documents.registerDocumentClasses();
 	enrichers.registerCustomEnrichers();
 	settings.registerKeybindings();
