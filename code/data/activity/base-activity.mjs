@@ -155,7 +155,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 					max: new NumberField({ integer: true, min: 0 })
 				}),
 				requireAttunement: new BooleanField(),
-				// requireIdentification: new BooleanField(),
+				requireIdentification: new BooleanField(),
 				requireMagic: new BooleanField()
 			})
 		};
@@ -271,7 +271,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 			} else if (!this.item.system.attunable) {
 				this.visibility.requireAttunement = false;
 			}
-			// if ( !("identified" in this.item.system) ) this.visibility.requireIdentification == false;
+			if (!this.item.system.identifiable) this.visibility.requireIdentification == false;
 		}
 
 		prepareFinalValue("duration.value", "BF.DURATION.Label");

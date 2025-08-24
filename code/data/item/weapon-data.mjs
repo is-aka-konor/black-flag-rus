@@ -3,6 +3,7 @@ import ItemDataModel from "../abstract/item-data-model.mjs";
 import { DamageField } from "../fields/_module.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
+import IdentifiableTemplate from "./templates/identifiable-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
 import ProficiencyTemplate from "./templates/proficiency-template.mjs";
 import PropertiesTemplate from "./templates/properties-template.mjs";
@@ -13,6 +14,7 @@ const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
  * Data definition for Weapon items.
  * @mixes {ActivitiesTemplate}
  * @mixes {DescriptionTemplate}
+ * @mixes {IdentifiableTemplate}
  * @mixes {PhysicalTemplate}
  * @mixes {ProficiencyTemplate}
  * @mixes {PropertiesTemplate}
@@ -37,6 +39,7 @@ const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 export default class WeaponData extends ItemDataModel.mixin(
 	ActivitiesTemplate,
 	DescriptionTemplate,
+	IdentifiableTemplate,
 	PhysicalTemplate,
 	ProficiencyTemplate,
 	PropertiesTemplate
@@ -46,7 +49,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.WEAPON", "BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.WEAPON", "BF.IDENTIFIABLE", "BF.SOURCE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -330,6 +333,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();
+		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
 
 		const type = CONFIG.BlackFlag.weapons.allLocalized[this.type.base ?? this.type.category];
@@ -344,6 +348,23 @@ export default class WeaponData extends ItemDataModel.mixin(
 		super.prepareFinalData();
 		const rollData = this.parent.getRollData({ deterministic: true });
 		this.prepareFinalActivities(rollData);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this.preUpdateIdentifiable(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	_preCreateActivities(data, options, user) {
+		if (data._id || foundry.utils.hasProperty(data, "system.activities")) return;
+		this._createInitialActivities([{ type: "attack" }]);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -370,14 +391,5 @@ export default class WeaponData extends ItemDataModel.mixin(
 			return obj;
 		}, {});
 		context.types = { options: CONFIG.BlackFlag.weaponTypes.localized };
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*        Socket Event Handlers        */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	_preCreateActivities(data, options, user) {
-		if (data._id || foundry.utils.hasProperty(data, "system.activities")) return;
-		this._createInitialActivities([{ type: "attack" }]);
 	}
 }

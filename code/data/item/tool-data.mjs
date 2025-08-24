@@ -1,6 +1,7 @@
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
+import IdentifiableTemplate from "./templates/identifiable-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
 import ProficiencyTemplate from "./templates/proficiency-template.mjs";
 import PropertiesTemplate from "./templates/properties-template.mjs";
@@ -11,6 +12,7 @@ const { SchemaField, StringField } = foundry.data.fields;
  * Data definition for Tool items.
  * @mixes {ActivitiesTemplate}
  * @mixes {DescriptionTemplate}
+ * @mixes {IdentifiableTemplate}
  * @mixes {PhysicalTemplate}
  * @mixes {ProficiencyTemplate}
  * @mixes {PropertiesTemplate}
@@ -22,6 +24,7 @@ const { SchemaField, StringField } = foundry.data.fields;
 export default class ToolData extends ItemDataModel.mixin(
 	ActivitiesTemplate,
 	DescriptionTemplate,
+	IdentifiableTemplate,
 	PhysicalTemplate,
 	ProficiencyTemplate,
 	PropertiesTemplate
@@ -31,7 +34,7 @@ export default class ToolData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.IDENTIFIABLE", "BF.SOURCE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -93,6 +96,7 @@ export default class ToolData extends ItemDataModel.mixin(
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();
+		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
 	}
 
@@ -103,6 +107,16 @@ export default class ToolData extends ItemDataModel.mixin(
 		super.prepareFinalData();
 		const rollData = this.parent.getRollData({ deterministic: true });
 		this.prepareFinalActivities(rollData);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this.preUpdateIdentifiable(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

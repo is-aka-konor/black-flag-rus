@@ -2,6 +2,7 @@ import ContainerSheet from "../../applications/item/container-sheet.mjs";
 import { convertWeight } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
+import IdentifiableTemplate from "./templates/identifiable-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
 import PropertiesTemplate from "./templates/properties-template.mjs";
 
@@ -10,6 +11,7 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
 /**
  * Data definition for Container items.
  * @mixes {DescriptionTemplate}
+ * @mixes {IdentifiableTemplate}
  * @mixes {PhysicalTemplate}
  * @mixes {PropertiesTemplate}
  *
@@ -24,6 +26,7 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  */
 export default class ContainerData extends ItemDataModel.mixin(
 	DescriptionTemplate,
+	IdentifiableTemplate,
 	PhysicalTemplate,
 	PropertiesTemplate
 ) {
@@ -32,7 +35,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.IDENTIFIABLE", "BF.SOURCE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -232,6 +235,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();
+		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
 		this.type ??= {};
 		this.type.label = game.i18n.localize("BF.Item.Gear.Category.WondrousItem");
@@ -239,6 +243,14 @@ export default class ContainerData extends ItemDataModel.mixin(
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this.preUpdateIdentifiable(changes, options, user);
+	}
+
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	async _onUpdateFolder(changed, options, userId) {

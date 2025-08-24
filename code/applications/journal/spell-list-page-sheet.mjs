@@ -191,7 +191,7 @@ export default class JournalSpellListPageSheet extends JournalEntryPageHandlebar
 		left.append(...this.element.querySelectorAll('[data-application-part="config"], [data-application-part="header"]'));
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	async _onRender(context, options) {

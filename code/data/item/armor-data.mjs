@@ -2,6 +2,7 @@ import { numberFormat } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
+import IdentifiableTemplate from "./templates/identifiable-template.mjs";
 import ProficiencyTemplate from "./templates/proficiency-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
 import PropertiesTemplate from "./templates/properties-template.mjs";
@@ -12,6 +13,7 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  * Data definition for Armor items.
  * @mixes {ActivitiesTemplate}
  * @mixes {DescriptionTemplate}
+ * @mixes {IdentifiableTemplate}
  * @mixes {ProficiencyTemplate}
  * @mixes {PhysicalTemplate}
  * @mixes {PropertiesTemplate}
@@ -30,6 +32,7 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
 export default class ArmorData extends ItemDataModel.mixin(
 	ActivitiesTemplate,
 	DescriptionTemplate,
+	IdentifiableTemplate,
 	ProficiencyTemplate,
 	PhysicalTemplate,
 	PropertiesTemplate
@@ -39,7 +42,7 @@ export default class ArmorData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.IDENTIFIABLE", "BF.SOURCE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -170,6 +173,7 @@ export default class ArmorData extends ItemDataModel.mixin(
 
 		this.prepareDescription();
 		this.prepareEquippedArmor();
+		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
 
 		const type = CONFIG.BlackFlag.armor.allLocalized[this.type.base ?? this.type.category];
@@ -271,6 +275,16 @@ export default class ArmorData extends ItemDataModel.mixin(
 				}
 			});
 		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this.preUpdateIdentifiable(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -2044,6 +2044,29 @@
 	}
 },
 
+"BF.IDENTIFIABLE": {
+	"Action": {
+		"Identify": "Make Identified",
+		"Toggle": "Toggle Identification",
+		"Unidentify": "Make Unidentified"
+	},
+	"DefaultName": "Unidentified {type}",
+	"FIELDS": {
+		"unidentified": {
+			"description": {
+				"label": "Unidentified Descrription"
+			},
+			"label": "Unidentified Details",
+			"name": {
+				"label": "Unidentified Name"
+			},
+			"value": {
+				"label": "Unidentified"
+			}
+		}
+	}
+},
+
 "BF.Identifier": {
 	"Label": "Identifier",
 	"Hint": "Simplified and non-localized version of name used for internal lookups. Must only contain letters, numbers, dashes, and underscores.",

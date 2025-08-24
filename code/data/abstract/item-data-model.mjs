@@ -73,7 +73,7 @@ export default class ItemDataModel extends BaseDataModel {
 
 	/** @override */
 	get embeddedDescriptionKeyPath() {
-		return "description.value";
+		return game.user.isGM || this.identified !== false ? "description.value" : "unidentified.description";
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -87,10 +87,6 @@ export default class ItemDataModel extends BaseDataModel {
 			(!("attunement" in this) || this.attuned || this.attunement.value !== "required") &&
 			(!("properties" in this) || this.properties.has("magical") || !this.validProperties?.has("magical"))
 		);
-		// const attunement = this.attunement.value !== "required" || this.parent.actor?.type !== "pc"
-		// 	|| this.parent.getFlag(game.system.id, "relationship.attuned") === true;
-		// const property = !this.properties || ("magical" in this.validProperties && this.properties.has("magical"));
-		// return attunement && property;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

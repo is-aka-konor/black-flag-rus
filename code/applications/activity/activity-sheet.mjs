@@ -340,9 +340,9 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 			// Only show "Require Magic" if item is magical or doesn't support the magical property
 			itemSystem.properties?.has("magical") || !itemSystem.validProperties?.has("magical")
 				? addField("requireMagic")
-				: null
+				: null,
 			// Only show "Require Identification" if item can be identified
-			// "identified" in this.activity.item.system ? addField("requireIdentification") : null
+			this.activity.item.system.identifiable ? addField("requireIdentification") : null
 		].filter(_ => _);
 
 		return context;

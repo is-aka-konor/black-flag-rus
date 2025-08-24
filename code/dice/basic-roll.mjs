@@ -330,7 +330,7 @@ export default class BasicRoll extends Roll {
 		return original;
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Merge two roll options objects.

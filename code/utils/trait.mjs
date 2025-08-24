@@ -93,7 +93,8 @@ export function configForKey(key, { trait }={}) {
 	else trait ??= parts.shift();
 
 	const traitConfig = CONFIG.BlackFlag.traits[trait];
-	const traitData = CONFIG.BlackFlag[traitConfig.configKey ?? trait];
+	const traitData = CONFIG.BlackFlag[traitConfig?.configKey ?? trait];
+	if ( !traitData ) return;
 
 	// Top-level trait or non-prefixed key
 	if ( parts.length === 1 ) {
@@ -118,6 +119,25 @@ export function configForKey(key, { trait }={}) {
 		};
 		return searchCategory(traitData, parts);
 	}
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+/*                      Linked Items                     */
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Fetch the linked item associated with a specific weapon, armor, or tool proficiency.
+ * @param {string} key - Key for which to find the linked item.
+ * @param {object} [options]
+ * @param {boolean} [options.fullItem] - If set to true, the full item will be returned as long as `indexOnly` is false.
+ * @param {string} [options.trait] - Trait as defined in `CONFIG.BlackFlag.traits` if not using a prefixed key.
+ * @returns {Promise<BlackFlagItem>|object|void} - Promise for the document if `fullItem` is true, otherwise the index.
+ */
+export function getLinkedItem(key, { fullItem=false, indexOnly=false, trait }={}) {
+	const config = configForKey(key, { trait });
+	if ( !config?.link ) return;
+	if ( fullItem ) return fromUuid(config.link);
+	else return fromUuidSync(config.link);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */

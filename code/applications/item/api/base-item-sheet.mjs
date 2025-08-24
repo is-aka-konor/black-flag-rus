@@ -12,13 +12,22 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	static DEFAULT_OPTIONS = {
 		actions: {
 			showConfiguration: BaseItemSheet.#showConfiguration,
-			showIcon: BaseItemSheet.#showIcon
+			showIcon: BaseItemSheet.#showIcon,
+			toggleIdentification: BaseItemSheet.#toggleIdentification
 		},
 		classes: ["item"],
 		form: {
 			submitOnChange: true
 		},
 		window: {
+			controls: [
+				{
+					action: "toggleIdentification",
+					icon: "fa-solid fa-wand-sparkles",
+					label: "BF.IDENTIFIABLE.Action.Toggle",
+					visible: BaseItemSheet.#canToggleIdentification
+				}
+			],
 			resizable: true
 		}
 	};
@@ -30,7 +39,8 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @type {object}
 	 */
 	static ENRICHED_FIELDS = {
-		description: "system.description.value"
+		description: "system.description.value",
+		unidentified: "system.unidentified.description"
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -127,6 +137,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 			...(await super._prepareContext(options)),
 			fields: this.item.system.schema.fields,
 			flags: this.item.flags,
+			isIdentified: this.item.system.identified !== false,
 			item: this.item,
 			system: this.item.system,
 			user: game.user
@@ -187,18 +198,18 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @protected
 	 */
 	async _prepareDescriptionContext(context, options) {
+		context.enriched = {};
 		const enrichmentContext = {
 			relativeTo: this.item,
 			rollData: this.item.getRollData(),
 			secrets: this.item.isOwner
 		};
-		context.enriched = await Object.entries(this.constructor.ENRICHED_FIELDS).reduce(async (enriched, [key, path]) => {
-			enriched[key] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+		for (const [key, path] of Object.entries(this.constructor.ENRICHED_FIELDS)) {
+			context.enriched[key] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
 				foundry.utils.getProperty(context, path),
 				enrichmentContext
 			);
-			return enriched;
-		}, {});
+		}
 		return context;
 	}
 
@@ -239,11 +250,18 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @protected
 	 */
 	async _prepareHeaderContext(context, options) {
-		context.name = {
-			value: this.item.name,
-			editable: this.item._source.name,
-			field: this.item.schema.getField("name")
-		};
+		if (this.item.system.identified === false)
+			context.name = {
+				value: this.item.system.unidentified.name,
+				editable: this.item.system._source.unidentified.name,
+				field: this.item.system.schema.getField("unidentified.name")
+			};
+		else
+			context.name = {
+				value: this.item.name,
+				editable: this.item._source.name,
+				field: this.item.schema.getField("name")
+			};
 		context.img = {
 			value: this.item.img,
 			editable: this.item._source.img
@@ -268,6 +286,8 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 		// 		drop: this._onDrop.bind(this)
 		// 	}
 		// }).bind(this.element);
+
+		this.element.classList.toggle("unidentified", this.item.system.identifiable && !this.item.system.identified);
 
 		if (this._mode === this.constructor.MODES.PLAY) this._toggleDisabled(true);
 	}
@@ -313,8 +333,21 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 		new foundry.applications.apps.ImagePopout({
 			src: this.item.img,
 			uuid: this.item.uuid,
-			window: { title: this.item.name }
+			window: { title: this.item.system.identified === false ? this.item.system.unidentified.name : this.item.name }
 		}).render({ force: true });
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Handle toggling the identified status of Item.
+	 * @this {BaseItemSheet}
+	 * @param {Event} event - Triggering click event.
+	 * @param {HTMLElement} target - Button that was clicked.
+	 */
+	static #toggleIdentification(event, target) {
+		if (!this.item.system.identifiable) return;
+		this.item.update({ "system.unidentified.value": this.item.system.identified });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -362,6 +395,28 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Control whether the Toggle Identification button is visible.
+	 * @this {BaseItemSheet}
+	 * @returns {boolean}
+	 */
+	static #canToggleIdentification() {
+		return this.item.system.identifiable && game.user.isGM;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Determine whether an Item is considered identified.
+	 * @param {BlackFlagItem} item - The Item.
+	 * @returns {boolean}
+	 */
+	static isItemIdentified(item) {
+		return game.user.isGM || item.system.identified !== false;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Determine if an Item support Advancement.
 	 * @param {BlackFlagItem} item - The Item.
 	 * @returns {boolean}
@@ -370,7 +425,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 		return "advancement" in item.system;
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Determine if an Item should show an details tab.
@@ -378,10 +433,10 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @returns {boolean}
 	 */
 	static itemHasDetails(item) {
-		return item.system.constructor.metadata.hasDetails;
+		return item.system.constructor.metadata.hasDetails && this.isItemIdentified(item);
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Determine if an Item should show an effects tab.
@@ -389,6 +444,6 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @returns {boolean}
 	 */
 	static itemHasEffects(item) {
-		return item.system.constructor.metadata.hasEffects;
+		return item.system.constructor.metadata.hasEffects && this.isItemIdentified(item);
 	}
 }

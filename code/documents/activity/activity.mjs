@@ -124,7 +124,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get canConfigure() {
 		if (CONFIG.Activity.types[this.type]?.configurable === false) return false;
-		// if ( this.visibility?.requireIdentification && !this.item.system.identified && !game.user.isGM ) return false;
+		if (this.visibility?.requireIdentification && !this.item.system.identified && !game.user.isGM) return false;
 		return true;
 	}
 
@@ -163,7 +163,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	get canUse() {
 		if (this.visibility?.requireAttunement && !this.item.system.attuned) return false;
 		if (this.visibility?.requireMagic && !this.item.system.magicAvailable) return false;
-		// if ( this.visibility?.requireIdentification && !this.item.system.identified ) return false;
+		if (this.visibility?.requireIdentification && !this.item.system.identified) return false;
 		const level = this.relevantLevel;
 		if ((this.visibility?.level?.min ?? -Infinity) > level || (this.visibility?.level?.max ?? Infinity) < level)
 			return false;

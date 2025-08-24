@@ -1,6 +1,7 @@
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
+import IdentifiableTemplate from "./templates/identifiable-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
 import PropertiesTemplate from "./templates/properties-template.mjs";
 
@@ -10,6 +11,7 @@ const { SchemaField, StringField } = foundry.data.fields;
  * Data definition for Gear items.
  * @mixes {ActivitiesTemplate}
  * @mixes {DescriptionTemplate}
+ * @mixes {IdentifiableTemplate}
  * @mixes {PhysicalTemplate}
  * @mixes {PropertiesTemplate}
  *
@@ -20,6 +22,7 @@ const { SchemaField, StringField } = foundry.data.fields;
 export default class GearData extends ItemDataModel.mixin(
 	ActivitiesTemplate,
 	DescriptionTemplate,
+	IdentifiableTemplate,
 	PhysicalTemplate,
 	PropertiesTemplate
 ) {
@@ -28,7 +31,7 @@ export default class GearData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.IDENTIFIABLE", "BF.SOURCE"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -103,6 +106,7 @@ export default class GearData extends ItemDataModel.mixin(
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();
+		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
 		this.type.label = CONFIG.BlackFlag.gearCategories.localized[this.type.category] ?? "";
 	}
@@ -114,6 +118,16 @@ export default class GearData extends ItemDataModel.mixin(
 		super.prepareFinalData();
 		const rollData = this.parent.getRollData({ deterministic: true });
 		this.prepareFinalActivities(rollData);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this.preUpdateIdentifiable(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -5,6 +5,7 @@
 	<div class="description-area">
 		{{#if showSidebar}}
 			<div class="sidebar">
+				{{#if isIdentified}}
 				<label class="rarity">
 					<span>{{ localize "BF.Rarity.Label" }}</span>
 					<select class="uninput" name="system.rarity">
@@ -12,6 +13,7 @@
 														 labelAttr="label" localize="true" }}
 					</select>
 				</label>
+				{{/if}}
 				<label class="quantity">
 					<span>{{ localize "BF.Quantity.Label" }}</span>
 					<input class="uninput" type="number" name="system.quantity" min=0 step=1 value="{{ source.quantity }}">
@@ -36,13 +38,24 @@
 				</label>
 			</div>
 		{{/if}}
-		{{#if editable}}
-			<prose-mirror name="system.description.value" data-document-uuid="{{ item.uuid }}"
-			              value="{{ source.description.value }}" class="description" compact></prose-mirror>
+		{{#if isIdentified}}
+			{{#if editable}}
+				<prose-mirror name="system.description.value" data-document-uuid="{{ item.uuid }}"
+											value="{{ source.description.value }}" class="description" compact></prose-mirror>
+			{{else}}
+				<div class="description">
+					{{{ enriched.description }}}
+				</div>
+			{{/if}}
 		{{else}}
-			<div class="description">
-				{{{ enriched.description }}}
-			</div>
+			{{#if editable}}
+				<prose-mirror name="system.unidentified.description" data-document-uuid="{{ item.uuid }}"
+											value="{{ source.unidentified.description }}" class="description" compact></prose-mirror>
+			{{else}}
+				<div class="description">
+					{{{ enriched.unidentified }}}
+				</div>
+			{{/if}}
 		{{/if}}
 	</div>
 	{{#unless hideSource}}

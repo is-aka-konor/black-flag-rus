@@ -23,6 +23,7 @@ export default class EquipmentSheet extends BaseItemSheet {
 		context = await super._prepareDescriptionContext(context, options);
 		context.descriptionParts = ["blackFlag.description-equipment"];
 		context.showSidebar = true;
+		context.hidePrice = this.item.system.identified === false;
 
 		// Category
 		if (context.system.validCategories?.localized)

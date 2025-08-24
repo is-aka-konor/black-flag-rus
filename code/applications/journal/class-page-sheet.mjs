@@ -21,7 +21,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 		}
 	};
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
 	static EDIT_PARTS = {
@@ -33,7 +33,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 		}
 	};
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
 	static VIEW_PARTS = {
@@ -484,7 +484,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 		}
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Handle launching the individual text editing window.
