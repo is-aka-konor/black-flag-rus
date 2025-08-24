@@ -602,7 +602,7 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 		}
 
 		// Perform the sort
-		const sortUpdates = foundry.utils.SortingHelpers.performIntegerSort(item, { target: sortTarget, siblings });
+		const sortUpdates = foundry.utils.performIntegerSort(item, { target: sortTarget, siblings });
 		const updateData = sortUpdates.map(u => {
 			const update = u.update;
 			update._id = u.target.id;
