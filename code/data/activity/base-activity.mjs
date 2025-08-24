@@ -214,7 +214,6 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	 */
 	static _migrateSummonIdentifier(source) {
 		if (source.system?.summon?.identifier) {
-			console.log("MIGRATE!");
 			foundry.utils.setProperty(source, "visibility.identifier", source.system.summon.identifier);
 			delete source.system.summon.identifier;
 		}
