@@ -309,6 +309,7 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 		context.canDelete = section.options?.canDelete !== false;
 		context.canDuplicate = section.options?.canDuplicate !== false;
 
+		context.identified = item.system.identified !== false;
 		const totalWeight = await item.system.totalWeight;
 		context.weight = totalWeight
 			? formatWeight(totalWeight.toNearest(0.1), item.system.weight.units, { unitDisplay: "short" })

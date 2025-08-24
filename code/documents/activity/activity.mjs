@@ -975,7 +975,10 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 				.map(([key, label]) => ({ key, label }))
 				.filter(t => t.label),
 			description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-				this.description || this.item.system.description.value,
+				this.description ||
+					(this.item.system.identified === false
+						? this.item.system.unidentified.description
+						: this.item.system.description.value ?? ""),
 				{
 					relativeTo: this.description ? this : this.item,
 					rollData: this.item.getRollData(),

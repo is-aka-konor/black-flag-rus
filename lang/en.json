@@ -2046,9 +2046,9 @@
 
 "BF.IDENTIFIABLE": {
 	"Action": {
-		"Identify": "Make Identified",
+		"Identify": "Identify Item",
 		"Toggle": "Toggle Identification",
-		"Unidentify": "Make Unidentified"
+		"Unidentify": "Unidentify Item"
 	},
 	"DefaultName": "Unidentified {type}",
 	"FIELDS": {
@@ -2064,7 +2064,8 @@
 				"label": "Unidentified"
 			}
 		}
-	}
+	},
+	"UnknownData": "???"
 },
 
 "BF.Identifier": {

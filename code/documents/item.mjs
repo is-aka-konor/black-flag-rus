@@ -395,9 +395,13 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	 * @returns {object} - Context passed to the template for rendering the summary.
 	 */
 	async getSummaryContext(enrichmentOptions = {}) {
+		const description =
+			!game.user.isGM && this.system.identified === false
+				? this.system.unidentified.description
+				: this.system.description.value;
 		const context = {
 			enriched: {
-				description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.system.description.value, {
+				description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(description, {
 					async: true,
 					relativeTo: this,
 					rollData: this.getRollData(),
@@ -428,7 +432,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 				.map(([key, label]) => ({ key, label }))
 				.filter(t => t.label),
 			description: await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-				this.system.description?.value ?? "",
+				this.system.identified === false ? this.system.unidentified?.description : this.system.description?.value ?? "",
 				{
 					relativeTo: this,
 					rollData: this.getRollData(),
@@ -523,7 +527,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 			},
 			callback: li => {
 				const item = game.items.get(li.dataset.entryId);
-				item?.update({ "system.unidentified.value": item.system.identified });
+				item?.system.toggleIdentification?.();
 			},
 			group: "system"
 		});

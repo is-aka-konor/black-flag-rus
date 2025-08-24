@@ -346,8 +346,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @param {HTMLElement} target - Button that was clicked.
 	 */
 	static #toggleIdentification(event, target) {
-		if (!this.item.system.identifiable) return;
-		this.item.update({ "system.unidentified.value": this.item.system.identified });
+		this.item.system.toggleIdentification?.();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

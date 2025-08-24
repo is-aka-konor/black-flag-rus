@@ -98,4 +98,15 @@ export default class IdentifiableTemplate extends foundry.abstract.DataModel {
 			"BF.IDENTIFIABLE.DefaultName", { type: game.i18n.localize(CONFIG.Item.typeLabels[this.parent.type]) }
 		));
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Helpers               */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Toggle the identified status of this item.
+	 */
+	async toggleIdentification() {
+		await this.parent.update({ "system.unidentified.value": this.identified });
+	}
 }

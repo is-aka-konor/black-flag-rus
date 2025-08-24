@@ -213,10 +213,24 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 				group: "state"
 			},
 			{
+				name: `BF.Item.Action.${item.system.attuned ? "Unattune" : "Attune"}`,
+				icon: '<i class="fa-solid fa-sun fa-fw" inert></i>',
+				condition: () => this.actor && this.isEditable && type === "Item" && item.system.attunable,
+				callback: li => this._onAction(li[0], "attune"),
+				group: "state"
+			},
+			{
 				name: `BF.Item.Action.${item.system.equipped ? "Unequip" : "Equip"}`,
 				icon: '<i class="fa-solid fa-shield-alt fa-fw" inert></i>',
 				condition: () => this.actor && this.isEditable && type === "Item" && item.system.equippable,
 				callback: li => this._onAction(li[0], "equip"),
+				group: "state"
+			},
+			{
+				name: `BF.IDENTIFIABLE.Action.${item.system.identified ? "Unidentify" : "Identify"}`,
+				icon: '<i class="fa-solid fa-wand-sparkles fa-fw" inert></i>',
+				condition: () => item.system.identifiable && game.user.isGM,
+				callback: li => this._onAction(li[0], "identify"),
 				group: "state"
 			},
 			{
@@ -281,6 +295,8 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 				return this._onExpand(item, target);
 			case "activate":
 				if (activity) return activity.activate({ event: originalEvent });
+			case "identify":
+				return item.system.toggleIdentification();
 			case "post":
 				return item.postToChat();
 			case "prepare":

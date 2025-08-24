@@ -34,7 +34,7 @@
 								{{ blackFlag-notificationBadge @root.document document=this }}
 							</div>
 						</th>
-						<td class="uses">{{ system.uses.label }}</td>
+						<td class="uses">{{#if ctx.identified}}{{ system.uses.label }}{{/if}}</td>
 						<td class="weight">{{ ctx.weight }}</td>
 						<td class="quantity">
 							<div class="layout">
@@ -54,8 +54,12 @@
 								{{/if}}
 							</div>
 						</td>
-						<td class="cost">{{ system.price.label }}</td>
-						<td class="traits">{{ system.traits }}</td>
+						<td class="cost">
+							{{~ ifThen ctx.identified system.price.label (localize "BF.IDENTIFIABLE.UnknownData") ~}}
+						</td>
+						<td class="traits">
+							{{~ ifThen ctx.identified system.traits (localize "BF.IDENTIFIABLE.UnknownData") ~}}
+						</td>
 						<td class="controls">
 							<div class="layout">
 								{{#if @root.editable}}
