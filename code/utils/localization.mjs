@@ -207,7 +207,7 @@ export function getAttributeOption(attribute, { actor, item }={}) {
 			default:
 				label = getSchemaLabel(attribute, "Actor", actor);
 				break;
-		} 
+		}
 	}
 
 	if ( !option ) option = {
@@ -232,12 +232,30 @@ const _pluralRules = {};
 /**
  * Get a PluralRules object, fetching from cache if possible.
  * @param {object} [options={}]
- * @param {string} [options.type=cardinal]
+ * @param {string} [options.lang] - Language to use instead of the default.
+ * @param {string} [options.type=cardinal] - Pluralization type.
  * @returns {Intl.PluralRules}
  */
-export function getPluralRules({ type="cardinal" }={}) {
-	_pluralRules[type] ??= new Intl.PluralRules(game.i18n.lang, { type });
-	return _pluralRules[type];
+export function getPluralRules({ lang=game.i18n.lang, type="cardinal" }={}) {
+	const key = `${lang}_${type}`;
+	_pluralRules[key] ??= new Intl.PluralRules(lang, { type });
+	return _pluralRules[key];
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Get a pluralized localization key using the provided formatting function which properly falls back to English
+ * if the currently language is missing the key.
+ * @param {number} value - Counted value.
+ * @param {Function} format - Method that takes a plural rule value and returns the full localization key.
+ * @param {object} [options={}] - Options passed to `getPluralRules`.
+ * @returns {string}
+ */
+export function getPluralLocalizationKey(value, format, options={}) {
+	const localizationKey = format(getPluralRules(options).select(value ?? 0));
+	if ( game.i18n.has(localizationKey) ) return localizationKey;
+	return format(getPluralRules({ ...options, lang: "en" }).select(value ?? 0));
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -283,7 +301,8 @@ export function localizeSchema(schema, prefixes) {
  * @param {object} object
  * @param {object} [options={}]
  * @param {boolean} [options.sort=true] - Should the localized results be sorted?
- * @param {string} [options.pluralRule="one"] - Pluralization rule to use with localization value.
+ * @param {number} [options.pluralCount=1] - Number to use when determining pluralization.
+ * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @param {string} [options.labelKeyPath="label"] - Path to the standard label.
  * @param {string} [options.localizationKeyPath="label"] - Path to the pluralizable label.
  * @param {boolean} [options.flatten=false] - For nested configs with children, flatten them to one level.
@@ -292,12 +311,12 @@ export function localizeSchema(schema, prefixes) {
  * @returns {object}
  */
 export function makeLabels(object, {
-	sort=true, pluralRule="one", labelKeyPath="label", localizationKeyPath="localization",
+	sort=true, pluralCount=1, pluralRule, labelKeyPath="label", localizationKeyPath="localization",
 	flatten=false, keepCategories=true, objectOutput=false
 }={}) {
 	if ( flatten ) object = flattenChildren(object, { keepCategories });
 	const localized = Object.entries(object).map(([k, d]) => {
-		const label = makeLabel(d, { pluralRule, labelKeyPath, localizationKeyPath });
+		const label = makeLabel(d, { pluralCount, pluralRule, labelKeyPath, localizationKeyPath });
 		return [k, objectOutput ? { ...d, [labelKeyPath]: label } : label];
 	});
 	if ( sort && objectOutput ) sortObjectEntries(localized, { sortKey: labelKeyPath });
@@ -312,16 +331,20 @@ export function makeLabels(object, {
  * plural role or a "label" value.
  * @param {object|string} input
  * @param {object} [options={}]
- * @param {string} [options.pluralRule="one"] - Pluralization rule to use with localization value.
+ * @param {number} [options.pluralCount=1] - Number to use when determining pluralization.
+ * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @param {string} [options.labelKeyPath="label"] - Path to the standard label.
  * @param {string} [options.localizationKeyPath="label"] - Path to the pluralizable label.
  * @returns {string}
  */
-export function makeLabel(input, { pluralRule="one", labelKeyPath="label", localizationKeyPath="localization" }={}) {
+export function makeLabel(input, {
+	pluralCount=1, pluralRule, labelKeyPath="label", localizationKeyPath="localization"
+}={}) {
 	return game.i18n.localize(
 		foundry.utils.getType(input) === "string" ? input
 			: foundry.utils.getProperty(input, labelKeyPath)
-      ?? `${foundry.utils.getProperty(input, localizationKeyPath)}[${pluralRule}]`
+      ?? (pluralRule ? `${foundry.utils.getProperty(input, localizationKeyPath)}[${pluralRule}]`
+				: getPluralLocalizationKey(pluralCount, pr => `${foundry.utils.getProperty(input, localizationKeyPath)}[${pr}]`))
 	);
 }
 

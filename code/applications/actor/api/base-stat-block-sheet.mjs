@@ -1,4 +1,4 @@
-import { getPluralRules, numberFormat } from "../../../utils/_module.mjs";
+import { getPluralLocalizationKey, numberFormat } from "../../../utils/_module.mjs";
 import BaseActorSheet from "./base-actor-sheet.mjs";
 
 /**
@@ -329,11 +329,13 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 		const parts = [];
 
 		if (activity?.activation.type === "legendary" && activity.activation.value > 1) {
-			const pluralRule = getPluralRules().select(activity.activation.value);
 			parts.push(
-				game.i18n.format(`BF.LegendaryAction.Cost[${pluralRule}]`, {
-					count: numberFormat(activity.activation.value)
-				})
+				game.i18n.format(
+					getPluralLocalizationKey(activity.activation.value, pr => `BF.LegendaryAction.Cost[${pr}]`),
+					{
+						count: numberFormat(activity.activation.value)
+					}
+				)
 			);
 		}
 

@@ -1,6 +1,6 @@
 import PCSheet from "../../applications/actor/pc-sheet.mjs";
 import Proficiency from "../../documents/proficiency.mjs";
-import { getPluralRules, simplifyBonus, Trait } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, simplifyBonus, Trait } from "../../utils/_module.mjs";
 import ActorDataModel from "../abstract/actor-data-model.mjs";
 import CreatureTypeField from "../fields/creature-type-field.mjs";
 import MappingField from "../fields/mapping-field.mjs";
@@ -386,7 +386,10 @@ export default class PCData extends ActorDataModel.mixin(
 		for (const data of Object.values(this.progression.classes)) {
 			Object.defineProperty(data, "levelsLabel", {
 				get() {
-					return game.i18n.format(`BF.Level.Count[${getPluralRules().select(this.levels)}]`, { number: this.levels });
+					return game.i18n.format(
+						getPluralLocalizationKey(this.levels, pr => `BF.Level.Count[${pr}]`),
+						{ number: this.levels }
+					);
 				},
 				configurable: true,
 				enumerable: false

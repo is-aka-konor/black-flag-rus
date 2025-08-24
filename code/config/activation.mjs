@@ -75,12 +75,13 @@ localizeConfig(actionTypes.rest.children);
  * @param {object} [options={}]
  * @param {string[]} [options.categories] - Categories to include, or blank for all categories.
  * @param {string} [options.chosen] - Currently selected option.
- * @param {string[]} [options.pluralRule] - Pluralization rule to use with localization value.
+ * @param {number} [options.pluralCount] - Number to use when determining pluralization.
+ * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @returns {SelectChoices}
  */
-export function activationOptions({ categories, chosen, pluralRule } = {}) {
+export function activationOptions({ categories, chosen, pluralCount, pluralRule } = {}) {
 	const time = { time: timeUnits.time };
-	const selectChoices = _createOptions([actionTypes, time], { chosen, pluralRule });
+	const selectChoices = _createOptions([actionTypes, time], { chosen, pluralCount, pluralRule });
 	if (categories) selectChoices.exclude(new Set(categories));
 	return selectChoices;
 }
@@ -132,12 +133,13 @@ export const durations = {
  * @param {object} [options={}]
  * @param {string[]} [options.categories] - Categories to include, or blank for all categories.
  * @param {string} [options.chosen] - Currently selected option.
- * @param {string[]} [options.pluralRule] - Pluralization rule to use with localization value.
+ * @param {number} [options.pluralCount] - Number to use when determining pluralization.
+ * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @param {boolean} [options.isSpell] - Should spell-only durations be displayed?
  * @returns {SelectChoices}
  */
-export function durationOptions({ categories, chosen, pluralRule, isSpell } = {}) {
-	const selectChoices = _createOptions([timeUnits, durations], { chosen, pluralRule, isSpell });
+export function durationOptions({ categories, chosen, pluralCount, pluralRule, isSpell } = {}) {
+	const selectChoices = _createOptions([timeUnits, durations], { chosen, pluralCount, pluralRule, isSpell });
 	if (categories) selectChoices.exclude(new Set(categories));
 	return selectChoices;
 }
@@ -149,18 +151,19 @@ export function durationOptions({ categories, chosen, pluralRule, isSpell } = {}
  * @param {object[]} categories - Categories to use when generating the list.
  * @param {object} options
  * @param {string} [options.chosen] - Currently selected option.
- * @param {string[]} [options.pluralRule] - Pluralization rule to use with localization value.
+ * @param {number} [options.pluralCount] - Number to use when determining pluralization.
+ * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @param {boolean} [options.isSpell] - Should spell-only durations be displayed?
  * @returns {SelectChoices}
  */
-function _createOptions(categories, { chosen, pluralRule, isSpell }) {
+function _createOptions(categories, { chosen, pluralCount, pluralRule, isSpell }) {
 	const selectChoices = new SelectChoices();
 	categories.forEach(c => selectChoices.merge(new SelectChoices(c)));
 	for (const [key, category] of Object.entries(selectChoices)) {
-		category.label = makeLabel(category, { pluralRule });
+		category.label = makeLabel(category, { pluralCount, pluralRule });
 		category.scalar = category.scalar;
 		for (const [k, v] of Object.entries(category.children)) {
-			v.label = makeLabel(v, { pluralRule });
+			v.label = makeLabel(v, { pluralCount, pluralRule });
 			v.scalar ??= category.scalar || v.scalar;
 			v.chosen = k === chosen;
 			if (v.spellOnly && !isSpell) delete category.children[k];

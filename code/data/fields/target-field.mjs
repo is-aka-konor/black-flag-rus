@@ -1,4 +1,4 @@
-import { formatDistance, formatNumber, getPluralRules } from "../../utils/_module.mjs";
+import { formatDistance, formatNumber, getPluralLocalizationKey } from "../../utils/_module.mjs";
 import FormulaField from "./formula-field.mjs";
 
 const { BooleanField, SchemaField, StringField } = foundry.data.fields;
@@ -102,7 +102,10 @@ export default class TargetField extends SchemaField {
 		const affectsConfig = CONFIG.BlackFlag.targetTypes[obj.affects.type];
 		Object.defineProperty(obj.affects, "statblockLabel", {
 			value: game.i18n.format(
-				`${affectsConfig?.counted ?? "BF.TARGET.Type.Target.Counted"}[${getPluralRules().select(obj.affects.count || 1)}]`,
+				getPluralLocalizationKey(
+					obj.affects.count || 1,
+					pr => `${affectsConfig?.counted ?? "BF.TARGET.Type.Target.Counted"}[${pr}]`
+				),
 				{ number: formatNumber(obj.affects.count || 1, { spelledOut: true }) }
 			),
 			enumerable: false
@@ -158,10 +161,10 @@ export default class TargetField extends SchemaField {
 		} else {
 			const number = formatNumber(affects.count ?? 1);
 			short = `${number} ${game.i18n
-				.localize(`BF.TARGET.Label[${getPluralRules().select(affects.count ?? 1)}]`)
+				.localize(getPluralLocalizationKey(affects.count ?? 1, pr => `BF.TARGET.Label[${pr}]`))
 				.toLowerCase()}`;
 			long = `${number} ${game.i18n
-				.localize(type.label ?? `${type.localization}[${getPluralRules().select(affects.count ?? 1)}]`)
+				.localize(type.label ?? getPluralLocalizationKey(affects.count ?? 1, pr => `${type.localization}[${pr}]`))
 				.toLowerCase()}`;
 		}
 
@@ -195,9 +198,8 @@ export default class TargetField extends SchemaField {
 		let short;
 		let long;
 
-		const pluralRule = getPluralRules().select(template.count);
 		const shape = type.localization
-			? game.i18n.localize(`${type.localization}[${pluralRule}]`)
+			? game.i18n.localize(getPluralLocalizationKey(template.count, pr => `${type.localization}[${pr}]`))
 			: game.i18n.localize(type.label) ?? "";
 
 		if (type.icon) {

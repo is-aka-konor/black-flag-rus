@@ -1,4 +1,4 @@
-import { formatCR, getPluralRules, numberFormat } from "../../utils/_module.mjs";
+import { formatCR, getPluralLocalizationKey, numberFormat } from "../../utils/_module.mjs";
 import BaseStatBlockSheet from "./api/base-stat-block-sheet.mjs";
 import NPCSpellcastingConfig from "./config/npc-spellcasting-config.mjs";
 
@@ -102,7 +102,10 @@ export default class NPCSheet extends BaseStatBlockSheet {
 				max: context.editable ? leg.max ?? 0 : context.source.attributes.legendary.max
 			};
 			context.actions.legendary.description = game.i18n.format(
-				`BF.LegendaryAction.Description[${getPluralRules().select(context.system.attributes.legendary.max)}]`,
+				getPluralLocalizationKey(
+					context.system.attributes.legendary.max,
+					pr => `BF.LegendaryAction.Description[${pr}]`
+				),
 				{ type: context.actor.name.toLowerCase(), count: context.system.attributes.legendary.max }
 			);
 		}

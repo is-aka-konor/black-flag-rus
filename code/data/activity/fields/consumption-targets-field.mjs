@@ -1,6 +1,6 @@
 import {
 	getAttributeOption,
-	getPluralRules,
+	getPluralLocalizationKey,
 	numberFormat,
 	simplifyBonus,
 	simplifyFormula
@@ -422,14 +422,13 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 	static consumptionLabelsActivityUses(config, consumed) {
 		const { cost, simplifiedCost, increaseKey, pluralRule } = this._resolveHintCost(config);
 		const uses = this.activity.uses;
-		const usesPluralRule = getPluralRules().select(uses.value);
 		return {
 			label: game.i18n.localize(`BF.CONSUMPTION.Type.ActivityUses.Prompt${increaseKey}`),
 			hint: game.i18n.format(`BF.CONSUMPTION.Type.ActivityUses.PromptHint${increaseKey}`, {
 				cost,
 				use: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${pluralRule}`),
 				available: numberFormat(uses.value),
-				availableUse: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${usesPluralRule}`)
+				availableUse: game.i18n.localize(getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Type.Use.${pr}`))
 			}),
 			warn: simplifiedCost > uses.value
 		};
@@ -503,7 +502,6 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 		const item = this.actor.items.get(this.target);
 		const itemName = item ? item.name : game.i18n.localize("BF.CONSUMPTION.Type.ItemUses.ThisItem").toLowerCase();
 		const uses = (item ?? this.item).system.uses;
-		const usesPluralRule = getPluralRules().select(uses.value);
 
 		let totalUses = uses.value;
 		if (uses.consumeQuantity) {
@@ -518,7 +516,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 				cost,
 				use: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${pluralRule}`),
 				available: numberFormat(totalUses),
-				availableUse: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${usesPluralRule}`),
+				availableUse: game.i18n.localize(getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Type.Use.${pr}`)),
 				item: item ? `<em>${itemName}</em>` : itemName
 			}),
 			warn: simplifiedCost > totalUses
@@ -627,7 +625,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Period", { value: numberFormat(uses.max), period });
 			} else {
 				const type = game.i18n.localize(
-					`BF.CONSUMPTION.Uses.Available.Charges[${getPluralRules().select(uses.value)}]`
+					getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Uses.Available.Charges[${pr}]`)
 				);
 				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Limited", { value: numberFormat(uses.value), type });
 			}

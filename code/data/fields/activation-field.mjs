@@ -1,4 +1,4 @@
-import { formatTime, getPluralRules, numberFormat } from "../../utils/_module.mjs";
+import { formatTime, numberFormat } from "../../utils/_module.mjs";
 
 const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
@@ -76,9 +76,7 @@ export default class ActivationField extends SchemaField {
 		if (data.type in CONFIG.BlackFlag.timeUnits.time.children) {
 			label = formatTime(data.value, data.type);
 		} else {
-			const type = CONFIG.BlackFlag.activationOptions({
-				pluralRule: getPluralRules().select(data.value ?? 1)
-			}).get(data.type);
+			const type = CONFIG.BlackFlag.activationOptions({ pluralCount: data.value ?? 1 }).get(data.type);
 			if (!type) return "";
 
 			label = game.i18n.format("BF.ACTIVATION.Formatted.Scalar", {

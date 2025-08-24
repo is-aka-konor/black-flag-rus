@@ -1,4 +1,4 @@
-import { getPluralRules } from "./localization.mjs";
+import { getPluralLocalizationKey, getPluralRules } from "./localization.mjs";
 import { isValidUnit } from "./validation.mjs";
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -239,7 +239,7 @@ export function formatWeight(value, unit, options={}) {
 function _formatSystemUnits(value, unit, config, options={}) {
 	options.unitDisplay ??= "short";
 	if ( config?.counted ) {
-		const localizationKey = `${config.counted}.${options.unitDisplay}.${getPluralRules().select(value)}`;
+		const localizationKey = getPluralLocalizationKey(value, pr => `${config.counted}.${options.unitDisplay}.${pr}`);
 		return game.i18n.format(localizationKey, { number: formatNumber(value, options) });
 	}
 	return formatNumber(value, { unit: config?.formattingUnit ?? unit, ...options });

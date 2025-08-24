@@ -1,5 +1,5 @@
 import SelectChoices from "../../documents/select-choices.mjs";
-import { getPluralRules, makeLabel, numberFormat } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, makeLabel, numberFormat } from "../../utils/_module.mjs";
 import AdvancementDataModel from "../abstract/advancement-data-model.mjs";
 import LocalDocumentField from "../fields/local-document-field.mjs";
 
@@ -144,7 +144,7 @@ export class EquipmentEntryData extends foundry.abstract.DataModel {
 	get blankLabel() {
 		const localization = this.constructor.CATEGORIES[this.type]?.localization;
 		if (!localization) return "";
-		return game.i18n.localize(`${localization}[${getPluralRules().select(this.count ?? 1)}]`);
+		return game.i18n.localize(getPluralLocalizationKey(this.count ?? 1, pr => `${localization}[${pr}]`));
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -166,9 +166,8 @@ export class EquipmentEntryData extends foundry.abstract.DataModel {
 	 */
 	get keyOptions() {
 		const config = foundry.utils.deepClone(CONFIG.BlackFlag[this.constructor.CATEGORIES[this.type]?.config]);
-		const pluralRule = getPluralRules().select(this.count ?? 1);
 		const choices = Object.entries(config ?? {}).reduce((obj, [key, value]) => {
-			if (value.children) obj[key] = makeLabel(value, { pluralRule, labelKeyPath: null });
+			if (value.children) obj[key] = makeLabel(value, { pluralCount: this.count ?? 1, labelKeyPath: null });
 			return obj;
 		}, {});
 
@@ -176,10 +175,13 @@ export class EquipmentEntryData extends foundry.abstract.DataModel {
 		if (this.type === "weapon") {
 			for (const [categoryKey, category] of Object.entries(CONFIG.BlackFlag.weapons.localized)) {
 				for (const [typeKey, type] of Object.entries(CONFIG.BlackFlag.weaponTypes.localized)) {
-					choices[`${categoryKey}.${typeKey}`] = game.i18n.format(`BF.WEAPON.Type.CombinedLabel[${pluralRule}]`, {
-						category,
-						type
-					});
+					choices[`${categoryKey}.${typeKey}`] = game.i18n.format(
+						getPluralLocalizationKey(this.count ?? 1, pr => `BF.WEAPON.Type.CombinedLabel[${pr}]`),
+						{
+							category,
+							type
+						}
+					);
 				}
 			}
 		}

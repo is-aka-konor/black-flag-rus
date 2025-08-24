@@ -1,6 +1,6 @@
 import BaseActorSheet from "../../applications/actor/api/base-actor-sheet.mjs";
 import { ImprovementConfigurationData, ImprovementValueData } from "../../data/advancement/improvement-data.mjs";
-import { getPluralRules, linkForUUID, numberFormat, Search } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, linkForUUID, numberFormat, Search } from "../../utils/_module.mjs";
 import GrantFeaturesAdvancement from "./grant-features-advancement.mjs";
 
 /**
@@ -145,7 +145,7 @@ export default class ImprovementAdvancement extends GrantFeaturesAdvancement {
 		);
 		return game.i18n.format("BF.Advancement.Improvement.Journal.Description", {
 			talentList: game.i18n.format(
-				`BF.Advancement.Improvement.Journal.TalentList[${getPluralRules().select(lists.length)}]`,
+				getPluralLocalizationKey(lists.length, pr => `BF.Advancement.Improvement.Journal.TalentList[${pr}]`),
 				{
 					lists: game.i18n.getListFormatter({ type: "disjunction" }).format(lists)
 				}

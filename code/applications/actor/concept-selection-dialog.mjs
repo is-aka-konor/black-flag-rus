@@ -1,4 +1,4 @@
-import { getPluralRules, numberFormat } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, numberFormat } from "../../utils/_module.mjs";
 import BFApplication from "../api/application.mjs";
 
 /**
@@ -134,9 +134,11 @@ export default class ConceptSelectionDialog extends BFApplication {
 				a => (abilities[a]?.value ?? 0) >= CONFIG.BlackFlag.multiclassingAbilityThreshold
 			);
 			if (!validAbilities) {
-				const pluralRule = getPluralRules().select(keyAbilityOptions.size);
 				optionContext.multiclassMessage = game.i18n.format(
-					`BF.Progression.Warning.InsufficientSecondaryScore[${pluralRule}]`,
+					getPluralLocalizationKey(
+						keyAbilityOptions.size,
+						pr => `BF.Progression.Warning.InsufficientSecondaryScore[${pr}]`
+					),
 					{
 						ability: game.i18n
 							.getListFormatter({ type: "disjunction" })

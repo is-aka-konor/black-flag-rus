@@ -1,7 +1,7 @@
 import SkillRollConfigurationDialog from "../applications/dice/skill-configuration-dialog.mjs";
 import ActivationsField from "../data/chat-message/fields/activations-field.mjs";
 import ActorDeltasField from "../data/chat-message/fields/deltas-field.mjs";
-import { buildRoll, getPluralRules, log, numberFormat, Trait } from "../utils/_module.mjs";
+import { buildRoll, getPluralLocalizationKey, log, numberFormat, Trait } from "../utils/_module.mjs";
 import DocumentMixin from "./mixins/document.mjs";
 import NotificationsCollection from "./notifications.mjs";
 import Proficiency from "./proficiency.mjs";
@@ -835,14 +835,13 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const localizationString = `${restConfig.resultMessages}.${resultType}`;
 
 		// Prepare localization data
-		const pluralRules = getPluralRules();
 		const localizationData = {
 			name: this.name,
 			hitDice: numberFormat(result.type === "long" ? totalHD : -totalHD),
-			hitDiceLabel: game.i18n.localize(`BF.HitDie.Label[${pluralRules.select(totalHD)}]`).toLowerCase(),
+			hitDiceLabel: game.i18n.localize(getPluralLocalizationKey(totalHD, pr => `BF.HitDie.Label[${pr}]`)).toLowerCase(),
 			hitPoints: numberFormat(result.deltas.hitPoints),
 			hitPointsLabel: game.i18n
-				.localize(`BF.HitPoint.Label[${pluralRules.select(result.deltas.hitPoints)}]`)
+				.localize(getPluralLocalizationKey(results.deltas.hitPoints, pr => `BF.HitPoint.Label[${pr}]`))
 				.toLowerCase()
 		};
 

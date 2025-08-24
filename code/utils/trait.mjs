@@ -1,6 +1,6 @@
 import MappingField from "../data/fields/mapping-field.mjs";
 import SelectChoices from "../documents/select-choices.mjs";
-import { getPluralRules } from "./localization.mjs";
+import { getPluralLocalizationKey, getPluralRules } from "./localization.mjs";
 import { numberFormat } from "./number.mjs";
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -272,8 +272,7 @@ export function keyLabel(key, { count, trait, final, priority }={}) {
 	if ( !trait || trait === parts[0] ) trait = parts.shift();
 	const traitConfig = CONFIG.BlackFlag.traits[trait];
 	if ( !traitConfig ) return key;
-	const pluralRule = getPluralRules().select(count ?? 1);
-	const type = game.i18n.localize(`${traitConfig.labels.localization}[${pluralRule}]`).toLowerCase();
+	const type = game.i18n.localize(getPluralLocalizationKey(count ?? 1, pr => `${traitConfig.labels.localization}[${pr}]`)).toLowerCase();
 
 	const searchTrait = (parts, traits, type) => {
 		const firstKey = parts.shift();
@@ -288,7 +287,7 @@ export function keyLabel(key, { count, trait, final, priority }={}) {
 		if ( !category ) return key;
 		let label = foundry.utils.getProperty(category, traitConfig.labelKeyPath ?? "label");
 		const localization = foundry.utils.getProperty(category, "localization");
-		const categoryPluralRule = count ? pluralRule : "other";
+		const categoryPluralRule = count ? getPluralRules().select(count ?? 1) : "other";
 		if ( foundry.utils.getType(category) !== "Object" ) label = category;
 		else if ( priority === "label" ) label ??= `${localization}[${categoryPluralRule}]`;
 		else if ( localization ) label = `${localization}[${categoryPluralRule}]`;
@@ -300,7 +299,7 @@ export function keyLabel(key, { count, trait, final, priority }={}) {
 
 		if ( !category.children ) return key;
 
-		if ( localization ) type = game.i18n.localize(`${localization}[${getPluralRules().select(count ?? 1)}]`);
+		if ( localization ) type = game.i18n.localize(getPluralLocalizationKey(count ?? 1, pr => `${localization}[${pr}]`));
 		else type = label;
 
 		return searchTrait(parts, category.children, type);
