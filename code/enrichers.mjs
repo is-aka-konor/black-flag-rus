@@ -1124,7 +1124,7 @@ async function enrichDamage(configs, label, options) {
 	}
 
 	let activity =
-		options.relativeTo instanceof Activity
+		options.relativeTo instanceof Activity && !config.formulas.length
 			? options.relativeTo
 			: options.relativeTo?.system?.activities?.get(config.activity);
 	if (!activity && !config.formulas.length) {
