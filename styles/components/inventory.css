@@ -213,6 +213,12 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 	}
 }
 
+blackFlag-currency {
+	td.quantity {
+		width: 150px;
+	}
+}
+
 .add-currency.locked-tooltip {
 	form {
 		display: grid;
