@@ -1,4 +1,5 @@
-import RulesSettingConfig from "./applications/settings/rules-settings-config.mjs";
+import CombatSettingsConfig from "./applications/settings/combat-settings-config.mjs";
+import RulesSettingsConfig from "./applications/settings/rules-settings-config.mjs";
 import WelcomeDialog from "./applications/welcome-dialog.mjs";
 import RulesSetting from "./data/settings/rules-setting.mjs";
 import { systemVersion } from "./utils/localization.mjs";
@@ -34,13 +35,59 @@ export function registerKeybindings() {
 export function registerSettings() {
 	log("Registering system settings");
 
+	// Combat
+	game.settings.registerMenu(game.system.id, "combatConfiguration", {
+		name: "BF.Settings.Combat.Name",
+		label: "BF.Settings.Combat.Label",
+		hint: "BF.Settings.Combat.Hint",
+		icon: "fa-solid fa-explosion",
+		type: CombatSettingsConfig,
+		restricted: true
+	});
+
+	game.settings.register(game.system.id, "initiativeTiebreaker", {
+		name: "BF.Settings.Combat.InitiativeTiebreaker.Label",
+		hint: "BF.Settings.Combat.InitiativeTiebreaker.Hint",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean
+	});
+
+	game.settings.register(game.system.id, "criticalMaximizeDamage", {
+		name: "BF.Settings.Critical.MaximizeDamage.Label",
+		hint: "BF.Settings.Critical.MaximizeDamage.Hint",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean
+	});
+
+	game.settings.register(game.system.id, "criticalMultiplyDice", {
+		name: "BF.Settings.Critical.MultiplyDice.Label",
+		hint: "BF.Settings.Critical.MultiplyDice.Hint",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean
+	});
+
+	game.settings.register(game.system.id, "criticalMultiplyNumeric", {
+		name: "BF.Settings.Critical.MultiplyNumeric.Label",
+		hint: "BF.Settings.Critical.MultiplyNumeric.Hint",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean
+	});
+
 	// Optional rules
 	game.settings.registerMenu(game.system.id, "rulesConfiguration", {
 		name: "BF.Settings.Rules.Name",
 		label: "BF.Settings.Rules.Label",
 		hint: "BF.Settings.Rules.Hint",
-		icon: "fas fa-chess-rook",
-		type: RulesSettingConfig,
+		icon: "fa-solid fa-chess-rook",
+		type: RulesSettingsConfig,
 		restricted: true
 	});
 
@@ -54,6 +101,16 @@ export function registerSettings() {
 		requiresReload: true
 	});
 
+	game.settings.register(game.system.id, "criticalChecksAndThrows", {
+		name: "BF.Settings.Critical.ChecksAndThrows.Label",
+		hint: "BF.Settings.Critical.ChecksAndThrows.Hint",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean
+	});
+
+	// Others
 	game.settings.register(game.system.id, "attackVisibility", {
 		name: "BF.Settings.AttackVisibility.Label",
 		hint: "BF.Settings.AttackVisibility.Hint",
@@ -136,15 +193,6 @@ export function registerSettings() {
 		}
 	});
 
-	game.settings.register(game.system.id, "initiativeTiebreaker", {
-		name: "BF.Settings.InitiativeTiebreaker.Label",
-		hint: "BF.Settings.InitiativeTiebreaker.Hint",
-		scope: "world",
-		config: true,
-		default: false,
-		type: Boolean
-	});
-
 	game.settings.register(game.system.id, "abilitySelectionManual", {
 		name: "BF.Settings.AbilitySelectionManual.Label",
 		hint: "BF.Settings.AbilitySelectionManual.Hint",
@@ -181,42 +229,7 @@ export function registerSettings() {
 		type: Boolean
 	});
 
-	game.settings.register(game.system.id, "criticalChecksAndThrows", {
-		name: "BF.Settings.CriticalChecksAndThrows.Label",
-		hint: "BF.Settings.CriticalChecksAndThrows.Hint",
-		scope: "world",
-		config: true,
-		default: false,
-		type: Boolean
-	});
-
-	game.settings.register(game.system.id, "criticalMaximizeDamage", {
-		name: "BF.Settings.CriticalMaximizeDamage.Label",
-		hint: "BF.Settings.CriticalMaximizeDamage.Hint",
-		scope: "world",
-		config: true,
-		default: false,
-		type: Boolean
-	});
-
-	game.settings.register(game.system.id, "criticalMultiplyDice", {
-		name: "BF.Settings.CriticalMultiplyDice.Label",
-		hint: "BF.Settings.CriticalMultiplyDice.Hint",
-		scope: "world",
-		config: true,
-		default: false,
-		type: Boolean
-	});
-
-	game.settings.register(game.system.id, "criticalMultiplyNumeric", {
-		name: "BF.Settings.CriticalMultiplyNumeric.Label",
-		hint: "BF.Settings.CriticalMultiplyNumeric.Hint",
-		scope: "world",
-		config: true,
-		default: false,
-		type: Boolean
-	});
-
+	// Hidden
 	game.settings.register(game.system.id, "_firstRun", {
 		scope: "world",
 		config: false,

@@ -3186,21 +3186,33 @@
 		"Older": "Collapse older trays",
 		"Never": "Expand all"
 	},
-	"CriticalChecksAndThrows": {
-		"Label": "Critical Skill Checks and Saving Throws",
-		"Hint": "Mark skill checks and saving throws as critical success or failure on natural 20 or 1."
+	"Combat": {
+		"Hint": "Various configuration options that affect combat.",
+		"InitiativeTiebreaker": {
+			"Label": "Initiative Tiebreaker",
+			"Hint": "Add initiative ability score as decimal to help break ties in initiatives."
+		},
+		"Label": "Combat Settings",
+		"Name": "Combat"
 	},
-	"CriticalMaximizeDamage": {
-		"Label": "Critical: Maximize Bonus Dice",
-		"Hint": "Maximize the value of bonus dice added by criticals (e.g. 1d6 becomes 1d6 + 6 rather than 2d6)."
-	},
-	"CriticalMultiplyDice": {
-		"Label": "Critical: Multiply Dice Result",
-		"Hint": "Multiply dice terms rather than rolling additional dice (e.g. 1d6 becomes 1d6 * 2 rather than 2d6)."
-	},
-	"CriticalMultiplyNumeric": {
-		"Label": "Critical: Multiply Numeric Terms",
-		"Hint": "Multiply numeric terms in addition to dice terms (e.g. 1d6 + 4 becomes 2d6 + 8 rather than 2d6 + 4)."
+	"Critical": {
+		"Label": "Criticals",
+		"ChecksAndThrows": {
+			"Label": "Critical Checks & Saves",
+			"Hint": "Mark skill checks and saving throws as critical success or failure on natural 20 or 1."
+		},
+		"MaximizeDamage": {
+			"Label": "Maximize Bonus Dice",
+			"Hint": "Maximize the value of bonus dice added by criticals (e.g. 1d6 becomes 1d6 + 6 rather than 2d6)."
+		},
+		"MultiplyDice": {
+			"Label": "Multiply Dice Result",
+			"Hint": "Multiply dice terms rather than rolling additional dice (e.g. 1d6 becomes 1d6 * 2 rather than 2d6)."
+		},
+		"MultiplyNumeric": {
+			"Label": "Multiply Numeric Terms",
+			"Hint": "Multiply numeric terms in addition to dice terms (e.g. 1d6 + 4 becomes 2d6 + 8 rather than 2d6 + 4)."
+		}
 	},
 	"Encumbrance": {
 		"Label": "Encumbrance Tracking",
@@ -3208,10 +3220,6 @@
 		"None": "None",
 		"Normal": "Normal (max carrying capacity)",
 		"Variant": "Variant (encumbered & heavily encumbered)"
-	},
-	"InitiativeTiebreaker": {
-		"Label": "Initiative Tiebreaker",
-		"Hint": "Add initiative ability score as decimal to help break ties in initiatives."
 	},
 	"LevelingMode": {
 		"Label": "Leveling Mode",
@@ -3230,14 +3238,14 @@
 		"Dice": "Dice (1d4, 1d6, 1d8, 1d10, 1d12)"
 	},
 	"Rules": {
-		"Hint": "Configure optional rules such as Firearms.",
-		"Label": "Rules Configuration",
-		"Name": "Configure Rules",
-		"Required": "This rule is required by {sources}.",
 		"Firearms": {
 			"Label": "Firearms",
 			"Hint": "Enable the firearms rules and weapon types found in the Game Master’s Guide."
-		}
+		},
+		"Hint": "Configure optional rules such as Firearms.",
+		"Label": "Configure Optional Rules",
+		"Name": "Optional Rules",
+		"Required": "This rule is required by {sources}."
 	},
 	"Summoning": {
 		"Label": "Allow Summoning",

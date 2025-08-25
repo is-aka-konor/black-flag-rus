@@ -19,6 +19,7 @@ export default class RulesSettingsConfig extends BaseSettingsConfig {
 	/** @inheritDoc */
 	async _preparePartContext(partId, context, options) {
 		context = await super._preparePartContext(partId, context, options);
+		context.fields.push(this.createSettingField("criticalChecksAndThrows"));
 		const fields = RulesSetting.schema.fields;
 		const source = game.settings.get(game.system.id, "rulesConfiguration");
 		for (const [name, field] of Object.entries(fields)) {

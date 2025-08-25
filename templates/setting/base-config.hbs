@@ -1,4 +1,4 @@
 <fieldset>
-		<legend>{{ localize "SETUP.Configuration" }}</legend>
-		{{> "blackFlag.fieldlist" fields }}
+	<legend>{{ ifThen legend legend (localize "SETUP.Configuration") }}</legend>
+	{{> "blackFlag.fieldlist" fields }}
 </fieldset>
