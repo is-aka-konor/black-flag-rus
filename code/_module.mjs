@@ -120,6 +120,9 @@ Hooks.once("i18nInit", function () {
 });
 
 Hooks.once("ready", function () {
+	// Adjust sourced items on actors now that compendium UUID redirects have been initialized
+	game.actors.forEach(a => a.sourcedItems._redirectKeys());
+
 	applications.NotificationTooltip.activateListeners();
 	config.registration.registerItemTypes();
 

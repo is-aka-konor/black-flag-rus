@@ -127,13 +127,9 @@ export default class ItemDataModel extends BaseDataModel {
 	prepareBaseData() {
 		super.prepareBaseData();
 		if (this.parent.isEmbedded && this.parent.actor?.items.has(this.parent.id)) {
+			this.parent.actor.identifiedItems?.set(this.parent.identifier, this.parent);
 			const sourceId = this._compendiumSource;
-			if (sourceId) {
-				if (!this.parent.actor.sourcedItems?.has(sourceId)) {
-					this.parent.actor.sourcedItems?.set(sourceId, new Set());
-				}
-				this.parent.actor.sourcedItems?.get(sourceId).add(this.parent);
-			}
+			if (sourceId) this.parent.actor.sourcedItems?.set(sourceId, this.parent);
 		}
 	}
 

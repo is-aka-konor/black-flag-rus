@@ -44,6 +44,14 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Mapping of item identifiers to the items.
+	 * @type {IdentifiedItemsMap<string, Set<BlackFlagItem>>}
+	 */
+	identifiedItems = this.identifiedItems;
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Collection of notifications that should be displayed on the actor sheet.
 	 */
 	notifications = this.notifications;
@@ -52,7 +60,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/**
 	 * Mapping of item source UUIDs to the items.
-	 * @type {Map<string, Set<BlackFlagItem>>}
+	 * @type {SourcedItemsMap<string, Set<BlackFlagItem>>}
 	 */
 	sourcedItems = this.sourcedItems;
 
@@ -82,7 +90,8 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/** @inheritDoc */
 	prepareEmbeddedDocuments() {
-		this.sourcedItems = new Map();
+		this.identifiedItems = new IdentifiedItemsMap();
+		this.sourcedItems = new SourcedItemsMap();
 		this._embeddedPreparation = true;
 		super.prepareEmbeddedDocuments();
 		this._embeddedPreparation = false;
@@ -2050,5 +2059,67 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	async _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
 		if (userId === game.userId && collection === "items") await this.system.updateEncumbrance?.(options);
 		super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
+	}
+}
+
+/* -------------------------------------------- */
+
+/**
+ * @extends {Map<string, Set<BlackFlagItem>>}
+ */
+class IdentifiedItemsMap extends Map {
+	/** @inheritDoc */
+	get(key, { type } = {}) {
+		const result = super.get(key);
+		if (!result?.size || !type) return result;
+		return result.filter(i => i.type === type);
+	}
+
+	/* -------------------------------------------- */
+
+	/** @inheritDoc */
+	set(key, value) {
+		if (!this.has(key)) super.set(key, new Set());
+		this.get(key).add(value);
+		return this;
+	}
+}
+
+/* -------------------------------------------- */
+
+/**
+ * @extends {Map<string, Set<BlackFlagItem>>}
+ */
+class SourcedItemsMap extends Map {
+	/** @inheritDoc */
+	get(key, { remap = true } = {}) {
+		if (!key) return;
+		if (remap) ({ uuid: key } = foundry.utils.parseUuid(key) ?? {});
+		return super.get(key);
+	}
+
+	/* -------------------------------------------- */
+
+	/** @inheritDoc */
+	set(key, value) {
+		const { uuid } = foundry.utils.parseUuid(key);
+		if (!this.has(uuid)) super.set(uuid, new Set());
+		this.get(uuid, { remap: false }).add(value);
+		return this;
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Adjust keys once compendium UUID redirects have been initialized.
+	 */
+	_redirectKeys() {
+		for (const [key, value] of this.entries()) {
+			const { uuid } = foundry.utils.parseUuid(key);
+			if (key !== uuid) {
+				this.set(uuid, value);
+				this.delete(key);
+			}
+		}
 	}
 }
