@@ -138,6 +138,19 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+/*                        Defaults                       */
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Default units to use depending on system setting.
+ * @param {"distance"|"pace"|"volume"|"weight"} type - Type of units to select.
+ * @returns {string}
+ */
+export function defaultUnits(type) {
+	return game.settings.get(game.system.id, "localization").defaultUnits(type);
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 /*                      Formatting                       */
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 

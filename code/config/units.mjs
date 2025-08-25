@@ -121,6 +121,31 @@ Hooks.on("blackFlag.registrationDeleted", function (identifier, item) {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
+ * Default units to use for certain cases based on localization settings.
+ * @type {Record<string, Record<string, string>>}
+ */
+export const defaultUnits = {
+	distance: {
+		imperial: "foot",
+		metric: "meter"
+	},
+	pace: {
+		imperial: "mph",
+		metric: "kph"
+	},
+	volume: {
+		imperial: "cubicFoot",
+		metric: "litre"
+	},
+	weight: {
+		imperial: "pound",
+		metric: "kilogram"
+	}
+};
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
  * Configuration for system various units.
  *
  * @typedef {LocalizedConfiguration} UnitConfiguration
@@ -157,6 +182,22 @@ export const distanceUnits = {
 	}
 };
 localizeConfig(distanceUnits);
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Different measurement systems that can be used for units.
+ * @enum {LocalizedConfiguration}
+ */
+export const measurementSystems = {
+	imperial: {
+		label: "BF.UNITS.SYSTEM.Imperial"
+	},
+	metric: {
+		label: "BF.UNITS.SYSTEM.Metric"
+	}
+};
+localizeConfig(measurementSystems);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 

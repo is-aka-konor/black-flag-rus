@@ -3156,7 +3156,7 @@
 	}
 },
 
-"BF.Settings": {
+"BF.SETTINGS": {
 	"AbilitySelectionManual": {
 		"Label": "Allow Manual Ability Assignments",
 		"Hint": "Allow players to manually set their ability scores rather than using the standard selection methods."
@@ -3186,7 +3186,7 @@
 		"Older": "Collapse older trays",
 		"Never": "Expand all"
 	},
-	"Combat": {
+	"COMBAT": {
 		"Hint": "Various configuration options that affect combat.",
 		"InitiativeTiebreaker": {
 			"Label": "Initiative Tiebreaker",
@@ -3195,7 +3195,7 @@
 		"Label": "Combat Settings",
 		"Name": "Combat"
 	},
-	"Critical": {
+	"CRITICAL": {
 		"Label": "Criticals",
 		"ChecksAndThrows": {
 			"Label": "Critical Checks & Saves",
@@ -3227,6 +3227,26 @@
 		"Milestone": "Milestone",
 		"XP": "Experience Points"
 	},
+	"LOCALIZATION": {
+		"FIELDS": {
+			"approximateConversion": {
+				"hint": "Use approximate values when converting between imperial and metric rather than doing exact conversions (e.g. 5 ft = 1.5 m).",
+				"label": "Approximate Conversion"
+			},
+			"distance": {
+				"label": "Distance Units"
+			},
+			"volume": {
+				"label": "Volume Units"
+			},
+			"weight": {
+				"label": "Weight Units"
+			}
+		},
+		"Hint": "Configure units presented by the system and conversion options.",
+		"Label": "Configure Localization",
+		"Name": "Localization"
+	},
 	"Multiclassing": {
 		"Label": "Allow Multiclassing",
 		"Hint": "Let characters take more than one class when leveling."
@@ -3237,10 +3257,12 @@
 		"Bonus": "Bonus (+2, +3, +4, +5, +6)",
 		"Dice": "Dice (1d4, 1d6, 1d8, 1d10, 1d12)"
 	},
-	"Rules": {
-		"Firearms": {
-			"Label": "Firearms",
-			"Hint": "Enable the firearms rules and weapon types found in the Game Master’s Guide."
+	"RULES": {
+		"FIELDS": {
+			"firearms": {
+				"hint": "Enable the firearms rules and weapon types found in the Game Master’s Guide.",
+				"label": "Firearms"
+			}
 		},
 		"Hint": "Configure optional rules such as Firearms.",
 		"Label": "Configure Optional Rules",
@@ -4162,6 +4184,10 @@
 			"Label": "Miles Per Hour",
 			"Abbreviation": "mph"
 		}
+	},
+	"SYSTEM": {
+		"Imperial": "Imperial",
+		"Metric": "Metric"
 	},
 	"TIME": {
 		"Label": "Tme Units",

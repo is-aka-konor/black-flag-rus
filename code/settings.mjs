@@ -1,6 +1,8 @@
 import CombatSettingsConfig from "./applications/settings/combat-settings-config.mjs";
+import LocalizationSettingsConfig from "./applications/settings/localization-settings-config.mjs";
 import RulesSettingsConfig from "./applications/settings/rules-settings-config.mjs";
 import WelcomeDialog from "./applications/welcome-dialog.mjs";
+import LocalizationSetting from "./data/settings/localization-setting.mjs";
 import RulesSetting from "./data/settings/rules-setting.mjs";
 import { systemVersion } from "./utils/localization.mjs";
 import log from "./utils/logging.mjs";
@@ -37,17 +39,17 @@ export function registerSettings() {
 
 	// Combat
 	game.settings.registerMenu(game.system.id, "combatConfiguration", {
-		name: "BF.Settings.Combat.Name",
-		label: "BF.Settings.Combat.Label",
-		hint: "BF.Settings.Combat.Hint",
+		name: "BF.SETTINGS.COMBAT.Name",
+		label: "BF.SETTINGS.COMBAT.Label",
+		hint: "BF.SETTINGS.COMBAT.Hint",
 		icon: "fa-solid fa-explosion",
 		type: CombatSettingsConfig,
 		restricted: true
 	});
 
 	game.settings.register(game.system.id, "initiativeTiebreaker", {
-		name: "BF.Settings.Combat.InitiativeTiebreaker.Label",
-		hint: "BF.Settings.Combat.InitiativeTiebreaker.Hint",
+		name: "BF.SETTINGS.COMBAT.InitiativeTiebreaker.Label",
+		hint: "BF.SETTINGS.COMBAT.InitiativeTiebreaker.Hint",
 		scope: "world",
 		config: false,
 		default: false,
@@ -55,8 +57,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "criticalMaximizeDamage", {
-		name: "BF.Settings.Critical.MaximizeDamage.Label",
-		hint: "BF.Settings.Critical.MaximizeDamage.Hint",
+		name: "BF.SETTINGS.CRITICAL.MaximizeDamage.Label",
+		hint: "BF.SETTINGS.CRITICAL.MaximizeDamage.Hint",
 		scope: "world",
 		config: false,
 		default: false,
@@ -64,8 +66,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "criticalMultiplyDice", {
-		name: "BF.Settings.Critical.MultiplyDice.Label",
-		hint: "BF.Settings.Critical.MultiplyDice.Hint",
+		name: "BF.SETTINGS.CRITICAL.MultiplyDice.Label",
+		hint: "BF.SETTINGS.CRITICAL.MultiplyDice.Hint",
 		scope: "world",
 		config: false,
 		default: false,
@@ -73,19 +75,36 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "criticalMultiplyNumeric", {
-		name: "BF.Settings.Critical.MultiplyNumeric.Label",
-		hint: "BF.Settings.Critical.MultiplyNumeric.Hint",
+		name: "BF.SETTINGS.CRITICAL.MultiplyNumeric.Label",
+		hint: "BF.SETTINGS.CRITICAL.MultiplyNumeric.Hint",
 		scope: "world",
 		config: false,
 		default: false,
 		type: Boolean
 	});
 
+	// Localization
+	game.settings.registerMenu(game.system.id, "localizationConfiguration", {
+		name: "BF.SETTINGS.LOCALIZATION.Name",
+		label: "BF.SETTINGS.LOCALIZATION.Label",
+		hint: "BF.SETTINGS.LOCALIZATION.Hint",
+		icon: "fa-solid fa-globe",
+		type: LocalizationSettingsConfig,
+		restricted: true
+	});
+
+	game.settings.register(game.system.id, "localization", {
+		scope: "world",
+		config: false,
+		type: LocalizationSetting,
+		requiresReload: true
+	});
+
 	// Optional rules
 	game.settings.registerMenu(game.system.id, "rulesConfiguration", {
-		name: "BF.Settings.Rules.Name",
-		label: "BF.Settings.Rules.Label",
-		hint: "BF.Settings.Rules.Hint",
+		name: "BF.SETTINGS.RULES.Name",
+		label: "BF.SETTINGS.RULES.Label",
+		hint: "BF.SETTINGS.RULES.Hint",
 		icon: "fa-solid fa-chess-rook",
 		type: RulesSettingsConfig,
 		restricted: true
@@ -102,8 +121,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "criticalChecksAndThrows", {
-		name: "BF.Settings.Critical.ChecksAndThrows.Label",
-		hint: "BF.Settings.Critical.ChecksAndThrows.Hint",
+		name: "BF.SETTINGS.CRITICAL.ChecksAndThrows.Label",
+		hint: "BF.SETTINGS.CRITICAL.ChecksAndThrows.Hint",
 		scope: "world",
 		config: false,
 		default: false,
@@ -112,90 +131,90 @@ export function registerSettings() {
 
 	// Others
 	game.settings.register(game.system.id, "attackVisibility", {
-		name: "BF.Settings.AttackVisibility.Label",
-		hint: "BF.Settings.AttackVisibility.Hint",
+		name: "BF.SETTINGS.AttackVisibility.Label",
+		hint: "BF.SETTINGS.AttackVisibility.Hint",
 		scope: "world",
 		config: true,
 		default: "hideAC",
 		type: String,
 		choices: {
-			all: "BF.Settings.AttackVisibility.All",
-			hideAC: "BF.Settings.AttackVisibility.HideAC",
-			none: "BF.Settings.AttackVisibility.None"
+			all: "BF.SETTINGS.AttackVisibility.All",
+			hideAC: "BF.SETTINGS.AttackVisibility.HideAC",
+			none: "BF.SETTINGS.AttackVisibility.None"
 		}
 	});
 
 	game.settings.register(game.system.id, "challengeVisibility", {
-		name: "BF.Settings.ChallengeVisibility.Label",
-		hint: "BF.Settings.ChallengeVisibility.Hint",
+		name: "BF.SETTINGS.ChallengeVisibility.Label",
+		hint: "BF.SETTINGS.ChallengeVisibility.Hint",
 		scope: "world",
 		config: true,
 		default: "player",
 		type: String,
 		choices: {
-			all: "BF.Settings.ChallengeVisibility.All",
-			player: "BF.Settings.ChallengeVisibility.Player",
-			none: "BF.Settings.ChallengeVisibility.None"
+			all: "BF.SETTINGS.ChallengeVisibility.All",
+			player: "BF.SETTINGS.ChallengeVisibility.Player",
+			none: "BF.SETTINGS.ChallengeVisibility.None"
 		}
 	});
 
 	game.settings.register(game.system.id, "collapseChatTrays", {
-		name: "BF.Settings.CollapseTrays.Label",
-		hint: "BF.Settings.CollapseTrays.Hint",
+		name: "BF.SETTINGS.CollapseTrays.Label",
+		hint: "BF.SETTINGS.CollapseTrays.Hint",
 		scope: "client",
 		config: true,
 		default: "older",
 		type: String,
 		choices: {
-			never: "BF.Settings.CollapseTrays.Never",
-			older: "BF.Settings.CollapseTrays.Older",
-			always: "BF.Settings.CollapseTrays.Always"
+			never: "BF.SETTINGS.CollapseTrays.Never",
+			older: "BF.SETTINGS.CollapseTrays.Older",
+			always: "BF.SETTINGS.CollapseTrays.Always"
 		}
 	});
 
 	game.settings.register(game.system.id, "encumbrance", {
-		name: "BF.Settings.Encumbrance.Label",
-		hint: "BF.Settings.Encumbrance.Hint",
+		name: "BF.SETTINGS.Encumbrance.Label",
+		hint: "BF.SETTINGS.Encumbrance.Hint",
 		scope: "world",
 		config: true,
 		default: "none",
 		type: String,
 		choices: {
-			none: "BF.Settings.Encumbrance.None",
-			normal: "BF.Settings.Encumbrance.Normal",
-			variant: "BF.Settings.Encumbrance.Variant"
+			none: "BF.SETTINGS.Encumbrance.None",
+			normal: "BF.SETTINGS.Encumbrance.Normal",
+			variant: "BF.SETTINGS.Encumbrance.Variant"
 		}
 	});
 
 	game.settings.register(game.system.id, "levelingMode", {
-		name: "BF.Settings.LevelingMode.Label",
-		hint: "BF.Settings.LevelingMode.Hint",
+		name: "BF.SETTINGS.LevelingMode.Label",
+		hint: "BF.SETTINGS.LevelingMode.Hint",
 		scope: "world",
 		config: true,
 		default: "xp",
 		type: String,
 		choices: {
-			xp: "BF.Settings.LevelingMode.XP",
-			milestone: "BF.Settings.LevelingMode.Milestone"
+			xp: "BF.SETTINGS.LevelingMode.XP",
+			milestone: "BF.SETTINGS.LevelingMode.Milestone"
 		}
 	});
 
 	game.settings.register(game.system.id, "proficiencyMode", {
-		name: "BF.Settings.ProficiencyMode.Label",
-		hint: "BF.Settings.ProficiencyMode.Hint",
+		name: "BF.SETTINGS.ProficiencyMode.Label",
+		hint: "BF.SETTINGS.ProficiencyMode.Hint",
 		scope: "world",
 		config: false,
 		default: "bonus",
 		type: String,
 		choices: {
-			bonus: "BF.Settings.ProficiencyMode.Bonus",
-			dice: "BF.Settings.ProficiencyMode.Dice"
+			bonus: "BF.SETTINGS.ProficiencyMode.Bonus",
+			dice: "BF.SETTINGS.ProficiencyMode.Dice"
 		}
 	});
 
 	game.settings.register(game.system.id, "abilitySelectionManual", {
-		name: "BF.Settings.AbilitySelectionManual.Label",
-		hint: "BF.Settings.AbilitySelectionManual.Hint",
+		name: "BF.SETTINGS.AbilitySelectionManual.Label",
+		hint: "BF.SETTINGS.AbilitySelectionManual.Hint",
 		scope: "world",
 		config: true,
 		default: false,
@@ -203,8 +222,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "abilitySelectionReroll", {
-		name: "BF.Settings.AbilitySelectionReroll.Label",
-		hint: "BF.Settings.AbilitySelectionReroll.Hint",
+		name: "BF.SETTINGS.AbilitySelectionReroll.Label",
+		hint: "BF.SETTINGS.AbilitySelectionReroll.Hint",
 		scope: "world",
 		config: true,
 		default: false,
@@ -212,8 +231,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "allowMulticlassing", {
-		name: "BF.Settings.Multiclassing.Label",
-		hint: "BF.Settings.Multiclassing.Hint",
+		name: "BF.SETTINGS.Multiclassing.Label",
+		hint: "BF.SETTINGS.Multiclassing.Hint",
 		scope: "world",
 		config: true,
 		default: true,
@@ -221,8 +240,8 @@ export function registerSettings() {
 	});
 
 	game.settings.register(game.system.id, "allowSummoning", {
-		name: "BF.Settings.Summoning.Label",
-		hint: "BF.Settings.Summoning.Hint",
+		name: "BF.SETTINGS.Summoning.Label",
+		hint: "BF.SETTINGS.Summoning.Hint",
 		scope: "world",
 		config: true,
 		default: true,

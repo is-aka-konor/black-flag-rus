@@ -4,10 +4,19 @@ const { BooleanField } = foundry.data.fields;
  * A data model that contains various optional rules that can be enabled.
  */
 export default class RulesSetting extends foundry.abstract.DataModel {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Model Configuration         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static LOCALIZATION_PREFIXES = ["BF.SETTINGS.RULES"];
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @override */
 	static defineSchema() {
 		return {
-			firearms: new BooleanField({ label: "BF.Settings.Rules.Firearms.Label", hint: "BF.Settings.Rules.Firearms.Hint" })
+			firearms: new BooleanField()
 		};
 	}
 

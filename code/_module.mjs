@@ -117,6 +117,8 @@ Hooks.once("i18nInit", function () {
 	config._configureStatusEffects();
 	Object.values(CONFIG.Activity.types).forEach(c => c.documentClass.localize());
 	Object.values(CONFIG.Advancement.types).forEach(c => c.documentClass.localize());
+	foundry.helpers.Localization.localizeDataModel(data.settings.LocalizationSetting);
+	foundry.helpers.Localization.localizeDataModel(data.settings.RulesSetting);
 });
 
 Hooks.once("ready", function () {

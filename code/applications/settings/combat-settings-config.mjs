@@ -7,7 +7,7 @@ export default class CombatSettingsConfig extends BaseSettingsConfig {
 	/** @override */
 	static DEFAULT_OPTIONS = {
 		window: {
-			title: "SETTINGS.DND5E.COMBAT.Label"
+			title: "BF.SETTINGS.COMBAT.Label"
 		}
 	};
 
@@ -47,7 +47,7 @@ export default class CombatSettingsConfig extends BaseSettingsConfig {
 					this.createSettingField("criticalMultiplyDice"),
 					this.createSettingField("criticalMultiplyNumeric")
 				];
-				context.legend = game.i18n.localize("BF.Settings.Critical.Label");
+				context.legend = game.i18n.localize("BF.SETTINGS.CRITICAL.Label");
 				break;
 			// case "npcs":
 			// 	context.fields = [
