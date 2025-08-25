@@ -36,6 +36,7 @@
 
 				h5 {
 					margin: 0;
+					font-family: var(--bf-font-header);
 					font-size: var(--font-size-14);
 					font-weight: normal;
 				}
