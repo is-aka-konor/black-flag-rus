@@ -145,7 +145,6 @@ ul.configuration-list {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		flex-wrap: wrap;
 		gap: var(--gap-size);
 		padding-inline: 0;
 
@@ -155,6 +154,10 @@ ul.configuration-list {
 		&:not(:last-of-type) {
 			border-block-end: 2px dotted var(--bf-border-color-blue);
 			padding-block-end: 8px;
+		}
+
+		&:has(> .additional-tray) {
+			flex-wrap: wrap;
 		}
 
 		.full-width {

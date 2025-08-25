@@ -1,11 +1,7 @@
 <tr class="activity-row" data-activity-id="{{ id }}">
 	<td class="name">
 			<div class="layout">
-			{{#if svgImg}}
-				<blackFlag-icon src="{{ img }}" alt="{{ name }}"></blackFlag-icon>
-			{{else}}
-				<img src="{{ img }}" alt="{{ name }}">
-			{{/if}}
+			{{ blackFlag-icon img alt=name }}
 			<button class="link-button" type="button" data-action="activate">
 				<span>{{ name }}</span>
 			</button>
@@ -25,7 +21,7 @@
 					<i class="fa-solid fa-trash" inert></i>
 				</button>
 			{{else}}
-				
+
 			{{/if}}
 			<button type="button" class="link-button" data-context-menu
 							data-tooltip="BF.AdditionalControls"

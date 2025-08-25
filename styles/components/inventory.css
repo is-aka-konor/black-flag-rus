@@ -41,6 +41,7 @@ blackFlag-inventory, blackFlag-currency, blackFlag-effects {
 				}
 
 				.name {
+					--icon-fill: currentcolor;
 					--icon-size: var(--inventory-image-size);
 					img, blackflag-icon {
 						display: block;
