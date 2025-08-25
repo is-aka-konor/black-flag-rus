@@ -201,7 +201,7 @@ export const timeUnits = {
 				abbreviation: "BF.UNITS.TIME.Round.Abbreviation",
 				localization: "BF.Time.Unit.Round.Label",
 				counted: "BF.UNITS.TIME.Round.Counted",
-				conversion: 6
+				conversion: 1 / 10
 			},
 			encounter: {
 				label: "BF.UNITS.TIME.Encounter.Label",

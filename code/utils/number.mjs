@@ -6,20 +6,135 @@ import { isValidUnit } from "./validation.mjs";
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
- * Convert the provided weight to another unit.
- * @param {number} value - The weight value to convert.
- * @param {string} from - The initial units.
- * @param {string} to - The final units.
- * @returns {number}
+ * @typedef UnitConversionOptions
+ * @property {boolean} [strict] - Throw an error if either unit isn't found.
+ * @property {string} [system] - Target measurement system. If provided without target unit then the value will be
+ *                               converted to the closest equivalent unit in the specified measurement system
+ *                               (e.g. "mi" > "km").
+ * @property {string} [to] - The final unit. If neither this nor the unit system is provided then will convert to
+ *                           the largest unit that can represent the value as an integer.
  */
-export function convertWeight(value, from, to) {
-	if ( from === to ) return value;
+
+/**
+ * Convert the provided length to another unit.
+ * @param {number} value - The distance being converted.
+ * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.distanceUnits`.
+ * @param {UnitConversionOptions} [options={}]
+ * @returns {{ value: number, unit: string }}
+ */
+export function convertDistance(value, from, options={}, _options={}) {
+	const message = unit => `Distance unit ${unit} not defined in CONFIG.BlackFlag.distanceUnits`;
+	return _convertSystemUnits(value, from, CONFIG.BlackFlag.distanceUnits, { ...options, message });
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Convert the provided time value to another unit. If no final unit is provided, then will convert it to the largest
+ * unit that can still represent the value as a whole number.
+ * @param {number} value - The time being converted.
+ * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.timeUnits`.
+ * @param {UnitConversionOptions} [options={}]
+ * @param {boolean} [options.combat=false]  Use combat units when auto-selecting units, rather than normal units.
+ * @returns {{ value: number, unit: string }}
+ */
+export function convertTime(value, from, options={}) {
+	let config = { ...CONFIG.BlackFlag.timeUnits.time.children };
+	if ( options.combat ) Object.assign(config, CONFIG.BlackFlag.timeUnits.combat.children);
+	const message = unit => `Time unit ${unit} not defined in CONFIG.BlackFlag.timeUnits`;
+	return _convertSystemUnits(value, from, config, { ...options, message });
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Convert the provided weight to another unit.
+ * @param {number} value - The weight value being converted.
+ * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.weightUnits`.
+ * @param {UnitConversionOptions} [options={}]
+ * @param {boolean} [options.legacy=true] - Only return converted value rather than value and units.
+ * @param {object} [_options]
+ * @returns {{ value: number, unit: string }|number}
+ */
+export function convertWeight(value, from, options={}) {
+	if ( foundry.utils.getType(options) !== "Object" ) {
+		foundry.utils.logCompatibilityWarning(
+			"The `to` parameter for `convertWeight` is now passed in to the options object.",
+			{ since: "Black Flag 2.0.068", until: "Black Flag 2.2", once: true }
+		);
+		options = { to: options };
+	}
+
 	const message = unit => `Weight unit ${unit} not defined in CONFIG.BlackFlag.weightUnits`;
-	if ( !CONFIG.BlackFlag.weightUnits[from] ) throw new Error(message(from));
-	if ( !CONFIG.BlackFlag.weightUnits[to] ) throw new Error(message(to));
-	return value
-		* CONFIG.BlackFlag.weightUnits[from].conversion
-		/ CONFIG.BlackFlag.weightUnits[to].conversion;
+	const result = _convertSystemUnits(value, from, CONFIG.BlackFlag.weightUnits, { ...options, message });
+
+	if ( options.legacy !== false ) {
+		foundry.utils.logCompatibilityWarning(
+			"The `convertWeight` function has been altered to return value and units. Pass a `legacy` of `false` to the options to return the new value.",
+			{ since: "Black Flag 2.0.068", until: "Black Flag 2.2", once: true }
+		);
+		return result.value;
+	}
+	return result;
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Cache of best unit conversions from one measurement system to another.
+ * @type {Map<string, string>}
+ */
+const _measurementSystemConversionCache = new Map();
+
+/**
+ * Convert from one unit to another using one of core's built-in unit types.
+ * @param {number} value - Value to display.
+ * @param {string} from - The initial unit.
+ * @param {UnitConfiguration} config - Configuration data for the unit.
+ * @param {UnitConversionOptions} options
+ * @param {function(string): string} [options.message] - Method used to produce the error message if unit not found.
+ * @returns {{ value: number, unit: string }}
+ */
+export function _convertSystemUnits(value, from, config, { message, strict, system, to }) {
+	if ( (from === to) || (!to && system && (config[from]?.system === system)) ) return { value, unit: from };
+	if ( strict && !config[from] ) throw new Error(message(from));
+	if ( strict && to && !config[to] ) throw new Error(message(to));
+	if ( !config[from] ) return { value, unit: from ?? to };
+
+	// If measurement system is provided and no target unit, convert to equivalent unit in other measurement system
+	if ( !to && system ) {
+		if ( !_measurementSystemConversionCache.has(from) ) {
+			const baseConversion = config[from].conversion ?? 1;
+			const unitOptions = Object.entries(config)
+				.reduce((arr, [key, v]) => {
+					if ( system === v.system ) {
+						arr.push({ key, difference: Math.abs(((v.conversion ?? 1) / baseConversion) - 1) });
+					}
+					return arr;
+				}, [])
+				.sort((lhs, rhs) => lhs.difference - rhs.difference);
+			to = unitOptions[0]?.key ?? from;
+			_measurementSystemConversionCache.set(from, to);
+		}
+		to = _measurementSystemConversionCache.get(from);
+	}
+
+	// If no target unit available, find largest unit in current measurement system that can represent number
+	else if ( !to ) {
+		const base = value * (config[from].conversion ?? 1);
+		const unitOptions = Object.entries(config)
+			.reduce((arr, [key, v]) => {
+				if ( ((base % v.conversion === 0) || (base >= v.conversion * 2)) && (config[from].system === v.system) ) {
+					arr.push({ key, conversion: v.conversion });
+				}
+				return arr;
+			}, [])
+			.sort((lhs, rhs) => rhs.conversion - lhs.conversion);
+		to = unitOptions[0]?.key ?? from;
+	}
+
+	if ( !config[to] ) return { value, unit: from };
+	return { value: value * (config[from].conversion ?? 1) / (config[to]?.conversion ?? 1), unit: to };
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
