@@ -1,4 +1,4 @@
-import { formatDistance } from "../../../utils/_module.mjs";
+import { defaultUnit, formatDistance } from "../../../utils/_module.mjs";
 import ScaleTypeNumber from "./scale-type-number.mjs";
 
 const { StringField } = foundry.data.fields;
@@ -11,7 +11,7 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 	static defineSchema() {
 		return {
 			...super.defineSchema(),
-			units: new StringField({ initial: "foot", label: "BF.UNITS.DISTANCE.Label" })
+			units: new StringField({ initial: defaultUnit("distance"), label: "BF.UNITS.DISTANCE.Label" })
 		};
 	}
 
@@ -34,7 +34,7 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 
 	/** @inheritDoc */
 	get display() {
-		return formatDistance(this.value, this.units ?? "foot");
+		return formatDistance(this.value, this.units ?? defaultUnit("distance"));
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

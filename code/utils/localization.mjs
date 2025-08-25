@@ -266,7 +266,7 @@ export function getPluralLocalizationKey(value, format, options={}) {
  * @param {object} [options={}] - Options to pass through to the makeLabels function.
  * @param {string} [options.propertyName] - Name where the localized string is stored.
  */
-export function localizeConfig(config, { propertyName="localized", ...options }={}) {
+export function localizeConfig(config, { propertyName="localized", createGroup, ...options }={}) {
 	Object.defineProperty(config, propertyName, {
 		get() {
 			return makeLabels(config, options);
@@ -275,7 +275,9 @@ export function localizeConfig(config, { propertyName="localized", ...options }=
 	});
 	Object.defineProperty(config, `${propertyName}Options`, {
 		get() {
-			return Object.entries(this[propertyName]).map(([value, label]) => ({ value, label }));
+			return Object.entries(this[propertyName]).map(([value, label]) => ({
+				value, label, group: createGroup?.(config[value])
+			}));
 		},
 		enumerable: false
 	});

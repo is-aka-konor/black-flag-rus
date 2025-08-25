@@ -1,4 +1,4 @@
-import { formatTaggedList, numberFormat, simplifyBonus } from "../../../utils/_module.mjs";
+import { defaultUnit, formatTaggedList, numberFormat, simplifyBonus } from "../../../utils/_module.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
@@ -33,13 +33,13 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 					types: new MappingField(new FormulaField({ deterministic: true }), {
 						initial: { walk: "@base" }
 					}),
-					units: new StringField({ initial: "foot", label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
+					units: new StringField({ initial: defaultUnit("distance"), label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
 				}),
 				senses: new SchemaField({
 					custom: new ArrayField(new StringField()),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: "foot" })
+					units: new StringField({ initial: defaultUnit("distance") })
 				})
 			}, {label: "BF.Trait.Label[other]"})
 		};

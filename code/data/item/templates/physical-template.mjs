@@ -1,4 +1,4 @@
-import { convertWeight, formatWeight, formatNumber } from "../../../utils/_module.mjs";
+import { convertWeight, defaultUnit, formatWeight, formatNumber } from "../../../utils/_module.mjs";
 
 const { ForeignDocumentField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
@@ -41,12 +41,12 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 			quantity: new NumberField({
 				nullable: false, initial: 1, min: 0, integer: true, label: "BF.Quantity.Label"
 			}),
-			rarity: new StringField({label: "BF.Rarity.Label"}),
+			rarity: new StringField({ label: "BF.Rarity.Label" }),
 			weight: new SchemaField({
 				value: new NumberField({
 					nullable: false, initial: 0, min: 0, step: 0.01, label: "BF.Weight.Label"
 				}),
-				units: new StringField({initial: "pound"})
+				units: new StringField({ initial: defaultUnit("weight") })
 			}, {label: "BF.Weight.Label"})
 		};
 	}

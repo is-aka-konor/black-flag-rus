@@ -1,4 +1,4 @@
-import { formatDistance, formatNumber, stepDenomination } from "../../utils/_module.mjs";
+import { defaultUnit, formatDistance, formatNumber, stepDenomination } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import { DamageField } from "../fields/_module.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
@@ -86,7 +86,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 				short: new NumberField({ min: 0, step: 0.1 }),
 				long: new NumberField({ min: 0, step: 0.1 }),
 				reach: new NumberField({ min: 0, step: 0.1 }),
-				units: new StringField({ initial: "foot" })
+				units: new StringField({ initial: defaultUnit("distance") })
 			}),
 			type: new SchemaField({
 				value: new StringField({ initial: "melee" }),

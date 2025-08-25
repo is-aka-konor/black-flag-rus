@@ -1,6 +1,6 @@
 import VehicleSheet from "../../applications/actor/vehicle-sheet.mjs";
 import Proficiency from "../../documents/proficiency.mjs";
-import { formatNumber, formatPace, formatTaggedList, simplifyBonus } from "../../utils/_module.mjs";
+import { defaultUnit, formatNumber, formatPace, formatTaggedList, simplifyBonus } from "../../utils/_module.mjs";
 import ActorDataModel from "../abstract/actor-data-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import MappingField from "../fields/mapping-field.mjs";
@@ -121,11 +121,14 @@ export default class VehicleData extends ActorDataModel.mixin(
 					custom: new ArrayField(new StringField()),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: "foot", label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
+					units: new StringField({
+						initial: defaultUnit("distance"),
+						label: "BF.MOVEMENT.FIELDS.traits.movement.units.label"
+					})
 				}),
 				pace: new SchemaField({
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: "mph", label: "BF.MOVEMENT.FIELDS.traits.pace.units.label" })
+					units: new StringField({ initial: defaultUnit("pace"), label: "BF.MOVEMENT.FIELDS.traits.pace.units.label" })
 				}),
 				type: new SchemaField({
 					value: new StringField({ initial: "land" })

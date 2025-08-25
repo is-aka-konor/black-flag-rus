@@ -36,7 +36,7 @@ export default class EncumbranceTemplate extends foundry.abstract.DataModel {
 		const config = CONFIG.BlackFlag.encumbrance;
 		const encumbrance = this.attributes.encumbrance ??= {};
 		const baseUnits = config.baseUnits[this.parent.type] ?? config.baseUnits.default;
-		const unitSystem = "imperial";
+		const unitSystem = game.settings.get(game.system.id, "localization").weight;
 
 		// Get the total weight from items
 		let weight = this.parent.items

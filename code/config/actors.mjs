@@ -164,29 +164,36 @@ export const encumbrance = {
 	},
 	threshold: {
 		encumbered: {
-			imperial: 5
+			imperial: 5,
+			metric: 2.5
 		},
 		heavilyEncumbered: {
-			imperial: 10
+			imperial: 10,
+			metric: 5
 		},
 		maximum: {
-			imperial: 15
+			imperial: 15,
+			metric: 7.5
 		}
 	},
 	speedReduction: {
 		encumbered: {
-			imperial: 10
+			imperial: 10,
+			metric: 3
 		},
 		heavilyEncumbered: {
-			imperial: 20
+			imperial: 20,
+			metric: 6
 		},
 		exceedingCarryingCapacity: {
-			imperial: 5
+			imperial: 5,
+			metric: 1.5
 		}
 	},
 	baseUnits: {
 		default: {
-			imperial: "pound"
+			imperial: "pound",
+			metric: "kilogram"
 		}
 	}
 };

@@ -145,6 +145,11 @@ export const defaultUnits = {
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
+const _unitLocalizationOptions = {
+	createGroup: data => CONFIG.BlackFlag.measurementSystems.localized[data.system],
+	sort: false
+};
+
 /**
  * Configuration for system various units.
  *
@@ -153,6 +158,8 @@ export const defaultUnits = {
  * @property {number} conversion - Multiplier used to convert between various units.
  * @property {string} [counted] - Localization path for counted plural forms. Only necessary if non-supported unit or
  *                                using a non-standard name for a supported unit.
+ * @property {number} [exactConversion] - Exact conversion to use if approximate conversion not enabled. Not necessary
+ *                                        if exact and approximate conversion are the same.
  * @property {string} [formattingUnit] - Unit formatting value as supported by javascript's internationalization system:
  *                                       https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers. Only
  *                                       required if the formatting name doesn't match the unit key.
@@ -166,22 +173,32 @@ export const defaultUnits = {
 export const distanceUnits = {
 	foot: {
 		label: "BF.UNITS.DISTANCE.Foot.Label",
-		localization: "BF.Distance.Unit.Foot.Label",
 		abbreviation: "BF.UNITS.DISTANCE.Foot.Abbreviation",
 		conversion: 1,
-		formattingUnit: "foot",
 		system: "imperial"
 	},
 	mile: {
 		label: "BF.UNITS.DISTANCE.Mile.Label",
-		localization: "BF.Distance.Unit.Mile.Label",
 		abbreviation: "BF.UNITS.DISTANCE.Mile.Abbreviation",
 		conversion: 5280,
-		formattingUnit: "mile",
 		system: "imperial"
+	},
+	meter: {
+		label: "BF.UNITS.DISTANCE.Meter.Label",
+		abbreviation: "BF.UNITS.DISTANCE.Meter.Abbreviation",
+		conversion: 10 / 3,
+		exactConversion: 3.2808,
+		system: "metric"
+	},
+	kilometer: {
+		label: "BF.UNITS.DISTANCE.Kilometer.Label",
+		abbreviation: "BF.UNITS.DISTANCE.Kilometer.Abbreviation",
+		conversion: 10_000 / 3,
+		exactConversion: 3280.8,
+		system: "metric"
 	}
 };
-localizeConfig(distanceUnits);
+localizeConfig(distanceUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -213,9 +230,17 @@ export const paceUnits = {
 		formattingUnit: "mile",
 		conversion: 1,
 		system: "imperial"
+	},
+	kph: {
+		label: "BF.UNITS.PACE.KilometerPerHour.Label",
+		abbreviation: "BF.UNITS.PACE.KilometerPerHour.Abbreviation",
+		formattingUnit: "kilometer",
+		conversion: 0.6,
+		exactConversion: 0.6214,
+		system: "metric"
 	}
 };
-localizeConfig(paceUnits);
+localizeConfig(paceUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -305,9 +330,16 @@ export const volumeUnits = {
 		counted: "BF.UNITS.VOLUME.CubicFoot.Counted",
 		conversion: 1,
 		system: "imperial"
+	},
+	liter: {
+		label: "BF.UNITS.VOLUME.Liter.Label",
+		abbreviation: "BF.UNITS.VOLUME.Liter.Abbreviation",
+		counted: "BF.UNITS.VOLUME.Liter.Counted",
+		conversion: 1 / 28.317,
+		system: "metric"
 	}
 };
-localizeConfig(volumeUnits);
+localizeConfig(volumeUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -318,25 +350,44 @@ localizeConfig(volumeUnits);
 export const weightUnits = {
 	pound: {
 		label: "BF.UNITS.WEIGHT.Pound.Label",
-		localization: "BF.Weight.Unit.Pound.Label",
 		abbreviation: "BF.UNITS.WEIGHT.Pound.Abbreviation",
 		conversion: 1,
 		system: "imperial"
 	},
 	ounce: {
 		label: "BF.UNITS.WEIGHT.Ounce.Label",
-		localization: "BF.Weight.Unit.Ounce.Label",
 		abbreviation: "BF.UNITS.WEIGHT.Ounce.Abbreviation",
 		conversion: 0.0625,
 		system: "imperial"
 	},
 	ton: {
 		label: "BF.UNITS.WEIGHT.Ton.Label",
-		localization: "BF.Weight.Unit.Ton.Label",
 		abbreviation: "BF.UNITS.WEIGHT.Ton.Abbreviation",
 		counted: "BF.UNITS.WEIGHT.Ton.Counted",
-		conversion: 2_000,
+		conversion: 2000,
 		system: "imperial"
+	},
+	kilogram: {
+		label: "BF.UNITS.WEIGHT.Kilogram.Label",
+		abbreviation: "BF.UNITS.WEIGHT.Kilogram.Abbreviation",
+		conversion: 2.5,
+		exactConversion: 2.205,
+		system: "metric"
+	},
+	gram: {
+		label: "BF.UNITS.WEIGHT.Gram.Label",
+		abbreviation: "BF.UNITS.WEIGHT.Gram.Abbreviation",
+		conversion: 0.0025,
+		exactConversion: 0.002205,
+		system: "metric"
+	},
+	megagram: {
+		label: "BF.UNITS.WEIGHT.Metagram.Label",
+		abbreviation: "BF.UNITS.WEIGHT.Metagram.Abbreviation",
+		counted: "BF.UNITS.WEIGHT.Metagram.Counted",
+		conversion: 2500,
+		exactConversion: 2205,
+		system: "metric"
 	}
 };
-localizeConfig(weightUnits);
+localizeConfig(weightUnits, _unitLocalizationOptions);

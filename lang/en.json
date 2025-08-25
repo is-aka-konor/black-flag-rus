@@ -4173,6 +4173,14 @@
 			"Label": "Feet",
 			"Abbreviation": "ft"
 		},
+		"Kilometer": {
+			"Label": "Kilometer",
+			"Abbreviation": "km"
+		},
+		"Meter": {
+			"Label": "Meter",
+			"Abbreviation": "m"
+		},
 		"Mile": {
 			"Label": "Miles",
 			"Abbreviation": "mi"
@@ -4180,6 +4188,10 @@
 	},
 	"PACE": {
 		"Label": "Travel Pace Units",
+		"KilometerPerHour": {
+			"Label": "Kilometers Per Hour",
+			"Abbreviation": "kph"
+		},
 		"MilePerHour": {
 			"Label": "Miles Per Hour",
 			"Abbreviation": "mph"
@@ -4285,10 +4297,40 @@
 					"other": "{number} cubic feet"
 				}
 			}
+		},
+		"Liter": {
+			"Label": "Liter",
+			"Abbreviation": "L"
 		}
 	},
 	"WEIGHT": {
 		"Label": "Weight Units",
+		"Gram": {
+			"Label": "Gram",
+			"Abbreviation": "g"
+		},
+		"Kilogram": {
+			"Label": "Kilogram",
+			"Abbreviation": "kg"
+		},
+		"Metagram": {
+			"Label": "Tonnes",
+			"Abbreviation": "t",
+			"Counted": {
+				"narrow": {
+					"one": "{number}t",
+					"other": "{number}t"
+				},
+				"short": {
+					"one": "{number} t",
+					"other": "{number} t"
+				},
+				"long": {
+					"one": "{number} tonne",
+					"other": "{number} tonnes"
+				}
+			}
+		},
 		"Ounce": {
 			"Label": "Ounces",
 			"Abbreviation": "oz"
@@ -4302,8 +4344,8 @@
 			"Abbreviation": "tn",
 			"Counted": {
 				"narrow": {
-					"one": "{number}t",
-					"other": "{number}t"
+					"one": "{number}tn",
+					"other": "{number}tn"
 				},
 				"short": {
 					"one": "{number} tn",

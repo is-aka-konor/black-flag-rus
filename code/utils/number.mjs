@@ -16,15 +16,29 @@ import { isValidUnit } from "./validation.mjs";
  */
 
 /**
- * Convert the provided length to another unit.
+ * Convert the provided distance to another unit.
  * @param {number} value - The distance being converted.
  * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.distanceUnits`.
  * @param {UnitConversionOptions} [options={}]
  * @returns {{ value: number, unit: string }}
  */
-export function convertDistance(value, from, options={}, _options={}) {
+export function convertDistance(value, from, options={}) {
 	const message = unit => `Distance unit ${unit} not defined in CONFIG.BlackFlag.distanceUnits`;
 	return _convertSystemUnits(value, from, CONFIG.BlackFlag.distanceUnits, { ...options, message });
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Convert the provided pace to another unit.
+ * @param {number} value - The pace being converted.
+ * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.paceUnits`.
+ * @param {UnitConversionOptions} [options={}]
+ * @returns {{ value: number, unit: string }}
+ */
+export function convertPace(value, from, options={}) {
+	const message = unit => `Pace unit ${unit} not defined in CONFIG.BlackFlag.paceUnits`;
+	return _convertSystemUnits(value, from, CONFIG.BlackFlag.paceUnits, { ...options, message });
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -53,7 +67,6 @@ export function convertTime(value, from, options={}) {
  * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.weightUnits`.
  * @param {UnitConversionOptions} [options={}]
  * @param {boolean} [options.legacy=true] - Only return converted value rather than value and units.
- * @param {object} [_options]
  * @returns {{ value: number, unit: string }|number}
  */
 export function convertWeight(value, from, options={}) {
@@ -81,10 +94,29 @@ export function convertWeight(value, from, options={}) {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
+ * Is the approximate conversion option enabled?
+ * @type {boolean}
+ */
+let _approximateConversion;
+
+/**
  * Cache of best unit conversions from one measurement system to another.
  * @type {Map<string, string>}
  */
 const _measurementSystemConversionCache = new Map();
+
+/**
+ * Retrieve the conversion value for the provided unit config.
+ * @param {UnitConfiguration}
+ * @returns {number}
+ */
+function _conversion(config={}) {
+	if ( _approximateConversion === undefined ) {
+		_approximateConversion = game.settings.get(game.system.id, "localization").approximateConversion;
+	}
+	if ( _approximateConversion || !("exactConversion" in config) ) return config.conversion ?? 1;
+	return config.exactConversion;
+}
 
 /**
  * Convert from one unit to another using one of core's built-in unit types.
@@ -104,11 +136,11 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 	// If measurement system is provided and no target unit, convert to equivalent unit in other measurement system
 	if ( !to && system ) {
 		if ( !_measurementSystemConversionCache.has(from) ) {
-			const baseConversion = config[from].conversion ?? 1;
+			const baseConversion = _conversion(config[from]);
 			const unitOptions = Object.entries(config)
 				.reduce((arr, [key, v]) => {
 					if ( system === v.system ) {
-						arr.push({ key, difference: Math.abs(((v.conversion ?? 1) / baseConversion) - 1) });
+						arr.push({ key, difference: Math.abs((_conversion(v) / baseConversion) - 1) });
 					}
 					return arr;
 				}, [])
@@ -121,11 +153,12 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 
 	// If no target unit available, find largest unit in current measurement system that can represent number
 	else if ( !to ) {
-		const base = value * (config[from].conversion ?? 1);
+		const base = value * _conversion(config[from]);
 		const unitOptions = Object.entries(config)
 			.reduce((arr, [key, v]) => {
-				if ( ((base % v.conversion === 0) || (base >= v.conversion * 2)) && (config[from].system === v.system) ) {
-					arr.push({ key, conversion: v.conversion });
+				const conversion = _conversion(v);
+				if ( ((base % conversion === 0) || (base >= conversion * 2)) && (config[from].system === v.system) ) {
+					arr.push({ key, conversion });
 				}
 				return arr;
 			}, [])
@@ -134,7 +167,7 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 	}
 
 	if ( !config[to] ) return { value, unit: from };
-	return { value: value * (config[from].conversion ?? 1) / (config[to]?.conversion ?? 1), unit: to };
+	return { value: value * _conversion(config[from]) / _conversion(config[to]), unit: to };
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -146,8 +179,8 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
  * @param {"distance"|"pace"|"volume"|"weight"} type - Type of units to select.
  * @returns {string}
  */
-export function defaultUnits(type) {
-	return game.settings.get(game.system.id, "localization").defaultUnits(type);
+export function defaultUnit(type) {
+	return game.settings.get(game.system.id, "localization").defaultUnit(type);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
