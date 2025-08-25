@@ -51,7 +51,6 @@ Hooks.once("init", function () {
 	applications.registerCustomElements();
 	config._configureFonts();
 	config._configureRedirects();
-	config._configureStatusEffects();
 	config.registration.setupHooks();
 	data.fields.applyEffectApplicationPatches();
 	data.registerDataModels(ActiveEffect, {
@@ -115,6 +114,7 @@ Hooks.once("setup", function () {
 });
 
 Hooks.once("i18nInit", function () {
+	config._configureStatusEffects();
 	Object.values(CONFIG.Activity.types).forEach(c => c.documentClass.localize());
 	Object.values(CONFIG.Advancement.types).forEach(c => c.documentClass.localize());
 });

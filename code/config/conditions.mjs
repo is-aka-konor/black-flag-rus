@@ -3,13 +3,17 @@ import { localizeConfig, staticID } from "../utils/_module.mjs";
 /**
  * Configuration data for system conditions.
  *
- * @typedef {object} ConditionConfiguration
- * @property {string} label        Localized label for the condition.
- * @property {string} [icon]       Icon used to represent the condition on the token.
- * @property {boolean} [pseudo]    Effect that behaves like a condition but isn't an official condition.
- * @property {string} [reference]  UUID of a journal entry with details on this condition.
- * @property {string[]} [riders]   Additional effects that will be added alongside this condition.
- * @property {string} [special]    Set this condition as a special status effect under this name.
+ * @typedef {object} BFConditionConfiguration
+ * @property {string} label - Localized label for the condition.
+ * @property {number} [coverBonus] - A bonus this condition provides to AC and dexterity saving throws.
+ * @property {string} [exclusiveGroup] - Any status effects with the same group will not be able to be applied at
+ *                                       the same time through the token HUD (multiple statuses applied through
+ *                                       other effects can still coexist).
+ * @property {string} [icon] - Icon used to represent the condition on the token.
+ * @property {boolean} [pseudo] - Effect that behaves like a condition but isn't an official condition.
+ * @property {string} [reference] - UUID of a journal entry with details on this condition.
+ * @property {string[]} [riders] - Additional effects that will be added alongside this condition.
+ * @property {string} [special] - Set this condition as a special status effect under this name.
  */
 
 /**
@@ -28,6 +32,11 @@ export const conditions = {
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.xJJvm0vSgfbtS5MP",
 		special: "BLIND"
 	},
+	burning: {
+		name: "EFFECT.BF.Burning",
+		img: "systems/black-flag/artwork/statuses/burning.svg",
+		pseudo: true
+	},
 	charmed: {
 		label: "BF.Condition.Charmed.Label",
 		icon: "systems/black-flag/artwork/statuses/charmed.svg",
@@ -36,6 +45,12 @@ export const conditions = {
 	cursed: {
 		label: "EFFECT.BF.Cursed",
 		icon: "systems/black-flag/artwork/statuses/cursed.svg",
+		pseudo: true
+	},
+	dehydration: {
+		name: "EFFECT.BF.Dehydration",
+		img: "systems/black-flag/artwork/statuses/dehydration.svg",
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.4P9Yx1k4NFcuM8DO",
 		pseudo: true
 	},
 	deafened: {
@@ -52,6 +67,12 @@ export const conditions = {
 		label: "BF.Condition.Exhaustion.Label",
 		icon: "systems/black-flag/artwork/statuses/exhaustion.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.Pk4HY4CkyTFBhFrL"
+	},
+	falling: {
+		name: "EFFECT.BF.Falling",
+		img: "systems/black-flag/artwork/statuses/falling.svg",
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.YUn5nBL14LRf9z5p",
+		pseudo: true
 	},
 	frightened: {
 		label: "BF.Condition.Frightened.Label",
@@ -72,6 +93,12 @@ export const conditions = {
 		label: "BF.Condition.Invisible.Label",
 		icon: "systems/black-flag/artwork/statuses/invisible.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.J9KSv1AwJ1zod72g"
+	},
+	malnutrition: {
+		name: "EFFECT.BF.Malnutrition",
+		img: "systems/black-flag/artwork/statuses/malnutrition.svg",
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.V4frkDHhsWFBtmmt",
+		pseudo: true
 	},
 	paralyzed: {
 		label: "BF.Condition.Paralyzed.Label",
@@ -110,6 +137,12 @@ export const conditions = {
 		icon: "systems/black-flag/artwork/statuses/stunned.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.QguBSALg6Xd4Vmh3",
 		statuses: ["incapacitated"]
+	},
+	suffocation: {
+		name: "EFFECT.BF.Suffocation",
+		img: "systems/black-flag/artwork/statuses/suffocation.svg",
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.ATzEq6INUQJvWQDS",
+		pseudo: true
 	},
 	surprised: {
 		label: "BF.Condition.Surprised.Label",
@@ -164,8 +197,29 @@ export const statusEffects = {
 		icon: "systems/black-flag/artwork/statuses/concentrating.svg",
 		special: "CONCENTRATING"
 	},
+	coverHalf: {
+		name: "EFFECT.BF.HalfCover",
+		img: "systems/black-flag/artwork/statuses/cover-half.svg",
+		order: 2,
+		exclusiveGroup: "cover",
+		coverBonus: 2
+	},
+	coverThreeQuarters: {
+		name: "EFFECT.BF.ThreeQuartersCover",
+		img: "systems/black-flag/artwork/statuses/cover-three-quarters.svg",
+		order: 3,
+		exclusiveGroup: "cover",
+		coverBonus: 5
+	},
+	coverTotal: {
+		name: "EFFECT.BF.TotalCover",
+		img: "systems/black-flag/artwork/statuses/cover-total.svg",
+		order: 4,
+		exclusiveGroup: "cover"
+	},
 	dead: {
 		icon: "systems/black-flag/artwork/statuses/dead.svg",
+		order: 1,
 		special: "DEFEATED"
 	},
 	dodging: {
@@ -176,6 +230,7 @@ export const statusEffects = {
 		name: "EFFECT.BF.Ethereal",
 		icon: "systems/black-flag/artwork/statuses/ethereal.svg"
 	},
+	// TODO: Rename to flying to match other conditions
 	fly: {
 		label: "EFFECT.BF.Flying",
 		icon: "systems/black-flag/artwork/statuses/flying.svg",
@@ -211,6 +266,7 @@ export const statusEffects = {
  */
 export function _configureStatusEffects() {
 	const addEffect = (effects, { icon: img, ...data }) => {
+		data = foundry.utils.deepClone(data);
 		effects.push({ _id: staticID(`bf${data.id}`), img, ...data });
 		if ("special" in data) CONFIG.specialStatusEffects[data.special] = data.id;
 	};
@@ -222,6 +278,12 @@ export function _configureStatusEffects() {
 	for (const [id, { label: name, ...data }] of Object.entries(conditions)) {
 		addEffect(CONFIG.statusEffects, { id, name, ...data });
 	}
+	CONFIG.statusEffects.forEach(s => (s.name = game.i18n.localize(s.name)));
+	CONFIG.statusEffects.sort((lhs, rhs) =>
+		lhs.order || rhs.order
+			? (lhs.order ?? Infinity) - (rhs.order ?? Infinity)
+			: lhs.name.localeCompare(rhs.name, game.i18n.lang)
+	);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */

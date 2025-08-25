@@ -562,6 +562,26 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async toggleStatusEffect(statusId, options) {
+		const created = await super.toggleStatusEffect(statusId, options);
+		const status = CONFIG.statusEffects.find(e => e.id === statusId);
+		if (!(created instanceof ActiveEffect) || !status.exclusiveGroup) return created;
+
+		const others = CONFIG.statusEffects.filter(
+			e => e.id !== statusId && e.exclusiveGroup === status.exclusiveGroup && this.effects.has(e._id)
+		);
+		if (others.length)
+			await this.deleteEmbeddedDocuments(
+				"ActiveEffect",
+				others.map(e => e._id)
+			);
+
+		return created;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*               Resting               */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

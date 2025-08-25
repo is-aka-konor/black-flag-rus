@@ -95,24 +95,36 @@ interface/death-saves.svg - "Half dead" by Delapouite
   (https://game-icons.net/1x1/delapouite/half-dead.html)
 interface/dice/*.svg - various by Delapouite
 
+statuses/burning.svg - "Flamer" by sbed
+	(https://game-icons.net/1x1/sbed/flamer.html)
 statuses/burrowing.svg - "Cave entrance" by Delapouite
   (https://game-icons.net/1x1/delapouite/cave-entrance.html)
+statuses/cover-*.svg - "Shield" by sbed
+	(https://game-icons.net/1x1/sbed/shield.html)
 statuses/cursed.svg - "Ubisoft sun" by Lorc
   (https://game-icons.net/1x1/lorc/ubisoft-sun.html)
+statuses/dehydration.svg - "Waterskin" by Delapouite
+	(https://game-icons.net/1x1/delapouite/waterskin.html)
 statuses/diseased.svg - "Biohazard" by Lorc
 	(https://game-icons.net/1x1/lorc/biohazard.html)
 statuses/ethereal.svg - "Ghost ally" by Lorc
 	(https://game-icons.net/1x1/lorc/ghost-ally.html)
+statuses/falling.svg - "Falling boulder" by Lorc
+	(https://game-icons.net/1x1/lorc/falling-boulder.html)
 statuses/flying.svg - "Feathered wing" by Lorc
 	(https://game-icons.net/1x1/lorc/feathered-wing.html)
 statuses/hiding.svg - "Hidden" by Lorc
   (https://game-icons.net/1x1/lorc/hidden.html)
 statuses/hovering.svg - "Wingfoot" by Lorc
 	(https://game-icons.net/1x1/lorc/wingfoot.html)
+statuses/malnutrition.svg - "Bowl of rice" by Caro Asercion
+	(https://game-icons.net/1x1/caro-asercion/bowl-of-rice.html)
 statuses/sleeping.svg - "Night sleep" by Delapouite
   (https://game-icons.net/1x1/delapouite/night-sleep.html)
 statuses/stable.svg - "Bandage roll" by Lorc
 	(https://game-icons.net/1x1/lorc/bandage-roll.html)
+statuses/suffocation.svg - "Lungs" by Delapouite
+	(https://game-icons.net/1x1/delapouite/lungs.html)
 statuses/transformed.svg - "Flat paw print" by Lorc
   (https://game-icons.net/1x1/lorc/flat-paw-print.html)
 

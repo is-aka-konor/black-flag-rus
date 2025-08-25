@@ -143,6 +143,7 @@ export default class ACTemplate extends foundry.abstract.DataModel {
 			ac.currentFormula = null;
 		}
 
+		ac.cover = Math.max(ac.cover, this.coverBonus ?? 0);
 		ac.shield = ac.equippedShield?.system.armor.value ?? 0;
 
 		ac.modifiers = this.getModifiers(acData);

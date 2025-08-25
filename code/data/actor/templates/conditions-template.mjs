@@ -19,6 +19,21 @@ export default class ConditionsTemplate extends foundry.abstract.DataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Properties             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Calculate the bonus from any cover the actor is affected by.
+	 * @type {number} - The cover bonus to AC and dexterity saving throws.
+	 */
+	get coverBonus() {
+		const { coverHalf, coverThreeQuarters } = CONFIG.BlackFlag.statusEffects;
+		if ( this.parent.statuses.has("coverThreeQuarters") ) return coverThreeQuarters?.coverBonus;
+		else if ( this.parent.statuses.has("coverHalf") ) return coverHalf?.coverBonus;
+		return 0;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -40,6 +55,12 @@ export default class ConditionsTemplate extends foundry.abstract.DataModel {
 				});
 			}
 		}
+
+		if ( this.coverBonus ) this.modifiers.push({
+			type: "bonus",
+			filter: [{ k: "type", v: "ability-check" }, { k: "ability", v: "dexterity"}],
+			formula: `${this.coverBonus}`
+		});
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
