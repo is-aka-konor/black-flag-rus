@@ -118,6 +118,7 @@ export default class BlackFlagChatMessage extends ChatMessage {
 			await this._renderDamageUI(html);
 		}
 		this._collapseTrays(html);
+		BlackFlag.enrichers.activateChatListeners(this, html);
 
 		return html;
 	}
@@ -131,6 +132,10 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	async _renderStandardCard(html) {
 		html.querySelectorAll(".black-flag").forEach(el => el.classList.remove("black-flag")); // Legacy
 		html.classList.add("black-flag");
+		const chatCard = html.querySelector(".chat-card");
+		if (chatCard) {
+			if (this.shouldDisplayChallenge) chatCard.dataset.displayChallenge = "";
+		}
 		if (!this.isContentVisible) return;
 		for (const element of html.querySelectorAll(".blackFlag-icon")) {
 			const icon = document.createElement("blackFlag-icon");

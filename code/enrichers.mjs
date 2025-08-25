@@ -13,21 +13,27 @@ export function registerCustomEnrichers() {
 	const stringNames = ["attack", "check", "damage", "heal", "healing", "save", "skill", "tool", "vehicle"];
 	CONFIG.TextEditor.enrichers.push(
 		{
+			id: "blackFlag-enricher",
 			pattern: new RegExp(
 				`\\[\\[/(?<type>${stringNames.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`,
 				"gi"
 			),
-			enricher: enrichString
+			enricher: enrichString,
+			onRender: onRenderEnricher
 		},
 		{
+			id: "blackFlag-lookup",
 			pattern: /\[\[(?<type>calc|lookup) (?<config>[^\]]+)]](?:{(?<label>[^}]+)})?/gi,
 			enricher: enrichString
 		},
 		{
+			id: "blackFlag-reference",
 			pattern: /&(?<type>reference)\[(?<config>[^\]]+)](?:{(?<label>[^}]+)})?/gi,
-			enricher: enrichString
+			enricher: enrichString,
+			onRender: onRenderEnricher
 		},
 		{
+			id: "blackFlag-definition",
 			pattern: /~def\[([^\]]+)]/gi,
 			enricher: (match, options) => {
 				const dnf = document.createElement("dfn");
@@ -36,10 +42,6 @@ export function registerCustomEnrichers() {
 			}
 		}
 	);
-
-	document.body.addEventListener("click", handleActivation);
-	document.body.addEventListener("click", handleApply);
-	document.body.addEventListener("click", handleRollAction);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -142,7 +144,7 @@ function createRequestLink(label, dataset) {
 	if (game.user.isGM) {
 		const gmLink = document.createElement("a");
 		gmLink.classList.add("extra-link");
-		gmLink.dataset.request = true;
+		gmLink.dataset.action = "postRequest";
 		gmLink.dataset.tooltip = "BF.Enricher.Request.Action";
 		gmLink.setAttribute("aria-label", game.i18n.localize(gmLink.dataset.tooltip));
 		gmLink.innerHTML = '<i class="fa-solid fa-comment-dots" inert></i>';
@@ -166,9 +168,10 @@ function createRequestLink(label, dataset) {
 function createRollLink(label, dataset = {}, { classes = "roll-link", tag = "a" } = {}) {
 	const link = document.createElement(tag);
 	link.className = classes;
-	_addDataset(link, dataset);
 	link.innerHTML = '<i class="fa-solid fa-dice-d20" inert></i>';
 	link.append(label);
+	_addDataset(link, dataset);
+	if (tag === "a") link.dataset.action = "roll";
 	return link;
 }
 
@@ -192,57 +195,131 @@ function _addDataset(element, dataset) {
 /*                     Event Handling                    */
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
+const _addListeners = (buttons, handler) =>
+	buttons.forEach(button => button.addEventListener("click", event => handler(event, event.currentTarget)));
+
 /**
- * Activate an activity.
- * @param {Event} event - The click event triggering the action.
+ * Attach actions to chat message for requested rolls.
+ * @param {BlackFlagChatMessage} message
+ * @param {HTMLElement} element
  */
-async function handleActivation(event) {
-	const activity = await fromUuid(event.target.closest("[data-activity-uuid]")?.dataset.activityUuid);
-	if (activity && !event.target.closest("[data-roll-action]")) {
-		event.stopPropagation();
-		activity.activate();
-	}
+export function activateChatListeners(message, element) {
+	_addListeners(element.querySelectorAll('[data-action="rollRequest"]'), handleRoll);
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Attach actions to enrichers when they are rendered.
+ * @param {HTMLEnrichedContentElement} element
+ */
+function onRenderEnricher(element) {
+	_addListeners(element.querySelectorAll('[data-action="applyStatus"]'), handleApplyStatus);
+	_addListeners(element.querySelectorAll('[data-action="postRequest"]'), handlePostRequest);
+	_addListeners(element.querySelectorAll('[data-action="roll"]'), handleRoll);
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Create the combined dataset for the target button and any parent groups.
+ * @param {HTMLElement} target - Button that was clicked.
+ * @returns {object}
+ */
+function getRollActionDataset(target) {
+	return {
+		...((target.closest(".roll-link-group") ?? target)?.dataset ?? {}),
+		...(target.closest(".roll-link")?.dataset ?? {})
+	};
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * Apply a status effect.
- * @param {Event} event - The click event triggering the action.
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
  */
-async function handleApply(event) {
-	const status = event.target.closest('[data-action="apply"][data-status]')?.dataset.status;
-	const effect = CONFIG.statusEffects.find(e => e.id === status);
-	if (!effect) return;
-	event.stopPropagation();
-	for (const token of getSelectedTokens()) await token.actor?.toggleStatusEffect(status);
+async function handleApplyStatus(event, target) {
+	const status = target.closest("[data-status]")?.dataset.status;
+	if (!status) return;
+	window.getSelection().empty();
+	const actors = new Set();
+	for (const { actor } of getSelectedTokens()) {
+		if (!actor || actors.has(actor)) continue;
+		await actor.toggleStatusEffect(status);
+		actors.add(actor);
+	}
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Handle creating a roll request chat message.
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
+ */
+async function handlePostRequest(event, target) {
+	window.getSelection().empty();
+	const dataset = getRollActionDataset(target);
+
+	let buttons;
+	switch (dataset.rollAction) {
+		case "ability-check":
+		case "skill":
+		case "tool":
+		case "vehicle":
+			buttons = createCheckRequestButtons(dataset);
+			break;
+		case "ability-save":
+			buttons = createSaveRequestButtons(dataset);
+			break;
+		default:
+			buttons = [createRequestButton({ ...dataset, format: "short" })];
+	}
+
+	const MessageClass = getDocumentClass("ChatMessage");
+	const chatData = {
+		content: await foundry.applications.handlebars.renderTemplate(
+			"systems/black-flag/templates/chat/request-card.hbs",
+			{ buttons }
+		),
+		flavor: game.i18n.localize("BF.Enricher.Request.Title"),
+		speaker: MessageClass.getSpeaker({ user: game.user }),
+		user: game.user.id
+	};
+	MessageClass.create(chatData);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * Perform the provided roll action.
- * @param {Event} event - The click event triggering the action.
- * @returns {Promise|void}
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
  */
-function handleRollAction(event) {
-	const target = event.target.closest(".roll-link-group, [data-roll-action]");
-	if (!target) return;
-	event.stopPropagation();
-
-	if (event.target.closest('[data-request="true"]')) return requestCheckSave(event);
-
-	switch (target.dataset.rollAction) {
-		case "ability-check":
-		case "ability-save":
-		case "skill":
-		case "tool":
-		case "vehicle":
-			return rollCheckSave(event);
-		case "attack":
-			return rollAttack(event);
-		case "damage":
-			return rollDamage(event);
+async function handleRoll(event, target) {
+	window.getSelection().empty();
+	target.disabled = true;
+	try {
+		const dataset = getRollActionDataset(target);
+		switch (dataset.rollAction) {
+			case "ability-check":
+			case "ability-save":
+			case "skill":
+			case "tool":
+			case "vehicle":
+				await rollCheckSave(event, target);
+				break;
+			case "attack":
+				await rollAttack(event, target);
+				break;
+			case "damage":
+				await rollDamage(event, target);
+				break;
+		}
+	} finally {
+		target.disabled = false;
 	}
 }
 
@@ -366,12 +443,13 @@ async function enrichAttack(config, label, options) {
 
 /**
  * Perform an attack roll.
- * @param {Event} event - The click event triggering the action.
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
  * @returns {Promise|void}
  */
-async function rollAttack(event) {
-	const target = event.target.closest("[data-roll-action]");
-	const { activityUuid, attackMode, formula } = target.dataset;
+async function rollAttack(event, target) {
+	const dataset = getRollActionDataset(target);
+	const { activityUuid, attackMode, formula } = dataset;
 
 	if (activityUuid) {
 		const activity = await fromUuid(activityUuid);
@@ -581,7 +659,7 @@ function createRollLabel(config) {
  *   <a class="roll-action" data-ability="strength" data-skill="athletics">
  *     <i class="fa-solid fa-dice-d20" inert></i> STR (Athletics)
  *   </a>
- *   <a class="enricher-action" data-action="request" ...><!-- request link --></a>
+ *   <a class="enricher-action" data-action="postRequest" ...><!-- request link --></a>
  * </span>
  * ```
  *
@@ -594,7 +672,7 @@ function createRollLabel(config) {
  *   DC 15 STR
  *   (<a class="roll-action" data-skill="deception"><i class="fa-solid fa-dice-d20" inert></i> Deception</a> or
  *   <a class="roll-action" data-ability="persuasion"><i class="fa-solid fa-dice-d20" inert></i> Persuasion</a>)
- *   <a class="enricher-action" data-action="request" ...><!-- request link --></a>
+ *   <a class="enricher-action" data-action="postRequest" ...><!-- request link --></a>
  * </span>
  * ```
  *
@@ -605,7 +683,7 @@ function createRollLabel(config) {
  * <span class="roll-link-group" data-roll-action="ability-check" data-ability="dexterity" data-dc="20"
  *       data-activity-uuid="...">
  *   <a class="roll-action"><i class="fa-solid fa-dice-d20" inert></i> DC 20 DEX</a>
- *   <a class="enricher-action" data-action="request" ...><!-- request link --></a>
+ *   <a class="enricher-action" data-action="postRequest" ...><!-- request link --></a>
  * </span>
  * ```
  */
@@ -944,46 +1022,6 @@ function createSaveRequestButtons(dataset) {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
- * Create a roll request chat message for a check or save roll.
- * @param {Event} event - The click event triggering the action.
- * @returns {Promise|void}
- */
-async function requestCheckSave(event) {
-	const dataset = {
-		...(event.target.closest(".roll-link-group")?.dataset ?? {}),
-		...(event.target.closest(".roll-link")?.dataset ?? {})
-	};
-	let buttons;
-	switch (dataset.rollAction) {
-		case "ability-check":
-		case "skill":
-		case "tool":
-		case "vehicle":
-			buttons = createCheckRequestButtons(dataset);
-			break;
-		case "ability-save":
-			buttons = createSaveRequestButtons(dataset);
-			break;
-		default:
-			buttons = [createRequestButton({ ...dataset, format: "short" })];
-	}
-
-	const MessageClass = getDocumentClass("ChatMessage");
-	const chatData = {
-		user: game.user.id,
-		content: await foundry.applications.handlebars.renderTemplate(
-			"systems/black-flag/templates/chat/request-card.hbs",
-			{ buttons }
-		),
-		flavor: game.i18n.localize("BF.Enricher.Request.Title"),
-		speaker: MessageClass.getSpeaker({ user: game.user })
-	};
-	return MessageClass.create(chatData);
-}
-
-/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
-
-/**
  * Create a button for a chat request.
  * @param {object} dataset
  * @returns {object}
@@ -1000,33 +1038,25 @@ function createRequestButton(dataset) {
 
 /**
  * Perform a check or save roll.
- * @param {Event} event - The click event triggering the action.
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
  * @returns {Promise|void}
  */
-async function rollCheckSave(event) {
-	const target = event.target.closest("[data-roll-action]");
-	const dataset = {
-		...(event.target.closest("[data-roll-action]")?.dataset ?? {}),
-		...(event.target.closest(".roll-link")?.dataset ?? {})
-	};
+async function rollCheckSave(event, target) {
+	const dataset = getRollActionDataset(target);
 
-	target.disabled = true;
-	try {
-		const actors = new Set(getSelectedTokens().map(t => t.actor));
-		if (!actors.size) {
-			ui.notifications.warn(game.i18n.localize("BF.Enricher.Warning.NoActor"));
-			return;
-		}
+	const actors = new Set(getSelectedTokens().map(t => t.actor));
+	if (!actors.size) {
+		ui.notifications.warn(game.i18n.localize("BF.Enricher.Warning.NoActor"));
+		return;
+	}
 
-		for (const actor of actors) {
-			const { rollAction, dc, ...data } = dataset;
-			const rollConfig = { event, ...data };
-			if (rollConfig.ability === "spellcasting") rollConfig.ability = actor.system.spellcasting?.ability;
-			if (dc) rollConfig.target = Number(dc);
-			await actor.roll(rollAction, rollConfig);
-		}
-	} finally {
-		target.disabled = false;
+	for (const actor of actors) {
+		const { rollAction, dc, ...data } = dataset;
+		const rollConfig = { event, ...data };
+		if (rollConfig.ability === "spellcasting") rollConfig.ability = actor.system.spellcasting?.ability;
+		if (dc) rollConfig.target = Number(dc);
+		await actor.roll(rollAction, rollConfig);
 	}
 }
 
@@ -1190,6 +1220,7 @@ async function enrichDamage(configs, label, options) {
 
 	const link = document.createElement("a");
 	link.className = "unlink";
+	link.dataset.action = "roll";
 	_addDataset(link, config);
 	if (config.average && parts.length === 2) {
 		link.innerHTML = game.i18n.format("BF.Enricher.Damage.Double", { first: parts[0], second: parts[1] });
@@ -1211,12 +1242,13 @@ async function enrichDamage(configs, label, options) {
 
 /**
  * Perform a damage roll.
- * @param {Event} event - The click event triggering the action.
+ * @param {Event} event - Triggering click event.
+ * @param {HTMLElement} target - Button that was clicked.
  * @returns {Promise|void}
  */
-async function rollDamage(event) {
-	const target = event.target.closest("[data-roll-action]");
-	let { formulas, types, activity: activityUuid, attackMode, magical, rollType } = target.dataset;
+async function rollDamage(event, target) {
+	const dataset = getRollActionDataset(target);
+	let { formulas, types, activity: activityUuid, attackMode, magical, rollType } = dataset;
 	formulas = JSON.parse(formulas);
 	magical = magical === "true";
 	types = JSON.parse(types);
@@ -1374,7 +1406,7 @@ async function enrichReference(config, label, options) {
 	if (type === "condition" && config.apply !== false) {
 		const apply = document.createElement("a");
 		apply.classList.add("extra-link");
-		apply.dataset.action = "apply";
+		apply.dataset.action = "applyStatus";
 		apply.dataset.status = key;
 		apply.dataset.tooltip = "BF.Enricher.Apply.Label";
 		apply.setAttribute("aria-label", game.i18n.localize(apply.dataset.tooltip));
