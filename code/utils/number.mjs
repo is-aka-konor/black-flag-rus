@@ -136,11 +136,11 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 	// If measurement system is provided and no target unit, convert to equivalent unit in other measurement system
 	if ( !to && system ) {
 		if ( !_measurementSystemConversionCache.has(from) ) {
-			const baseConversion = _conversion(config[from]);
+			const baseConversion = Math.log10(_conversion(config[from]));
 			const unitOptions = Object.entries(config)
 				.reduce((arr, [key, v]) => {
 					if ( system === v.system ) {
-						arr.push({ key, difference: Math.abs((_conversion(v) / baseConversion) - 1) });
+						arr.push({ key, difference: Math.abs(Math.log10(_conversion(v)) - baseConversion) });
 					}
 					return arr;
 				}, [])
@@ -277,10 +277,10 @@ function _prepareFormattingOptions(options) {
 /**
  * Format a number based on the current locale.
  * @param {number} value - A number for format.
- * @param {NumberFormattingOptions} [options] - Additional formatting options.
+ * @param {NumberFormattingOptions} [options={}] - Additional formatting options.
  * @returns {string}
  */
-export function numberFormat(value, options={}) {
+export function formatNumber(value, options={}) {
 	value = Number(value);
 
 	if ( !Number.isFinite(value) ) {
@@ -311,11 +311,42 @@ export function numberFormat(value, options={}) {
 /**
  * Format a number based on the current locale.
  * @param {number} value - A number for format.
- * @param {NumberFormattingOptions} [options] - Additional formatting options.
+ * @param {NumberFormattingOptions} [options={}] - Additional formatting options.
  * @returns {string}
  */
-export function formatNumber(value, options) {
-	return numberFormat(value, options);
+export function numberFormat(value, options={}) {
+	foundry.utils.logCompatibilityWarning(
+		"The `BlackFlag.utils.numberFormat` has been renamed `BlackFlag.utils.formatNumber`.",
+		{ since: "Black Flag 2.0", until: "Black Flag 2.2" }
+	);
+	return formatNumber(value, options);
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Produce a number with the parts wrapped in their own spans.
+ * @param {number} value - A number for format.
+ * @param {NumberFormattingOptions} [options={}] - Additional formatting options.
+ * @returns {string}
+ */
+export function formatNumberParts(value, options={}) {
+	const parts = getNumberFormatter(_prepareFormattingOptions(options)).formatToParts(value);
+	return parts.reduce((str, { type, value }) => `${str}<span class="${type}">${value}</span>`, "");
+}
+
+/**
+ * Produce a number with the parts wrapped in their own spans.
+ * @param {number} value - A number for format.
+ * @param {NumberFormattingOptions} [options={}] - Additional formatting options.
+ * @returns {string}
+ */
+export function numberParts(value, options={}) {
+	foundry.utils.logCompatibilityWarning(
+		"The `BlackFlag.utils.numberParts` has been renamed `BlackFlag.utils.formatNumberParts`.",
+		{ since: "Black Flag 2.0", until: "Black Flag 2.2" }
+	);
+	return formatNumberParts(value, options);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -332,19 +363,6 @@ export function formatPace(value, unit, { period="hour", ...options }={}) {
 	const unitConfig = CONFIG.BlackFlag.paceUnits[unit];
 	options.unit ??= `${unitConfig?.formattingUnit ?? unit}-per-${period}`;
 	return _formatSystemUnits(value, unit, unitConfig, options);
-}
-
-/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
-
-/**
- * Produce a number with the parts wrapped in their own spans.
- * @param {number} value - A number for format.
- * @param {NumberFormattingOptions} [options] - Additional formatting options.
- * @returns {string}
- */
-export function numberParts(value, options) {
-	const parts = getNumberFormatter(_prepareFormattingOptions(options)).formatToParts(value);
-	return parts.reduce((str, { type, value }) => `${str}<span class="${type}">${value}</span>`, "");
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */

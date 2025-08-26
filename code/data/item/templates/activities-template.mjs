@@ -1,5 +1,5 @@
 import CastActivity from "../../../documents/activity/cast-activity.mjs";
-import { numberFormat, replaceFormulaData, simplifyBonus } from "../../../utils/_module.mjs";
+import { formatNumber, replaceFormulaData, simplifyBonus } from "../../../utils/_module.mjs";
 import { ActivityField } from "../../fields/activity-field.mjs";
 import UsesField from "../../fields/uses-field.mjs";
 
@@ -72,7 +72,7 @@ export default class ActivitiesTemplate extends foundry.abstract.DataModel {
 
 		Object.defineProperty(this.uses, "label", {
 			get() {
-				if ( this.max ) return `${numberFormat(this.value)} / ${numberFormat(this.max)}`;
+				if ( this.max ) return `${formatNumber(this.value)} / ${formatNumber(this.max)}`;
 				return "";
 			},
 			configurable: true,

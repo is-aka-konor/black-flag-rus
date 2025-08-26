@@ -1,5 +1,5 @@
 import { SaveData } from "../../data/activity/save-data.mjs";
-import { numberFormat, simplifyBonus } from "../../utils/_module.mjs";
+import { formatNumber, simplifyBonus } from "../../utils/_module.mjs";
 import Activity from "./activity.mjs";
 
 /**
@@ -43,7 +43,7 @@ export default class SaveActivity extends Activity {
 		if (!this.system.save.dc.final) return "";
 		const layout = document.createElement("div");
 		layout.classList.add("layout");
-		layout.innerHTML = `<span class="dc">${numberFormat(this.system.save.dc.final)}</span>`;
+		layout.innerHTML = `<span class="dc">${formatNumber(this.system.save.dc.final)}</span>`;
 		const abilities = Array.from(this.system.save.ability).map(
 			k => CONFIG.BlackFlag.abilities.localizedAbbreviations[k]
 		);

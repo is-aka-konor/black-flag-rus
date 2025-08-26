@@ -1,4 +1,4 @@
-import { filteredKeys, numberFormat } from "../../../utils/_module.mjs";
+import { filteredKeys, formatNumber } from "../../../utils/_module.mjs";
 import BaseConfigSheet from "../api/base-config-sheet.mjs";
 
 /**
@@ -56,11 +56,11 @@ export default class ArmorClassConfig extends BaseConfigSheet {
 				context.equipped[key] = {
 					anchor: item.toAnchor().outerHTML,
 					img: item.img,
-					magicalBonus: numberFormat(item.system.properties.has("magical") ? item.system.magicalBonus : 0, {
+					magicalBonus: formatNumber(item.system.properties.has("magical") ? item.system.magicalBonus : 0, {
 						signDisplay: "always"
 					}),
 					name: item.name,
-					value: numberFormat(item.system.armor.value, { signDisplay: key === "shield" ? "always" : "auto" })
+					value: formatNumber(item.system.armor.value, { signDisplay: key === "shield" ? "always" : "auto" })
 				};
 		}
 		if (foundry.utils.isEmpty(context.equipped)) delete context.equipped;

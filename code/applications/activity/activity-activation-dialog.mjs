@@ -1,4 +1,4 @@
-import { filteredKeys, numberFormat, simplifyBonus } from "../../utils/_module.mjs";
+import { filteredKeys, formatNumber, simplifyBonus } from "../../utils/_module.mjs";
 import BFFormDialog from "../api/form-dialog.mjs";
 
 const { BooleanField, NumberField, StringField } = foundry.data.fields;
@@ -317,7 +317,7 @@ export default class ActivityActivationDialog extends BFFormDialog {
 						return null;
 					const label = game.i18n.format("BF.CONSUMPTION.Type.SpellSlots.Available", {
 						slot: slot.label,
-						available: numberFormat(slot.value)
+						available: formatNumber(slot.value)
 					});
 					const disabled = slot.value === 0 && consumeSlot;
 					if (!disabled && !spellSlotValue) spellSlotValue = value;

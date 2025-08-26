@@ -1,5 +1,5 @@
 import SelectChoices from "../../documents/select-choices.mjs";
-import { getPluralLocalizationKey, makeLabel, numberFormat } from "../../utils/_module.mjs";
+import { formatNumber, getPluralLocalizationKey, makeLabel } from "../../utils/_module.mjs";
 import AdvancementDataModel from "../abstract/advancement-data-model.mjs";
 import LocalDocumentField from "../fields/local-document-field.mjs";
 
@@ -256,7 +256,7 @@ export class EquipmentEntryData extends foundry.abstract.DataModel {
 		}
 
 		if (!label) return;
-		if (this.count > 1) label = `${numberFormat(this.count, { spellOut: true })} ${label}`;
+		if (this.count > 1) label = `${formatNumber(this.count, { spellOut: true })} ${label}`;
 		else if (this.type !== "linked") {
 			label = game.i18n.format("BF.Advancement.Trait.Choice.AnyUncounted", { type: label });
 		}

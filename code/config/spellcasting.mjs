@@ -1,4 +1,4 @@
-import { localizeConfig, numberFormat } from "../utils/_module.mjs";
+import { formatNumber, localizeConfig } from "../utils/_module.mjs";
 
 /**
  * Highest circle of spellcasting.
@@ -195,7 +195,7 @@ export function spellCircles({ dashed = false, formOptions = false, plural = fal
 		if (l === 0) obj[l] = game.i18n.localize(`BF.Spell.Circle.Cantrip[${plural ? "other" : "one"}]`);
 		else
 			obj[l] = game.i18n.format(`BF.Spell.Circle.Level${dashed ? "Dashed" : ""}`, {
-				number: numberFormat(l, { ordinal: true })
+				number: formatNumber(l, { ordinal: true })
 			});
 		return obj;
 	}, {});

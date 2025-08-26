@@ -1,4 +1,4 @@
-import { defaultUnit, formatTaggedList, numberFormat, Trait } from "../../../utils/_module.mjs";
+import { defaultUnit, formatNumber, formatTaggedList, Trait } from "../../../utils/_module.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
 const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -60,7 +60,7 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 		const extras = Object.entries(languages.communication).reduce((arr, [key, data]) => {
 			const label = CONFIG.BlackFlag.rangedCommunication[key]?.label;
 			if ( label && data.range ) arr.push(
-				`${game.i18n.localize(label)} ${numberFormat(data.range, { unit: data.units })}`
+				`${game.i18n.localize(label)} ${formatNumber(data.range, { unit: data.units })}`
 			);
 			return arr;
 		}, []);

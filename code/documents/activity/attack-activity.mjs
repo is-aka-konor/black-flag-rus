@@ -2,9 +2,10 @@ import AttackRollConfigurationDialog from "../../applications/dice/attack-config
 import { AttackData } from "../../data/activity/attack-data.mjs";
 import {
 	buildRoll,
+	convertDistance,
 	formatDistance,
 	getTargetDescriptors,
-	numberFormat,
+	formatNumber,
 	simplifyFormula
 } from "../../utils/_module.mjs";
 import Activity from "./activity.mjs";
@@ -65,7 +66,7 @@ export default class AttackActivity extends Activity {
 	get challengeColumn() {
 		const layout = document.createElement("div");
 		layout.classList.add("layout");
-		layout.innerHTML = numberFormat(this.system.toHit, { sign: true });
+		layout.innerHTML = formatNumber(this.system.toHit, { sign: true });
 		return layout.outerHTML;
 	}
 
@@ -169,7 +170,7 @@ export default class AttackActivity extends Activity {
 				)
 				.map(i => ({
 					value: i.id,
-					label: `${i.name} (${numberFormat(i.system.quantity)})`,
+					label: `${i.name} (${formatNumber(i.system.quantity)})`,
 					disabled: !i.system.quantity
 				}))
 				.sort((lhs, rhs) => lhs.label.localeCompare(rhs.label, game.i18n.lang));
@@ -464,8 +465,7 @@ export default class AttackActivity extends Activity {
 		// Add reach for melee weapons, unless the activity is explicitly specified as a ranged attack
 		if (this.system.validAttackTypes.has("melee")) {
 			let { reach, units } = this.item.system.range;
-			// TODO: Convert units
-			// if ( !reach ) reach = convertLength(5, "ft", { to: units });
+			if (!reach) reach = convertDistance(5, "foot", { to: units }).value;
 			if (!reach) reach = 5;
 			parts.push(
 				game.i18n.format("BF.RANGE.Formatted.Reach", {

@@ -1,4 +1,4 @@
-import { getPluralLocalizationKey, numberFormat } from "../../../utils/_module.mjs";
+import { formatNumber, getPluralLocalizationKey } from "../../../utils/_module.mjs";
 import BaseActorSheet from "./base-actor-sheet.mjs";
 
 /**
@@ -54,7 +54,7 @@ export default class BaseStatblockSheet extends BaseActorSheet {
 			parts.push(
 				game.i18n.format(
 					getPluralLocalizationKey(activityy.activation.value, pr => `BF.LegendaryAction.Cost[${pr}]`),
-					{ count: numberFormat(activity.activation.value) }
+					{ count: formatNumber(activity.activation.value) }
 				)
 			);
 		}
@@ -66,13 +66,13 @@ export default class BaseStatblockSheet extends BaseActorSheet {
 			// If max is set and min is zero, display as "1 of 3"
 			if (uses.min === 0) {
 				label = game.i18n.format("BF.Uses.Display.Of", {
-					value: numberFormat(uses.value),
-					max: numberFormat(uses.max)
+					value: formatNumber(uses.value),
+					max: formatNumber(uses.max)
 				});
 			}
 
 			// If min isn't zero, display just current value "1"
-			else label = numberFormat(uses.value);
+			else label = formatNumber(uses.value);
 
 			// If only a single recovery formula that is Recharge
 			if (uses.recovery.length === 1 && uses.recovery[0].period === "recharge") {
@@ -190,17 +190,17 @@ export default class BaseStatblockSheet extends BaseActorSheet {
 				const abbreviation = game.i18n.localize(config?.npcLabel ?? config?.abbreviation);
 				if (abbreviation)
 					value.label = game.i18n.format("BF.Uses.Display.Recovery", {
-						value: numberFormat(uses.max),
+						value: formatNumber(uses.max),
 						period: abbreviation.toLowerCase()
 					});
-				else value.label = numberFormat(uses.max);
+				else value.label = formatNumber(uses.max);
 			} else {
 				value.label = game.i18n.localize("BF.Spell.Preparation.Mode.AtWill");
 			}
 			const spells = [];
 			for (const spell of value.spells.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name, game.i18n.lang))) {
 				const usesRemaining = uses.max
-					? ` <span class="remaining">${numberFormat(spell.system.uses.value)}</span>`
+					? ` <span class="remaining">${formatNumber(spell.system.uses.value)}</span>`
 					: "";
 				spells.push(
 					`<span class="spell"><a data-action="activate" data-item-id="${spell.id}">${spell.name.toLowerCase()}</a>${usesRemaining}</span>`

@@ -1,7 +1,7 @@
 import MappingField from "../data/fields/mapping-field.mjs";
 import SelectChoices from "../documents/select-choices.mjs";
 import { getPluralLocalizationKey, getPluralRules } from "./localization.mjs";
-import { numberFormat } from "./number.mjs";
+import { formatNumber } from "./number.mjs";
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 /*                      Application                      */
@@ -266,7 +266,7 @@ export function traitLabel(trait, count) {
  */
 export function keyLabel(key, { count, trait, final, priority }={}) {
 	let parts = key.split(":");
-	const localizedCount = count ? numberFormat(count, { spelledOut: true }) : null;
+	const localizedCount = count ? formatNumber(count, { spelledOut: true }) : null;
 	priority ??= count ? "localization" : "label";
 
 	if ( !trait || trait === parts[0] ) trait = parts.shift();
@@ -322,7 +322,7 @@ export function keyLabel(key, { count, trait, final, priority }={}) {
  */
 export function choiceLabel(choice, { only=false, final=false, trait }={}) {
 	if ( !choice.pool.size ) return "";
-	const count = numberFormat(choice.count, { spelledOut: true });
+	const count = formatNumber(choice.count, { spelledOut: true });
 
 	// Single entry in pool
 	// { count: 3, pool: ["skills:*"] } -> any three skills

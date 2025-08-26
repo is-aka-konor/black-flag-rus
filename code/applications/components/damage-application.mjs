@@ -1,4 +1,4 @@
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import ChatTrayElement from "./chat-tray-element.mjs";
 import TargetedApplicationMixin from "./targeted-application-mixin.mjs";
 
@@ -268,15 +268,15 @@ export default class DamageApplicationElement extends TargetedApplicationMixin(C
 	refreshListEntry(token, entry, options) {
 		const { temp, tempMax, total } = this.calculateDamage(token, options);
 		const calculatedDamage = entry.querySelector(".calculated.damage");
-		calculatedDamage.innerText = numberFormat(-total, { signDisplay: "exceptZero" });
+		calculatedDamage.innerText = formatNumber(-total, { signDisplay: "exceptZero" });
 		calculatedDamage.classList.toggle("healing", total < 0);
 		calculatedDamage.dataset.tooltip = `BF.${total < 0 ? "Healing" : "DAMAGE"}.Label`;
 		calculatedDamage.hidden = !total && !!temp && !!tempMax;
 		const calculatedTemp = entry.querySelector(".calculated.temp");
-		calculatedTemp.innerText = numberFormat(-temp, { sign: true });
+		calculatedTemp.innerText = formatNumber(-temp, { sign: true });
 		calculatedTemp.hidden = !temp;
 		const calculatedTempMax = entry.querySelector(".calculated.temp-max");
-		calculatedTempMax.innerText = numberFormat(-tempMax, { sign: true });
+		calculatedTempMax.innerText = formatNumber(-tempMax, { sign: true });
 		calculatedTempMax.classList.toggle("healing", tempMax < 0);
 		calculatedTempMax.hidden = !tempMax;
 

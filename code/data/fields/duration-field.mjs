@@ -1,4 +1,4 @@
-import { formatTime, numberFormat } from "../../utils/_module.mjs";
+import { formatNumber, formatTime } from "../../utils/_module.mjs";
 import FormulaField from "./formula-field.mjs";
 
 const { SchemaField, StringField } = foundry.data.fields;
@@ -48,7 +48,7 @@ export default class DurationField extends SchemaField {
 					const unit = CONFIG.BlackFlag.durationOptions({ pluralCount: this.value, isSpell }).get(this.units);
 					if (unit?.scalar) {
 						if (!this.value) return null;
-						return numberFormat(this.value, { unit });
+						return formatNumber(this.value, { unit });
 					}
 					return unit?.label ?? "";
 				}

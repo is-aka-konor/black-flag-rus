@@ -1,5 +1,5 @@
 import Proficiency from "../../documents/proficiency.mjs";
-import { linkForUUID, log, numberFormat, Trait } from "../../utils/_module.mjs";
+import { formatNumber, linkForUUID, log, Trait } from "../../utils/_module.mjs";
 import JournalEditor from "./journal-editor.mjs";
 
 const { JournalEntryPageHandlebarsSheet } = foundry.applications.sheets.journal;
@@ -278,7 +278,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 			}
 
 			// Level & proficiency bonus
-			const cells = [{ class: "level", content: numberFormat(level, { ordinal: true }) }];
+			const cells = [{ class: "level", content: formatNumber(level, { ordinal: true }) }];
 			if (item.type === "class") cells.push({ class: "prof", content: `+${Proficiency.calculateMod(level)}` });
 			if (hasFeatures)
 				cells.push({
@@ -336,7 +336,7 @@ export default class JournalClassPageSheet extends JournalEntryPageHandlebarsShe
 			return game.i18n.format("BF.Feature.Tag", {
 				level: game.i18n
 					.getListFormatter()
-					.format(levels.sort((lhs, rhs) => lhs - rhs).map(l => numberFormat(l, { ordinal: true }))),
+					.format(levels.sort((lhs, rhs) => lhs - rhs).map(l => formatNumber(l, { ordinal: true }))),
 				owner: item.name,
 				type: game.i18n.localize("BF.Item.Type.Feature[one]")
 			});

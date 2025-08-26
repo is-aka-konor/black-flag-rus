@@ -1,4 +1,4 @@
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import AppAssociatedElement from "./app-associated-element.mjs";
 
 /**
@@ -44,7 +44,7 @@ export default class DeathSavesElement extends AppAssociatedElement {
 					n,
 					filled: this.death[type] >= n,
 					tooltip: `${key}.Label`,
-					label: game.i18n.format(`${key}.Count`, { count: numberFormat(n, { ordinal: true }) })
+					label: game.i18n.format(`${key}.Count`, { count: formatNumber(n, { ordinal: true }) })
 				});
 			}
 		}

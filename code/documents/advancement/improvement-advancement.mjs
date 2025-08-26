@@ -1,6 +1,6 @@
 import BaseActorSheet from "../../applications/actor/api/base-actor-sheet.mjs";
 import { ImprovementConfigurationData, ImprovementValueData } from "../../data/advancement/improvement-data.mjs";
-import { getPluralLocalizationKey, linkForUUID, numberFormat, Search } from "../../utils/_module.mjs";
+import { formatNumber, getPluralLocalizationKey, linkForUUID, Search } from "../../utils/_module.mjs";
 import GrantFeaturesAdvancement from "./grant-features-advancement.mjs";
 
 /**
@@ -87,8 +87,8 @@ export default class ImprovementAdvancement extends GrantFeaturesAdvancement {
 
 	/** @override */
 	summaryForLevel(levels, { flow = false } = {}) {
-		const p1 = numberFormat(1, { sign: true });
-		const p2 = numberFormat(2, { sign: true });
+		const p1 = formatNumber(1, { sign: true });
+		const p2 = formatNumber(2, { sign: true });
 
 		if (flow) {
 			const choices = [];

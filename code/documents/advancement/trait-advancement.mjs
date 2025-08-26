@@ -1,6 +1,6 @@
 import { TraitConfigurationData, TraitValueData } from "../../data/advancement/trait-data.mjs";
 import SelectChoices from "../../documents/select-choices.mjs";
-import { numberFormat } from "../../utils/number.mjs";
+import { formatNumber } from "../../utils/number.mjs";
 import { filteredKeys } from "../../utils/object.mjs";
 import * as Trait from "../../utils/trait.mjs";
 import Advancement from "./advancement.mjs";
@@ -232,7 +232,7 @@ export default class TraitAdvancement extends Advancement {
 			return {
 				choices,
 				label: game.i18n.format("BF.Advancement.Trait.Notification", {
-					count: numberFormat(available.length, { spelledOut: true }),
+					count: formatNumber(available.length, { spelledOut: true }),
 					type: Trait.traitLabel(this.bestGuessTrait(), available.length)
 				})
 			};
@@ -250,7 +250,7 @@ export default class TraitAdvancement extends Advancement {
 		return {
 			choices,
 			label: game.i18n.format(`BF.Advancement.Trait.Notification${simplifyNotification ? "Simple" : ""}`, {
-				count: numberFormat(available.length, { spelledOut: true }),
+				count: formatNumber(available.length, { spelledOut: true }),
 				type: Trait.traitLabel(this.bestGuessTrait(available.map(a => a.set)), available.length)
 			})
 		};

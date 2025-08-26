@@ -1,7 +1,7 @@
 import SkillRollConfigurationDialog from "../applications/dice/skill-configuration-dialog.mjs";
 import ActivationsField from "../data/chat-message/fields/activations-field.mjs";
 import ActorDeltasField from "../data/chat-message/fields/deltas-field.mjs";
-import { buildRoll, getPluralLocalizationKey, log, numberFormat, Trait } from "../utils/_module.mjs";
+import { buildRoll, formatNumber, getPluralLocalizationKey, log, Trait } from "../utils/_module.mjs";
 import DocumentMixin from "./mixins/document.mjs";
 import NotificationsCollection from "./notifications.mjs";
 import Proficiency from "./proficiency.mjs";
@@ -866,9 +866,9 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		// Prepare localization data
 		const localizationData = {
 			name: this.name,
-			hitDice: numberFormat(result.type === "long" ? totalHD : -totalHD),
+			hitDice: formatNumber(result.type === "long" ? totalHD : -totalHD),
 			hitDiceLabel: game.i18n.localize(getPluralLocalizationKey(totalHD, pr => `BF.HitDie.Label[${pr}]`)).toLowerCase(),
-			hitPoints: numberFormat(result.deltas.hitPoints),
+			hitPoints: formatNumber(result.deltas.hitPoints),
 			hitPointsLabel: game.i18n
 				.localize(getPluralLocalizationKey(results.deltas.hitPoints, pr => `BF.HitPoint.Label[${pr}]`))
 				.toLowerCase()
@@ -1292,9 +1292,8 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		// Display success/failure chat message
 		if (details.chatString) {
 			const pluralRule = new Intl.PluralRules(game.i18n.lang).select(details.count);
-			const numberFormatter = new Intl.NumberFormat(game.i18n.lang);
 			const counted = game.i18n.format("BF.Death.Message.Counted", {
-				count: numberFormatter.format(details.count),
+				count: formatNumber(details.count),
 				label: game.i18n.localize(`BF.Death.Message.Label[${pluralRule}]`)
 			});
 			let chatData = {

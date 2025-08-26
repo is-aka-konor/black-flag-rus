@@ -1,4 +1,4 @@
-import { numberFormat, replaceFormulaData, simplifyBonus } from "../../utils/_module.mjs";
+import { formatNumber, replaceFormulaData, simplifyBonus } from "../../utils/_module.mjs";
 import ActivationField from "../fields/activation-field.mjs";
 import DurationField from "../fields/duration-field.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -288,7 +288,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 		this.uses.value = Math.clamp(this.uses.max - this.uses.spent, 0, this.uses.max);
 		Object.defineProperty(this.uses, "label", {
 			get() {
-				if (this.max) return `${numberFormat(this.value)} / ${numberFormat(this.max)}`;
+				if (this.max) return `${formatNumber(this.value)} / ${formatNumber(this.max)}`;
 				return "";
 			},
 			configurable: true,

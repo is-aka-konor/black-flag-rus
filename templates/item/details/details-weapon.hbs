@@ -69,7 +69,7 @@
 	{{#if properties.reach.selected}}
 		<label class="reach">
 			<span>{{ localize "BF.Reach.Label" }}</span>
-			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder="+5"
+			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder=reachPlaceholder
 			             rootId=partId }}
 			{{ formField fields.range.fields.units value=source.range.units options=CONFIG.distanceUnits.localizedOptions
 									 classes="label-top" rootId=partId }}

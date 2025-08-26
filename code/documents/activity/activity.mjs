@@ -8,7 +8,7 @@ import {
 	buildRoll,
 	getTargetDescriptors,
 	localizeSchema,
-	numberFormat,
+	formatNumber,
 	simplifyFormula
 } from "../../utils/_module.mjs";
 import PseudoDocumentMixin from "../mixins/pseudo-document.mjs";
@@ -356,13 +356,13 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 		if (this.consumption.targets.find(t => t.type === "item")) {
 			const itemUses = this.item.system.uses;
 			if (itemUses.max) {
-				uses.innerHTML += `<span>${numberFormat(itemUses.value)} / ${numberFormat(itemUses.max)}</span>`;
+				uses.innerHTML += `<span>${formatNumber(itemUses.value)} / ${formatNumber(itemUses.max)}</span>`;
 			} else if (itemUses.consumeQuantity && this.item.system.isPhysical) {
-				uses.innerHTML += `<span>${numberFormat(this.item.system.quantity)}</span>`;
+				uses.innerHTML += `<span>${formatNumber(this.item.system.quantity)}</span>`;
 			}
 		}
 		if (this.consumption.targets.find(t => t.type === "activity")) {
-			uses.innerHTML += `<span>${numberFormat(this.uses.value)} / ${numberFormat(this.uses.max)}</span>`;
+			uses.innerHTML += `<span>${formatNumber(this.uses.value)} / ${formatNumber(this.uses.max)}</span>`;
 		}
 		return uses.outerHTML;
 	}
@@ -854,8 +854,8 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 					const err = new ConsumptionError(
 						game.i18n.format(errMessage, {
 							type: CONFIG.BlackFlag.actionTypes.localized[this.activation.type],
-							required: numberFormat(count),
-							available: numberFormat(legendary.value)
+							required: formatNumber(count),
+							available: formatNumber(legendary.value)
 						})
 					);
 					errors.push(err);

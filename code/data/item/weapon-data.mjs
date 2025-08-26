@@ -1,4 +1,4 @@
-import { defaultUnit, formatDistance, formatNumber, stepDenomination } from "../../utils/_module.mjs";
+import { convertDistance, defaultUnit, formatDistance, formatNumber, stepDenomination } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import { DamageField } from "../fields/_module.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
@@ -212,10 +212,10 @@ export default class WeaponData extends ItemDataModel.mixin(
 	get reachLabel() {
 		if (this.type.value !== "melee") return "";
 
-		const unit = this.range.units ?? Object.keys(CONFIG.BlackFlag.distanceUnits)[0];
-		// TODO: Define starting reach for imperial/metric
-		const reach = this.properties.has("reach") ? this.range.reach || 5 : 0;
-		return formatDistance(5 + reach, unit, { unitDisplay: "short" });
+		const unit = this.range.units ?? defaultUnit("distance");
+		const baseReach = convertDistance(5, "foot", { to: unit });
+		const reach = this.properties.has("reach") ? this.range.reach || baseReach : 0;
+		return formatDistance(baseReach + reach, unit, { unitDisplay: "short" });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -390,6 +390,9 @@ export default class WeaponData extends ItemDataModel.mixin(
 			obj[k] = { label: game.i18n.localize(o.label), selected: has(context.source.options, k) };
 			return obj;
 		}, {});
+		context.reachPlaceholder = formatNumber(convertDistance(5, "foot", { to: this.range.units }).value, {
+			signDisplay: "always"
+		});
 		context.types = { options: CONFIG.BlackFlag.weaponTypes.localized };
 	}
 }

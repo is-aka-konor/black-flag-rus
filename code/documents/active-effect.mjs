@@ -1,6 +1,6 @@
 import FormulaField from "../data/fields/formula-field.mjs";
 import MappingField from "../data/fields/mapping-field.mjs";
-import { numberFormat, staticID } from "../utils/_module.mjs";
+import { formatNumber, staticID } from "../utils/_module.mjs";
 
 const { ObjectField, SchemaField, SetField, StringField } = foundry.data.fields;
 
@@ -102,7 +102,7 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 		let level = this.getFlag("black-flag", "level");
 		if (!Number.isFinite(level)) level = 1;
 		this.img = `systems/black-flag/artwork/statuses/exhaustion-${level}.svg`;
-		this.name = game.i18n.format("BF.Condition.Exhaustion.Numbered", { level: numberFormat(level) });
+		this.name = game.i18n.format("BF.Condition.Exhaustion.Numbered", { level: formatNumber(level) });
 		if (level >= 6) this.statuses.add("dead");
 	}
 
@@ -327,7 +327,7 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 			if (newLevel === originalLevel) return;
 			if (newLevel < originalLevel)
 				this.name = game.i18n.format("BF.Condition.Exhaustion.Numbered", {
-					level: numberFormat(originalLevel)
+					level: formatNumber(originalLevel)
 				});
 			this._displayScrollingStatus(newLevel > originalLevel);
 			this.name = name;

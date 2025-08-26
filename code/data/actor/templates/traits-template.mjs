@@ -1,4 +1,4 @@
-import { defaultUnit, formatTaggedList, numberFormat, simplifyBonus } from "../../../utils/_module.mjs";
+import { defaultUnit, formatNumber, formatTaggedList, simplifyBonus } from "../../../utils/_module.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
@@ -94,8 +94,8 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 
 			const label = CONFIG.BlackFlag.movementTypes.localized[type];
 			if ( speed && label ) {
-				if ( type === "walk" ) entries.set(type, numberFormat(speed, { unit: movement.units }));
-				else entries.set(type, `${label.toLowerCase()} ${numberFormat(speed, { unit: movement.units })}`);
+				if ( type === "walk" ) entries.set(type, formatNumber(speed, { unit: movement.units }));
+				else entries.set(type, `${label.toLowerCase()} ${formatNumber(speed, { unit: movement.units })}`);
 			}
 		}
 
@@ -106,7 +106,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 			.map(([type, speed]) => {
 				const config = CONFIG.BlackFlag.movementTypes[type];
 				const label = config ? game.i18n.localize(config.label) : type;
-				return `${label} ${numberFormat(speed, { unit: movement.units })}`;
+				return `${label} ${formatNumber(speed, { unit: movement.units })}`;
 			});
 		movement.labels.push(...movement.custom);
 		movement.label = formatTaggedList({
@@ -120,7 +120,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 			const range = simplifyBonus(formula, rollData);
 			senses.types[type] = range;
 			const label = CONFIG.BlackFlag.senses.localized[type];
-			if ( range && label ) senseEntries.set(type, `${label} ${numberFormat(range, { unit: senses.units })}`);
+			if ( range && label ) senseEntries.set(type, `${label} ${formatNumber(range, { unit: senses.units })}`);
 		}
 		senses.label = formatTaggedList({
 			entries: senseEntries, extras: senses.custom, tags: senses.tags, tagDefinitions: CONFIG.BlackFlag.senseTags

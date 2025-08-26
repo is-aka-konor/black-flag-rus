@@ -1,4 +1,4 @@
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import BFApplication from "../api/application.mjs";
 import ConceptSelectionDialog from "./concept-selection-dialog.mjs";
 
@@ -59,8 +59,8 @@ export default class LevelUpDialog extends BFApplication {
 		if (abilityValue < CONFIG.BlackFlag.multiclassingAbilityThreshold) {
 			context.multiclassMessage = game.i18n.format("BF.Progression.Warning.InsufficientPrimaryScore", {
 				ability: CONFIG.BlackFlag.abilities.localized[primaryClass.system.keyAbility],
-				threshold: numberFormat(CONFIG.BlackFlag.multiclassingAbilityThreshold),
-				value: numberFormat(abilityValue)
+				threshold: formatNumber(CONFIG.BlackFlag.multiclassingAbilityThreshold),
+				value: formatNumber(abilityValue)
 			});
 		}
 

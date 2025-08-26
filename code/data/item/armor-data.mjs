@@ -1,4 +1,4 @@
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
@@ -110,12 +110,12 @@ export default class ArmorData extends ItemDataModel.mixin(
 	 */
 	get acLabel() {
 		let label;
-		if (this.type.category === "shield") label = numberFormat(this._source.armor.value || 2, { sign: true });
+		if (this.type.category === "shield") label = formatNumber(this._source.armor.value || 2, { sign: true });
 		else
-			label = `${game.i18n.localize("BF.ArmorClass.Abbreviation")}: ${numberFormat(
+			label = `${game.i18n.localize("BF.ArmorClass.Abbreviation")}: ${formatNumber(
 				this._source.armor.value || 0
 			)} ${this.modifierHint(false)}`;
-		if (this.magicAvailable && this.magicalBonus) label += ` + ${numberFormat(this.magicalBonus)}`;
+		if (this.magicAvailable && this.magicalBonus) label += ` + ${formatNumber(this.magicalBonus)}`;
 		return label.trim();
 	}
 
@@ -314,6 +314,6 @@ export default class ArmorData extends ItemDataModel.mixin(
 		});
 		if (!this.modifier.max) return hint;
 
-		return game.i18n.format("BF.Armor.Modifier.Description.Max", { hint, max: numberFormat(this.modifier.max) });
+		return game.i18n.format("BF.Armor.Modifier.Description.Max", { hint, max: formatNumber(this.modifier.max) });
 	}
 }

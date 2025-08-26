@@ -1,4 +1,4 @@
-import { filter, linkForUUID, numberFormat, Trait } from "../../../utils/_module.mjs";
+import { filter, formatNumber, linkForUUID, Trait } from "../../../utils/_module.mjs";
 import FilterField from "../../fields/filter-field.mjs";
 
 const { ArrayField, BooleanField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -135,7 +135,7 @@ export default class FeatureTemplate extends foundry.abstract.DataModel {
 			if ( !filters[`ability-${key}`] ) continue;
 			prerequisites.push(validate(filters[`ability-${key}`], game.i18n.format("BF.Prerequisite.Ability.Label", {
 				abbreviation: game.i18n.localize(ability.labels.abbreviation).toUpperCase(),
-				value: numberFormat(filters[`ability-${key}`].v)
+				value: formatNumber(filters[`ability-${key}`].v)
 			})));
 		}
 
@@ -180,11 +180,11 @@ export default class FeatureTemplate extends foundry.abstract.DataModel {
 
 		// Traits
 		if ( filters.characterLevel ) prerequisites.push(validate(filters.characterLevel, game.i18n.format(
-			"BF.Prerequisite.LevelCharacter.Label", { level: numberFormat(filters.characterLevel.v, { ordinal: true }) }
+			"BF.Prerequisite.LevelCharacter.Label", { level: formatNumber(filters.characterLevel.v, { ordinal: true }) }
 		)));
 		if ( filters.classLevel ) prerequisites.push(validate(filters.classLevel, game.i18n.format(
 			"BF.Prerequisite.LevelClass.Label", {
-				level: numberFormat(filters.classLevel.v, { ordinal: true }),
+				level: formatNumber(filters.classLevel.v, { ordinal: true }),
 				class: CONFIG.BlackFlag.registration.get("class", filters.classLevel._class)?.name ?? "—"
 			}
 		)));
@@ -242,7 +242,7 @@ export default class FeatureTemplate extends foundry.abstract.DataModel {
 				const abilityKey = invalidFilter._id.replace("ability-", "");
 				messages.push(game.i18n.format("BF.Prerequisite.Ability.Warning", {
 					ability: game.i18n.localize(CONFIG.BlackFlag.abilities[abilityKey].labels.full).toLowerCase(),
-					value: numberFormat(invalidFilter.v)
+					value: formatNumber(invalidFilter.v)
 				}));
 				continue;
 			}
@@ -268,12 +268,12 @@ export default class FeatureTemplate extends foundry.abstract.DataModel {
 					break;
 				case "characterLevel":
 					messages.push(game.i18n.format("BF.Prerequisite.LevelCharacter.Warning", {
-						level: numberFormat(invalidFilter.v, { ordinal: true })
+						level: formatNumber(invalidFilter.v, { ordinal: true })
 					}));
 					break;
 				case "classLevel":
 					messages.push(game.i18n.format("BF.Prerequisite.LevelClass.Warning", {
-						level: numberFormat(invalidFilter.v, { ordinal: true }),
+						level: formatNumber(invalidFilter.v, { ordinal: true }),
 						class: CONFIG.BlackFlag.registration.get("class", invalidFilter._class)?.name ?? "—"
 					}))
 					break;

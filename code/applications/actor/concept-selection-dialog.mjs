@@ -1,4 +1,4 @@
-import { getPluralLocalizationKey, numberFormat } from "../../utils/_module.mjs";
+import { formatNumber, getPluralLocalizationKey } from "../../utils/_module.mjs";
 import BFApplication from "../api/application.mjs";
 
 /**
@@ -144,7 +144,7 @@ export default class ConceptSelectionDialog extends BFApplication {
 							.getListFormatter({ type: "disjunction" })
 							.format(keyAbilityOptions.map(a => CONFIG.BlackFlag.abilities.localized[a])),
 						class: doc.name,
-						threshold: numberFormat(CONFIG.BlackFlag.multiclassingAbilityThreshold)
+						threshold: formatNumber(CONFIG.BlackFlag.multiclassingAbilityThreshold)
 					}
 				);
 			}

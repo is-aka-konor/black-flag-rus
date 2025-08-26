@@ -1,4 +1,4 @@
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import AppAssociatedElement from "./app-associated-element.mjs";
 
 /**
@@ -49,8 +49,8 @@ export default class XPBarElement extends AppAssociatedElement {
 		bar.setAttribute("aria-valuemin", xp.min);
 		bar.setAttribute("aria-valuemax", xp.max);
 		this.querySelector('[name="xpChange"]').value = "";
-		this.querySelector(".values .min").innerText = numberFormat(xp.value);
-		this.querySelector(".values .max").innerText = numberFormat(xp.max);
+		this.querySelector(".values .min").innerText = formatNumber(xp.value);
+		this.querySelector(".values .max").innerText = formatNumber(xp.max);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

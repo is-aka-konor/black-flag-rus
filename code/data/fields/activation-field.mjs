@@ -1,4 +1,4 @@
-import { formatTime, numberFormat } from "../../utils/_module.mjs";
+import { formatNumber, formatTime } from "../../utils/_module.mjs";
 
 const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
@@ -80,7 +80,7 @@ export default class ActivationField extends SchemaField {
 			if (!type) return "";
 
 			label = game.i18n.format("BF.ACTIVATION.Formatted.Scalar", {
-				number: numberFormat(data.value ?? 1),
+				number: formatNumber(data.value ?? 1),
 				type: type.label,
 				typeLowercase: type.label.toLowerCase()
 			});

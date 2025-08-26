@@ -1,4 +1,4 @@
-import { numberFormat } from "../../../utils/_module.mjs";
+import { formatNumber } from "../../../utils/_module.mjs";
 import BaseConfigSheet from "../api/base-config-sheet.mjs";
 
 /**
@@ -72,7 +72,7 @@ export default class HealthConfig extends BaseConfigSheet {
 		// Create level multiplier HTML
 		context.levels = this.document.system.progression?.level ?? 0;
 		context.levelMultiplier = `
-			<span class="multiplier"><span class="times">&times;</span> ${numberFormat(context.levels)}</span>
+			<span class="multiplier"><span class="times">&times;</span> ${formatNumber(context.levels)}</span>
 		`;
 
 		context.hd = {

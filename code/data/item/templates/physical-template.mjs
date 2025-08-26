@@ -149,24 +149,27 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	 * Should be called during the `prepareDerivedData` stage.
 	 */
 	preparePhysicalLabels() {
-		const system = this;
+		const data = this;
 		if ( this.price ) Object.defineProperty(this.price, "label", {
 			get() {
-				if ( !system.totalPrice ) return "—";
+				if ( !data.totalPrice ) return "—";
 				const denominationConfig = CONFIG.BlackFlag.currencies[this.denomination];
 				return game.i18n.format("BF.Currency.Display", {
-					value: formatNumber(system.totalPrice), denomination: game.i18n.localize(denominationConfig.abbreviation)
+					value: formatNumber(data.totalPrice), denomination: game.i18n.localize(denominationConfig.abbreviation)
 				});
 				// TODO: Adjust total displayed to use smallest logical units (so 5 cp x 20 = 100 cp => 1 gp)
 			},
 			configurable: true,
 			enumerable: false
 		});
+		const system = game.settings.get(game.system.id, "localization").weight;
+		const converted = convertWeight(this.weight.value, this.weight.units, { system, legacy: false });
+		Object.assign(this.weight, { value: converted.value, units: converted.unit });
 		Object.defineProperty(this.weight, "label", {
 			get() {
-				const totalWeight = system.totalWeight;
+				const totalWeight = data.totalWeight;
 				if ( totalWeight instanceof Promise || !totalWeight ) return "—";
-				return formatWeight(system.totalWeight.toNearest(0.1), this.units, { unitDisplay: "short" });
+				return formatWeight(data.totalWeight.toNearest(0.1), this.units, { unitDisplay: "short" });
 				// TODO: Reduce to units in current system that result in the smallest value
 			},
 			configurable: true,
@@ -276,6 +279,6 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 		if ( weight instanceof Promise ) {
 			return weight.then(w => convertWeight(w, this.weight.units, { legacy: false, to: units }).value);
 		}
-		return convertWeight(weight, this.weight.units, { legacy: false, to: units}).value;
+		return convertWeight(weight, this.weight.units, { legacy: false, to: units }).value;
 	}
 }

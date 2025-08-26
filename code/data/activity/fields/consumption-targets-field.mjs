@@ -1,7 +1,7 @@
 import {
 	getAttributeOption,
 	getPluralLocalizationKey,
-	numberFormat,
+	formatNumber,
 	simplifyBonus,
 	simplifyFormula
 } from "../../../utils/_module.mjs";
@@ -202,8 +202,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 		if (warningMessage)
 			throw new ConsumptionError(
 				game.i18n.format(warningMessage, {
-					available: numberFormat(current),
-					cost: numberFormat(cost),
+					available: formatNumber(current),
+					cost: formatNumber(cost),
 					type: game.i18n.format("BF.CONSUMPTION.Type.Attribute.Warning", { attribute })
 				})
 			);
@@ -241,8 +241,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 					game.i18n.format(warningMessage, {
 						type: game.i18n.format("BF.CONSUMPTION.Type.HitDice.Warning", { denomination }),
 						denomination,
-						cost: numberFormat(cost, { spelledOut: true }),
-						available: numberFormat(denom?.value, { spelledOut: true })
+						cost: formatNumber(cost, { spelledOut: true }),
+						available: formatNumber(denom?.value, { spelledOut: true })
 					})
 				);
 			}
@@ -268,8 +268,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			throw new ConsumptionError(
 				game.i18n.format(warningMessage, {
 					type: game.i18n.localize("BF.HitDie.Label[other]").toLowerCase(),
-					cost: numberFormat(cost, { spelledOut: true }),
-					available: numberFormat(available, { spelledOut: true })
+					cost: formatNumber(cost, { spelledOut: true }),
+					available: formatNumber(available, { spelledOut: true })
 				})
 			);
 		}
@@ -339,8 +339,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 				game.i18n.format(warningMessage, {
 					type,
 					circle,
-					cost: numberFormat(cost, { spelledOut: true }),
-					available: numberFormat(circleData?.value, { spelledOut: true })
+					cost: formatNumber(cost, { spelledOut: true }),
+					available: formatNumber(circleData?.value, { spelledOut: true })
 				})
 			);
 		}
@@ -377,8 +377,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			throw new ConsumptionError(
 				game.i18n.format(warningMessage, {
 					type,
-					cost: numberFormat(cost, { spelledOut: true }),
-					available: numberFormat(availableUses, { spelledOut: true })
+					cost: formatNumber(cost, { spelledOut: true }),
+					available: formatNumber(availableUses, { spelledOut: true })
 				})
 			);
 
@@ -427,7 +427,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			hint: game.i18n.format(`BF.CONSUMPTION.Type.ActivityUses.PromptHint${increaseKey}`, {
 				cost,
 				use: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${pluralRule}`),
-				available: numberFormat(uses.value),
+				available: formatNumber(uses.value),
 				availableUse: game.i18n.localize(getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Type.Use.${pr}`))
 			}),
 			warn: simplifiedCost > uses.value
@@ -451,7 +451,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			hint: game.i18n.format(`BF.CONSUMPTION.Type.Attribute.PromptHint${increaseKey}`, {
 				cost,
 				attribute: getAttributeOption(this.target)?.label ?? this.target,
-				current: numberFormat(current)
+				current: formatNumber(current)
 			}),
 			warn: simplifiedCost > current
 		};
@@ -482,7 +482,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 				cost,
 				denomination: denomination.toLowerCase(),
 				die: game.i18n.localize(`BF.CONSUMPTION.Type.HitDie.${pluralRule}`),
-				available: numberFormat(available)
+				available: formatNumber(available)
 			}),
 			warn: simplifiedCost > available
 		};
@@ -515,7 +515,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			hint: game.i18n.format(`BF.CONSUMPTION.Type.ItemUses.PromptHint${increaseKey}`, {
 				cost,
 				use: game.i18n.localize(`BF.CONSUMPTION.Type.Use.${pluralRule}`),
-				available: numberFormat(totalUses),
+				available: formatNumber(totalUses),
 				availableUse: game.i18n.localize(getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Type.Use.${pr}`)),
 				item: item ? `<em>${itemName}</em>` : itemName
 			}),
@@ -542,7 +542,7 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 			hint: game.i18n.format(`BF.CONSUMPTION.Type.SpellSlots.PromptHint${increaseKey}`, {
 				cost,
 				slot: game.i18n.format(`BF.CONSUMPTION.Type.SpellSlot.${pluralRule}`, { level }),
-				available: numberFormat(available)
+				available: formatNumber(available)
 			}),
 			warn: simplifiedCost > available
 		};
@@ -622,12 +622,12 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 				uses.recovery[0].period !== "recharge"
 			) {
 				const period = CONFIG.BlackFlag.recoveryPeriods.localizedAbbreviations[uses.recovery[0].period];
-				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Period", { value: numberFormat(uses.max), period });
+				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Period", { value: formatNumber(uses.max), period });
 			} else {
 				const type = game.i18n.localize(
 					getPluralLocalizationKey(uses.value, pr => `BF.CONSUMPTION.Uses.Available.Charges[${pr}]`)
 				);
-				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Limited", { value: numberFormat(uses.value), type });
+				label = game.i18n.format("BF.CONSUMPTION.Uses.Available.Limited", { value: formatNumber(uses.value), type });
 			}
 			return `${name} (${label})`;
 		};

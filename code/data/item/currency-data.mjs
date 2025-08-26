@@ -1,5 +1,5 @@
 import CurrencySheet from "../../applications/item/currency-sheet.mjs";
-import { numberFormat } from "../../utils/_module.mjs";
+import { formatNumber } from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import DescriptionTemplate from "./templates/description-template.mjs";
 import PhysicalTemplate from "./templates/physical-template.mjs";
@@ -89,7 +89,7 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 	/** @inheritDoc */
 	get chatTags() {
 		const tags = this.parent.chatTags;
-		tags.set("details", `${numberFormat(this.quantity)} ${this.abbreviation}`);
+		tags.set("details", `${formatNumber(this.quantity)} ${this.abbreviation}`);
 		this.setPhysicalChatTags(tags);
 		return tags;
 	}

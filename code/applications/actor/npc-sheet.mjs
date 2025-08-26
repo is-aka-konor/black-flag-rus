@@ -1,4 +1,4 @@
-import { formatCR, getPluralLocalizationKey, numberFormat } from "../../utils/_module.mjs";
+import { formatCR, formatNumber, getPluralLocalizationKey } from "../../utils/_module.mjs";
 import BaseStatBlockSheet from "./api/base-stat-block-sheet.mjs";
 import NPCSpellcastingConfig from "./config/npc-spellcasting-config.mjs";
 
@@ -75,11 +75,11 @@ export default class NPCSheet extends BaseStatBlockSheet {
 
 		context.showCurrency = true;
 
-		context.stealthLabel = numberFormat(context.system.attributes.stealth);
+		context.stealthLabel = formatNumber(context.system.attributes.stealth);
 		if (context.system.attributes.baseStealth)
 			context.stealthLabel = game.i18n.format("BF.Armor.StealthReduction", {
 				reduced: context.stealthLabel,
-				full: numberFormat(context.system.attributes.baseStealth)
+				full: formatNumber(context.system.attributes.baseStealth)
 			});
 
 		return context;
