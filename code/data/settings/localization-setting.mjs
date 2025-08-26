@@ -29,14 +29,14 @@ export default class LocalizationSetting extends foundry.abstract.DataModel {
 
 	/**
 	 * Determine the default unit that should be used for a certain usage type.
-	 * @param {"distance"|"pace"|"volume"|"weight"} type - Type of units to select.
+	 * @param {"distance"|"pace"|"volume"|"weight"} type - Type of unit to select.
 	 * @returns {string}
 	 */
 	defaultUnit(type) {
 		if (!(type in CONFIG.BlackFlag.defaultUnits)) {
 			throw new Error(`Unit type "${type}" does not have a registered default.`);
 		}
-		let systemType = { pace: "distance" }[type] ?? type;
+		let systemType = { cargo: "weight", pace: "distance" }[type] ?? type;
 		return (
 			CONFIG.BlackFlag.defaultUnits[type]?.[this[systemType]] ??
 			Object.values(CONFIG.BlackFlag.defaultUnits[type] ?? {})[0]

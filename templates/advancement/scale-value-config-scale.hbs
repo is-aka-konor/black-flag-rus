@@ -10,7 +10,7 @@
 					<span>Value</span>
 				{{else if (eq @root.type.input "distance")}}
 					<span>Value</span>
-					<span>Units</span>
+					<span>Unit</span>
 				{{else if (eq @root.type.input "dice")}}
 					<span>Number</span>
 					<span>Denomination</span>
@@ -34,10 +34,10 @@
 					{{else if (eq @root.type.input "distance")}}
 						<input type="number" name="configuration.scale.{{ level }}.value" step="any"
 						       value="{{ data.value.value }}" placeholder="{{ data.placeholder.value }}">
-						<select name="configuration.scale.{{ level }}.units"
-						        {{~#unless data.value.units}} class="placeholder"{{/unless}}>
-							{{ selectOptions @root.CONFIG.distanceUnits.localized selected=data.value.units
-							                 blank=data.placeholder.units }}
+						<select name="configuration.scale.{{ level }}.unit"
+						        {{~#unless data.value.unit}} class="placeholder"{{/unless}}>
+							{{ selectOptions @root.CONFIG.distanceUnits.localized selected=data.value.unit
+							                 blank=data.placeholder.unit }}
 						</select>
 					{{else if (eq @root.type.input "dice")}}
 						<input type="number" name="configuration.scale.{{ level }}.number" step="1"

@@ -17,7 +17,7 @@
 				       placeholder="{{ placeholder }}">
 			</label>
 		{{/each}}
-		{{ formField movement.fields.units value=movement.data.units options=CONFIG.distanceUnits.localizedOptions
+		{{ formField movement.fields.unit value=movement.data.unit options=CONFIG.distanceUnits.localizedOptions
 		             localize=true partId=rootId }}
 	</fieldset>
 
@@ -27,7 +27,7 @@
 			{{#each pace.types}}
 				{{ formField field name=name value=value label=label rootId=@root.partId }}
 			{{/each}}
-			{{ formField pace.fields.units value=pace.data.units options=CONFIG.paceUnits.localizedOptions
+			{{ formField pace.fields.unit value=pace.data.unit options=CONFIG.paceUnits.localizedOptions
 			             localize=true partId=rootId }}
 		</fieldset>
 	{{/if}}

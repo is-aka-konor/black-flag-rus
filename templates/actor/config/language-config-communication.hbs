@@ -3,7 +3,10 @@
 	{{#each languages.communication}}
 		<label>
 			<span>{{ label }}</span>
-			<input type="number" name="system.proficiencies.languages.communication.{{ @key }}" value="{{ value.range }}">
+			<input type="number" name="system.proficiencies.languages.communication.{{ @key }}.range" value="{{ value.range }}">
+			<select name="system.proficiencies.languages.communication.{{ @key }}.unit">
+				{{ selectOptions @root.CONFIG.distanceUnits.localizedOptions selected=value.unit }}
+			</select>
 		</label>
 	{{/each}}
 </fieldset>

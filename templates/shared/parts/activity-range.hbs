@@ -9,13 +9,13 @@
 			</label>
 		{{/if}}
 		<label>
-			<span>{{ localize "BF.RANGE.FIELDS.range.units.label" }}</span>
-			<select name="{{ prefix }}range.units">
-				{{ selectOptions rangeOptions selected=data.range.units }}
+			<span>{{ localize "BF.RANGE.FIELDS.range.unit.label" }}</span>
+			<select name="{{ prefix }}range.unit">
+				{{ selectOptions rangeOptions selected=data.range.unit }}
 			</select>
 		</label>
 	</div>
-	{{#if range.units}}
+	{{#if range.unit}}
 		<label>
 			<span>{{ localize "BF.RANGE.FIELDS.range.special.label" }}</span>
 			<input type="text" name="{{ prefix }}range.special" value="{{ data.range.special }}">

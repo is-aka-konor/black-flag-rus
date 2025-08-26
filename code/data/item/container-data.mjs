@@ -19,10 +19,10 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  * @property {number} capacity.count - Number if items that can be stored within.
  * @property {object} capacity.volume
  * @property {number} capacity.volume.value - Limit on the internal volume of the container.
- * @property {string} capacity.volume.units - Units used to measure the volume.
+ * @property {string} capacity.volume.unit - Units used to measure the volume.
  * @property {object} capacity.weight
  * @property {number} capacity.weight.value - Limit on the weight of the contained items.
- * @property {string} capacity.weight.units - Units used to measure the weight.
+ * @property {string} capacity.weight.unit - Units used to measure the weight.
  */
 export default class ContainerData extends ItemDataModel.mixin(
 	DescriptionTemplate,
@@ -70,14 +70,24 @@ export default class ContainerData extends ItemDataModel.mixin(
 					volume: new SchemaField(
 						{
 							value: new NumberField({ min: 0, label: "BF.Volume.Label" }),
-							units: new StringField({ initial: () => defaultUnit("volume"), label: "BF.UNITS.VOLUME.Label" })
+							unit: new StringField({
+								required: true,
+								blank: false,
+								initial: () => defaultUnit("volume"),
+								label: "BF.UNITS.VOLUME.Label"
+							})
 						},
 						{ label: "BF.Container.Capacity.Volume.Label" }
 					),
 					weight: new SchemaField(
 						{
 							value: new NumberField({ min: 0, label: "BF.Weight.Label" }),
-							units: new StringField({ initial: () => defaultUnit("weight"), label: "BF.UNITS.WEIGHT.Label" })
+							unit: new StringField({
+								required: true,
+								blank: false,
+								initial: () => defaultUnit("weight"),
+								label: "BF.UNITS.WEIGHT.Label"
+							})
 						},
 						{ label: "BF.Container.Capacity.Weight.Label" }
 					)
@@ -190,8 +200,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 		return this.contents.reduce(
 			(weight, item) =>
 				weight +
-				convertWeight(item.system.totalWeight, item.system.weight.units, { legacy: false, to: this.weight.units })
-					.value,
+				convertWeight(item.system.totalWeight, item.system.weight.unit, { legacy: false, to: this.weight.unit }).value,
 			0
 		);
 	}
@@ -205,7 +214,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 		return contents.reduce(
 			async (weight, item) =>
 				(await weight) +
-				convertWeight(await item.system.totalWeight, item.system.weight.units, { legacy: false, to: this.weight.units })
+				convertWeight(await item.system.totalWeight, item.system.weight.unit, { legacy: false, to: this.weight.unit })
 					.value,
 			0
 		);
@@ -225,12 +234,28 @@ export default class ContainerData extends ItemDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+
+		// Added in 2.0.068
+		this._migrateObjectUnits(source.capacity?.volume);
+		this._migrateObjectUnits(source.capacity?.weight);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this._shimObjectUnits("capacity.volume");
+		this._shimObjectUnits("capacity.weight");
+		this.shimWeightUnits();
 		this.quantity = 1;
 	}
 

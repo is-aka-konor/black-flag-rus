@@ -222,6 +222,72 @@ export default class BaseDataModel extends foundry.abstract.TypeDataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate data in a mapping field from `units` to `unit`.
+	 * Added in 2.0.068
+	 * @param {Record<string, object>} data - Mapping field data to migrate.
+	 * @internal
+	 */
+	static _migrateMappingFieldUnits(data) {
+		if (!data) return;
+		for (const value of Object.values(data)) {
+			this._migrateObjectUnits(value);
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate data in an object from `units` to `unit`.
+	 * Added in 2.0.068
+	 * @param {object} data - Object to migrate.
+	 * @internal
+	 */
+	static _migrateObjectUnits(data) {
+		if (!data || !("units" in data)) return;
+		data.unit ??= data.units;
+		delete data.units;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Data Shims             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Apply shims to mapping field containing migrated `unit` value.
+	 * @param {string} keyPath - Key path to object to shim.
+	 * @internal
+	 */
+	_shimMappingFieldUnits(keyPath) {
+		for (const [name, value] of Object.entries(foundry.utils.getProperty(this, keyPath) ?? {})) {
+			this._shimObjectUnits(`${keyPath}.${name}`, value);
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Apply shims to an object containing migrated `unit` value.
+	 * @param {string} keyPath - Key path to object to shim.
+	 * @param {object} [data] - Object to shim. If not set, will be fetched from this data model.
+	 * @internal
+	 */
+	_shimObjectUnits(keyPath, data) {
+		data ??= foundry.utils.getProperty(this, keyPath);
+		if (!data) return;
+		Object.defineProperty(data, "units", {
+			get() {
+				foundry.utils.logCompatibilityWarning(`The \`units\` property in \`${keyPath}\` has been renamed \`unit\`.`, {
+					since: "Black Flag 2.0.068",
+					until: "Black Flag 2.2"
+				});
+				return this.unit;
+			}
+		});
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

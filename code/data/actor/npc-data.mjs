@@ -177,6 +177,8 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this.shimLanguages();
+		this.shimMovementSenses();
 
 		for (const [key, ability] of Object.entries(this.abilities)) {
 			ability._source = this._source.abilities?.[key] ?? {};

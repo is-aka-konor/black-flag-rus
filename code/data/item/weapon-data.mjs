@@ -30,7 +30,7 @@ const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
  * @property {number} range.short - Short range of the weapon.
  * @property {number} range.long - Long range of the weapon.
  * @property {number} range.reach - Additional reach of the weapon beyond the wielder's normal reach.
- * @property {string} range.units - Units used to measure range and reach.
+ * @property {string} range.unit - Units used to measure range and reach.
  * @property {object} type
  * @property {string} type.value - Is this a melee or a ranged weapon?
  * @property {string} type.category - Weapon category as defined in `CONFIG.BlackFlag.weapons`.
@@ -86,7 +86,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 				short: new NumberField({ min: 0, step: 0.1 }),
 				long: new NumberField({ min: 0, step: 0.1 }),
 				reach: new NumberField({ min: 0, step: 0.1 }),
-				units: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
+				unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
 			}),
 			type: new SchemaField({
 				value: new StringField({ initial: "melee" }),
@@ -187,7 +187,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Label for the range with units.
+	 * Label for the range with unit.
 	 * @type {string}
 	 */
 	get rangeLabel() {
@@ -196,7 +196,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 		const values = [];
 		if (this.range.short) values.push(this.range.short);
 		if (this.range.long && this.range.long !== this.range.short) values.push(this.range.long);
-		const unit = this.range.units ?? Object.keys(CONFIG.BlackFlag.distanceUnits)[0];
+		const unit = this.range.unit ?? Object.keys(CONFIG.BlackFlag.distanceUnits)[0];
 		if (!values.length || !unit) return "";
 
 		const last = values.pop();
@@ -206,13 +206,13 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Label for the reach with units.
+	 * Label for the reach with unit.
 	 * @type {string}
 	 */
 	get reachLabel() {
 		if (this.type.value !== "melee") return "";
 
-		const unit = this.range.units ?? defaultUnit("distance");
+		const unit = this.range.unit ?? defaultUnit("distance");
 		const baseReach = convertDistance(5, "foot", { to: unit });
 		const reach = this.properties.has("reach") ? this.range.reach || baseReach : 0;
 		return formatDistance(baseReach + reach, unit, { unitDisplay: "short" });
@@ -311,6 +311,9 @@ export default class WeaponData extends ItemDataModel.mixin(
 				foundry.utils.setProperty(source, "damage.base.additionalTypes", source.damage.additionalTypes);
 			}
 		}
+
+		// Added in 2.0.068
+		this._migrateObjectUnits(source.range);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -320,6 +323,8 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this._shimObjectUnits("range");
+		this.shimWeightUnits();
 
 		Object.defineProperty(this.type, "classification", {
 			value: "weapon",
@@ -390,7 +395,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 			obj[k] = { label: game.i18n.localize(o.label), selected: has(context.source.options, k) };
 			return obj;
 		}, {});
-		context.reachPlaceholder = formatNumber(convertDistance(5, "foot", { to: this.range.units }).value, {
+		context.reachPlaceholder = formatNumber(convertDistance(5, "foot", { to: this.range.unit }).value, {
 			signDisplay: "always"
 		});
 		context.types = { options: CONFIG.BlackFlag.weaponTypes.localized };

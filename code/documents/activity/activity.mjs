@@ -190,9 +190,9 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 		const tags = this.item.system.chatTags ?? this.item.chatTags;
 		tags.set("activation", this.activation.label);
 		tags.set("duration", this.duration.label);
-		if (this.range.units) tags.set("range", this.range.label);
+		if (this.range.unit) tags.set("range", this.range.label);
 		if (this.target.affects.type) tags.set("affects", this.target.affects.label);
-		if (this.target.template.units) tags.set("template", this.target.template.label);
+		if (this.target.template.unit) tags.set("template", this.target.template.label);
 		return tags;
 	}
 
@@ -377,17 +377,6 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 		const types = new Set(Object.keys(CONFIG.BlackFlag.consumptionTypes));
 		if (this.isSpell) types.delete("spellSlots");
 		return types;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*           Data Preparation          */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @override */
-	prepareData() {
-		this.name = this.name || game.i18n.localize(this.constructor.metadata.title);
-		this.img = this.img || this.constructor.metadata.icon;
-		this.system.prepareData?.();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

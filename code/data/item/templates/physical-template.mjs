@@ -16,7 +16,7 @@ const { ForeignDocumentField, NumberField, SchemaField, StringField } = foundry.
  * @property {string} rarity - Rarity level of a magic item, blank for mundane items.
  * @property {object} weight
  * @property {number} weight.value - Item's weight.
- * @property {string} weight.units - Units used to measure item's weight.
+ * @property {string} weight.unit - Units used to measure item's weight.
  */
 export default class PhysicalTemplate extends foundry.abstract.DataModel {
 
@@ -26,7 +26,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 			attunement: new SchemaField({
 				requirement: new StringField({ label: "BF.Attunement.Requirement.Label" }),
 				value: new StringField({ label: "BF.Attunement.Type.Label" })
-			}, {label: "BF.Attunement.Label"}),
+			}, { label: "BF.Attunement.Label" }),
 			container: new ForeignDocumentField(foundry.documents.BaseItem, {
 				idOnly: true, label: "BF.Item.Type.Container[one]"
 			}),
@@ -37,7 +37,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 				denomination: new StringField({
 					blank: false, initial: "gp", label: "BF.Currency.Denomination.Label"
 				})
-			}, {label: "BF.Price.Label"}),
+			}, { label: "BF.Price.Label" }),
 			quantity: new NumberField({
 				nullable: false, initial: 1, min: 0, integer: true, label: "BF.Quantity.Label"
 			}),
@@ -46,8 +46,8 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 				value: new NumberField({
 					nullable: false, initial: 0, min: 0, step: 0.01, label: "BF.Weight.Label"
 				}),
-				units: new StringField({ initial: () => defaultUnit("weight") })
-			}, {label: "BF.Weight.Label"})
+				unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("weight") })
+			}, { label: "BF.Weight.Label" })
 		};
 	}
 
@@ -141,6 +141,30 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate weight `units` to `unit`.
+	 * Added in 2.0.068
+	 * @param {object} source - Candidate source data to migrate.
+	 */
+	static migrateWeightUnits(source) {
+		this._migrateObjectUnits(source.weight);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Data Shims             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Apply shims to weight units.
+	 */
+	shimWeightUnits() {
+		this._shimObjectUnits("weight");
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -157,20 +181,19 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 				return game.i18n.format("BF.Currency.Display", {
 					value: formatNumber(data.totalPrice), denomination: game.i18n.localize(denominationConfig.abbreviation)
 				});
-				// TODO: Adjust total displayed to use smallest logical units (so 5 cp x 20 = 100 cp => 1 gp)
+				// TODO: Adjust total displayed to use smallest logical unit (so 5 cp x 20 = 100 cp => 1 gp)
 			},
 			configurable: true,
 			enumerable: false
 		});
 		const system = game.settings.get(game.system.id, "localization").weight;
-		const converted = convertWeight(this.weight.value, this.weight.units, { system, legacy: false });
-		Object.assign(this.weight, { value: converted.value, units: converted.unit });
+		Object.assign(this.weight, convertWeight(this.weight.value, this.weight.unit, { system, legacy: false }));
 		Object.defineProperty(this.weight, "label", {
 			get() {
 				const totalWeight = data.totalWeight;
 				if ( totalWeight instanceof Promise || !totalWeight ) return "—";
-				return formatWeight(data.totalWeight.toNearest(0.1), this.units, { unitDisplay: "short" });
-				// TODO: Reduce to units in current system that result in the smallest value
+				return formatWeight(data.totalWeight.toNearest(0.1), this.unit, { unitDisplay: "short" });
+				// TODO: Reduce to unit in current system that result in the smallest value
 			},
 			configurable: true,
 			enumerable: false
@@ -270,15 +293,15 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Calculate the total weight and return it in specific units.
-	 * @param {string} units - Units in which the weight should be returned.
+	 * Calculate the total weight and return it in specific unit.
+	 * @param {string} unit - Unit in which the weight should be returned.
 	 * @returns {number|Promise<number>}
 	 */
-	totalWeightIn(units) {
+	totalWeightIn(unit) {
 		const weight = this.totalWeight;
 		if ( weight instanceof Promise ) {
-			return weight.then(w => convertWeight(w, this.weight.units, { legacy: false, to: units }).value);
+			return weight.then(w => convertWeight(w, this.weight.unit, { legacy: false, to: unit }).value);
 		}
-		return convertWeight(weight, this.weight.units, { legacy: false, to: units }).value;
+		return convertWeight(weight, this.weight.unit, { legacy: false, to: unit }).value;
 	}
 }

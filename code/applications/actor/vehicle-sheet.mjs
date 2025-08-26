@@ -1,4 +1,4 @@
-import { formatNumber } from "../../utils/_module.mjs";
+import { formatDistance } from "../../utils/_module.mjs";
 import BaseStatBlockSheet from "./api/base-stat-block-sheet.mjs";
 
 /**
@@ -37,8 +37,8 @@ export default class VehicleSheet extends BaseStatBlockSheet {
 		const context = await super._prepareContext(options);
 
 		const dimensions = game.i18n.format("BF.VEHICLE.Dimensions", {
-			length: formatNumber(context.system.traits.dimensions.length, { unit: context.system.traits.dimensions.units }),
-			width: formatNumber(context.system.traits.dimensions.width, { unit: context.system.traits.dimensions.units })
+			length: formatDistance(context.system.traits.dimensions.length, context.system.traits.dimensions.unit),
+			width: formatDistance(context.system.traits.dimensions.width, context.system.traits.dimensions.unit)
 		});
 		context.labels = {
 			sizeAndType: `${game.i18n.localize(CONFIG.BlackFlag.sizes[context.system.traits.size]?.label ?? "")} ${

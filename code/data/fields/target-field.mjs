@@ -13,7 +13,7 @@ const { BooleanField, SchemaField, StringField } = foundry.data.fields;
  * @property {string} template.size - Primary template size.
  * @property {string} template.width - Width of the template if relevant.
  * @property {string} template.height - Height of the template if relevant.
- * @property {string} template.units - Units used to measure the template.
+ * @property {string} template.unit - Unit used to measure the template.
  * @property {object} affects
  * @property {string} affects.formula - Number of targets affected.
  * @property {string} affects.type - Type of targets affected (e.g. creatures, objects, allies, enemies)
@@ -33,7 +33,7 @@ export default class TargetField extends SchemaField {
 				size: new FormulaField({ deterministic: true }),
 				width: new FormulaField({ deterministic: true }),
 				height: new FormulaField({ deterministic: true }),
-				units: new StringField({ initial: () => defaultUnit("distance") })
+				unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
 			}),
 			affects: new SchemaField({
 				count: new FormulaField({ deterministic: true }),
@@ -203,7 +203,7 @@ export default class TargetField extends SchemaField {
 			: game.i18n.localize(type.label) ?? "";
 
 		if (type.icon) {
-			let size = formatDistance(template.size, template.units, { unitDisplay: "narrow" });
+			let size = formatDistance(template.size, template.unit, { unitDisplay: "narrow" });
 			const image = `<img class="area-icon" src="${type.icon}" alt="${shape}"></img>`;
 			short = game.i18n.format("BF.AreaOfEffect.Described", {
 				size: style === "combined" ? `<span class="number">${size}</span>` : size,
@@ -217,7 +217,7 @@ export default class TargetField extends SchemaField {
 
 		if (style !== "short" && short) {
 			long = game.i18n.format("BF.AreaOfEffect.Described", {
-				size: formatDistance(template.size, template.units),
+				size: formatDistance(template.size, template.unit),
 				shape,
 				shapeLowercase: shape.toLowerCase()
 			});

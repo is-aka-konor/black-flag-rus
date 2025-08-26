@@ -1,4 +1,4 @@
-import { defaultUnit, formatNumber, formatTaggedList, Trait } from "../../../utils/_module.mjs";
+import { defaultUnit, formatDistance, formatTaggedList, Trait } from "../../../utils/_module.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
 const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -18,7 +18,7 @@ const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.
  *
  * @typedef {object} CommunicationData
  * @property {number} range - Range to which this ability can be used.
- * @property {string} units - Units used to measure range.
+ * @property {string} unit - Units used to measure range.
  */
 
 /**
@@ -37,13 +37,39 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 					value: new SetField(new StringField(), { required: true, label: "BF.Language.Dialect.Label" }),
 					communication: new MappingField(new SchemaField({
 						range: new NumberField({ min: 0, label: "BF.RANGE.Label" }),
-						units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.RANGE.Unit.Label" })
+						unit: new StringField({
+							required: true, blank: false, initial: () => defaultUnit("distance"), label: "BF.RANGE.Unit.Label"
+						})
 					}), { label: "BF.Language.Communication.Label" }),
 					custom: new ArrayField(new StringField(), { required: true, label: "BF.Language.Custom.Label" }),
 					tags: new SetField(new StringField(), { required: true, label: "BF.Language.Tag.Label" })
 				}, { label: "BF.Language.Label[other]" })
 			})
 		};
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate communication `units` to `unit`.
+	 * Added in 2.0.068
+	 * @param {object} source - Candidate source data to migrate.
+	 */
+	static migrateCommunication(source) {
+		this._migrateMappingFieldUnits(source.proficiencies?.languages?.communication);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Data Shims             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Apply shims to communication units.
+	 */
+	shimLanguages() {
+		this._shimMappingFieldUnits("proficiencies.languages.communication");
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -60,7 +86,7 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 		const extras = Object.entries(languages.communication).reduce((arr, [key, data]) => {
 			const label = CONFIG.BlackFlag.rangedCommunication[key]?.label;
 			if ( label && data.range ) arr.push(
-				`${game.i18n.localize(label)} ${formatNumber(data.range, { unit: data.units })}`
+				`${game.i18n.localize(label)} ${formatDistance(data.range, data.unit)}`
 			);
 			return arr;
 		}, []);

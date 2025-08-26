@@ -464,12 +464,12 @@ export default class AttackActivity extends Activity {
 
 		// Add reach for melee weapons, unless the activity is explicitly specified as a ranged attack
 		if (this.system.validAttackTypes.has("melee")) {
-			let { reach, units } = this.item.system.range;
-			if (!reach) reach = convertDistance(5, "foot", { to: units }).value;
+			let { reach, unit } = this.item.system.range;
+			if (!reach) reach = convertDistance(5, "foot", { to: unit }).value;
 			if (!reach) reach = 5;
 			parts.push(
 				game.i18n.format("BF.RANGE.Formatted.Reach", {
-					reach: formatDistance(reach, units, { strict: false })
+					reach: formatDistance(reach, unit, { strict: false })
 				})
 			);
 		}
@@ -477,11 +477,11 @@ export default class AttackActivity extends Activity {
 		// Add range for ranged or thrown weapons, unless the activity is explicitly specified as melee
 		if (this.system.validAttackTypes.has("ranged")) {
 			let range;
-			if (this.range.override) range = `${this.range.value} ${this.range.units ?? ""}`;
+			if (this.range.override) range = `${this.range.value} ${this.range.unit ?? ""}`;
 			else {
-				const { short, long, units } = this.item.system.range;
-				if (long && short !== long) range = `${short}/${formatDistance(long, units, { strict: false })}`;
-				else range = formatDistance(short, units, { strict: false });
+				const { short, long, unit } = this.item.system.range;
+				if (long && short !== long) range = `${short}/${formatDistance(long, unit, { strict: false })}`;
+				else range = formatDistance(short, unit, { strict: false });
 			}
 			parts.push(game.i18n.format("BF.RANGE.Formatted.Range", { range }));
 		}

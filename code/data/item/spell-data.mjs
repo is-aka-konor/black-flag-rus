@@ -141,9 +141,9 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		tags.set("details", this.components.label);
 		tags.set("activation", this.casting.label);
 		tags.set("duration", this.duration.label);
-		if (this.range.units) tags.set("range", this.range.label);
+		if (this.range.unit) tags.set("range", this.range.label);
 		if (this.target.affects.type) tags.set("affects", this.target.affects.label);
-		if (this.target.template.units) tags.set("template", this.target.template.label);
+		if (this.target.template.unit) tags.set("template", this.target.template.label);
 		tags.set("attuned", this.preparationLabel);
 		return tags;
 	}
@@ -281,7 +281,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		const traits = [
 			this.associatedClass?.name,
 			CONFIG.BlackFlag.spellSchools.localized[this.school],
-			this.duration.units !== "instantaneous" ? this.duration.label : null,
+			this.duration.unit !== "instantaneous" ? this.duration.label : null,
 			...this.tags.map(t => CONFIG.BlackFlag.spellTags.localized[t])
 		];
 		const listFormatter = new Intl.ListFormat(game.i18n.lang, { type: "unit" });
@@ -292,16 +292,19 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/*           Data Migrations           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/**
-	 * Migrate spell circle to source, ring to circle, and migrate single spell source to set of sources.
-	 * Added in 0.9.023
-	 * @param {object} source - Candidate source data to migrate.
-	 */
-	static migrateSourceCircle(source) {
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+
+		// Added in 0.9.023
 		if ("circle" in source && !("source" in source)) source.source = source.circle;
 		if ("ring" in source) source.circle = source.ring;
-		if (foundry.utils.getType(source.source) !== "string") return;
-		source.source = [source.source];
+		if (foundry.utils.getType(source.source) === "string") source.source = [source.source];
+
+		// Added in 2.0.068
+		this._migrateObjectUnits(source.duration);
+		this._migrateObjectUnits(source.range);
+		this._migrateObjectUnits(source.target?.template);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -311,6 +314,9 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this._shimObjectUnits("duration");
+		this._shimObjectUnits("range");
+		this._shimObjectUnits("target.template");
 		const system = this;
 
 		Object.defineProperty(this.casting, "scalar", {
@@ -543,7 +549,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 			});
 
 			context.rangeLabel = this.range.label;
-			if (this.range.units === "self") {
+			if (this.range.unit === "self") {
 				const templateLabel = TargetField.templateLabel(this.target, { style: "long" });
 				if (templateLabel) context.rangeLabel = `${context.rangeLabel} (${templateLabel})`;
 			}
@@ -581,7 +587,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		};
 		context.activationOptions = CONFIG.BlackFlag.activationOptions({ chosen: context.source.casting.type });
 		context.durationOptions = CONFIG.BlackFlag.durationOptions({
-			chosen: context.source.duration.units,
+			chosen: context.source.duration.unit,
 			isSpell: true
 		});
 		context.originOptions = [

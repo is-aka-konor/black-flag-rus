@@ -68,13 +68,13 @@
 				{{!-- TODO: If formula is used, add tooltip to display value at various levels --}}
 			{{/if}}
 			<label>
-				<span>{{ localize "BF.DURATION.FIELDS.duration.units.label" }}</span>
-				<select name="system.duration.units">
+				<span>{{ localize "BF.DURATION.FIELDS.duration.unit.label" }}</span>
+				<select name="system.duration.unit">
 					{{ blackFlag-groupedSelectOptions durationOptions }}
 				</select>
 			</label>
 		</div>
-		{{#if (eq system.duration.units "special")}}
+		{{#if (eq system.duration.unit "special")}}
 			<label>
 				<span>{{ localize "BF.DURATION.FIELDS.duration.special.label" }}</span>
 				<input type="text" name="system.duration.special" value="{{ system.duration.special }}">

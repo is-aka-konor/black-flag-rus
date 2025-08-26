@@ -162,6 +162,7 @@ export default class ArmorData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this.shimWeightUnits();
 		this.armor.value = this._source.armor.value;
 	}
 

@@ -85,6 +85,14 @@ export default class ConsumableData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	prepareBaseData() {
+		super.prepareBaseData();
+		this.shimWeightUnits();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();

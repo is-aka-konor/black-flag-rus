@@ -125,6 +125,10 @@ Hooks.on("blackFlag.registrationDeleted", function (identifier, item) {
  * @type {Record<string, Record<string, string>>}
  */
 export const defaultUnits = {
+	cargo: {
+		imperial: "ton",
+		metric: "megagram"
+	},
 	distance: {
 		imperial: "foot",
 		metric: "meter"

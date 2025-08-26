@@ -335,6 +335,8 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this.shimLanguages();
+		this.shimMovementSenses();
 
 		this.progression.abilities.assignmentComplete = true;
 		for (const [key, ability] of Object.entries(this.abilities)) {

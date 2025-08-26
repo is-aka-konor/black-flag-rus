@@ -6,7 +6,7 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  * Field for storing information about a spell's casting time or activity's activation.
  *
  * @property {string} value - Activation value.
- * @property {string} units - Units used to measure the activation.
+ * @property {string} type - Activation type or unit.
  * @property {string} condition - Condition required to trigger activation.
  *
  * @param {object} [fields={}] - Additional fields to add or, if value is `false`, default fields to remove.

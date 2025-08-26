@@ -75,6 +75,14 @@ export default class SundryData extends ItemDataModel.mixin(DescriptionTemplate,
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	prepareBaseData() {
+		super.prepareBaseData();
+		this.shimWeightUnits();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	prepareDerivedData() {
 		super.prepareDerivedData();
 		this.prepareDescription();

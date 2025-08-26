@@ -223,7 +223,7 @@ export default class BaseActorSheet extends DocumentSheetMixin(foundry.appv1.she
 
 		const totalWeight = await item.system.totalWeight;
 		context.weight = totalWeight
-			? formatWeight(totalWeight.toNearest(0.1), item.system.weight.units, { unitDisplay: "short" })
+			? formatWeight(totalWeight.toNearest(0.1), item.system.weight.unit, { unitDisplay: "short" })
 			: "—";
 	}
 

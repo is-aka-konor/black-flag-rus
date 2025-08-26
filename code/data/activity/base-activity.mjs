@@ -1,4 +1,5 @@
 import { formatNumber, replaceFormulaData, simplifyBonus } from "../../utils/_module.mjs";
+import BaseDataModel from "../abstract/base-data-model.mjs";
 import ActivationField from "../fields/activation-field.mjs";
 import DurationField from "../fields/duration-field.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -194,6 +195,22 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	/*            Data Migration           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+
+		// Added in 2.0.068
+		BaseDataModel._migrateObjectUnits(source.duration);
+		BaseDataModel._migrateObjectUnits(source.range);
+		BaseDataModel._migrateObjectUnits(source.target?.template);
+		if (source.system?.summon?.identifier) {
+			foundry.utils.setProperty(source, "visibility.identifier", source.system.summon.identifier);
+			delete source.system.summon.identifier;
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * Migrate custom damage formulas to object.
 	 * Added in 0.9.035
@@ -206,21 +223,20 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Data Preparation          */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/**
-	 * Migrate summon identifier to global identifier.
-	 * Added in 2.0.068
-	 * @param {DamageField} source - Candidate source data for a summon identifier to migrate.
-	 */
-	static _migrateSummonIdentifier(source) {
-		if (source.system?.summon?.identifier) {
-			foundry.utils.setProperty(source, "visibility.identifier", source.system.summon.identifier);
-			delete source.system.summon.identifier;
-		}
+	/** @override */
+	prepareData() {
+		BaseDataModel.prototype._shimObjectUnits.call(this, "duration");
+		BaseDataModel.prototype._shimObjectUnits.call(this, "range");
+		BaseDataModel.prototype._shimObjectUnits.call(this, "target.template");
+
+		this.name = this.name || game.i18n.localize(this.constructor.metadata.title);
+		this.img = this.img || this.constructor.metadata.icon;
+		this.system.prepareData?.();
 	}
 
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */

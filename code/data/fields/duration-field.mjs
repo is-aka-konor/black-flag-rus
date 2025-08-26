@@ -7,8 +7,8 @@ const { SchemaField, StringField } = foundry.data.fields;
  * Field for storing information about a item or activity's duration.
  *
  * @property {string} value - Duration value.
- * @property {string} units - Units used to measure the duration.
- * @property {string} special - Description of the duration if units is `special`.
+ * @property {string} unit - Units used to measure the duration.
+ * @property {string} special - Description of the duration if unit is `special`.
  *
  * @param {object} [fields={}] - Additional fields to add or, if value is `false`, default fields to remove.
  * @param {object} [options={}] - Additional options in addition to the default label.
@@ -17,7 +17,7 @@ export default class DurationField extends SchemaField {
 	constructor(fields = {}, options = {}) {
 		fields = {
 			value: new FormulaField({ deterministic: true }),
-			units: new StringField({ initial: "instantaneous" }),
+			unit: new StringField({ initial: "instantaneous" }),
 			special: new StringField(),
 			...fields
 		};
@@ -34,7 +34,7 @@ export default class DurationField extends SchemaField {
 
 		Object.defineProperty(obj, "scalar", {
 			get() {
-				return this.units ? !!CONFIG.BlackFlag.durationOptions({ isSpell }).get(this.units)?.scalar : false;
+				return this.unit ? !!CONFIG.BlackFlag.durationOptions({ isSpell }).get(this.unit)?.scalar : false;
 			},
 			configurable: true,
 			enumerable: false
@@ -42,10 +42,10 @@ export default class DurationField extends SchemaField {
 
 		Object.defineProperty(obj, "label", {
 			get() {
-				if (this.units in CONFIG.BlackFlag.timeUnits.localized) {
-					return formatTime(this.value, this.units);
+				if (this.unit in CONFIG.BlackFlag.timeUnits.localized) {
+					return formatTime(this.value, this.unit);
 				} else {
-					const unit = CONFIG.BlackFlag.durationOptions({ pluralCount: this.value, isSpell }).get(this.units);
+					const unit = CONFIG.BlackFlag.durationOptions({ pluralCount: this.value, isSpell }).get(this.unit);
 					if (unit?.scalar) {
 						if (!this.value) return null;
 						return formatNumber(this.value, { unit });

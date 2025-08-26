@@ -1675,7 +1675,7 @@
 			"special": {
 				"label": "Special Duration"
 			},
-			"units": {
+			"unit": {
 				"label": "Duration Type"
 			},
 			"value": {
@@ -2556,14 +2556,14 @@
 				"tags": {
 					"label": "Movement Tags"
 				},
-				"units": {
-					"label": "Speed Units"
+				"unit": {
+					"label": "Speed Unit"
 				}
 			},
 			"pace": {
 				"label": "Travel Pace",
-				"units": {
-					"label": "Pace Units"
+				"unit": {
+					"label": "Pace Unit"
 				}
 			}
 		}
@@ -2868,7 +2868,7 @@
 			"special": {
 				"label": "Special Range"
 			},
-			"units": {
+			"unit": {
 				"label": "Range Type"
 			},
 			"value": {
@@ -3131,8 +3131,8 @@
 				"types": {
 					"label": "Sense Types"
 				},
-				"units": {
-					"label": "Sense Units"
+				"unit": {
+					"label": "Sense Unit"
 				}
 			}
 		}
@@ -3985,9 +3985,9 @@
 					"label": "Area Type",
 					"hint": "Type of area of effect targeted."
 				},
-				"units": {
-					"label": "Area Units",
-					"hint": "Units used to measure the area of effect sizes."
+				"unit": {
+					"label": "Area Unit",
+					"hint": "Unit used to measure the area of effect sizes."
 				},
 				"width": {
 					"label": "Area Width",
@@ -4433,8 +4433,8 @@
 				"max": {
 					"label": "Cargo Capacity"
 				},
-				"units": {
-					"label": "Cargo Units"
+				"unit": {
+					"label": "Cargo Unit"
 				}
 			},
 			"crew": {
@@ -4456,8 +4456,8 @@
 				"length": {
 					"label": "Length"
 				},
-				"units": {
-					"label": "Units"
+				"unit": {
+					"label": "Unit"
 				},
 				"width": {
 					"label": "Width"
@@ -4582,8 +4582,8 @@
 			"short": {
 				"label": "Short Range"
 			},
-			"units": {
-				"label": "Range Units"
+			"unit": {
+				"label": "Range Unit"
 			}
 		}
 	},

@@ -1,4 +1,4 @@
-import { formatNumber } from "../../utils/_module.mjs";
+import { formatWeight } from "../../utils/_module.mjs";
 import InventoryElement from "../components/inventory.mjs";
 import EquipmentSheet from "./equipment-sheet.mjs";
 
@@ -119,9 +119,7 @@ export default class ContainerSheet extends EquipmentSheet {
 			callback: async (item, section) => {
 				const itemContext = (context.itemContext[item.id] ??= {});
 				const totalWeight = await item.system.totalWeight;
-				itemContext.weight = totalWeight
-					? formatNumber(totalWeight.toNearest(0.1), { unit: item.system.weight.units })
-					: "—";
+				itemContext.weight = totalWeight ? formatWeight(totalWeight.toNearest(0.1), item.system.weight.unit) : "—";
 			}
 		});
 	}

@@ -41,13 +41,13 @@
 				</label>
 			{{/if}}
 			<label>
-				<span>{{ localize "BF.DURATION.FIELDS.duration.units.label" }}</span>
-				<select name="duration.units">
+				<span>{{ localize "BF.DURATION.FIELDS.duration.unit.label" }}</span>
+				<select name="duration.unit">
 					{{ blackFlag-groupedSelectOptions durationOptions }}
 				</select>
 			</label>
 		</div>
-		{{#if (eq activity.duration.units "special")}}
+		{{#if (eq activity.duration.unit "special")}}
 			<label>
 				<span>{{ localize "BF.DURATION.FIELDS.duration.special.label" }}</span>
 				<input type="text" name="duration.special" value="{{ data.duration.special }}">

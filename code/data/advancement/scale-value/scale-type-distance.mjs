@@ -1,4 +1,5 @@
 import { defaultUnit, formatDistance } from "../../../utils/_module.mjs";
+import BaseDataModel from "../../abstract/base-data-model.mjs";
 import ScaleTypeNumber from "./scale-type-number.mjs";
 
 const { StringField } = foundry.data.fields;
@@ -11,7 +12,7 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 	static defineSchema() {
 		return {
 			...super.defineSchema(),
-			units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.UNITS.DISTANCE.Label" })
+			unit: new StringField({ initial: () => defaultUnit("distance"), label: "BF.UNITS.DISTANCE.Label" })
 		};
 	}
 
@@ -31,10 +32,12 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Properties             */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	get display() {
-		return formatDistance(this.value, this.units ?? defaultUnit("distance"));
+		return formatDistance(this.value, this.unit ?? defaultUnit("distance"));
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -42,7 +45,16 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 	/** @inheritDoc */
 	get placeholder() {
 		const placeholder = super.placeholder;
-		placeholder.units = CONFIG.BlackFlag.distanceUnits.localized[placeholder.units] ?? "";
+		placeholder.unit = CONFIG.BlackFlag.distanceUnits.localized[placeholder.unit] ?? "";
 		return placeholder;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static migrateData(source) {
+		BaseDataModel._migrateObjectUnits(source);
 	}
 }

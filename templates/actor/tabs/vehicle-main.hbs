@@ -84,8 +84,8 @@
 			</span>
 			{{#if editable}}
 				<input type="number" name="system.attributes.cargo.max" value="{{ source.attributes.cargo.max }}">
-				<select name="system.attributes.cargo.units">
-					{{ selectOptions CONFIG.weightUnits.localizedOptions selected=source.attributes.cargo.units }}
+				<select name="system.attributes.cargo.unit">
+					{{ selectOptions CONFIG.weightUnits.localizedOptions selected=source.attributes.cargo.unit }}
 				</select>
 			{{else}}
 				<span>{{ system.attributes.cargo.label }}</span>

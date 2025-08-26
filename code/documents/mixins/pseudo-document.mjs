@@ -31,15 +31,6 @@ export default Base =>
 		static _sheets = new Map();
 
 		/* <><><><> <><><><> <><><><> <><><><> */
-
-		/** @inheritDoc */
-		_initialize(options) {
-			super._initialize(options);
-			if (!game._documentsReady) return;
-			return this.prepareData();
-		}
-
-		/* <><><><> <><><><> <><><><> <><><><> */
 		/*         Model Configuration         */
 		/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -181,13 +172,6 @@ export default Base =>
 
 		/* <><><><> <><><><> <><><><> <><><><> */
 		/*         Preparation Methods         */
-		/* <><><><> <><><><> <><><><> <><><><> */
-
-		/**
-		 * Prepare data for the PseudoDocument.
-		 */
-		prepareData() {}
-
 		/* <><><><> <><><><> <><><><> <><><><> */
 
 		/**

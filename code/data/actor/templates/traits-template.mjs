@@ -1,4 +1,4 @@
-import { defaultUnit, formatNumber, formatTaggedList, simplifyBonus } from "../../../utils/_module.mjs";
+import { defaultUnit, formatDistance, formatTaggedList, simplifyBonus } from "../../../utils/_module.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
@@ -13,12 +13,12 @@ const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.
  * @property {string[]} traits.movement.custom - Special movement information.
  * @property {Set<string>} traits.movement.tags - Movement tags.
  * @property {Record<string, string>} traits.movement.types - Formulas for specific movement types.
- * @property {string} traits.movement.units - Units used to measure movement.
+ * @property {string} traits.movement.unit - Units used to measure movement.
  * @property {object} traits.senses
  * @property {string[]} traits.senses.custom - Special sense information.
  * @property {Set<string>} traits.senses.tags - Sense tags.
  * @property {Record<string, string>} traits.senses.types - Formulas for specific sense types.
- * @property {string} traits.senses.units - Units used to measure senses.
+ * @property {string} traits.senses.unit - Units used to measure senses.
  */
 export default class TraitsTemplate extends foundry.abstract.DataModel {
 
@@ -33,16 +33,47 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 					types: new MappingField(new FormulaField({ deterministic: true }), {
 						initial: { walk: "@base" }
 					}),
-					units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
+					unit: new StringField({
+						required: true,
+						blank: false,
+						initial: () => defaultUnit("distance"),
+						label: "BF.MOVEMENT.FIELDS.traits.movement.unit.label"
+					})
 				}),
 				senses: new SchemaField({
 					custom: new ArrayField(new StringField()),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: () => defaultUnit("distance") })
+					unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
 				})
 			}, {label: "BF.Trait.Label[other]"})
 		};
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Migrate movement & senses `units` to `unit`.
+	 * Added in 2.0.068
+	 * @param {object} source - Candidate source data to migrate.
+	 */
+	static migrateMovementSenses(source) {
+		this._migrateObjectUnits(source.traits?.movement);
+		this._migrateObjectUnits(source.traits?.senses);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Data Shims             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Apply shims to movement & senses units.
+	 */
+	shimMovementSenses() {
+		this._shimObjectUnits("traits.movement");
+		this._shimObjectUnits("traits.senses");
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -94,8 +125,8 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 
 			const label = CONFIG.BlackFlag.movementTypes.localized[type];
 			if ( speed && label ) {
-				if ( type === "walk" ) entries.set(type, formatNumber(speed, { unit: movement.units }));
-				else entries.set(type, `${label.toLowerCase()} ${formatNumber(speed, { unit: movement.units })}`);
+				if ( type === "walk" ) entries.set(type, formatDistance(speed, movement.unit));
+				else entries.set(type, `${label.toLowerCase()} ${formatDistance(speed, movement.unit)}`);
 			}
 		}
 
@@ -106,7 +137,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 			.map(([type, speed]) => {
 				const config = CONFIG.BlackFlag.movementTypes[type];
 				const label = config ? game.i18n.localize(config.label) : type;
-				return `${label} ${formatNumber(speed, { unit: movement.units })}`;
+				return `${label} ${formatDistance(speed, movement.unit)}`;
 			});
 		movement.labels.push(...movement.custom);
 		movement.label = formatTaggedList({
@@ -120,7 +151,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 			const range = simplifyBonus(formula, rollData);
 			senses.types[type] = range;
 			const label = CONFIG.BlackFlag.senses.localized[type];
-			if ( range && label ) senseEntries.set(type, `${label} ${formatNumber(range, { unit: senses.units })}`);
+			if ( range && label ) senseEntries.set(type, `${label} ${formatDistance(range, senses.unit)}`);
 		}
 		senses.label = formatTaggedList({
 			entries: senseEntries, extras: senses.custom, tags: senses.tags, tagDefinitions: CONFIG.BlackFlag.senseTags

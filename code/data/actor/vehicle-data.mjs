@@ -1,6 +1,13 @@
 import VehicleSheet from "../../applications/actor/vehicle-sheet.mjs";
 import Proficiency from "../../documents/proficiency.mjs";
-import { defaultUnit, formatNumber, formatPace, formatTaggedList, simplifyBonus } from "../../utils/_module.mjs";
+import {
+	defaultUnit,
+	formatDistance,
+	formatPace,
+	formatWeight,
+	formatTaggedList,
+	simplifyBonus
+} from "../../utils/_module.mjs";
 import ActorDataModel from "../abstract/actor-data-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import MappingField from "../fields/mapping-field.mjs";
@@ -32,7 +39,7 @@ const { ArrayField, HTMLField, NumberField, SchemaField, SetField, StringField }
  * @property {number} attributes.ac.value - Armor class.
  * @property {object} attributes.cargo
  * @property {number} attributes.cargo.max - Maximum cargo carrying capacity.
- * @property {string} attributes.cargo.units - Units used to measure cargo capacity.
+ * @property {string} attributes.cargo.unit - Units used to measure cargo capacity.
  * @property {object} attributes.crew
  * @property {number} attributes.crew.required - Crew required for a full complement.
  * @property {object} attributes.passengers
@@ -46,10 +53,18 @@ const { ArrayField, HTMLField, NumberField, SchemaField, SetField, StringField }
  * @property {object} traits
  * @property {object} traits.dimensions
  * @property {string} traits.dimensions.length - Length of the vehicle.
- * @property {string} traits.dimensions.units - Units used to measure the dimensions.
+ * @property {string} traits.dimensions.unit - Units used to measure the dimensions.
  * @property {string} traits.dimensions.width - Width of the vehicle.
  * @property {string} traits.size - Vehicle's size category.
- * @property {string} traits.type - Type of vehicle.
+ * @property {string[]} traits.movement.custom - Special movement information.
+ * @property {Set<string>} traits.movement.tags - Movement tags.
+ * @property {Record<string, string>} traits.movement.types - Formulas for specific movement types.
+ * @property {string} traits.movement.unit - Units used to measure movement.
+ * @property {object} traits.pace
+ * @property {Record<string, string>} traits.pace.types - Formulas for specific travel pace types.
+ * @property {string} traits.pace.unit - Units used to measure travel pace.
+ * @property {object} traits.type
+ * @property {string} traits.type.value - Type of vehicle.
  */
 export default class VehicleData extends ActorDataModel.mixin(
 	HPTemplate,
@@ -94,7 +109,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 				}),
 				cargo: new SchemaField({
 					max: new NumberField(),
-					units: new StringField({ initial: "ton" })
+					unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("cargo") })
 				}),
 				crew: new SchemaField({
 					required: new NumberField()
@@ -113,7 +128,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 			traits: new SchemaField({
 				dimensions: new SchemaField({
 					length: new NumberField(),
-					units: new StringField(),
+					unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") }),
 					width: new NumberField()
 				}),
 				size: new StringField({ initial: "huge" }),
@@ -121,16 +136,20 @@ export default class VehicleData extends ActorDataModel.mixin(
 					custom: new ArrayField(new StringField()),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({
+					unit: new StringField({
+						required: true,
+						blank: false,
 						initial: () => defaultUnit("distance"),
-						label: "BF.MOVEMENT.FIELDS.traits.movement.units.label"
+						label: "BF.MOVEMENT.FIELDS.traits.movement.unit.label"
 					})
 				}),
 				pace: new SchemaField({
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({
+					unit: new StringField({
+						required: true,
+						blank: false,
 						initial: () => defaultUnit("pace"),
-						label: "BF.MOVEMENT.FIELDS.traits.pace.units.label"
+						label: "BF.MOVEMENT.FIELDS.traits.pace.unit.label"
 					})
 				}),
 				type: new SchemaField({
@@ -150,12 +169,31 @@ export default class VehicleData extends ActorDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+
+		// Added in 2.0.068
+		this._migrateObjectUnits(source.attributes?.cargo);
+		this._migrateObjectUnits(source.traits?.dimensions);
+		this._migrateObjectUnits(source.traits?.movement);
+		this._migrateObjectUnits(source.traits?.pace);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
+		this._shimObjectUnits("attributes.cargo");
+		this._shimObjectUnits("traits.dimensions");
+		this._shimObjectUnits("traits.movement");
+		this._shimObjectUnits("traits.pace");
 
 		for (const [key, ability] of Object.entries(this.abilities)) {
 			ability._source = this._source.abilities?.[key] ?? {};
@@ -185,13 +223,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 		this.prepareDerivedMovement(rollData);
 
 		// Cargo capacity
-		this.attributes.cargo.label = formatNumber(this.attributes.cargo.max ?? 0, {
-			unit: this.attributes.cargo.units
-		});
-		// TODO: Fix this once weight units are fully localized
-		if (this.attributes.cargo.units === "ton") {
-			this.attributes.cargo.label += ` ${game.i18n.localize("BF.UNITS.WEIGHT.Ton.Label").toLowerCase()}`;
-		}
+		this.attributes.cargo.label = formatWeight(this.attributes.cargo.max ?? 0, this.attributes.cargo.unit);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -272,13 +304,13 @@ export default class VehicleData extends ActorDataModel.mixin(
 			const label = CONFIG.BlackFlag.movementTypes.localized[type];
 			if (speed && label) {
 				let generatedLabel;
-				if (type === "walk") generatedLabel = formatNumber(speed, { unit: movement.units });
-				else generatedLabel = `${label.toLowerCase()} ${formatNumber(speed, { unit: movement.units })}`;
+				if (type === "walk") generatedLabel = formatDistance(speed, movement.unit);
+				else generatedLabel = `${label.toLowerCase()} ${formatDistance(speed, movement.unit)}`;
 				if (pace) {
 					generatedLabel = game.i18n.format("BF.VEHICLE.FormattedPace", {
 						speed: generatedLabel,
-						perHour: formatPace(pace, this.traits.pace.units, { unitDisplay: "short" }),
-						perDay: formatPace(pace * 24, this.traits.pace.units, { period: "day" })
+						perHour: formatPace(pace, this.traits.pace.unit, { unitDisplay: "short" }),
+						perDay: formatPace(pace * 24, this.traits.pace.unit, { period: "day" })
 					});
 				}
 				entries.set(type, generatedLabel);
@@ -294,7 +326,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 			.map(([type, speed]) => {
 				const config = CONFIG.BlackFlag.movementTypes[type];
 				const label = config ? game.i18n.localize(config.label) : type;
-				return `${label} ${formatNumber(speed, { unit: movement.units })}`;
+				return `${label} ${formatDistance(speed, movement.unit)}`;
 			});
 		movement.labels.push(...movement.custom);
 		movement.label = formatTaggedList({
@@ -401,7 +433,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 
 	/**
 	 * Calculate adjusted token size based on the provided dimensions.
-	 * @param {{ length: number, width: number, units: string }} dimensions
+	 * @param {{ length: number, width: number, unit: string }} dimensions
 	 * @returns {{ height: number, width: number }}
 	 */
 	scaledTokenSize(dimensions) {

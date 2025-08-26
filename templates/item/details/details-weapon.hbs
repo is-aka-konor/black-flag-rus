@@ -61,7 +61,7 @@
 			{{ formField fields.range.fields.short value=source.range.short classes="label-top" rootId=partId }}
 			{{ formField fields.range.fields.long value=source.range.long classes="label-top" rootId=partId }}
 			{{#unless properties.reach.selected}}
-			{{ formField fields.range.fields.units value=source.range.units options=CONFIG.distanceUnits.localizedOptions
+			{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions
 			             classes="label-top" rootId=partId }}
 			{{/unless}}
 		</div>
@@ -71,7 +71,7 @@
 			<span>{{ localize "BF.Reach.Label" }}</span>
 			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder=reachPlaceholder
 			             rootId=partId }}
-			{{ formField fields.range.fields.units value=source.range.units options=CONFIG.distanceUnits.localizedOptions
+			{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions
 									 classes="label-top" rootId=partId }}
 		</label>
 	{{/if}}

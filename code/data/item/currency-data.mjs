@@ -65,7 +65,7 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 			weight: new SchemaField(
 				{
 					value: new NumberField({ initial: 0.32 }),
-					units: new StringField({ initial: "ounce" })
+					unit: new StringField({ initial: "ounce" }) // TODO: Select default units
 				},
 				{ label: "BF.Weight.Label" }
 			)
@@ -103,6 +103,14 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	prepareBaseData() {
+		super.prepareBaseData();
+		this.shimWeightUnits();
+	}
+
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */

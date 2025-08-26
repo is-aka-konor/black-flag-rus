@@ -49,7 +49,7 @@ export function convertPace(value, from, options={}) {
  * @param {number} value - The time being converted.
  * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.timeUnits`.
  * @param {UnitConversionOptions} [options={}]
- * @param {boolean} [options.combat=false]  Use combat units when auto-selecting units, rather than normal units.
+ * @param {boolean} [options.combat=false] - Use combat units when auto-selecting unit, rather than normal units.
  * @returns {{ value: number, unit: string }}
  */
 export function convertTime(value, from, options={}) {
@@ -66,7 +66,7 @@ export function convertTime(value, from, options={}) {
  * @param {number} value - The weight value being converted.
  * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.weightUnits`.
  * @param {UnitConversionOptions} [options={}]
- * @param {boolean} [options.legacy=true] - Only return converted value rather than value and units.
+ * @param {boolean} [options.legacy=true] - Only return converted value rather than value and unit.
  * @returns {{ value: number, unit: string }|number}
  */
 export function convertWeight(value, from, options={}) {
@@ -175,8 +175,8 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
- * Default units to use depending on system setting.
- * @param {"distance"|"pace"|"volume"|"weight"} type - Type of units to select.
+ * Default unit to use depending on system setting.
+ * @param {"distance"|"pace"|"volume"|"weight"} type - Type of unit to select.
  * @returns {string}
  */
 export function defaultUnit(type) {
@@ -216,7 +216,7 @@ export function getNumberFormatter(options={}) {
 export function formatCR(value, { narrow=true }={}) {
 	if ( value === null ) return "—";
 	const fractions = narrow ? { 0.125: "⅛", 0.25: "¼", 0.5: "½" } : { 0.125: "1/8", 0.25: "1/4", 0.5: "1/2" };
-	return fractions[value] ?? numberFormat(value);
+	return fractions[value] ?? formatNumber(value);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
