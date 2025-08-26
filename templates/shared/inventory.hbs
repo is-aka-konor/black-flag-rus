@@ -4,8 +4,14 @@
 			<tr class="filters">
 				<th>
 					<blackFlag-sorting>
-						<label>{{ localize "BF.Sheet.Sorting.Mode.Alphabetic" }} <input type="radio" value="alpha"></label>
-						<label>{{ localize "BF.Sheet.Sorting.Mode.Manual" }} <input type="radio" value=""></label>
+						<label>
+							{{ localize "BF.Sheet.Sorting.Mode.Alphabetic" }}
+							<input type="radio" class="always-interactive" value="alpha">
+						</label>
+						<label>
+							{{ localize "BF.Sheet.Sorting.Mode.Manual" }}
+							<input type="radio" class="always-interactive" value="">
+						</label>
 					</blackFlag-sorting>
 				</th>
 			</tr>
@@ -39,16 +45,18 @@
 						<td class="quantity">
 							<div class="layout">
 								{{#if @root.owner}}
-									<button type="button" class="link-button" data-action="adjustment" data-direction="decrease"
-									        data-property="system.quantity" aria-label="{{ localize 'BF.Quantity.Action.Decrease' }}">
+									<button type="button" class="always-interactive link-button" data-action="adjustment"
+									        data-direction="decrease" data-property="system.quantity"
+									        aria-label="{{ localize 'BF.Quantity.Action.Decrease' }}">
 										<i class="fas fa-minus" inert></i>
 									</button>
 								{{/if}}
-								<input type="text" data-property="system.quantity" value="{{ system.quantity }}" placeholder="0"
-								       inputmode="numeric" min="0">
+								<input type="text" class="always-interactive" data-property="system.quantity"
+								       value="{{ system.quantity }}" placeholder="0" inputmode="numeric" min="0">
 								{{#if @root.owner}}
-									<button type="button" class="link-button" data-action="adjustment" data-direction="increase"
-									        data-property="system.quantity" aria-label="{{ localize 'BF.Quantity.Action.Increase' }}">
+									<button type="button" class="always-interactive link-button" data-action="adjustment"
+									        data-direction="increase" data-property="system.quantity"
+									        aria-label="{{ localize 'BF.Quantity.Action.Increase' }}">
 										<i class="fas fa-plus" inert></i>
 									</button>
 								{{/if}}

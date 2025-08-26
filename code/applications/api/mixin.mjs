@@ -122,8 +122,9 @@ export default function ApplicationV2Mixin(Base) {
 				"PROSE-MIRROR",
 				"RANGE-PICKER",
 				"STRING-TAGS"
-			].join(", ")}):not(.interface-only)`;
+			].join(", ")}):not(.always-interactive, .interface-only)`;
 			for (const element of this.element.querySelectorAll(selector)) {
+				if (element.closest("prose-mirror[open]")) continue; // Skip active ProseMirror editors
 				if (element.tagName === "TEXTAREA") element.readOnly = true;
 				else element.disabled = true;
 			}

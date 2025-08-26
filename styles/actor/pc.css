@@ -73,12 +73,11 @@
 			align-content: center;
 			font-size: var(--font-size-24);
 			text-align: center;
-
-			&input {
-				height: 100%;
-				background: none;
-				border-width: 1px;
-			}
+		}
+		input.document-name {
+			height: 100%;
+			background: none;
+			border-width: 1px;
 		}
 
 		.proficiency-bonus {

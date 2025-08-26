@@ -15,7 +15,7 @@ export default class SortingElement extends AppAssociatedElement {
 		super.connectedCallback();
 		this.#controller = new AbortController();
 		for (const input of this.querySelectorAll('input[type="radio"]')) {
-			input.name ??= `${this.tab}-sort`;
+			input.name ||= `${this.tab}-sort`;
 			if (input.value === this.sorting) input.checked = true;
 		}
 		this.addEventListener("change", this.#onChangeSorting.bind(this), { signal: this.#controller.signal });

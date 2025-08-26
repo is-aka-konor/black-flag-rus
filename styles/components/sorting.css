@@ -1,5 +1,5 @@
 blackFlag-sorting {
-	--sorting-indicator-size: 0.5em;
+	--sorting-indicator-size: 8px;
 	--sorting-indicator-border-color: currentcolor;
 	--sorting-indicator-border: 1px solid var(--sorting-indicator-border-color);
 
@@ -18,17 +18,20 @@ blackFlag-sorting {
 		height: var(--sorting-indicator-size);
 		width: var(--sorting-indicator-size);
 		margin: 0;
+		color: inherit;
 
 		&::before {
 			content: "";
 			display: block;
-			margin-block-start: calc(var(--sorting-indicator-size) * -0.5);
 			width: var(--sorting-indicator-size);
 			height: var(--sorting-indicator-size);
 			border: var(--sorting-indicator-border);
 			border-radius: var(--sorting-indicator-size);
 		}
-		&:checked::before { background-color: currentcolor; }
+		&:checked::before {
+			background-color: currentcolor;
+			color: inherit;
+		}
 		&::after { display: none; }
 	}
 }

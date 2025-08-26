@@ -79,6 +79,7 @@ export default class ContainerSheet extends EquipmentSheet {
 		for (const item of context.items) {
 			const ctx = (context.itemContext[item.id] ??= {});
 			if (this.expanded.has(item.id)) ctx.expanded = await item.getSummaryContext({ secrets: this.item.isOwner });
+			ctx.identified = item.system.identified !== false;
 			ctx.totalWeight = (await item.system.totalWeight).toNearest(0.1);
 		}
 		context.isContainer = true;
