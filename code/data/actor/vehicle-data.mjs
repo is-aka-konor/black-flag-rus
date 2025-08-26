@@ -1,11 +1,15 @@
 import VehicleSheet from "../../applications/actor/vehicle-sheet.mjs";
 import Proficiency from "../../documents/proficiency.mjs";
 import {
+	convertAmount,
+	convertDistance,
+	convertPace,
 	defaultUnit,
 	formatDistance,
 	formatPace,
 	formatWeight,
 	formatTaggedList,
+	preferredUnit,
 	simplifyBonus
 } from "../../utils/_module.mjs";
 import ActorDataModel from "../abstract/actor-data-model.mjs";
@@ -222,7 +226,8 @@ export default class VehicleData extends ActorDataModel.mixin(
 		this.prepareDerivedAbilities(rollData);
 		this.prepareDerivedMovement(rollData);
 
-		// Cargo capacity
+		convertAmount(this.attributes.cargo, "weight", { keys: ["max"] });
+		convertAmount(this.traits.dimensions, "distance", { keys: ["length", "width"] });
 		this.attributes.cargo.label = formatWeight(this.attributes.cargo.max ?? 0, this.attributes.cargo.unit);
 	}
 
@@ -277,6 +282,12 @@ export default class VehicleData extends ActorDataModel.mixin(
 		const multiplier = simplifyBonus(movement.multiplier, rollData);
 		const modifierData = { type: "movement", actor: this };
 
+		const system = game.settings.get(game.system.id, "localization").preferredSystem("distance");
+		const baseMovementUnit = this.traits.movement.unit;
+		const basePaceUnit = this.traits.pace.unit;
+		this.traits.movement.unit = preferredUnit(baseMovementUnit, { system, type: "distance" });
+		this.traits.pace.unit = preferredUnit(basePaceUnit, { system, type: "pace" });
+
 		// Calculate each special movement type using base speed
 		let types = Object.keys(CONFIG.BlackFlag.movementTypes);
 		if (types.includes("walk")) {
@@ -298,8 +309,10 @@ export default class VehicleData extends ActorDataModel.mixin(
 					deterministic: true,
 					rollData
 				});
-			this.traits.movement.types[type] = speed * multiplier * (halfMovement ? 0.5 : 1);
-			this.traits.pace.types[type] = pace * multiplier * (halfMovement ? 0.5 : 1);
+			speed *= multiplier * (halfMovement ? 0.5 : 1);
+			pace *= multiplier * (halfMovement ? 0.5 : 1);
+			speed = convertDistance(speed, baseMovementUnit, { to: this.traits.movement.unit }).value;
+			pace = convertPace(pace, basePaceUnit, { to: this.traits.pace.unit }).value;
 
 			const label = CONFIG.BlackFlag.movementTypes.localized[type];
 			if (speed && label) {

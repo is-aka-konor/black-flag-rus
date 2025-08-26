@@ -1,4 +1,11 @@
-import { convertDistance, defaultUnit, formatDistance, formatNumber, stepDenomination } from "../../utils/_module.mjs";
+import {
+	convertAmount,
+	convertDistance,
+	defaultUnit,
+	formatDistance,
+	formatNumber,
+	stepDenomination
+} from "../../utils/_module.mjs";
 import ItemDataModel from "../abstract/item-data-model.mjs";
 import { DamageField } from "../fields/_module.mjs";
 import ActivitiesTemplate from "./templates/activities-template.mjs";
@@ -340,6 +347,8 @@ export default class WeaponData extends ItemDataModel.mixin(
 		this.prepareDescription();
 		this.prepareIdentifiable();
 		this.preparePhysicalLabels();
+
+		convertAmount(this.range, "distance", { keys: ["short", "long", "reach"] });
 
 		const type = CONFIG.BlackFlag.weapons.allLocalized[this.type.base ?? this.type.category];
 		if (type) this.type.label = `${game.i18n.localize("BF.WEAPON.Label[one]")} (${type})`;

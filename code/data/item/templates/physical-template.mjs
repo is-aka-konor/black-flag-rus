@@ -1,4 +1,4 @@
-import { convertWeight, defaultUnit, formatWeight, formatNumber } from "../../../utils/_module.mjs";
+import { convertAmount, convertWeight, defaultUnit, formatWeight, formatNumber } from "../../../utils/_module.mjs";
 
 const { ForeignDocumentField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
@@ -186,8 +186,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 			configurable: true,
 			enumerable: false
 		});
-		const system = game.settings.get(game.system.id, "localization").weight;
-		Object.assign(this.weight, convertWeight(this.weight.value, this.weight.unit, { system, legacy: false }));
+		convertAmount(this.weight, "weight");
 		Object.defineProperty(this.weight, "label", {
 			get() {
 				const totalWeight = data.totalWeight;

@@ -1,4 +1,4 @@
-import { defaultUnit, formatDistance, formatTaggedList, Trait } from "../../../utils/_module.mjs";
+import { convertAmount, defaultUnit, formatDistance, formatTaggedList, Trait } from "../../../utils/_module.mjs";
 import MappingField from "../../fields/mapping-field.mjs";
 
 const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -83,13 +83,14 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 		const languages = this.proficiencies.languages;
 		const entries = new Map(Array.from(languages.value).map(v => [v, Trait.keyLabel(v, { trait: "languages" })]));
 		languages.custom.forEach(c => entries.set(c, c));
-		const extras = Object.entries(languages.communication).reduce((arr, [key, data]) => {
+		const extras = [];
+		for ( const [key, data] of Object.entries(languages.communication) ) {
+			convertAmount(data, "distance", { keys: ["range"] });
 			const label = CONFIG.BlackFlag.rangedCommunication[key]?.label;
-			if ( label && data.range ) arr.push(
+			if ( label && data.range ) extras.push(
 				`${game.i18n.localize(label)} ${formatDistance(data.range, data.unit)}`
 			);
-			return arr;
-		}, []);
+		}
 
 		languages.label = formatTaggedList({
 			entries, extras, tags: languages.tags, tagDefinitions: CONFIG.BlackFlag.languageTags,

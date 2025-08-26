@@ -148,4 +148,21 @@ Hooks.on("renderActiveEffectConfig", documents.BlackFlagActiveEffect.onRenderAct
 Hooks.on("renderSettings", (app, jQuery, options) => settings.renderSettingsSidebar(jQuery));
 Hooks.on("renderJournalEntryPageSheet", applications.journal.BlackFlagJournalEntrySheet.onRenderJournalPageSheet);
 
+Hooks.on("preCreateScene", (doc, createData, options, userId) => {
+	// Set default grid units based on metric length setting
+	const units = utils.defaultUnit("distance");
+	if (
+		units !== game.system.grid.units &&
+		!foundry.utils.getProperty(createData, "grid.distance") &&
+		!foundry.utils.getProperty(createData, "grid.units")
+	) {
+		doc.updateSource({
+			grid: {
+				distance: utils.convertDistance(game.system.grid.distance, game.system.grid.units, { to: units }).value,
+				units
+			}
+		});
+	}
+});
+
 export { applications, config, data, dice, documents, enrichers, registry, settings, utils };

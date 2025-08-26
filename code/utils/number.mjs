@@ -1,6 +1,10 @@
 import { getPluralLocalizationKey, getPluralRules } from "./localization.mjs";
 import { isValidUnit } from "./validation.mjs";
 
+/**
+ * @import { LocalizableUnitType } from "../data/settings/localization-setting.mjs"
+ */
+
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 /*                      Conversion                       */
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -14,6 +18,43 @@ import { isValidUnit } from "./validation.mjs";
  * @property {string} [to] - The final unit. If neither this nor the unit system is provided then will convert to
  *                           the largest unit that can represent the value as an integer.
  */
+
+/**
+ * Convert the provided object in place to the appropriate units in the desired measurement system.
+ * @param {{ value: number, unit: string }} obj - Object to convert.
+ * @param {LocalizableUnitType} type - Type of unit represented.
+ * @param {object} [options={}]
+ * @param {string[]} [options.keys] - Keys representing the value in the object to convert.
+ * @param {string} [options.valueObjectKey] - Key for object within the parent object that contains values.
+ */
+export function convertAmount(obj, type, { keys=["value"], valueObjectKey }={}) {
+	const system = game.settings.get(game.system.id, "localization").preferredSystem(type);
+	if ( !system ) return;
+
+	let valueObject = obj;
+	if ( valueObjectKey ) {
+		valueObject = obj[valueObjectKey];
+		keys = Object.keys(valueObject);
+	}
+
+	let units;
+	switch (type) {
+		case "distance":  units = CONFIG.BlackFlag.distanceUnits; break;
+		case "pace": units = CONFIG.BlackFlag.paceUnits; break;
+		case "volume": units = CONFIG.BlackFlag.volumeUnits; break;
+		case "cargo":
+		case "weight": units = CONFIG.BlackFlag.weightUnits; break;
+	}
+	let baseUnit = obj.unit;
+	const to = obj.unit = preferredUnit(obj.unit, { system, units });
+
+	for ( const key of keys ) {
+		if ( !valueObject[key] ) continue;
+		valueObject[key] = _convertSystemUnits(valueObject[key], baseUnit, units, { to }).value;
+	}
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * Convert the provided distance to another unit.
@@ -57,6 +98,20 @@ export function convertTime(value, from, options={}) {
 	if ( options.combat ) Object.assign(config, CONFIG.BlackFlag.timeUnits.combat.children);
 	const message = unit => `Time unit ${unit} not defined in CONFIG.BlackFlag.timeUnits`;
 	return _convertSystemUnits(value, from, config, { ...options, message });
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Convert the provided volume to another unit.
+ * @param {number} value - The volume being converted.
+ * @param {string} from - The initial unit as defined in `CONFIG.BlackFlag.volumeUnits`.
+ * @param {UnitConversionOptions} [options={}]
+ * @returns {{ value: number, unit: string }}
+ */
+export function convertVolume(value, from, options={}) {
+	const message = unit => `Volume unit ${unit} not defined in CONFIG.BlackFlag.volumeUnits`;
+	return _convertSystemUnits(value, from, CONFIG.BlackFlag.volumeUnits, { ...options, message });
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -122,7 +177,7 @@ function _conversion(config={}) {
  * Convert from one unit to another using one of core's built-in unit types.
  * @param {number} value - Value to display.
  * @param {string} from - The initial unit.
- * @param {UnitConfiguration} config - Configuration data for the unit.
+ * @param {Record<string, UnitConfiguration>} config - Configuration data for the available units.
  * @param {UnitConversionOptions} options
  * @param {function(string): string} [options.message] - Method used to produce the error message if unit not found.
  * @returns {{ value: number, unit: string }}
@@ -134,22 +189,7 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 	if ( !config[from] ) return { value, unit: from ?? to };
 
 	// If measurement system is provided and no target unit, convert to equivalent unit in other measurement system
-	if ( !to && system ) {
-		if ( !_measurementSystemConversionCache.has(from) ) {
-			const baseConversion = Math.log10(_conversion(config[from]));
-			const unitOptions = Object.entries(config)
-				.reduce((arr, [key, v]) => {
-					if ( system === v.system ) {
-						arr.push({ key, difference: Math.abs(Math.log10(_conversion(v)) - baseConversion) });
-					}
-					return arr;
-				}, [])
-				.sort((lhs, rhs) => lhs.difference - rhs.difference);
-			to = unitOptions[0]?.key ?? from;
-			_measurementSystemConversionCache.set(from, to);
-		}
-		to = _measurementSystemConversionCache.get(from);
-	}
+	if ( !to && system ) to = preferredUnit(from, { system, units: config });
 
 	// If no target unit available, find largest unit in current measurement system that can represent number
 	else if ( !to ) {
@@ -176,11 +216,48 @@ export function _convertSystemUnits(value, from, config, { message, strict, syst
 
 /**
  * Default unit to use depending on system setting.
- * @param {"distance"|"pace"|"volume"|"weight"} type - Type of unit to select.
+ * @param {LocalizableUnitType} type - Type of unit to select.
  * @returns {string}
  */
 export function defaultUnit(type) {
 	return game.settings.get(game.system.id, "localization").defaultUnit(type);
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Find the preferred unit from the config in the provided measurement system. Must provide either type or units.
+ * @param {string} from - Original unit to find closest unit in preferred system.
+ * @param {object} config
+ * @param {string} config.system - Target measurement system.
+ * @param {LocalizableUnitType} [config.type] - Type of unit to select.
+ * @param {Record<string, UnitConfiguration>} [config.units] - Configuration data for the available units.
+ * @returns {string}
+ */
+export function preferredUnit(from, { system, type, units }={}) {
+	if ( !units ) {
+		switch (type) {
+			case "distance": units = CONFIG.BlackFlag.distanceUnits; break;
+			case "pace": units = CONFIG.BlackFlag.paceUnits; break;
+			case "volume": units = CONFIG.BlackFlag.volumeUnits; break;
+			case "cargo":
+			case "weight": units = CONFIG.BlackFlag.weightUnits; break;
+		}
+	}
+
+	if ( !_measurementSystemConversionCache.has(from) ) {
+		const baseConversion = Math.log10(_conversion(units[from]));
+		const unitOptions = Object.entries(units)
+			.reduce((arr, [key, v]) => {
+				if ( system === v.system ) {
+					arr.push({ key, difference: Math.abs(Math.log10(_conversion(v)) - baseConversion) });
+				}
+				return arr;
+			}, [])
+			.sort((lhs, rhs) => lhs.difference - rhs.difference);
+		_measurementSystemConversionCache.set(from, unitOptions[0]?.key ?? from);
+	}
+	return _measurementSystemConversionCache.get(from);
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -411,7 +488,7 @@ export function formatWeight(value, unit, options={}) {
  * Format a number using one of core's built-in unit types.
  * @param {number} value - Value to display.
  * @param {string} unit - Name of the unit to use.
- * @param {UnitConfiguration} config - Configuration data for the unit.
+ * @param {Record<string, UnitConfiguration>} config - Configuration data for the available units.
  * @param {Partial<NumberFormattingOptions>} [options={}] - Formatting options passed to `formatNumber`.
  * @returns {string}
  */

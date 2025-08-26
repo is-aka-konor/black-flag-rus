@@ -1,4 +1,4 @@
-import { formatNumber, replaceFormulaData, simplifyBonus } from "../../utils/_module.mjs";
+import { convertAmount, formatNumber, replaceFormulaData, simplifyBonus } from "../../utils/_module.mjs";
 import BaseDataModel from "../abstract/base-data-model.mjs";
 import ActivationField from "../fields/activation-field.mjs";
 import DurationField from "../fields/duration-field.mjs";
@@ -296,6 +296,9 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 		prepareFinalValue("target.template.width", "BF.AreaOfEffect.Size.Width");
 		prepareFinalValue("target.template.height", "BF.AreaOfEffect.Size.Height");
 		prepareFinalValue("uses.max", "BF.Uses.Maximum.DebugName");
+
+		convertAmount(this.range, "distance");
+		convertAmount(this.target.template, "distance", { keys: ["size", "width", "height"] });
 
 		this.activation.type ??= "action";
 		this.activation.primary ??= true;

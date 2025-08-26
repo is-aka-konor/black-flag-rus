@@ -1,6 +1,10 @@
 const { BooleanField, StringField } = foundry.data.fields;
 
 /**
+ * @typedef {"distance"|"pace"|"volume"|"weight"} LocalizableUnitType
+ */
+
+/**
  * A data model containing settings for unit localization & conversion.
  */
 export default class LocalizationSetting extends foundry.abstract.DataModel {
@@ -29,17 +33,27 @@ export default class LocalizationSetting extends foundry.abstract.DataModel {
 
 	/**
 	 * Determine the default unit that should be used for a certain usage type.
-	 * @param {"distance"|"pace"|"volume"|"weight"} type - Type of unit to select.
+	 * @param {LocalizableUnitType} type - Type of unit to select.
 	 * @returns {string}
 	 */
 	defaultUnit(type) {
 		if (!(type in CONFIG.BlackFlag.defaultUnits)) {
 			throw new Error(`Unit type "${type}" does not have a registered default.`);
 		}
-		let systemType = { cargo: "weight", pace: "distance" }[type] ?? type;
 		return (
-			CONFIG.BlackFlag.defaultUnits[type]?.[this[systemType]] ??
+			CONFIG.BlackFlag.defaultUnits[type]?.[this.preferredSystem(type)] ??
 			Object.values(CONFIG.BlackFlag.defaultUnits[type] ?? {})[0]
 		);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Retrieve the preferred measurement system for a specific unit type.
+	 * @param {LocalizableUnitType} type - Type of unit to select.
+	 * @returns {string|void}
+	 */
+	preferredSystem(type) {
+		return this[{ cargo: "weight", pace: "distance" }[type] ?? type];
 	}
 }
