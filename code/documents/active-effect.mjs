@@ -237,7 +237,7 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	 * Add modifications to the core ActiveEffect config.
 	 * @param {ActiveEffectConfig} app - The ActiveEffect config.
 	 * @param {HTMLElement} html - The ActiveEffect config element.
-	 * @param {ApplicationRenderContext} object - The app's rendering context.
+	 * @param {ApplicationRenderContext} context - The app's rendering context.
 	 */
 	static onRenderActiveEffectConfig(app, html, context) {
 		if (app.document.system.onRenderActiveEffectConfig?.(app, html, context) === false) return;

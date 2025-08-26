@@ -156,7 +156,7 @@ let _approximateConversion;
 
 /**
  * Retrieve the conversion value for the provided unit config.
- * @param {UnitConfiguration}
+ * @param {UnitConfiguration} config
  * @returns {number}
  */
 function _conversion(config={}) {

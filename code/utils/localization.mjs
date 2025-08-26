@@ -264,6 +264,7 @@ export function getPluralLocalizationKey(value, format, options={}) {
  * Attach a "localized" property to an object that returns a localized & sorted version.
  * @param {object} config - Configuration object to modify.
  * @param {object} [options={}] - Options to pass through to the makeLabels function.
+ * @param {Function} [options.createGroup] - Method to create the group name from the provided key.
  * @param {string} [options.propertyName] - Name where the localized string is stored.
  */
 export function localizeConfig(config, { propertyName="localized", createGroup, ...options }={}) {

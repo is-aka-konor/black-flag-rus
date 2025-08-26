@@ -286,7 +286,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 			} else if (!this.item.system.attunable) {
 				this.visibility.requireAttunement = false;
 			}
-			if (!this.item.system.identifiable) this.visibility.requireIdentification == false;
+			if (!this.item.system.identifiable) this.visibility.requireIdentification = false;
 		}
 
 		prepareFinalValue("duration.value", "BF.DURATION.Label");

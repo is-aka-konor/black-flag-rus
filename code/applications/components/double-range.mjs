@@ -98,7 +98,7 @@ export default class DoubleRangeElement extends foundry.applications.elements.HT
 
 	/**
 	 * Update display of the number input as the range slider is actively changed.
-	 * @param {InputEvent} event     The originating input event
+	 * @param {InputEvent} event - The originating input event.
 	 */
 	#onDragSlider(event) {
 		event.preventDefault();
@@ -109,7 +109,7 @@ export default class DoubleRangeElement extends foundry.applications.elements.HT
 
 	/**
 	 * Handle changes to the left input.
-	 * @param {InputEvent} event     The originating input change event
+	 * @param {InputEvent} event - The originating input change event.
 	 */
 	#onChangeInput(event) {
 		event.stopPropagation();

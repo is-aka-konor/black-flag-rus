@@ -263,7 +263,6 @@ export default class WeaponData extends ItemDataModel.mixin(
 	 */
 	get validAttackTypes() {
 		const types = new Set();
-		const attackType = this.type.value;
 		if (this.type.value === "melee") types.add("melee");
 		if (
 			this.type.value === "ranged" ||

@@ -159,9 +159,8 @@ export function durationOptions({ categories, chosen, pluralCount, pluralRule, i
 function _createOptions(categories, { chosen, pluralCount, pluralRule, isSpell }) {
 	const selectChoices = new SelectChoices();
 	categories.forEach(c => selectChoices.merge(new SelectChoices(c)));
-	for (const [key, category] of Object.entries(selectChoices)) {
+	for (const category of Object.values(selectChoices)) {
 		category.label = makeLabel(category, { pluralCount, pluralRule });
-		category.scalar = category.scalar;
 		for (const [k, v] of Object.entries(category.children)) {
 			v.label = makeLabel(v, { pluralCount, pluralRule });
 			v.scalar ??= category.scalar || v.scalar;

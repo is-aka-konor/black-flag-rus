@@ -431,7 +431,6 @@ export default class BaseActorSheet extends PrimarySheetMixin(
 	 * @param {HTMLElement} target - Button that was clicked.
 	 */
 	static #roll(event, target) {
-		// if ( !target.classList.contains("rollable") ) return;
 		if (this._roll(event, target) === false) return;
 		const { action: _, subAction, ...properties } = target.dataset;
 		properties.event = event;

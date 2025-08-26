@@ -138,7 +138,8 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 			});
 		movement.labels.push(...movement.custom);
 		movement.label = formatTaggedList({
-			entries: movementEntries, extras: movement.custom, tags: movement.tags, tagDefinitions: CONFIG.BlackFlag.movementTags
+			entries: movementEntries, extras: movement.custom, tags: movement.tags,
+			tagDefinitions: CONFIG.BlackFlag.movementTags
 		});
 
 		// Calculate each special sense type & convert to proper measurement system

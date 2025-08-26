@@ -13,7 +13,7 @@ export default class ActiveEffectDataModel extends BaseDataModel {
 	 * Add modifications to the core ActiveEffect config.
 	 * @param {ActiveEffectConfig} app - The ActiveEffect config.
 	 * @param {HTMLElement} html - The ActiveEffect config element.
-	 * @param {ApplicationRenderContext} object - The app's rendering context.
+	 * @param {ApplicationRenderContext} context - The app's rendering context.
 	 */
 	onRenderActiveEffectConfig(app, html, context) {}
 }

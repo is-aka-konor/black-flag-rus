@@ -1,5 +1,5 @@
 import Proficiency from "../../documents/proficiency.mjs";
-import { formatNumber, linkForUUID, log, Trait } from "../../utils/_module.mjs";
+import { formatNumber, linkForUUID, Trait } from "../../utils/_module.mjs";
 import JournalEditor from "./journal-editor.mjs";
 
 const { JournalEntryPageHandlebarsSheet } = foundry.applications.sheets.journal;
