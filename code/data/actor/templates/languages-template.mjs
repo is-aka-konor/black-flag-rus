@@ -37,7 +37,7 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 					value: new SetField(new StringField(), { required: true, label: "BF.Language.Dialect.Label" }),
 					communication: new MappingField(new SchemaField({
 						range: new NumberField({ min: 0, label: "BF.RANGE.Label" }),
-						units: new StringField({ initial: defaultUnit("distance"), label: "BF.RANGE.Unit.Label" })
+						units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.RANGE.Unit.Label" })
 					}), { label: "BF.Language.Communication.Label" }),
 					custom: new ArrayField(new StringField(), { required: true, label: "BF.Language.Custom.Label" }),
 					tags: new SetField(new StringField(), { required: true, label: "BF.Language.Tag.Label" })

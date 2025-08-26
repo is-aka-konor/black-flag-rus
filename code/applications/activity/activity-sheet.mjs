@@ -162,13 +162,9 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 		});
 
 		context.rangeOptions = [
-			{ value: "", label: "" },
-			{ rule: true },
+			{ value: "", label: "", rule: true },
 			...CONFIG.BlackFlag.rangeTypes.localizedOptions,
-			...CONFIG.BlackFlag.distanceUnits.localizedOptions.map(o => ({
-				...o,
-				group: game.i18n.localize("BF.Distance.Label")
-			}))
+			...CONFIG.BlackFlag.distanceUnits.localizedOptions
 		];
 
 		context.showPrimaryActivation = this.activity.isSpell;

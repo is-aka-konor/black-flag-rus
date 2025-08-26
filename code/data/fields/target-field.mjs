@@ -33,7 +33,7 @@ export default class TargetField extends SchemaField {
 				size: new FormulaField({ deterministic: true }),
 				width: new FormulaField({ deterministic: true }),
 				height: new FormulaField({ deterministic: true }),
-				units: new StringField({ initial: defaultUnit("distance") })
+				units: new StringField({ initial: () => defaultUnit("distance") })
 			}),
 			affects: new SchemaField({
 				count: new FormulaField({ deterministic: true }),

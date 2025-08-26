@@ -86,7 +86,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 				short: new NumberField({ min: 0, step: 0.1 }),
 				long: new NumberField({ min: 0, step: 0.1 }),
 				reach: new NumberField({ min: 0, step: 0.1 }),
-				units: new StringField({ initial: defaultUnit("distance") })
+				units: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
 			}),
 			type: new SchemaField({
 				value: new StringField({ initial: "melee" }),

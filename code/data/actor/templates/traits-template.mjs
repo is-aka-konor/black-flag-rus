@@ -33,13 +33,13 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 					types: new MappingField(new FormulaField({ deterministic: true }), {
 						initial: { walk: "@base" }
 					}),
-					units: new StringField({ initial: defaultUnit("distance"), label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
+					units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.MOVEMENT.FIELDS.traits.movement.units.label" })
 				}),
 				senses: new SchemaField({
 					custom: new ArrayField(new StringField()),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: defaultUnit("distance") })
+					units: new StringField({ initial: () => defaultUnit("distance") })
 				})
 			}, {label: "BF.Trait.Label[other]"})
 		};

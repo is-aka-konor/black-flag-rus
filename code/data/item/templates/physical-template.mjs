@@ -46,7 +46,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 				value: new NumberField({
 					nullable: false, initial: 0, min: 0, step: 0.01, label: "BF.Weight.Label"
 				}),
-				units: new StringField({ initial: defaultUnit("weight") })
+				units: new StringField({ initial: () => defaultUnit("weight") })
 			}, {label: "BF.Weight.Label"})
 		};
 	}

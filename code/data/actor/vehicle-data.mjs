@@ -122,13 +122,16 @@ export default class VehicleData extends ActorDataModel.mixin(
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true })),
 					units: new StringField({
-						initial: defaultUnit("distance"),
+						initial: () => defaultUnit("distance"),
 						label: "BF.MOVEMENT.FIELDS.traits.movement.units.label"
 					})
 				}),
 				pace: new SchemaField({
 					types: new MappingField(new FormulaField({ deterministic: true })),
-					units: new StringField({ initial: defaultUnit("pace"), label: "BF.MOVEMENT.FIELDS.traits.pace.units.label" })
+					units: new StringField({
+						initial: () => defaultUnit("pace"),
+						label: "BF.MOVEMENT.FIELDS.traits.pace.units.label"
+					})
 				}),
 				type: new SchemaField({
 					value: new StringField({ initial: "land" })

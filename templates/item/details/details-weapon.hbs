@@ -58,23 +58,21 @@
 	{{#if (or (eq source.type.category "natural") (eq source.type.value "ranged") properties.thrown.selected)}}
 		<div class="range field-group">
 			<span>{{ localize "BF.RANGE.Label" }}</span>
-			<label>
-				<span>{{ localize "BF.RANGE.FIELDS.range.short.label" }}</span>
-				<input type="number" name="system.range.short" step=0.1 min=0 value="{{ source.range.short }}">
-			</label>
-			<label>
-				<span>{{ localize "BF.RANGE.FIELDS.range.long.label" }}</span>
-				<input type="number" name="system.range.long" step=0.1 min=0 value="{{ source.range.long }}">
-			</label>
-			{{!-- TODO: Range units, only if reach isn't also displayed --}}
+			{{ formField fields.range.fields.short value=source.range.short classes="label-top" rootId=partId }}
+			{{ formField fields.range.fields.long value=source.range.long classes="label-top" rootId=partId }}
+			{{#unless properties.reach.selected}}
+			{{ formField fields.range.fields.units value=source.range.units options=CONFIG.distanceUnits.localizedOptions
+			             classes="label-top" rootId=partId }}
+			{{/unless}}
 		</div>
 	{{/if}}
 	{{#if properties.reach.selected}}
 		<label class="reach">
 			<span>{{ localize "BF.Reach.Label" }}</span>
-			<input type="number" name="system.range.reach" step="0.1" min="0" value="{{ source.range.reach }}"
-			       placeholder="+5">
-			{{!-- TODO: Reach units --}}
+			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder="+5"
+			             rootId=partId }}
+			{{ formField fields.range.fields.units value=source.range.units options=CONFIG.distanceUnits.localizedOptions
+									 classes="label-top" rootId=partId }}
 		</label>
 	{{/if}}
 </fieldset>

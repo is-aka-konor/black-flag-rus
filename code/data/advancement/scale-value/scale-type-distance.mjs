@@ -11,7 +11,7 @@ export default class ScaleValueTypeDistance extends ScaleTypeNumber {
 	static defineSchema() {
 		return {
 			...super.defineSchema(),
-			units: new StringField({ initial: defaultUnit("distance"), label: "BF.UNITS.DISTANCE.Label" })
+			units: new StringField({ initial: () => defaultUnit("distance"), label: "BF.UNITS.DISTANCE.Label" })
 		};
 	}
 

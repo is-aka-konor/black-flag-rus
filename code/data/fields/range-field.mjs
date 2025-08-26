@@ -1,4 +1,4 @@
-import { formatDistance } from "../../utils/_module.mjs";
+import { defaultUnit, formatDistance } from "../../utils/_module.mjs";
 import FormulaField from "./formula-field.mjs";
 
 const { SchemaField, StringField } = foundry.data.fields;
@@ -17,7 +17,12 @@ export default class RangeField extends SchemaField {
 	constructor(fields = {}, options = {}) {
 		fields = {
 			value: new FormulaField({ deterministic: true, label: "BF.RANGE.Value.Label" }),
-			units: new StringField({ label: "BF.RANGE.Unit.Label" }),
+			units: new StringField({
+				required: true,
+				blank: false,
+				initial: () => defaultUnit("distance"),
+				label: "BF.RANGE.Unit.Label"
+			}),
 			special: new StringField({ label: "BF.RANGE.Special.Label" }),
 			...fields
 		};
