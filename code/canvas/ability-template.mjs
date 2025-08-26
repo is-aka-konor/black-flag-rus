@@ -1,3 +1,5 @@
+import { convertDistance } from "../utils/_module.mjs";
+
 /**
  * Custom measured template class with helpers to handle placing templates from activities.
  */
@@ -50,7 +52,7 @@ export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredT
 			{
 				t: templateShape,
 				user: game.user.id,
-				distance: target.size,
+				distance: convertDistance(target.size, target.unit, { to: canvas.scene.grid.units }).value,
 				direction: 0,
 				x: 0,
 				y: 0,
@@ -61,6 +63,7 @@ export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredT
 							size: target.size,
 							width: target.width,
 							height: target.height,
+							unit: target.unit,
 							adjustedSize: target.type === "radius",
 							rotatable: target.type === "square"
 						},
@@ -77,12 +80,16 @@ export default class AbilityTemplate extends foundry.canvas.placeables.MeasuredT
 				templateData.angle = CONFIG.MeasuredTemplate.defaults.angle;
 				break;
 			case "rect":
-				templateData.width = target.size;
-				templateData.distance = Math.hypot(target.size, target.size);
+				templateData.width = templateData.distance;
+				templateData.distance = Math.hypot(templateData.distance, templateData.distance);
 				templateData.direction = 45;
 				break;
 			case "ray":
-				templateData.width = target.type === "cube" ? target.size : target.width ?? canvas.dimensions.distance;
+				templateData.width =
+					target.type === "cube"
+						? templateData.distance
+						: convertDistance(target.width, target.unit, { to: canvas.scene.grid.units }).value ??
+							canvas.dimensions.distance;
 				break;
 			default:
 				break;
