@@ -8,6 +8,7 @@ import BlackFlagCombat from "./combat.mjs";
 import BlackFlagCombatant from "./combatant.mjs";
 import BlackFlagItem from "./item.mjs";
 import BlackFlagJournalEntryPage from "./journal-entry-page.mjs";
+import BlackFlagScene from "./scene.mjs";
 import BlackFlagTokenDocument from "./token.mjs";
 
 /**
@@ -23,6 +24,7 @@ export function registerDocumentClasses() {
 	CONFIG.Combatant.documentClass = BlackFlagCombatant;
 	CONFIG.Item.documentClass = BlackFlagItem;
 	CONFIG.JournalEntryPage.documentClass = BlackFlagJournalEntryPage;
+	CONFIG.Scene.documentClass = BlackFlagScene;
 	CONFIG.Token.documentClass = BlackFlagTokenDocument;
 
 	CONFIG.Activity = {
@@ -45,6 +47,7 @@ export {
 	BlackFlagCombatant,
 	BlackFlagItem,
 	BlackFlagJournalEntryPage,
+	BlackFlagScene,
 	BlackFlagTokenDocument
 };
 export * as mixins from "./mixins/_module.mjs";

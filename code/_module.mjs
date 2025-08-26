@@ -48,6 +48,7 @@ Hooks.once("init", function () {
 	CONFIG.ux.ContextMenu = applications.BlackFlagContextMenu;
 	CONFIG.ux.DragDrop = applications.BlackFlagDragDrop;
 	CONFIG.time.roundTime = 6;
+
 	applications.registerCustomElements();
 	config._configureFonts();
 	config._configureRedirects();
@@ -65,6 +66,7 @@ Hooks.once("init", function () {
 	documents.BlackFlagActiveEffect.registerHUDListeners();
 	documents.BlackFlagActor.setupHooks();
 	documents.BlackFlagItem.setupHooks();
+	documents.BlackFlagScene.setupHooks();
 	documents.registerDocumentClasses();
 	enrichers.registerCustomEnrichers();
 	settings.registerKeybindings();
@@ -147,22 +149,5 @@ Hooks.on("hotReload", file => {
 Hooks.on("renderActiveEffectConfig", documents.BlackFlagActiveEffect.onRenderActiveEffectConfig);
 Hooks.on("renderSettings", (app, jQuery, options) => settings.renderSettingsSidebar(jQuery));
 Hooks.on("renderJournalEntryPageSheet", applications.journal.BlackFlagJournalEntrySheet.onRenderJournalPageSheet);
-
-Hooks.on("preCreateScene", (doc, createData, options, userId) => {
-	// Set default grid units based on metric length setting
-	const units = utils.defaultUnit("distance");
-	if (
-		units !== game.system.grid.units &&
-		!foundry.utils.getProperty(createData, "grid.distance") &&
-		!foundry.utils.getProperty(createData, "grid.units")
-	) {
-		doc.updateSource({
-			grid: {
-				distance: utils.convertDistance(game.system.grid.distance, game.system.grid.units, { to: units }).value,
-				units
-			}
-		});
-	}
-});
 
 export { applications, config, data, dice, documents, enrichers, registry, settings, utils };
