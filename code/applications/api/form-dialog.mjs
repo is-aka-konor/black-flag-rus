@@ -27,18 +27,6 @@ export default class BFFormDialog extends BlackFlagApplication {
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
-	/*             Properties              */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Form element within the dialog.
-	 * @type {HTMLFormElement|void}
-	 */
-	get form() {
-		return this.options.tag === "form" ? this.element : this.element.querySelector("form");
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Rendering              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -78,20 +66,5 @@ export default class BFFormDialog extends BlackFlagApplication {
 			cssClass: button.class
 		}));
 		return context;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*            Event Handlers           */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	_attachFrameListeners() {
-		super._attachFrameListeners();
-
-		// Add event listeners to the form manually (see https://github.com/foundryvtt/foundryvtt/issues/11621)
-		if (this.options.tag !== "form") {
-			this.form?.addEventListener("submit", this._onSubmitForm.bind(this, this.options.form));
-			this.form?.addEventListener("change", this._onChangeForm.bind(this, this.options.form));
-		}
 	}
 }

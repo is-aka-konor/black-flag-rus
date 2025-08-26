@@ -6,6 +6,7 @@ export { default as CurrencySheet } from "./currency-sheet.mjs";
 export { default as EquipmentSheet } from "./equipment-sheet.mjs";
 export { default as FeatureSheet } from "./feature-sheet.mjs";
 export { default as SpellSheet } from "./spell-sheet.mjs";
+export { default as SplitStackDialog } from "./split-stack-dialog.mjs";
 
 export { default as BaseItemSheetV2 } from "./api/base-item-sheet.mjs";
 

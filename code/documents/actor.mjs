@@ -2061,7 +2061,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	}
 }
 
-/* -------------------------------------------- */
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * @extends {Map<string, Set<BlackFlagItem>>}
@@ -2074,7 +2074,7 @@ class IdentifiedItemsMap extends Map {
 		return result.filter(i => i.type === type);
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	set(key, value) {
@@ -2084,7 +2084,7 @@ class IdentifiedItemsMap extends Map {
 	}
 }
 
-/* -------------------------------------------- */
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * @extends {Map<string, Set<BlackFlagItem>>}
@@ -2097,7 +2097,7 @@ class SourcedItemsMap extends Map {
 		return super.get(key);
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	set(key, value) {
@@ -2107,7 +2107,7 @@ class SourcedItemsMap extends Map {
 		return this;
 	}
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
 	 * Adjust keys once compendium UUID redirects have been initialized.

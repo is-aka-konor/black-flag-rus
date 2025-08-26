@@ -3743,6 +3743,11 @@
 	}
 },
 
+"BF.SplitStack": {
+	"Action": "Split",
+	"Title": "Split Stack"
+},
+
 "BF.SOURCE": {
 	"Label": "Source",
 	"FIELDS": {

@@ -20,6 +20,6 @@ export default class DocumentSheetAssociatedElement extends AppAssociatedElement
 	 * @type {boolean}
 	 */
 	get isEditable() {
-		return this.app.isEditable;
+		return this.app.isEditable && !game.packs.get(this.document.pack)?.locked;
 	}
 }

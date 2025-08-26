@@ -12,9 +12,9 @@ export default class LocalizationSettingsConfig extends BaseSettingsConfig {
 		}
 	};
 
-	/* -------------------------------------------- */
-	/*  Rendering                                   */
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	async _preparePartContext(partId, context, options) {

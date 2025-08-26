@@ -11,7 +11,7 @@ export default class CombatSettingsConfig extends BaseSettingsConfig {
 		}
 	};
 
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
 	static PARTS = {
@@ -29,9 +29,9 @@ export default class CombatSettingsConfig extends BaseSettingsConfig {
 		}
 	};
 
-	/* -------------------------------------------- */
-	/*  Rendering                                   */
-	/* -------------------------------------------- */
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Rendering              */
+	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	async _preparePartContext(partId, context, options) {

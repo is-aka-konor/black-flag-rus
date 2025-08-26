@@ -1,6 +1,7 @@
 import BlackFlagItem from "../../documents/item.mjs";
 import { performCheck } from "../../utils/filter.mjs";
 import BlackFlagContextMenu from "../context-menu.mjs";
+import SplitStackDialog from "../item/split-stack-dialog.mjs";
 import DocumentSheetAssociatedElement from "./document-sheet-associated-element.mjs";
 import FiltersElement from "./filters.mjs";
 import SortingElement from "./sorting.mjs";
@@ -200,6 +201,13 @@ export default class InventoryElement extends DocumentSheetAssociatedElement {
 				condition: li => this.isEditable && section?.options?.canDelete !== false,
 				callback: li => this._onAction(li[0], "delete"),
 				group: "item"
+			},
+			{
+				name: "BF.SplitStack.Title",
+				icon: '<i class="fa-solid fa-arrows-split-up-and-left" inert></i>',
+				condition: () => this.isEditable && (item.system.quantity ?? 0) > 1,
+				callback: () => new SplitStackDialog({ document: item }).render({ force: true }),
+				group: "action"
 			},
 			{
 				name: `BF.Feature.Action.${item.enabled ? "Disable" : "Enable"}`,

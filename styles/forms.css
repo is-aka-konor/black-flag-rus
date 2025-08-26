@@ -213,7 +213,7 @@
 		}
 	}
 
-	range-picker input[type="range"] {
+	:is(range-picker, blackFlag-doubleRange) input[type="range"] {
 		--range-thumb-background-color: var(--bf-background-color-blue);
 		--range-thumb-border-color: var(--bf-border-color-black);
 		--range-track-border-color: var(--bf-border-color-black);

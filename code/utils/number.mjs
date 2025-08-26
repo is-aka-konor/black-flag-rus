@@ -155,12 +155,6 @@ export function convertWeight(value, from, options={}) {
 let _approximateConversion;
 
 /**
- * Cache of best unit conversions from one measurement system to another.
- * @type {Map<string, string>}
- */
-const _measurementSystemConversionCache = new Map();
-
-/**
  * Retrieve the conversion value for the provided unit config.
  * @param {UnitConfiguration}
  * @returns {number}
@@ -224,6 +218,12 @@ export function defaultUnit(type) {
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Cache of best unit conversions from one measurement system to another.
+ * @type {Map<string, string>}
+ */
+const _measurementSystemConversionCache = new Map();
 
 /**
  * Find the preferred unit from the config in the provided measurement system. Must provide either type or units.
