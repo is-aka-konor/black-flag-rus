@@ -2,7 +2,7 @@ import {
 	ChooseFeaturesConfigurationData,
 	ChooseFeaturesValueData
 } from "../../data/advancement/choose-features-data.mjs";
-import { linkForUUID, log } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, linkForUUID, log } from "../../utils/_module.mjs";
 import GrantFeaturesAdvancement from "./grant-features-advancement.mjs";
 
 /**
@@ -64,10 +64,13 @@ export default class ChooseFeaturesAdvancement extends GrantFeaturesAdvancement 
 			category: `level-${levels.character}`,
 			section: "progression",
 			level: "warn",
-			message: game.i18n.format(`BF.Advancement.ChooseFeatures.Notification[${pluralRules.select(choicesNeeded)}]`, {
-				title: this.title,
-				number: choicesNeeded
-			})
+			message: game.i18n.format(
+				getPluralLocalizationKey(choicesNeeded, pr => `BF.Advancement.ChooseFeatures.Notification[${pr}]`),
+				{
+					title: this.title,
+					number: choicesNeeded
+				}
+			)
 		});
 	}
 

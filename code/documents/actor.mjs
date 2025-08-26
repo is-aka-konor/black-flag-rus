@@ -1291,10 +1291,9 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 		// Display success/failure chat message
 		if (details.chatString) {
-			const pluralRule = new Intl.PluralRules(game.i18n.lang).select(details.count);
 			const counted = game.i18n.format("BF.Death.Message.Counted", {
 				count: formatNumber(details.count),
-				label: game.i18n.localize(`BF.Death.Message.Label[${pluralRule}]`)
+				label: game.i18n.localize(getPluralLocalizationKey(details.count, pr => `BF.Death.Message.Label[${pr}]`))
 			});
 			let chatData = {
 				content: game.i18n.format(details.chatString, { name: this.name, counted }),

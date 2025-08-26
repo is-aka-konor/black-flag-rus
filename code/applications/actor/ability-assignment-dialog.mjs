@@ -1,3 +1,4 @@
+import { getPluralLocalizationKey } from "../../utils/_module.mjs";
 import BFDocumentSheet from "../api/document-sheet.mjs";
 
 /**
@@ -124,7 +125,6 @@ export default class AbilityAssignmentDialog extends BFDocumentSheet {
 			.sort((lhs, rhs) => lhs - rhs);
 		const minScore = sortedKeys.shift();
 		const maxScore = sortedKeys.pop();
-		const pluralRules = new Intl.PluralRules(game.i18n.lang);
 
 		context.points = { max: config.points };
 		context.points.spent = Object.values(existingAssignments).reduce(
@@ -148,9 +148,10 @@ export default class AbilityAssignmentDialog extends BFDocumentSheet {
 			score.nextCost = !score.isMax ? config.costs[score.value + 1] - score.existingCost : null;
 			score.costDescription = score.isMax
 				? "—"
-				: game.i18n.format(`BF.AbilityAssignment.Method.PointBuy.Cost.Point[${pluralRules.select(score.nextCost)}]`, {
-						number: score.nextCost
-					});
+				: game.i18n.format(
+						getPluralLocalizationKey(score.nextCost, pr => `BF.AbilityAssignment.Method.PointBuy.Cost.Point[${pr}]`),
+						{ number: score.nextCost }
+					);
 			score.canAfford = score.nextCost !== null && score.nextCost <= context.points.remaining;
 			context.scores.push(score);
 		}

@@ -378,7 +378,7 @@ export function formatNumber(value, options={}) {
 	}
 
 	if ( options.unit?.localization && (options.unitFallback !== false) ) {
-		const key = `${options.unit.localization}[${getPluralRules().select(value)}]`;
+		const key = getPluralLocalizationKey(value, pr => `${options.unit.localization}[${pr}]`);
 		formatted += ` ${game.i18n.localize(key).toLowerCase()}`;
 	}
 
