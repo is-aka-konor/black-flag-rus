@@ -55,7 +55,9 @@
       "img": "icons/equipment/waist/belt-buckle-ornate-steel.webp",
       "_id": "u7KHWBqVW01gP3mg",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.constitution.value",
@@ -81,9 +83,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.044",
+        "systemVersion": "2.0.068",
         "createdTime": 1725740351036,
-        "modifiedTime": 1725740606998,
+        "modifiedTime": 1756334998820,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -105,7 +107,9 @@
       "img": "icons/equipment/waist/belt-buckle-ornate-steel.webp",
       "_id": "YlwI6ie7vAzVhba9",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.condition.resistances.value",
@@ -143,9 +147,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.044",
+        "systemVersion": "2.0.068",
         "createdTime": 1725740352069,
-        "modifiedTime": 1725740451911,
+        "modifiedTime": 1756335001159,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

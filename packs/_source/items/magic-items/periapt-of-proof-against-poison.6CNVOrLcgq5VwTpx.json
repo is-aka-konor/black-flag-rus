@@ -56,7 +56,9 @@
       "disabled": false,
       "img": "icons/equipment/neck/necklace-hook-brown.webp",
       "_id": "AmdalLMzTG8hT57k",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.condition.immunities.value",
@@ -82,9 +84,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": 1729533250177,
-        "modifiedTime": 1729533286828,
+        "modifiedTime": 1756333130353,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

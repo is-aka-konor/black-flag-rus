@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/commodities/gems/gem-rough-rectangle-red.webp",
       "_id": "A4Vl9MRCGSvwdgQJ",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730154255258,
-        "modifiedTime": 1730154300046,
+        "modifiedTime": 1756332678211,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -59,7 +59,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -84,7 +86,16 @@
           "max": "1"
         },
         "name": "Daylight (opal)",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "oPW4KSAKUwo7Sq5A": {
         "type": "utility",
@@ -123,7 +134,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -149,7 +162,16 @@
         },
         "name": "Fireball (fire opal)",
         "img": "",
-        "_id": "oPW4KSAKUwo7Sq5A"
+        "_id": "oPW4KSAKUwo7Sq5A",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "pUBBaQ0CGWCGqLw8": {
         "type": "utility",
@@ -188,7 +210,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -214,7 +238,16 @@
         },
         "name": "Prismatic Spray (diamond)",
         "img": "",
-        "_id": "pUBBaQ0CGWCGqLw8"
+        "_id": "pUBBaQ0CGWCGqLw8",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "aTnZ9QrslGc6ssVC": {
         "type": "utility",
@@ -253,7 +286,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -279,7 +314,16 @@
         },
         "name": "Wall of Fire (ruby)",
         "img": "",
-        "_id": "aTnZ9QrslGc6ssVC"
+        "_id": "aTnZ9QrslGc6ssVC",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "tC6TYFK7xdEJ3wV1": {
         "type": "damage",
@@ -300,11 +344,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "radiant",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "radiant"
               }
             ]
           },
@@ -328,7 +368,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -353,7 +395,16 @@
           "max": ""
         },
         "name": "Damage vs. Undead",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "gPyi2UCr2WzmQykk": {
         "type": "damage",
@@ -363,7 +414,8 @@
         "system": {
           "damage": {
             "critical": {
-              "allow": true
+              "allow": true,
+              "bonus": ""
             },
             "parts": [
               {
@@ -374,11 +426,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "fire",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "fire"
               }
             ]
           },
@@ -402,7 +450,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -427,7 +477,16 @@
           "max": ""
         },
         "name": "Ignite Weapon",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -466,7 +525,9 @@
       "disabled": false,
       "img": "icons/equipment/head/helm-norman-engraved.webp",
       "_id": "xWiN3Ec17NwTNhzo",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -486,9 +547,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728594759674,
-        "modifiedTime": 1728594824453,
+        "modifiedTime": 1756334114837,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -505,9 +566,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.048",
+    "systemVersion": "2.0.068",
     "createdTime": 1724985760286,
-    "modifiedTime": 1728594957026,
+    "modifiedTime": 1756334106008,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

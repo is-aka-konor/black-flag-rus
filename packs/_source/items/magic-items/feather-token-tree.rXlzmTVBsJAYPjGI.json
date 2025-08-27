@@ -40,6 +40,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -55,7 +56,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -80,7 +83,15 @@
           "max": ""
         },
         "name": "Touch Token to Ground",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -116,9 +127,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724984282428,
-    "modifiedTime": 1728427289548,
+    "modifiedTime": 1756333808041,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

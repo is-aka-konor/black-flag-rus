@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cloak-plain-white.webp",
       "_id": "jBDiSrbQZiVkLOHy",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.attributes.ac.formulas",
@@ -89,9 +91,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729892808385,
-        "modifiedTime": 1730068538702,
+        "modifiedTime": 1756333577645,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

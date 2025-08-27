@@ -57,7 +57,9 @@
         },
         "range": {
           "override": false,
-          "units": "sight"
+          "units": "sight",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -84,7 +86,16 @@
           "max": ""
         },
         "name": "Activate",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -120,9 +131,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071212042,
-    "modifiedTime": 1730068900092,
+    "modifiedTime": 1756333667577,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

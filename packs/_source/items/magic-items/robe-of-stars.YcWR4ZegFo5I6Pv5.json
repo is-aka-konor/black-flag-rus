@@ -37,7 +37,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "wBQ62Lo5HMhyeOnH",
@@ -89,7 +90,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "QAsbVS1iKY4lz9W1": {
         "type": "utility",
@@ -124,7 +133,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -149,7 +160,16 @@
           "max": ""
         },
         "name": "Enter/Leave Astral Plane",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -194,7 +214,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cloak-plain-blue.webp",
       "_id": "oEHpI0bqM14aW8gC",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -214,9 +236,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729892716821,
-        "modifiedTime": 1729892731071,
+        "modifiedTime": 1756333571810,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -233,9 +255,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071042604,
-    "modifiedTime": 1735682204664,
+    "modifiedTime": 1756333567742,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

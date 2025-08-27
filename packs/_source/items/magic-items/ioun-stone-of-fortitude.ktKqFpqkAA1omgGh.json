@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/commodities/gems/gem-rough-cushion-purple-pink.webp",
       "_id": "1Dwd6BXhs9RCIw6r",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.constitution.value",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1729031206334,
-        "modifiedTime": 1729031220415,
+        "modifiedTime": 1756334178246,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

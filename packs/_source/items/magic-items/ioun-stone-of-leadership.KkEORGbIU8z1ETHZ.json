@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/commodities/stone/ore-pile-purple.webp",
       "_id": "of2aJfpiliIA3S4r",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.charisma.value",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1729031379559,
-        "modifiedTime": 1729031393616,
+        "modifiedTime": 1756334196178,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -51,7 +51,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -78,7 +80,15 @@
           "max": ""
         },
         "name": "Shackle",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "5WfTYO0EB9HVQDNJ": {
         "type": "check",
@@ -218,9 +228,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983909978,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756335309799,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

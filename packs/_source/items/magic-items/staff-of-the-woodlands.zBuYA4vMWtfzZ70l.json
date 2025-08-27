@@ -76,7 +76,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "CQLEvmXALoFBijrf",
@@ -90,6 +91,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -127,7 +129,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "nQHfgeqYDT6TxpWq": {
         "type": "cast",
@@ -144,7 +154,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "nQHfgeqYDT6TxpWq",
@@ -196,7 +207,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "efSArqVanjz90lOQ": {
         "type": "cast",
@@ -213,7 +232,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "efSArqVanjz90lOQ",
@@ -265,7 +285,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "3j7TkiCxK1OvYwGZ": {
         "type": "cast",
@@ -282,7 +310,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "3j7TkiCxK1OvYwGZ",
@@ -296,6 +325,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -333,7 +363,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "TwfY37Ac3Xej8J2P": {
         "type": "cast",
@@ -350,7 +388,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "TwfY37Ac3Xej8J2P",
@@ -402,7 +441,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "WMJGX1QU1glWvymm": {
         "type": "cast",
@@ -419,7 +466,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "WMJGX1QU1glWvymm",
@@ -471,7 +519,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "lpHMcHyFfPBAFy3v": {
         "type": "cast",
@@ -483,12 +539,13 @@
               "save": null,
               "override": false
             },
-            "circle": null,
+            "circle": 2,
             "properties": [
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "lpHMcHyFfPBAFy3v",
@@ -528,7 +585,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "hDQLtr7AWfE1Dz1G": {
@@ -588,7 +656,16 @@
           "max": ""
         },
         "name": "Tree Form",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireMagic": true
+        }
       }
     },
     "overrides": {
@@ -673,7 +750,9 @@
       "disabled": false,
       "img": "icons/weapons/staves/staff-nature-spiral.webp",
       "_id": "QlWtn9uQyBr51JcE",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -693,9 +772,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730073274892,
-        "modifiedTime": 1730073285918,
+        "modifiedTime": 1756332592867,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -711,9 +790,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590743742,
-    "modifiedTime": 1735685294702,
+    "modifiedTime": 1756332617912,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

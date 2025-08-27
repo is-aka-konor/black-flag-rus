@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-band-studded.webp",
       "_id": "y1Qe4PQOQxhn8Fjt",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729891430166,
-        "modifiedTime": 1729891480045,
+        "modifiedTime": 1756333350311,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

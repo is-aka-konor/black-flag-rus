@@ -75,11 +75,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "poison",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "poison"
               }
             ]
           },
@@ -91,7 +87,13 @@
             {
               "_id": "Him7rMnWcxyKNUMV"
             }
-          ]
+          ],
+          "save": {
+            "dc": {
+              "ability": ""
+            },
+            "bonus": ""
+          }
         },
         "activation": {
           "value": null,
@@ -144,7 +146,15 @@
           "max": ""
         },
         "name": "Poison",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -260,9 +270,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589007806,
-    "modifiedTime": 1735682093631,
+    "modifiedTime": 1756335266162,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -31,15 +31,24 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.Eq0kPFHAIxVCsRHO",
+              "count": "",
+              "name": "",
               "_id": "hovBW3f3eswVlFaY",
+              "uuid": "Compendium.black-flag.npcs.Actor.Eq0kPFHAIxVCsRHO",
               "level": {
                 "min": null,
                 "max": null
               },
               "types": []
             }
-          ]
+          ],
+          "bonuses": {
+            "ac": "",
+            "hp": "",
+            "attackDamage": "",
+            "saveDamage": "",
+            "healing": ""
+          }
         },
         "activation": {
           "value": null,
@@ -95,7 +104,15 @@
         },
         "name": "Summon Creature",
         "img": "",
-        "_id": "zrpJNh2EFyyJbzcb"
+        "_id": "zrpJNh2EFyyJbzcb",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -131,9 +148,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1724984728739,
-    "modifiedTime": 1730157688227,
+    "modifiedTime": 1756333859368,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

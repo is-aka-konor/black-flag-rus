@@ -83,7 +83,15 @@
           "max": ""
         },
         "name": "Throw Token",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "ARMdzR0h6KngDXAf": {
         "type": "attack",
@@ -210,9 +218,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724984354404,
-    "modifiedTime": 1728427406820,
+    "modifiedTime": 1756333814700,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

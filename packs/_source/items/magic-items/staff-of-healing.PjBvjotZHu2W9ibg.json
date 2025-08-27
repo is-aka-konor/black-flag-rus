@@ -21,7 +21,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "d06RQNmZjW0MuIza",
@@ -38,7 +39,8 @@
               "target": "",
               "value": "1",
               "scaling": {
-                "mode": "amount"
+                "mode": "amount",
+                "formula": ""
               }
             }
           ],
@@ -76,7 +78,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "7OCIxSaOK3yopBOD": {
         "type": "cast",
@@ -93,7 +103,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "7OCIxSaOK3yopBOD",
@@ -145,7 +156,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "PgbKA1oLb3Px53vu": {
         "type": "cast",
@@ -162,7 +181,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "PgbKA1oLb3Px53vu",
@@ -214,7 +234,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -292,9 +320,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590502567,
-    "modifiedTime": 1735681683048,
+    "modifiedTime": 1756332324928,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

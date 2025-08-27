@@ -79,11 +79,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "force",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "force"
               }
             ]
           },
@@ -116,7 +112,8 @@
         "range": {
           "override": true,
           "units": "touch",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -143,7 +140,16 @@
           "max": ""
         },
         "name": "Power Strike",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "ClurqY5eXgxnN7tf": {
         "type": "cast",
@@ -160,7 +166,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "ClurqY5eXgxnN7tf",
@@ -212,7 +219,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "q4anu357AHZcfUyd": {
         "type": "cast",
@@ -229,7 +244,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "q4anu357AHZcfUyd",
@@ -281,7 +297,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "wWvvrcLGDV8wlK5s": {
         "type": "cast",
@@ -298,7 +322,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "wWvvrcLGDV8wlK5s",
@@ -350,7 +375,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "8fIloClfXUMQvv7H": {
         "type": "cast",
@@ -367,7 +400,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "8fIloClfXUMQvv7H",
@@ -419,7 +453,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "2bakJL4RXwUP0t32": {
         "type": "cast",
@@ -436,7 +478,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "2bakJL4RXwUP0t32",
@@ -488,7 +531,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "2znwheTXFzwiavNU": {
         "type": "cast",
@@ -505,7 +556,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "2znwheTXFzwiavNU",
@@ -557,7 +609,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "exobC6ZpFIkbmzx9": {
         "type": "cast",
@@ -574,7 +634,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "exobC6ZpFIkbmzx9",
@@ -588,6 +649,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -625,7 +687,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "9KWLDs0Hn1OZvYIG": {
         "type": "cast",
@@ -642,7 +712,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "9KWLDs0Hn1OZvYIG",
@@ -656,6 +727,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -693,7 +765,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "h0nZtZwQqd3EzME0": {
         "type": "cast",
@@ -710,7 +790,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "h0nZtZwQqd3EzME0",
@@ -762,7 +843,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "bvQ18tTFS2wTmsxk": {
         "type": "save",
@@ -773,17 +862,13 @@
             "parts": [
               {
                 "number": null,
-                "denomination": 0,
+                "denomination": null,
                 "bonus": "",
                 "custom": {
                   "formula": "16 * @item.uses.value",
                   "enabled": true
                 },
-                "type": "force",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "force"
               }
             ]
           },
@@ -795,7 +880,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -818,7 +904,8 @@
         "range": {
           "override": true,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -845,7 +932,16 @@
         },
         "name": "Retributive Strike",
         "img": "",
-        "_id": "bvQ18tTFS2wTmsxk"
+        "_id": "bvQ18tTFS2wTmsxk",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -930,7 +1026,9 @@
       "disabled": false,
       "img": "icons/weapons/staves/staff-ornate-banded-purple.webp",
       "_id": "SWkgzsCCBo321UEn",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -950,9 +1048,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730072934187,
-        "modifiedTime": 1730073042248,
+        "modifiedTime": 1756332364905,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -968,9 +1066,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590556008,
-    "modifiedTime": 1735681677886,
+    "modifiedTime": 1756332387810,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

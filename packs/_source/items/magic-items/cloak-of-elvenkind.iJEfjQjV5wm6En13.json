@@ -55,7 +55,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cloak-collared-feathers-green.webp",
       "_id": "RC0Cmz9ZATuR1cBo",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -75,9 +77,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726799399088,
-        "modifiedTime": 1726799473416,
+        "modifiedTime": 1756335192989,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

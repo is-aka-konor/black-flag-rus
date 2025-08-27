@@ -49,7 +49,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -74,7 +76,15 @@
           "max": ""
         },
         "name": "Bright Light",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "vXetbVaidfoPsQbk": {
         "type": "save",
@@ -95,7 +105,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -153,7 +164,15 @@
           "max": ""
         },
         "name": "Brilliant Beam",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "Ki6vYOaevvkUSjZ3": {
         "type": "save",
@@ -173,7 +192,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -233,7 +253,15 @@
         },
         "name": "Flare of Light",
         "img": "",
-        "_id": "Ki6vYOaevvkUSjZ3"
+        "_id": "Ki6vYOaevvkUSjZ3",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -307,9 +335,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.048",
+    "systemVersion": "2.0.068",
     "createdTime": 1724985110343,
-    "modifiedTime": 1728594172142,
+    "modifiedTime": 1756333997633,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

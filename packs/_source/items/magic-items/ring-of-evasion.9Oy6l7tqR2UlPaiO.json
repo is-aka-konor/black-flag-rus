@@ -46,6 +46,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -61,7 +62,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -86,7 +89,16 @@
           "max": ""
         },
         "name": "Succeed on Save",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -125,9 +137,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724986976430,
-    "modifiedTime": 1735681734896,
+    "modifiedTime": 1756333211680,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

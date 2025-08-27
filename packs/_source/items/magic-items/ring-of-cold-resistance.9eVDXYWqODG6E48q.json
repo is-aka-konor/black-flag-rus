@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-faceted-silver-orange.webp",
       "_id": "6iZWN6hfXeIfILKw",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729890313855,
-        "modifiedTime": 1729890493086,
+        "modifiedTime": 1756333186278,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -49,7 +49,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -74,7 +76,15 @@
           "max": ""
         },
         "name": "Toss Token",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -110,9 +120,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724984225944,
-    "modifiedTime": 1728427134793,
+    "modifiedTime": 1756333789933,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

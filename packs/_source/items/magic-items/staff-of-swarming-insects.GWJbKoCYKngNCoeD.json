@@ -21,7 +21,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "N8VVXIacb9r98Ad3",
@@ -73,7 +74,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "7rMJ99sDrA6Zuqyu": {
         "type": "cast",
@@ -90,7 +99,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "7rMJ99sDrA6Zuqyu",
@@ -142,7 +152,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "OcmFLSjeR3E90qVS": {
         "type": "utility",
@@ -186,7 +204,8 @@
         "range": {
           "override": true,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -212,7 +231,16 @@
           "max": ""
         },
         "name": "Insect Cloud",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -290,9 +318,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590585223,
-    "modifiedTime": 1735681662396,
+    "modifiedTime": 1756332437600,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

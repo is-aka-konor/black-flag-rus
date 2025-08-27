@@ -50,7 +50,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -75,7 +77,15 @@
           "max": ""
         },
         "name": "Unfold/Close",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "02gA4R7G7XZy3UkM": {
         "type": "check",
@@ -174,9 +184,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1724986890790,
-    "modifiedTime": 1729533577255,
+    "modifiedTime": 1756333150154,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

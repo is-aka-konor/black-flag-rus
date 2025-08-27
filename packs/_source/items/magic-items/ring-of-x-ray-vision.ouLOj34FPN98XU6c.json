@@ -61,7 +61,8 @@
         "range": {
           "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -86,7 +87,16 @@
           "max": ""
         },
         "name": "Activate",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "lRPr5wDodWxFc7Wr": {
         "type": "save",
@@ -105,7 +115,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -128,7 +139,8 @@
         "range": {
           "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -153,7 +165,16 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -183,7 +204,9 @@
       "transfer": false,
       "_id": "qs7vc5f1yxDDG838",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [],
       "disabled": false,
       "duration": {
@@ -205,9 +228,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729891717875,
-        "modifiedTime": 1729891721650,
+        "modifiedTime": 1756333541879,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -224,9 +247,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1724987410662,
-    "modifiedTime": 1729891757329,
+    "modifiedTime": 1756333530909,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

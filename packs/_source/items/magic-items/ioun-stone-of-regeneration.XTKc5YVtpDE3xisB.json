@@ -32,7 +32,7 @@
           "healing": {
             "type": "healing",
             "number": null,
-            "denomination": 0,
+            "denomination": null,
             "additionalTypes": [],
             "custom": {
               "enabled": true,
@@ -63,7 +63,8 @@
         "range": {
           "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -88,7 +89,15 @@
           "max": ""
         },
         "name": "Regenerate",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -118,9 +127,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1729031669392,
-    "modifiedTime": 1729031715050,
+    "modifiedTime": 1756334211916,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

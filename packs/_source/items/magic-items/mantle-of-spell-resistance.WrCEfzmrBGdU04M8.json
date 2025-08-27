@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cape-layered-violet-white-swirl.webp",
       "_id": "xPzNN0woL9DExj0V",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": 1729531951568,
-        "modifiedTime": 1729532002325,
+        "modifiedTime": 1756334391292,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

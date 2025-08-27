@@ -92,7 +92,10 @@
           "override": false
         },
         "range": {
-          "override": true
+          "override": true,
+          "value": "",
+          "unit": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -117,7 +120,16 @@
           "max": ""
         },
         "name": "Ignite Blade",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "qO3vIFRcSHIDJYSA": {
         "type": "damage",
@@ -138,11 +150,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "radiant",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "radiant"
               }
             ]
           },
@@ -191,7 +199,16 @@
           "max": ""
         },
         "name": "Damage vs. Undead",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireMagic": true
+        }
       }
     },
     "overrides": {
@@ -265,9 +282,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590769146,
-    "modifiedTime": 1730154407838,
+    "modifiedTime": 1756332708892,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/hand/gauntlet-armored-steel-grey.webp",
       "_id": "VfGjNsQB4fidrTaF",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.strength.value",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728593879815,
-        "modifiedTime": 1728593899592,
+        "modifiedTime": 1756333979853,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

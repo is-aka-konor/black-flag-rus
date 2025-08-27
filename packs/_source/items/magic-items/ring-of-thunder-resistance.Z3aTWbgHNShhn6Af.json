@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-cabochon-white-blue.webp",
       "_id": "gC7E88PZev4n09Uw",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729890443964,
-        "modifiedTime": 1729890469595,
+        "modifiedTime": 1756333395058,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -55,7 +55,9 @@
       "img": "icons/equipment/neck/necklace-jeweled-gold-red.webp",
       "_id": "SpxENMek6OzzOp0U",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.constitution.value",
@@ -75,9 +77,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.044",
+        "systemVersion": "2.0.068",
         "createdTime": 1725738171068,
-        "modifiedTime": 1725738197694,
+        "modifiedTime": 1756334544142,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

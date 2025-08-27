@@ -54,7 +54,9 @@
       "disabled": false,
       "img": "icons/commodities/stone/ore-pile-red.webp",
       "_id": "sAngP3GtPs2jWMNs",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.abilities.intelligence.value",
@@ -74,9 +76,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1729031344766,
-        "modifiedTime": 1729031353184,
+        "modifiedTime": 1756334192377,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

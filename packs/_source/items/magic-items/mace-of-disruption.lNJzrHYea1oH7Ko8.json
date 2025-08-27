@@ -75,11 +75,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "radiant",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "radiant"
               }
             ]
           },
@@ -91,7 +87,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -137,7 +134,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -208,9 +213,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589496161,
-    "modifiedTime": 1729531595869,
+    "modifiedTime": 1756334346593,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

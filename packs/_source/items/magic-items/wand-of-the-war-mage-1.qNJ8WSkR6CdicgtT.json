@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/weapons/wands/wand-gem-blue.webp",
       "_id": "KC1aRtoA0rQzwuVY",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730154862482,
-        "modifiedTime": 1730154930896,
+        "modifiedTime": 1756332860722,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

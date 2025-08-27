@@ -88,7 +88,16 @@
           "max": ""
         },
         "name": "Activate",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": false
+        }
       }
     },
     "uses": {
@@ -127,9 +136,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071438134,
-    "modifiedTime": 1735681544193,
+    "modifiedTime": 1756332817482,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

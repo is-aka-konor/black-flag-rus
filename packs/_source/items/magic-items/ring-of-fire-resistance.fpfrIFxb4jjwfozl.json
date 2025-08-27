@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-cabochon-gold.webp",
       "_id": "UDDQEFAZnFqIG4m9",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729890331060,
-        "modifiedTime": 1729890490888,
+        "modifiedTime": 1756333269798,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

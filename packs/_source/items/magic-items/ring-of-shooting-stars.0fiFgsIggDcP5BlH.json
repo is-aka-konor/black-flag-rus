@@ -37,7 +37,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "ecvgJVX4Kf4St3V5",
@@ -51,6 +52,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -88,7 +90,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "SWSxRQ0ekxmtr6cC": {
         "type": "summon",
@@ -217,7 +227,16 @@
           "max": ""
         },
         "name": "Ball Lightning",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "OVo2afY3sgUQHmnO": {
         "type": "save",
@@ -239,8 +258,7 @@
                 "scaling": {
                   "mode": "",
                   "number": 1
-                },
-                "additionalTypes": []
+                }
               }
             ]
           },
@@ -252,7 +270,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -315,7 +334,16 @@
           "max": ""
         },
         "name": "Shooting Stars",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -354,9 +382,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724987340256,
-    "modifiedTime": 1735681731077,
+    "modifiedTime": 1756333340008,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -40,7 +40,7 @@
   "effects": [
     {
       "type": "base",
-      "name": "Cloak of the Manta Ray",
+      "name": "The Manta Ray",
       "origin": "Compendium.black-flag.items.Item.7Mup2qL0ndtkJxgq",
       "duration": {
         "rounds": null,
@@ -54,7 +54,9 @@
       "disabled": true,
       "img": "icons/equipment/head/hood-cloth-teal-gold.webp",
       "_id": "OEySxMVz7jqqUnjk",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.movement.types.swim",
@@ -74,9 +76,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726799780294,
-        "modifiedTime": 1726799806266,
+        "modifiedTime": 1756335213422,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

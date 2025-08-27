@@ -115,7 +115,7 @@
   "effects": [
     {
       "type": "base",
-      "name": "Cloak of the Bat",
+      "name": "The Bat",
       "origin": "Compendium.black-flag.items.Item.7nYnegP8YbE9lEXW",
       "duration": {
         "rounds": null,
@@ -129,7 +129,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cloak-layered-tattered-purple.webp",
       "_id": "A6CIJJIbl8d7FtGt",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -149,9 +151,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726799650348,
-        "modifiedTime": 1726799695582,
+        "modifiedTime": 1756335206806,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

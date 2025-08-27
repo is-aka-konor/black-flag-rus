@@ -48,7 +48,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -73,7 +75,15 @@
           "max": ""
         },
         "name": "Remove Stopper",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "z8hEC8LTAoWP4Rqm": {
         "type": "save",
@@ -91,11 +101,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "bludgeoning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "bludgeoning"
               }
             ]
           },
@@ -105,7 +111,8 @@
             "dc": {
               "ability": "custom",
               "formula": "13"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -127,7 +134,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -156,7 +165,15 @@
           "max": ""
         },
         "name": "Geyser",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -192,9 +209,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983857603,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756335293004,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

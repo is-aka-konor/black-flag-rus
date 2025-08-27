@@ -21,7 +21,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "7s0DbI6I3NlIChKV",
@@ -35,6 +36,7 @@
           "targets": [
             {
               "type": "item",
+              "target": "",
               "value": "1",
               "scaling": {}
             }
@@ -72,7 +74,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "mV6yGZRSlcA1aOfD": {
         "type": "cast",
@@ -89,7 +99,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "mV6yGZRSlcA1aOfD",
@@ -141,7 +152,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "VUajJUV4cW2RfcpA": {
         "type": "cast",
@@ -158,7 +177,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "VUajJUV4cW2RfcpA",
@@ -210,7 +230,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -295,7 +323,9 @@
       "disabled": false,
       "img": "icons/weapons/staves/staff-ornate-red.webp",
       "_id": "vLy5xnFqtgC75O7E",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -315,9 +345,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730072815663,
-        "modifiedTime": 1730072831860,
+        "modifiedTime": 1756332294431,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -333,9 +363,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590319557,
-    "modifiedTime": 1735681687232,
+    "modifiedTime": 1756332285928,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

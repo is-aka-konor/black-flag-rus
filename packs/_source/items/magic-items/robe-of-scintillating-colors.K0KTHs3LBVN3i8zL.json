@@ -39,7 +39,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -69,7 +70,8 @@
         "range": {
           "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -97,7 +99,16 @@
           "max": ""
         },
         "name": "Dazzle",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -136,9 +147,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071020549,
-    "modifiedTime": 1735681718216,
+    "modifiedTime": 1756333555286,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

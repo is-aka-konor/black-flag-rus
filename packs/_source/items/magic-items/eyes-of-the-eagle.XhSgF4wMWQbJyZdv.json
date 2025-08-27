@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/head/goggles-leather-blue.webp",
       "_id": "HOe8n7j0aALEaXKW",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1728426934326,
-        "modifiedTime": 1728426952495,
+        "modifiedTime": 1756334475648,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

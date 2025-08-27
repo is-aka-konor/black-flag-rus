@@ -142,7 +142,9 @@
       "disabled": false,
       "img": "icons/equipment/chest/breastplate-rivited-red.webp",
       "_id": "2x4X82dUsxISPYOS",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -168,9 +170,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1727900840039,
-        "modifiedTime": 1730157216251,
+        "modifiedTime": 1756335324396,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

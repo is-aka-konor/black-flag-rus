@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-band-thin-rounded-gold.webp",
       "_id": "Ru20DzIHKhzGvgZQ",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729891664847,
-        "modifiedTime": 1729891679530,
+        "modifiedTime": 1756333402893,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

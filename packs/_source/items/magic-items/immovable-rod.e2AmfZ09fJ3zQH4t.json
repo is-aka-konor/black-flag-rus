@@ -10,7 +10,12 @@
         "type": "utility",
         "_id": "Xsylc06tHcDSA3cj",
         "description": "",
-        "system": {},
+        "system": {
+          "roll": {
+            "name": "",
+            "formula": ""
+          }
+        },
         "activation": {
           "type": "action",
           "condition": ""
@@ -28,7 +33,28 @@
           "max": ""
         },
         "name": "Activate/Deactivate",
-        "img": ""
+        "img": "",
+        "target": {
+          "affects": {
+            "type": ""
+          },
+          "template": {
+            "type": ""
+          }
+        },
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        },
+        "range": {
+          "value": "",
+          "unit": "",
+          "special": ""
+        }
       },
       "xkEDawEcix8as7Ki": {
         "type": "check",
@@ -133,10 +159,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "coreVersion": "13.347",
     "createdTime": 1707356362192,
-    "modifiedTime": 1729030578224,
+    "modifiedTime": 1756334147222,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null

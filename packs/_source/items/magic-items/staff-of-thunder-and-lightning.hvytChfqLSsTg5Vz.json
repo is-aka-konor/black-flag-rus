@@ -79,11 +79,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "lightning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "lightning"
               }
             ]
           },
@@ -115,7 +111,8 @@
         "range": {
           "override": true,
           "units": "touch",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -147,7 +144,16 @@
           "max": "1"
         },
         "name": "Lightning",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "KwEuhJ1EVx8qObCR": {
         "type": "save",
@@ -166,7 +172,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -195,7 +202,8 @@
         "range": {
           "override": true,
           "units": "touch",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -227,7 +235,16 @@
           "max": "1"
         },
         "name": "Thunder",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "atyIMH7klQQCpnNA": {
         "type": "save",
@@ -245,11 +262,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "lightning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "lightning"
               }
             ]
           },
@@ -261,7 +274,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -290,7 +304,8 @@
         "range": {
           "override": true,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -324,7 +339,16 @@
           "max": "1"
         },
         "name": "Lightning Strike",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "ds7Wrp9DH2iLOWcB": {
         "type": "save",
@@ -342,11 +366,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "thunder",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "thunder"
               }
             ]
           },
@@ -358,7 +378,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -387,7 +408,8 @@
         "range": {
           "override": true,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -420,7 +442,16 @@
           "max": "1"
         },
         "name": "Thunderclap",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "nbPPyY6AmM3nqdul": {
         "type": "save",
@@ -438,11 +469,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "lightning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "lightning"
               }
             ]
           },
@@ -454,7 +481,8 @@
             "dc": {
               "ability": "custom",
               "formula": ""
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -483,7 +511,8 @@
         "range": {
           "override": true,
           "units": "touch",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -515,7 +544,16 @@
           "max": "1"
         },
         "name": "Thunder and Lightning",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -587,9 +625,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590702136,
-    "modifiedTime": 1735681651329,
+    "modifiedTime": 1756332645328,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

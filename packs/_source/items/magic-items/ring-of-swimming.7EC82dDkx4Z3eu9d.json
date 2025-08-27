@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-cabochon-gold-blue.webp",
       "_id": "3ZL679vvizJ42FO3",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.movement.types.swim",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729891487983,
-        "modifiedTime": 1729891504304,
+        "modifiedTime": 1756333365325,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -34,7 +34,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -85,7 +86,16 @@
           "max": ""
         },
         "name": "Entangle",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "vrewn9aLcBIZ87C0": {
         "type": "check",
@@ -247,9 +257,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071269049,
-    "modifiedTime": 1730069930247,
+    "modifiedTime": 1756333686908,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

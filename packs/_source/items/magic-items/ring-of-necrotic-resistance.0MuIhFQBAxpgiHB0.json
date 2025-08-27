@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-faceted-grey.webp",
       "_id": "1LipJBzuyp81Q6LD",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729890390134,
-        "modifiedTime": 1729890478992,
+        "modifiedTime": 1756333303576,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

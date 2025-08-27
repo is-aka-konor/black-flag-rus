@@ -78,11 +78,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "bludgeoning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "bludgeoning"
               }
             ]
           },
@@ -131,7 +127,15 @@
           "max": ""
         },
         "name": "Natural 20 Damage",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "mrqCPsmDx02JuHPt": {
         "type": "damage",
@@ -151,11 +155,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "bludgeoning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "bludgeoning"
               }
             ]
           },
@@ -205,7 +205,15 @@
         },
         "name": "Natural 20 Damage (vs Construct)",
         "img": "",
-        "_id": "mrqCPsmDx02JuHPt"
+        "_id": "mrqCPsmDx02JuHPt",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -275,9 +283,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589509928,
-    "modifiedTime": 1729531677392,
+    "modifiedTime": 1756334360094,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

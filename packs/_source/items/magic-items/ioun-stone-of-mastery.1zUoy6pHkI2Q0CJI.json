@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/commodities/gems/gem-rough-cushion-green.webp",
       "_id": "4CYbXx2iUi3Wyxuo",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.attributes.proficiency",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1729031407895,
-        "modifiedTime": 1729031439975,
+        "modifiedTime": 1756334202629,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

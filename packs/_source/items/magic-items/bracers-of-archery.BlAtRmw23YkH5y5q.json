@@ -55,7 +55,9 @@
       "img": "icons/equipment/wrist/bracer-orange-fancy.webp",
       "_id": "daSLrHcthKQuttt9",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.proficiencies.weapons.value",
@@ -87,9 +89,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.045",
+        "systemVersion": "2.0.068",
         "createdTime": 1725902116233,
-        "modifiedTime": 1725902391810,
+        "modifiedTime": 1756335122844,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

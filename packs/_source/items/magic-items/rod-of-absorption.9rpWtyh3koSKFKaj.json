@@ -73,7 +73,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -98,7 +100,16 @@
           "max": "50"
         },
         "name": "Absorb Spell",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "w7w3IDW21tFMAJIE": {
         "type": "utility",
@@ -154,7 +165,8 @@
         "range": {
           "override": false,
           "units": "",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -179,7 +191,16 @@
           "max": ""
         },
         "name": "Convert to Circle",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -212,9 +233,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071137254,
-    "modifiedTime": 1730069716343,
+    "modifiedTime": 1756333594962,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

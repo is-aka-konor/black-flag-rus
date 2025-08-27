@@ -99,8 +99,10 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.VeVmo85SztJhGZsN",
+              "count": "",
+              "name": "",
               "_id": "zeS7wkxPwmFAt4xm",
+              "uuid": "Compendium.black-flag.npcs.Actor.VeVmo85SztJhGZsN",
               "level": {
                 "min": null,
                 "max": null
@@ -108,8 +110,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.XfSCmCndblO973ag",
+              "count": "",
+              "name": "",
               "_id": "BAXYw3OeJrLWgt0E",
+              "uuid": "Compendium.black-flag.npcs.Actor.XfSCmCndblO973ag",
               "level": {
                 "min": null,
                 "max": null
@@ -117,8 +121,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.Ss0Bwrs6FOveDoFy",
+              "count": "",
+              "name": "",
               "_id": "rZGpdjrrMlLoQTpJ",
+              "uuid": "Compendium.black-flag.npcs.Actor.Ss0Bwrs6FOveDoFy",
               "level": {
                 "min": null,
                 "max": null
@@ -126,8 +132,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.VgI9TWuZwWjD2xgg",
+              "count": "",
+              "name": "",
               "_id": "EbHNBsgDUt85NlSs",
+              "uuid": "Compendium.black-flag.npcs.Actor.VgI9TWuZwWjD2xgg",
               "level": {
                 "min": null,
                 "max": null
@@ -135,8 +143,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.vsJSzta9m9xgEXbW",
+              "count": "",
+              "name": "",
               "_id": "EvgV3HGoNPm40G85",
+              "uuid": "Compendium.black-flag.npcs.Actor.vsJSzta9m9xgEXbW",
               "level": {
                 "min": null,
                 "max": null
@@ -144,8 +154,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.6aHtiu1tmyE9zRkJ",
+              "count": "",
+              "name": "",
               "_id": "keAdpqdlQa4s77QW",
+              "uuid": "Compendium.black-flag.npcs.Actor.6aHtiu1tmyE9zRkJ",
               "level": {
                 "min": null,
                 "max": null
@@ -153,8 +165,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.jrFETGwaRC12Gcgo",
+              "count": "",
+              "name": "",
               "_id": "SHZ2iswPJXtkjam9",
+              "uuid": "Compendium.black-flag.npcs.Actor.jrFETGwaRC12Gcgo",
               "level": {
                 "min": null,
                 "max": null
@@ -162,8 +176,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.xi88QgskH6ueJ6Ma",
+              "count": "",
+              "name": "",
               "_id": "21ryjF3fDBgPV6bx",
+              "uuid": "Compendium.black-flag.npcs.Actor.xi88QgskH6ueJ6Ma",
               "level": {
                 "min": null,
                 "max": null
@@ -229,7 +245,15 @@
           "max": ""
         },
         "name": "Pull Creature",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -270,9 +294,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724982883337,
-    "modifiedTime": 1735684171123,
+    "modifiedTime": 1756334064219,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

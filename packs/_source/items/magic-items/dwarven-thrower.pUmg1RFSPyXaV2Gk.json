@@ -163,11 +163,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "bludgeoning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "bludgeoning"
               }
             ],
             "critical": {
@@ -239,7 +235,15 @@
         "sort": 0,
         "name": "Throw vs. Giant",
         "img": "",
-        "_id": "kW8U5JNme9aN2yeB"
+        "_id": "kW8U5JNme9aN2yeB",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -313,9 +317,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.048",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589342539,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756335407606,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

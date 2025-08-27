@@ -81,7 +81,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -106,7 +108,15 @@
         },
         "name": "Command Creature",
         "img": "",
-        "_id": "EPnSiUSWfUurmKAs"
+        "_id": "EPnSiUSWfUurmKAs",
+        "visibility": {
+          "requireMagic": false,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "UwM8ytu1YsKnFRr9": {
         "type": "summon",
@@ -130,8 +140,10 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.yjd5EqF2xIbyppga",
+              "count": "",
+              "name": "",
               "_id": "Q1PuA2I1v8jyib0I",
+              "uuid": "Compendium.black-flag.npcs.Actor.yjd5EqF2xIbyppga",
               "level": {
                 "min": null,
                 "max": null
@@ -139,8 +151,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.NLKyXyyesFlraxWi",
+              "count": "",
+              "name": "",
               "_id": "fu8CMuVQYuzixVqC",
+              "uuid": "Compendium.black-flag.npcs.Actor.NLKyXyyesFlraxWi",
               "level": {
                 "min": null,
                 "max": null
@@ -148,8 +162,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.ImTx2hN7pQqGK6fe",
+              "count": "",
+              "name": "",
               "_id": "d12yuxUTQX9bDyOP",
+              "uuid": "Compendium.black-flag.npcs.Actor.ImTx2hN7pQqGK6fe",
               "level": {
                 "min": null,
                 "max": null
@@ -157,8 +173,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.QbwUREeTjQ2kv29j",
+              "count": "",
+              "name": "",
               "_id": "qL6lpVcDB2pmkzgs",
+              "uuid": "Compendium.black-flag.npcs.Actor.QbwUREeTjQ2kv29j",
               "level": {
                 "min": null,
                 "max": null
@@ -166,8 +184,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.BLi3PwiKwa4TVWVB",
+              "count": "",
+              "name": "",
               "_id": "94CKQ1U56Wp38sof",
+              "uuid": "Compendium.black-flag.npcs.Actor.BLi3PwiKwa4TVWVB",
               "level": {
                 "min": null,
                 "max": null
@@ -175,8 +195,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.opwZgKqVqntUSyxN",
+              "count": "",
+              "name": "",
               "_id": "yGv7H9uJKhiY235n",
+              "uuid": "Compendium.black-flag.npcs.Actor.opwZgKqVqntUSyxN",
               "level": {
                 "min": null,
                 "max": null
@@ -184,8 +206,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.YZB7WaKKKDjkd5la",
+              "count": "",
+              "name": "",
               "_id": "zWArXGMXl4S03fu6",
+              "uuid": "Compendium.black-flag.npcs.Actor.YZB7WaKKKDjkd5la",
               "level": {
                 "min": null,
                 "max": null
@@ -193,8 +217,10 @@
               "types": []
             },
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.44drnXUj8btZkBGo",
+              "count": "",
+              "name": "",
               "_id": "ZWDtnRDSeADpv0j2",
+              "uuid": "Compendium.black-flag.npcs.Actor.44drnXUj8btZkBGo",
               "level": {
                 "min": null,
                 "max": null
@@ -261,7 +287,16 @@
         },
         "name": "Pull Creature",
         "img": "",
-        "_id": "UwM8ytu1YsKnFRr9"
+        "_id": "UwM8ytu1YsKnFRr9",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": false
+        }
       }
     }
   },
@@ -278,9 +313,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725739612957,
-    "modifiedTime": 1735684197802,
+    "modifiedTime": 1756332751876,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

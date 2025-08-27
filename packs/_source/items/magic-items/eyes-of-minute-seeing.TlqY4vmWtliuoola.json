@@ -56,7 +56,9 @@
       "disabled": false,
       "img": "icons/tools/scribal/spectacles-glasses.webp",
       "_id": "hDcfIlLQUQJdTw3j",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -76,9 +78,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1728426775519,
-        "modifiedTime": 1728426849465,
+        "modifiedTime": 1756335461098,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

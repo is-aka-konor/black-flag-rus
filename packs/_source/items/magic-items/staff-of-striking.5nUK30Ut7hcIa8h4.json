@@ -82,9 +82,9 @@
                 "type": "force",
                 "scaling": {
                   "mode": "whole",
-                  "number": 1
-                },
-                "additionalTypes": []
+                  "number": 1,
+                  "formula": ""
+                }
               }
             ]
           },
@@ -121,7 +121,8 @@
         "range": {
           "override": true,
           "units": "touch",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -148,7 +149,16 @@
           "max": ""
         },
         "name": "Strike",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -226,9 +236,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590568822,
-    "modifiedTime": 1735681666103,
+    "modifiedTime": 1756332414404,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

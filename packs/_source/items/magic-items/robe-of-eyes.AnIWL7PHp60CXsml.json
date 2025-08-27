@@ -57,7 +57,9 @@
       "disabled": false,
       "img": "icons/equipment/head/hood-red.webp",
       "_id": "KRrVJAU59spU0ABc",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -83,9 +85,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729892455721,
-        "modifiedTime": 1729892525197,
+        "modifiedTime": 1756333550396,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -40,8 +40,10 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.pnMVYeOXRmIXdm2z",
+              "count": "",
+              "name": "",
               "_id": "W6bzF8fbfeoM2MAr",
+              "uuid": "Compendium.black-flag.npcs.Actor.pnMVYeOXRmIXdm2z",
               "level": {
                 "min": null,
                 "max": null
@@ -108,7 +110,15 @@
           "max": ""
         },
         "name": "Break Gem",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -142,9 +152,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1728426560334,
-    "modifiedTime": 1730154217733,
+    "modifiedTime": 1756335433945,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

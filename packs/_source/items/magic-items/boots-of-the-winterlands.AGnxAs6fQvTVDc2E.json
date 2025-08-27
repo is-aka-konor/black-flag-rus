@@ -55,7 +55,9 @@
       "img": "icons/equipment/feet/boots-leather-banded-furred.webp",
       "_id": "YgPUDOGj56PcXHnt",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -75,9 +77,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.045",
+        "systemVersion": "2.0.068",
         "createdTime": 1725901884777,
-        "modifiedTime": 1725901942082,
+        "modifiedTime": 1756335107566,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

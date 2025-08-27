@@ -33,7 +33,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -62,7 +63,8 @@
         "range": {
           "override": false,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -90,7 +92,15 @@
           "max": ""
         },
         "name": "Throw Dust",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -126,9 +136,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983954754,
-    "modifiedTime": 1735684776659,
+    "modifiedTime": 1756335385386,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

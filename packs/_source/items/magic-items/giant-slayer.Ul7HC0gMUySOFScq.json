@@ -25,11 +25,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": ""
               }
             ]
           },
@@ -39,7 +35,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -60,7 +57,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -85,7 +84,15 @@
           "max": ""
         },
         "name": "Giant Save",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -136,7 +143,13 @@
       "disabled": true,
       "img": "icons/weapons/swords/sword-ringed-engraved.webp",
       "_id": "bY3MXWiuucLdmCmd",
-      "system": {},
+      "system": {
+        "rider": {
+          "activities": [
+            "mPAasKgz1LMeT90k"
+          ]
+        }
+      },
       "changes": [
         {
           "key": "name",
@@ -192,9 +205,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728592490990,
-        "modifiedTime": 1728592557216,
+        "modifiedTime": 1756334023257,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -206,14 +219,22 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "black-flag": {
+      "rider": {
+        "activities": [
+          "mPAasKgz1LMeT90k"
+        ]
+      }
+    }
+  },
   "_stats": {
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1726788319699,
-    "modifiedTime": 1730158871281,
+    "modifiedTime": 1756334027721,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

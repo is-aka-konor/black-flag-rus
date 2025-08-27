@@ -79,11 +79,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "piercing",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "piercing"
               }
             ]
           },
@@ -132,7 +128,16 @@
           "max": ""
         },
         "name": "Sworn Enemy Damage",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -209,9 +214,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589564629,
-    "modifiedTime": 1735681757349,
+    "modifiedTime": 1756333027701,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

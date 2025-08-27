@@ -31,15 +31,24 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.usBkwcEYxNPK7eXq",
+              "count": "",
+              "name": "",
               "_id": "t0DDOkkc1P769ozb",
+              "uuid": "Compendium.black-flag.npcs.Actor.usBkwcEYxNPK7eXq",
               "level": {
                 "min": null,
                 "max": null
               },
               "types": []
             }
-          ]
+          ],
+          "bonuses": {
+            "ac": "",
+            "hp": "",
+            "attackDamage": "",
+            "saveDamage": "",
+            "healing": ""
+          }
         },
         "activation": {
           "value": null,
@@ -98,7 +107,15 @@
         },
         "name": "Summon Goat of Traveling",
         "img": "",
-        "_id": "0BtVsywWXUn8GD8O"
+        "_id": "0BtVsywWXUn8GD8O",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "WuBZO8POgPFSNCoU": {
         "type": "summon",
@@ -114,15 +131,24 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.X82CDCyHgR41wdQE",
+              "count": "",
+              "name": "",
               "_id": "WDtPqMQa3XF6kNFB",
+              "uuid": "Compendium.black-flag.npcs.Actor.X82CDCyHgR41wdQE",
               "level": {
                 "min": null,
                 "max": null
               },
               "types": []
             }
-          ]
+          ],
+          "bonuses": {
+            "ac": "",
+            "hp": "",
+            "attackDamage": "",
+            "saveDamage": "",
+            "healing": ""
+          }
         },
         "activation": {
           "value": null,
@@ -178,7 +204,15 @@
         },
         "name": "Summon Goat of Travail",
         "img": "",
-        "_id": "WuBZO8POgPFSNCoU"
+        "_id": "WuBZO8POgPFSNCoU",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "i0lWNBfJiAmaYzMx": {
         "type": "summon",
@@ -194,15 +228,24 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.X82CDCyHgR41wdQE",
+              "count": "",
+              "name": "",
               "_id": "LfpQwjVBJl3BSPfO",
+              "uuid": "Compendium.black-flag.npcs.Actor.X82CDCyHgR41wdQE",
               "level": {
                 "min": null,
                 "max": null
               },
               "types": []
             }
-          ]
+          ],
+          "bonuses": {
+            "ac": "",
+            "hp": "",
+            "attackDamage": "",
+            "saveDamage": "",
+            "healing": ""
+          }
         },
         "activation": {
           "value": null,
@@ -258,7 +301,15 @@
         },
         "name": "Summon Goat of Terror",
         "img": "",
-        "_id": "i0lWNBfJiAmaYzMx"
+        "_id": "i0lWNBfJiAmaYzMx",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "bgVe8m3QBrWVyZwf": {
         "type": "save",
@@ -360,9 +411,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1724984695531,
-    "modifiedTime": 1730157717663,
+    "modifiedTime": 1756333845869,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

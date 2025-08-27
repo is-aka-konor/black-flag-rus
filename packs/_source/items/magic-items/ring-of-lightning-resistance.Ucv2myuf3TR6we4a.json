@@ -58,7 +58,9 @@
       "disabled": false,
       "img": "icons/equipment/finger/ring-cabochon-rounded-gold-teal.webp",
       "_id": "CzAV07TDkpZyqkep",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -78,9 +80,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1729890364524,
-        "modifiedTime": 1729890486375,
+        "modifiedTime": 1756333296897,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

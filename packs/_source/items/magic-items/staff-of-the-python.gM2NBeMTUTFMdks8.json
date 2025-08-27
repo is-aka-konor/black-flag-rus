@@ -29,7 +29,10 @@
           },
           "profiles": [
             {
+              "count": "",
+              "name": "",
               "_id": "wVczicQeEyjh2zVt",
+              "uuid": null,
               "level": {
                 "min": null,
                 "max": null
@@ -86,7 +89,16 @@
           "max": ""
         },
         "name": "Transform",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -158,9 +170,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590661235,
-    "modifiedTime": 1730073228308,
+    "modifiedTime": 1756332569606,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

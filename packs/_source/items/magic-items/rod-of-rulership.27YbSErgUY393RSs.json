@@ -42,7 +42,8 @@
             "dc": {
               "ability": "custom",
               "formula": "15"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -101,7 +102,16 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -136,7 +146,9 @@
       "transfer": false,
       "_id": "gT3EaZ61mmvyP1va",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [],
       "disabled": false,
       "duration": {
@@ -160,9 +172,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730068972612,
-        "modifiedTime": 1730068983639,
+        "modifiedTime": 1756333624337,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -179,9 +191,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071190006,
-    "modifiedTime": 1735681692470,
+    "modifiedTime": 1756333615704,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

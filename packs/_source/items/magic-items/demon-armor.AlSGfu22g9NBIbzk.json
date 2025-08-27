@@ -161,7 +161,9 @@
       "disabled": false,
       "img": "icons/equipment/chest/breastplate-layered-leather-green.webp",
       "_id": "OZ1NxntpsS5iuZRm",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.proficiencies.languages.value",
@@ -187,9 +189,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.047",
+        "systemVersion": "2.0.068",
         "createdTime": 1727900134241,
-        "modifiedTime": 1727900303353,
+        "modifiedTime": 1756335304079,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

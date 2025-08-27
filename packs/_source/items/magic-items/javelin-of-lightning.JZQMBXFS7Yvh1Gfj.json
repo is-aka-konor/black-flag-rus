@@ -76,11 +76,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "lightning",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "lightning"
               }
             ]
           },
@@ -92,7 +88,8 @@
             "dc": {
               "ability": "custom",
               "formula": "13"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -156,7 +153,15 @@
           "max": "1"
         },
         "name": "Hurl Lightning",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "overrides": {
@@ -227,9 +232,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725589450073,
-    "modifiedTime": 1735681950551,
+    "modifiedTime": 1756334256193,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -73,7 +73,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "Reuy0SDuyorFoItU",
@@ -122,7 +123,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -202,9 +211,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590782142,
-    "modifiedTime": 1735681553689,
+    "modifiedTime": 1756332766633,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

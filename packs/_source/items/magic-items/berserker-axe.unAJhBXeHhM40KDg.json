@@ -55,7 +55,13 @@
       "disabled": true,
       "img": "icons/weapons/axes/axe-double-white-red.webp",
       "_id": "wn6rg0O4IIgrE5O1",
-      "system": {},
+      "system": {
+        "rider": {
+          "effects": [
+            "LQfBElvXOaWGraHs"
+          ]
+        }
+      },
       "changes": [
         {
           "key": "name",
@@ -111,9 +117,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726798580036,
-        "modifiedTime": 1726798692457,
+        "modifiedTime": 1756335036009,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -135,7 +141,9 @@
       "disabled": false,
       "img": "icons/weapons/axes/axe-double-white-red.webp",
       "_id": "LQfBElvXOaWGraHs",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.attributes.hp.bonuses.level",
@@ -155,9 +163,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726798688520,
-        "modifiedTime": 1726798746228,
+        "modifiedTime": 1756335039302,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -169,14 +177,22 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "black-flag": {
+      "rider": {
+        "effects": [
+          "LQfBElvXOaWGraHs"
+        ]
+      }
+    }
+  },
   "_stats": {
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1726789062315,
-    "modifiedTime": 1730158955321,
+    "modifiedTime": 1756335036061,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -105,7 +105,8 @@
         "range": {
           "override": true,
           "units": "",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -130,7 +131,16 @@
           "max": ""
         },
         "name": "Absorb Spell",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireMagic": true
+        }
       },
       "9ychCZkmB6nA22mg": {
         "type": "cast",
@@ -142,12 +152,13 @@
               "save": null,
               "override": false
             },
-            "circle": null,
+            "circle": 2,
             "properties": [
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "9ychCZkmB6nA22mg",
@@ -187,7 +198,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "9eKa5YPN5YIcHYS8": {
@@ -205,7 +227,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "9eKa5YPN5YIcHYS8",
@@ -257,7 +280,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "0VlqKd5jcZnqkces": {
         "type": "cast",
@@ -269,12 +300,13 @@
               "save": null,
               "override": false
             },
-            "circle": null,
+            "circle": 1,
             "properties": [
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "0VlqKd5jcZnqkces",
@@ -314,7 +346,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "DgvsX4YSRXVNo922": {
@@ -332,7 +375,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "DgvsX4YSRXVNo922",
@@ -384,7 +428,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "hYHCiTe9CT6U9pzi": {
         "type": "cast",
@@ -396,12 +448,13 @@
               "save": null,
               "override": false
             },
-            "circle": null,
+            "circle": 2,
             "properties": [
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "hYHCiTe9CT6U9pzi",
@@ -441,7 +494,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "rd65xKpXnojCZtUx": {
@@ -459,7 +523,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "rd65xKpXnojCZtUx",
@@ -511,7 +576,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "7dGfOjSz2jJmYirx": {
         "type": "cast",
@@ -528,7 +601,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "7dGfOjSz2jJmYirx",
@@ -580,7 +654,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "7zYDicqGpegN6mTv": {
         "type": "cast",
@@ -597,7 +679,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "7zYDicqGpegN6mTv",
@@ -649,7 +732,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "mFb82XLQztB0WsHH": {
         "type": "cast",
@@ -666,7 +757,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "mFb82XLQztB0WsHH",
@@ -718,7 +810,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "ljcpIkQpX9AYJ5GJ": {
         "type": "cast",
@@ -735,7 +835,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "ljcpIkQpX9AYJ5GJ",
@@ -787,7 +888,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "4BMCt5qrhDLIU1gL": {
         "type": "cast",
@@ -804,7 +913,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "4BMCt5qrhDLIU1gL",
@@ -844,7 +954,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "V10qVhyHqNRcclLC": {
@@ -862,7 +983,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "V10qVhyHqNRcclLC",
@@ -914,7 +1036,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "rGfNWqlgm47Dv2ZR": {
         "type": "cast",
@@ -931,7 +1061,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "rGfNWqlgm47Dv2ZR",
@@ -971,7 +1102,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "acxwDh8kz5pyPvgT": {
@@ -989,7 +1131,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "acxwDh8kz5pyPvgT",
@@ -1041,7 +1184,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "bHPOJpOUV4fyoj8t": {
         "type": "cast",
@@ -1058,7 +1209,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "bHPOJpOUV4fyoj8t",
@@ -1110,7 +1262,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "ESwQj0NFYdyqjOdQ": {
         "type": "cast",
@@ -1122,12 +1282,13 @@
               "save": null,
               "override": false
             },
-            "circle": null,
+            "circle": 1,
             "properties": [
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "ESwQj0NFYdyqjOdQ",
@@ -1167,7 +1328,18 @@
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
-          "recovery": []
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
         }
       },
       "BrniuBTG7OVQuesJ": {
@@ -1185,7 +1357,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "BrniuBTG7OVQuesJ",
@@ -1237,7 +1410,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "2Ct0tnrO2hhbqHAk": {
         "type": "cast",
@@ -1254,7 +1435,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "2Ct0tnrO2hhbqHAk",
@@ -1306,7 +1488,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "NjCcWt6fxOhT2oxR": {
         "type": "cast",
@@ -1323,7 +1513,8 @@
               "verbal",
               "somatic",
               "material"
-            ]
+            ],
+            "ability": ""
           }
         },
         "_id": "NjCcWt6fxOhT2oxR",
@@ -1375,7 +1566,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "aWLWjj8XwH05ARdy": {
         "type": "save",
@@ -1387,17 +1586,13 @@
             "parts": [
               {
                 "number": null,
-                "denomination": 0,
+                "denomination": null,
                 "bonus": "",
                 "custom": {
                   "formula": "16 * @item.uses.value",
                   "enabled": true
                 },
-                "type": "force",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "force"
               }
             ]
           },
@@ -1409,7 +1604,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -1432,7 +1628,8 @@
         "range": {
           "override": true,
           "units": "self",
-          "special": ""
+          "special": "",
+          "value": ""
         },
         "magical": false,
         "target": {
@@ -1458,7 +1655,16 @@
           "max": ""
         },
         "name": "Retributive Strike",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "overrides": {
@@ -1543,7 +1749,9 @@
       "disabled": false,
       "img": "icons/weapons/staves/staff-ornate-eye.webp",
       "_id": "vvAn9FcXS7kVqjtd",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.modifiers",
@@ -1569,9 +1777,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730073119035,
-        "modifiedTime": 1730074506179,
+        "modifiedTime": 1756332446961,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -1587,9 +1795,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1725590632140,
-    "modifiedTime": 1735681658226,
+    "modifiedTime": 1756332522514,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

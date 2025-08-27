@@ -3,7 +3,8 @@
   "name": "Brooch of Shielding",
   "system": {
     "type": {
-      "category": "wondrousItem"
+      "category": "wondrousItem",
+      "base": ""
     },
     "rarity": "uncommon",
     "price": {
@@ -37,7 +38,7 @@
     ]
   },
   "_id": "aUllKCVBKioN6qKK",
-  "img": "icons/commodities/treasure/broach-shield-grey.webp",
+  "img": "icons/commodities/treasure/brooch-shield-grey.webp",
   "effects": [
     {
       "origin": "Compendium.black-flag.items.Item.aUllKCVBKioN6qKK",
@@ -52,10 +53,12 @@
       },
       "disabled": false,
       "name": "Brooch of Shielding",
-      "img": "icons/commodities/treasure/broach-shield-grey.webp",
+      "img": "icons/commodities/treasure/brooch-shield-grey.webp",
       "_id": "JeLMH0Kh0mvl0JCd",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -75,9 +78,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.045",
+        "systemVersion": "2.0.068",
         "createdTime": 1725903037003,
-        "modifiedTime": 1725903060618,
+        "modifiedTime": 1756335146992,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -94,9 +97,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.045",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983565847,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756334509740,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

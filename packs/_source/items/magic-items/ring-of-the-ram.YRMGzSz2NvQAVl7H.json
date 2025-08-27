@@ -57,9 +57,9 @@
                 "type": "force",
                 "scaling": {
                   "mode": "whole",
-                  "number": 1
-                },
-                "additionalTypes": []
+                  "number": 1,
+                  "formula": ""
+                }
               }
             ]
           },
@@ -124,7 +124,16 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -163,9 +172,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724987382405,
-    "modifiedTime": 1735681723849,
+    "modifiedTime": 1756333375497,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

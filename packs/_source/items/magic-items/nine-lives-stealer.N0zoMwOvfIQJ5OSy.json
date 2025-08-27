@@ -129,7 +129,13 @@
       "disabled": true,
       "img": "icons/weapons/swords/sword-guard-flanged.webp",
       "_id": "1zJqHeYfnrPhz45I",
-      "system": {},
+      "system": {
+        "rider": {
+          "activities": [
+            "nfXr4LTo9937R6au"
+          ]
+        }
+      },
       "changes": [
         {
           "key": "name",
@@ -191,9 +197,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728593283615,
-        "modifiedTime": 1728593356999,
+        "modifiedTime": 1756334439871,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -205,14 +211,22 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "black-flag": {
+      "rider": {
+        "activities": [
+          "nfXr4LTo9937R6au"
+        ]
+      }
+    }
+  },
   "_stats": {
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1726788501344,
-    "modifiedTime": 1730158773350,
+    "modifiedTime": 1756334439920,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -50,7 +50,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -75,7 +77,15 @@
           "max": ""
         },
         "name": "Command",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -111,9 +121,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1725071247187,
-    "modifiedTime": 1730069958790,
+    "modifiedTime": 1756333675087,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

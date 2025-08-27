@@ -57,7 +57,13 @@
       "disabled": true,
       "img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
       "_id": "vtfV5OtdWOTOh2VB",
-      "system": {},
+      "system": {
+        "rider": {
+          "effects": [
+            "5pkWUVQWt49xdkTr"
+          ]
+        }
+      },
       "changes": [
         {
           "key": "name",
@@ -113,9 +119,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728592364718,
-        "modifiedTime": 1728592436465,
+        "modifiedTime": 1756333966106,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -137,7 +143,9 @@
       "disabled": false,
       "img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
       "_id": "5pkWUVQWt49xdkTr",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -157,9 +165,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.048",
+        "systemVersion": "2.0.068",
         "createdTime": 1728592427545,
-        "modifiedTime": 1728592466542,
+        "modifiedTime": 1756333971935,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -171,14 +179,22 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "black-flag": {
+      "rider": {
+        "effects": [
+          "5pkWUVQWt49xdkTr"
+        ]
+      }
+    }
+  },
   "_stats": {
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1726788222228,
-    "modifiedTime": 1730158880130,
+    "modifiedTime": 1756333966161,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -81,7 +81,15 @@
           "max": ""
         },
         "name": "Ring Chime",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -117,9 +125,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.045",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983678815,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756335167689,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

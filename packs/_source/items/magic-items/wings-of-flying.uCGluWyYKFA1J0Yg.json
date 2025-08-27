@@ -125,7 +125,9 @@
       "transfer": false,
       "_id": "ScZbcgTKmZtEemLi",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.movement.types.fly",
@@ -154,9 +156,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730155760564,
-        "modifiedTime": 1730155771996,
+        "modifiedTime": 1756332952553,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

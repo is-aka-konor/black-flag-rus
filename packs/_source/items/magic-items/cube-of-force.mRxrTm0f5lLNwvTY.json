@@ -59,7 +59,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -83,7 +85,15 @@
           "max": ""
         },
         "name": "Press Face 1",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "ZWmBMFUqSGvzg9rp": {
         "type": "utility",
@@ -124,7 +134,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -148,7 +160,15 @@
           "max": ""
         },
         "name": "Press Face 2",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "a5I1oJ2qdq4HX5mp": {
         "type": "utility",
@@ -189,7 +209,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -213,7 +235,15 @@
           "max": ""
         },
         "name": "Press Face 3",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "yksQMqhjosxsJL5f": {
         "type": "utility",
@@ -253,7 +283,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -278,7 +310,15 @@
         },
         "name": "Press Face 4",
         "img": "",
-        "_id": "yksQMqhjosxsJL5f"
+        "_id": "yksQMqhjosxsJL5f",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "za6hxCP0jWs4uUM2": {
         "type": "utility",
@@ -318,7 +358,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -343,7 +385,15 @@
         },
         "name": "Press Face 5",
         "img": "",
-        "_id": "za6hxCP0jWs4uUM2"
+        "_id": "za6hxCP0jWs4uUM2",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       },
       "vSk2kgCRWF5a9wRS": {
         "type": "utility",
@@ -376,7 +426,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -401,7 +453,16 @@
         },
         "name": "Press Face 6",
         "img": "",
-        "_id": "vSk2kgCRWF5a9wRS"
+        "_id": "vSk2kgCRWF5a9wRS",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": false
+        }
       },
       "IPCTGlGzt0YXjff2": {
         "type": "utility",
@@ -760,9 +821,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983820384,
-    "modifiedTime": 1735682101319,
+    "modifiedTime": 1756335254579,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

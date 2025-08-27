@@ -25,7 +25,11 @@
         "_id": "uFXJmK60y2j7qzye",
         "description": "",
         "system": {
-          "effects": [],
+          "effects": [
+            {
+              "_id": "0tvUSSUhK8vLkt6X"
+            }
+          ],
           "roll": {
             "prompt": false,
             "visible": false,
@@ -51,7 +55,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -75,7 +81,15 @@
           "max": ""
         },
         "name": "Click Heels",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -110,11 +124,13 @@
         "startTurn": null
       },
       "disabled": true,
-      "name": "Boots of Speed",
+      "name": "Enhanced Speed",
       "img": "icons/equipment/feet/boots-armored-steel-purple.webp",
       "_id": "0tvUSSUhK8vLkt6X",
       "type": "base",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.movement.multiplier",
@@ -134,9 +150,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.045",
+        "systemVersion": "2.0.068",
         "createdTime": 1725901723828,
-        "modifiedTime": 1725901767872,
+        "modifiedTime": 1756335086668,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -153,9 +169,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983477912,
-    "modifiedTime": 1735681145854,
+    "modifiedTime": 1756335077830,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

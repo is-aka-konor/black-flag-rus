@@ -39,8 +39,10 @@
           },
           "profiles": [
             {
-              "uuid": "Compendium.black-flag.npcs.Actor.2DCblylWLteSqQ07",
+              "count": "",
+              "name": "",
               "_id": "VnRvP5EAJiy6lFRS",
+              "uuid": "Compendium.black-flag.npcs.Actor.2DCblylWLteSqQ07",
               "level": {
                 "min": null,
                 "max": null
@@ -107,7 +109,16 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireIdentification": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireMagic": true
+        }
       }
     },
     "uses": {
@@ -148,9 +159,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983559115,
-    "modifiedTime": 1735682182286,
+    "modifiedTime": 1756335135129,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

@@ -57,7 +57,8 @@
               "target": "1",
               "value": "-1",
               "scaling": {
-                "mode": "circle"
+                "mode": "circle",
+                "formula": ""
               }
             }
           ],
@@ -73,7 +74,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -98,7 +101,16 @@
           "max": ""
         },
         "name": "Recover Slot",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -136,9 +148,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "1.2.058",
+    "systemVersion": "2.0.068",
     "createdTime": 1724986821441,
-    "modifiedTime": 1735681747725,
+    "modifiedTime": 1756333111941,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

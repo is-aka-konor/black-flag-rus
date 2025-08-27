@@ -59,11 +59,7 @@
                   "formula": "",
                   "enabled": false
                 },
-                "type": "piercing",
-                "additionalTypes": [],
-                "scaling": {
-                  "number": 1
-                }
+                "type": "piercing"
               }
             ]
           },
@@ -71,7 +67,13 @@
             "ability": "custom",
             "formula": "17"
           },
-          "effects": []
+          "effects": [],
+          "save": {
+            "dc": {
+              "ability": ""
+            },
+            "bonus": ""
+          }
         },
         "activation": {
           "value": null,
@@ -91,7 +93,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -117,7 +121,15 @@
           "max": ""
         },
         "name": "",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -135,9 +147,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.045",
+    "systemVersion": "2.0.068",
     "createdTime": 1725588919704,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756334953381,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

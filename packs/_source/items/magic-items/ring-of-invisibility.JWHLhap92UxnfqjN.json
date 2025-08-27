@@ -55,7 +55,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -80,7 +82,16 @@
           "max": ""
         },
         "name": "Become Invisible",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       },
       "eK1zTyK0pGaZjuFI": {
         "type": "utility",
@@ -115,7 +126,9 @@
         },
         "range": {
           "override": false,
-          "units": ""
+          "units": "",
+          "value": "",
+          "special": ""
         },
         "magical": false,
         "target": {
@@ -140,7 +153,16 @@
           "max": ""
         },
         "name": "Become Visible",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": "",
+          "requireIdentification": true
+        }
       }
     },
     "uses": {
@@ -173,9 +195,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.050",
+    "systemVersion": "2.0.068",
     "createdTime": 1724986993582,
-    "modifiedTime": 1729890843066,
+    "modifiedTime": 1756333285263,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

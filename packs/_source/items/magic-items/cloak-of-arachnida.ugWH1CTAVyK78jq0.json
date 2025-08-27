@@ -131,7 +131,9 @@
       "disabled": false,
       "img": "icons/equipment/back/cloak-collared-blue-iron.webp",
       "_id": "GLjIBKrfO1J8ubhI",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.damage.resistances.value",
@@ -157,9 +159,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.046",
+        "systemVersion": "2.0.068",
         "createdTime": 1726799144409,
-        "modifiedTime": 1726799303924,
+        "modifiedTime": 1756335186327,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

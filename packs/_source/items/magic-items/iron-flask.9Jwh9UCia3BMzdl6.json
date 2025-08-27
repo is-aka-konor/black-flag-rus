@@ -32,7 +32,8 @@
             "dc": {
               "ability": "custom",
               "formula": "17"
-            }
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -82,7 +83,15 @@
           "max": ""
         },
         "name": "Trap Creature",
-        "img": ""
+        "img": "",
+        "visibility": {
+          "requireMagic": true,
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
       }
     },
     "uses": {
@@ -118,9 +127,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.047",
+    "systemVersion": "2.0.068",
     "createdTime": 1724986340205,
-    "modifiedTime": 1729031989848,
+    "modifiedTime": 1756334248838,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

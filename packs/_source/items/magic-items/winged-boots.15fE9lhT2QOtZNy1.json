@@ -57,7 +57,9 @@
       "disabled": true,
       "img": "icons/skills/movement/feet-winged-boots-brown.webp",
       "_id": "FJBWMN1IQ3jfrOyq",
-      "system": {},
+      "system": {
+        "magical": true
+      },
       "changes": [
         {
           "key": "system.traits.movement.types.fly",
@@ -77,9 +79,9 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.050",
+        "systemVersion": "2.0.068",
         "createdTime": 1730155805377,
-        "modifiedTime": 1730155862080,
+        "modifiedTime": 1756332944865,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
