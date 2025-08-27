@@ -161,6 +161,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 * @type {boolean}
 	 */
 	get canUse() {
+		if (this.isRider) return false;
 		if (this.visibility?.requireAttunement && !this.item.system.attuned) return false;
 		if (this.visibility?.requireMagic && !this.item.system.magicAvailable) return false;
 		if (this.visibility?.requireIdentification && !this.item.system.identified) return false;
@@ -259,6 +260,16 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get hasDamage() {
 		return this.system.damage?.parts?.length > 0;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Is this activity a rider for a non-applied enchantment?
+	 * @type {boolean}
+	 */
+	get isRider() {
+		return this.item.flags[game.system.id]?.rider?.activities?.includes(this.id);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

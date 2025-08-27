@@ -1,9 +1,18 @@
 import ActiveEffectDataModel from "../abstract/active-effect-data-model.mjs";
+import DependentsField from "./fields/dependents-field.mjs";
 
-const { BooleanField } = foundry.data.fields;
+const { BooleanField, DocumentIdField, SchemaField, SetField } = foundry.data.fields;
 
 /**
  * Data definition for Enchantment active effects.
+ *
+ * @property {object} dependent
+ * @property {DependentData[]} dependent.activities - Rider activities added by this enchantment.
+ * @property {DependentData[]} dependent.effects - Rider effects added by this enchantment.
+ * @property {boolean} magical - This enchantment is considered magical and should be disabled if magic isn't available.
+ * @property {object} rider
+ * @property {Set<string>} rider.activities - Additional activities that should be added to item when enchanted.
+ * @property {Set<string>} rider.effects - Additional effects that should be added to item when enchanted.
  */
 export default class EchantmentData extends ActiveEffectDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -11,7 +20,7 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.ENCHANTMENT"];
+	static LOCALIZATION_PREFIXES = ["BF.ENCHANTMENT", "BF.EFFECT.RIDER"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -32,7 +41,15 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	/** @inheritDoc */
 	static defineSchema() {
 		return this.mergeSchema(super.defineSchema(), {
-			magical: new BooleanField()
+			dependent: new SchemaField({
+				activities: new DependentsField({ type: "Activity" }),
+				effects: new DependentsField({ type: "ActiveEffect" })
+			}),
+			magical: new BooleanField(),
+			rider: new SchemaField({
+				activities: new SetField(new DocumentIdField()),
+				effects: new SetField(new DocumentIdField())
+			})
 		});
 	}
 
@@ -40,12 +57,29 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	/*              Properties             */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @override */
+	get applicableType() {
+		return "Item";
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * Has this enchantment been applied by another item, or was it directly created.
 	 * @type {boolean}
 	 */
 	get isApplied() {
-		return !!this.origin && this.origin !== this.parent.uuid;
+		return !!this.parent.origin && this.parent.origin !== this.item?.uuid;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Item containing this enchantment.
+	 * @type {BlackFlagItem|void}
+	 */
+	get item() {
+		return this.parent.parent;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -61,6 +95,63 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Dependents & Riders         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async createRiders(options) {
+		const riders = await super.createRiders(options);
+
+		const item = await fromUuid(this.parent.origin);
+		// TODO: Support Enchant Activity as origin when added
+		if (!(item instanceof Item)) return riders;
+
+		const riderActivities = {};
+		let riderEffects = [];
+
+		// Create Activities
+		const createdActivities = await this.item.createEmbeddedDocuments(
+			"Activity",
+			Array.from(this.rider.activities)
+				.map(id => {
+					const data = item.getEmbeddedDocument("Activity", id)?.toObject();
+					if (!data) return null;
+					if (this.item.system.activities?.has(data._id)) data._id = foundry.utils.randomID();
+					return data;
+				})
+				.filter(_ => _),
+			{ keepId: true }
+		);
+
+		// Create Effects
+		const createdEffects = await this.item.createEmbeddedDocuments(
+			"ActiveEffect",
+			Array.from(this.rider.effects)
+				.concat(
+					createdActivities
+						.flatMap(
+							a =>
+								a.system.effects?.map(({ _id }) => {
+									if (this.item.effects.has(_id)) return null;
+									return _id;
+								}) ?? []
+						)
+						.filter(_ => _)
+				)
+				.map(id => {
+					const data = item.effects.get(id)?.toObject();
+					if (data) data.origin = this.parent.origin;
+					return data;
+				})
+				.filter(_ => _),
+			{ keepId: true }
+		);
+
+		riders.push(...createdActivities, ...createdEffects);
+		return riders;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -68,6 +159,36 @@ export default class EchantmentData extends ActiveEffectDataModel {
 	onRenderActiveEffectConfig(app, html, context) {
 		const toRemove = html.querySelectorAll('.form-group:has([name="transfer"], [name="statuses"])');
 		toRemove.forEach(f => f.remove());
+		if (this.isApplied) return;
+
+		// Add rider inputs
+		const toAdd = [];
+		const fields = this.schema.fields.rider.fields;
+		if (this.item?.system.activities)
+			toAdd.push(
+				fields.activities.toFormGroup(
+					{},
+					{
+						options: this.item.system.activities.map(a => ({ value: a.id, label: a.name })),
+						value: this._source.rider.activities
+					}
+				)
+			);
+		if (this.item)
+			toAdd.push(
+				fields.effects.toFormGroup(
+					{},
+					{
+						options: this.item.effects.filter(e => e.type === "standard").map(e => ({ value: e.id, label: e.name })),
+						value: this._source.rider.effects
+					}
+				)
+			);
+
+		const detailsTab = html.querySelector("[data-application-part=details]");
+		const description = detailsTab.querySelector("& > .form-group:has(prose-mirror)");
+		if (description) description.after(...toAdd);
+		else detailsTab.append(...toAdd);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -81,7 +202,10 @@ export default class EchantmentData extends ActiveEffectDataModel {
 			ui.notifications.error("BF.ENCHANTMENT.Warning.NotOnActor", { localize: true });
 			return false;
 		}
-		// TODO: Validate enchantment restrictions
+		if (this.isApplied) {
+			this.parent.updateSource({ disabled: false });
+			// TODO: Validate enchantment restrictions
+		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

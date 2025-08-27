@@ -1734,8 +1734,19 @@
 	"Enabled": "Enabled",
 	"New": "New Effect",
 	"RIDER": {
+		"Activity": "Enchantment Rider Activity",
+		"Effect": "Enchantment Rider Effect",
 		"FIELDS": {
 			"rider": {
+				"activities": {
+					"hint": "Additional activities that will be added to the enchanted item when this enchantment is applied, and removed when the enchantment is removed.",
+					"label": "Additional Activities"
+				},
+				"effects": {
+					"hint": "Additional effects that will be added to the enchanted item when this enchantment is applied, and removed when the enchantment is removed.",
+					"label": "Additional Effects"
+				},
+				"label": "Attached",
 				"statuses": {
 					"hint": "When this Active Effect is applied, these additional status conditions will be applied separately.",
 					"label": "Separate Status Conditions"
@@ -1769,6 +1780,14 @@
 
 "BF.ENCHANTMENT": {
 	"FIELDS": {
+		"dependent": {
+			"activities": {
+				"label": "Added Activities"
+			},
+			"effects": {
+				"label": "Added Effects"
+			}
+		},
 		"magical": {
 			"hint": "This enchantment is magical and should be disabled when magic isn't available.",
 			"label": "Magical"

@@ -195,7 +195,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	 */
 	*allApplicableEffects() {
 		for (const effect of this.effects) {
-			if (effect.type === "enchantment") yield effect;
+			if (effect.applicableType === "Item") yield effect;
 		}
 	}
 
@@ -558,6 +558,14 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	_onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
+		super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
+		if (userId === game.user.id && collection === "effects") this.#updateRiderFlags();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _preUpdate(changed, options, user) {
 		if ((await super._preUpdate(changed, options, user)) === false) return false;
 		await this.system.preUpdateActivities?.(changed, options, user);
@@ -574,9 +582,51 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	_onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId) {
+		super._onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId);
+		if (userId === game.user.id && collection === "effects") this.#updateRiderFlags();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _onDelete(options, userId) {
 		super._onDelete(options, userId);
 		await this.system.onDeleteActivities?.(options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	_onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
+		super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
+		if (userId === game.user.id && collection === "effects") this.#updateRiderFlags();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Track changes to rider activities & effects and store values in flag.
+	 */
+	#updateRiderFlags() {
+		const rider = this.effects.reduce(
+			(rider, effect) => {
+				if (effect.type !== "enchantment" || effect.system.isApplied) return rider;
+				effect.system.rider.activities.forEach(a => rider.activities.add(a));
+				effect.system.rider.effects.forEach(a => rider.effects.add(a));
+				return rider;
+			},
+			{ activities: new Set(), effects: new Set() }
+		);
+		if (!rider.activities.size && !rider.effects.size) this.unsetFlag(game.system.id, "rider");
+		else
+			this.update(
+				Object.entries(rider).reduce((updates, [key, value]) => {
+					if (value.size) updates[`flags.${game.system.id}.rider.${key}`] = Array.from(value);
+					else updates[`flags.${game.system.id}.rider.-=${key}`] = null;
+					return updates;
+				}, {})
+			);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

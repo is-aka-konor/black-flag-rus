@@ -4,6 +4,7 @@ export { default as ActivationField } from "./activation-field.mjs";
 export { default as AdvancementValueField } from "./advancement-value-field.mjs";
 export { default as CreatureTypeField } from "./creature-type-field.mjs";
 export { default as DamageField, SimpleDamageData, ExtendedDamageData } from "./damage-field.mjs";
+export { default as DocumentUUIDField } from "./document-uuid-field.mjs";
 export { default as FilterField } from "./filter-field.mjs";
 export { default as FormulaField } from "./formula-field.mjs";
 export { default as IdentifierField } from "./identifier-field.mjs";

@@ -278,14 +278,13 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 
-		// new CONFIG.ux.DragDrop({
-		// 	dragSelector: ":is(.advancement-item, [data-activity-id], [data-effect-id], [data-item-id])",
-		// 	dropSelector: null,
-		// 	callbacks: {
-		// 		dragstart: this._onDragStart.bind(this),
-		// 		drop: this._onDrop.bind(this)
-		// 	}
-		// }).bind(this.element);
+		new CONFIG.ux.DragDrop({
+			dragSelector: null,
+			dropSelector: null,
+			callbacks: {
+				drop: this._onDrop.bind(this)
+			}
+		}).bind(this.element);
 
 		this.element.classList.toggle("unidentified", this.item.system.identifiable && !this.item.system.identified);
 
@@ -376,11 +375,10 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 			return advancementElement?._onDrop(event);
 		}
 
-		// TODO: Fix dropping active effects
-		// if ( data.type === "ActiveEffect" ) {
-		// 	const effectsElement = this.element.querySelector("blackFlag-effects");
-		// 	return effectsElement?._onDrop(event);
-		// }
+		if (data.type === "ActiveEffect") {
+			const effectsElement = this.element.querySelector("blackFlag-effects");
+			return effectsElement?._onDrop(event);
+		}
 
 		const isSpell = data.type === "Item" && fromUuidSync(data.uuid, { strict: false })?.type === "spell";
 		if (data.type === "Activity" || isSpell) {

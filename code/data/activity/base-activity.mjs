@@ -277,7 +277,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 			writable: false
 		});
 
-		if (this.visibility) {
+		if (this.visibility && !this.isRider) {
 			if (!this.item.system.properties?.has("magical") && this.item.system.validProperties?.has("magical")) {
 				this.visibility.requireAttunement = false;
 				this.visibility.requireMagic = false;

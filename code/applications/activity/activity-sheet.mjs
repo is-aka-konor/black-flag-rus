@@ -326,19 +326,21 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 		const itemSystem = this.activity.item.system;
 		context.visibilityFields = [
 			// Only show "Require Attunement" if item has an attunement option
-			itemSystem.attunable
+			itemSystem.attunable || this.activity.isRider
 				? addField(
 						"requireAttunement",
 						// If item requires attunement, then the "Require Attunement" option is locked to the "Require Magic" option
-						itemSystem.attunement.value === "required" ? this.activity.visibility.requireMagic : undefined
+						!this.activity.isRider && itemSystem.attunement.value === "required"
+							? this.activity.visibility.requireMagic
+							: undefined
 					)
 				: null,
 			// Only show "Require Magic" if item is magical or doesn't support the magical property
-			itemSystem.properties?.has("magical") || !itemSystem.validProperties?.has("magical")
+			itemSystem.properties?.has("magical") || !itemSystem.validProperties?.has("magical") || this.activity.isRider
 				? addField("requireMagic")
 				: null,
 			// Only show "Require Identification" if item can be identified
-			this.activity.item.system.identifiable ? addField("requireIdentification") : null
+			this.activity.item.system.identifiable || this.activity.isRider ? addField("requireIdentification") : null
 		].filter(_ => _);
 
 		return context;

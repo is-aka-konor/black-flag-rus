@@ -305,10 +305,11 @@ export default class EffectsElement extends DocumentSheetAssociatedElement {
 		if (!this.isEditable) return false;
 
 		const { data } = CONFIG.ux.DragDrop.getDragData(event);
-		if (!this._validateDrop(data)) return this.app._onDrop?.(event);
+		if (data.type !== "ActiveEffect") return this.app._onDrop?.(event);
+		if (!this._validateDrop(data)) return false;
 
 		try {
-			const effect = (await fromUuid(data.uuid)).toObject() ?? data.data;
+			const effect = (await fromUuid(data.uuid)) ?? new ActiveEffect(data.data, { parent: this.document });
 			if (!effect) return false;
 			return this.constructor.dropEffects(event, this.document, [effect]);
 		} finally {
@@ -335,11 +336,24 @@ export default class EffectsElement extends DocumentSheetAssociatedElement {
 	 * Handle an effect dropped onto the sheet.
 	 * @param {DragEvent} event - Triggering drop event.
 	 * @param {BlackFlagItem} target - Document to which the advancement was dropped.
-	 * @param {BlackFlagActiveEffect[]} effectData - One or more effects dropped.
+	 * @param {BlackFlagActiveEffect[]} effects - One or more effects dropped.
 	 * @returns {Promise}
 	 */
-	static async dropEffects(event, target, effectData) {
-		target.createEmbeddedDocuments("ActiveEffect", effectData);
+	static async dropEffects(event, target, effects) {
+		const options = {};
+
+		const effectData = effects.map(effect => {
+			const data = effect.toObject();
+			if (effect.type === "enchantment") {
+				data.origin ??= effect.parent.uuid;
+				options[game.system.id] ??= {};
+				options[game.system.id].keepOrigin ??= [];
+				options[game.system.id].keepOrigin.push(data._id);
+			}
+			return data;
+		});
+
+		target.createEmbeddedDocuments("ActiveEffect", effectData, options);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

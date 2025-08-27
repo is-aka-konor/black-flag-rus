@@ -38,4 +38,23 @@ export default class StandardEffectData extends ActiveEffectDataModel {
 			})
 		});
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*              Properties             */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	get applicableType() {
+		return this.isRider ? "" : "Actor";
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Is this effect a rider for a non-applied enchantment?
+	 * @type {boolean}
+	 */
+	get isRider() {
+		return this.parent.parent?.flags[game.system.id]?.rider?.effects?.includes(this.parent.id);
+	}
 }

@@ -6,7 +6,12 @@
 				<li class="item activity-entry" data-activity-id="{{ id }}">
 					<div class="item-name activity-name">
 						{{ blackFlag-icon img alt=name classes="icon" }}
-						<span class="item-name">{{ name }}</span>
+						<span class="item-name">
+							{{ name }}
+							{{#if isRider~}}
+							<i class="fa-solid fa-paperclip" data-tooltip aria-label="{{ localize 'BF.EFFECT.RIDER.Activity' }}"></i>
+							{{~/if}}
+						</span>
 					</div>
 					<div class="item-controls activity-controls">
 						{{#if @root.editable}}

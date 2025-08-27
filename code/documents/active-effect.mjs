@@ -47,6 +47,16 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	/*             Properties              */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Document type to which this active effect should apply its changes.
+	 * @type {string}
+	 */
+	get applicableType() {
+		return this.system.applicableType ?? "Actor";
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @override */
 	get isSuppressed() {
 		if (!this.parent?.isEmbedded || this.type === "enchantment") return false;
@@ -246,24 +256,24 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 		const magicalField = fields.magical?.toFormGroup(
 			{},
 			{
-				value: app.document.system._source.magical,
-				disabled: !context.editable
+				disabled: !context.editable,
+				value: app.document.system._source.magical
 			}
 		);
 		const statusesField = fields.rider?.fields?.statuses?.toFormGroup(
 			{},
 			{
-				value: app.document.system._source.rider?.statuses ?? [],
+				disabled: !context.editable,
 				options: CONFIG.statusEffects.map(se => ({ value: se.id, label: se.name })),
-				disabled: !context.editable
+				value: app.document.system._source.rider?.statuses ?? []
 			}
 		);
 
 		const detailsTab = html.querySelector("[data-application-part=details]");
 		const statuses = detailsTab.querySelector("& > .form-group:has([name=statuses])");
 		if (statuses) {
-			if (magicalField) statuses?.before(magicalField);
-			if (statusesField) statuses?.after(statusesField);
+			if (magicalField) statuses.before(magicalField);
+			if (statusesField) statuses.after(statusesField);
 		} else {
 			detailsTab.append(...[magicalField, statusesField].filter(_ => _));
 		}
@@ -304,9 +314,18 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if (!options[game.system.id]?.keepOrigin?.includes(data._id)) this.updateSource({ origin: this.parent.uuid });
+		if ((await super._preCreate(data, options, user)) === false) return false;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _onCreate(data, options, userId) {
 		await super._onCreate(data, options, userId);
 		if (userId === game.userId) {
+			// TODO: See if this can be moved into preCreateOperation
 			if (this.active && this.parent instanceof Actor) await this.createRiderConditions();
 		}
 	}

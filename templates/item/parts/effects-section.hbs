@@ -28,7 +28,12 @@
 					<td class="effect-name">
 						<div class="layout item-title">
 							<img class="item-image" src="{{ img }}">
-							<span class="item-name">{{ name }}</span>
+							<span class="item-name">
+								{{ name }}
+								{{#if system.isRider~}}
+								<i class="fa-solid fa-paperclip" data-tooltip aria-label="{{ localize 'BF.EFFECT.RIDER.Effect' }}"></i>
+								{{~/if}}
+							</span>
 						</div>
 					</td>
 					{{#if ../section.show.duration}}

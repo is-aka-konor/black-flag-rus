@@ -111,8 +111,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	/** @inheritDoc */
 	*allApplicableEffects() {
 		for (const effect of super.allApplicableEffects()) {
-			if (effect.type === "enchantment") continue;
-			yield effect;
+			if (effect.applicableType === "Actor") yield effect;
 		}
 	}
 
