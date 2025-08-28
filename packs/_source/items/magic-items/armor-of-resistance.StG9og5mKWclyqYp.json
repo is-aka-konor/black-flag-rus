@@ -127,7 +127,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Acid Resistance",
+      "name": "Acid Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -165,7 +165,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798025065,
-        "modifiedTime": 1756334868001,
+        "modifiedTime": 1756339371759,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -173,7 +173,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Cold Resistance",
+      "name": "Cold Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -210,7 +210,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798072978,
-        "modifiedTime": 1756334871227,
+        "modifiedTime": 1756339370469,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -219,7 +219,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Fire Resistance",
+      "name": "Fire Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -256,7 +256,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798074589,
-        "modifiedTime": 1756334872372,
+        "modifiedTime": 1756339369185,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -265,7 +265,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Force Resistance",
+      "name": "Force Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -302,7 +302,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798075369,
-        "modifiedTime": 1756334873520,
+        "modifiedTime": 1756339367338,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -311,7 +311,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Lightning Resistance",
+      "name": "Lightning Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -348,7 +348,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798076607,
-        "modifiedTime": 1756334874584,
+        "modifiedTime": 1756339366256,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -357,7 +357,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Necrotic Resistance",
+      "name": "Necrotic Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -394,7 +394,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798077396,
-        "modifiedTime": 1756334875672,
+        "modifiedTime": 1756339364901,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -403,7 +403,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Poison Resistance",
+      "name": "Poison Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -440,7 +440,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798078149,
-        "modifiedTime": 1756334876758,
+        "modifiedTime": 1756339363681,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -449,7 +449,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Psychic Resistance",
+      "name": "Psychic Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -486,7 +486,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798078893,
-        "modifiedTime": 1756334877939,
+        "modifiedTime": 1756339362503,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -495,7 +495,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Radiant Resistance",
+      "name": "Radiant Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -532,7 +532,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798079614,
-        "modifiedTime": 1756334859951,
+        "modifiedTime": 1756339360649,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -541,7 +541,7 @@
     },
     {
       "type": "base",
-      "name": "Armor of Thunder Resistance",
+      "name": "Thunder Resistance",
       "origin": "Compendium.black-flag.items.Item.StG9og5mKWclyqYp",
       "duration": {
         "rounds": null,
@@ -578,7 +578,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1726798080507,
-        "modifiedTime": 1756334857467,
+        "modifiedTime": 1756339359195,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
