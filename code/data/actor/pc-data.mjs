@@ -66,8 +66,9 @@ const { ArrayField, HTMLField, NumberField, SchemaField, SetField, StringField }
  * @property {string} attributes.initiative.ability - Ability to use when rolling initiative.
  * @property {Proficiency} attributes.initiative.proficiency - Proficiency with initiative rolls.
  * @property {object} attributes.luck
- * @property {number} attributes.luck.value - Current luck points.
+ * @property {number} attributes.luck.failureAmount - Amount of luck granted upon failing an attack or save.
  * @property {string} attributes.luck.formula - Formula to use when re-rolling luck.
+ * @property {number} attributes.luck.value - Current luck points.
  * @property {object} biography
  * @property {string} biography.age - Character's age.
  * @property {string} biography.height - Character's height.
@@ -221,8 +222,16 @@ export default class PCData extends ActorDataModel.mixin(
 					proficiency: new ProficiencyField()
 				}),
 				luck: new SchemaField({
-					value: new NumberField({ required: true, min: 0, max: 5, integer: true }),
-					formula: new FormulaField({ label: "BF.Luck.Formula.Label", hint: "BF.Luck.Formula.Hint" })
+					failureAmount: new NumberField({
+						required: true,
+						integer: true,
+						min: 0,
+						initial: 1,
+						label: "BF.Luck.FailureAmount.Label",
+						hint: "BF.Luck.FailureAmount.Hint"
+					}),
+					formula: new FormulaField({ label: "BF.Luck.Formula.Label", hint: "BF.Luck.Formula.Hint" }),
+					value: new NumberField({ required: true, min: 0, max: 5, initial: 0, integer: true })
 				})
 			}),
 			biography: new SchemaField({
@@ -852,11 +861,13 @@ export default class PCData extends ActorDataModel.mixin(
 
 	/**
 	 * Add a luck point, resetting the luck value if the character already has the max.
+	 * @param {object} [options={}]
+	 * @param {string} [options.context] - Context for which the luck is granted.
 	 * @returns {Promise}
 	 */
-	async addLuck() {
+	async addLuck({ context } = {}) {
 		const luck = this.attributes.luck;
-		let newValue = luck.value + 1;
+		let newValue = luck.value + (context === "failure" ? luck.failureAmount ?? 1 : 1);
 		if (newValue > CONFIG.BlackFlag.luck.max) {
 			const rollConfig = { rolls: [{ parts: [luck.formula || "1d4"] }] };
 			const type = game.i18n.localize("BF.Luck.Label");

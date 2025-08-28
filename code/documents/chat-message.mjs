@@ -308,25 +308,6 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Add the effect application UI to a message.
-	 * @param {HTMLElement} html - Chat message HTML.
-	 */
-	// 	_renderEffectUI(html) {
-	// 		if (this.getFlag(game.system.id, "messageType") !== "activation") return;
-	// 		const item = this.getAssociatedItem();
-	// 		const effects = this.getFlag(game.system.id, "activation.effects")
-	// 			?.map(id => item?.effects.get(id))
-	// 			.filter(e => e && game.user.isGM); // TODO: Allow effects tray to be visible to players
-	// 		if (!effects?.length) return;
-	//
-	// 		const effectApplication = document.createElement("blackFlag-effectApplication");
-	// 		effectApplication.effects = effects;
-	// 		html.querySelector(".message-content").appendChild(effectApplication);
-	// 	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
 	 * Swap the header element with a collapsible chat tray.
 	 * @param {HTMLElement} html - Chat message HTML.
 	 */
@@ -342,13 +323,57 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Display the luck controls on the chat card if necessary.
+	 * Display the luck controls on the chat card if necessary and display the grant luck buttons for GMs.
 	 * @param {HTMLElement} html - Chat message HTML.
 	 */
 	_renderLuckInterface(html) {
-		if (!MessageLuckElement.shouldDisplayLuckInterface(this)) return;
+		if (this.getFlag(game.system.id, "luckGranted")) return;
+		if (MessageLuckElement.shouldDisplayLuckInterface(this)) {
+			const content = html.querySelector(".message-content");
+			content.insertAdjacentHTML("beforeend", "<blackFlag-messageLuck></blackFlag-messageLuck>");
+		}
+		if (
+			game.user.isGM &&
+			["ability-save", "attack"].includes(this.getFlag(game.system.id, "roll.type")) &&
+			this.rolls.some(r => !Number.isNumeric(r.options.target) || r.isFailure) &&
+			this.getAssociatedActor()?.type === "pc"
+		) {
+			const button = document.createElement("button");
+			button.classList.add("light-button");
+			button.dataset.action = "grantLuck";
+			button.innerHTML = `
+				<i class="fa-solid fa-clover" inert></i>
+				<span>${game.i18n.localize("BF.Luck.Action.Grant")}</span>
+			`;
+			button.type = "button";
+			button.addEventListener("click", () => {
+				this.getAssociatedActor().system.addLuck({ context: "failure" });
+				this.setFlag(game.system.id, "luckGranted", true);
+			});
+			this._renderMenuButton(html, button);
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Add one or more menu buttons to the chat message, creating the menu if needed.
+	 * @param {HTMLButtonElement...} buttons - Buttons to add.
+	 */
+	_renderMenuButton(html, ...buttons) {
 		const content = html.querySelector(".message-content");
-		content.insertAdjacentHTML("beforeend", "<blackFlag-messageLuck></blackFlag-messageLuck>");
+		let menu = content.querySelector(".menu");
+		if (!menu) {
+			content.insertAdjacentHTML("beforeend", '<ul class="menu"></ul>');
+			menu = content.querySelector(".menu");
+		}
+		menu.append(
+			...buttons.map(b => {
+				const li = document.createElement("li");
+				li.append(b);
+				return li;
+			})
+		);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -8,7 +8,7 @@ export default class LuckConfig extends BaseConfigSheet {
 	static DEFAULT_OPTIONS = {
 		classes: ["luck", "form-list"],
 		position: {
-			width: 400
+			width: 500
 		}
 	};
 

@@ -2527,6 +2527,10 @@
 		"Reroll": "Re-roll one die"
 	},
 	"Current": "Current Luck",
+	"FailureAmount": {
+		"Label": "Luck from Failure",
+		"Hint": "Amount of luck gained when failing an attack roll or saving throw."
+	},
 	"Formula": {
 		"Label": "Reset Formula",
 		"Hint": "Formula that will be rolled when luck exceeds maximum and is reset."

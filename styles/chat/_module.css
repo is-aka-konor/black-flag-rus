@@ -59,7 +59,9 @@
 			font-size: var(--font-size-12);
 		}
 	}
+}
 
+.black-flag.chat-message {
 	.menu {
 		display: flex;
 		gap: 0.25rem;
@@ -67,17 +69,8 @@
 		list-style: none;
 		margin-block: 2px;
 		padding: 0;
-		&:not(:has(> li)) {
-			display: none;
-		}
-
-		button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 4px;
-			&[hidden] { display: none; }
-		}
+		&:not(:has(button:not([hidden]))) { display: none; }
+		&:not(:first-child) { margin-block-start: 8px; }
 	}
 }
 
