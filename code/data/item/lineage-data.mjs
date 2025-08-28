@@ -30,6 +30,7 @@ export default class LineageData extends ItemDataModel.mixin(
 			{
 				type: "lineage",
 				category: "concept",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Lineage",
 				icon: "fa-solid fa-globe",
 				img: "systems/black-flag/artwork/types/lineage.svg",
@@ -40,6 +41,16 @@ export default class LineageData extends ItemDataModel.mixin(
 			{ inplace: false }
 		)
 	);
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
@@ -55,8 +66,26 @@ export default class LineageData extends ItemDataModel.mixin(
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateAdvancement(data, options, user) {
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		if (data._id || foundry.utils.hasProperty(data, "system.advancement")) return;
 		this._createInitialAdvancement([{ type: "size" }]);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

@@ -19,6 +19,12 @@ export default class AdvancementTemplate extends foundry.abstract.DataModel {
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Handle triggering advancement application when item is created.
+	 * @param {object} data - The initial data object provided to the document creation request.
+	 * @param {object} options - Additional options which modify the creation request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
 	_onCreateApplyAdvancement(data, options, userId) {
 		const progression = this.parent.actor?.system.progression;
 		if ( (game.user.id !== userId) || !progression || !this.advancement.size ) return;
@@ -37,6 +43,11 @@ export default class AdvancementTemplate extends foundry.abstract.DataModel {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Handle reversing advancement changes when item is deleted.
+	 * @param {object} options - Additional options which modify the deletion request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
 	_onDeleteRevertAdvancement(options, userId) {
 		const progression = this.parent.actor?.system.progression;
 		if ( (game.user.id !== userId) || !progression || !this.advancement.size ) return;

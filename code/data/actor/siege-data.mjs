@@ -42,16 +42,23 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	static metadata = {
-		type: "siege",
-		category: "thing",
-		localization: "BF.Actor.Type.SiegeWeapon",
-		img: "systems/black-flag/artwork/types/siege.svg",
-		sheet: {
-			application: SiegeWeaponSheet,
-			label: "BF.Sheet.Default.SiegeWeapon"
-		}
-	};
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				type: "siege",
+				category: "thing",
+				legacyMixin: false,
+				localization: "BF.Actor.Type.SiegeWeapon",
+				img: "systems/black-flag/artwork/types/siege.svg",
+				sheet: {
+					application: SiegeWeaponSheet,
+					label: "BF.Sheet.Default.SiegeWeapon"
+				}
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -136,7 +143,7 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
-		await this.preCreateSize(data, options, user);
+		await this._preCreateSize(data, options, user);
 		if (!data._id && !data.items?.length) {
 			foundry.utils.setProperty(options, `${game.system.id}.createResilience`, true);
 		}
@@ -158,8 +165,8 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateHP(changes, options, user);
-		await this.preUpdateSize(changes, options, user);
+		await this._preUpdateHP(changes, options, user);
+		await this._preUpdateSize(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -167,7 +174,7 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await this.onUpdateHP(changed, options, userId);
+		await this._onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -53,6 +53,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 			{
 				type: "spell",
 				category: "meta",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Spell",
 				icon: "fa-solid fa-wand-sparkles",
 				img: "systems/black-flag/artwork/types/spell.svg",
@@ -295,6 +296,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/** @inheritDoc */
 	static migrateData(source) {
 		super.migrateData(source);
+		this._migrateSource(source);
 
 		// Added in 0.9.023
 		if ("circle" in source && !("source" in source)) source.source = source.circle;

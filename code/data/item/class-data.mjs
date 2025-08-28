@@ -30,6 +30,7 @@ export default class ClassData extends ItemDataModel.mixin(AdvancementTemplate, 
 			{
 				type: "class",
 				category: "concept",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Class",
 				icon: "fa-solid fa-landmark-dome",
 				img: "systems/black-flag/artwork/types/class.svg",
@@ -96,6 +97,16 @@ export default class ClassData extends ItemDataModel.mixin(AdvancementTemplate, 
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -133,7 +144,9 @@ export default class ClassData extends ItemDataModel.mixin(AdvancementTemplate, 
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateAdvancement(data, options, user) {
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		if (data._id || foundry.utils.hasProperty(data, "system.advancement")) return;
 		this._createInitialAdvancement([
 			{ type: "hitPoints" },
@@ -142,5 +155,21 @@ export default class ClassData extends ItemDataModel.mixin(AdvancementTemplate, 
 			{ type: "trait", configuration: { choices: [{ count: 2, pool: ["skills:*"] }] } },
 			{ type: "equipment", level: { classRestriction: "original" } }
 		]);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

@@ -67,6 +67,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 			{
 				type: "weapon",
 				category: "equipment",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Weapon",
 				icon: "fa-solid fa-trowel",
 				img: "systems/black-flag/artwork/types/weapon.svg"
@@ -305,6 +306,8 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	static migrateData(source) {
 		super.migrateData(source);
+		this._migrateSource(source);
+		this._migrateWeightUnits(source);
 
 		// Added in 0.10.042
 		if ("damage" in source) {
@@ -330,7 +333,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	prepareBaseData() {
 		super.prepareBaseData();
 		this._shimObjectUnits("range");
-		this.shimWeightUnits();
+		this._shimWeightUnits();
 
 		Object.defineProperty(this.type, "classification", {
 			value: "weapon",
@@ -368,16 +371,43 @@ export default class WeaponData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _preUpdate(changes, options, user) {
-		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateIdentifiable(changes, options, user);
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
+		if (data._id || foundry.utils.hasProperty(data, "system.activities")) return;
+		this._createInitialActivities([{ type: "attack" }]);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateActivities(data, options, user) {
-		if (data._id || foundry.utils.hasProperty(data, "system.activities")) return;
-		this._createInitialActivities([{ type: "attack" }]);
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreatePhysicalItem(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this._preUpdateIdentifiable(changes, options, user);
+		await this._preUpdatePhysicalItem(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		this._onUpdatePhysicalItem(changed, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this._onDeletePhyiscalItem(options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

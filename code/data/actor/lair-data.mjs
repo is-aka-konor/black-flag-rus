@@ -26,16 +26,23 @@ export default class LairData extends ActorDataModel.mixin(SourceTemplate) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	static metadata = {
-		type: "lair",
-		category: "place",
-		localization: "BF.Actor.Type.Lair",
-		img: "systems/black-flag/artwork/types/lair.svg",
-		sheet: {
-			application: LairSheet,
-			label: "BF.Sheet.Default.Lair"
-		}
-	};
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				type: "lair",
+				category: "place",
+				legacyMixin: false,
+				localization: "BF.Actor.Type.Lair",
+				img: "systems/black-flag/artwork/types/lair.svg",
+				sheet: {
+					application: LairSheet,
+					label: "BF.Sheet.Default.Lair"
+				}
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 

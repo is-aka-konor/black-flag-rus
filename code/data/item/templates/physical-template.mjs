@@ -149,7 +149,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	 * Added in 2.0.068
 	 * @param {object} source - Candidate source data to migrate.
 	 */
-	static migrateWeightUnits(source) {
+	static _migrateWeightUnits(source) {
 		this._migrateObjectUnits(source.weight);
 	}
 
@@ -160,7 +160,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	/**
 	 * Apply shims to weight units.
 	 */
-	shimWeightUnits() {
+	_shimWeightUnits() {
 		this._shimObjectUnits("weight");
 	}
 
@@ -213,10 +213,15 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	async _renderContainers({ formerContainer, ...rendering }={}) {
 		// Render this item's container & any containers it is within
 		const parentContainers = await this.allContainers();
-		parentContainers.forEach(c => c.sheet?.render(false, { ...rendering }));
+		parentContainers.forEach(c => {
+			if ( c.sheet?.rendered ) c.sheet?.render(false, { ...rendering })
+		});
+		if ( !parentContainers.length && !formerContainer ) return;
 
 		// Render the actor sheet, compendium, or sidebar
-		if ( this.parent.isEmbedded ) this.parent.actor.sheet?.render(false, { ...rendering });
+		if ( this.parent.isEmbedded && this.parent.actor.sheet?.rendered ) {
+			this.parent.actor.sheet?.render(false, { ...rendering });
+		}
 		else if ( this.parent.pack ) game.packs.get(this.parent.pack).apps.forEach(a => a.render(false, { ...rendering }));
 		else ui.items.render(false, { ...rendering });
 
@@ -230,28 +235,51 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _preUpdate(changed, options, user) {
-		if ( foundry.utils.hasProperty(changed, "system.container") ) {
+	/**
+	 * Handle re-rendering containers when an item is created.
+	 * @param {object} data - The initial data object provided to the document creation request.
+	 * @param {object} options - Additional options which modify the creation request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
+	_onCreatePhysicalItem(data, options, userId) {
+		if ( options.render !== false ) this._renderContainers();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Track changes to an item's container.
+	 * @param {object} changes - The candidate changes to the Document.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {BaseUser} user - The User requesting the document update.
+	 */
+	async _preUpdatePhysicalItem(changes, options, user) {
+		if ( foundry.utils.hasProperty(changes, "system.container") ) {
 			options.formerContainer = (await this.parent.container)?.uuid;
 		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_onCreatePhysicalItem(data, options, userId) {
-		this._renderContainers();
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
+	/**
+	 * Handle re-rendering containers when an item is updated.
+	 * @param {object} changed - The differential data that was changed relative to the documents prior values.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
 	_onUpdatePhysicalItem(changed, options, userId) {
-		this._renderContainers({ formerContainer: options.formerContainer });
+		if ( options.render !== false ) this._renderContainers({ formerContainer: options.formerContainer });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Handle re-rendering containers when an item is deleted.
+	 * @param {object} options - Additional options which modify the deletion request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
 	_onDeletePhysicalItem(options, userId) {
-		this._renderContainers();
+		if ( options.render !== false ) this._renderContainers();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

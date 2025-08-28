@@ -138,16 +138,23 @@ export default class PCData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static metadata = {
-		type: "pc",
-		category: "person",
-		localization: "BF.Actor.Type.PC",
-		img: "systems/black-flag/artwork/types/pc.svg",
-		sheet: {
-			application: PCSheet,
-			label: "BF.Sheet.Default.PC"
-		}
-	};
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				type: "pc",
+				category: "person",
+				legacyMixin: false,
+				localization: "BF.Actor.Type.PC",
+				img: "systems/black-flag/artwork/types/pc.svg",
+				sheet: {
+					application: PCSheet,
+					label: "BF.Sheet.Default.PC"
+				}
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -1053,7 +1060,7 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
-		await this.preCreateSize(data, options, user);
+		await this._preCreateSize(data, options, user);
 		const prototypeToken = {};
 		if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) prototypeToken.actorLink = true;
 		if (!foundry.utils.hasProperty(data, "prototypeToken.sight.enabled")) prototypeToken.sight = { enabled: true };
@@ -1068,9 +1075,9 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateExhaustion(changes, options, user);
+		await this._preUpdateExhaustion(changes, options, user);
 		await HPTemplate.prototype.preUpdateHP.call(this, changes, options, user);
-		await this.preUpdateSize(changes, options, user);
+		await this._preUpdateSize(changes, options, user);
 
 		// Set dying status
 		const changedHP = foundry.utils.getProperty(changes, "system.attributes.hp.value");
@@ -1090,7 +1097,7 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await this.onUpdateExhaustion(changed, options, userId);
+		await this._onUpdateExhaustion(changed, options, userId);
 		await HPTemplate.prototype.onUpdateHP.call(this, changed, options, userId);
 		if (userId === game.userId) await this.updateEncumbrance(options);
 	}

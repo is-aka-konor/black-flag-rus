@@ -27,7 +27,7 @@ export default class SizeTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the creation request.
 	 * @param {User} user - The User requesting the document creation.
 	 */
-	preCreateSize(data, options, user) {
+	_preCreateSize(data, options, user) {
 		if ( !foundry.utils.hasProperty(data, "prototypeToken.width")
 			&& !foundry.utils.hasProperty(data, "prototypeToken.height")) {
 			const size = CONFIG.BlackFlag.sizes[this.traits.size]?.scale;
@@ -43,7 +43,7 @@ export default class SizeTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {BaseUser} user - The User requesting the document update.
 	 */
-	preUpdateSize(changes, options, user) {
+	_preUpdateSize(changes, options, user) {
 		const newSize = foundry.utils.getProperty(changes, "system.traits.size");
 		if ( !newSize || (newSize === this.traits.size) ) return;
 

@@ -58,3 +58,15 @@ export const tokenRingColors = {
 	healing: 0x00ff00,
 	temp: 0x33aaff
 };
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Colors used to denote movement speed on ruler segments & grid highlighting
+ * @enum {number}
+ */
+export const tokenRulerColors = {
+	normal: 0x33bc4e,
+	double: 0xf1d836,
+	triple: 0xe72124
+};

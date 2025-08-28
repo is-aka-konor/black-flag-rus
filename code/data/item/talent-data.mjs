@@ -36,12 +36,24 @@ export default class TalentData extends ItemDataModel.mixin(
 			{
 				type: "talent",
 				category: "features",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Talent",
 				img: "systems/black-flag/artwork/types/talent.svg"
 			},
 			{ inplace: false }
 		)
 	);
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateFilterIds(source);
+		this._migrateSource(source);
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
@@ -83,5 +95,23 @@ export default class TalentData extends ItemDataModel.mixin(
 
 		context.type ??= {};
 		context.type.categories = CONFIG.BlackFlag.talentCategories.localized;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

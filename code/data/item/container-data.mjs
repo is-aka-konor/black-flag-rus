@@ -46,6 +46,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 			{
 				type: "container",
 				category: "equipment",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Container",
 				icon: "fa-solid fa-box-open",
 				img: "systems/black-flag/artwork/types/container.svg",
@@ -240,6 +241,8 @@ export default class ContainerData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	static migrateData(source) {
 		super.migrateData(source);
+		this._migrateSource(source);
+		this._migrateWeightUnits(source);
 
 		// Added in 2.0.068
 		this._migrateObjectUnits(source.capacity?.volume);
@@ -255,7 +258,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 		super.prepareBaseData();
 		this._shimObjectUnits("capacity.volume");
 		this._shimObjectUnits("capacity.weight");
-		this.shimWeightUnits();
+		this._shimWeightUnits();
 		this.quantity = 1;
 	}
 
@@ -276,14 +279,27 @@ export default class ContainerData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _preUpdate(changes, options, user) {
-		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateIdentifiable(changes, options, user);
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreatePhysicalItem(data, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _onUpdateFolder(changed, options, userId) {
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this._preUpdateIdentifiable(changes, options, user);
+		await this._preUpdatePhysicalItem(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		this._onUpdatePhysicalItem(changed, options, userId);
+
 		// Keep contents folder synchronized with container
 		if (game.user.id === userId && foundry.utils.hasProperty(changed, "folder")) {
 			const contents = await this.contents;
@@ -301,7 +317,10 @@ export default class ContainerData extends ItemDataModel.mixin(
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _onDeleteContents(options, userId) {
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this._onDeletePhyiscalItem(options, userId);
 		if (userId !== game.user.id || !options.deleteContents) return;
 
 		// Delete a container's contents when it is deleted

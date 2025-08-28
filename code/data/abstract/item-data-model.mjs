@@ -21,11 +21,17 @@ export default class ItemDataModel extends BaseDataModel {
 	 * Metadata that describes a type.
 	 * @type {ItemDataMetadata}
 	 */
-	static metadata = Object.freeze({
-		hasDetails: true,
-		hasEffects: true,
-		tooltipTemplate: "systems/black-flag/templates/item/item-tooltip.hbs"
-	});
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				hasDetails: true,
+				hasEffects: true,
+				tooltipTemplate: "systems/black-flag/templates/item/item-tooltip.hbs"
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*              Properties             */

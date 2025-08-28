@@ -30,6 +30,7 @@ export default class BackgroundData extends ItemDataModel.mixin(
 			{
 				type: "background",
 				category: "concept",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Background",
 				icon: "fa-solid fa-person-digging",
 				img: "systems/black-flag/artwork/types/background.svg",
@@ -40,6 +41,16 @@ export default class BackgroundData extends ItemDataModel.mixin(
 			{ inplace: false }
 		)
 	);
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
@@ -55,7 +66,9 @@ export default class BackgroundData extends ItemDataModel.mixin(
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateAdvancement(data, options, user) {
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		if (data._id || foundry.utils.hasProperty(data, "system.advancement")) return;
 		this._createInitialAdvancement([
 			{ type: "trait", title: "Skill Proficiencies", configuration: { choices: [{ count: 2, pool: "skills:*" }] } },
@@ -70,5 +83,21 @@ export default class BackgroundData extends ItemDataModel.mixin(
 				}
 			}
 		]);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

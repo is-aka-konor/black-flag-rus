@@ -65,8 +65,10 @@ export default class IdentifiableTemplate extends foundry.abstract.DataModel {
 	 * If no unidentified name or description are set when the item is marked as unidentified,
 	 * then fetch values from base item if possible.
 	 * @param {object} changes - The candidate changes to the Document.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {BaseUser} user - The User requesting the document update.
 	 */
-	async preUpdateIdentifiable(changes) {
+	async _preUpdateIdentifiable(changes, options, user) {
 		if ( !foundry.utils.hasProperty(changes, "system.unidentified.value") || !changes.system.unidentified?.value ) {
 			return;
 		}

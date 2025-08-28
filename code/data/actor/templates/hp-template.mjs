@@ -55,7 +55,7 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {BaseUser} user - The User requesting the document update.
 	 */
-	preUpdateHP(changes, options, user) {
+	_preUpdateHP(changes, options, user) {
 		foundry.utils.setProperty(options, `${game.system.id}.hp`, { ...this.attributes.hp });
 
 		const changedMaxHP = foundry.utils.getProperty(changes, "system.attributes.hp.max");
@@ -73,7 +73,7 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {string} userId - The id of the User requesting the document update.
 	 */
-	onUpdateHP(changed, options, userId) {
+	_onUpdateHP(changed, options, userId) {
 		if ( !changed.system?.attributes?.hp ) return;
 
 		const hp = options[game.system.id]?.hp;

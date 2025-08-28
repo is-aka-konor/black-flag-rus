@@ -31,6 +31,7 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 			{
 				type: "currency",
 				category: "meta",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Currency",
 				icon: "fa-solid fa-boxes-stacked",
 				img: "systems/black-flag/artwork/types/currency.svg",
@@ -102,13 +103,24 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+		this._migrateWeightUnits(source);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
-		this.shimWeightUnits();
+		this._shimWeightUnits();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -118,5 +130,39 @@ export default class CurrencyData extends ItemDataModel.mixin(DescriptionTemplat
 		super.prepareDerivedData();
 		this.prepareDescription();
 		this.preparePhysicalLabels();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreatePhysicalItem(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await this._preUpdatePhysicalItem(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		this._onUpdatePhysicalItem(changed, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this._onDeletePhyiscalItem(options, userId);
 	}
 }

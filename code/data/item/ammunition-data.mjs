@@ -47,6 +47,7 @@ export default class AmmunitionData extends ItemDataModel.mixin(
 			{
 				type: "ammunition",
 				category: "equipment",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Ammunition",
 				icon: "fa-solid fa-lines-leaning",
 				img: "systems/black-flag/artwork/types/ammunition.svg"
@@ -97,13 +98,24 @@ export default class AmmunitionData extends ItemDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+		this._migrateWeightUnits(source);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
-		this.shimWeightUnits();
+		this._shimWeightUnits();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -134,9 +146,34 @@ export default class AmmunitionData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreatePhysicalItem(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateIdentifiable(changes, options, user);
+		await this._preUpdateIdentifiable(changes, options, user);
+		await this._preUpdatePhysicalItem(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		this._onUpdatePhysicalItem(changed, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this._onDeletePhyiscalItem(options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -86,16 +86,23 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	static metadata = {
-		type: "vehicle",
-		category: "thing",
-		localization: "BF.Actor.Type.Vehicle",
-		img: "systems/black-flag/artwork/types/vehicle.svg",
-		sheet: {
-			application: VehicleSheet,
-			label: "BF.Sheet.Default.Vehicle"
-		}
-	};
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				type: "vehicle",
+				category: "thing",
+				legacyMixin: false,
+				localization: "BF.Actor.Type.Vehicle",
+				img: "systems/black-flag/artwork/types/vehicle.svg",
+				sheet: {
+					application: VehicleSheet,
+					label: "BF.Sheet.Default.Vehicle"
+				}
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -410,7 +417,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateHP(changes, options, user);
+		await this._preUpdateHP(changes, options, user);
 
 		let changedDimensions = foundry.utils.getProperty(changes, "system.traits.dimensions");
 		if (
@@ -433,7 +440,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await this.onUpdateHP(changed, options, userId);
+		await this._onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

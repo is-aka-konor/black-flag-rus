@@ -42,6 +42,7 @@ export default class GearData extends ItemDataModel.mixin(
 			{
 				type: "gear",
 				category: "equipment",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Gear",
 				icon: "fa-solid fa-wand-magic",
 				img: "systems/black-flag/artwork/types/gear.svg"
@@ -87,6 +88,8 @@ export default class GearData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	static migrateData(source) {
 		super.migrateData(source);
+		this._migrateSource(source);
+		this._migrateWeightUnits(source);
 
 		// Added in 0.10.051
 		if (source.type?.category === "focus") {
@@ -105,7 +108,7 @@ export default class GearData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
-		this.shimWeightUnits();
+		this._shimWeightUnits();
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -133,9 +136,34 @@ export default class GearData extends ItemDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreatePhysicalItem(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateIdentifiable(changes, options, user);
+		await this._preUpdateIdentifiable(changes, options, user);
+		await this._preUpdatePhysicalItem(changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		this._onUpdatePhysicalItem(changed, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this._onDeletePhyiscalItem(options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

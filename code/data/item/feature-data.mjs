@@ -44,6 +44,7 @@ export default class FeatureData extends ItemDataModel.mixin(
 			{
 				type: "feature",
 				category: "features",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Feature",
 				img: "systems/black-flag/artwork/types/feature.svg"
 			},
@@ -63,6 +64,17 @@ export default class FeatureData extends ItemDataModel.mixin(
 				value: new NumberField({ min: 0, integer: true })
 			})
 		});
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateFilterIds(source);
+		this._migrateSource(source);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -131,5 +143,23 @@ export default class FeatureData extends ItemDataModel.mixin(
 			context.type.displayLevel = featureType?.level !== false;
 			context.type.fixedLevel = featureType?.level;
 		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*        Socket Event Handlers        */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

@@ -36,6 +36,7 @@ export default class SubclassData extends ItemDataModel.mixin(
 			{
 				type: "subclass",
 				category: "concept",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Subclass",
 				icon: "fa-solid fa-landmark-flag",
 				img: "systems/black-flag/artwork/types/subclass.svg",
@@ -113,6 +114,16 @@ export default class SubclassData extends ItemDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -136,16 +147,16 @@ export default class SubclassData extends ItemDataModel.mixin(
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateAdvancement(data, options, user) {
-		if (data._id || foundry.utils.hasProperty(data, "system.advancement")) return;
-		this._createInitialAdvancement(
-			CONFIG.BlackFlag.subclassFeatureLevels.map(level => ({ type: "grantFeatures", level: { value: level } }))
-		);
-	}
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 
-	/* <><><><> <><><><> <><><><> <><><><> */
+		if (!data._id && !foundry.utils.hasProperty(data, "system.advancement")) {
+			this._createInitialAdvancement(
+				CONFIG.BlackFlag.subclassFeatureLevels.map(level => ({ type: "grantFeatures", level: { value: level } }))
+			);
+		}
 
-	_preCreateSubclass(data, options, user) {
 		if (!this.parent.actor) return;
 
 		const matchingClass = this.parent.actor.system.progression?.classes?.[this.identifier.class];
@@ -165,5 +176,21 @@ export default class SubclassData extends ItemDataModel.mixin(
 			);
 			return false;
 		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

@@ -30,6 +30,7 @@ export default class HeritageData extends ItemDataModel.mixin(
 			{
 				type: "heritage",
 				category: "concept",
+				legacyMixin: false,
 				localization: "BF.Item.Type.Heritage",
 				icon: "fa-solid fa-monument",
 				img: "systems/black-flag/artwork/types/heritage.svg",
@@ -40,6 +41,16 @@ export default class HeritageData extends ItemDataModel.mixin(
 			{ inplace: false }
 		)
 	);
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateSource(source);
+	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
@@ -55,7 +66,9 @@ export default class HeritageData extends ItemDataModel.mixin(
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	_preCreateAdvancement(data, options, user) {
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		if (data._id || foundry.utils.hasProperty(data, "system.advancement")) return;
 		this._createInitialAdvancement([
 			{
@@ -64,5 +77,21 @@ export default class HeritageData extends ItemDataModel.mixin(
 				configuration: { grants: ["languages:standard:common"], choices: [{ count: 1, pool: "languages:*" }] }
 			}
 		]);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		this._onCreateApplyAdvancement(data, options, userId);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onDelete(options, userId) {
+		await super._onDelete(options, userId);
+		this.onDeleteRevertAdvancement(options, userId);
 	}
 }

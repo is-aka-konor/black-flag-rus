@@ -77,16 +77,23 @@ export default class NPCData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	static metadata = {
-		type: "npc",
-		category: "person",
-		localization: "BF.Actor.Type.NPC",
-		img: "systems/black-flag/artwork/types/npc.svg",
-		sheet: {
-			application: NPCSheet,
-			label: "BF.Sheet.Default.NPC"
-		}
-	};
+	static metadata = Object.freeze(
+		foundry.utils.mergeObject(
+			super.metadata,
+			{
+				type: "npc",
+				category: "person",
+				legacyMixin: false,
+				localization: "BF.Actor.Type.NPC",
+				img: "systems/black-flag/artwork/types/npc.svg",
+				sheet: {
+					application: NPCSheet,
+					label: "BF.Sheet.Default.NPC"
+				}
+			},
+			{ inplace: false }
+		)
+	);
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -343,7 +350,7 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
-		await this.preCreateSize(data, options, user);
+		await this._preCreateSize(data, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -351,9 +358,9 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await this.preUpdateExhaustion(changes, options, user);
-		await this.preUpdateHP(changes, options, user);
-		await this.preUpdateSize(changes, options, user);
+		await this._preUpdateExhaustion(changes, options, user);
+		await this._preUpdateHP(changes, options, user);
+		await this._preUpdateSize(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -361,8 +368,8 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await this.onUpdateExhaustion(changed, options, userId);
-		await this.onUpdateHP(changed, options, userId);
+		await this._onUpdateExhaustion(changed, options, userId);
+		await this._onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

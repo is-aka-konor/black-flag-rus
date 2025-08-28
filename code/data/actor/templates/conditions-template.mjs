@@ -73,7 +73,7 @@ export default class ConditionsTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {BaseUser} user - The User requesting the document update.
 	 */
-	preUpdateExhaustion(changes, options, user) {
+	_preUpdateExhaustion(changes, options, user) {
 		if ( Number.isFinite(foundry.utils.getProperty(changes, "system.attributes.exhaustion")) ) {
 			foundry.utils.setProperty(options, `${game.system.id}.originalExhaustion`, this.attributes.exhaustion);
 		}
@@ -87,7 +87,7 @@ export default class ConditionsTemplate extends foundry.abstract.DataModel {
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {string} userId - The id of the User requesting the document update.
 	 */
-	async onUpdateExhaustion(changed, options, userId) {
+	async _onUpdateExhaustion(changed, options, userId) {
 		if ( userId !== game.userId ) return;
 
 		// TODO: Perform this as part of Actor._preUpdateOperation instead when it becomes available in v12

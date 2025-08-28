@@ -17,7 +17,9 @@ export default class BaseDataModel extends foundry.abstract.TypeDataModel {
 	 * Metadata that describes a type.
 	 * @type {BaseDataMetadata}
 	 */
-	static metadata = {};
+	static metadata = {
+		legacyMixin: true
+	};
 
 	/**
 	 * Metadata that describes a type.
@@ -195,6 +197,7 @@ export default class BaseDataModel extends foundry.abstract.TypeDataModel {
 	 * @returns {string[]} - Array of method keys.
 	 */
 	static _getMethods({ startingWith, notEndingWith, prototype = true }) {
+		if (!this.metadata.legacyMixin) return [];
 		let keys = [];
 		for (const key in prototype ? this.prototype : this) {
 			keys.push(key);
@@ -206,6 +209,14 @@ export default class BaseDataModel extends foundry.abstract.TypeDataModel {
 		}
 		if (startingWith) keys = keys.filter(key => key.startsWith(startingWith) && key !== startingWith);
 		if (notEndingWith) keys = keys.filter(key => !key.endsWith(notEndingWith));
+
+		if (keys.length) {
+			foundry.utils.logCompatibilityWarning(
+				`Automatic application of \`${startingWith}…()\` methods in BaseDataModel will no longer be supported. Switch to calling template methods directly and set \`legacyMixin\` in the template's metadata to \`false\` to hide this warning. The following methods were found: ${keys.map(k => `${this.name}${prototype ? ".prototype" : ""}.${k}()`).join(", ")}`,
+				{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
+			);
+		}
+
 		return keys;
 	}
 
