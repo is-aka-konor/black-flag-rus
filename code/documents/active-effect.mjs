@@ -383,17 +383,18 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	/**
 	 * Adjust exhaustion icon display to match current level.
 	 * @param {Application} app - The TokenHUD application.
-	 * @param {jQuery} html - The TokenHUD HTML.
+	 * @param {HTMLElement} html - The TokenHUD HTML.
 	 * @protected
 	 */
 	static _onTokenHUDRender(app, html) {
 		const actor = app.object.actor;
 		const level = foundry.utils.getProperty(actor, "system.attributes.exhaustion");
 		if (Number.isFinite(level) && level > 0) {
-			html.find('[data-status-id="exhaustion"]').css({
-				objectPosition: "-100px",
-				background: `url('systems/black-flag/artwork/statuses/exhaustion-${level}.svg') no-repeat center / contain`
-			});
+			const element = html.querySelector('[data-status-id="exhaustion"]');
+			if (element) {
+				element.style.objectPosition = "-100px";
+				element.style.background = `url('systems/black-flag/artwork/statuses/exhaustion-${level}.svg') no-repeat center / contain`;
+			}
 		}
 	}
 
@@ -406,9 +407,22 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	 */
 	static _onClickTokenHUD(event) {
 		const { target } = event;
-		if (!target.classList?.contains("effect-control") || target.dataset?.statusId !== "exhaustion") return;
 		const actor = canvas.hud.token.object?.actor;
-		let level = foundry.utils.getProperty(actor ?? {}, "system.attributes.exhaustion");
+		if (!target.classList?.contains("effect-control") || !actor) return;
+
+		const id = target.dataset?.statusId;
+		if (id === "exhaustion") BlackFlagActiveEffect._manageExhaustion(event, actor);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Manage custom exhaustion cycling when interacting with the token HUD.
+	 * @param {PointerEvent} event - The triggering event.
+	 * @param {Actor5e} actor - The actor belonging to the token.
+	 */
+	static _manageExhaustion(event, actor) {
+		let level = foundry.utils.getProperty(actor, "system.attributes.exhaustion");
 		if (!Number.isFinite(level)) return;
 		event.preventDefault();
 		event.stopPropagation();
