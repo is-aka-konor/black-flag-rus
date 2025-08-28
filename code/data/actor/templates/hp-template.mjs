@@ -5,10 +5,10 @@ const { NumberField, SchemaField } = foundry.data.fields;
  *
  * @property {object} attributes
  * @property {object} attributes.hp
- * @property {number} attributes.hp.value - Current hit points.
  * @property {number} attributes.hp.max - Maximum hit points.
  * @property {number} attributes.hp.temp - Temporary hit points.
  * @property {number} attributes.hp.tempMax - Temporary max hit points.
+ * @property {number} attributes.hp.value - Current hit points.
  */
 export default class HPTemplate extends foundry.abstract.DataModel {
 	/** @inheritDoc */
@@ -17,10 +17,10 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 			attributes: new SchemaField({
 				hp: new SchemaField(
 					{
-						value: new NumberField({ required: true, min: 0, integer: true, label: "BF.HitPoint.Current.LabelLong" }),
 						max: new NumberField({ required: true, min: 0, integer: true, label: "BF.HitPoint.Max.LabelLong" }),
 						temp: new NumberField({ required: true, min: 0, integer: true, label: "BF.HitPoint.Temp.LabelLong" }),
-						tempMax: new NumberField({ required: true, integer: true, label: "BF.HitPoint.TempMax.LabelLong" })
+						tempMax: new NumberField({ required: true, integer: true, label: "BF.HitPoint.TempMax.LabelLong" }),
+						value: new NumberField({ required: true, min: 0, integer: true, label: "BF.HitPoint.Current.LabelLong" })
 					},
 					{ label: "BF.HitPoint.Label[other]" }
 				)
@@ -49,11 +49,60 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _preUpdateHP(changed, options, user) {
-		const changedMaxHP = foundry.utils.getProperty(changed, "system.attributes.hp.max");
+	/**
+	 * Track changes to HP when updated.
+	 * @this {PCData|NPCData|SiegeData|VehicleData}
+	 * @param {object} changes - The candidate changes to the Document.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {BaseUser} user - The User requesting the document update.
+	 */
+	static async preUpdateHP(changes, options, user) {
+		foundry.utils.setProperty(options, `${game.system.id}.hp`, { ...this.attributes.hp });
+
+		const changedMaxHP = foundry.utils.getProperty(changes, "system.attributes.hp.max");
 		if (changedMaxHP !== undefined) {
 			const maxHPDelta = changedMaxHP - this.attributes.hp.baseMax;
-			foundry.utils.setProperty(changed, "system.attributes.hp.value", this.attributes.hp.value + maxHPDelta);
+			foundry.utils.setProperty(changes, "system.attributes.hp.value", this.attributes.hp.value + maxHPDelta);
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Display token effects and call damage hook.
+	 * @this {PCData|NPCData|SiegeData|VehicleData}
+	 * @param {object} changed - The differential data that was changed relative to the documents prior values.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
+	static async onUpdateHP(changed, options, userId) {
+		if ( !changed.system?.attributes?.hp ) return;
+
+		const hp = options[game.system.id]?.hp;
+		if ( hp && !options.isAdvancement && !options.isRest ) {
+			const curr = this.attributes.hp;
+			const changes = {
+				hp: curr.value - hp.value,
+				temp: curr.temp - hp.temp
+			};
+			changes.total = changes.hp + changes.temp;
+
+			if ( Number.isInteger(changes.total) && (changes.total !== 0) ) {
+				this.parent._displayTokenEffect(changes);
+
+				/**
+				 * A hook event that fires when an actor is damaged or healed by any means. The actual name
+				 * of the hook will depend on the change in hit points.
+				 * @function blackFlag.damageActor
+				 * @function blackFlag.healActor
+				 * @memberof hookEvents
+				 * @param {BlackFlagActor} actor - The actor that had their hit points reduced.
+				 * @param {{ hp: number, temp: number, total: number }} changes - The changes to hit points.
+				 * @param {object} update - The original update delta.
+				 * @param {string} userId - ID of the user that performed the update.
+				 */
+				Hooks.callAll(`blackFlag.${changes.total > 0 ? "heal" : "damage"}Actor`, this.parent, changes, changed, userId);
+			}
 		}
 	}
 }

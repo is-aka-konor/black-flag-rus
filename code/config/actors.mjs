@@ -393,6 +393,7 @@ export const senseTags = {
  * @typedef {LabeledConfiguration} SizeConfiguration
  * @property {number|{width: number, height: number}} scale - Default token scale for a creature of this size.
  * @property {number} [capacityMultiplier] - Multiplier used to calculate carrying capacities.
+ * @property {number} [dynamicTokenScale] - Multiplier used to scale the dynamic token artwork for this size.
  */
 
 /**
@@ -407,7 +408,8 @@ export const sizes = {
 	},
 	small: {
 		label: "BF.Size.Small",
-		scale: 1
+		scale: 1,
+		dynamicTokenScale: 0.8
 	},
 	medium: {
 		label: "BF.Size.Medium",

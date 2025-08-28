@@ -22,6 +22,7 @@ import * as utils from "./utils/_module.mjs";
 
 globalThis.BlackFlag = {
 	applications,
+	canvas,
 	config,
 	data,
 	dice,
@@ -68,6 +69,7 @@ Hooks.once("init", function () {
 	documents.BlackFlagActor.setupHooks();
 	documents.BlackFlagItem.setupHooks();
 	documents.BlackFlagScene.setupHooks();
+	documents.BlackFlagTokenDocument.setupHooks();
 	documents.registerDocumentClasses();
 	enrichers.registerCustomEnrichers();
 	settings.registerKeybindings();

@@ -89,4 +89,53 @@ export default class BlackFlagToken extends foundry.canvas.placeables.Token {
 		let posY = number === 0 ? this.h - bh : 0;
 		bar.position.set(0, posY);
 	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Event Handlers           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	_onApplyStatusEffect(statusId, active) {
+		const applicableEffects = [CONFIG.specialStatusEffects.DEFEATED, CONFIG.specialStatusEffects.INVISIBLE];
+		if (applicableEffects.includes(statusId) && this.hasDynamicRing) {
+			this.renderFlags.set({ refreshRingVisuals: true });
+		}
+		super._onApplyStatusEffect(statusId, active);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Update the token ring when this token is targeted.
+	 * @param {User} user - The user whose targeting has changed.
+	 * @param {BlackFlagToken} token - The token that was targeted.
+	 * @param {boolean} targeted - Is the token targeted or not?
+	 */
+	static onTargetToken(user, token, targeted) {
+		if (!targeted || !token.hasDynamicRing) return;
+		const color = Color.from(user.color);
+		token.ring.flashColor(color, { duration: 500, easing: token.ring.constructor.easeTwoPeaks });
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	_configureFilterEffect(statusId, active) {
+		if (statusId === CONFIG.specialStatusEffects.INVISIBLE && this.hasDynamicRing) active = false;
+		return super._configureFilterEffect(statusId, active);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	getRingColors() {
+		return this.document.getRingColors();
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	getRingEffects() {
+		return this.document.getRingEffects();
+	}
 }

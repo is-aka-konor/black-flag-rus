@@ -145,11 +145,27 @@ export default class SiegeData extends ActorDataModel.mixin(
 
 	/** @inheritDoc */
 	async _onCreate(data, options, userId) {
-		super._onCreate(data, options, userId);
+		await super._onCreate(data, options, userId);
 		if (userId === game.user.id && options[game.system.id]?.createResilience) {
 			const resilience = await fromUuid("Compendium.black-flag.npcfeatures.Item.rViKTBoqaXbonMPo");
 			if (resilience) await this.parent.createEmbeddedDocuments("Item", [game.items.fromCompendium(resilience)]);
 		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

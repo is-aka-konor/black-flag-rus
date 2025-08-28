@@ -2021,6 +2021,53 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/**
+	 * Flash ring & display changes to health as scrolling combat text.
+	 * @param {object} changes - Object of changes to hit points.
+	 * @param {number} changes.hp - Changes to `hp.value`.
+	 * @param {number} changes.temp - The change to `hp.temp`.
+	 * @param {number} changes.total - The total change to hit points.
+	 * @protected
+	 */
+	_displayTokenEffect(changes) {
+		let key;
+		let value;
+		if (changes.hp < 0) {
+			key = "damage";
+			value = changes.total;
+		} else if (changes.hp > 0) {
+			key = "healing";
+			value = changes.total;
+		} else if (changes.temp) {
+			key = "temp";
+			value = changes.temp;
+		}
+		if (!key || !value) return;
+
+		const tokens = this.isToken ? [this.token] : this.getActiveTokens(true, true);
+		if (!tokens.length) return;
+
+		const pct = Math.clamp(Math.abs(value) / this.system.attributes.hp.max, 0, 1);
+		const fill = CONFIG.BlackFlag.tokenHPColors[key];
+
+		for (const token of tokens) {
+			if (!token.object?.visible || token.isSecret) continue;
+			if (token.object?.hasDynamicRing) token.flashRing(key);
+			const t = token.object;
+			canvas.interface.createScrollingText(t.center, value.signedString(), {
+				anchor: CONST.TEXT_ANCHOR_POINTS.TOP,
+				// Adapt the font size relative to the Actor's HP total to emphasize more significant blows
+				fontSize: 16 + 32 * pct, // Range between [16, 48]
+				fill: fill,
+				stroke: 0x000000,
+				strokeThickness: 4,
+				jitter: 0.25
+			});
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	async _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
 		if (userId === game.userId && collection === "items") {

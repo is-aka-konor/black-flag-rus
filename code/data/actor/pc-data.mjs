@@ -9,6 +9,7 @@ import { AdvancementValueField, FormulaField, LocalDocumentField, RollField, Tim
 import ACTemplate from "./templates/ac-template.mjs";
 import ConditionsTemplate from "./templates/conditions-template.mjs";
 import EncumbranceTemplate from "./templates/encumbrance-template.mjs";
+import HPTemplate from "./templates/hp-template.mjs";
 import InitiativeTemplate from "./templates/initiative-template.mjs";
 import LanguagesTemplate from "./templates/languages-template.mjs";
 import ModifiersTemplate from "./templates/modifiers-template.mjs";
@@ -1037,7 +1038,9 @@ export default class PCData extends ActorDataModel.mixin(
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _preCreateToken(data, options, user) {
+	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
 		const prototypeToken = {};
 		if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) prototypeToken.actorLink = true;
 		if (!foundry.utils.hasProperty(data, "prototypeToken.sight.enabled")) prototypeToken.sight = { enabled: true };
@@ -1049,15 +1052,20 @@ export default class PCData extends ActorDataModel.mixin(
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _preUpdateHP(changed, options, user) {
-		const changedHP = foundry.utils.getProperty(changed, "system.attributes.hp.value");
+	/** @inheritDoc */
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+
+		// Set dying status
+		const changedHP = foundry.utils.getProperty(changes, "system.attributes.hp.value");
 		if (changedHP !== undefined) {
 			if (changedHP > 0 || this.attributes.hp.max === 0) {
-				foundry.utils.setProperty(changed, "system.attributes.death.status", "alive");
-				foundry.utils.setProperty(changed, "system.attributes.death.success", 0);
-				foundry.utils.setProperty(changed, "system.attributes.death.failure", 0);
+				foundry.utils.setProperty(changes, "system.attributes.death.status", "alive");
+				foundry.utils.setProperty(changes, "system.attributes.death.success", 0);
+				foundry.utils.setProperty(changes, "system.attributes.death.failure", 0);
 			} else if (this.attributes.death.status === "alive") {
-				foundry.utils.setProperty(changed, "system.attributes.death.status", "dying");
+				foundry.utils.setProperty(changes, "system.attributes.death.status", "dying");
 			}
 		}
 	}
@@ -1067,6 +1075,7 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
+		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
 		if (userId === game.userId) {
 			await this.updateEncumbrance(options);
 		}

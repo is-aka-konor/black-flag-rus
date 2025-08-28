@@ -45,3 +45,16 @@ export const tokenHPColors = {
 	tempMaxPositive: 0x440066,
 	tempMaxNegative: 0x550000
 };
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Colors used when a dynamic token ring effects.
+ * @enum {number}
+ */
+export const tokenRingColors = {
+	damage: 0xff0000,
+	defeated: 0x000000,
+	healing: 0x00ff00,
+	temp: 0x33aaff
+};

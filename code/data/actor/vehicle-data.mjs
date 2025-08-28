@@ -398,7 +398,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 
 	/** @inheritDoc */
 	async _onCreate(data, options, userId) {
-		super._onCreate(data, options, userId);
+		await super._onCreate(data, options, userId);
 		if (userId === game.user.id && options[game.system.id]?.createResilience) {
 			const resilience = await fromUuid("Compendium.black-flag.npcfeatures.Item.4mrsMh1wkqybueGe");
 			if (resilience) await this.parent.createEmbeddedDocuments("Item", [game.items.fromCompendium(resilience)]);
@@ -408,29 +408,32 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
-	async _preUpdate(changed, options, user) {
-		if ((await super._preUpdate(changed, options, user)) === false) return false;
+	async _preUpdate(changes, options, user) {
+		if ((await super._preUpdate(changes, options, user)) === false) return false;
+		await HPTemplate.preUpdateHP.call(this, changes, options, user);
 
-		const changedMaxHP = foundry.utils.getProperty(changed, "system.attributes.hp.max");
-		if (changedMaxHP !== undefined) {
-			const maxHPDelta = changedMaxHP - this.attributes.hp.baseMax;
-			foundry.utils.setProperty(changed, "system.attributes.hp.value", this.attributes.hp.value + maxHPDelta);
-		}
-
-		let changedDimensions = foundry.utils.getProperty(changed, "system.traits.dimensions");
+		let changedDimensions = foundry.utils.getProperty(changes, "system.traits.dimensions");
 		if (
 			changedDimensions &&
 			(changedDimensions.length !== this.traits.dimensions.length ||
 				changedDimensions.width !== this.traits.dimensions.width) &&
-			!foundry.utils.hasProperty(changed, "prototypeToken.width") &&
-			!foundry.utils.hasProperty(changed, "prototypeToken.height")
+			!foundry.utils.hasProperty(changes, "prototypeToken.width") &&
+			!foundry.utils.hasProperty(changes, "prototypeToken.height")
 		) {
 			const size = this.scaledTokenSize(
 				foundry.utils.mergeObject(this.traits.dimensions, changedDimensions, { inplace: false })
 			);
-			foundry.utils.setProperty(changed, "prototypeToken.width", size.width);
-			foundry.utils.setProperty(changed, "prototypeToken.height", size.height);
+			foundry.utils.setProperty(changes, "prototypeToken.width", size.width);
+			foundry.utils.setProperty(changes, "prototypeToken.height", size.height);
 		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onUpdate(changed, options, userId) {
+		await super._onUpdate(changed, options, userId);
+		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
