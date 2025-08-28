@@ -31,3 +31,17 @@ export const mapLocationMarkerStyle = {
 		textColor: 0x000000
 	}
 };
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
+ * Colors used to visualize temporary and temporary maximum HP in token health bars.
+ * @enum {number}
+ */
+export const tokenHPColors = {
+	damage: 0xff0000,
+	healing: 0x00ff00,
+	temp: 0x66ccff,
+	tempMaxPositive: 0x440066,
+	tempMaxNegative: 0x550000
+};
