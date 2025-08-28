@@ -67,29 +67,40 @@ export default class ConditionsTemplate extends foundry.abstract.DataModel {
 	/*        Socket Event Handlers        */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _preUpdateExhaustion(changed, options, user) {
-		// Record previous exhaustion level.
-		if ( Number.isFinite(foundry.utils.getProperty(changed, "system.attributes.exhaustion")) ) {
-			foundry.utils.setProperty(options, "blackFlag.originalExhaustion", this.attributes.exhaustion);
+	/**
+	 * Record previous exhaustion level.
+	 * @param {object} changes - The candidate changes to the Document.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {BaseUser} user - The User requesting the document update.
+	 */
+	preUpdateExhaustion(changes, options, user) {
+		if ( Number.isFinite(foundry.utils.getProperty(changes, "system.attributes.exhaustion")) ) {
+			foundry.utils.setProperty(options, `${game.system.id}.originalExhaustion`, this.attributes.exhaustion);
 		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	async _onUpdateExhaustion(data, options, userId) {
+	/**
+	 * Handle creating or deleting exhaustion effects.
+	 * @param {object} changed - The differential data that was changed relative to the documents prior values.
+	 * @param {object} options - Additional options which modify the update request.
+	 * @param {string} userId - The id of the User requesting the document update.
+	 */
+	async onUpdateExhaustion(changed, options, userId) {
 		if ( userId !== game.userId ) return;
 
 		// TODO: Perform this as part of Actor._preUpdateOperation instead when it becomes available in v12
-		const level = foundry.utils.getProperty(data, "system.attributes.exhaustion");
+		const level = foundry.utils.getProperty(changed, "system.attributes.exhaustion");
 		if ( !Number.isFinite(level) ) return;
 		let effect = this.parent.effects.get(BlackFlagActiveEffect.ID.EXHAUSTION);
 		if ( level < 1 ) effect?.delete();
 		else if ( effect ) {
-			const originalExhaustion = foundry.utils.getProperty(options, "blackFlag.originalExhaustion");
-			effect.update({ "flags.black-flag.level": level }, { blackFlag: { originalExhaustion } });
+			const originalExhaustion = foundry.utils.getProperty(options, `${game.system.id}.originalExhaustion`);
+			effect.update({ [`flags.${game.system.id}.level`]: level }, { blackFlag: { originalExhaustion } });
 		} else {
 			effect = await ActiveEffect.implementation.fromStatusEffect("exhaustion", { parent: this.parent });
-			effect.updateSource({ "flags.black-flag.level": level });
+			effect.updateSource({ [`flags.${game.system.id}.level`]: level });
 			ActiveEffect.implementation.create(effect, { parent: this.parent, keepId: true });
 		}
 	}

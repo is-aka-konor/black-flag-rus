@@ -57,7 +57,7 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 	 * Added in 2.0.068
 	 * @param {object} source - Candidate source data to migrate.
 	 */
-	static migrateCommunication(source) {
+	static _migrateCommunication(source) {
 		this._migrateMappingFieldUnits(source.proficiencies?.languages?.communication);
 	}
 
@@ -68,7 +68,7 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 	/**
 	 * Apply shims to communication units.
 	 */
-	shimLanguages() {
+	_shimLanguages() {
 		this._shimMappingFieldUnits("proficiencies.languages.communication");
 	}
 

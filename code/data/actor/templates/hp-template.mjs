@@ -51,12 +51,11 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 
 	/**
 	 * Track changes to HP when updated.
-	 * @this {PCData|NPCData|SiegeData|VehicleData}
 	 * @param {object} changes - The candidate changes to the Document.
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {BaseUser} user - The User requesting the document update.
 	 */
-	static async preUpdateHP(changes, options, user) {
+	preUpdateHP(changes, options, user) {
 		foundry.utils.setProperty(options, `${game.system.id}.hp`, { ...this.attributes.hp });
 
 		const changedMaxHP = foundry.utils.getProperty(changes, "system.attributes.hp.max");
@@ -70,12 +69,11 @@ export default class HPTemplate extends foundry.abstract.DataModel {
 
 	/**
 	 * Display token effects and call damage hook.
-	 * @this {PCData|NPCData|SiegeData|VehicleData}
 	 * @param {object} changed - The differential data that was changed relative to the documents prior values.
 	 * @param {object} options - Additional options which modify the update request.
 	 * @param {string} userId - The id of the User requesting the document update.
 	 */
-	static async onUpdateHP(changed, options, userId) {
+	onUpdateHP(changed, options, userId) {
 		if ( !changed.system?.attributes?.hp ) return;
 
 		const hp = options[game.system.id]?.hp;

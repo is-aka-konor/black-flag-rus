@@ -339,14 +339,26 @@ export default class PCData extends ActorDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*            Data Migration           */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateCircles(source);
+		this._migrateCommunication(source);
+		this._migrateMovementSenses(source);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Data Preparation          */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
-		this.shimLanguages();
-		this.shimMovementSenses();
+		this._shimLanguages();
+		this._shimMovementSenses();
 
 		this.progression.abilities.assignmentComplete = true;
 		for (const [key, ability] of Object.entries(this.abilities)) {
@@ -1041,6 +1053,7 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
+		await this.preCreateSize(data, options, user);
 		const prototypeToken = {};
 		if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) prototypeToken.actorLink = true;
 		if (!foundry.utils.hasProperty(data, "prototypeToken.sight.enabled")) prototypeToken.sight = { enabled: true };
@@ -1055,7 +1068,9 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+		await this.preUpdateExhaustion(changes, options, user);
+		await HPTemplate.prototype.preUpdateHP.call(this, changes, options, user);
+		await this.preUpdateSize(changes, options, user);
 
 		// Set dying status
 		const changedHP = foundry.utils.getProperty(changes, "system.attributes.hp.value");
@@ -1075,9 +1090,8 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
-		if (userId === game.userId) {
-			await this.updateEncumbrance(options);
-		}
+		await this.onUpdateExhaustion(changed, options, userId);
+		await HPTemplate.prototype.onUpdateHP.call(this, changed, options, userId);
+		if (userId === game.userId) await this.updateEncumbrance(options);
 	}
 }

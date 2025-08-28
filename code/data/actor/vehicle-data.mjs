@@ -410,7 +410,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+		await this.preUpdateHP(changes, options, user);
 
 		let changedDimensions = foundry.utils.getProperty(changes, "system.traits.dimensions");
 		if (
@@ -433,7 +433,7 @@ export default class VehicleData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
+		await this.onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

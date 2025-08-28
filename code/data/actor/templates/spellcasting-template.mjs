@@ -28,7 +28,7 @@ export default class SpellcastingTemplate extends foundry.abstract.DataModel {
 	 * Added in 0.9.023, updated in 0.9.037
 	 * @param {object} source - Candidate source data to migrate.
 	 */
-	static migrateCircles(source) {
+	static _migrateCircles(source) {
 		if ( "spellcasting" in source ) {
 			if ( "rings" in source.spellcasting ) source.spellcasting.slots = foundry.utils.mergeObject(
 				source.spellcasting.slots ?? {}, source.spellcasting.rings

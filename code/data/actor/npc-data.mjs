@@ -152,11 +152,12 @@ export default class NPCData extends ActorDataModel.mixin(
 	/*            Data Migration           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/**
-	 * Migrate source data to an object.
-	 * @param {object} source - The candidate source data from which the model will be constructed.
-	 */
-	static migrateSource(source) {
+	/** @inheritDoc */
+	static migrateData(source) {
+		super.migrateData(source);
+		this._migrateCommunication(source);
+		this._migrateMovementSenses(source);
+
 		// Added 0.9.031
 		if (foundry.utils.getType(source.biography?.source) === "string") {
 			source.description ??= {};
@@ -177,8 +178,8 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	prepareBaseData() {
 		super.prepareBaseData();
-		this.shimLanguages();
-		this.shimMovementSenses();
+		this._shimLanguages();
+		this._shimMovementSenses();
 
 		for (const [key, ability] of Object.entries(this.abilities)) {
 			ability._source = this._source.abilities?.[key] ?? {};
@@ -340,9 +341,19 @@ export default class NPCData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @inheritDoc */
+	async _preCreate(data, options, user) {
+		if ((await super._preCreate(data, options, user)) === false) return false;
+		await this.preCreateSize(data, options, user);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+		await this.preUpdateExhaustion(changes, options, user);
+		await this.preUpdateHP(changes, options, user);
+		await this.preUpdateSize(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -350,7 +361,8 @@ export default class NPCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
+		await this.onUpdateExhaustion(changed, options, userId);
+		await this.onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

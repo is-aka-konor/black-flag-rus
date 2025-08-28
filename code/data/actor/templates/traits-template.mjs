@@ -59,7 +59,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 	 * Added in 2.0.068
 	 * @param {object} source - Candidate source data to migrate.
 	 */
-	static migrateMovementSenses(source) {
+	static _migrateMovementSenses(source) {
 		this._migrateObjectUnits(source.traits?.movement);
 		this._migrateObjectUnits(source.traits?.senses);
 	}
@@ -71,7 +71,7 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 	/**
 	 * Apply shims to movement & senses units.
 	 */
-	shimMovementSenses() {
+	_shimMovementSenses() {
 		this._shimObjectUnits("traits.movement");
 		this._shimObjectUnits("traits.senses");
 	}

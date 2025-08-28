@@ -136,6 +136,7 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
+		await this.preCreateSize(data, options, user);
 		if (!data._id && !data.items?.length) {
 			foundry.utils.setProperty(options, `${game.system.id}.createResilience`, true);
 		}
@@ -157,7 +158,8 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
-		await HPTemplate.preUpdateHP.call(this, changes, options, user);
+		await this.preUpdateHP(changes, options, user);
+		await this.preUpdateSize(changes, options, user);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -165,7 +167,7 @@ export default class SiegeData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
-		await HPTemplate.onUpdateHP.call(this, changed, options, userId);
+		await this.onUpdateHP(changed, options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
