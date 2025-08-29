@@ -1,26 +1,20 @@
 <section>
 	<div class="category">
-		<label>
-			<span>{{ localize "BF.Spell.Circle.Label" }}</span>
-			<select name="system.circle.base">
-				{{ selectOptions spellCircles selected=source.circle.base }}
-			</select>
-		</label>
-		<label>
-			<span>{{ localize "BF.Spell.Source.Label" }}</span>
-			<blackFlag-multiSelect name="system.source" label="{{ system.source.label }}">
-				<datalist>
-					{{#blackFlag-multiSelect system.source}}
-						{{ selectOptions CONFIG.spellSources.localized }}
-					{{/blackFlag-multiSelect}}
-				</datalist>
-			</blackFlag-multiSelect>
-		</label>
-		<label>
-			<span>{{ localize "BF.Spell.School.Label" }}</span>
-			<select name="system.school">
-				{{ selectOptions CONFIG.spellSchools selected=system.school labelAttr="label" blank="" localize=true }}
-			</select>
-		</label>
+		{{ formGroup fields.circle.fields.base value=source.circle.base options=spellCircleOptions
+		             label="BF.Spell.Circle.Label" localize=true rootId=partId }}
+		<div class="form-group">
+			<label for="{{ partId }}-source">{{ localize "BF.Spell.Source.Label" }}</label>
+			<div class="form-fields">
+				<blackFlag-multiSelect name="system.source" label="{{ system.source.label }}">
+					<datalist>
+						{{#blackFlag-multiSelect system.source}}
+							{{ selectOptions CONFIG.spellSources.localized }}
+						{{/blackFlag-multiSelect}}
+					</datalist>
+				</blackFlag-multiSelect>
+			</div>
+		</div>
+		{{ formGroup fields.school value=source.school options=CONFIG.spellSchools.localizedOptions
+		             localize=true rootId=partId }}
 	</div>
 </section>

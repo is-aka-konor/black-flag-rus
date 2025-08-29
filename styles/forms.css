@@ -147,6 +147,13 @@
 		&.label-top, &.label-hinted {
 			> p.hint { display: none; }
 		}
+		&.label-adjacent {
+			display: flex;
+			gap: 8px;
+			align-items: first baseline;
+			.form-fields { flex: 1; }
+			label { font-family: var(--bf-font-primary); }
+		}
 	}
 
 	.drop-area {
@@ -181,6 +188,7 @@
 		&::after {
 			content: "\f059";
 			display: var(--fa-display, inline-block);
+			padding-inline-start: .25em;
 			color: var(--bf-border-color-blue);
 			font-family: var(--font-awesome);
 			font-size: var(--font-size-11);

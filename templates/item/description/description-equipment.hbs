@@ -1,26 +1,14 @@
 <div class="category">
-	{{#if categories}}
-		<label>
-			<span>{{ localize "BF.Equipment.Category.Label" }}</span>
-			<select name="system.type.category">
-				{{ selectOptions categories.options selected=source.type.category blank=categories.blank }}
-			</select>
-		</label>
+	{{#if category}}
+		{{ formGroup fields.type.fields.category value=source.type.category options=category.options
+		             classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
-	{{#if types}}
-		<label>
-			<span>{{ localize "BF.Equipment.Type.Label" }}</span>
-			<select name="system.type.value">
-				{{ selectOptions types.options selected=source.type.value blank=types.blank }}
-			</select>
-		</label>
+	{{#if type}}
+		{{ formGroup fields.type.fields.value value=source.type.value options=type.options
+		             classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
-	{{#if baseItems}}
-		<label>
-			<span>{{ localize "BF.Equipment.Base.Label" }}</span>
-			<select name="system.type.base">
-				{{ selectOptions baseItems.options selected=source.type.base blank=baseItems.blank }}
-			</select>
-		</label>
+	{{#if baseItem}}
+		{{ formGroup fields.type.fields.base value=source.type.base options=baseItem.options
+								 classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
 </div>

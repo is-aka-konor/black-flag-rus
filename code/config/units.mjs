@@ -42,6 +42,8 @@ export const currencies = {
 		default: true
 	}
 };
+localizeConfig(currencies, { sort: false });
+localizeConfig(currencies, { labelKeyPath: "abbreviation", propertyName: "localizedAbbreviation", sort: false });
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -65,7 +67,8 @@ Hooks.once("blackFlag.registrationComplete", function () {
 	for (const [key, config] of Object.entries(CONFIG.BlackFlag.currencies)) {
 		if (!config.uuid) delete CONFIG.BlackFlag.currencies[key];
 	}
-	CONFIG.BlackFlag.currencies = sortObjectEntries(CONFIG.BlackFlag.currencies, {
+	sortObjectEntries(CONFIG.BlackFlag.currencies, {
+		inPlace: true,
 		sortKey: "conversion",
 		reverse: true
 	});
@@ -83,7 +86,8 @@ Hooks.on("blackFlag.registrationCreated", function (identifier, item) {
 		abbreviation: identifier,
 		conversion: item.system.conversion.value
 	};
-	CONFIG.BlackFlag.currencies = sortObjectEntries(CONFIG.BlackFlag.currencies, {
+	sortObjectEntries(CONFIG.BlackFlag.currencies, {
+		inPlace: true,
 		sortKey: "conversion",
 		reverse: true
 	});
@@ -102,7 +106,8 @@ Hooks.on("blackFlag.registrationUpdated", function (identifier, item) {
 		currency.abbreviation = item.identifier;
 		currency.conversion = item.system.conversion.value;
 	}
-	CONFIG.BlackFlag.currencies = sortObjectEntries(CONFIG.BlackFlag.currencies, {
+	sortObjectEntries(CONFIG.BlackFlag.currencies, {
+		inPlace: true,
 		sortKey: "conversion",
 		reverse: true
 	});
@@ -153,6 +158,14 @@ const _unitLocalizationOptions = {
 	createGroup: data => CONFIG.BlackFlag.measurementSystems.localized[data.system],
 	sort: false
 };
+const localizeUnits = obj => {
+	localizeConfig(obj, _unitLocalizationOptions);
+	localizeConfig(obj, {
+		..._unitLocalizationOptions,
+		labelKeyPath: "abbreviation",
+		propertyName: "localizedAbbreviation"
+	});
+};
 
 /**
  * Configuration for system various units.
@@ -202,7 +215,7 @@ export const distanceUnits = {
 		system: "metric"
 	}
 };
-localizeConfig(distanceUnits, _unitLocalizationOptions);
+localizeUnits(distanceUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -244,7 +257,7 @@ export const paceUnits = {
 		system: "metric"
 	}
 };
-localizeConfig(paceUnits, _unitLocalizationOptions);
+localizeUnits(paceUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -343,7 +356,7 @@ export const volumeUnits = {
 		system: "metric"
 	}
 };
-localizeConfig(volumeUnits, _unitLocalizationOptions);
+localizeUnits(volumeUnits, _unitLocalizationOptions);
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -394,4 +407,4 @@ export const weightUnits = {
 		system: "metric"
 	}
 };
-localizeConfig(weightUnits, _unitLocalizationOptions);
+localizeUnits(weightUnits, _unitLocalizationOptions);

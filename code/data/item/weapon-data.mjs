@@ -97,9 +97,9 @@ export default class WeaponData extends ItemDataModel.mixin(
 				unit: new StringField({ required: true, blank: false, initial: () => defaultUnit("distance") })
 			}),
 			type: new SchemaField({
-				value: new StringField({ initial: "melee" }),
-				category: new StringField(),
-				base: new StringField()
+				value: new StringField({ required: true, blank: false, initial: "melee", label: "BF.Equipment.Type.Label" }),
+				category: new StringField({ label: "BF.Equipment.Category.Label" }),
+				base: new StringField({ label: "BF.Equipment.Base.Label" })
 			})
 		});
 	}
@@ -436,6 +436,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 		context.reachPlaceholder = formatNumber(convertDistance(5, "foot", { to: this.range.unit }).value, {
 			signDisplay: "always"
 		});
-		context.types = { options: CONFIG.BlackFlag.weaponTypes.localized };
+		context.type ??= {};
+		context.type.options = CONFIG.BlackFlag.weaponTypes.localizedOptions;
 	}
 }

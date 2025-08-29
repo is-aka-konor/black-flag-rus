@@ -618,7 +618,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		];
 		context.showConfiguration = this.parent.isEmbedded && !this.parent.getFlag(game.system.id, "cachedFor");
 
-		context.spellCircles = CONFIG.BlackFlag.spellCircles();
+		context.spellCircleOptions = CONFIG.BlackFlag.spellCircles({ formOptions: true });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

@@ -1,40 +1,34 @@
 <section class="tab {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 	{{#each descriptionParts as |part|}}
-	{{> (part) @root }}
+		{{> (part) @root }}
 	{{/each}}
 	<div class="description-area">
 		{{#if showSidebar}}
 			<div class="sidebar">
 				{{#if isIdentified}}
-				<label class="rarity">
-					<span>{{ localize "BF.Rarity.Label" }}</span>
-					<select class="uninput" name="system.rarity">
-						{{ selectOptions CONFIG.rarities selected=source.rarity blank=(localize "BF.Rarity.Level.Mundane")
-														 labelAttr="label" localize="true" }}
-					</select>
-				</label>
+					{{ formGroup fields.rarity value=source.rarity options=CONFIG.rarities.localizedOptions
+					             classes="label-adjacent uninputs" localize=true blank="BF.Rarity.Level.Mundane" rootId=partId }}
 				{{/if}}
-				<label class="quantity">
-					<span>{{ localize "BF.Quantity.Label" }}</span>
-					<input class="uninput" type="number" name="system.quantity" min=0 step=1 value="{{ source.quantity }}">
-				</label>
+				{{ formGroup fields.quantity value=source.quantity classes="label-adjacent uninputs" localize=true
+				             rootId=partId }}
 				{{#unless hidePrice}}
-					<label class="price">
-						<span>{{ localize "BF.Price.Label" }}</span>
-						<input class="uninput" type="number" name="system.price.value" min=0 step=0.01 value="{{ source.price.value }}">
-						<select class="uninput" name="system.price.denomination">
-							{{ selectOptions CONFIG.currencies selected=source.price.denomination
-															 labelAttr="abbreviation" localize=true }}
-						</select>
-					</label>
+					<div class="form-group label-adjacent uninputs">
+						<label>{{ localize "BF.Price.Label" }}</label>
+						<div class="form-fields">
+							{{ formInput fields.price.fields.value value=source.price.value }}
+							{{ formInput fields.price.fields.denomination value=source.price.denomination blank=false
+							             options=CONFIG.currencies.localizedAbbreviationOptions }}
+						</div>
+					</div>
 				{{/unless}}
-				<label class="weight">
-					<span>{{ localize "BF.Weight.Label" }}</span>
-					<input class="uninput" type="number" name="system.weight.value" min=0 step=0.01 value="{{ source.weight.value }}">
-					<select class="uninput" name="system.weight.unit">
-						{{ selectOptions CONFIG.weightUnits selected=source.weight.unit labelAttr="abbreviation" localize=true }}
-					</select>
-				</label>
+				<div class="form-group label-adjacent uninputs">
+					<label>{{ localize "BF.Weight.Label" }}</label>
+					<div class="form-fields">
+						{{ formInput fields.weight.fields.value value=source.weight.value }}
+						{{ formInput fields.weight.fields.unit value=source.weight.unit blank=false
+												 options=CONFIG.weightUnits.localizedAbbreviationOptions }}
+					</div>
+				</div>
 			</div>
 		{{/if}}
 		{{#if isIdentified}}

@@ -68,15 +68,22 @@ export function flattenChildren(object, { keepCategories=false }={}) {
  * Sort the provided object by its values or by an inner sortKey.
  * @param {object} obj - The object to sort.
  * @param {object} [options={}]
- * @param {string|Function} [options.sortKey] - An inner key upon which to sort or sorting method.
+ * @param {boolean} [options.inPlace=false] - Sort the object as-is.
  * @param {boolean} [options.reverse=false] - Should the sorting be reversed?
+ * @param {string|Function} [options.sortKey] - An inner key upon which to sort or sorting method.
  * @returns {object} - A copy of the original object that has been sorted.
  */
-export function sortObjectEntries(obj, { sortKey, reverse=false }={}) {
+export function sortObjectEntries(obj, { inPlace=false, reverse=false, sortKey }={}) {
 	let sorted = Object.entries(obj);
 	const sort = (lhs, rhs) => foundry.utils.getType(lhs) === "string" ? lhs.localeCompare(rhs) : lhs - rhs;
 	if ( foundry.utils.getType(sortKey) === "function" ) sorted = sorted.sort((lhs, rhs) => sortKey(lhs[1], rhs[1]));
 	else if ( sortKey ) sorted = sorted.sort((lhs, rhs) => sort(lhs[1][sortKey], rhs[1][sortKey]));
 	else sorted = sorted.sort((lhs, rhs) => sort(lhs[1], rhs[1]));
-	return Object.fromEntries(reverse ? sorted.reverse() : sorted);
+	if ( reverse ) sorted = sorted.reverse();
+	if ( inPlace ) {
+		Object.keys(obj).forEach(k => delete obj[k]);
+		sorted.forEach(([k, v]) => obj[k] = v);
+		return obj;
+	}
+	return Object.fromEntries(sorted);
 }

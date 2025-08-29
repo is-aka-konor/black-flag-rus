@@ -1,41 +1,19 @@
 <section>
 	<div class="category">
-		<label>
-			<span>{{ localize "BF.Feature.Category.Label" }}</span>
-			<select name="system.type.category">
-				{{ selectOptions type.categories selected=system.type.category blank="" }}
-			</select>
-		</label>
-		{{#if type.types}}
-			<label>
-				<span>{{ localize "BF.Feature.Type.Label" }}</span>
-				<select name="system.type.value">
-					<option value=""></option>
-					{{#if type.categorySources}}
-						{{ blackFlag-groupedSelectOptions type.categorySources }}
-					{{/if}}
-					{{#if type.types.options}}
-						<optgroup label="{{ type.types.label }}">
-							{{ selectOptions type.types.options selected=system.type.value }}
-						</optgroup>
-					{{/if}}
-				</select>
-			</label>
+		{{ formGroup fields.type.fields.category value=source.type.category options=type.categoryOptions
+		             classes="label-hinted" localize=true rootId=partId }}
+		{{#if type.typeOptions}}
+			{{ formGroup fields.type.fields.value value=type.value options=type.typeOptions
+									 classes="label-hinted" label=type.typeLabel localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.typeSources}}
-			<label>
-				<span>{{ localize "BF.Feature.Source" }}</span>
-				<select name="system.identifier.associated">
-					{{ blackFlag-groupedSelectOptions type.typeSources blank="" }}
-				</select>
-			</label>
+			{{ formGroup fields.identifier.fields.associated value=source.identifier.associated options=type.typeSources
+			             classes="label-hinted" label="BF.Feature.Source" hint="" localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.displayLevel}}
-			<label>
-				<span>{{ localize "BF.Level.Label[one]" }}</span>
-				<input type="number" name="system.level.value" {{#if type.fixedLevel}}value="
-							 {{~ type.fixedLevel }}" disabled {{~else~}} value="{{ system.level.value }}"{{/if}}>
-			</label>
+			{{log type}}
+			{{ formGroup fields.level.fields.value value=(ifThen type.fixedLevel type.fixedLevel source.level.value)
+			             disabled=(gte type.fixedLevel 0) label="BF.Level.Label[one]" localize=true rootId=partId }}
 		{{/if}}
 	</div>
 	{{#if (or editable system.restriction.label)}}

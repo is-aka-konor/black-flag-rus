@@ -10,7 +10,7 @@
 		{{#if (and editable (eq item.type "class"))}}
 			<div class="color">
 				<input name="system.color" type="color" value="{{ system.color }}"
-				       title="{{ localize 'BF.AccentColor.Label' }}" aria-label="{{ localize 'BF.AccentColor.Label' }}">
+				       data-tooltip aria-label="{{ localize 'BF.AccentColor.Label' }}">
 			</div>
 		{{/if}}
 		<div class="source">
@@ -19,19 +19,15 @@
 		<div class="banner-mask" inert></div>
 	</figure>
 	<div class="info drop-target">
-		<div class="description">
+		<div class="description flexcol">
 			{{#if editable}}
 				<textarea name="system.description.short">{{ system.description.short }}</textarea>
 			{{else}}
 				<p>{{ system.description.short }}</p>
 			{{/if}}
 			{{#if showClassSelector}}
-				<label class="class-selector">
-					<span>{{ localize "BF.Item.Type.Class[one]" }}</span>
-					<select name="system.identifier.class">
-						{{ selectOptions CONFIG.registration.all.class selected=system.identifier.class labelAttr="name" blank="" }}
-					</select>
-				</label>
+				{{ formGroup fields.identifier.fields.class value=source.identifier.class choices=CONFIG.registration.all.class
+				             labelAttr="name" classes="label-adjacent" hint="" localize=true rootId=partId }}
 			{{/if}}
 			<div class="drop-area journal-link">
 				{{#if system.description.journal}}
@@ -42,7 +38,7 @@
 							{{ localize "BF.Journal.Link.MoreInformation" }}
 						</a>
 						{{#if editable}}
-							<button class="link-button" type="button" data-action="deleteJjournalLink"
+							<button class="link-button" type="button" data-action="deleteJournalLink"
 							        data-tooltip="BF.Item.Journal.Unlink" aria-label="{{ localize 'BF.Item.Journal.Unlink' }}">
 								<i class="fa-solid fa-trash" inert></i>
 							</button>

@@ -26,29 +26,31 @@ export default class EquipmentSheet extends BaseItemSheet {
 		context.hidePrice = this.item.system.identified === false;
 
 		// Category
-		if (context.system.validCategories?.localized)
-			context.categories = {
-				options: context.system.validCategories.localized,
-				blank: ""
-			};
+		if (context.system.validCategories?.localizedOptions) {
+			context.category = {};
+			context.category.options = [{ value: "", label: "" }, ...context.system.validCategories.localizedOptions];
+		}
 
 		// Base
 		const category = context.system.validCategories?.[context.source.type.category];
-		if (category?.children)
-			context.baseItems = {
-				options: sortObjectEntries(
-					Object.entries(category.children).reduce((obj, [key, config]) => {
+		if (category?.children) {
+			context.baseItem = {};
+			context.baseItem.options = [
+				{ value: "", label: "" },
+				...Object.entries(category.children)
+					.map(([key, config]) => {
 						if (
 							!foundry.utils.hasProperty(this.item, "system.type.value") ||
 							!config.type ||
 							config.type === context.source.type.value
 						)
-							obj[key] = makeLabel(config);
-						return obj;
-					}, {})
-				),
-				blank: ""
-			};
+							return { value: key, label: makeLabel(config) };
+						return null;
+					})
+					.filter(_ => _)
+					.sort((lhs, rhs) => lhs.label.localeCompare(rhs.label, game.i18n.lang))
+			];
+		}
 
 		return context;
 	}

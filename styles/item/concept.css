@@ -50,7 +50,7 @@
 			flex: 0 0 2em;
 			display: flex;
 			flex-direction: column;
-			
+
 			span {
 				text-align: center;
 				font-size: var(--font-size-12);
@@ -140,7 +140,7 @@
 				}
 			}
 		}
-	
+
 		.banner-mask {
 			position: absolute;
 			top: 0;
@@ -157,6 +157,7 @@
 		margin-inline: 1rem;
 
 		.description {
+			gap: 8px;
 			textarea {
 				max-height: 12rem;
 				max-width: unset;
@@ -166,30 +167,12 @@
 		}
 
 		.journal-link {
-			margin-block-start: 0.5rem;
-
 			p:not(.hint) {
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				gap: 0.5rem;
 				padding: 0.25rem;
-			}
-		}
-
-		.class-selector {
-			display: flex;
-			gap: 0.5rem;
-			align-items: first baseline;
-			margin-block-start: 0.5rem;
-
-			span {
-				font-family: var(--bf-font-primary);
-				font-variant: small-caps;
-				font-weight: bold;
-			}
-			select {
-				flex-grow: 1;
 			}
 		}
 

@@ -94,7 +94,7 @@ export default class TalentData extends ItemDataModel.mixin(
 		context.detailsParts = ["blackFlag.details-talent"];
 
 		context.type ??= {};
-		context.type.categories = CONFIG.BlackFlag.talentCategories.localized;
+		context.type.categoryOptions = CONFIG.BlackFlag.talentCategories.localizedOptions;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

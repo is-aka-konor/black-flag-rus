@@ -67,7 +67,7 @@ export default class AmmunitionData extends ItemDataModel.mixin(
 			}),
 			magicalBonus: new NumberField({ integer: true }),
 			type: new SchemaField({
-				category: new StringField()
+				category: new StringField({ label: "BF.Equipment.Category.Label" })
 			})
 		});
 	}

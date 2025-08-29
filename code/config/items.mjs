@@ -377,7 +377,7 @@ export const rarities = {
 		label: "BF.Rarity.Level.Artifact"
 	}
 };
-localizeConfig(rarities);
+localizeConfig(rarities, { sort: false });
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 

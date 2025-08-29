@@ -76,24 +76,17 @@
 					padding-block: 4px;
 					padding-inline: 1rem;
 
-					> label {
+					> .form-group {
 						flex: 1 1 20em;
-						max-width: calc(50% - 4px);
-						display: flex;
-						flex-wrap: wrap;
+						max-inline-size: calc(50% - 4px);
 						font-size: var(--font-size-12);
 						font-variant: small-caps;
-						font-weight: 100;
-
-						> span:first-of-type {
-							flex: 1 0 100%;
+						label, input, select, blackFlag-multiSelect {
+							font-weight: 100;
 						}
-						> input, select {
-							width: 100%;
+						select, blackFlag-multiSelect {
+							font-variant: normal;
 						}
-					}
-					select, blackFlag-multiSelect {
-						font-variant: normal;
 					}
 				}
 
@@ -116,7 +109,17 @@
 						box-shadow: 1px 1px 4px rgba(0 0 0 / 0.2);
 						font-size: var(--font-size-12);
 
-						label {
+						.form-group {
+							label { font-variant: none; }
+							.form-fields { display: contents; }
+							input, select {
+								block-size: 1.75em;
+								min-inline-size: 3.5em;
+								text-align: end;
+							}
+						}
+
+						> label {
 							display: flex;
 							gap: 0.5rem;
 							align-items: first baseline;

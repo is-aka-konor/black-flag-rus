@@ -116,27 +116,32 @@ export default class FeatureData extends ItemDataModel.mixin(
 		context.detailsParts = ["blackFlag.details-feature"];
 
 		context.type ??= {};
-		context.type.categories = CONFIG.BlackFlag.featureCategories.localized;
+		context.type.categoryOptions = CONFIG.BlackFlag.featureCategories.localizedOptions;
+
+		let categorySources;
+		let typeOptions;
 
 		const featureCategory = CONFIG.BlackFlag.featureCategories[context.source.type.category];
 		const id = new Set([context.source.identifier.associated]);
 		if (featureCategory?.sources)
-			context.type.categorySources = CONFIG.BlackFlag.registration.groupedOptions(featureCategory.sources, id);
+			categorySources = CONFIG.BlackFlag.registration.groupedOptions(featureCategory.sources, id).formOptions();
 		const featureType = featureCategory?.children?.[context.source.type.value];
 		if (featureType?.sources)
-			context.type.typeSources = CONFIG.BlackFlag.registration.groupedOptions(featureType.sources, id);
+			context.type.typeSources = CONFIG.BlackFlag.registration.groupedOptions(featureType.sources, id).formOptions();
 
 		if (
 			(featureCategory && ["class", "lineage", "heritage"].includes(context.source.type.category)) ||
 			featureCategory?.children
 		) {
-			context.type.types = {
-				label: game.i18n.format("BF.Feature.Type.LabelSpecific", {
-					type: game.i18n.localize(`${featureCategory.localization}[one]`)
-				}),
-				options: featureCategory?.children?.localized ?? null,
-				selected: context.source.type.value || context.source.identifier.associated
-			};
+			const group = game.i18n.format("BF.Feature.Type.LabelSpecific", {
+				type: game.i18n.localize(`${featureCategory.localization}[one]`)
+			});
+			typeOptions = featureCategory?.children?.localizedOptions.map(o => ({ ...o, group }));
+			context.type.value = context.source.type.value || context.source.identifier.associated;
+		}
+
+		if (categorySources || typeOptions) {
+			context.type.typeOptions = [{ value: "", label: "" }, ...(categorySources ?? []), ...(typeOptions ?? [])];
 		}
 
 		if (context.source.type.category === "class" && (featureType || context.source.identifier.associated)) {

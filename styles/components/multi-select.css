@@ -33,6 +33,7 @@ blackFlag-multiSelect {
 		justify-content: space-between;
 		border: none;
 		padding: 0 3px;
+		padding-inline-start: 0.5rem;
 		background: none;
 
 		&:hover, &:focus {
@@ -113,6 +114,6 @@ body.theme-light blackFlag-multiSelect {
 	border: 1px solid var(--input-border-color);
 
 	[disabled] {
-		
+
 	}
 }

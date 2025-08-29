@@ -169,12 +169,17 @@
 	display: contents;
 }
 
-.uninput:is([type="text"], [type="number"], select) {
+.form-group.uninputs {
+	min-block-size: unset !important;
+}
+.uninput:is([type="text"], [type="number"], select),
+.form-group.uninputs :is([type="text"], [type="number"], select) {
 	height: unset;
 	width: unset;
 	min-width: 3em;
 	background: none;
 	border: 1px solid transparent;
+	line-height: unset;
 
 	&:hover:not(:disabled), &:focus { box-shadow: 0 0 4px var(--bf-border-color-light-blue); }
 	&:hover:disabled { border: 1px solid transparent; }

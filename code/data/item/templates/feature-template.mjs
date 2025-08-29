@@ -36,8 +36,8 @@ export default class FeatureTemplate extends foundry.abstract.DataModel {
 				})
 			}),
 			type: new SchemaField({
-				category: new StringField(),
-				value: new StringField()
+				category: new StringField({ label: "BF.Feature.Category.Label" }),
+				value: new StringField({ label: "BF.Feature.Type.Label" })
 			})
 		};
 	}
