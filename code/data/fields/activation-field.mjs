@@ -15,9 +15,14 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
 export default class ActivationField extends SchemaField {
 	constructor(fields = {}, options = {}) {
 		fields = {
-			value: new NumberField({ min: 0, integer: true }),
-			type: new StringField(),
-			condition: new StringField(),
+			value: new NumberField({ min: 0, integer: true, label: "BF.ACTIVATION.FIELDS.activation.value.label" }),
+			type: new StringField({
+				required: true,
+				blank: false,
+				initial: "action",
+				label: "BF.ACTIVATION.FIELDS.activation.type.label"
+			}),
+			condition: new StringField({ label: "BF.ACTIVATION.FIELDS.activation.condition.label" }),
 			...fields
 		};
 		Object.entries(fields).forEach(([k, v]) => (!v ? delete fields[k] : null));

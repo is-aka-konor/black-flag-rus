@@ -16,7 +16,7 @@ export default class ProficiencyTemplate extends foundry.abstract.DataModel {
 	static defineSchema() {
 		return {
 			overrides: new SchemaField({
-				proficiency: new BooleanField({nullable: true, initial: null})
+				proficiency: new BooleanField({ nullable: true, initial: null, label: "BF.Proficiency.Label[one]" })
 			})
 		};
 	}

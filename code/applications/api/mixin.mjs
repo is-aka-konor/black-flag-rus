@@ -1,4 +1,5 @@
 import BlackFlagDragDrop from "../drag-drop.mjs";
+import * as fields from "../fields.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -78,6 +79,7 @@ export default function ApplicationV2Mixin(Base) {
 		async _prepareContext(options) {
 			const context = await super._prepareContext(options);
 			context.CONFIG = CONFIG.BlackFlag;
+			context.inputs = fields;
 			return context;
 		}
 

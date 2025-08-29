@@ -15,7 +15,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 			showIcon: BaseItemSheet.#showIcon,
 			toggleIdentification: BaseItemSheet.#toggleIdentification
 		},
-		classes: ["item"],
+		classes: ["item", "standard-form"],
 		form: {
 			submitOnChange: true
 		},

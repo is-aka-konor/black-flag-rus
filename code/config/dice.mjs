@@ -34,3 +34,10 @@ Object.defineProperty(dieSteps, "labeled", {
 	},
 	enumerable: false
 });
+
+Object.defineProperty(dieSteps, "labeledOptions", {
+	get() {
+		return dieSteps.map(value => ({ value, label: `d${value}` }));
+	},
+	enumerable: false
+});

@@ -24,7 +24,7 @@ export default class PhysicalTemplate extends foundry.abstract.DataModel {
 	static defineSchema() {
 		return {
 			attunement: new SchemaField({
-				requirement: new StringField({ label: "BF.Attunement.Requirement.Label" }),
+				requirement: new StringField({ label: "BF.Attunement.Requirement" }),
 				value: new StringField({ label: "BF.Attunement.Type.Label" })
 			}, { label: "BF.Attunement.Label" }),
 			container: new ForeignDocumentField(foundry.documents.BaseItem, {

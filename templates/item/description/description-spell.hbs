@@ -1,8 +1,8 @@
 <section>
 	<div class="category">
 		{{ formGroup fields.circle.fields.base value=source.circle.base options=spellCircleOptions
-		             label="BF.Spell.Circle.Label" localize=true rootId=partId }}
-		<div class="form-group">
+		             classes="label-top" label="BF.Spell.Circle.Label" localize=true rootId=partId }}
+		<div class="form-group label-top">
 			<label for="{{ partId }}-source">{{ localize "BF.Spell.Source.Label" }}</label>
 			<div class="form-fields">
 				<blackFlag-multiSelect name="system.source" label="{{ system.source.label }}">
@@ -15,6 +15,6 @@
 			</div>
 		</div>
 		{{ formGroup fields.school value=source.school options=CONFIG.spellSchools.localizedOptions
-		             localize=true rootId=partId }}
+		             classes="label-top" localize=true rootId=partId }}
 	</div>
 </section>

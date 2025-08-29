@@ -1,19 +1,20 @@
 <section>
 	<div class="category">
 		{{ formGroup fields.type.fields.category value=source.type.category options=type.categoryOptions
-		             classes="label-hinted" localize=true rootId=partId }}
+		             classes="label-top" localize=true rootId=partId }}
 		{{#if type.typeOptions}}
 			{{ formGroup fields.type.fields.value value=type.value options=type.typeOptions
-									 classes="label-hinted" label=type.typeLabel localize=true rootId=partId }}
+									 classes="label-top" label=type.typeLabel localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.typeSources}}
 			{{ formGroup fields.identifier.fields.associated value=source.identifier.associated options=type.typeSources
-			             classes="label-hinted" label="BF.Feature.Source" hint="" localize=true rootId=partId }}
+			             classes="label-top" label="BF.Feature.Source" hint="" localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.displayLevel}}
 			{{log type}}
 			{{ formGroup fields.level.fields.value value=(ifThen type.fixedLevel type.fixedLevel source.level.value)
-			             disabled=(gte type.fixedLevel 0) label="BF.Level.Label[one]" localize=true rootId=partId }}
+			             disabled=(gte type.fixedLevel 0) classes="label-top" label="BF.Level.Label[one]" localize=true
+			             rootId=partId }}
 		{{/if}}
 	</div>
 	{{#if (or editable system.restriction.label)}}

@@ -1,15 +1,9 @@
 <fieldset>
 	<legend>{{ localize "BF.Attunement.Label" }}</legend>
-	<label>
-		<span>{{ localize "BF.Attunement.Type.Label" }}</span>
-		<select name="system.attunement.value">
-			{{ selectOptions attunementOptions selected=source.attunement.value }}
-		</select>
-	</label>
+	{{ formGroup fields.attunement.fields.value value=source.attunement.value options=attunementOptions
+	             localize=true rootId=partId }}
 	{{#if source.attunement.value}}
-		<label>
-			<span>{{ localize "BF.Attunement.Requirement" }}</span>
-			<input type="text" name="system.attunement.requirement" value="{{ source.attunement.requirement }}">
-		</label>
+		{{ formGroup fields.attunement.fields.requirement value=source.attunement.requirement
+								 localize=true rootId=partId }}
 	{{/if}}
 </fieldset>

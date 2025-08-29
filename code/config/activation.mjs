@@ -75,15 +75,16 @@ localizeConfig(actionTypes.rest.children);
  * @param {object} [options={}]
  * @param {string[]} [options.categories] - Categories to include, or blank for all categories.
  * @param {string} [options.chosen] - Currently selected option.
+ * @param {boolean} [options.formOptions=false] - Return as form options rather than an object.
  * @param {number} [options.pluralCount] - Number to use when determining pluralization.
  * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @returns {SelectChoices}
  */
-export function activationOptions({ categories, chosen, pluralCount, pluralRule } = {}) {
+export function activationOptions({ categories, chosen, formOptions, pluralCount, pluralRule } = {}) {
 	const time = { time: timeUnits.time };
 	const selectChoices = _createOptions([actionTypes, time], { chosen, pluralCount, pluralRule });
 	if (categories) selectChoices.exclude(new Set(categories));
-	return selectChoices;
+	return formOptions ? selectChoices.formOptions() : selectChoices;
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
@@ -133,15 +134,16 @@ export const durations = {
  * @param {object} [options={}]
  * @param {string[]} [options.categories] - Categories to include, or blank for all categories.
  * @param {string} [options.chosen] - Currently selected option.
+ * @param {boolean} [options.formOptions=false] - Return as form options rather than an object.
  * @param {number} [options.pluralCount] - Number to use when determining pluralization.
  * @param {string} [options.pluralRule] - Explicit pluralization rule to use with localization value.
  * @param {boolean} [options.isSpell] - Should spell-only durations be displayed?
  * @returns {SelectChoices}
  */
-export function durationOptions({ categories, chosen, pluralCount, pluralRule, isSpell } = {}) {
+export function durationOptions({ categories, chosen, formOptions, pluralCount, pluralRule, isSpell } = {}) {
 	const selectChoices = _createOptions([timeUnits, durations], { chosen, pluralCount, pluralRule, isSpell });
 	if (categories) selectChoices.exclude(new Set(categories));
-	return selectChoices;
+	return formOptions ? selectChoices.formOptions() : selectChoices;
 }
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */

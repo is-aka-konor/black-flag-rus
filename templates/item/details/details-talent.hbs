@@ -1,12 +1,7 @@
 <fieldset>
 	<legend>{{ localize "BF.Talent.Details" }}</legend>
-	<label class="full-checkbox">
-		<span class="hinted-label" data-tooltip="BF.Prerequisite.AllowMultipleTimes.Hint">
-			{{ localize "BF.Prerequisite.AllowMultipleTimes.Label" }}
-		</span>
-		<input type="checkbox" name="system.restriction.allowMultipleTimes"
-					 {{ checked system.restriction.allowMultipleTimes }}>
-	</label>
+	{{ formGroup fields.restriction.fields.allowMultipleTimes value=source.restriction.allowMultipleTimes
+							 localize=true rootId=partId }}
 </fieldset>
 
 {{> "blackFlag.item-activities" }}

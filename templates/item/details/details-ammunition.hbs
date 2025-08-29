@@ -10,39 +10,19 @@
 <fieldset>
 	<legend>{{ localize "BF.AMMUNITION.Details" }}</legend>
 	{{#if properties.magical.selected}}
-		<label>
-			<span class="hinted-label" data-tooltip="BF.AMMUNITION.FIELDS.magicalBonus.hint">
-				{{ localize "BF.AMMUNITION.FIELDS.magicalBonus.label" }}
-			</span>
-			<input type="number" name="system.magicalBonus" value="{{ source.magicalBonus }}" step="1" min="0">
-		</label>
+		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" rootId=partId }}
 	{{/if}}
-	<label class="full-checkbox">
-		<span class="hinted-label" data-tooltip="BF.AMMUNITION.FIELDS.damage.replace.hint">
-			{{ localize "BF.AMMUNITION.FIELDS.damage.replace.label" }}
-		</span>
-		<input type="checkbox" name="system.damage.replace" {{ checked system.damage.replace }}>
-	</label>
-	<div class="damage field-group">
-		<span>{{ localize "BF.DAMAGE.Label" }}</span>
-		<label class="die-count">
-			<span>{{ localize "BF.Die.Number.Label" }}</span>
-			<input type="number" name="system.damage.base.number" value="{{ source.damage.base.number }}"
-						 step=1 min=1>
-		</label>
-		<label class="die-denomination">
-			<span>{{ localize "BF.Die.Denomination.Label" }}</span>
-			<select name="system.damage.base.denomination">
-				{{ selectOptions CONFIG.dieSteps.labeled selected=source.damage.base.denomination blank="" }}
-			</select>
-		</label>
-		<label>
-			<span>{{ localize "BF.DAMAGE.Type.Label" }}</span>
-			<select name="system.damage.base.type">
-				{{ selectOptions CONFIG.damageTypes selected=source.damage.base.type
-												 labelAttr="label" localize=true sort=true blank="" }}
-			</select>
-		</label>
+	{{ formGroup fields.damage.fields.replace value=source.damage.replace classes="label-hinted" rootId=partId }}
+	<div class="damage form-group split-group">
+		<label>{{ localize "BF.DAMAGE.Label" }}</label>
+		<div class="form-fields">
+			{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
+			             localize=true rootId=partId }}
+			{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
+			             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
+			{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
+			             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
+		</div>
 	</div>
 </fieldset>
 

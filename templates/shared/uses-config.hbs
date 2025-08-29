@@ -1,21 +1,12 @@
 <blackFlag-uses name="{{ name }}">
 	<fieldset>
 		<legend>{{ localize "BF.Uses.Label" }}</legend>
-		<label>
-			<span>{{ localize "BF.Uses.Maximum.Label" }}</span>
-			<input type="text" name="$.max" value="{{ source.max }}" placeholder="0">
-		</label>
-		<label>
-			<span>{{ localize "BF.Uses.Spent.Label" }}</span>
-			<input type="number" name="$.spent" value="{{ derived.spent }}">
-		</label>
+		{{ formGroup fields.uses.fields.max name="$.max" value=source.max placeholder="0" localize=true rootId=partId }}
+		{{ formGroup fields.uses.fields.spent name="$.spent" value=derived.spent localize=true
+		             rootId=partId }}
 		{{#if item.system.isPhysical}}
-			<label class="full-checkbox">
-				<span class="hinted-label" data-tooltip="BF.Uses.ConsumeQuantity.Label">
-					{{ localize "BF.Uses.ConsumeQuantity.Label" }}
-				</span>
-				<input type="checkbox" name="$.consumeQuantity" {{ checked derived.consumeQuantity }}>
-			</label>
+			{{ formGroup fields.uses.fields.consumeQuantity name="$.consumeQuantity" value=derived.consumeQuantity
+			             localize=true rootId=partId }}
 		{{/if}}
 	</fieldset>
 

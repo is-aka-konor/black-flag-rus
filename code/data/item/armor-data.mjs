@@ -197,9 +197,10 @@ export default class ArmorData extends ItemDataModel.mixin(
 		if (this.magicAvailable && this.magicalBonus) this.armor.value += this.magicalBonus;
 
 		const armorConfig = CONFIG.BlackFlag.armor[this.type.category]?.modifier;
+		this.modifier.minPlaceholder = this.modifier.maxPlaceholder = "";
 		if (armorConfig) {
-			this.modifier.min ??= armorConfig.min;
-			this.modifier.max ??= armorConfig.max;
+			this.modifier.min ??= this.modifier.minPlaceholder = armorConfig.min;
+			this.modifier.max ??= this.modifier.maxPlaceholder = armorConfig.max;
 		}
 	}
 

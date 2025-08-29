@@ -589,11 +589,8 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 			range: context.source.range,
 			target: context.source.target
 		};
-		context.activationOptions = CONFIG.BlackFlag.activationOptions({ chosen: context.source.casting.type });
-		context.durationOptions = CONFIG.BlackFlag.durationOptions({
-			chosen: context.source.duration.unit,
-			isSpell: true
-		});
+		context.activationOptions = CONFIG.BlackFlag.activationOptions({ formOptions: true });
+		context.durationOptions = CONFIG.BlackFlag.durationOptions({ formOptions: true, isSpell: true });
 		context.originOptions = [
 			{ value: "", label: "" },
 			...Object.entries(CONFIG.BlackFlag.registration.list("class")).map(([value, data]) => ({

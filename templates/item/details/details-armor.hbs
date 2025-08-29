@@ -11,32 +11,26 @@
 
 <fieldset>
 	<legend>{{ localize "BF.Armor.Details" }}</legend>
-	<label class="armor-value">
+	<div class="armor-value form-group">
 		{{#if (eq system.type.category "shield")}}
-			<span>{{ localize "BF.Shield.Bonus.Label" }}</span>
-			<span>+</span>
-			<input type="number" name="system.armor.value" step="1" min="0" value="{{ source.armor.value }}"
-			       placeholder="2">
+			<label>{{ localize "BF.Shield.Bonus.Label" }}</label>
+			<div class="form-fields">
+				<span class="separator">+</span>
+				{{ formInput fields.armor.fields.value value=source.armor.value placeholder="2" rootId=partId }}
+			</div>
 		{{else}}
-			<span>{{ localize "BF.Armor.Value.Label" }}</span>
-			<input type="number" name="system.armor.value" step="1" min="0" value="{{ source.armor.value }}">
-			<span>{{ modifierHint }}</span>
+			<label>{{ localize "BF.Armor.Value.Label" }}</label>
+			<div class="form-fields">
+				{{ formInput fields.armor.fields.value value=source.armor.value rootId=partId }}
+				<span>{{ modifierHint }}</span>
+			</div>
 		{{/if}}
-	</label>
+	</div>
 	{{#if properties.magical.selected}}
-		<label>
-			<span class="hinted-label" data-tooltip="BF.Armor.MagicalBonus.Hint">
-				{{ localize "BF.Armor.MagicalBonus.Label" }}
-			</span>
-			<input type="number" name="system.magicalBonus" value="{{ source.magicalBonus }}" step="1" min="0">
-		</label>
+		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
 	{{#if properties.cumbersome.selected}}
-		<label class="strength-required">
-			<span>{{ localize "BF.Armor.RequiredStrength.Label" }}</span>
-			<input type="number" name="system.armor.requiredStrength" step="1" min="0"
-			       value="{{ source.armor.requiredStrength }}">
-		</label>
+		{{ formGroup fields.armor.fields.requiredStrength value=source.armor.requiredStrength localize=true rootId=partId }}
 	{{/if}}
 </fieldset>
 
@@ -44,23 +38,16 @@
 
 <fieldset>
 	<legend>{{ localize "BF.Override.Label[other]" }}</legend>
-	<div class="modifier-overrides field-group">
-		<span>{{ localize "BF.Armor.Modifier.Label" }}</span>
-		<label class="minimum">
-			<span>{{ localize "BF.Number.Minimum" }}</span>
-			<input type="number" name="system.modifier.min" step="1" value="{{ source.modifier.min }}"
-			       placeholder="{{ system.modifier.min }}">
-		</label>
-		<label class="maximum">
-			<span>{{ localize "BF.Number.Maximum" }}</span>
-			<input type="number" name="system.modifier.max" step="1" value="{{ source.modifier.max }}"
-			       placeholder="{{ system.modifier.max }}">
-		</label>
+	<div class="modifier-overrides form-group split-group">
+		<label>{{ localize "BF.Armor.Modifier.Label" }}</label>
+		<div class="form-fields range-fields">
+			{{ formGroup fields.modifier.fields.min value=source.modifier.min placeholder=system.modifier.minPlaceholder
+			             classes="label-top" label="BF.Number.Minimum" localize=true rootId=partId }}
+			<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
+			{{ formGroup fields.modifier.fields.max value=source.modifier.max placeholder=system.modifier.maxPlaceholder
+									 classes="label-top" label="BF.Number.Maximum" localize=true rootId=partId }}
+		</div>
 	</div>
-	<label>
-		<span>{{ localize "BF.Proficiency.Label[one]" }}</span>
-		<select name="system.overrides.proficiency">
-			{{ selectOptions proficiencyOptions selected=source.overrides.proficiency }}
-		</select>
-	</label>
+	{{ formGroup fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
+							 input=inputs.createSelectInput localize=true rootId=partId }}
 </fieldset>
