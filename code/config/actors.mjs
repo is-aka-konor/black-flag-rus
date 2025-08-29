@@ -224,8 +224,15 @@ export const luck = {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
+ * @typedef {LabeledConfiguration} MovementTypeConfiguration
+ * @property {string} [reference] - Link to rule journal page explaining this movement type.
+ * @property {boolean} [walkFallback] - When this special movement type runs out, can the actor fall back to using their
+ *                                      walk speed at 2x cost?
+ */
+
+/**
  * Movement types that can be used by actors.
- * @enum {LabeledConfiguration}
+ * @enum {MovementTypeConfiguration}
  */
 export const movementTypes = {
 	walk: {
@@ -233,7 +240,8 @@ export const movementTypes = {
 	},
 	climb: {
 		label: "BF.MOVEMENT.Type.Climb",
-		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.CdBLKsrlKHR5HvDr"
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.CdBLKsrlKHR5HvDr",
+		walkFallback: true
 	},
 	fly: {
 		label: "BF.MOVEMENT.Type.Fly",
@@ -241,7 +249,8 @@ export const movementTypes = {
 	},
 	swim: {
 		label: "BF.MOVEMENT.Type.Swim",
-		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.nzj83NdxpPZQoW6Z"
+		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.nzj83NdxpPZQoW6Z",
+		walkFallback: true
 	},
 	burrow: {
 		label: "BF.MOVEMENT.Type.Burrow",

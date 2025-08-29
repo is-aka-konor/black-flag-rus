@@ -39,6 +39,16 @@ export default class ActorDataModel extends BaseDataModel {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Does this actor type represent a creature rather than something else?
+	 * @type {boolean}
+	 */
+	get isCreature() {
+		return false;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*               Helpers               */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

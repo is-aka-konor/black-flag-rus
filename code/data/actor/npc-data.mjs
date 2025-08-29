@@ -144,6 +144,13 @@ export default class NPCData extends ActorDataModel.mixin(
 	/*              Properties             */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @inheritDoc */
+	get isCreature() {
+		return true;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * XP value for this NPC based on its CR.
 	 * @type {number}

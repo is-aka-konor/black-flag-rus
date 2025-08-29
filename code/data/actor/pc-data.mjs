@@ -346,6 +346,13 @@ export default class PCData extends ActorDataModel.mixin(
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	get isCreature() {
+		return true;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Data Migration           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 
