@@ -1083,7 +1083,7 @@ export default class PCData extends ActorDataModel.mixin(
 	async _preUpdate(changes, options, user) {
 		if ((await super._preUpdate(changes, options, user)) === false) return false;
 		await this._preUpdateExhaustion(changes, options, user);
-		await HPTemplate.prototype.preUpdateHP.call(this, changes, options, user);
+		await HPTemplate.prototype._preUpdateHP.call(this, changes, options, user);
 		await this._preUpdateSize(changes, options, user);
 
 		// Set dying status
@@ -1105,7 +1105,7 @@ export default class PCData extends ActorDataModel.mixin(
 	async _onUpdate(changed, options, userId) {
 		await super._onUpdate(changed, options, userId);
 		await this._onUpdateExhaustion(changed, options, userId);
-		await HPTemplate.prototype.onUpdateHP.call(this, changed, options, userId);
+		await HPTemplate.prototype._onUpdateHP.call(this, changed, options, userId);
 		if (userId === game.userId) await this.updateEncumbrance(options);
 	}
 }
