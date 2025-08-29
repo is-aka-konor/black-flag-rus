@@ -24,6 +24,56 @@ export default class BlackFlagTokenDocument extends TokenDocument {
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+	/*               Movement              */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Set up the system's movement action customization.
+	 */
+	static registerMovementActions() {
+		for (const type of Object.keys(CONFIG.BlackFlag.movementTypes)) {
+			const actionConfig = CONFIG.Token.movement.actions[type];
+			if (!actionConfig) continue;
+			actionConfig.getAnimationOptions = token => {
+				const actorMovement = token?.actor?.system.traits?.movement?.types ?? {};
+				if (!(type in actorMovement) || actorMovement[type]) return {};
+				return { movementSpeed: CONFIG.Token.movement.defaultSpeed / 2 };
+			};
+			actionConfig.getCostFunction = (...args) => this.getMovementActionCostFunction(type, ...args);
+		}
+		CONFIG.Token.movement.actions.crawl.getCostFunction = token => {
+			const noAutomation = !game.settings.get(game.system.id, "tokenMeasurementAutomation");
+			const { actor } = token;
+			const actorMovement = actor?.system.traits?.movement?.types;
+			const hasMovement = actorMovement !== undefined;
+			return noAutomation || !actor?.system.isCreature || !hasMovement
+				? cost => cost
+				: (cost, _from, _to, distance) => cost + distance;
+		};
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Return the movement action cost function for a specific movement type.
+	 * @param {string} type
+	 * @param {TokenDocument5e} token
+	 * @param {TokenMeasureMovementPathOptions} options
+	 * @returns {TokenMovementActionCostFunction}
+	 */
+	static getMovementActionCostFunction(type, token, options) {
+		const noAutomation = !game.settings.get(game.system.id, "tokenMeasurementAutomation");
+		const { actor } = token;
+		const actorMovement = actor?.system.traits?.movement?.types;
+		const walkFallback = CONFIG.BlackFlag.movementTypes[type]?.walkFallback;
+		const hasMovement = actorMovement !== undefined;
+		const speed = actorMovement?.[type];
+		return noAutomation || !actor?.system.isCreature || !hasMovement || speed || (!speed && !walkFallback)
+			? cost => cost
+			: (cost, _from, _to, distance) => cost + distance;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*           Ring Animations           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

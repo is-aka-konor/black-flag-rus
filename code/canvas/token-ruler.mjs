@@ -109,10 +109,9 @@ export default class BlackFlagTokenRuler extends foundry.canvas.placeables.token
 	 */
 	#getSpeedBasedStyle(waypoint, style) {
 		// If movement automation disabled, or if showing a different client's measurement, use default style
-		// const disableAutomation = game.settings.get(game.system.id, "disableMovementAutomation");
-		const disableAutomation = false;
+		const enableAutomation = game.settings.get(game.system.id, "tokenMeasurementAutomation");
 		const isSameClient = game.user.id in this.token._plannedMovement;
-		if (disableAutomation || !isSameClient) return style;
+		if (!enableAutomation || !isSameClient) return style;
 
 		// Get actor's movement speed for currently selected token movement action
 		const movement = this.token.actor?.system.traits?.movement;
@@ -120,7 +119,10 @@ export default class BlackFlagTokenRuler extends foundry.canvas.placeables.token
 		let currActionSpeed = movement.types[waypoint.action] ?? 0;
 
 		// If current action can fall back to walk, treat "max" speed as maximum between current & walk
-		if (CONFIG.BlackFlag.movementTypes[waypoint.action]?.walkFallback) {
+		if (
+			CONFIG.BlackFlag.movementTypes[waypoint.action]?.walkFallback ||
+			!CONFIG.BlackFlag.movementTypes[waypoint.action]
+		) {
 			currActionSpeed = Math.max(currActionSpeed, movement.types.walk);
 		}
 		currActionSpeed = convertDistance(currActionSpeed, movement.unit, { to: canvas.scene.grid.units }).value;

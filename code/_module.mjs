@@ -70,6 +70,7 @@ Hooks.once("init", function () {
 	documents.BlackFlagActor.setupHooks();
 	documents.BlackFlagItem.setupHooks();
 	documents.BlackFlagScene.setupHooks();
+	documents.BlackFlagTokenDocument.registerMovementActions();
 	documents.BlackFlagTokenDocument.setupHooks();
 	documents.registerDocumentClasses();
 	enrichers.registerCustomEnrichers();

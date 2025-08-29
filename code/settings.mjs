@@ -248,6 +248,15 @@ export function registerSettings() {
 		type: Boolean
 	});
 
+	game.settings.register(game.system.id, "tokenMeasurementAutomation", {
+		name: "BF.SETTINGS.AUTOMATION.tokenMeasurementAutomation.Label",
+		hint: "BF.SETTINGS.AUTOMATION.tokenMeasurementAutomation.Hint",
+		scope: "world",
+		config: true,
+		default: true,
+		type: Boolean
+	});
+
 	// Hidden
 	game.settings.register(game.system.id, "_firstRun", {
 		scope: "world",
