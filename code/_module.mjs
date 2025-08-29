@@ -45,6 +45,7 @@ Hooks.once("init", function () {
 	CONFIG.Note.objectClass = canvas.BlackFlagNote;
 	CONFIG.Token.objectClass = canvas.BlackFlagToken;
 	CONFIG.Token.rulerClass = canvas.BlackFlagTokenRuler;
+	CONFIG.Token.movement.TerrainData = data.BlackFlagTerrainData;
 	CONFIG.ui.chat = applications.BlackFlagChatLog;
 	CONFIG.ui.combat = applications.BlackFlagCombatTracker;
 	CONFIG.ui.items = applications.item.BlackFlagItemDirectory;
@@ -64,6 +65,9 @@ Hooks.once("init", function () {
 	data.registerDataModels(Actor);
 	data.registerDataModels(Item);
 	CONFIG.ChatMessage.dataModels = data.chatMessage.config;
+	CONFIG.RegionBehavior.dataModels = data.regionBehavior.config;
+	Object.assign(CONFIG.RegionBehavior.dataModels, data.regionBehavior.config);
+	Object.assign(CONFIG.RegionBehavior.typeIcons, data.regionBehavior.icons);
 	data.registerDataModels(JournalEntryPage);
 	dice.registerDice();
 	documents.BlackFlagActiveEffect.registerHUDListeners();
@@ -91,7 +95,7 @@ Hooks.once("setup", function () {
 	applications.registerSheets(JournalEntryPage);
 	foundry.applications.apps.DocumentSheetConfig.registerSheet(
 		JournalEntry,
-		"black-flag",
+		game.system.id,
 		applications.journal.BlackFlagJournalEntrySheet,
 		{
 			makeDefault: true,
@@ -100,13 +104,32 @@ Hooks.once("setup", function () {
 	);
 	foundry.applications.apps.DocumentSheetConfig.registerSheet(
 		JournalEntry,
-		"black-flag",
+		game.system.id,
 		applications.journal.BlackFlagJournalSheet,
 		{
 			makeDefault: false,
 			canConfigure: false,
 			canBeDefault: false,
 			label: "BF.Sheet.Default.JournalLegacy"
+		}
+	);
+
+	foundry.applications.apps.DocumentSheetConfig.unregisterSheet(
+		RegionBehavior,
+		"core",
+		foundry.applications.sheets.RegionBehaviorConfig,
+		{
+			types: ["black-flag.difficultTerrain"]
+		}
+	);
+	foundry.applications.apps.DocumentSheetConfig.registerSheet(
+		RegionBehavior,
+		game.system.id,
+		applications.regionBehavior.DifficultTerrainConfig,
+		{
+			label: "BF.Sheet.Default.DifficultTerrain",
+			types: ["black-flag.difficultTerrain"],
+			makeDefault: true
 		}
 	);
 

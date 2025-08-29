@@ -1,4 +1,33 @@
 import MapLocationControlIcon from "../canvas/map-location-control-icon.mjs";
+import { localizeConfig } from "../utils/_module.mjs";
+
+/**
+ * Types of terrain that can cause difficult terrain.
+ * @enum {{ label: string }}
+ */
+export const difficultTerrainTypes = {
+	ice: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Ice"
+	},
+	liquid: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Liquid"
+	},
+	plants: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Plants"
+	},
+	rocks: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Rocks"
+	},
+	slope: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Slope"
+	},
+	snow: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Snow"
+	}
+};
+localizeConfig(difficultTerrainTypes);
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * Configuration data for a map marker style. Options not included will fall back to the value set in the `default`

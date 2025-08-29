@@ -46,5 +46,7 @@ export * as collection from "./collection/_module.mjs";
 export * as fields from "./fields/_module.mjs";
 export * as item from "./item/_module.mjs";
 export * as journal from "./journal/_module.mjs";
+export * as regionBehavior from "./region-behavior/_module.mjs";
 export * as settings from "./settings/_module.mjs";
+export { default as BlackFlagTerrainData } from "./terrain-data.mjs";
 export * as utility from "./utility/_module.mjs";

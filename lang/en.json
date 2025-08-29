@@ -2570,11 +2570,14 @@
 			"movement": {
 				"label": "Speed",
 				"base": {
-					"label": "Base Speed",
-					"hint": "Base movement speed that can be used in formulas for deriving other speeds using the <blackFlag-copyable>@base</blackFlag-copyable> property."
+					"hint": "Base movement speed that can be used in formulas for deriving other speeds using the <blackFlag-copyable>@base</blackFlag-copyable> property.",
+					"label": "Base Speed"
 				},
 				"custom": {
 					"label": "Custom Speed"
+				},
+				"ignoredDifficultTerrain": {
+					"label": "Ignored Difficult Terrain"
 				},
 				"tags": {
 					"label": "Movement Tags"
@@ -2979,6 +2982,39 @@
 	}
 },
 
+
+
+"BF.REGIONBEHAVIORS": {
+	"DIFFICULTTERRAIN": {
+		"FIELDS": {
+			"ignoredDispositions": {
+				"hint": "Tokens with these dispositions will not be affected by this difficult terrain.",
+				"label": "Ignored Dispositions"
+			},
+			"magical": {
+				"hint": "This difficult terrain is created by a magical effect.",
+				"label": "Magical"
+			},
+			"types": {
+				"hint": "Types that best describe the source of this difficult terrain, if any.",
+				"label": "Types"
+			}
+		},
+		"Type": {
+			"All": "All Types",
+			"Ice": "Slippery Ice",
+			"Magical": "Magical",
+			"Nonmagical": "Nonmagical",
+			"Plants": "Plants or Undergrowth",
+			"Rocks": "Rubble or Rocks",
+			"Liquid": "Shallow Liquid",
+			"Slope": "Steep Slope",
+			"Snow": "Deep Snow",
+			"Webs": "Webs"
+		}
+	}
+},
+
 "BF.Resistance": {
 	"Label": "Resistances",
 	"Abbreviation": "Res",
@@ -3310,6 +3346,7 @@
 		"Concept": "Black Flag Concept Sheet",
 		"Condition": "Black Flag Condition Sheet",
 		"Container": "Black Flag Container Sheet",
+		"DifficultTerrain": "Black Flag Difficult Terrain Sheet",
 		"Equipment": "Black Flag Equipment Sheet",
 		"Feature": "Black Flag Feature Sheet",
 		"Journal": "Black Flag Journal Sheet",
@@ -4744,6 +4781,9 @@
 		"activation": "Activation Message",
 		"rest": "Rest Message",
 		"turn": "Combat Turn Message"
+	},
+	"RegionBehavior": {
+		"black-flag.difficultTerrain": "Difficult Terrain"
 	}
 }
 

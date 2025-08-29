@@ -11,6 +11,7 @@ const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.
  * @property {object} traits.movement
  * @property {number} traits.movement.base - Base movement value made available to specific types as `@base`.
  * @property {string[]} traits.movement.custom - Special movement information.
+ * @property {Set<string>} traits.movement.ignoredDifficultTerrain  Types of difficult terrain ignored.
  * @property {Set<string>} traits.movement.tags - Movement tags.
  * @property {Record<string, string>} traits.movement.types - Formulas for specific movement types.
  * @property {string} traits.movement.unit - Units used to measure movement.
@@ -29,6 +30,9 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 				movement: new SchemaField({
 					base: new NumberField({ nullable: false, initial: 30, min: 0, step: 0.1 }),
 					custom: new ArrayField(new StringField()),
+					ignoredDifficultTerrain: new SetField(new StringField(), {
+						label: "BF.MOVEMENT.FIELDS.traits.movement.ignoredDifficultTerrain.label"
+					}),
 					tags: new SetField(new StringField()),
 					types: new MappingField(new FormulaField({ deterministic: true }), {
 						initial: { walk: "@base" }

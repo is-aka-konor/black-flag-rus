@@ -19,6 +19,8 @@
 		{{/each}}
 		{{ formField movement.fields.unit value=movement.data.unit options=CONFIG.distanceUnits.localizedOptions
 		             localize=true partId=rootId }}
+		{{ formField movement.fields.ignoredDifficultTerrain value=movement.data.ignoredDifficultTerrain
+		             options=difficultTerrainTypes localize=true partId=rootId }}
 	</fieldset>
 
 	{{#if pace}}
