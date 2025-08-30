@@ -1,3 +1,5 @@
+import AdvancementDataModel from "../../abstract/advancement-data-model.mjs";
+
 const { ObjectField, StringField } = foundry.data.fields;
 
 /**
@@ -6,15 +8,21 @@ const { ObjectField, StringField } = foundry.data.fields;
  * @property {object} scale - Sparse scale value data for each level.
  * @property {string} type - Type of data represented by this scale value.
  */
-export default class ScaleValueConfigurationData extends foundry.abstract.DataModel {
-	/** @inheritDoc */
+export default class ScaleValueConfigurationData extends AdvancementDataModel {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Model Configuration         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static LOCALIZATION_PREFIXES = ["BF.Advancement.ScaleValue"];
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
 	static defineSchema() {
 		return {
 			scale: new ObjectField(),
-			type: new StringField({
-				initial: "string",
-				label: "BF.Advancement.ScaleValue.Type.Label"
-			})
+			type: new StringField({ required: true, blank: false, initial: "string" })
 		};
 	}
 

@@ -2,6 +2,8 @@ import { filteredKeys } from "../../utils/object.mjs";
 import * as Trait from "../../utils/trait.mjs";
 import AdvancementConfig from "./advancement-config.mjs";
 
+const { StringField } = foundry.data.fields;
+
 /**
  * Configuration application for traits.
  */
@@ -174,14 +176,19 @@ export default class TraitConfig extends AdvancementConfig {
 	 */
 	async _prepareOptionsContext(context, options) {
 		const chosen = this.selected === -1 ? context.grants.data : context.choices[this.selected].data.pool;
-		context.choiceOptions = Trait.choices(this.trait, { chosen, prefixed: true, any: this.selected !== -1 });
-		context.selectedTraitHeader = `${CONFIG.BlackFlag.traits[this.trait].labels.localization}[other]`;
-		context.selectedTrait = this.trait;
-		context.validTraitTypes = Object.entries(CONFIG.BlackFlag.traits).reduce((obj, [key, config]) => {
-			if (this.config.mode === "default" || (config.type === "proficiency" && config.expertise))
-				obj[key] = config.labels.title;
-			return obj;
-		}, {});
+		context.choice = {
+			data: context.choices[this.selected]?.data,
+			fields: this.selected !== -1 ? context.configuration.fields.choices.element.fields : null,
+			options: Trait.choices(this.trait, { chosen, prefixed: true, any: this.selected !== -1 })
+		};
+		context.selectedTrait = {
+			field: new StringField({ required: true, blank: false, label: game.i18n.localize("BF.Trait.Type") }),
+			header: `${CONFIG.BlackFlag.traits[this.trait].labels.localization}[other]`,
+			options: Object.entries(CONFIG.BlackFlag.traits)
+				.filter(([, config]) => this.config.mode === "default" || (config.type === "proficiency" && config.expertise))
+				.map(([value, config]) => ({ value, label: game.i18n.localize(config.labels.title) })),
+			value: this.trait
+		};
 		return context;
 	}
 

@@ -6,30 +6,27 @@ const { ArrayField, NumberField, SchemaField, SetField, StringField } = foundry.
  * Configuration data for the Trait advancement.
  */
 export class TraitConfigurationData extends AdvancementDataModel {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Model Configuration         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static LOCALIZATION_PREFIXES = ["BF.Advancement.Trait"];
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
 	static defineSchema() {
 		return {
-			choiceMode: new StringField({
-				initial: "inclusive",
-				label: "BF.Advancement.Trait.Choice.Mode.Label",
-				hint: "BF.Advancement.Trait.Choice.Mode.Hint"
-			}),
+			choiceMode: new StringField({ required: true, blank: false, initial: "inclusive" }),
 			choices: new ArrayField(
 				new SchemaField({
-					count: new NumberField({
-						initial: 1,
-						positive: true,
-						integer: true,
-						label: "BF.Advancement.Trait.Count.Label"
-					}),
+					count: new NumberField({ initial: 1, positive: true, integer: true }),
 					pool: new SetField(new StringField())
-				}),
-				{ label: "BF.Advancement.Trait.Choices.Label", hint: "BF.Advancement.Trait.Choices.Hint" }
+				})
 			),
-			grants: new SetField(new StringField(), {
-				label: "BF.Advancement.Trait.Guaranteed.Label",
-				hint: "BF.Advancement.Trait.Guaranteed.Hint"
-			}),
-			mode: new StringField({ initial: "default" })
+			grants: new SetField(new StringField()),
+			mode: new StringField({ required: true, blank: false, initial: "default" })
 		};
 	}
 }
@@ -38,6 +35,7 @@ export class TraitConfigurationData extends AdvancementDataModel {
  * Value data for the Trait advancement.
  */
 export class TraitValueData extends foundry.abstract.DataModel {
+	/** @override */
 	static defineSchema() {
 		return {
 			selected: new SetField(new StringField(), {

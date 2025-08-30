@@ -1,13 +1,12 @@
 <fieldset class="trait-options">
-	<legend>{{ localize selectedTraitHeader }}</legend>
-	<label>
-		<span>{{ localize "BF.Trait.Type" }}</span>
-		<select name="selectedTrait">
-			{{ selectOptions validTraitTypes selected=selectedTrait localize=true }}
-		</select>
-	</label>
+	<legend>{{ localize selectedTrait.header }}</legend>
+	{{ formGroup selectedTrait.field name="selectedTrait" value=selectedTrait.value options=selectedTrait.options
+	             rootId=partId }}
+	{{#if choice.fields}}
+		{{ formGroup choice.fields.count value=choice.data.count rootId=partId }}
+	{{/if}}
 
-	{{> "blackFlag.trait-list" choices=choiceOptions prefix="configuration.checked" }}
+	{{> "blackFlag.trait-list" choices=choice.options prefix="configuration.checked" }}
 
 </fieldset>
 

@@ -2,12 +2,14 @@
 {{ formField fields.icon value=source.icon placeholder=default.icon rootId=partId }}
 
 {{#if showHint}}
-	<label>
-		<span class="hinted-label" data-tooltip="BF.Advancement.FIELDS.hint.hint">
+	<div class="form-group">
+		<label class="hinted-label" data-tooltip="BF.Advancement.FIELDS.hint.hint">
 			{{ localize "BF.Advancement.FIELDS.hint.label" }}
-		</span>
-		<textarea name="hint" placeholder="{{ default.hint }}">{{~ source.hint ~}}</textarea>
-	</label>
+		</label>
+		<div class="form-fields">
+			<textarea name="hint" placeholder="{{ default.hint }}">{{~ source.hint ~}}</textarea>
+		</div>
+	</div>
 {{/if}}
 
 {{#if showIdentifier}}
@@ -35,5 +37,5 @@
 
 {{#if showClassRestriction}}
 	{{ formField fields.level.fields.classRestriction value=source.level.classRestriction options=classRestrictionOptions
-	             classes="label-hinted" rootId=partId }}
+	             rootId=partId }}
 {{/if}}

@@ -36,7 +36,7 @@
 						       value="{{ data.value.value }}" placeholder="{{ data.placeholder.value }}">
 						<select name="configuration.scale.{{ level }}.unit"
 						        {{~#unless data.value.unit}} class="placeholder"{{/unless}}>
-							{{ selectOptions @root.CONFIG.distanceUnits.localized selected=data.value.unit
+							{{ selectOptions @root.CONFIG.distanceUnits.localizedOptions selected=data.value.unit
 							                 blank=data.placeholder.unit }}
 						</select>
 					{{else if (eq @root.type.input "dice")}}
@@ -55,7 +55,7 @@
 						{{/if}}
 						<select name="configuration.scale.{{ level }}.per" {{ disabled data.value.infinite }}
 							{{~#unless data.value.per}} class="placeholder"{{/unless}}>
-							{{ selectOptions @root.CONFIG.recoveryPeriods.localized selected=data.value.per
+							{{ selectOptions @root.CONFIG.recoveryPeriods.localizedOptions selected=data.value.per
 							                 blank=data.placeholder.per }}
 						</select>
 						<input class="checkbox" type="checkbox" name="configuration.scale.{{ level }}.infinite"

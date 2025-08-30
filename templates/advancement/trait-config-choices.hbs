@@ -1,20 +1,11 @@
 <fieldset>
-	<legend class="hinted-label" data-tooltip="BF.Advancement.Trait.Choices.Hint">
-		{{ localize "BF.Advancement.Trait.Choices.Label" }}
+	<legend class="hinted-label" data-tooltip="BF.Advancement.Trait.FIELDS.choices.hint">
+		{{ localize "BF.Advancement.Trait.FIELDS.choices.label" }}
 	</legend>
-	<label>
-		<span>{{ localize "BF.Advancement.Trait.Choice.Mode.Label" }}</span>
-		<select name="configuration.choiceMode">
-			{{ selectOptions choiceModeOptions selected=configuration.data.choiceMode }}
-		</select>
-		<p class="hint">
-			{{#if (eq configuration.data.choiceMode "inclusive")}}
-				{{ localize "BF.Advancement.Trait.Choice.Mode.Inclusive.Hint" }}
-			{{else}}
-				{{ localize "BF.Advancement.Trait.Choice.Mode.Exclusive.Hint" }}
-			{{/if}}
-		</p>
-	</label>
+	{{ formGroup configuration.fields.choiceMode value=configuration.data.choiceMode options=choiceModeOptions
+	             hint=(localize (ifThen (eq configuration.data.choiceMode "inclusive")
+	             "BF.Advancement.Trait.Choice.Mode.Inclusive.Hint" "BF.Advancement.Trait.Choice.Mode.Exclusive.Hint"))
+	             rootId=partId }}
 	<ul class="selected-index-list">
 		{{#each choices}}
 			<li>
@@ -34,10 +25,4 @@
 		<i class="fa-solid fa-plus" inert></i>
 		{{ localize "BF.Advancement.Trait.Action.AddChoiceGroup" }}
 	</button>
-	{{#if (ne selectedIndex -1)}}
-		<label>
-			<span>{{ localize "BF.Advancement.Trait.Count.Label" }}</span>
-			<input type="number" name="configuration.count" min="1" step="1" value="{{ count }}">
-		</legend>
-	{{/if}}
 </fieldset>

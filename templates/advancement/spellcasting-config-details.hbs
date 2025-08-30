@@ -1,50 +1,32 @@
 <fieldset>
 	<legend>{{ localize "BF.Spellcasting.Details.Label" }}</legend>
-	<label>
-		<span>{{ localize "BF.Spellcasting.Source" }}</span>
-		<select name="configuration.source">
-			{{ selectOptions CONFIG.spellSources selected=configuration.data.source labelAttr="label" localize=true blank="" }}
-		</select>
-	</label>
-	<label>
-		<span>{{ localize "BF.Spellcasting.Ability.Label" }}</span>
-		<select name="configuration.ability">
-			{{ selectOptions CONFIG.abilities.localized selected=configuration.data.ability }}
-		</select>
-	</label>
+	{{ formGroup configuration.fields.source value=configuration.data.source
+	             options=CONFIG.spellSources.localizedOptions hint="" rootId=partId }}
+	{{ formGroup configuration.fields.ability value=configuration.data.ability options=CONFIG.abilities.localizedOptions
+	             hint="" rootId=partId }}
 	{{#if displayType}}
-		<label>
-			<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.type.hint">
-				{{ localize "BF.Spellcasting.FIELDS.type.label" }}
-			</span>
-			<select name="configuration.type">
-				{{ selectOptions CONFIG.spellcastingTypes selected=configuration.data.type labelAttr="label" localize=true }}
-			</select>
-		</label>
+		{{ formGroup configuration.fields.type value=configuration.data.type
+		             options=CONFIG.spellcastingTypes.localizedOptions rootId=partId }}
 	{{/if}}
 	{{#if progressionOptions}}
-		<label>
-			<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.progression.hint">
-				{{ localize "BF.Spellcasting.FIELDS.progression.label" }}
-			</span>
-			<select name="configuration.progression">
-				{{ selectOptions progressionOptions selected=configuration.data.progression labelAttr="label" localize=true }}
-			</select>
-		</label>
+		{{ formGroup configuration.fields.progression value=configuration.data.progression
+		             options=progressionOptions blank=false rootId=partId }}
 	{{/if}}
 	{{#if slots.display}}
-		<label data-name="slots">
-			<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.slots.hint">
+		<div class="form-group" data-name="slots">
+			<label class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.slots.hint">
 				{{ localize "BF.Spellcasting.FIELDS.slots.label" }}
-			</span>
-			{{#if slots.scaleValue}}
-				{{{ slots.anchor }}}
-			{{else}}
-				<button class="link-button" type="button" data-action="addScale">
-					<i class="fa-solid fa-plus" inert></i>
-					{{ localize "BF.Advancement.ScaleValue.Title" }}
-				</button>
-			{{/if}}
-		</label>
+			</label>
+			<div class="form-fields">
+				{{#if slots.scaleValue}}
+					{{{ slots.anchor }}}
+				{{else}}
+					<button class="link-button" type="button" data-action="addScale">
+						<i class="fa-solid fa-plus" inert></i>
+						{{ localize "BF.Advancement.ScaleValue.Title" }}
+					</button>
+				{{/if}}
+			</div>
+		</div>
 	{{/if}}
 </fieldset>

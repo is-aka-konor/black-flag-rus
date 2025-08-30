@@ -56,6 +56,8 @@ export const spellcastingTypes = {
 		trait: "BF.Spellcasting.Type.Pact.Trait"
 	}
 };
+localizeConfig(spellcastingTypes, { sort: false });
+localizeConfig(spellcastingTypes.leveled.progression, { sort: false });
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
@@ -112,6 +114,7 @@ export const spellLearningModes = {
 		prepared: true
 	}
 };
+localizeConfig(spellLearningModes, { sort: false });
 
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 

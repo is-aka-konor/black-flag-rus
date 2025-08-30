@@ -537,53 +537,59 @@
 	},
 
 	"HitPoints": {
-		"Title": "Hit Points",
-		"Hint": "Set an class's hit die size and track a player's hit points as they gain levels.",
 		"Action": {
 			"TakeAverage": "Take Average",
 			"or": "or"
 		},
 		"Average": "Average",
+		"FIELDS": {
+			"denomination": {
+				"label": "Hit Die"
+			}
+		},
+		"Hint": "Set an class's hit die size and track a player's hit points as they gain levels.",
 		"Notification": "Hit points need to be increased",
-		"Starting": "Hit Points at 1st Level"
+		"Starting": "Hit Points at 1st Level",
+		"Title": "Hit Points"
 	},
 
 	"Improvement": {
-		"Title": "Improvement",
-		"Hint": "Allow the player to increase one ability score and choose a talent from a specific talent list.",
 		"Action": {
 			"Choose": "Make Talent Choice",
 			"Revert": "Revert Choice"
 		},
+		"FIELDS": {
+			"talentList": {
+				"label": "Talent List"
+			}
+		},
+		"Hint": "Allow the player to increase one ability score and choose a talent from a specific talent list.",
 		"Notification": {
 			"Ability": "Select ability to improve",
 			"Talent": "Select talent to gain"
-		},
-		"TalentList": {
-			"Label": "Talent List"
 		},
 		"Journal": {
 			"Description": "<p>Choose one of the following improvements (ability scores can’t be raised above 20 with this feature):</p><ul><li>Increase a single ability score by 2.</li><li>Increase two different ability scores by 1 each.</li><li>{talentList}</li></ul>",
 			"TalentList[one]": "Increase one ability score by 1 and select a talent from {lists} talents list.",
 			"TalentList[other]": "Increase one ability score by 1 and select a talent from either {lists} talents list."
-		}
+		},
+		"Title": "Improvement"
 	},
 
 	"KeyAbility": {
-		"Title": "Key Ability",
 		"Hint": "Specify the key ability or abilities for a class.",
-		"Options": {
-			"Label": "Key Abilities"
-		}
+		"FIELDS": {
+			"options": {
+				"label": "Key Abilities"
+			}
+		},
+		"Title": "Key Ability"
 	},
 
 	"Property": {
-		"Title": "Set Property",
-		"Hint": "Change one or more actor properties using a system similar to active effects.",
 		"FIELDS": {
 			"changes": {
-				"label": "Changes",
-				"*": {
+				"element": {
 					"key": {
 						"label": "Attribute Key"
 					},
@@ -593,13 +599,23 @@
 					"value": {
 						"label": "Value"
 					}
-				}
+				},
+				"label": "Changes"
 			}
-		}
+		},
+		"Hint": "Change one or more actor properties using a system similar to active effects.",
+		"Title": "Set Property"
 	},
 
 	"ScaleValue": {
-		"Title": "Scale Value",
+		"FIELDS": {
+			"scale": {
+				"label": "Scale"
+			},
+			"type": {
+				"label": "Data Type"
+			}
+		},
 		"Hint": "A single value that changes with level that is made available in roll formulas (such as a Monk's martial arts die).",
 		"Identifier": {
 			"Hint": "This scale value for the current level will be available using <blackFlag-copyable>@scale.<wbr>{parentIdentifier}.<wbr>{identifier}</blackflag-copyable> in a formula.",
@@ -609,8 +625,8 @@
 			"Label": "Associated Item",
 			"Hint": "This scale value will be displayed inline with this item when displaying in a journal table. If not provided, this scale value will be displayed in its own column."
 		},
+		"Title": "Scale Value",
 		"Type": {
-			"Label": "Data Type",
 			"CR": {
 				"Label": "Challenge Rating",
 				"Hint": "Use this for representing creature challenge ratings for features like Wild Shape."
@@ -644,29 +660,31 @@
 	},
 
 	"Size": {
-		"Title": "Size",
+		"FIELDS": {
+			"options": {
+				"hint": "Player can choose from any selected size. If only one is selected, then their character will become that size automatically.",
+				"label": "Size Options"
+			}
+		},
 		"Hint": "Set a character's size or give them a choice of sizes.",
 		"Notification": "Choose a creature size",
-		"Options": {
-			"Label": "Size Options",
-			"Hint": "Player can choose from any selected size. If only one is selected, then their character will become that size automatically."
-		}
+		"Title": "Size"
 	},
 
 	"Spellcasting": {
-		"Title": "Spellcasting",
-		"Hint": "Give a character the ability to learn and cast spells.",
 		"Action": {
 			"LearnSpells": "Learn Spells",
 			"ReplaceSpell": "Replace Earlier Spell"
 		},
 		"CircleSpells": "{circle} Spells",
 		"GainingSpells": "Gaining Spells",
+		"Hint": "Give a character the ability to learn and cast spells.",
 		"Replacement": {
 			"Label": "Spell to Replace",
 			"None": "No Replacement",
 			"Slot": "Replace Spell"
-		}
+		},
+		"Title": "Spellcasting"
 	},
 
 	"SpellcastingScale": {
@@ -713,8 +731,6 @@
 	},
 
 	"Trait": {
-		"Title": "Traits",
-		"Hint": "Grant a character certain traits of proficiencies or present them a choice.",
 		"Action": {
 			"AddChoiceGroup": "Add Choice Set",
 			"RemoveChoiceGroup": "Remove Choice Set",
@@ -727,8 +743,6 @@
 			"List": "{count} from {list}",
 			"Other": "{count} other {type}",
 			"Mode": {
-				"Label": "Choice Mode",
-				"Hint": "Method by which the player is able to select from the choice sets.",
 				"Exclusive": {
 					"Label": "Exclusive",
 					"Hint": "Player can make a choice from only one set of choices."
@@ -739,19 +753,33 @@
 				}
 			}
 		},
-		"Choices": {
-			"Label": "Choices",
-			"Hint": "The following traits will be presented as a choice to the player."
+		"FIELDS": {
+			"choiceMode": {
+				"hint": "Method by which the player is able to select from the choice sets.",
+				"label": "Choice Mode"
+			},
+			"choices": {
+				"element": {
+					"count": {
+						"label": "Count"
+					},
+					"pool": {
+						"label": "Trait Pool"
+					}
+				},
+				"hint": "Traits that will be presented as a choice to the player.",
+				"label": "Choices"
+			},
+			"grants": {
+				"hint": "Traits that will be granted to the character.",
+				"label": "Guaranteed"
+			},
+			"mode": {
+				"label": "Mode"
+			}
 		},
-		"Count": {
-			"Label": "Count"
-		},
-		"Guaranteed": {
-			"Label": "Guaranteed",
-			"Hint": "The following traits will be granted to the character."
-		},
+		"Hint": "Grant a character certain traits of proficiencies or present them a choice.",
 		"Mode": {
-			"Label": "Mode",
 			"Default": {
 				"Label": "Default",
 				"Hint": "Gain a trait or proficiency."
@@ -770,7 +798,8 @@
 			}
 		},
 		"Notification": "Select {count} more {type}",
-		"NotificationSimple": "Select some more {type}"
+		"NotificationSimple": "Select some more {type}",
+		"Title": "Traits"
 	}
 },
 

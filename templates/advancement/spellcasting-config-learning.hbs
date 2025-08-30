@@ -2,84 +2,45 @@
 	{{#if learningModes}}
 		<fieldset>
 			<legend>{{ localize "BF.Advancement.Spellcasting.GainingSpells" }}</legend>
-			<label>
-				<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.spells.mode.hint">
-					{{ localize "BF.Spellcasting.FIELDS.spells.mode.label" }}
-				</span>
-				<select name="configuration.spells.mode">
-					{{ selectOptions learningModes selected=configuration.data.spells.mode labelAttr="label"
-					                 localize=true blank="" }}
-				</select>
-			</label>
-			</label>
+			{{ formGroup configuration.fields.spells.fields.mode value=configuration.data.spells.mode
+			             options=learningModes rootId=partId }}
 			{{#each known as |data name|}}
 				<hr>
-				<label data-name="{{ name }}">
-					<span class="hinted-label" data-tooltip="{{ data.hint }}">
+				<div class="form-group" data-name="{{ name }}">
+					<label class="hinted-label" data-tooltip="{{ data.hint }}">
 						{{ localize data.label }}
-					</span>
-					{{#if data.scaleValue}}
-						{{{ data.anchor }}}
-					{{else}}
-						<button class="link-button" type="button" data-action="addScale">
-							<i class="fa-solid fa-plus" inert></i>
-							{{localize "BF.Advancement.ScaleValue.Title"}}
-						</button>
-					{{/if}}
-				</label>
-				{{#if (and ../configuration.data.rituals.scaleValue (eq name "rituals"))}}
-					<label class="full-checkbox">
-						<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.rituals.restricted.hint">
-							{{ localize "BF.Spellcasting.FIELDS.rituals.restricted.label" }}
-						</span>
-						<input type="checkbox" name="configuration.rituals.restricted"
-						       {{ checked ../configuration.data.rituals.restricted }}>
 					</label>
+					<div class="form-fields">
+						{{#if data.scaleValue}}
+							{{{ data.anchor }}}
+						{{else}}
+							<button class="link-button" type="button" data-action="addScale">
+								<i class="fa-solid fa-plus" inert></i>
+								{{ localize "BF.Advancement.ScaleValue.Title" }}
+							</button>
+						{{/if}}
+					</div>
+				</div>
+				{{#if (and ../configuration.data.rituals.scaleValue (eq name "rituals"))}}
+					{{ formGroup ../configuration.fields.rituals.fields.restricted value=../configuration.data.rituals.restricted
+					             rootId=partId }}
 				{{/if}}
 			{{/each}}
 			{{#if (eq configuration.data.spells.mode "limited")}}
-				<label class="full-checkbox">
-					<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.spells.replacement.hint">
-						{{ localize "BF.Spellcasting.FIELDS.spells.replacement.label" }}
-					</span>
-					<input type="checkbox" name="configuration.spells.replacement"
-					       {{ checked configuration.data.spells.replacement }}>
-				</label>
-				<label>
-					<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.spells.schools.hint">
-						{{ localize "BF.Spellcasting.FIELDS.spells.schools.label" }}
-					</span>
-					<!-- TODO: Replace with core's <multi-select> -->
-					<blackFlag-multiSelect name="configuration.spells.schools" label="{{ schoolLabel }}">
-						<datalist>
-							{{#blackFlag-multiSelect configuration.data.spells.schools}}
-								{{ selectOptions CONFIG.spellSchools.localized }}
-							{{/blackFlag-multiSelect}}
-						</datalist>
-					</blackFlag-multiSelect>
-				</label>
-				<label class="full-checkbox">
-					<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.spells.special.hint">
-						{{ localize "BF.Spellcasting.FIELDS.spells.special.label" }}
-					</span>
-					<input type="checkbox" name="configuration.spells.special" {{ checked configuration.data.spells.special }}>
-				</label>
+				{{ formGroup configuration.fields.spells.fields.replacement value=configuration.data.spells.replacement
+				             rootId=partId }}
+				{{ formGroup configuration.fields.spells.fields.schools value=configuration.data.spells.schools
+										 options=CONFIG.spellSchools.localizedOptions rootId=partId }}
+				{{ formGroup configuration.fields.spells.fields.special value=configuration.data.spells.special
+				             rootId=partId }}
 			{{else if (eq configuration.data.spells.mode "spellbook")}}
-				<div class="field-group">
-					<span class="hinted-label" data-tooltip="BF.Spellcasting.FIELDS.spells.spellbook.hint">
-						{{ localize "BF.Spellcasting.FIELDS.spells.spellbook.label" }}
-					</span>
-					<label>
-						<span>{{ localize "BF.Spellcasting.FIELDS.spells.spellbook.firstLevel.label" }}</span>
-						<input type="number" name="configuration.spells.spellbook.firstLevel"
-					         value="{{ configuration.data.spells.spellbook.firstLevel }}" min=0 step=1>
-					</label>
-					<label>
-						<span>{{ localize "BF.Spellcasting.FIELDS.spells.spellbook.otherLevels.label" }}</span>
-						<input type="number" name="configuration.spells.spellbook.otherLevels"
-						       value="{{ configuration.data.spells.spellbook.otherLevels }}" min=0 step=1>
-					</label>
-				</div>
+				{{#blackFlag-formGroup "BF.Spellcasting.FIELDS.spells.spellbook.label"
+				                        hint=(localize "BF.Spellcasting.FIELDS.spells.spellbook.hint")}}
+					{{ formGroup configuration.fields.spells.fields.spellbook.fields.firstLevel
+					             value=configuration.data.spells.spellbook.firstLevel classes="label-top" rootId=partId }}
+					{{ formGroup configuration.fields.spells.fields.spellbook.fields.otherLevels
+					             value=configuration.data.spells.spellbook.otherLevels classes="label-top" rootId=partId }}
+				{{/blackFlag-formGroup}}
 			{{/if}}
 		</fieldset>
 	{{/if}}

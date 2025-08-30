@@ -29,13 +29,10 @@ export default class ImprovementConfig extends AdvancementConfig {
 		const context = await super._prepareContext(options);
 		context.showClassRestriction = false;
 		if (this.advancement.metadata.type === "expandedTalentList") context.showLevelSelector = false;
-		context.talentCategories = Object.entries(CONFIG.BlackFlag.talentCategories.localizedPlural).reduce(
-			(obj, [key, label]) => {
-				obj[key] = { label, selected: this.advancement.configuration.talentList.has(key) ? "selected" : "" };
-				return obj;
-			},
-			{}
-		);
+		context.talentOptions = Object.entries(CONFIG.BlackFlag.talentCategories.localizedPlural).map(([value, label]) => ({
+			value,
+			label
+		}));
 		return context;
 	}
 }

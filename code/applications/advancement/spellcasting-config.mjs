@@ -67,8 +67,11 @@ export default class SpellcastingConfig extends AdvancementConfig {
 	async _prepareDetailsContext(context, options) {
 		const typeConfig = CONFIG.BlackFlag.spellcastingTypes[this.advancement.configuration.type];
 		context.displayType = Object.keys(CONFIG.BlackFlag.spellcastingTypes).length > 1;
-		context.progressionOptions = typeConfig?.progression;
+		context.progressionOptions = typeConfig?.progression?.localizedOptions;
+		const anchor = this.advancement.configuration.slots.scaleValue?.toAnchor();
+		if (anchor) anchor.dataset.action = "openScale";
 		context.slots = {
+			anchor: anchor?.outerHTML,
 			scaleValue: this.advancement.configuration.slots.scaleValue,
 			display: this.advancement.configuration.type === "pact"
 		};
@@ -103,10 +106,9 @@ export default class SpellcastingConfig extends AdvancementConfig {
 		context.learningModes =
 			!typeConfig || typeConfig.learningModes === false
 				? null
-				: Object.entries(CONFIG.BlackFlag.spellLearningModes).reduce((obj, [k, v]) => {
-						if (!typeConfig.learningModes || typeConfig.learningModes.has(k)) obj[k] = v;
-						return obj;
-					}, {});
+				: CONFIG.BlackFlag.spellLearningModes.localizedOptions.filter(
+						m => !typeConfig.learningModes || typeConfig.learningModes.has(m.value)
+					);
 
 		const schools = this.advancement.configuration.spells.schools;
 		if (schools.size)

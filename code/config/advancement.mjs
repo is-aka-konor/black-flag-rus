@@ -1,7 +1,7 @@
 import * as sheets from "../applications/advancement/_module.mjs";
 import { scaleValue } from "../data/advancement/_module.mjs";
 import * as advancement from "../documents/advancement/_module.mjs";
-import { formatNumber } from "../utils/_module.mjs";
+import { formatNumber, localizeConfig } from "../utils/_module.mjs";
 
 /**
  * Configuration data for advancement types.
@@ -277,3 +277,4 @@ export const traitModes = {
 		hint: "BF.Advancement.Trait.Mode.Upgrade.Hint"
 	}
 };
+localizeConfig(traitModes, { sort: false });

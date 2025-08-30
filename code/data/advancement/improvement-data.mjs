@@ -9,11 +9,19 @@ const { DocumentUUIDField, SchemaField, SetField, StringField } = foundry.data.f
  * @property {Set<string>} talentList - One or more talent list from which the player can choose.
  */
 export class ImprovementConfigurationData extends AdvancementDataModel {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Model Configuration         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static LOCALIZATION_PREFIXES = ["BF.Advancement.Improvement"];
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
 	static defineSchema() {
 		return {
-			talentList: new SetField(new StringField(), {
-				label: "BF.Advancement.Improvement.TalentList.Label"
-			})
+			talentList: new SetField(new StringField())
 		};
 	}
 
@@ -42,6 +50,7 @@ export class ImprovementConfigurationData extends AdvancementDataModel {
  * @property {string} talent.uuid - Origin UUID of the added document.
  */
 export class ImprovementValueData extends foundry.abstract.DataModel {
+	/** @override */
 	static defineSchema() {
 		return {
 			ability: new SchemaField({

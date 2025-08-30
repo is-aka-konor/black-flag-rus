@@ -8,7 +8,7 @@ const { ObjectField } = foundry.data.fields;
  * @property {object} scale - Sparse scale value data for each level.
  */
 export class SpellcastingValueConfigurationData extends ScaleValueConfigurationData {
-	/** @inheritDoc */
+	/** @override */
 	static defineSchema() {
 		return {
 			scale: new ObjectField()

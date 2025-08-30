@@ -72,12 +72,10 @@ export default class ScaleValueConfig extends AdvancementConfig {
 			})}`;
 		}
 		context.default.identifierHint = identifierHint;
-		context.types = Object.fromEntries(
-			Object.entries(CONFIG.Advancement.types.scaleValue.dataTypes).map(([key, d]) => [
-				key,
-				game.i18n.localize(d.metadata.label)
-			])
-		);
+		context.types = Object.entries(CONFIG.Advancement.types.scaleValue.dataTypes).map(([value, d]) => ({
+			value,
+			label: game.i18n.localize(d.metadata.label)
+		}));
 		return context;
 	}
 

@@ -9,9 +9,19 @@ const { JSONField, NumberField } = foundry.data.fields;
  * @property {string} denomination - Size of hit die available.
  */
 export class HitPointsConfigurationData extends AdvancementDataModel {
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*         Model Configuration         */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
+	static LOCALIZATION_PREFIXES = ["BF.Advancement.HitPoints"];
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @override */
 	static defineSchema() {
 		return {
-			denomination: new NumberField({ initial: 4, label: "BF.HitDice.Label[one]" })
+			denomination: new NumberField({ initial: 4 })
 		};
 	}
 }
@@ -26,6 +36,7 @@ export class HitPointsConfigurationData extends AdvancementDataModel {
  *                                               the "avg" or "max" values were taken for a level.
  */
 export class HitPointsValueData extends foundry.abstract.DataModel {
+	/** @override */
 	static defineSchema() {
 		return {
 			granted: new MappingField(new JSONField(), { required: false, initial: undefined })

@@ -1,17 +1,11 @@
 <fieldset>
 	<legend>{{ localize "BF.HitDie.Label[one]" }}</legend>
-	<label>
-		<span>{{ localize "BF.Die.Denomination.Label" }}</span>
-		<select name="configuration.denomination">
-			{{ selectOptions hitDieSizes selected=configuration.data.denomination }}
-		</select>
-	</label>
-	<label>
-		<span>{{ localize "BF.Advancement.HitPoints.Starting" }}</span>
+	{{ formGroup configuration.fields.denomination value=configuration.data.denomination
+	             options=hitDieSizes rootId=partId }}
+	{{#blackFlag-formGroup "BF.Advancement.HitPoints.Starting"}}
 		<span>{{ configuration.data.denomination }}</span>
-	</label>
-	<label>
-		<span>{{ localize "BF.Advancement.HitPoints.Average" }}</span>
+	{{/blackFlag-formGroup}}
+	{{#blackFlag-formGroup "BF.Advancement.HitPoints.Average"}}
 		<span>{{ advancement.average }}</span>
-	</label>
+	{{/blackFlag-formGroup}}
 </fieldset>

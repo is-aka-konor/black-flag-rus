@@ -36,10 +36,10 @@ export class SpellcastingConfigurationData extends AdvancementDataModel {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @inheritDoc */
+	/** @override */
 	static defineSchema() {
 		return {
-			ability: new StringField({ blank: false, initial: "intelligence" }),
+			ability: new StringField({ required: true, blank: false, initial: "intelligence" }),
 			cantrips: new SchemaField({
 				scale: new DocumentIdField()
 			}),
@@ -191,6 +191,7 @@ export class SpellcastingConfigurationData extends AdvancementDataModel {
  * @property {Record<string, ReplacedFeatureData>} replaced - Spells replaced at a given level.
  */
 export class SpellcastingValueData extends foundry.abstract.DataModel {
+	/** @override */
 	static defineSchema() {
 		return {
 			added: new MappingField(
