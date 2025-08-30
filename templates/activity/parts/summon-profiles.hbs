@@ -81,18 +81,15 @@
 				{{#if (eq mode "cr")}}
 					{{ formField fields.types name=(concat prefix "types") value=data.types options=typeOptions }}
 				{{/if}}
-				<div class="form-group">
-						<label>{{ localize "BF.SUMMON.FIELDS.profiles.FIELDS.level.label" }}</label>
-						<div class="form-fields range-fields">
-								{{ formInput fields.level.fields.min name=(concat prefix "level.min") value=data.level.min
-								             placeholder="0" ariaLabel=(localize "DND5E.LevelLimit.Min") }}
-								<span class="separator">—</span>
-								{{ formInput fields.level.fields.max name=(concat prefix "level.max") value=data.level.max
-								             placeholder="∞" ariaLabel=(localize "DND5E.LevelLimit.Max") }}
-						</div>
-						<p class="hint">{{ localize "BF.SUMMON.FIELDS.profiles.FIELDS.level.hint" }}</p>
-				</div>
-			</div>
+				{{#blackFlag-formGroup "BF.SUMMON.FIELDS.profiles.FIELDS.level.label" interiorClasses="range-fields"
+				                       hint=(localize "BF.SUMMON.FIELDS.profiles.FIELDS.level.hint")}}
+					{{ formInput fields.level.fields.min name=(concat prefix "level.min") value=data.level.min
+					             placeholder="0" ariaLabel=(localize "DND5E.LevelLimit.Min") }}
+					<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg"
+					                class="separator"></blackFlag-icon>
+					{{ formInput fields.level.fields.max name=(concat prefix "level.max") value=data.level.max
+					             placeholder="∞" ariaLabel=(localize "DND5E.LevelLimit.Max") }}
+				{{/blackFlag-formGroup}}
 		</div>
 	</div>
 {{/inline}}

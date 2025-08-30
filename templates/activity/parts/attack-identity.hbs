@@ -1,19 +1,11 @@
 <fieldset>
 	<legend>{{ localize "BF.ATTACK.Label" }}</legend>
-	<div class="field-group">
-		<label>
-			<span>{{ localize "BF.ATTACK.FIELDS.attack.type.value.label" }}</span>
-			<select name="system.attack.type.value">
-				{{ selectOptions CONFIG.weaponTypes selected=source.system.attack.type.value blank=defaultType
-												 labelAttr="label" localize=true }}
-			</select>
-		</label>
-		<label>
-			<span>{{ localize "BF.ATTACK.FIELDS.attack.type.classification.label" }}</span>
-			<select name="system.attack.type.classification">
-				{{ selectOptions CONFIG.attackTypes selected=source.system.attack.type.classification
-												 blank=defaultClassification localize=true }}
-			</select>
-		</label>
-	</div>
+	{{#blackFlag-formGroup}}
+		{{ formGroup systemFields.attack.fields.type.fields.value value=source.system.attack.type.value
+		             options=CONFIG.weaponTypes.localizedOptions classes="label-top"
+		             blank=(ifThen defaultType defaultType false) rootId=partId }}
+		{{ formGroup systemFields.attack.fields.type.fields.classification value=source.system.attack.type.classification
+		             options=CONFIG.attackTypes.localizedOptions classes="label-top"
+		             blank=(ifThen defaultClassification defaultClassification false) rootId=partId }}
+	{{/blackFlag-formGroup}}
 </fieldset>

@@ -1,15 +1,12 @@
 <fieldset>
 	<legend>{{ localize "BF.ACTIVITY.FIELDS.visibility.label" }}</legend>
 	{{> "blackFlag.fieldlist" visibilityFields }}
-	<div class="form-group">
-		<label>{{ localize "BF.ACTIVITY.FIELDS.visibility.level.label" }}</label>
-		<div class="form-fields range-fields">
-			{{ formInput fields.visibility.fields.level.fields.min value=source.visibility.level.min placeholder="0" }}
-			<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
-			{{ formInput fields.visibility.fields.level.fields.max value=source.visibility.level.max placeholder="∞" }}
-		</div>
-		<p class="hint">{{ localize "BF.ACTIVITY.FIELDS.visibility.level.hint" }}</p>
-	</div>
+	{{#blackFlag-formGroup "BF.ACTIVITY.FIELDS.visibility.level.label" interiorClasses="range-fields"
+	                       hint=(localize "BF.ACTIVITY.FIELDS.visibility.level.hint")}}
+		{{ formInput fields.visibility.fields.level.fields.min value=source.visibility.level.min placeholder="0" }}
+		<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
+		{{ formInput fields.visibility.fields.level.fields.max value=source.visibility.level.max placeholder="∞" }}
+	{{/blackFlag-formGroup}}
 	{{#unless activity.isSpell}}
 	{{ formField fields.visibility.fields.identifier value=source.visibility.identifier rootId=partId }}
 	{{/unless}}

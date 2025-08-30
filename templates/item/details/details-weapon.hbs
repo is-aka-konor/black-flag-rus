@@ -14,17 +14,14 @@
 	{{#if properties.magical.selected}}
 		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
-	<div class="damage form-group split-group">
-		<label>{{ localize "BF.DAMAGE.Label" }}</label>
-		<div class="form-fields">
-			{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
-			             localize=true rootId=partId }}
-			{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
-			             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
-			{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
-			             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.DAMAGE.Label" classes="damage"}}
+		{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
+		             localize=true rootId=partId }}
+		{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
+		             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
+		{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
+		             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 	{{#if properties.ammunition.selected}}
 		{{ formGroup fields.ammunition.fields.type value=source.ammunition.type options=CONFIG.ammunition.localizedOptions
 		             localize=true rootId=partId }}
@@ -33,28 +30,23 @@
 		{{ formGroup fields.ammunition.fields.capacity value=source.ammunition.capacity localize=true rootId=partId }}
 	{{/if}}
 	{{#if (or (eq source.type.category "natural") (eq source.type.value "ranged") properties.thrown.selected)}}
-		<div class="range form-group split-group">
-			<label>{{ localize "BF.RANGE.Label" }}</label>
-			<div class="form-fields">
-				{{ formField fields.range.fields.short value=source.range.short classes="label-top" rootId=partId }}
-				{{ formField fields.range.fields.long value=source.range.long classes="label-top" rootId=partId }}
-				{{#unless properties.reach.selected}}
-					{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions
-					             classes="label-top" rootId=partId }}
-				{{/unless}}
-			</div>
-		</div>
-	{{/if}}
-	{{#if properties.reach.selected}}
-		<div class="form-group split-group">
-			<label>{{ localize "BF.Reach.Label" }}</label>
-			<div class="form-fields">
-				{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder=reachPlaceholder
-				             rootId=partId }}
+		{{#blackFlag-formGroup "BF.RANGE.Label" interiorClasses="range-fields"}}
+			{{ formField fields.range.fields.short value=source.range.short classes="label-top" rootId=partId }}
+			<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
+			{{ formField fields.range.fields.long value=source.range.long classes="label-top" rootId=partId }}
+			{{#unless properties.reach.selected}}
 				{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions
 				             classes="label-top" rootId=partId }}
-			</div>
-		</div>
+			{{/unless}}
+		{{/blackFlag-formGroup}}
+	{{/if}}
+	{{#if properties.reach.selected}}
+		{{#blackFlag-formGroup "BF.Reach.Label"}}
+			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder=reachPlaceholder
+			             rootId=partId }}
+			{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions
+			             classes="label-top" rootId=partId }}
+		{{/blackFlag-formGroup}}
 	{{/if}}
 </fieldset>
 

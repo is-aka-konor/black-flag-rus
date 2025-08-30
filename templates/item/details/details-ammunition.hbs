@@ -13,17 +13,14 @@
 		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" rootId=partId }}
 	{{/if}}
 	{{ formGroup fields.damage.fields.replace value=source.damage.replace classes="label-hinted" rootId=partId }}
-	<div class="damage form-group split-group">
-		<label>{{ localize "BF.DAMAGE.Label" }}</label>
-		<div class="form-fields">
-			{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
-			             localize=true rootId=partId }}
-			{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
-			             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
-			{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
-			             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.DAMAGE.Label" classes="damage"}}
+		{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
+		             localize=true rootId=partId }}
+		{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
+		             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
+		{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
+		             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 </fieldset>
 
 {{> "blackFlag.item-activities" }}

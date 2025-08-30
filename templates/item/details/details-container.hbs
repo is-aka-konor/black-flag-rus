@@ -13,22 +13,16 @@
 	<legend>{{ localize "BF.Container.Capacity.Label" }}</legend>
 	{{ formGroup fields.capacity.fields.count value=source.capacity.count
 	             placeholder=(localize "BF.Container.Capacity.Unlimited") localize=true rootId=partId }}
-	<div class="form-group split-group">
-		<label>{{ localize "BF.Container.Capacity.Weight.Label" }}</label>
-		<div class="form-fields">
-			{{ formGroup fields.capacity.fields.weight.fields.value value=source.capacity.weight.value
-									 placeholder=(localize "BF.Container.Capacity.Unlimited") label="" localize=true rootId=partId }}
-			{{ formGroup fields.capacity.fields.weight.fields.unit value=source.capacity.weight.unit
-									 options=CONFIG.weightUnits.localizedOptions label="" localize=true rootId=partId }}
-		</div>
-	</div>
-	<div class="form-group split-group">
-		<label>{{ localize "BF.Container.Capacity.Volume.Label" }}</label>
-		<div class="form-fields">
-			{{ formGroup fields.capacity.fields.volume.fields.value value=source.capacity.volume.value
-									 placeholder=(localize "BF.Container.Capacity.Unlimited") label="" localize=true rootId=partId }}
-			{{ formGroup fields.capacity.fields.volume.fields.unit value=source.capacity.volume.unit
-									 options=CONFIG.volumeUnits.localizedOptions label="" localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.Container.Capacity.Weight.Label"}}
+		{{ formGroup fields.capacity.fields.weight.fields.value value=source.capacity.weight.value
+		             placeholder=(localize "BF.Container.Capacity.Unlimited") label="" localize=true rootId=partId }}
+		{{ formGroup fields.capacity.fields.weight.fields.unit value=source.capacity.weight.unit
+		             options=CONFIG.weightUnits.localizedOptions label="" localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
+	{{#blackFlag-formGroup "BF.Container.Capacity.Volume.Label"}}
+		{{ formGroup fields.capacity.fields.volume.fields.value value=source.capacity.volume.value
+		             placeholder=(localize "BF.Container.Capacity.Unlimited") label="" localize=true rootId=partId }}
+		{{ formGroup fields.capacity.fields.volume.fields.unit value=source.capacity.volume.unit
+		             options=CONFIG.volumeUnits.localizedOptions label="" localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 </fieldset>

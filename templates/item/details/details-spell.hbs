@@ -1,32 +1,7 @@
-{{#if showConfiguration}}
+{{#if configurationFields}}
 	<fieldset>
 		<legend>{{ localize "BF.Spell.Configuration" }}</legend>
-		<label>
-			<span>{{ localize "BF.Spell.Preparation.Label" }}</span>
-			<select name="flags.black-flag.relationship.mode">
-				{{ selectOptions CONFIG.spellPreparationModes.localized selected=flags.black-flag.relationship.mode }}
-			</select>
-		</label>
-		{{#if item.system.alwaysPreparable}}
-			<label class="full-checkbox">
-				<span>{{ localize "BF.Spell.Preparation.AlwaysPrepared" }}</span>
-				<input type="checkbox" name="flags.black-flag.relationship.alwaysPrepared"
-			         {{ checked flags.black-flag.relationship.alwaysPrepared }}>
-			</label>
-		{{/if}}
-		<label>
-			<span>{{ localize "BF.Spellcasting.Ability.Label" }}</span>
-			<select name="flags.black-flag.relationship.origin.ability">
-				{{ selectOptions CONFIG.abilities.localized selected=flags.black-flag.relationship.origin.ability
-		  	                 blank=(localize "BF.Default.Specific" default=system.defaultAbility) }}
-			</select>
-		</label>
-		<label>
-			<span>{{ localize "BF.Spellcasting.Origin" }}</span>
-			<select name="flags.black-flag.relationship.origin.identifier">
-				{{ selectOptions originOptions selected=flags.black-flag.relationship.origin.identifier }}
-			</select>
-		</label>
+		{{> "blackFlag.fieldlist" configurationFields }}
 	</fieldset>
 {{/if}}
 
@@ -37,30 +12,24 @@
 
 <fieldset class="casting">
 	<legend>{{ localize "BF.Spell.Casting.Label" }}</legend>
-	<div class="form-group split-group">
-		<label>{{ localize "BF.Spell.CastingTime.Label" }}</label>
-		<div class="form-fields">
-			{{#if system.casting.scalar}}
-			{{ formGroup fields.casting.fields.value value=source.casting.value classes="label-top" localize=true
-			             rootId=partId }}
-			{{/if}}
-			{{ formGroup fields.casting.fields.type value=source.casting.type options=activationOptions classes="label-top"
-									 localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.Spell.CastingTime.Label"}}
+		{{#if system.casting.scalar}}
+		{{ formGroup fields.casting.fields.value value=source.casting.value classes="label-top" localize=true
+		             rootId=partId }}
+		{{/if}}
+		{{ formGroup fields.casting.fields.type value=source.casting.type options=activationOptions classes="label-top"
+		             localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 	{{ formGroup fields.casting.fields.condition value=source.casting.condition localize=true rootId=partId }}
-	<div class="form-group split-group">
-		<label>{{ localize "BF.DURATION.Label" }}</label>
-		<div class="form-fields">
-			{{#if system.duration.scalar}}
-			{{ formGroup fields.duration.fields.value value=source.duration.value classes="label-top" localize=true
-									 rootId=partId }}
-			{{!-- TODO: If formula is used, add tooltip to display value at various levels --}}
-			{{/if}}
-			{{ formGroup fields.duration.fields.unit value=source.duration.unit options=durationOptions classes="label-top"
-									 localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.DURATION.Label"}}
+		{{#if system.duration.scalar}}
+		{{ formGroup fields.duration.fields.value value=source.duration.value classes="label-top" localize=true
+		             rootId=partId }}
+		{{!-- TODO: If formula is used, add tooltip to display value at various levels --}}
+		{{/if}}
+		{{ formGroup fields.duration.fields.unit value=source.duration.unit options=durationOptions classes="label-top"
+		             localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 	{{#if (eq system.duration.unit "special")}}
 		{{ formGroup fields.duration.fields.special value=source.duration.special localize=true rootId=partId }}
 	{{/if}}
@@ -96,17 +65,15 @@
 	{{#if components.material.selected}}
 		{{ formGroup fields.components.fields.material.fields.description value=source.components.material.description
 		             localize=true rootId=partId }}
-		<div class="form-group split-group">
-			<label>{{ localize "BF.Spell.Component.Material.Cost.Label" }}</label>
-			<div class="form-fields">
-				{{ formGroup fields.components.fields.material.fields.cost value=source.components.material.cost
-										 classes="label-top" localize=true rootId=partId }}
-				{{ formGroup fields.components.fields.material.fields.denomination value=source.components.material.denomination
-										 options=CONFIG.currencies.localizedAbbreviationOptions classes="label-top" localize=true rootId=partId }}
-				{{ formGroup fields.components.fields.material.fields.consumed value=source.components.material.consumed
-										 disabled=(not source.components.material.cost) classes="label-top" localize=true rootId=partId }}
-			</div>
-		</div>
+		{{#blackFlag-formGroup "BF.Spell.Component.Material.Cost.Label"}}
+			{{ formGroup fields.components.fields.material.fields.cost value=source.components.material.cost
+			             classes="label-top" localize=true rootId=partId }}
+			{{ formGroup fields.components.fields.material.fields.denomination value=source.components.material.denomination
+			             options=CONFIG.currencies.localizedAbbreviationOptions classes="label-top" localize=true
+			             rootId=partId }}
+			{{ formGroup fields.components.fields.material.fields.consumed value=source.components.material.consumed
+			             disabled=(not source.components.material.cost) classes="label-top" localize=true rootId=partId }}
+		{{/blackFlag-formGroup}}
 	{{/if}}
 </fieldset>
 

@@ -37,16 +37,16 @@
 
 {{#if additionalSettings}}
 <div class="additional-tray collapsible {{ collapsed }}" data-action="toggleCollapsed">
-		<label>
-				<i class="fa-solid fa-gears" inert></i>
-				<span>{{ localize "BF.AdditionalControls" }}</span>
-				<i class="fa-solid fa-caret-down" inert></i>
-		</label>
-		<div class="collapsible-content">
-				<div class="wrapper">
-						{{> (lookup . "additionalSettings") }}
-				</div>
+	<label>
+		<i class="fa-solid fa-gears" inert></i>
+		<span>{{ localize "BF.AdditionalControls" }}</span>
+		<i class="fa-solid fa-caret-down" inert></i>
+	</label>
+	<div class="collapsible-content">
+		<div class="wrapper">
+			{{> (lookup . "additionalSettings") }}
 		</div>
+	</div>
 </div>
 {{/if}}
 {{/inline}}

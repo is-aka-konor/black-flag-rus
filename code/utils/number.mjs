@@ -45,6 +45,7 @@ export function convertAmount(obj, type, { keys=["value"], valueObjectKey }={}) 
 		case "cargo":
 		case "weight": units = CONFIG.BlackFlag.weightUnits; break;
 	}
+	if ( !(obj.unit in units) ) return;
 	let baseUnit = obj.unit;
 	const to = obj.unit = preferredUnit(obj.unit, { system, units });
 

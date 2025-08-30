@@ -23,22 +23,22 @@ export default class ConsumptionTargetsField extends ArrayField {
 /**
  * Data model for consumption targets.
  *
- * @property {string} type             Type of consumption (e.g. activity uses, item uses, hit die, spell slot).
- * @property {string} target           Target of the consumption depending on the selected type (e.g. item's ID, hit
- *                                     die denomination, spell slot circle).
- * @property {string} value            Formula that determines amount consumed or recovered.
  * @property {object} scaling
- * @property {string} scaling.mode     Scaling mode (e.g. no scaling, scale target amount, scale spell circle).
- * @property {string} scaling.formula  Specific scaling formula if not automatically calculated from target's value.
+ * @property {string} scaling.formula - Specific scaling formula if not automatically calculated from target's value.
+ * @property {string} scaling.mode - Scaling mode (e.g. no scaling, scale target amount, scale spell circle).
+ * @property {string} target - Target of the consumption depending on the selected type (e.g. item's ID, hit die
+ *                             denomination, spell slot circle).
+ * @property {string} type - Type of consumption (e.g. activity uses, item uses, hit die, spell slot).
+ * @property {string} value - Formula that determines amount consumed or recovered.
  */
 export class ConsumptionTargetData extends foundry.abstract.DataModel {
 	static defineSchema() {
 		return {
-			type: new StringField({ required: true, blank: false, initial: "activity", label: "BF.CONSUMPTION.Type.Label" }),
-			target: new StringField({ label: "BF.Consumption.Target.Label" }),
-			value: new FormulaField({ initial: "1", label: "BF.Consumption.Amount.Label" }),
+			target: new StringField(),
+			type: new StringField({ required: true, blank: false, initial: "activity" }),
+			value: new FormulaField({ initial: "1" }),
 			scaling: new SchemaField({
-				mode: new StringField({ label: "BF.DAMAGE.Scaling.Mode.Label" }),
+				mode: new StringField(),
 				formula: new FormulaField()
 			})
 		};
@@ -96,8 +96,8 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 	get scalingModes() {
 		if (CONFIG.BlackFlag.consumptionTypes[this.type]?.scalingModes === false) return null;
 		return [
-			{ value: "", label: game.i18n.localize("BF.Consumption.Scaling.Mode.None") },
-			{ value: "amount", label: game.i18n.localize("BF.Consumption.Scaling.Mode.Amount") },
+			{ value: "", label: game.i18n.localize("BF.CONSUMPTION.Scaling.Mode.None") },
+			{ value: "amount", label: game.i18n.localize("BF.CONSUMPTION.Scaling.Mode.Amount") },
 			...Object.entries(CONFIG.BlackFlag.consumptionTypes[this.type].scalingModes ?? {}).map(([value, config]) => ({
 				value,
 				label: game.i18n.localize(config.label)

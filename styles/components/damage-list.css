@@ -17,11 +17,6 @@ blackFlag-damageList {
 			.die-count, .die-denomination {
 				flex: 0 0 5em;
 			}
-			.plus {
-				align-self: center;
-				padding-block-start: 0.9em;
-				font-size: var(--font-size-16);
-			}
 			.bonus {
 				flex: 0 0 8em;
 			}

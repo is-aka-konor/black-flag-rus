@@ -42,7 +42,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/** @override */
-	static LOCALIZATION_PREFIXES = ["BF.SOURCE"];
+	static LOCALIZATION_PREFIXES = ["BF.SOURCE", "BF.DURATION", "BF.RANGE", "BF.TARGET"];
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
@@ -591,19 +591,6 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		};
 		context.activationOptions = CONFIG.BlackFlag.activationOptions({ formOptions: true });
 		context.durationOptions = CONFIG.BlackFlag.durationOptions({ formOptions: true, isSpell: true });
-		context.originOptions = [
-			{ value: "", label: "" },
-			...Object.entries(CONFIG.BlackFlag.registration.list("class")).map(([value, data]) => ({
-				value,
-				label: data.name,
-				group: game.i18n.localize("BF.Item.Type.Class[other]")
-			})),
-			...Object.entries(CONFIG.BlackFlag.registration.list("subclass")).map(([value, data]) => ({
-				value,
-				label: data.name,
-				group: game.i18n.localize("BF.Item.Type.Subclass[other]")
-			}))
-		];
 		context.rangeOptions = [
 			{ value: "", label: "" },
 			{ rule: true },
@@ -613,7 +600,54 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 				group: game.i18n.localize("BF.Distance.Label")
 			}))
 		];
-		context.showConfiguration = this.parent.isEmbedded && !this.parent.getFlag(game.system.id, "cachedFor");
+
+		if (this.parent.isEmbedded && !this.parent.getFlag(game.system.id, "cachedFor")) {
+			const flag = this.parent.getFlag(game.system.id, "relationship") ?? {};
+			context.configurationFields = [
+				{
+					field: new StringField({ required: true, blank: false }),
+					label: game.i18n.localize("BF.Spell.Preparation.Label"),
+					name: "flags.black-flag.relationship.mode",
+					options: CONFIG.BlackFlag.spellPreparationModes.localizedOptions,
+					value: flag.mode
+				},
+				{
+					field: new BooleanField(),
+					label: game.i18n.localize("BF.Spell.Preparation.AlwaysPrepared"),
+					name: "flags.black-flag.relationship.alwaysPrepared",
+					value: flag.alwaysPrepared
+				},
+				{
+					field: new StringField(),
+					label: game.i18n.localize("BF.Spellcasting.Ability.Label"),
+					name: "flags.black-flag.relationship.origin.ability",
+					options: [
+						{ value: "", label: game.i18n.format("BF.Default.Specific", { default: this.defaultAbility }), rule: true },
+						...CONFIG.BlackFlag.abilities.localizedOptions
+					],
+					value: flag.origin?.ability
+				},
+				{
+					field: new StringField({ required: true, blank: false }),
+					label: game.i18n.localize("BF.Spellcasting.Origin"),
+					name: "flags.black-flag.relationship.origin.identifier",
+					options: [
+						{ value: "", label: "" },
+						...Object.entries(CONFIG.BlackFlag.registration.list("class")).map(([value, data]) => ({
+							value,
+							label: data.name,
+							group: game.i18n.localize("BF.Item.Type.Class[other]")
+						})),
+						...Object.entries(CONFIG.BlackFlag.registration.list("subclass")).map(([value, data]) => ({
+							value,
+							label: data.name,
+							group: game.i18n.localize("BF.Item.Type.Subclass[other]")
+						}))
+					],
+					value: flag.origin?.identifier
+				}
+			].filter(_ => _);
+		}
 
 		context.spellCircleOptions = CONFIG.BlackFlag.spellCircles({ formOptions: true });
 	}

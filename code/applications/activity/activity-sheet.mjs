@@ -158,6 +158,7 @@ export default class ActivitySheet extends PseudoDocumentSheet {
 
 		context.durationOptions = CONFIG.BlackFlag.durationOptions({
 			chosen: this.activity.duration.unit,
+			formOptions: true,
 			isSpell: this.activity.isSpell
 		});
 

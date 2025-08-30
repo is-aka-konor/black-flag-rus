@@ -5,25 +5,16 @@
 
 	<fieldset class="activation" {{ disabled disabled.activation }}>
 		<legend>{{ localize "BF.ACTIVATION.Label" }}</legend>
-		<div class="field-group">
-			<span>{{ localize "BF.ACTIVATION.Time" }}</span>
+		{{#blackFlag-formGroup "BF.ACTIVATION.Time"}}
 			{{#if activation.scalar}}
-				<label>
-					<span>{{ localize "BF.ACTIVATION.FIELDS.activation.value.label" }}</span>
-					<input type="number" name="activation.value" value="{{ data.activation.value }}" min="0" step="1">
-				</label>
+				{{ formGroup fields.activation.fields.value value=source.activation.value classes="label-top" localize=true
+				             rootId=partId }}
 			{{/if}}
-			<label>
-				<span>{{ localize "BF.ACTIVATION.FIELDS.activation.type.label" }}</span>
-				<select name="activation.type">
-					{{ selectOptions activation.options selected=data.activation.type }}
-				</select>
-			</label>
-		</div>
-		<label>
-			<span>{{ localize "BF.ACTIVATION.FIELDS.activation.condition.label" }}</span>
-			<input type="text" name="activation.condition" value="{{ data.activation.condition }}">
-		</label>
+			{{ formGroup fields.activation.fields.type value=source.activation.type options=activation.options
+			             classes="label-top" localize=true rootId=partId }}
+		{{/blackFlag-formGroup}}
+		{{ formGroup fields.activation.fields.condition value=source.activation.condition
+								 localize=true rootId=partId }}
 	</fieldset>
 
 	{{#if activity.duration.canOverride}}
@@ -32,26 +23,17 @@
 
 	<fieldset class="duration" {{ disabled disabled.duration }}>
 		<legend>{{ localize "BF.DURATION.Label" }}</legend>
-		<div class="field-group">
-			<span>{{ localize "BF.DURATION.Label" }}</span>
+		{{#blackFlag-formGroup "BF.DURATION.Label"}}
 			{{#if activity.duration.scalar}}
-				<label>
-					<span>{{ localize "BF.DURATION.FIELDS.duration.value.label" }}</span>
-					<input type="text" name="duration.value" value="{{ data.duration.value }}">
-				</label>
+				{{ formGroup fields.duration.fields.value value=source.duration.value classes="label-top" localize=true
+				             rootId=partId }}
 			{{/if}}
-			<label>
-				<span>{{ localize "BF.DURATION.FIELDS.duration.unit.label" }}</span>
-				<select name="duration.unit">
-					{{ blackFlag-groupedSelectOptions durationOptions }}
-				</select>
-			</label>
-		</div>
+			{{ formGroup fields.duration.fields.unit value=source.duration.unit options=durationOptions
+			             classes="label-top" localize=true rootId=partId }}
+		{{/blackFlag-formGroup}}
 		{{#if (eq activity.duration.unit "special")}}
-			<label>
-				<span>{{ localize "BF.DURATION.FIELDS.duration.special.label" }}</span>
-				<input type="text" name="duration.special" value="{{ data.duration.special }}">
-			</label>
+			{{ formGroup fields.duration.fields.special value=source.duration.special
+									localize=true rootId=partId }}
 		{{/if}}
 		{{ formField fields.duration.fields.concentration value=data.duration.concentration rootId=partId }}
 	</fieldset>

@@ -12,23 +12,17 @@
 				{{ formGroup fields.quantity value=source.quantity classes="label-adjacent uninputs" localize=true
 				             rootId=partId }}
 				{{#unless hidePrice}}
-					<div class="form-group label-adjacent uninputs">
-						<label>{{ localize "BF.Price.Label" }}</label>
-						<div class="form-fields">
-							{{ formInput fields.price.fields.value value=source.price.value }}
-							{{ formInput fields.price.fields.denomination value=source.price.denomination blank=false
-							             options=CONFIG.currencies.localizedAbbreviationOptions }}
-						</div>
-					</div>
+					{{#blackFlag-formGroup "BF.Price.Label" classes="label-adjacent uninputs"}}
+						{{ formInput fields.price.fields.value value=source.price.value }}
+						{{ formInput fields.price.fields.denomination value=source.price.denomination blank=false
+						             options=CONFIG.currencies.localizedAbbreviationOptions }}
+					{{/blackFlag-formGroup}}
 				{{/unless}}
-				<div class="form-group label-adjacent uninputs">
-					<label>{{ localize "BF.Weight.Label" }}</label>
-					<div class="form-fields">
-						{{ formInput fields.weight.fields.value value=source.weight.value }}
-						{{ formInput fields.weight.fields.unit value=source.weight.unit blank=false
-												 options=CONFIG.weightUnits.localizedAbbreviationOptions }}
-					</div>
-				</div>
+				{{#blackFlag-formGroup "BF.Weight.Label" classes="label-adjacent uninputs"}}
+					{{ formInput fields.weight.fields.value value=source.weight.value }}
+					{{ formInput fields.weight.fields.unit value=source.weight.unit blank=false
+					             options=CONFIG.weightUnits.localizedAbbreviationOptions }}
+				{{/blackFlag-formGroup}}
 			</div>
 		{{/if}}
 		{{#if isIdentified}}

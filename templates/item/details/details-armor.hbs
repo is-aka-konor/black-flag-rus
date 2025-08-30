@@ -11,21 +11,17 @@
 
 <fieldset>
 	<legend>{{ localize "BF.Armor.Details" }}</legend>
-	<div class="armor-value form-group">
-		{{#if (eq system.type.category "shield")}}
-			<label>{{ localize "BF.Shield.Bonus.Label" }}</label>
-			<div class="form-fields">
-				<span class="separator">+</span>
-				{{ formInput fields.armor.fields.value value=source.armor.value placeholder="2" rootId=partId }}
-			</div>
-		{{else}}
-			<label>{{ localize "BF.Armor.Value.Label" }}</label>
-			<div class="form-fields">
-				{{ formInput fields.armor.fields.value value=source.armor.value rootId=partId }}
-				<span>{{ modifierHint }}</span>
-			</div>
-		{{/if}}
-	</div>
+	{{#if (eq system.type.category "shield")}}
+		{{#blackFlag-formGroup "BF.Shield.Bonus.Label" classes="armor-value"}}
+			<span class="separator">+</span>
+			{{ formInput fields.armor.fields.value value=source.armor.value placeholder="2" rootId=partId }}
+		{{/blackFlag-formGroup}}
+	{{else}}
+		{{#blackFlag-formGroup "BF.Armor.Value.Label" classes="armor-value"}}
+			{{ formInput fields.armor.fields.value value=source.armor.value rootId=partId }}
+			<span>{{ modifierHint }}</span>
+		{{/blackFlag-formGroup}}
+	{{/if}}
 	{{#if properties.magical.selected}}
 		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
@@ -38,16 +34,13 @@
 
 <fieldset>
 	<legend>{{ localize "BF.Override.Label[other]" }}</legend>
-	<div class="modifier-overrides form-group split-group">
-		<label>{{ localize "BF.Armor.Modifier.Label" }}</label>
-		<div class="form-fields range-fields">
-			{{ formGroup fields.modifier.fields.min value=source.modifier.min placeholder=system.modifier.minPlaceholder
-			             classes="label-top" label="BF.Number.Minimum" localize=true rootId=partId }}
-			<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
-			{{ formGroup fields.modifier.fields.max value=source.modifier.max placeholder=system.modifier.maxPlaceholder
-									 classes="label-top" label="BF.Number.Maximum" localize=true rootId=partId }}
-		</div>
-	</div>
+	{{#blackFlag-formGroup "BF.Armor.Modifier.Label" interiorClasses="range-fields"}}
+		{{ formGroup fields.modifier.fields.min value=source.modifier.min placeholder=system.modifier.minPlaceholder
+		             classes="label-top" label="BF.Number.Minimum" localize=true rootId=partId }}
+		<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
+		{{ formGroup fields.modifier.fields.max value=source.modifier.max placeholder=system.modifier.maxPlaceholder
+		             classes="label-top" label="BF.Number.Maximum" localize=true rootId=partId }}
+	{{/blackFlag-formGroup}}
 	{{ formGroup fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
 							 input=inputs.createSelectInput localize=true rootId=partId }}
 </fieldset>

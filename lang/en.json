@@ -1244,8 +1244,57 @@
 },
 
 "BF.CONSUMPTION": {
+	"Action": {
+		"Add": "Add Consumption Target",
+		"Delete": "Delete Consumption Target"
+	},
 	"FIELDS": {
-
+		"consumption": {
+			"label": "Resource Consumption",
+			"scale": {
+				"allowed": {
+					"hint": "Can additional resources be consumed to scale this activity above its baseline?",
+					"label": "Allow Scaling"
+				},
+				"max": {
+					"hint": "Total number of scaling steps including the base activation level.",
+					"label": "Max Scaling"
+				}
+			},
+			"targets": {
+				"element": {
+					"scaling": {
+						"formula": {
+							"label": "Scaling Formula"
+						},
+						"label": "Scaling",
+						"mode": {
+							"label": "Scaling Mode"
+						}
+					},
+					"target": {
+						"label": "Target"
+					},
+					"type": {
+						"label": "Type"
+					},
+					"value": {
+						"label": "Amount"
+					}
+				},
+				"label": "Consumption Targets"
+			}
+		}
+	},
+	"Scaling": {
+		"Automatic": "Automatic Scaling",
+		"Label": "Scaling",
+		"Mode": {
+			"Amount": "Scale Amount",
+			"Circle": "Scale Spell Circle",
+			"None": "No Scaling"
+		},
+		"Value": "Scaling Value"
 	},
 	"Type": {
 		"Label": "Type",
@@ -1322,46 +1371,6 @@
 			"Limited": "{value} {type}",
 			"Period": "{value} per {period}"
 		}
-	}
-},
-
-"BF.Consumption": {
-	"Label": "Resource Consumption",
-	"Action": {
-		"Add": "Add Consumption Target",
-		"Delete": "Delete Consumption Target"
-	},
-	"AllowScaling": {
-		"Label": "Allow Scaling",
-		"Hint": "Can additional resources be consumed to scale this activity above its baseline?"
-	},
-	"Amount": {
-		"Label": "Amount"
-	},
-	"MaxScaling": {
-		"Label": "Max Scaling",
-		"Hint": "Total number of scaling steps including the base activation level."
-	},
-	"Scale": {
-		"Label": "Scale"
-	},
-	"Scaling": {
-		"Label": "Scaling",
-		"Formula": {
-			"Label": "Scaling Formula",
-			"Automatic": "Automatic Scaling"
-		},
-		"Increase": "Scaling Increase",
-		"Mode": {
-			"Label": "Scaling Mode",
-			"Amount": "Scale Amount",
-			"Circle": "Scale Spell Circle",
-			"None": "No Scaling"
-		},
-		"Value": "Scaling Value"
-	},
-	"Target": {
-		"Label": "Target"
 	}
 },
 

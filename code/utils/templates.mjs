@@ -25,6 +25,33 @@ function dataset(context, options) {
 /* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
+ * A helper that creates a form group with the provided contents as children.
+ * @param {object} context - Current evaluation context.
+ * @param {object} options - Handlebars options.
+ * @returns {string}
+ */
+function formGroup(context, options) {
+	let label;
+	if ( arguments.length !== 2 ) options = context;
+	else {
+		label = context;
+		if ( foundry.utils.getType(context) === "function" ) label = label.call(this);
+	}
+
+	return `
+	<div class="form-group split-group ${options.hash.classes ?? ""}">${label ? `
+		<label>${game.i18n.localize(label)}</label>` : ""}
+		<div class="form-fields ${options.hash.interiorClasses ?? ""}">
+			${options.fn(this)}
+		</div>${options.hash.hint ? `
+		<p class="hint">${options.hash.hint}</p>` : ""}
+	</div>
+	`;
+}
+
+/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
+
+/**
  * Create an icon element dynamically based on the provided icon string, supporting FontAwesome class strings
  * or paths to SVG or other image types.
  * @param {string} icon - Icon class or path.
@@ -70,8 +97,6 @@ function groupedSelectOptions(choices, options) {
 	}
 	return foundry.applications.handlebars.selectOptions(formOptions, { hash: {} });
 }
-
-/* <><><><> <><><><> <><><><> <><><><> <><><><> <><><><> */
 
 /**
  * A helper that fetch the appropriate item context from root and adds it to the first block parameter.
@@ -183,6 +208,7 @@ function notificationBadge(document, options={}) {
 export function registerHandlebarsHelpers() {
 	Handlebars.registerHelper({
 		"blackFlag-dataset": dataset,
+		"blackFlag-formGroup": formGroup,
 		"blackFlag-groupedSelectOptions": (choices, options) => groupedSelectOptions(choices, options.hash),
 		"blackFlag-icon": (icon, { hash: options }) => {
 			let element = generateIcon(icon, options);

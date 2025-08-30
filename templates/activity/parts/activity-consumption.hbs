@@ -1,12 +1,14 @@
 <section class="tab activity-{{ tab.id }} {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 	<blackFlag-consumption name="consumption">
 		<fieldset>
-			<legend>{{ localize "BF.Consumption.Label" }}</legend>
+			<legend>{{ localize "BF.CONSUMPTION.FIELDS.consumption.label" }}</legend>
 			<ul class="configuration-list">
 				{{#each activity.consumption.targets}}
 					<li data-index="{{ @index }}">
 						{{> "systems/black-flag/templates/activity/parts/activity-consumption-part.hbs" consumption=this
-						    prefix=(concat "$.targets." @index ".") scalingAllowed=@root.activity.consumption.scale.allowed }}
+						    fields=@root.fields.consumption.fields.targets.element.fields
+								prefix=(concat "consumption.targets." @index ".")
+						    scalingAllowed=@root.source.consumption.scale.allowed }}
 					</li>
 				{{else}}
 					{{#unless editable}}
@@ -16,32 +18,19 @@
 				{{#if editable}}
 					<li class="add-control">
 						<button type="button" class="link-button" data-action="add">
-							 <i class="fa-solid fa-plus" inert></i> {{ localize "BF.Consumption.Action.Add" }}
+							 <i class="fa-solid fa-plus" inert></i> {{ localize "BF.CONSUMPTION.Action.Add" }}
 						</button>
 					</li>
 				{{/if}}
 			</ul>
-			<label class="full-checkbox">
-				<span class="hinted-label" data-tooltip="BF.Consumption.AllowScaling.Hint">
-					{{ localize "BF.Consumption.AllowScaling.Label" }}
-				</span>
-				<input type="checkbox" name="$.scale.allowed" {{ checked activity.consumption.scale.allowed }}>
-			</label>
-			{{#if activity.consumption.scale.allowed}}
-				<label>
-					<span class="hinted-label" data-tooltip="BF.Consumption.MaxScaling.Hint">
-						{{ localize "BF.Consumption.MaxScaling.Label" }}
-					</span>
-					<input type="text" name="$.scale.max" value="{{ activity.consumption.scale.max }}" placeholder="∞">
-				</label>
+			{{ formGroup fields.consumption.fields.scale.fields.allowed value=source.consumption.scale.allowed
+			             rootId=partId }}
+			{{#if source.consumption.scale.allowed}}
+				{{ formGroup fields.consumption.fields.scale.fields.max value=source.consumption.scale.max
+				             placeholder="∞" rootId=partId }}
 			{{/if}}
 			{{#if showPrimaryActivation}}
-				<label class="full-checkbox">
-					<span class="hinted-label" data-tooltip="BF.ACTIVATION.FIELDS.activation.primary.hint">
-						{{ localize "BF.ACTIVATION.FIELDS.activation.primary.label" }}
-					</span>
-					<input type="checkbox" name="activation.primary" {{ checked data.activation.primary }}>
-				</label>
+				{{ formGroup fields.activation.fields.primary value=source.activation.primary rootId=partId }}
 			{{/if}}
 		</fieldset>
 	</blackFlag-consumption>

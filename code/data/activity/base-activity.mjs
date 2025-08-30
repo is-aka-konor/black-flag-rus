@@ -130,11 +130,11 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 				primary: new BooleanField({ required: false, initial: true })
 			}),
 			consumption: new SchemaField({
-				targets: new ConsumptionTargetsField(),
 				scale: new SchemaField({
 					allowed: new BooleanField(),
 					max: new FormulaField()
-				})
+				}),
+				targets: new ConsumptionTargetsField()
 			}),
 			duration: new DurationField({
 				concentration: new BooleanField(),

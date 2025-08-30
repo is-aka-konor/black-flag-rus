@@ -1,9 +1,9 @@
 <section class="tab activity-{{ tab.id }} {{ tab.cssClass }}" data-tab="{{ tab.id }}" data-group="{{ tab.group }}">
 	{{> "systems/black-flag/templates/activity/parts/activity-effects.hbs" }}
 	<fieldset>
-			<legend>{{ localize "BF.UTILITY.FIELDS.roll.label" }}</legend>
-			{{ formField systemFields.roll.fields.name value=source.system.roll.name rootId=partId }}
-			{{ formField systemFields.roll.fields.formula value=source.system.roll.formula rootId=partId }}
-			{{ formField systemFields.roll.fields.visible value=source.system.roll.visible rootId=partId }}
+		<legend>{{ localize "BF.UTILITY.FIELDS.roll.label" }}</legend>
+		{{ formField systemFields.roll.fields.name value=source.system.roll.name rootId=partId }}
+		{{ formField systemFields.roll.fields.formula value=source.system.roll.formula rootId=partId }}
+		{{ formField systemFields.roll.fields.visible value=source.system.roll.visible rootId=partId }}
 	</fieldset>
 </section>

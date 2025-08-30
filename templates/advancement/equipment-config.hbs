@@ -37,7 +37,7 @@
 							{{/if}}
 							<input type="hidden" name="pool.{{ id }}.key" value="{{ entry.key }}">
 						{{else}}
-							<select name="pool.{{ id }}.key">{{log entry.blankLabel}}
+							<select name="pool.{{ id }}.key">
 								{{ selectOptions entry.keyOptions selected=entry.key blank=entry.blankLabel }}
 							</select>
 						{{/if}}

@@ -16,13 +16,13 @@ const { SchemaField, StringField } = foundry.data.fields;
 export default class RangeField extends SchemaField {
 	constructor(fields = {}, options = {}) {
 		fields = {
-			value: new FormulaField({ deterministic: true, label: "BF.RANGE.Value.Label" }),
-			unit: new StringField({ label: "BF.RANGE.Unit.Label" }),
-			special: new StringField({ label: "BF.RANGE.Special.Label" }),
+			value: new FormulaField({ deterministic: true }),
+			unit: new StringField(),
+			special: new StringField(),
 			...fields
 		};
 		Object.entries(fields).forEach(([k, v]) => (!v ? delete fields[k] : null));
-		super(fields, { label: "BF.RANGE.Label", ...options });
+		super(fields, options);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

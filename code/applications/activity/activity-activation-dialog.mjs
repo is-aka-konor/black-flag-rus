@@ -345,7 +345,7 @@ export default class ActivityActivationDialog extends BFFormDialog {
 				field: new NumberField({
 					min: 1,
 					max: Math.max(1, max),
-					label: game.i18n.localize("BF.Consumption.Scaling.Value")
+					label: game.i18n.localize("BF.CONSUMPTION.Scaling.Value")
 				}),
 				name: "scalingValue",
 				// Config stores the scaling increase, but scaling value (increase + 1) is easier to understand in the UI

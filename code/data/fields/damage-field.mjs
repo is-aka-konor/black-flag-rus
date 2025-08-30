@@ -91,7 +91,7 @@ export class ExtendedDamageData extends SimpleDamageData {
 				{
 					mode: new StringField({ label: "BF.DAMAGE.Scaling.Mode.Label" }),
 					number: new NumberField({ initial: 1, min: 0, integer: true, label: "BF.DAMAGE.Scaling.Dice.Label" }),
-					formula: new FormulaField()
+					formula: new FormulaField({ label: "BF.DAMAGE.Scaling.Formula.Label" })
 				},
 				{ required: false }
 			)

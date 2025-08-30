@@ -143,6 +143,9 @@
 			> .hinted-label {
 				text-underline-offset: 1px;
 			}
+			> .form-fields:has(> input[type="checkbox"]) {
+				justify-content: flex-start;
+			}
 		}
 		&.label-top, &.label-hinted {
 			> p.hint { display: none; }
@@ -171,6 +174,14 @@
 				&:not(.label-top, .checkbox) { gap: 4px; }
 				> * { flex: unset; }
 			}
+			&:has(> .label-top) {
+				blackFlag-icon.separator {
+					display: block;
+					margin-block-start: 16px;
+				}
+				i.separator { margin-block-start: 12px; }
+			}
+			label:empty { display: none; }
 		}
 	}
 

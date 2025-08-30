@@ -1,30 +1,16 @@
-<div class="damage field-group">
-	<label class="die-count">
-		<span>{{ localize "BF.Die.Number.Label" }}</span>
-		<input type="number" name="{{ prefix }}number" step=1 min=1 value="{{ data.number }}">
-	</label>
-	<label class="die-denomination">
-		<span>{{ localize "BF.Die.Denomination.Label" }}</span>
-		<select name="{{ prefix }}denomination">
-			{{ selectOptions @root.denominationOptions selected=data.denomination }}
-		</select>
-	</label>
-	<span class="plus">+</span>
-	<label class="bonus">
-		<span>{{ localize "BF.DAMAGE.Bonus.Label" }}</span>
-		<input type="text" name="{{ prefix }}bonus" value="{{ data.bonus }}">
-	</label>
-	<label class="custom">
-		<span>{{ localize "BF.Formula.Custom.Label" }}</span>
-		<input type="text" name="{{ prefix }}custom.formula" value="{{ data.custom.formula }}">
-	</label>
-	<label class="type">
-		<span>{{ localize "BF.DAMAGE.Type.Label" }}</span>
-		<select name="{{ prefix }}type">
-			{{ selectOptions typeOptions selected=data.type }}
-		</select>
-	</label>
-</div>
+{{#blackFlag-formGroup classes="damage"}}
+	{{ formGroup fields.number name=(concat prefix "number") value=data.number classes="die-count label-top" localize=true
+	             rootId=@root.partId }}
+	{{ formGroup fields.denomination name=(concat prefix "denomination") value=data.denomination localize=true
+	             options=@root.denominationOptions classes="die-denomination label-top" rootId=@root.partId }}
+	<i class="fa-solid fa-plus separator"></i>
+	{{ formGroup fields.bonus name=(concat prefix "bonus") value=data.bonus classes="bonus label-top" localize=true
+	             rootId=@root.partId }}
+	{{ formGroup fields.custom.fields.formula name=(concat prefix "custom.formula") value=data.custom.formula
+	             classes="custom label-top" localize=true rootId=@root.partId }}
+	{{ formGroup fields.type name=(concat prefix "type") value=data.type options=typeOptions classes="type label-top"
+	             localize=true rootId=@root.partId }}
+{{/blackFlag-formGroup}}
 
 {{#unless data.locked}}
 	<div class="controls">
@@ -44,36 +30,21 @@
 {{/unless}}
 
 {{#if (eq data.type "variable")}}
-	<div class="damage-types field-group">
-		<label>
-			<span class="hinted-label" data-tooltip="BF.DAMAGE.AdditionalTypes.Hint">
-				{{ localize "BF.DAMAGE.AdditionalTypes.Label" }}
-			</span>
-			<multi-select name="{{ prefix }}additionalTypes">
-				{{ selectOptions variableTypeOptions }}
-			</multi-select>
-		</label>
-	</div>
+	{{ formGroup fields.additionalTypes name=(concat prefix "additionalTypes") value=data.additionalTypes
+	             options=variableTypeOptions classes="damage-types full-width label-top" label="BF.DAMAGE.AdditionalTypes.Label"
+							 hint="BF.DAMAGE.AdditionalTypes.Hint" localize=true rootId=@root.partId }}
 {{/if}}
 
 {{#if @root.activity.canScaleDamage}}
-	<div class="damage-scaling field-group">
-		<label class="scaling-mode">
-			<span>{{ localize "BF.DAMAGE.Scaling.Mode.Label" }}</span>
-			<select name="{{ prefix }}scaling.mode">
-				{{ selectOptions scalingOptions selected=data.scaling.mode }}
-			</select>
-		</label>
+	{{#blackFlag-formGroup classes="damage-scaling full-width"}}
+		{{ formGroup fields.scaling.fields.mode name=(concat prefix "scaling.mode") value=data.scaling.mode
+		             options=scalingOptions classes="scaling-mode label-top" localize=true rootId=@root.partId }}
 		{{#if data.scaling.mode}}
-			<label class="scaling-number">
-				<span>{{ localize "BF.DAMAGE.Scaling.Dice.Label" }}</span>
-				<input type="number" name="{{ prefix }}scaling.number" value="{{ data.scaling.number }}" min="0" step="1">
-			</label>
-			<label class="scaling-formula">
-				<span>{{ localize "BF.DAMAGE.Scaling.Formula.Label" }}</span>
-				<input type="text" name="{{ prefix }}scaling.formula" value="{{ data.scaling.formula }}">
-			</label>
+			{{ formGroup fields.scaling.fields.number name=(concat prefix "scaling.number") value=data.scaling.number
+									 classes="scaling-number label-top" localize=true rootId=@root.partId }}
+			{{ formGroup fields.scaling.fields.formula name=(concat prefix "scaling.formula") value=data.scaling.formula
+									 classes="scaling-formula label-top" localize=true rootId=@root.partId }}
 		{{/if}}
-	</div>
+	{{/blackFlag-formGroup}}
 {{/if}}
 <input type="hidden" name="{{ prefix }}custom.enabled" value="{{ data.custom.enabled }}" data-dtype="Boolean">

@@ -141,7 +141,7 @@ export default class DamageListElement extends FormAssociatedElement {
 		if (showCustomFormula) li.dataset.customFormula = "";
 		else delete li.dataset.customFormula;
 
-		const normal = ["die-count", "die-denomination", "plus", "bonus"];
+		const normal = ["die-count", "die-denomination", "separator", "bonus"];
 		for (const cls of normal) {
 			const element = li.querySelector(`.${cls}`);
 			if (showCustomFormula) element?.classList.add("hidden");

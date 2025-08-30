@@ -39,7 +39,7 @@ export const consumableResources = [];
 /**
  * @callback ConsumptionValidTargetsFunction
  * @this {ConsumptionTargetData}
- * @returns {FormSelectOption[]} - Valid targets.
+ * @returns {FormSelectOption[]|null} - Valid targets.
  */
 
 /**
@@ -66,6 +66,7 @@ export const consumptionTypes = {
 		prompt: "BF.CONSUMPTION.Type.Attribute.Prompt",
 		consume: ConsumptionTargetData.consumeAttribute,
 		consumptionLabels: ConsumptionTargetData.consumptionLabelsAttribute,
+		targetRequiresEmbedded: true,
 		validTargets: ConsumptionTargetData.validAttributeTargets
 	},
 	hitDice: {
@@ -82,7 +83,7 @@ export const consumptionTypes = {
 		consumptionLabels: ConsumptionTargetData.consumptionLabelsSpellSlots,
 		scalingModes: {
 			circle: {
-				label: "BF.Consumption.Scaling.Mode.Circle"
+				label: "BF.CONSUMPTION.Scaling.Mode.Circle"
 			}
 		},
 		validTargets: ConsumptionTargetData.validSpellSlotsTargets
