@@ -2,17 +2,12 @@
 	<fieldset>
 		<legend>{{ localize "BF.CreatureSizeAndType.Label" }}</legend>
 		{{ formField system.fields.traits.fields.size value=system.data.traits.size options=CONFIG.sizes.localizedOptions
-		             blank="" localize=true rootId=partId }}
+		             localize=true rootId=partId }}
 		{{#if showSwarm}}
-			<label>
-				<span class="hinted-label" data-tooltip="BF.CreatureType.Swarm.Hint">
-					{{ localize "BF.CreatureType.Swarm.Label" }}
-				</span>
-				{{ formInput type.fields.swarm value=type.data.swarm options=CONFIG.sizes.localizedOptions blank=""
-				             localize=true rootId=partId }}
-			</label>
+			{{ formField type.fields.swarm value=type.data.swarm options=CONFIG.sizes.localizedOptions
+			             localize=true rootId=partId }}
 		{{/if}}
-		{{ formField type.fields.value value=type.data.value options=type.options blank="" localize=true rootId=partId }}
+		{{ formField type.fields.value value=type.data.value options=type.options localize=true rootId=partId }}
 		{{#if showDimensions}}
 			<div class="form-group">
 				<label>{{ localize "BF.VEHICLE.FIELDS.traits.dimensions.label" }}</label>

@@ -33,7 +33,7 @@ export const conditions = {
 		special: "BLIND"
 	},
 	burning: {
-		name: "EFFECT.BF.Burning",
+		label: "EFFECT.BF.Burning",
 		img: "systems/black-flag/artwork/statuses/burning.svg",
 		pseudo: true
 	},
@@ -48,7 +48,7 @@ export const conditions = {
 		pseudo: true
 	},
 	dehydration: {
-		name: "EFFECT.BF.Dehydration",
+		label: "EFFECT.BF.Dehydration",
 		img: "systems/black-flag/artwork/statuses/dehydration.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.4P9Yx1k4NFcuM8DO",
 		pseudo: true
@@ -69,7 +69,7 @@ export const conditions = {
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.Pk4HY4CkyTFBhFrL"
 	},
 	falling: {
-		name: "EFFECT.BF.Falling",
+		label: "EFFECT.BF.Falling",
 		img: "systems/black-flag/artwork/statuses/falling.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.YUn5nBL14LRf9z5p",
 		pseudo: true
@@ -95,7 +95,7 @@ export const conditions = {
 		reference: "Compendium.black-flag.rules.JournalEntry.yTCk697FqUQ0qzL3.JournalEntryPage.J9KSv1AwJ1zod72g"
 	},
 	malnutrition: {
-		name: "EFFECT.BF.Malnutrition",
+		label: "EFFECT.BF.Malnutrition",
 		img: "systems/black-flag/artwork/statuses/malnutrition.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.V4frkDHhsWFBtmmt",
 		pseudo: true
@@ -139,7 +139,7 @@ export const conditions = {
 		statuses: ["incapacitated"]
 	},
 	suffocation: {
-		name: "EFFECT.BF.Suffocation",
+		label: "EFFECT.BF.Suffocation",
 		img: "systems/black-flag/artwork/statuses/suffocation.svg",
 		reference: "Compendium.black-flag.rules.JournalEntry.zHvTHITijHvb07FK.JournalEntryPage.ATzEq6INUQJvWQDS",
 		pseudo: true
