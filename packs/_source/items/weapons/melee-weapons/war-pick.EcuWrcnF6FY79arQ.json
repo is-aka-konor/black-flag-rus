@@ -58,7 +58,7 @@
       "max": ""
     },
     "description": {
-      "value": "",
+      "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
       "source": {}
     },
     "attunement": {
@@ -109,10 +109,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.9.028",
+    "systemVersion": "2.0.068",
     "coreVersion": "13.347",
     "createdTime": 1716237071720,
-    "modifiedTime": 1716237996186,
+    "modifiedTime": 1756665347558,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null

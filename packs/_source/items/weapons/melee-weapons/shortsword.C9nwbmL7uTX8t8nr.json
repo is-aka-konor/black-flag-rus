@@ -31,7 +31,7 @@
       "units": "pound"
     },
     "description": {
-      "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+      "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
       "source": {}
     },
     "type": {
@@ -74,10 +74,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.9.028",
+    "systemVersion": "2.0.068",
     "coreVersion": "13.347",
     "createdTime": 1701025035557,
-    "modifiedTime": 1716236704721,
+    "modifiedTime": 1756665329266,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null
