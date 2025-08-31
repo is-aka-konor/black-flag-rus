@@ -42,6 +42,7 @@
 	{{/if}}
 	{{#if properties.reach.selected}}
 		{{#blackFlag-formGroup "BF.Reach.Label"}}
+			<i class="fa-solid fa-plus separator" inert></i>
 			{{ formField fields.range.fields.reach value=source.range.reach classes="label-top" placeholder=reachPlaceholder
 			             rootId=partId }}
 			{{ formField fields.range.fields.unit value=source.range.unit options=CONFIG.distanceUnits.localizedOptions

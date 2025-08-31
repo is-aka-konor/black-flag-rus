@@ -221,9 +221,11 @@ export default class WeaponData extends ItemDataModel.mixin(
 		if (this.type.value !== "melee") return "";
 
 		const unit = this.range.unit ?? defaultUnit("distance");
-		const baseReach = convertDistance(5, "foot", { to: unit });
-		const reach = this.properties.has("reach") ? this.range.reach || baseReach : 0;
-		return formatDistance(baseReach + reach, unit, { unitDisplay: "short" });
+		let reach = convertDistance(5, "foot", { to: unit }).value;
+		if (this.properties.has("reach")) {
+			reach += this.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
+		}
+		return formatDistance(reach, unit, { unitDisplay: "short" });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -433,9 +435,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 			obj[k] = { label: game.i18n.localize(o.label), selected: has(context.source.options, k) };
 			return obj;
 		}, {});
-		context.reachPlaceholder = formatNumber(convertDistance(5, "foot", { to: this.range.unit }).value, {
-			signDisplay: "always"
-		});
+		context.reachPlaceholder = convertDistance(5, "foot", { to: this.range.unit }).value;
 		context.type ??= {};
 		context.type.options = CONFIG.BlackFlag.weaponTypes.localizedOptions;
 	}
