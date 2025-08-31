@@ -1,4 +1,8 @@
-.black-flag.config.app form, .black-flag.config-sheet {
+.black-flag.config-sheet {
+	.window-content > section:is(.flexcol, .flexrow) {
+		gap: 8px;
+	}
+
 	select[name="selectedId"] {
 		height: unset;
 		padding-block: .25em;
@@ -59,17 +63,5 @@
 			align-items: center;
 			justify-content: center;
 		}
-	}
-}
-
-.black-flag.config.app form {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
-
-.black-flag.config-sheet {
-	.window-content > section:is(.flexcol, .flexrow) {
-		gap: 8px;
 	}
 }

@@ -81,7 +81,14 @@ export default class LanguagesTemplate extends foundry.abstract.DataModel {
 	 */
 	prepareLanguages() {
 		const languages = this.proficiencies.languages;
-		const entries = new Map(Array.from(languages.value).map(v => [v, Trait.keyLabel(v, { trait: "languages" })]));
+
+		let entries;
+		if ( languages.value.has("ALL") ) {
+			entries = new Map([["ALL", game.i18n.localize("BF.Language.All")]]);
+		} else {
+			entries = new Map(Array.from(languages.value).map(v => [v, Trait.keyLabel(v, { trait: "languages" })]));
+		}
+
 		languages.custom.forEach(c => entries.set(c, c));
 		const extras = [];
 		for ( const [key, data] of Object.entries(languages.communication) ) {

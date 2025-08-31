@@ -87,6 +87,7 @@ export const traits = {
 	},
 	languages: {
 		labels: {
+			all: "BF.Language.All",
 			title: "BF.Language.Label[other]",
 			localization: "BF.Language.Label"
 		},
@@ -107,6 +108,7 @@ export const traits = {
 export const languages = {
 	standard: {
 		localization: "BF.Language.Category.Standard",
+		selectable: false,
 		children: {
 			common: {
 				label: "BF.Language.Dialect.Common"
@@ -136,6 +138,7 @@ export const languages = {
 	},
 	esoteric: {
 		localization: "BF.Language.Category.Esoteric",
+		selectable: false,
 		children: {
 			abyssal: {
 				label: "BF.Language.Dialect.Abyssal"
@@ -184,6 +187,7 @@ export const languages = {
 	},
 	secret: {
 		localization: "BF.Language.Category.Secret",
+		selectable: false,
 		children: {
 			druidic: {
 				label: "BF.Language.Dialect.Druidic"

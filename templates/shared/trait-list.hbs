@@ -1,10 +1,13 @@
 <ol class="trait-list">
 	{{#each choices}}
-		<li>
+		<li {{~#if category}} class="category"{{/if}}>
 			<label {{~#if wildcard}} class="wildcard"{{/if}}>
-				<input type="checkbox" name="{{#if ../prefix}}{{ ../prefix }}.{{/if}}{{ @key }}"
-				       {{ checked chosen }} {{ disabled disabled }}>
-				{{ label }}
+				{{#if icon}}{{ blackFlag-icon src=icon.src alt=label }}{{/if}}
+				<span class="name">{{ label }}</span>
+				{{#unless (eq selectable false)}}
+					<input type="checkbox" name="{{#if ../prefix}}{{ ../prefix }}.{{/if}}{{ @key }}"
+					       {{ checked chosen }} {{ disabled disabled }}>
+				{{/unless}}
 			</label>
 			{{#if children}}
 				{{> "blackFlag.trait-list" choices=children prefix=../prefix }}

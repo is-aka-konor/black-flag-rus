@@ -72,46 +72,9 @@ export default class LanguageConfig extends BaseCustomConfigSheet {
 				return obj;
 			}, {})
 		};
+		this._processChoices(languages, context.languages.dialects);
 
 		return context;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*         Life-Cycle Handlers         */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	_onRender(context, options) {
-		super._onRender(context, options);
-		for (const checkbox of this.element.querySelectorAll('input[type="checkbox"]:checked')) {
-			this._onToggleCategory(checkbox);
-		}
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-	/*            Event Handlers           */
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @inheritDoc */
-	_onChangeForm(formConfig, event) {
-		if (event.target instanceof HTMLInputElement) this._onToggleCategory(event.target);
-		super._onChangeForm(formConfig, event);
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
-	 * Disable all children when a category is checked.
-	 * @param {HTMLInputElement} checkbox - Checkbox to compare.
-	 * @protected
-	 */
-	_onToggleCategory(checkbox) {
-		const children = checkbox.closest("li")?.querySelector("ol");
-		if (!children) return;
-
-		for (const child of children.querySelectorAll('input[type="checkbox"]')) {
-			child.checked = child.disabled = checkbox.checked;
-		}
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

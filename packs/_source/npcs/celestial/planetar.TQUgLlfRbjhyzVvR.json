@@ -39,16 +39,16 @@
     },
     "proficiencies": {
       "languages": {
-        "value": [],
+        "value": [
+          "ALL"
+        ],
         "communication": {
           "telepathy": {
             "range": 120,
             "units": "foot"
           }
         },
-        "custom": [
-          "all"
-        ],
+        "custom": [],
         "tags": []
       }
     },
@@ -2342,9 +2342,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1729607939811,
-    "modifiedTime": 1729607939811,
+    "modifiedTime": 1756675637346,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

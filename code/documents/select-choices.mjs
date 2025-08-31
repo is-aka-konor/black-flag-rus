@@ -264,8 +264,7 @@ export default class SelectChoices {
 		if (filter instanceof SelectChoices) filter = filter.set;
 
 		for (const [key, trait] of Object.entries(this)) {
-			// Simple filter ("languages:standard:common") - Include this entry
-			// Category filter ("tools:artisan") - Include category but not children
+			// Remove children if direct match and no wildcard for this category present
 			const wildcardKey = key.replace(/(:|^)([\w]+)$/, "$1*");
 			const forcedCategoryKey = `${key}!`;
 			if (filter.has(key) && !filter.has(wildcardKey)) {
@@ -283,8 +282,8 @@ export default class SelectChoices {
 				if (!trait.children || trait.children.isEmpty) delete this[key];
 			}
 
-			// Top-level wildcard ("languages:*") - Include all entries & children
-			// Category wildcard ("tools:artisan:*") - Include category and all children
+			// Remove ALL entries if wildcard is used
+			else if (filter.has(wildcardKey) && key.endsWith(":ALL")) delete this[key];
 		}
 
 		return this;

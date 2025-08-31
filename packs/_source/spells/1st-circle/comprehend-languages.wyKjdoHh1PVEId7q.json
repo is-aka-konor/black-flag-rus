@@ -97,14 +97,21 @@
   },
   "effects": [
     {
-      "name": "Comprehend Languages",
+      "name": "Language Comprehension",
       "img": "icons/sundries/scrolls/scroll-runed-worn-tan.webp",
       "origin": "Compendium.black-flag.spells.Item.wyKjdoHh1PVEId7q",
       "transfer": false,
       "_id": "EhapyrI5PcYhY0WU",
       "type": "base",
       "system": {},
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.proficiencies.languages.value",
+          "mode": 2,
+          "value": "ALL",
+          "priority": null
+        }
+      ],
       "disabled": false,
       "duration": {
         "startTime": null,
@@ -127,7 +134,7 @@
         "systemId": "black-flag",
         "systemVersion": "0.10.042",
         "createdTime": 1723605360576,
-        "modifiedTime": 1723605376584,
+        "modifiedTime": 1756675688704,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },

@@ -159,18 +159,24 @@ export function categories(trait) {
  * Get a list of choices for a specific trait.
  * @param {string} trait - Trait as defined in `CONFIG.BlackFlag.traits`.
  * @param {object} [options={}]
- * @param {Set<string>} [options.chosen=[]] - Optional list of keys to be marked as chosen.
- * @param {boolean} [options.prefixed=false] - Prefix keys with the trait type.
  * @param {boolean} [options.any=false] - Should an "Any" option be added to each category?
  * @param {boolean} [options.category=false] - Should the category be selectable in addition to its children?
+ * @param {Set<string>} [options.chosen=[]] - Optional list of keys to be marked as chosen.
+ * @param {boolean} [options.prefixed=false] - Prefix keys with the trait type.
  * @returns {SelectChoices} - Object mapping proficiency ids to choice objects.
  */
-export function choices(trait, { chosen=new Set(), prefixed=false, any=false, category=false }={}) {
+export function choices(trait, { any=false, category=false, chosen=new Set(), prefixed=false, }={}) {
 	const traitConfig = CONFIG.BlackFlag.traits[trait];
 	if ( !traitConfig ) return new SelectChoices();
 	if ( foundry.utils.getType(chosen) === "Array" ) chosen = new Set(chosen);
 
 	let result = {};
+
+	if ( traitConfig.labels?.all && !any ) {
+		const key = prefixed ? `${trait}:ALL` : "ALL";
+		result[key] = { label: game.i18n.localize(traitConfig.labels.all), chosen: chosen.has(key), sorting: false };
+	}
+
 	if ( prefixed && any ) {
 		const key = `${trait}:*`;
 		result[key] = { label: keyLabel(key).titleCase(), chosen: chosen.has(key), sorting: false, wildcard: true };
@@ -187,7 +193,8 @@ export function choices(trait, { chosen=new Set(), prefixed=false, any=false, ca
 		if ( prefixed ) key = `${prefix}:${key}`;
 		result[key] = {
 			label: game.i18n.localize(label),
-			chosen: chosen.has(key),
+			chosen: data.selectable !== false ? chosen.has(key) : false,
+			selectable: data.selectable !== false,
 			sorting: traitConfig.sortCategories !== false
 		};
 		if ( data.children ) {
@@ -277,7 +284,11 @@ export function keyLabel(key, { count, trait, final, priority }={}) {
 	const searchTrait = (parts, traits, type) => {
 		const firstKey = parts.shift();
 
-		if ( firstKey === "*" ) {
+		if ( firstKey === "ALL" ) {
+			return traitConfig.labels?.all ? game.i18n.localize(traitConfig.labels.all) : key;
+		}
+
+		else if ( firstKey === "*" ) {
 			const key = `BF.Advancement.Trait.Choice.${final ? "Other" : `Any${count ? "Counted" : "Uncounted"}`}`;
 			return game.i18n.format(key, { count: localizedCount, type });
 		}

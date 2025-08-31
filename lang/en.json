@@ -2490,6 +2490,7 @@
 	"Action": {
 		"Configure": "Configure Languages"
 	},
+	"All": "All Languages",
 	"Category": {
 		"Esoteric[one]": "Esoteric Language",
 		"Esoteric[other]": "Esoteric Languages",

@@ -81,6 +81,40 @@ export default class BaseConfigSheet extends BFDocumentSheet {
 	prepareModifiers() {}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Processes the choices to ensure that children are checked if the category is checked and that
+	 * masteries are only enabled if character has proficiency.
+	 * @param {object} data - Traits data.
+	 * @param {SelectChoices} choices - Choices object.
+	 * @param {boolean} [categoryChosen=false] - Is the category above this one selected?
+	 * @protected
+	 */
+	_processChoices(data, choices, categoryChosen = false) {
+		for (const [key, choice] of Object.entries(choices)) {
+			this._processChoice(data, key, choice, categoryChosen);
+			if (choice.children) this._processChoices(data, choice.children, choice.chosen && key !== "OTHER");
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Perform any modification on a choice.
+	 * @param {object} data - Traits data.
+	 * @param {string} key - Choice key.
+	 * @param {object} choice - Data for the choice.
+	 * @param {boolean} [categoryChosen=false] - Is the category above this one selected?
+	 * @protected
+	 */
+	_processChoice(data, key, choice, categoryChosen = false) {
+		if ((data.value?.includes?.("ALL") && key !== "ALL") || categoryChosen) {
+			choice.chosen = true;
+			choice.disabled = true;
+		}
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
 	/*            Event Handlers           */
 	/* <><><><> <><><><> <><><><> <><><><> */
 

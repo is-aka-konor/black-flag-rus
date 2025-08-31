@@ -202,9 +202,10 @@ export default class TraitConfig extends AdvancementConfig {
 
 		// Handle selecting & disabling category children when a category is selected
 		for (const checkbox of this.element.querySelectorAll(".trait-options input:checked")) {
-			const toCheck = checkbox.name.endsWith("*")
-				? checkbox.closest("ol").querySelectorAll(`input:not([name="${checkbox.name}"])`)
-				: checkbox.closest("li").querySelector("ol")?.querySelectorAll("input");
+			const toCheck =
+				checkbox.name.endsWith("*") || checkbox.name.endsWith("ALL")
+					? checkbox.closest("ol").querySelectorAll(`input:not([name="${checkbox.name}"])`)
+					: checkbox.closest("li").querySelector("ol")?.querySelectorAll("input");
 			toCheck?.forEach(i => (i.checked = i.disabled = true));
 		}
 	}
