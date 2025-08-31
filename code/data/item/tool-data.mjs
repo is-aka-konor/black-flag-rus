@@ -161,7 +161,7 @@ export default class ToolData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	async _onDelete(options, userId) {
 		await super._onDelete(options, userId);
-		this._onDeletePhyiscalItem(options, userId);
+		this._onDeletePhysicalItem(options, userId);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

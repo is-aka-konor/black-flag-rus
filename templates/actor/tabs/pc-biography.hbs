@@ -50,7 +50,7 @@
 		<h3>{{ label }}</h3>
 		{{#if @root.editable}}
 			<prose-mirror name="{{ concat "system.biography." name }}" value="{{ lookup @root.source.biography name }}"
-										data-document-uuid="{{ @root.actor.uuid }}" collaborate></prose-mirror>
+										{{!--data-document-uuid="{{ @root.actor.uuid }}" collaborate--}}></prose-mirror>
 		{{else}}
 			<div class="editor editor-content">
 				{{{ enriched }}}

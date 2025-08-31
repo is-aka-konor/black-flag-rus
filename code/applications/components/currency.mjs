@@ -1,3 +1,4 @@
+import { staticID } from "../../utils/_module.mjs";
 import InventoryElement from "./inventory.mjs";
 
 export default class CurrencyElement extends InventoryElement {
@@ -62,12 +63,15 @@ export default class CurrencyElement extends InventoryElement {
 					continue;
 				}
 				const itemData = item.toObject();
+				itemData._id = staticID(`bfcurrency${key}`);
 				itemData.system.quantity = delta;
 				if (this.document.type === "container") itemData.system.container = this.document.id;
 				toCreate.push(itemData);
 			}
 		}
 
-		if (toCreate.length) await Item.createDocuments(toCreate, { pack: this.document.pack, parent: this.actor });
+		if (toCreate.length) {
+			await Item.createDocuments(toCreate, { keepId: true, pack: this.document.pack, parent: this.actor });
+		}
 	}
 }

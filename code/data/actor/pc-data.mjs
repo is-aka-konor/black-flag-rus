@@ -1,6 +1,6 @@
 import PCSheet from "../../applications/actor/pc-sheet.mjs";
 import Proficiency from "../../documents/proficiency.mjs";
-import { getPluralLocalizationKey, simplifyBonus, Trait } from "../../utils/_module.mjs";
+import { getPluralLocalizationKey, simplifyBonus, staticID, Trait } from "../../utils/_module.mjs";
 import ActorDataModel from "../abstract/actor-data-model.mjs";
 import CreatureTypeField from "../fields/creature-type-field.mjs";
 import MappingField from "../fields/mapping-field.mjs";
@@ -1067,6 +1067,9 @@ export default class PCData extends ActorDataModel.mixin(
 	/** @inheritDoc */
 	async _preCreate(data, options, user) {
 		if ((await super._preCreate(data, options, user)) === false) return false;
+		if (!data._id && !data.items?.length && !("createCurrency" in (options?.[game.system.id] ?? {}))) {
+			foundry.utils.setProperty(options, `${game.system.id}.createCurrency`, true);
+		}
 		await this._preCreateSize(data, options, user);
 		const prototypeToken = {};
 		if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) prototypeToken.actorLink = true;
@@ -1075,6 +1078,25 @@ export default class PCData extends ActorDataModel.mixin(
 			prototypeToken.disposition = CONST.TOKEN_DISPOSITIONS.FRIENDLY;
 		}
 		this.parent.updateSource({ prototypeToken });
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _onCreate(data, options, userId) {
+		await super._onCreate(data, options, userId);
+		if (!options[game.system.id]?.createCurrency || userId !== game.user.id) return;
+		const toCreate = Object.entries(CONFIG.BlackFlag.currencies)
+			.filter(([, config]) => config.default)
+			.map(async ([identifier, config]) => {
+				const item = await fromUuid(config.uuid);
+				if (!item) return null;
+				const data = item.toObject();
+				data._id = staticID(`bfcurrency${identifier}`);
+				data.system.quantity = 0;
+				return data;
+			});
+		this.parent.createEmbeddedDocuments("Item", await Promise.all(toCreate), { keepId: true });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

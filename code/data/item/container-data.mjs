@@ -320,7 +320,7 @@ export default class ContainerData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	async _onDelete(options, userId) {
 		await super._onDelete(options, userId);
-		this._onDeletePhyiscalItem(options, userId);
+		this._onDeletePhysicalItem(options, userId);
 		if (userId !== game.user.id || !options.deleteContents) return;
 
 		// Delete a container's contents when it is deleted
