@@ -2,14 +2,14 @@
 	<legend>{{ localize "BF.RANGE.FIELDS.range.label" }}</legend>
 	{{#blackFlag-formGroup "BF.RANGE.Label"}}
 		{{#if range.scalar}}
-			{{ formGroup fields.range.fields.value name=(concat prefix "range.value") value=data.range.value
+			{{ formField fields.range.fields.value name=(concat prefix "range.value") value=data.range.value
 			             classes="label-top" rootId=partId }}
 		{{/if}}
-		{{ formGroup fields.range.fields.unit name=(concat prefix "range.unit") value=data.range.unit
+		{{ formField fields.range.fields.unit name=(concat prefix "range.unit") value=data.range.unit
 		             options=rangeOptions classes="label-top" rootId=partId }}
 	{{/blackFlag-formGroup}}
 	{{#if range.unit}}
-		{{ formGroup fields.range.fields.special name=(concat prefix "range.special") value=data.range.special
+		{{ formField fields.range.fields.special name=(concat prefix "range.special") value=data.range.special
 		             rootId=partId }}
 	{{/if}}
 </fieldset>

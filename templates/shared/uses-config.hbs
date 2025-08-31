@@ -1,11 +1,11 @@
 <blackFlag-uses name="{{ name }}">
 	<fieldset>
 		<legend>{{ localize "BF.Uses.Label" }}</legend>
-		{{ formGroup fields.uses.fields.max name="$.max" value=source.max placeholder="0" localize=true rootId=partId }}
-		{{ formGroup fields.uses.fields.spent name="$.spent" value=derived.spent localize=true
+		{{ formField fields.uses.fields.max name="$.max" value=source.max placeholder="0" localize=true rootId=partId }}
+		{{ formField fields.uses.fields.spent name="$.spent" value=derived.spent localize=true
 		             rootId=partId }}
 		{{#if item.system.isPhysical}}
-			{{ formGroup fields.uses.fields.consumeQuantity name="$.consumeQuantity" value=derived.consumeQuantity
+			{{ formField fields.uses.fields.consumeQuantity name="$.consumeQuantity" value=derived.consumeQuantity
 			             localize=true rootId=partId }}
 		{{/if}}
 	</fieldset>

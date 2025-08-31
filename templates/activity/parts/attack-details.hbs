@@ -1,10 +1,10 @@
 <fieldset>
 	<legend>{{ localize "BF.ATTACK.Label" }}</legend>
-	{{ formGroup systemFields.attack.fields.ability value=source.system.attack.ability options=abilityOptions
+	{{ formField systemFields.attack.fields.ability value=source.system.attack.ability options=abilityOptions
 	             rootId=partId }}
 	{{#blackFlag-formGroup "BF.ATTACK.FIELDS.attack.bonus.label"}}
-		{{ formGroup systemFields.attack.fields.bonus value=source.system.attack.bonus classes="label-top" rootId=partId }}
-		{{ formGroup systemFields.attack.fields.flat value=source.system.attack.flat classes="label-top" rootId=partId }}
+		{{ formField systemFields.attack.fields.bonus value=source.system.attack.bonus classes="label-top" rootId=partId }}
+		{{ formField systemFields.attack.fields.flat value=source.system.attack.flat classes="label-top" rootId=partId }}
 	{{/blackFlag-formGroup}}
 	{{ formField systemFields.attack.fields.critical.fields.threshold value=source.system.attack.critical.threshold
 	             rootId=partId }}

@@ -2,20 +2,20 @@
 	<legend>{{ localize "BF.TARGET.FIELDS.target.affects.label" }}</legend>
 	{{#blackFlag-formGroup "BF.TARGET.Label[one]"}}
 		{{#if target.affects.scalar}}
-			{{ formGroup fields.target.fields.affects.fields.count name=(concat prefix "target.affects.count")
+			{{ formField fields.target.fields.affects.fields.count name=(concat prefix "target.affects.count")
 			             value=data.target.affects.count placeholder=target.affects.placeholder classes="label-top"
 			             hint="" rootId=partId }}
 		{{/if}}
-		{{ formGroup fields.target.fields.affects.fields.type name=(concat prefix "target.affects.type")
+		{{ formField fields.target.fields.affects.fields.type name=(concat prefix "target.affects.type")
 		             value=data.target.affects.type options=CONFIG.targetTypes.localizedOptions classes="label-top"
 		             hint="" rootId=partId }}
 	{{/blackFlag-formGroup}}
 	{{#if target.affects.type}}
-		{{ formGroup fields.target.fields.affects.fields.special name=(concat prefix "target.affects.special")
+		{{ formField fields.target.fields.affects.fields.special name=(concat prefix "target.affects.special")
 		             value=data.target.affects.special hint="" rootId=partId }}
 	{{/if}}
 	{{#if (and target.affects.type data.target.template.type)}}
-		{{ formGroup fields.target.fields.affects.fields.choice name=(concat prefix "target.affects.choice")
+		{{ formField fields.target.fields.affects.fields.choice name=(concat prefix "target.affects.choice")
 		             value=data.target.affects.choice rootId=partId }}
 	{{/if}}
 </fieldset>

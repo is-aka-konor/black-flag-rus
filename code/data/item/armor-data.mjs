@@ -113,7 +113,7 @@ export default class ArmorData extends ItemDataModel.mixin(
 		let label;
 		if (this.type.category === "shield") label = formatNumber(this._source.armor.value || 2, { sign: true });
 		else
-			label = `${game.i18n.localize("BF.ArmorClass.Abbreviation")}: ${formatNumber(
+			label = `${game.i18n.localize("BF.ARMORCLASS.Abbreviation")}: ${formatNumber(
 				this._source.armor.value || 0
 			)} ${this.modifierHint(false)}`;
 		if (this.magicAvailable && this.magicalBonus) label += ` + ${formatNumber(this.magicalBonus)}`;

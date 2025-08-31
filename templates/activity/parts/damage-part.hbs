@@ -1,14 +1,14 @@
 {{#blackFlag-formGroup classes="damage"}}
-	{{ formGroup fields.number name=(concat prefix "number") value=data.number classes="die-count label-top" localize=true
+	{{ formField fields.number name=(concat prefix "number") value=data.number classes="die-count label-top" localize=true
 	             rootId=@root.partId }}
-	{{ formGroup fields.denomination name=(concat prefix "denomination") value=data.denomination localize=true
+	{{ formField fields.denomination name=(concat prefix "denomination") value=data.denomination localize=true
 	             options=@root.denominationOptions classes="die-denomination label-top" rootId=@root.partId }}
 	<i class="fa-solid fa-plus separator"></i>
-	{{ formGroup fields.bonus name=(concat prefix "bonus") value=data.bonus classes="bonus label-top" localize=true
+	{{ formField fields.bonus name=(concat prefix "bonus") value=data.bonus classes="bonus label-top" localize=true
 	             rootId=@root.partId }}
-	{{ formGroup fields.custom.fields.formula name=(concat prefix "custom.formula") value=data.custom.formula
+	{{ formField fields.custom.fields.formula name=(concat prefix "custom.formula") value=data.custom.formula
 	             classes="custom label-top" localize=true rootId=@root.partId }}
-	{{ formGroup fields.type name=(concat prefix "type") value=data.type options=typeOptions classes="type label-top"
+	{{ formField fields.type name=(concat prefix "type") value=data.type options=typeOptions classes="type label-top"
 	             localize=true rootId=@root.partId }}
 {{/blackFlag-formGroup}}
 
@@ -30,19 +30,19 @@
 {{/unless}}
 
 {{#if (eq data.type "variable")}}
-	{{ formGroup fields.additionalTypes name=(concat prefix "additionalTypes") value=data.additionalTypes
+	{{ formField fields.additionalTypes name=(concat prefix "additionalTypes") value=data.additionalTypes
 	             options=variableTypeOptions classes="damage-types full-width label-top" label="BF.DAMAGE.AdditionalTypes.Label"
 							 hint="BF.DAMAGE.AdditionalTypes.Hint" localize=true rootId=@root.partId }}
 {{/if}}
 
 {{#if @root.activity.canScaleDamage}}
 	{{#blackFlag-formGroup classes="damage-scaling full-width"}}
-		{{ formGroup fields.scaling.fields.mode name=(concat prefix "scaling.mode") value=data.scaling.mode
+		{{ formField fields.scaling.fields.mode name=(concat prefix "scaling.mode") value=data.scaling.mode
 		             options=scalingOptions classes="scaling-mode label-top" localize=true rootId=@root.partId }}
 		{{#if data.scaling.mode}}
-			{{ formGroup fields.scaling.fields.number name=(concat prefix "scaling.number") value=data.scaling.number
+			{{ formField fields.scaling.fields.number name=(concat prefix "scaling.number") value=data.scaling.number
 									 classes="scaling-number label-top" localize=true rootId=@root.partId }}
-			{{ formGroup fields.scaling.fields.formula name=(concat prefix "scaling.formula") value=data.scaling.formula
+			{{ formField fields.scaling.fields.formula name=(concat prefix "scaling.formula") value=data.scaling.formula
 									 classes="scaling-formula label-top" localize=true rootId=@root.partId }}
 		{{/if}}
 	{{/blackFlag-formGroup}}

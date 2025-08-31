@@ -3,24 +3,17 @@
 	<fieldset>
 		<legend>{{ localize "BF.MOVEMENT.FIELDS.traits.movement.label" }}</legend>
 		{{#if showBase}}
-			<label>
-				<span class="hinted-label" data-tooltip="BF.MOVEMENT.FIELDS.traits.movement.base.hint">
-					{{ localize "BF.MOVEMENT.FIELDS.traits.movement.base.label" }}
-				</span>
+			{{#blackFlag-formGroup "BF.MOVEMENT.FIELDS.traits.movement.base.label"
+			                       hint=(localize "BF.MOVEMENT.FIELDS.traits.movement.base.hint")}}
 				{{ formInput movement.fields.base value=movement.data.base localize=true rootId=partId }}
-			</label>
+			{{/blackFlag-formGroup}}
 		{{/if}}
-		{{#each types}}
-			<label>
-				<span>{{ label }}</span>
-				<input type="text" name="system.traits.movement.types.{{ @key }}" value="{{ value }}"
-				       placeholder="{{ placeholder }}">
-			</label>
-		{{/each}}
+		{{> blackFlag.fieldlist types }}
 		{{ formField movement.fields.unit value=movement.data.unit options=CONFIG.distanceUnits.localizedOptions
-		             localize=true partId=rootId }}
+		             localize=true rootId=partId }}
+		<hr>
 		{{ formField movement.fields.ignoredDifficultTerrain value=movement.data.ignoredDifficultTerrain
-		             options=difficultTerrainTypes localize=true partId=rootId }}
+		             options=difficultTerrainTypes localize=true rootId=partId }}
 	</fieldset>
 
 	{{#if pace}}
@@ -30,7 +23,7 @@
 				{{ formField field name=name value=value label=label rootId=@root.partId }}
 			{{/each}}
 			{{ formField pace.fields.unit value=pace.data.unit options=CONFIG.paceUnits.localizedOptions
-			             localize=true partId=rootId }}
+			             localize=true rootId=partId }}
 		</fieldset>
 	{{/if}}
 

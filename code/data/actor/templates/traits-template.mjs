@@ -28,7 +28,10 @@ export default class TraitsTemplate extends foundry.abstract.DataModel {
 		return {
 			traits: new SchemaField({
 				movement: new SchemaField({
-					base: new NumberField({ nullable: false, initial: 30, min: 0, step: 0.1 }),
+					base: new NumberField({
+						nullable: false, initial: 30, min: 0, step: 0.1,
+						label: "BF.MOVEMENT.FIELDS.traits.movement.base.label", hint: "BF.MOVEMENT.FIELDS.traits.movement.base.hint"
+					}),
 					custom: new ArrayField(new StringField()),
 					ignoredDifficultTerrain: new SetField(new StringField(), {
 						label: "BF.MOVEMENT.FIELDS.traits.movement.ignoredDifficultTerrain.label"

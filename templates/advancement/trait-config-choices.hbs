@@ -2,7 +2,7 @@
 	<legend class="hinted-label" data-tooltip="BF.Advancement.Trait.FIELDS.choices.hint">
 		{{ localize "BF.Advancement.Trait.FIELDS.choices.label" }}
 	</legend>
-	{{ formGroup configuration.fields.choiceMode value=configuration.data.choiceMode options=choiceModeOptions
+	{{ formField configuration.fields.choiceMode value=configuration.data.choiceMode options=choiceModeOptions
 	             hint=(localize (ifThen (eq configuration.data.choiceMode "inclusive")
 	             "BF.Advancement.Trait.Choice.Mode.Inclusive.Hint" "BF.Advancement.Trait.Choice.Mode.Exclusive.Hint"))
 	             rootId=partId }}

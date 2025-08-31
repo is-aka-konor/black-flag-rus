@@ -1,6 +1,6 @@
 <fieldset>
 	<legend>{{ localize "BF.HitDie.Label[one]" }}</legend>
-	{{ formGroup configuration.fields.denomination value=configuration.data.denomination
+	{{ formField configuration.fields.denomination value=configuration.data.denomination
 	             options=hitDieSizes rootId=partId }}
 	{{#blackFlag-formGroup "BF.Advancement.HitPoints.Starting"}}
 		<span>{{ configuration.data.denomination }}</span>

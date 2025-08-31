@@ -3,6 +3,16 @@
  * @abstract
  */
 export default class BaseConfig extends DocumentSheet {
+	constructor(...args) {
+		foundry.utils.logCompatibilityWarning(
+			"The `BaseConfig` application has been deprecated and replaced with `applications.actor.BaseConfigSheet`.",
+			{ since: "Black Flag 2.0", until: "Black Flag 2.2" }
+		);
+		super(...args);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/** @inheritDoc */
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {

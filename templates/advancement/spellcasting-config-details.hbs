@@ -1,15 +1,15 @@
 <fieldset>
 	<legend>{{ localize "BF.Spellcasting.Details.Label" }}</legend>
-	{{ formGroup configuration.fields.source value=configuration.data.source
+	{{ formField configuration.fields.source value=configuration.data.source
 	             options=CONFIG.spellSources.localizedOptions hint="" rootId=partId }}
-	{{ formGroup configuration.fields.ability value=configuration.data.ability options=CONFIG.abilities.localizedOptions
+	{{ formField configuration.fields.ability value=configuration.data.ability options=CONFIG.abilities.localizedOptions
 	             hint="" rootId=partId }}
 	{{#if displayType}}
-		{{ formGroup configuration.fields.type value=configuration.data.type
+		{{ formField configuration.fields.type value=configuration.data.type
 		             options=CONFIG.spellcastingTypes.localizedOptions rootId=partId }}
 	{{/if}}
 	{{#if progressionOptions}}
-		{{ formGroup configuration.fields.progression value=configuration.data.progression
+		{{ formField configuration.fields.progression value=configuration.data.progression
 		             options=progressionOptions blank=false rootId=partId }}
 	{{/if}}
 	{{#if slots.display}}

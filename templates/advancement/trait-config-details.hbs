@@ -1,6 +1,6 @@
 <fieldset>
 	<legend>{{ localize "BF.Advancement.Config.Details" }}</legend>
 	{{> "blackFlag.advancement-controls" }}
-	{{ formGroup configuration.fields.mode value=configuration.data.mode options=CONFIG.traitModes.localizedOptions
+	{{ formField configuration.fields.mode value=configuration.data.mode options=CONFIG.traitModes.localizedOptions
 	             hint=(localize (lookup (lookup CONFIG.traitModes configuration.data.mode) "hint")) rootId=partId }}
 </fieldset>

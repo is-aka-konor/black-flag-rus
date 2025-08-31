@@ -159,7 +159,7 @@ export function getAttributeOption(attribute, { actor, item }={}) {
 		switch (attribute) {
 			case "attributes.ac.flat":
 			case "attributes.ac.value":
-				label = "BF.ArmorClass.Label";
+				label = "BF.ARMORCLASS.Label";
 				break;
 			case "attributes.cr":
 				label = "BF.ChallengeRating.Label";

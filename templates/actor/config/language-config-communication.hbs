@@ -1,12 +1,30 @@
 <fieldset>
 	<legend>{{ localize "BF.Language.Communication.Label" }}</legend>
-	{{#each languages.communication}}
-		<label>
-			<span>{{ label }}</span>
-			<input type="number" name="system.proficiencies.languages.communication.{{ @key }}.range" value="{{ value.range }}">
-			<select name="system.proficiencies.languages.communication.{{ @key }}.unit">
-				{{ selectOptions @root.CONFIG.distanceUnits.localizedOptions selected=value.unit }}
-			</select>
-		</label>
-	{{/each}}
+	<table class="fieldset-table">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">
+					{{ localize "BF.LANGUAGES.FIELDS.proficiencies.languages.communication.element.range.label" }}
+				</th>
+				<th scope="col">
+					{{ localize "BF.LANGUAGES.FIELDS.proficiencies.languages.communication.element.unit.label" }}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each languages.communication}}
+				<tr>
+					<th scope="row">{{ label }}</th>
+					<td>
+						{{ formInput fields.range name=(concat prefix "range") value=value.range }}
+					</td>
+					<td>
+						{{ formInput fields.unit name=(concat prefix "unit") value=value.unit
+						             options=@root.CONFIG.distanceUnits.localizedOptions }}
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 </fieldset>

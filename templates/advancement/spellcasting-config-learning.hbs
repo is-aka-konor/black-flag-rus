@@ -2,7 +2,7 @@
 	{{#if learningModes}}
 		<fieldset>
 			<legend>{{ localize "BF.Advancement.Spellcasting.GainingSpells" }}</legend>
-			{{ formGroup configuration.fields.spells.fields.mode value=configuration.data.spells.mode
+			{{ formField configuration.fields.spells.fields.mode value=configuration.data.spells.mode
 			             options=learningModes rootId=partId }}
 			{{#each known as |data name|}}
 				<hr>
@@ -22,23 +22,23 @@
 					</div>
 				</div>
 				{{#if (and ../configuration.data.rituals.scaleValue (eq name "rituals"))}}
-					{{ formGroup ../configuration.fields.rituals.fields.restricted value=../configuration.data.rituals.restricted
+					{{ formField ../configuration.fields.rituals.fields.restricted value=../configuration.data.rituals.restricted
 					             rootId=partId }}
 				{{/if}}
 			{{/each}}
 			{{#if (eq configuration.data.spells.mode "limited")}}
-				{{ formGroup configuration.fields.spells.fields.replacement value=configuration.data.spells.replacement
+				{{ formField configuration.fields.spells.fields.replacement value=configuration.data.spells.replacement
 				             rootId=partId }}
-				{{ formGroup configuration.fields.spells.fields.schools value=configuration.data.spells.schools
+				{{ formField configuration.fields.spells.fields.schools value=configuration.data.spells.schools
 										 options=CONFIG.spellSchools.localizedOptions rootId=partId }}
-				{{ formGroup configuration.fields.spells.fields.special value=configuration.data.spells.special
+				{{ formField configuration.fields.spells.fields.special value=configuration.data.spells.special
 				             rootId=partId }}
 			{{else if (eq configuration.data.spells.mode "spellbook")}}
 				{{#blackFlag-formGroup "BF.Spellcasting.FIELDS.spells.spellbook.label"
 				                        hint=(localize "BF.Spellcasting.FIELDS.spells.spellbook.hint")}}
-					{{ formGroup configuration.fields.spells.fields.spellbook.fields.firstLevel
+					{{ formField configuration.fields.spells.fields.spellbook.fields.firstLevel
 					             value=configuration.data.spells.spellbook.firstLevel classes="label-top" rootId=partId }}
-					{{ formGroup configuration.fields.spells.fields.spellbook.fields.otherLevels
+					{{ formField configuration.fields.spells.fields.spellbook.fields.otherLevels
 					             value=configuration.data.spells.spellbook.otherLevels classes="label-top" rootId=partId }}
 				{{/blackFlag-formGroup}}
 			{{/if}}

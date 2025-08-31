@@ -2,37 +2,37 @@
 	<legend>{{ localize "BF.TARGET.FIELDS.target.template.label" }}</legend>
 	{{#blackFlag-formGroup "BF.TARGET.FIELDS.target.template.label"}}
 		{{#if data.target.template.type}}
-			{{ formGroup fields.target.fields.template.fields.count name=(concat prefix "target.template.count")
+			{{ formField fields.target.fields.template.fields.count name=(concat prefix "target.template.count")
 			             value=data.target.template.count placeholder="1" classes="label-top" hint="" rootId=partId }}
 		{{/if}}
-		{{ formGroup fields.target.fields.template.fields.type name=(concat prefix "target.template.type")
+		{{ formField fields.target.fields.template.fields.type name=(concat prefix "target.template.type")
 		             value=data.target.template.type options=CONFIG.areaOfEffectTypes.localizedOptions classes="label-top"
 		             hint="" rootId=partId }}
 	{{/blackFlag-formGroup}}
 	{{#with target.aoeSizes as |aoeSizes|}}
 		{{#blackFlag-formGroup "BF.TARGET.FIELDS.target.template.size.label"}}
-			{{ formGroup ../fields.target.fields.template.fields.size name=(concat prefix "target.template.size")
+			{{ formField ../fields.target.fields.template.fields.size name=(concat prefix "target.template.size")
 			             value=../data.target.template.size classes="label-top" label=(localize aoeSizes.size)
 			             hint="" rootId=partId }}
 			{{#if aoeSizes.width}}
 				<i class="fa-solid fa-times separator" inert></i>
-				{{ formGroup ../fields.target.fields.template.fields.width name=(concat prefix "target.template.width")
+				{{ formField ../fields.target.fields.template.fields.width name=(concat prefix "target.template.width")
 				             value=../data.target.template.width classes="label-top" label=(localize aoeSizes.width)
 				             hint="" rootId=partId }}
 			{{/if}}
 			{{#if aoeSizes.height}}
 				<i class="fa-solid fa-times separator" inert></i>
-				{{ formGroup ../fields.target.fields.template.fields.height name=(concat prefix "target.template.height")
+				{{ formField ../fields.target.fields.template.fields.height name=(concat prefix "target.template.height")
 				             value=../data.target.template.height classes="label-top" label=(localize aoeSizes.height)
 				             hint="" rootId=partId }}
 			{{/if}}
-			{{ formGroup ../fields.target.fields.template.fields.unit name=(concat prefix "target.template.unit")
+			{{ formField ../fields.target.fields.template.fields.unit name=(concat prefix "target.template.unit")
 									 value=../data.target.template.unit options=../CONFIG.distanceUnits.localizedOptions
 									 classes="label-top" hint="" rootId=partId }}
 		{{/blackFlag-formGroup}}
 	{{/with}}
 	{{#if (and data.target.template.type data.target.template.count)}}
-		{{ formGroup fields.target.fields.template.fields.contiguous name=(concat prefix "target.template.contiguous")
+		{{ formField fields.target.fields.template.fields.contiguous name=(concat prefix "target.template.contiguous")
 		             value=data.target.template.contiguous rootId=partId }}
 	{{/if}}
 </fieldset>

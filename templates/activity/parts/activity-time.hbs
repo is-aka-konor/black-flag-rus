@@ -7,13 +7,13 @@
 		<legend>{{ localize "BF.ACTIVATION.Label" }}</legend>
 		{{#blackFlag-formGroup "BF.ACTIVATION.Time"}}
 			{{#if activation.scalar}}
-				{{ formGroup fields.activation.fields.value value=source.activation.value classes="label-top" localize=true
+				{{ formField fields.activation.fields.value value=source.activation.value classes="label-top" localize=true
 				             rootId=partId }}
 			{{/if}}
-			{{ formGroup fields.activation.fields.type value=source.activation.type options=activation.options
+			{{ formField fields.activation.fields.type value=source.activation.type options=activation.options
 			             classes="label-top" localize=true rootId=partId }}
 		{{/blackFlag-formGroup}}
-		{{ formGroup fields.activation.fields.condition value=source.activation.condition
+		{{ formField fields.activation.fields.condition value=source.activation.condition
 								 localize=true rootId=partId }}
 	</fieldset>
 
@@ -25,14 +25,14 @@
 		<legend>{{ localize "BF.DURATION.Label" }}</legend>
 		{{#blackFlag-formGroup "BF.DURATION.Label"}}
 			{{#if activity.duration.scalar}}
-				{{ formGroup fields.duration.fields.value value=source.duration.value classes="label-top" localize=true
+				{{ formField fields.duration.fields.value value=source.duration.value classes="label-top" localize=true
 				             rootId=partId }}
 			{{/if}}
-			{{ formGroup fields.duration.fields.unit value=source.duration.unit options=durationOptions
+			{{ formField fields.duration.fields.unit value=source.duration.unit options=durationOptions
 			             classes="label-top" localize=true rootId=partId }}
 		{{/blackFlag-formGroup}}
 		{{#if (eq activity.duration.unit "special")}}
-			{{ formGroup fields.duration.fields.special value=source.duration.special
+			{{ formField fields.duration.fields.special value=source.duration.special
 									localize=true rootId=partId }}
 		{{/if}}
 		{{ formField fields.duration.fields.concentration value=data.duration.concentration rootId=partId }}

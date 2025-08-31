@@ -1,11 +1,11 @@
 <div class="consumption form-group split-group">
-	{{ formGroup fields.type name=(concat prefix "type") value=consumption.type options=@root.consumptionTypeOptions
+	{{ formField fields.type name=(concat prefix "type") value=consumption.type options=@root.consumptionTypeOptions
 	             classes="label-top" rootId=@root.partId }}
 	{{#if consumption.showTargets}}
-		{{ formGroup fields.target name=(concat prefix "target") value=consumption.target options=consumption.validTargets
+		{{ formField fields.target name=(concat prefix "target") value=consumption.target options=consumption.validTargets
 		             blank=(ifThen consumption.validTargets false "") classes="label-top" rootId=@root.partId }}
 	{{/if}}
-	{{ formGroup fields.value name=(concat prefix "value") value=consumption.value classes="label-top"
+	{{ formField fields.value name=(concat prefix "value") value=consumption.value classes="label-top"
 	             rootId=@root.partId }}
 </div>
 
@@ -21,10 +21,10 @@
 
 {{#if (and scalingAllowed consumption.scalingModes)}}
 	<div class="consumption-scaling form-group split-group full-width">
-		{{ formGroup fields.scaling.fields.mode name=(concat prefix "scaling.mode") value=consumption.scaling.mode
+		{{ formField fields.scaling.fields.mode name=(concat prefix "scaling.mode") value=consumption.scaling.mode
 		             options=consumption.scalingModes classes="label-top" rootId=@root.partId }}
 		{{#if consumption.scaling.mode}}
-			{{ formGroup fields.scaling.fields.formula name=(concat prefix "scaling.formula")
+			{{ formField fields.scaling.fields.formula name=(concat prefix "scaling.formula")
 			             value=consumption.scaling.formula placeholder=(localize "BF.CONSUMPTION.Scaling.Automatic")
 			             classes="label-top" rootId=@root.partId }}
 		{{/if}}

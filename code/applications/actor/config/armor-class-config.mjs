@@ -28,7 +28,7 @@ export default class ArmorClassConfig extends BaseConfigSheet {
 
 	/** @override */
 	get title() {
-		return game.i18n.format("BF.Action.Configure.Specific", { type: game.i18n.localize("BF.ArmorClass.Label") });
+		return game.i18n.format("BF.Action.Configure.Specific", { type: game.i18n.localize("BF.ARMORCLASS.Label") });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -38,6 +38,12 @@ export default class ArmorClassConfig extends BaseConfigSheet {
 	/** @inheritDoc */
 	async _preparePartContext(partId, context, options) {
 		context = await super._preparePartContext(partId, context, options);
+
+		context.ac = {
+			data: context.system.data.attributes.ac,
+			fields: context.system.fields.attributes.fields.ac.fields,
+			source: context.system.source.attributes.ac
+		};
 
 		context.armorFormulas = context.system.data.attributes.ac.formulas.map(data => ({
 			...data,
@@ -76,7 +82,7 @@ export default class ArmorClassConfig extends BaseConfigSheet {
 			{
 				category: "armor-class",
 				type: "bonus",
-				label: "BF.ArmorClass.Label",
+				label: "BF.ARMORCLASS.Label",
 				modifiers: this.getModifiers([{ k: "type", v: "armor-class" }], [], f => f.type === "bonus")
 			}
 		];

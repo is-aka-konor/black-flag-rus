@@ -12,22 +12,22 @@
 <fieldset>
 	<legend>{{ localize "BF.WEAPON.Details" }}</legend>
 	{{#if properties.magical.selected}}
-		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
+		{{ formField fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
 	{{#blackFlag-formGroup "BF.DAMAGE.Label" classes="damage"}}
-		{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
+		{{ formField fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
 		             localize=true rootId=partId }}
-		{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
+		{{ formField fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
 		             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
-		{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
+		{{ formField fields.damage.fields.base.fields.type value=source.damage.base.type
 		             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
 	{{/blackFlag-formGroup}}
 	{{#if properties.ammunition.selected}}
-		{{ formGroup fields.ammunition.fields.type value=source.ammunition.type options=CONFIG.ammunition.localizedOptions
+		{{ formField fields.ammunition.fields.type value=source.ammunition.type options=CONFIG.ammunition.localizedOptions
 		             localize=true rootId=partId }}
 	{{/if}}
 	{{#if properties.magazine.selected}}
-		{{ formGroup fields.ammunition.fields.capacity value=source.ammunition.capacity localize=true rootId=partId }}
+		{{ formField fields.ammunition.fields.capacity value=source.ammunition.capacity localize=true rootId=partId }}
 	{{/if}}
 	{{#if (or (eq source.type.category "natural") (eq source.type.value "ranged") properties.thrown.selected)}}
 		{{#blackFlag-formGroup "BF.RANGE.Label" interiorClasses="range-fields"}}
@@ -64,6 +64,6 @@
 
 <fieldset>
 	<legend>{{ localize "BF.Override.Label[other]" }}</legend>
-	{{ formGroup fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
+	{{ formField fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
 	             input=inputs.createSelectInput localize=true rootId=partId }}
 </fieldset>

@@ -2,7 +2,7 @@
 	<legend>{{ localize "BF.Advancement.Config.Details" }}</legend>
 	{{> "blackFlag.advancement-controls" }}
 	{{#if types}}
-		{{ formGroup configuration.fields.type value=configuration.data.type options=types hint=(localize @root.type.hint)
+		{{ formField configuration.fields.type value=configuration.data.type options=types hint=(localize @root.type.hint)
 		             rootId=partId }}
 	{{/if}}
 </fieldset>

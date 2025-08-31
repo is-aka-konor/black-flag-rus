@@ -956,30 +956,56 @@
 	}
 },
 
-"BF.ArmorClass": {
-	"Label": "Armor Class",
+"BF.ARMORCLASS": {
 	"Abbreviation": "AC",
 	"Action": {
 		"Configure": "Configure Armor Class"
 	},
-	"CustomLabel": "Custom Label",
-	"Flat": {
-		"Label": "Flat Value",
-		"Hint": "Arbitrary that is made available to AC formulas such as Natural Armor."
+	"FIELDS": {
+		"attributes": {
+			"ac": {
+				"baseFormulas": {
+					"label": "Default AC Formulas"
+				},
+				"customLabel": {
+					"label": "Custom Label"
+				},
+				"formulas": {
+					"element": {
+						"armored": {
+							"label": "Armored"
+						},
+						"formula": {
+							"label": "Formula"
+						},
+						"label": {
+							"label": "Label"
+						},
+						"shielded": {
+							"label": "Shielded"
+						}
+					},
+					"label": "AC Formulas"
+				},
+				"flat": {
+					"hint": "Arbitrary that is made available to AC formulas such as Natural Armor.",
+					"label": "Flat Value"
+				},
+				"override": {
+					"hint": "Value that will replace the calculated AC, preventing any other bonuses from applying.",
+					"label": "Override"
+				}
+			}
+		}
 	},
 	"Formula": {
-		"Label[one]": "AC Formula",
-		"Label[other]": "AC Formulas",
-		"DefaultLabel[one]": "Default AC Formula",
-		"DefaultLabel[other]": "Default AC Formulas",
 		"Armored": "Armored",
 		"Natural": "Natural Armor",
-		"Unarmored": "Unarmored",
-		"Error": "Failed to evaluate AC formula: {formula} ({error})"
+		"Unarmored": "Unarmored"
 	},
-	"Override": {
-		"Label": "Override",
-		"Hint": "Value that will replace the calculated AC, preventing any other bonuses from applying."
+	"Label": "Armor Class",
+	"Warning": {
+		"InvalidFormula": "Failed to evaluate AC formula: {formula} ({error})"
 	}
 },
 
@@ -2521,6 +2547,27 @@
 		}
 	},
 	"Telepathy": "Telepathy"
+},
+
+"BF.LANGUAGES": {
+	"FIELDS": {
+		"proficiencies": {
+			"languages": {
+				"communication": {
+					"element": {
+						"range": {
+							"label": "Range"
+						},
+						"unit": {
+							"label": "Unit"
+						}
+					},
+					"label": "Ranged Communication"
+				},
+				"label": "Languages"
+			}
+		}
+	}
 },
 
 "BF.LegendaryAction": {

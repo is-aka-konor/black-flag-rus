@@ -3,11 +3,11 @@
 	<legend>
 	{{#with (localize "BF.Modifier.Specific" type=(localize ../section.label)
 	        modifier=(localize (concat localization "[other]"))) as |label|}}
-		{{#if ../../section.global}}
-			{{ localize "BF.Modifier.Global" type=label }}
-		{{else}}
-			{{ label }}
-		{{/if}}
+	{{#if ../../section.global}}
+		{{ localize "BF.Modifier.Global" type=label }}
+	{{else}}
+		{{ label }}
+	{{/if}}
 	{{/with}}
 	</legend>
 	{{#if ../section.modifiers.length}}

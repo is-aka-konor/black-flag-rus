@@ -1,9 +1,9 @@
 <fieldset>
 	<legend>{{ localize "BF.Attunement.Label" }}</legend>
-	{{ formGroup fields.attunement.fields.value value=source.attunement.value options=attunementOptions
+	{{ formField fields.attunement.fields.value value=source.attunement.value options=attunementOptions
 	             localize=true rootId=partId }}
 	{{#if source.attunement.value}}
-		{{ formGroup fields.attunement.fields.requirement value=source.attunement.requirement
+		{{ formField fields.attunement.fields.requirement value=source.attunement.requirement
 								 localize=true rootId=partId }}
 	{{/if}}
 </fieldset>

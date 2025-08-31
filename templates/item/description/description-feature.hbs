@@ -1,17 +1,17 @@
 <section>
 	<div class="category">
-		{{ formGroup fields.type.fields.category value=source.type.category options=type.categoryOptions
+		{{ formField fields.type.fields.category value=source.type.category options=type.categoryOptions
 		             classes="label-top" localize=true rootId=partId }}
 		{{#if type.typeOptions}}
-			{{ formGroup fields.type.fields.value value=type.value options=type.typeOptions
+			{{ formField fields.type.fields.value value=type.value options=type.typeOptions
 									 classes="label-top" label=type.typeLabel localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.typeSources}}
-			{{ formGroup fields.identifier.fields.associated value=source.identifier.associated options=type.typeSources
+			{{ formField fields.identifier.fields.associated value=source.identifier.associated options=type.typeSources
 			             classes="label-top" label="BF.Feature.Source" hint="" localize=true rootId=partId }}
 		{{/if}}
 		{{#if type.displayLevel}}
-			{{ formGroup fields.level.fields.value value=(ifThen type.fixedLevel type.fixedLevel source.level.value)
+			{{ formField fields.level.fields.value value=(ifThen type.fixedLevel type.fixedLevel source.level.value)
 			             disabled=(gte type.fixedLevel 0) classes="label-top" label="BF.Level.Label[one]" localize=true
 			             rootId=partId }}
 		{{/if}}

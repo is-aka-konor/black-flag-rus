@@ -1,9 +1,9 @@
 {{#unless item.isEmbedded}}
 	<div class="category">
-		{{ formGroup fields.identifier.fields.value value=source.identifier.value placeholder=item.identifier
+		{{ formField fields.identifier.fields.value value=source.identifier.value placeholder=item.identifier
 		             classes="label-top" label="BF.Currency.Abbreviation.Label" hint="BF.Currency.Abbreviation.Hint"
 		             localize=true rootId=partId }}
-		{{ formGroup fields.conversion.fields.value value=source.conversion.value classes="label-top" localize=true
+		{{ formField fields.conversion.fields.value value=source.conversion.value classes="label-top" localize=true
 		             rootId=partId }}
 	</div>
 {{/unless}}

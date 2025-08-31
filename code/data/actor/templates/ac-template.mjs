@@ -14,21 +14,31 @@ export default class ACTemplate extends foundry.abstract.DataModel {
 				ac: new SchemaField({
 					baseFormulas: new SetField(new StringField(), {
 						initial: ["unarmored", "armored"]
-					}, { label: "BF.ArmorClass.Formula.DefaultLabel[other]" }),
-					customLabel: new StringField({ label: "BF.ArmorClass.CustomLabel" }),
+					}, { label: "BF.ARMORCLASS.FIELDS.attributes.ac.baseFormulas.label" }),
+					customLabel: new StringField({ label: "BF.ARMORCLASS.FIELDS.attributes.ac.customLabel.label" }),
 					formulas: new ArrayField(new SchemaField({
-						label: new StringField(),
-						formula: new FormulaField({ deterministic: true }),
-						armored: new BooleanField({ nullable: true, initial: null }),
-						shielded: new BooleanField({ nullable: true, initial: null })
-					}), { label: "BF.ArmorClass.Formula.Label[other]" }),
+						armored: new BooleanField({
+							nullable: true, initial: null, label: "BF.ARMORCLASS.FIELDS.attributes.ac.formulas.element.armored.label"
+						}),
+						formula: new FormulaField({
+							deterministic: true, label: "BF.ARMORCLASS.FIELDS.attributes.ac.formulas.element.formula.label"
+						}),
+						label: new StringField({ label: "BF.ARMORCLASS.FIELDS.attributes.ac.formulas.element.label.label" }),
+						shielded: new BooleanField({
+							nullable: true, initial: null, label: "BF.ARMORCLASS.FIELDS.attributes.ac.formulas.element.shielded.label"
+						})
+					}), { label: "BF.ARMORCLASS.FIELDS.attributes.ac.formulas.label" }),
 					flat: new NumberField({
-						min: 0, integer: true, label: "BF.ArmorClass.Flat.Label", hint: "BF.ArmorClass.Flat.Hint"
+						min: 0, integer: true,
+						label: "BF.ARMORCLASS.FIELDS.attributes.ac.flat.label",
+						hint: "BF.ARMORCLASS.FIELDS.attributes.ac.flat.hint"
 					}),
 					override: new NumberField({
-						min: 0, integer: true, label: "BF.ArmorClass.Override.Label", hint: "BF.ArmorClass.Override.Hint"
+						min: 0, integer: true,
+						label: "BF.ARMORCLASS.FIELDS.attributes.ac.override.label",
+						hint: "BF.ARMORCLASS.FIELDS.attributes.ac.override.hint"
 					})
-				}, {label: "BF.ArmorClass.Label"})
+				}, {label: "BF.ARMORCLASS.Label"})
 			})
 		};
 	}
@@ -134,7 +144,9 @@ export default class ACTemplate extends foundry.abstract.DataModel {
 			} catch(error) {
 				this.parent.notifications.set(`ac-formula-error-${index}`, {
 					level: "error", category: "armor-class", section: "main",
-					message: game.i18n.format("BF.ArmorClass.Formula.Error", {formula: config.formula, error: error.message})
+					message: game.i18n.format(
+						"BF.ARMORCLASS.Warning.InvalidFormula", {formula: config.formula, error: error.message}
+					)
 				});
 			}
 		}

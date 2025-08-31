@@ -6,10 +6,10 @@
 		{{#if showSidebar}}
 			<div class="sidebar">
 				{{#if isIdentified}}
-					{{ formGroup fields.rarity value=source.rarity options=CONFIG.rarities.localizedOptions
+					{{ formField fields.rarity value=source.rarity options=CONFIG.rarities.localizedOptions
 					             classes="label-adjacent uninputs" localize=true blank="BF.Rarity.Level.Mundane" rootId=partId }}
 				{{/if}}
-				{{ formGroup fields.quantity value=source.quantity classes="label-adjacent uninputs" localize=true
+				{{ formField fields.quantity value=source.quantity classes="label-adjacent uninputs" localize=true
 				             rootId=partId }}
 				{{#unless hidePrice}}
 					{{#blackFlag-formGroup "BF.Price.Label" classes="label-adjacent uninputs"}}

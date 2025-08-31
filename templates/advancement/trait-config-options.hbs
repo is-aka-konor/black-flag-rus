@@ -1,9 +1,9 @@
 <fieldset class="trait-options">
 	<legend>{{ localize selectedTrait.header }}</legend>
-	{{ formGroup selectedTrait.field name="selectedTrait" value=selectedTrait.value options=selectedTrait.options
+	{{ formField selectedTrait.field name="selectedTrait" value=selectedTrait.value options=selectedTrait.options
 	             rootId=partId }}
 	{{#if choice.fields}}
-		{{ formGroup choice.fields.count value=choice.data.count rootId=partId }}
+		{{ formField choice.fields.count value=choice.data.count rootId=partId }}
 	{{/if}}
 
 	{{> "blackFlag.trait-list" choices=choice.options prefix="configuration.checked" }}

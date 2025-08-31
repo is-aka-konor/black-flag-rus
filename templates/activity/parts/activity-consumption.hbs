@@ -23,14 +23,14 @@
 					</li>
 				{{/if}}
 			</ul>
-			{{ formGroup fields.consumption.fields.scale.fields.allowed value=source.consumption.scale.allowed
+			{{ formField fields.consumption.fields.scale.fields.allowed value=source.consumption.scale.allowed
 			             rootId=partId }}
 			{{#if source.consumption.scale.allowed}}
-				{{ formGroup fields.consumption.fields.scale.fields.max value=source.consumption.scale.max
+				{{ formField fields.consumption.fields.scale.fields.max value=source.consumption.scale.max
 				             placeholder="∞" rootId=partId }}
 			{{/if}}
 			{{#if showPrimaryActivation}}
-				{{ formGroup fields.activation.fields.primary value=source.activation.primary rootId=partId }}
+				{{ formField fields.activation.fields.primary value=source.activation.primary rootId=partId }}
 			{{/if}}
 		</fieldset>
 	</blackFlag-consumption>

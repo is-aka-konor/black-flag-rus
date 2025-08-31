@@ -10,15 +10,15 @@
 <fieldset>
 	<legend>{{ localize "BF.AMMUNITION.Details" }}</legend>
 	{{#if properties.magical.selected}}
-		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" rootId=partId }}
+		{{ formField fields.magicalBonus value=source.magicalBonus classes="label-hinted" rootId=partId }}
 	{{/if}}
-	{{ formGroup fields.damage.fields.replace value=source.damage.replace classes="label-hinted" rootId=partId }}
+	{{ formField fields.damage.fields.replace value=source.damage.replace classes="label-hinted" rootId=partId }}
 	{{#blackFlag-formGroup "BF.DAMAGE.Label" classes="damage"}}
-		{{ formGroup fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
+		{{ formField fields.damage.fields.base.fields.number value=source.damage.base.number classes="label-top"
 		             localize=true rootId=partId }}
-		{{ formGroup fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
+		{{ formField fields.damage.fields.base.fields.denomination value=source.damage.base.denomination
 		             options=CONFIG.dieSteps.labeledOptions classes="label-top" localize=true rootId=partId }}
-		{{ formGroup fields.damage.fields.base.fields.type value=source.damage.base.type
+		{{ formField fields.damage.fields.base.fields.type value=source.damage.base.type
 		             options=CONFIG.damageTypes.localizedOptions classes="label-top" localize=true rootId=partId }}
 	{{/blackFlag-formGroup}}
 </fieldset>

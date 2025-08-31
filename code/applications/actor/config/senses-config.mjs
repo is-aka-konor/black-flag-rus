@@ -57,12 +57,14 @@ export default class SensesConfig extends BaseCustomConfigSheet {
 			types: Object.entries(CONFIG.BlackFlag.senses.localized).reduce((obj, [key, label]) => {
 				const keyPath = `system.traits.senses.types.${key}`;
 				obj[key] = {
+					field: context.system.fields.traits.fields.senses.fields.types.model,
 					label,
-					value: senses.types?.[key] ?? "",
+					name: keyPath,
 					placeholder:
 						foundry.utils.getProperty(this.document.overrides, keyPath) ??
 						foundry.utils.getProperty(this.document.advancementOverrides, keyPath) ??
-						""
+						"",
+					value: senses.types?.[key] ?? ""
 				};
 				return obj;
 			}, {})

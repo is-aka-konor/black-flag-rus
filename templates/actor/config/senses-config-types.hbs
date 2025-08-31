@@ -1,12 +1,6 @@
 <fieldset>
 	<legend>{{ localize "BF.SENSES.Label[other]" }}</legend>
-	{{#each senses.types}}
-		<label>
-			<span>{{ label }}</span>
-			<input type="text" name="system.traits.senses.types.{{ @key }}" value="{{ value }}"
-			       placeholder="{{ placeholder }}">
-		</label>
-	{{/each}}
+	{{> blackFlag.fieldlist senses.types }}
 	{{ formField senses.fields.unit value=senses.data.unit options=CONFIG.distanceUnits.localizedOptions
 	             label=(localize "BF.SENSES.FIELDS.traits.senses.unit.label") rootId=partId }}
 </fieldset>

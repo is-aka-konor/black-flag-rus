@@ -1,6 +1,6 @@
 <section>
 	<div class="category">
-		{{ formGroup fields.type.fields.category value=source.type.category options=type.categoryOptions
+		{{ formField fields.type.fields.category value=source.type.category options=type.categoryOptions
 		             classes="label-top" label="BF.Feature.Talent.Category.Label" localize=true rootId=partId }}
 	</div>
 	{{#if (or editable system.restriction.label)}}

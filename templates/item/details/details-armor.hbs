@@ -23,10 +23,10 @@
 		{{/blackFlag-formGroup}}
 	{{/if}}
 	{{#if properties.magical.selected}}
-		{{ formGroup fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
+		{{ formField fields.magicalBonus value=source.magicalBonus classes="label-hinted" localize=true rootId=partId }}
 	{{/if}}
 	{{#if properties.cumbersome.selected}}
-		{{ formGroup fields.armor.fields.requiredStrength value=source.armor.requiredStrength localize=true rootId=partId }}
+		{{ formField fields.armor.fields.requiredStrength value=source.armor.requiredStrength localize=true rootId=partId }}
 	{{/if}}
 </fieldset>
 
@@ -35,12 +35,12 @@
 <fieldset>
 	<legend>{{ localize "BF.Override.Label[other]" }}</legend>
 	{{#blackFlag-formGroup "BF.Armor.Modifier.Label" interiorClasses="range-fields"}}
-		{{ formGroup fields.modifier.fields.min value=source.modifier.min placeholder=system.modifier.minPlaceholder
+		{{ formField fields.modifier.fields.min value=source.modifier.min placeholder=system.modifier.minPlaceholder
 		             classes="label-top" label="BF.Number.Minimum" localize=true rootId=partId }}
 		<blackFlag-icon src="systems/black-flag/artwork/interface/range-connector.svg" class="separator"></blackFlag-icon>
-		{{ formGroup fields.modifier.fields.max value=source.modifier.max placeholder=system.modifier.maxPlaceholder
+		{{ formField fields.modifier.fields.max value=source.modifier.max placeholder=system.modifier.maxPlaceholder
 		             classes="label-top" label="BF.Number.Maximum" localize=true rootId=partId }}
 	{{/blackFlag-formGroup}}
-	{{ formGroup fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
+	{{ formField fields.overrides.fields.proficiency value=source.overrides.proficiency options=proficiencyOptions
 							 input=inputs.createSelectInput localize=true rootId=partId }}
 </fieldset>

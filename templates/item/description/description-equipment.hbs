@@ -1,14 +1,14 @@
 <div class="category">
 	{{#if category}}
-		{{ formGroup fields.type.fields.category value=source.type.category options=category.options
+		{{ formField fields.type.fields.category value=source.type.category options=category.options
 		             classes="label-top" localize=true rootId=partId }}
 	{{/if}}
 	{{#if type}}
-		{{ formGroup fields.type.fields.value value=source.type.value options=type.options
+		{{ formField fields.type.fields.value value=source.type.value options=type.options
 		             classes="label-top" localize=true rootId=partId }}
 	{{/if}}
 	{{#if baseItem}}
-		{{ formGroup fields.type.fields.base value=source.type.base options=baseItem.options
+		{{ formField fields.type.fields.base value=source.type.base options=baseItem.options
 								 classes="label-top" localize=true rootId=partId }}
 	{{/if}}
 </div>

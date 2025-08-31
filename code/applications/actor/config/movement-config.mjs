@@ -57,12 +57,14 @@ export default class MovementConfig extends BaseCustomConfigSheet {
 		context.types = Object.entries(CONFIG.BlackFlag.movementTypes).reduce((obj, [key, config]) => {
 			const keyPath = `system.traits.movement.types.${key}`;
 			obj[key] = {
+				field: context.movement.fields.types.model,
 				label: game.i18n.localize(config.label),
-				value: context.movement.data.types?.[key] ?? "",
+				name: keyPath,
 				placeholder:
 					foundry.utils.getProperty(this.document.overrides, keyPath) ??
 					foundry.utils.getProperty(this.document.advancementOverrides, keyPath) ??
-					""
+					"",
+				value: context.movement.data.types?.[key] ?? ""
 			};
 			return obj;
 		}, {});
