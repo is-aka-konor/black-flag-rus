@@ -61,7 +61,10 @@
         },
         "tags": [],
         "custom": [],
-        "units": "foot"
+        "units": "foot",
+        "ignoredDifficultTerrain": [
+          "plants"
+        ]
       },
       "senses": {
         "types": {
@@ -1140,9 +1143,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1729607939811,
-    "modifiedTime": 1729607939811,
+    "modifiedTime": 1756767233118,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

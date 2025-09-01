@@ -3,7 +3,8 @@
   "name": "Boots of the Winterlands",
   "system": {
     "type": {
-      "category": "wondrousItem"
+      "category": "wondrousItem",
+      "base": "boots"
     },
     "rarity": "uncommon",
     "price": {
@@ -15,7 +16,7 @@
       "requirement": ""
     },
     "description": {
-      "value": "<p>These furred boots are snug and feel quite warm. While you wear them, you gain the following benefits:</p>\n\t\t\t\t\t\t\t\t\t\t\t\t<p>• You have resistance to cold damage.</p>\n\t\t\t\t\t\t\t\t\t\t\t\t<p>• You ignore difficult terrain created by ice or snow.</p>\n\t\t\t\t\t\t\t\t\t\t\t\t<p>• You can tolerate temperatures as low as −50 degrees Fahrenheit without any additional protection. If you wear heavy clothes, you can tolerate temperatures as low as −100 degrees Fahrenheit.</p>",
+      "value": "<p>These furred boots are snug and feel quite warm. While you wear them, you gain the following benefits:</p><p>• You have resistance to cold damage.</p><p>• You ignore difficult terrain created by ice or snow.</p><p>• You can tolerate temperatures as low as −50 degrees Fahrenheit without any additional protection. If you wear heavy clothes, you can tolerate temperatures as low as −100 degrees Fahrenheit.</p>",
       "source": {}
     },
     "activities": {},
@@ -51,7 +52,7 @@
         "startTurn": null
       },
       "disabled": false,
-      "name": "Boots of the Winterlands",
+      "name": "The Winterlands",
       "img": "icons/equipment/feet/boots-leather-banded-furred.webp",
       "_id": "YgPUDOGj56PcXHnt",
       "type": "base",
@@ -63,6 +64,18 @@
           "key": "system.traits.damage.resistances.value",
           "mode": 2,
           "value": "cold",
+          "priority": null
+        },
+        {
+          "key": "system.traits.movement.ignoredDifficultTerrain",
+          "mode": 2,
+          "value": "ice",
+          "priority": null
+        },
+        {
+          "key": "system.traits.movement.ignoredDifficultTerrain",
+          "mode": 2,
+          "value": "snow",
           "priority": null
         }
       ],
@@ -79,7 +92,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1725901884777,
-        "modifiedTime": 1756335107566,
+        "modifiedTime": 1756766568283,
         "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
@@ -96,9 +109,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.045",
+    "systemVersion": "2.0.068",
     "createdTime": 1724983501348,
-    "modifiedTime": 1728426556234,
+    "modifiedTime": 1756766534071,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

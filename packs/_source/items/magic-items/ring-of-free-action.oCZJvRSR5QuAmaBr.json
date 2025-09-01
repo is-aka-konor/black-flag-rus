@@ -41,7 +41,57 @@
   },
   "_id": "oCZJvRSR5QuAmaBr",
   "img": "icons/equipment/finger/ring-horned-gold-blue.webp",
-  "effects": [],
+  "effects": [
+    {
+      "type": "standard",
+      "name": "Free Action",
+      "origin": "Compendium.black-flag.items.Item.oCZJvRSR5QuAmaBr",
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "system": {
+        "magical": true,
+        "rider": {
+          "statuses": []
+        }
+      },
+      "img": "icons/equipment/finger/ring-horned-gold-blue.webp",
+      "_id": "pSjh4Laab9G7RR1a",
+      "changes": [
+        {
+          "key": "system.traits.movement.ignoredDifficultTerrain",
+          "mode": 2,
+          "value": "ALL",
+          "priority": null
+        }
+      ],
+      "description": "<p>Difficult terrain doesn’t cost you extra movement.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756766711093,
+        "modifiedTime": 1756766751116,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!items.effects!oCZJvRSR5QuAmaBr.pSjh4Laab9G7RR1a"
+    }
+  ],
   "folder": "PNS3OPopAxnlSN4O",
   "sort": 17600000,
   "ownership": {

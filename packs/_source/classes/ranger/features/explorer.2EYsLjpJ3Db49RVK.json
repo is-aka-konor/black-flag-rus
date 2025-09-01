@@ -13,7 +13,29 @@
       "min": "",
       "max": ""
     },
-    "advancement": {},
+    "advancement": {
+      "55ddKlUqMZWs676p": {
+        "type": "property",
+        "_id": "55ddKlUqMZWs676p",
+        "configuration": {
+          "changes": [
+            {
+              "key": "system.traits.movement.ignoredDifficultTerrain",
+              "mode": 2,
+              "value": "nonmagical"
+            }
+          ]
+        },
+        "flags": {},
+        "icon": null,
+        "level": {
+          "value": 1,
+          "classIdentifier": "ranger"
+        },
+        "title": "Ignored Difficult Terrain",
+        "hint": "Your speed isn’t halved when you move through nonmagical or magical difficult terrain. You suffer other penalties caused by moving through difficult terrain as normal."
+      }
+    },
     "description": {
       "value": "<p>Your ability to deal with environmental challenges is unmatched. You gain the following benefits:</p><ul><li><p>You gain either a climbing speed or swimming speed equal to your base movement speed.</p></li><li><p>You have advantage on checks to track a creature.</p></li><li><p>Your speed isn’t halved when you move through nonmagical or magical difficult terrain. You suffer other penalties caused by moving through difficult terrain as normal.</p></li></ul>",
       "source": {}
@@ -45,10 +67,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.9.034",
+    "systemVersion": "2.0.068",
     "coreVersion": "13.347",
     "createdTime": 1718407874738,
-    "modifiedTime": 1718408467213,
+    "modifiedTime": 1756766464415,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null

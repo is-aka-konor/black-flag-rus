@@ -79,7 +79,7 @@ export default class DifficultTerrainRegionBehaviorType extends foundry.data.reg
 		const ignoredTypes = token.actor?.system.traits?.movement?.ignoredDifficultTerrain ?? new Set();
 		if (
 			this.ignoredDispositions.has(token.disposition) ||
-			ignoredTypes.has("all") ||
+			ignoredTypes.has("ALL") ||
 			(this.types.size && !this.types.difference(ignoredTypes).size) ||
 			(ignoredTypes.has("magical") && this.magical) ||
 			(ignoredTypes.has("nonmagical") && !this.magical)

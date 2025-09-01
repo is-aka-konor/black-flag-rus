@@ -42,7 +42,7 @@ export default class MovementConfig extends BaseCustomConfigSheet {
 		context = await super._preparePartContext(partId, context, options);
 
 		context.difficultTerrainTypes = [
-			{ value: "all", label: game.i18n.localize("BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.All") },
+			{ value: "ALL", label: game.i18n.localize("BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.All") },
 			{ value: "magical", label: game.i18n.localize("BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Magical") },
 			{ value: "nonmagical", label: game.i18n.localize("BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Nonmagical") },
 			{ rule: true },

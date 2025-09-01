@@ -12,17 +12,26 @@ export const difficultTerrainTypes = {
 	liquid: {
 		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Liquid"
 	},
+	mud: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Mud"
+	},
 	plants: {
 		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Plants"
 	},
 	rocks: {
 		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Rocks"
 	},
+	sand: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Sand"
+	},
 	slope: {
 		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Slope"
 	},
 	snow: {
 		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Snow"
+	},
+	webs: {
+		label: "BF.REGIONBEHAVIORS.DIFFICULTTERRAIN.Type.Webs"
 	}
 };
 localizeConfig(difficultTerrainTypes);
