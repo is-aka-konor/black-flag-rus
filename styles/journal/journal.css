@@ -268,15 +268,16 @@
 			font-weight: normal;
 		}
 	}
-	.inline-caption {
-		font-weight: bold;
-		font-style: italic;
-		&::after {
-			content: ". ";
-		}
-		&.link-button {
-			margin-inline-end: 4px;
-		}
+}
+
+.inline-caption {
+	font-weight: bold;
+	font-style: italic;
+	&::after {
+		content: ". ";
+	}
+	&.link-button {
+		margin-inline-end: 4px;
 	}
 }
 
