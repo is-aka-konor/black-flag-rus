@@ -123,7 +123,7 @@
         "proficient": true
       },
       "constitution": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "intelligence": {
@@ -135,7 +135,7 @@
         "proficient": false
       },
       "charisma": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       }
     },

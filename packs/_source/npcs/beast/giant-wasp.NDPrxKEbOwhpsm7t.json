@@ -103,7 +103,7 @@
     },
     "abilities": {
       "strength": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "dexterity": {
@@ -111,7 +111,7 @@
         "proficient": false
       },
       "constitution": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "intelligence": {
@@ -119,7 +119,7 @@
         "proficient": false
       },
       "wisdom": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "charisma": {

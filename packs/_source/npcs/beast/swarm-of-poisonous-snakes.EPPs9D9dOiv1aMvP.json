@@ -120,7 +120,7 @@
         "proficient": false
       },
       "constitution": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "intelligence": {
@@ -128,7 +128,7 @@
         "proficient": false
       },
       "wisdom": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "charisma": {
@@ -1006,9 +1006,9 @@
     "duplicateSource": null,
     "coreVersion": "13.347",
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "createdTime": 1729607939811,
-    "modifiedTime": 1729607939811,
+    "modifiedTime": 1756762540664,
     "lastModifiedBy": "blackflag0000000",
     "exportSource": null
   },

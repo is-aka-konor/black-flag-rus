@@ -770,10 +770,14 @@
             "magical": false,
             "flags": {},
             "visibility": {
-              "level": {},
+              "level": {
+                "min": null,
+                "max": null
+              },
               "requireAttunement": false,
               "requireIdentification": false,
-              "requireMagic": false
+              "requireMagic": false,
+              "identifier": ""
             }
           },
           "WXSiIAepZNbxW0nS": {
@@ -950,7 +954,7 @@
         "systemId": "black-flag",
         "systemVersion": "2.0.068",
         "createdTime": 1756748934416,
-        "modifiedTime": 1756750945519,
+        "modifiedTime": 1756762622613,
         "lastModifiedBy": "blackflag0000000"
       },
       "sort": 0,

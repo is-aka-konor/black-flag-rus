@@ -120,7 +120,7 @@
         "proficient": false
       },
       "dexterity": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "constitution": {

@@ -113,7 +113,7 @@
         "proficient": false
       },
       "constitution": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "intelligence": {

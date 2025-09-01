@@ -137,7 +137,7 @@
         "proficient": false
       },
       "charisma": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       }
     },
