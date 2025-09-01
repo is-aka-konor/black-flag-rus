@@ -382,19 +382,22 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		super.prepareFinalData();
 		const rollData = this.parent.getRollData({ deterministic: true });
 
-		const prepareFinalValue = (keyPath, label) =>
-			foundry.utils.setProperty(
-				this,
-				keyPath,
-				simplifyBonus(
-					replaceFormulaData(foundry.utils.getProperty(this, keyPath) ?? "", rollData, {
-						notifications: this.parent.notifications,
-						key: `invalid-target-${keyPath.replaceAll(".", "-")}`,
-						section: "auto",
-						messageData: { name: this.parent.name, property: game.i18n.localize(label) }
-					})
-				)
-			);
+		const prepareFinalValue = (keyPath, label) => {
+			const value = foundry.utils.getProperty(this, keyPath);
+			if (value)
+				foundry.utils.setProperty(
+					this,
+					keyPath,
+					simplifyBonus(
+						replaceFormulaData(value, rollData, {
+							notifications: this.parent.notifications,
+							key: `invalid-target-${keyPath.replaceAll(".", "-")}`,
+							section: "auto",
+							messageData: { name: this.parent.name, property: game.i18n.localize(label) }
+						})
+					)
+				);
+		};
 		prepareFinalValue("duration.value", "BF.DURATION.Label");
 		prepareFinalValue("range.value", "BF.RANGE.Label");
 		prepareFinalValue("target.affects.count", "BF.TARGET.Label[other]");

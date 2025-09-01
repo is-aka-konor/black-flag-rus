@@ -244,22 +244,25 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 		const rollData = this.item.getRollData();
 		this.uses.prepareData(rollData);
 
-		const prepareFinalValue = (keyPath, label) =>
-			foundry.utils.setProperty(
-				this,
-				keyPath,
-				simplifyBonus(
-					replaceFormulaData(foundry.utils.getProperty(this, keyPath) ?? "", rollData, {
-						notifications: this.item.notifications,
-						key: `activity-${this.id}-invalid-target-${keyPath.replaceAll(".", "-")}`,
-						section: "auto",
-						messageData: {
-							name: `${this.item.name} (${this.name})`,
-							property: game.i18n.localize(label)
-						}
-					})
-				)
-			);
+		const prepareFinalValue = (keyPath, label) => {
+			const value = foundry.utils.getProperty(this, keyPath);
+			if (value)
+				foundry.utils.setProperty(
+					this,
+					keyPath,
+					simplifyBonus(
+						replaceFormulaData(value, rollData, {
+							notifications: this.item.notifications,
+							key: `activity-${this.id}-invalid-target-${keyPath.replaceAll(".", "-")}`,
+							section: "auto",
+							messageData: {
+								name: `${this.item.name} (${this.name})`,
+								property: game.i18n.localize(label)
+							}
+						})
+					)
+				);
+		};
 
 		this.setProperty("activation.value", "system.casting.value");
 		this.setProperty("activation.type", "system.casting.type");
