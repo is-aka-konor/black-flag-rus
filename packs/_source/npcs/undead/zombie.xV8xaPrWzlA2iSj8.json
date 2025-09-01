@@ -625,7 +625,7 @@
     },
     {
       "name": "Slam",
-      "type": "feature",
+      "type": "weapon",
       "_id": "W4IurLKZVgBGjpgV",
       "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
       "system": {
@@ -636,22 +636,7 @@
             "description": "",
             "system": {
               "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
+                "parts": [],
                 "includeBase": true,
                 "critical": {}
               },
@@ -660,7 +645,7 @@
                 "flat": false,
                 "ability": "",
                 "type": {
-                  "value": "melee",
+                  "value": "",
                   "classification": "weapon"
                 },
                 "critical": {
@@ -673,7 +658,8 @@
               "type": "action",
               "condition": "",
               "value": null,
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -684,7 +670,6 @@
             "uses": {
               "spent": 0,
               "recovery": [],
-              "min": "",
               "max": "",
               "consumeQuantity": false
             },
@@ -692,59 +677,92 @@
             "img": "",
             "target": {
               "affects": {
-                "type": "",
+                "type": "any",
                 "choice": false
               },
               "template": {
                 "type": "",
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot"
+                "unit": "foot"
               },
               "prompt": true,
               "override": false
             },
             "range": {
-              "units": "",
-              "override": false
+              "override": false,
+              "unit": ""
             },
             "sort": 0,
             "duration": {
-              "units": "instantaneous",
               "concentration": false,
-              "override": false
+              "override": false,
+              "unit": "instantaneous"
             },
-            "magical": false
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           }
         },
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
           "recovery": [],
-          "min": "",
           "max": ""
         },
-        "advancement": {},
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage. The target is grappled (escape DC 12) if it is a Medium or smaller creature, and the zombie doesn’t already have a creature grappled.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. The target is grappled (escape DC 12) if it is a Medium or smaller creature, and the zombie doesn’t already have a creature grappled.</p>",
           "source": {}
         },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
+        "identifier": {
+          "value": "slam"
         },
         "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
+          "category": "natural",
+          "value": "melee"
         },
         "overrides": {
           "proficiency": null
-        }
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 6,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
       },
       "effects": [],
       "folder": null,
@@ -760,15 +778,15 @@
         }
       },
       "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1711421009581,
-        "modifiedTime": 1717280896823,
-        "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.OmsfJIeLWWS4jnTd",
         "duplicateSource": null,
-        "exportSource": null
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748936234,
+        "modifiedTime": 1756761164561,
+        "lastModifiedBy": "blackflag0000000"
       },
       "_key": "!actors.items!xV8xaPrWzlA2iSj8.W4IurLKZVgBGjpgV"
     }

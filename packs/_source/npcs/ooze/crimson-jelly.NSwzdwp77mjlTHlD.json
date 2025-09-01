@@ -714,155 +714,6 @@
       "_key": "!actors.items!NSwzdwp77mjlTHlD.inBB3oTa86TPxB9Z"
     },
     {
-      "name": "Feeding Paddles",
-      "type": "feature",
-      "_id": "0sC89GeN59AEG5vb",
-      "img": "icons/creatures/slimes/slime-face-skull-green.webp",
-      "system": {
-        "activities": {
-          "VWgAL7mF557MPGeF": {
-            "type": "attack",
-            "_id": "VWgAL7mF557MPGeF",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "necrotic",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                },
-                "flat": false
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "",
-            "target": {
-              "affects": {
-                "type": "",
-                "choice": false
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "prompt": true,
-              "override": false
-            },
-            "range": {
-              "units": "",
-              "override": false
-            },
-            "sort": 0,
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one creature. Hit: [[/damage average]] damage. The crimson jelly gains temporary HP equal to the necrotic damage dealt, and it attaches to the target. If the jelly had advantage on this attack, it attaches to the target’s face, leaving the target unable to breathe or speak while the jelly is attached.</p><p>While attached, the crimson jelly can use only the Feeding Paddles action, and it moves with the target whenever the target moves, requiring none of the jelly’s movement. The Crimson jelly can detach itself by spending 5 feet of its movement. A creature, including the target, can take its action to detach the jelly by succeeding on a [[/check strength 12]] check.</p>",
-          "source": {}
-        },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1711421909215,
-        "modifiedTime": 1717263849658,
-        "lastModifiedBy": "blackflag0000000",
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!NSwzdwp77mjlTHlD.0sC89GeN59AEG5vb"
-    },
-    {
       "name": "Reproduce (Requires Temporary HP)",
       "type": "feature",
       "_id": "YBsTKqY9LRFB0ITB",
@@ -979,6 +830,181 @@
         "exportSource": null
       },
       "_key": "!actors.items!NSwzdwp77mjlTHlD.YBsTKqY9LRFB0ITB"
+    },
+    {
+      "name": "Feeding Paddles",
+      "type": "weapon",
+      "_id": "0sC89GeN59AEG5vb",
+      "img": "icons/creatures/slimes/slime-face-skull-green.webp",
+      "system": {
+        "activities": {
+          "VWgAL7mF557MPGeF": {
+            "type": "attack",
+            "_id": "VWgAL7mF557MPGeF",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {
+                  "bonus": ""
+                }
+              },
+              "attack": {
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                },
+                "flat": false
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "",
+            "target": {
+              "affects": {
+                "type": "creature",
+                "choice": false,
+                "count": "1",
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "prompt": true,
+              "override": false
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "sort": 0,
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false,
+              "identifier": ""
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. The crimson jelly gains temporary HP equal to the necrotic damage dealt, and it attaches to the target. If the jelly had advantage on this attack, it attaches to the target’s face, leaving the target unable to breathe or speak while the jelly is attached.</p><p>While attached, the crimson jelly can use only the Feeding Paddles action, and it moves with the target whenever the target moves, requiring none of the jelly’s movement. The Crimson jelly can detach itself by spending 5 feet of its movement. A creature, including the target, can take its action to detach the jelly by succeeding on a [[/check strength 12]] check.</p>",
+          "source": {}
+        },
+        "identifier": {
+          "value": "feeding-paddles"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 6,
+            "type": "necrotic",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748930803,
+        "modifiedTime": 1756760391731,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!NSwzdwp77mjlTHlD.0sC89GeN59AEG5vb"
     }
   ],
   "effects": [],

@@ -785,7 +785,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -846,10 +846,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.pcyyBxMi5naeXbSt",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756761044710,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!wsYhKmcZQGjpoxBM.wTOgLAaZnWHTHOR2"

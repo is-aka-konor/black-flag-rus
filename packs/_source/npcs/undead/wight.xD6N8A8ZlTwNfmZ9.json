@@ -779,231 +779,6 @@
       "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.l8C49n2tLO17fzu4"
     },
     {
-      "name": "Life Drain",
-      "type": "feature",
-      "_id": "RJmjDix8Firx1krb",
-      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
-      "system": {
-        "activities": {
-          "4ymd0CE3i8jft69S": {
-            "type": "attack",
-            "_id": "4ymd0CE3i8jft69S",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "necrotic",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "5",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "sort": 0,
-            "magical": false
-          },
-          "tVsueoJidBTCMAjO": {
-            "type": "save",
-            "_id": "tVsueoJidBTCMAjO",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "damage": {
-                "parts": []
-              },
-              "effects": [],
-              "save": {
-                "ability": [
-                  "constitution"
-                ],
-                "dc": {
-                  "ability": "custom",
-                  "formula": "13"
-                }
-              }
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false,
-              "units": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "CON Save",
-            "img": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 5 ft., one creature. Hit: [[/damage average]] damage. The target must succeed on a [[/save con 13 format=long]] or its HP maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its HP maximum to 0.</p><p>A Humanoid slain by this attack rises 24 hours later as a <strong>@UUID[Compendium.kp-tov-monster-vault.kp-tov-mv-bestiary.Actor.nwFf0rAmXKAJG1Qe]{zombie}</strong> under the wight’s control, unless the Humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at one time.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "life-drain"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.cko4Z6lOMgGRSu0W",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.RJmjDix8Firx1krb"
-    },
-    {
       "folder": "tVD5DakH2RhE9Ig5",
       "name": "Longsword",
       "type": "weapon",
@@ -1078,97 +853,17 @@
               "min": "",
               "max": ""
             },
-            "name": "One-Handed Attack",
+            "name": "",
             "img": "",
             "sort": 0,
-            "magical": false
-          },
-          "tUmlwPuLTgncBxC4": {
-            "type": "attack",
-            "_id": "tUmlwPuLTgncBxC4",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "attack": {
-                "critical": {
-                  "threshold": null
-                },
-                "flat": false,
-                "type": {
-                  "value": "",
-                  "classification": ""
-                },
-                "ability": "",
-                "bonus": ""
-              },
-              "damage": {
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": false,
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 10,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false
-            },
             "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
               },
-              "affects": {
-                "choice": false,
-                "type": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "Two-Handed Attack",
-            "img": ""
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -1184,7 +879,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1246,10 +941,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.ym1owWiMSNOcZNdO",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756761115098,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.4suJ8lBOaPSex6lH"
@@ -1333,7 +1028,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1399,10 +1094,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.IpWwpPrnKuwHQpVw",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756761126424,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.L7I7DFFRiKnIQcqA"
@@ -1715,6 +1410,254 @@
         "exportSource": null
       },
       "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.V6f5EDTv9bue35kR"
+    },
+    {
+      "name": "Life Drain",
+      "type": "weapon",
+      "_id": "RJmjDix8Firx1krb",
+      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+      "system": {
+        "activities": {
+          "4ymd0CE3i8jft69S": {
+            "type": "attack",
+            "_id": "4ymd0CE3i8jft69S",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          },
+          "tVsueoJidBTCMAjO": {
+            "type": "save",
+            "_id": "tVsueoJidBTCMAjO",
+            "description": "",
+            "sort": 0,
+            "system": {
+              "damage": {
+                "parts": [],
+                "onSave": "half"
+              },
+              "effects": [],
+              "save": {
+                "ability": [
+                  "constitution"
+                ],
+                "dc": {
+                  "ability": "custom",
+                  "formula": "13"
+                },
+                "visible": true
+              }
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "CON Save",
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. The target must succeed on a [[/save con 13 format=long]] or its HP maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its HP maximum to 0.</p><p>A Humanoid slain by this attack rises 24 hours later as a <strong>@UUID[Compendium.kp-tov-monster-vault.kp-tov-mv-bestiary.Actor.nwFf0rAmXKAJG1Qe]{zombie}</strong> under the wight’s control, unless the Humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at one time.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "life-drain"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "type": "necrotic",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.cko4Z6lOMgGRSu0W",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748936180,
+        "modifiedTime": 1756761089723,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!xD6N8A8ZlTwNfmZ9.RJmjDix8Firx1krb"
     }
   ],
   "effects": [],

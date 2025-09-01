@@ -681,7 +681,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "attunement": {
@@ -705,8 +705,8 @@
         ],
         "type": {
           "value": "melee",
-          "category": "simple",
-          "base": ""
+          "category": "martial",
+          "base": "warPick"
         },
         "options": [],
         "ammunition": {},
@@ -741,10 +741,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1711915372112,
-        "modifiedTime": 1717280378776,
+        "modifiedTime": 1756760496127,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": null,
         "duplicateSource": null,

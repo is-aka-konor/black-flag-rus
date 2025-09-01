@@ -929,165 +929,6 @@
     {
       "folder": "GXPRGOPSPCEhqBAC",
       "system": {
-        "activities": {
-          "rehQ7bdpohRWd2mj": {
-            "type": "attack",
-            "_id": "rehQ7bdpohRWd2mj",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "charisma",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 4,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "necrotic",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "units": "foot",
-              "value": "5",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]] to hit, reach 5 ft., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "withering-touch",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Withering Touch",
-      "type": "feature",
-      "_id": "UE6xvRlECRTRxJXy",
-      "img": "icons/magic/death/hand-withered-gray.webp",
-      "effects": [],
-      "sort": -50000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!i5ZMW53YK1mODw9r.UE6xvRlECRTRxJXy"
-    },
-    {
-      "folder": "GXPRGOPSPCEhqBAC",
-      "system": {
         "container": null,
         "activities": {
           "bRWX6P8mNlJ1gYmg": {
@@ -1101,12 +942,34 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                },
+                "ability": ""
               },
               "damage": {
-                "parts": [],
-                "critical": {},
-                "includeBase": true
+                "parts": [
+                  {
+                    "number": 6,
+                    "denomination": 4,
+                    "bonus": "",
+                    "custom": {
+                      "formula": "",
+                      "enabled": false
+                    },
+                    "type": "variable",
+                    "additionalTypes": [
+                      "bludgeoning",
+                      "piercing",
+                      "slashing"
+                    ]
+                  }
+                ],
+                "critical": {
+                  "bonus": ""
+                },
+                "includeBase": false
               },
               "effects": []
             },
@@ -1140,7 +1003,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -1157,7 +1020,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "uses": {
@@ -1168,7 +1038,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack</em>: [[/attack]], range [[lookup @labels.range]], one target. <em>Hit</em>: [[/damage average]] bludgeoning, piercing, or slashing damage, depending on the type of object thrown. The [[lookup @name lowercase]] can throw only Small or smaller objects within range that aren’t being worn or carried.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], depending on the type of object thrown. The [[lookup @name lowercase]] can throw only Small or smaller objects within range that aren’t being worn or carried.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1232,10 +1102,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756760739578,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!i5ZMW53YK1mODw9r.9TUvgX7ksW1uXqN4"
@@ -1533,6 +1403,179 @@
         "exportSource": null
       },
       "_key": "!actors.items!i5ZMW53YK1mODw9r.b0ibQIXyGIRtDdym"
+    },
+    {
+      "folder": "GXPRGOPSPCEhqBAC",
+      "system": {
+        "activities": {
+          "rehQ7bdpohRWd2mj": {
+            "type": "attack",
+            "_id": "rehQ7bdpohRWd2mj",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "charisma",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "any",
+                "count": "1",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "withering-touch"
+        },
+        "damage": {
+          "base": {
+            "number": 4,
+            "denomination": 6,
+            "type": "necrotic",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "name": "Withering Touch",
+      "type": "weapon",
+      "_id": "UE6xvRlECRTRxJXy",
+      "img": "icons/magic/death/hand-withered-gray.webp",
+      "effects": [],
+      "sort": -50000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748933877,
+        "modifiedTime": 1756760698573,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!i5ZMW53YK1mODw9r.UE6xvRlECRTRxJXy"
     }
   ],
   "effects": [],
