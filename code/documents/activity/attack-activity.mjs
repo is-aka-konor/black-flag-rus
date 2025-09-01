@@ -512,7 +512,9 @@ export default class AttackActivity extends Activity {
 			// Add `@mod` unless it is an off-hand attack with a positive modifier
 			const isDeterministic = new Roll(roll.parts[0]).isDeterministic;
 			const includeMod =
-				(!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mod < 0) && !isDeterministic;
+				(!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mod < 0) &&
+				!isDeterministic &&
+				!this.actor?.system.isSwarm;
 			if (includeMod && !roll.parts.some(p => p.includes("@mod"))) roll.parts.push("@mod");
 
 			// Add magical bonus
