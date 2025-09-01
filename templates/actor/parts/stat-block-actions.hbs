@@ -16,7 +16,7 @@
 			{{/if}}
 		{{/if}}
 		{{#each passive}}
-			<div class="feature" data-item-id="{{ item.id }}" {{~#if activity}} data-activity-id="{{ activity.id }}"{{/if}}>
+			<div class="feature {{~#if @root.editable}} draggable{{/if}}" data-item-id="{{ item.id }}" {{~#if activity}} data-activity-id="{{ activity.id }}"{{/if}}>
 				<span class="controls">
 					{{#if @root.editable}}
 						<button type="button" class="link-button" data-action="edit"
@@ -58,7 +58,7 @@
 				{{/if}}
 			{{/if}}
 			{{#each items}}
-				<div class="feature" data-item-id="{{ item.id }}"
+				<div class="feature {{~#if @root.editable}} draggable{{/if}}" data-item-id="{{ item.id }}"
 						 {{~#if activity}} data-activity-id="{{ activity.id }}"{{/if}}>
 					<span class="controls">
 						{{#if @root.editable}}
