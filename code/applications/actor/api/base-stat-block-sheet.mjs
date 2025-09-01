@@ -289,10 +289,10 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 		}
 
 		for (const name of ["resistances", "immunities", "vulnerabilities"]) {
-			const damage = { ...foundry.utils.getProperty(this.actor._source, `traits.damage.${name}`) };
+			const damage = { ...foundry.utils.getProperty(this.actor._source, `system.traits.damage.${name}`) };
 			damage.value = new Set(damage.value ?? []);
 			damage.nonmagical = new Set(damage.nonmagical ?? []);
-			const condition = { ...foundry.utils.getProperty(this.actor._source, `traits.condition.${name}`) };
+			const condition = { ...foundry.utils.getProperty(this.actor._source, `system.traits.condition.${name}`) };
 			condition.value = new Set(condition.value ?? []);
 			this.actor.system.cleanLabelResistances(condition, damage);
 			const sections = [damage.label.toLowerCase(), condition.label.toLowerCase()].filter(t => t);
