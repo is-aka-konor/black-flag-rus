@@ -538,7 +538,7 @@
     },
     {
       "name": "Bite",
-      "type": "feature",
+      "type": "weapon",
       "_id": "iMfaXFOVwniBJCwh",
       "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
       "system": {
@@ -550,20 +550,6 @@
             "system": {
               "damage": {
                 "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 4,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  },
                   {
                     "number": 2,
                     "denomination": 4,
@@ -587,7 +573,7 @@
                 "flat": false,
                 "ability": "",
                 "type": {
-                  "value": "melee",
+                  "value": "",
                   "classification": "weapon"
                 },
                 "critical": {
@@ -600,7 +586,8 @@
               "type": "action",
               "condition": "",
               "value": null,
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -611,7 +598,6 @@
             "uses": {
               "spent": 0,
               "recovery": [],
-              "min": "",
               "max": "",
               "consumeQuantity": false
             },
@@ -619,33 +605,40 @@
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "target": {
               "affects": {
-                "type": "creature",
+                "type": "any",
                 "count": "1",
                 "choice": false,
                 "special": ""
               },
               "template": {
                 "type": "",
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot"
+                "unit": "foot"
               },
               "override": false,
               "prompt": true
             },
             "range": {
-              "units": "foot",
               "value": "5",
               "special": "",
-              "override": false
+              "override": false,
+              "unit": "foot"
             },
             "duration": {
-              "units": "instantaneous",
               "override": false,
-              "concentration": false
+              "concentration": false,
+              "unit": "instantaneous"
             },
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           },
           "ha5htdypu5lH0r3F": {
             "type": "save",
@@ -654,7 +647,8 @@
             "sort": 0,
             "system": {
               "damage": {
-                "parts": []
+                "parts": [],
+                "onSave": "half"
               },
               "effects": [],
               "save": {
@@ -664,14 +658,16 @@
                 "dc": {
                   "ability": "custom",
                   "formula": "12"
-                }
+                },
+                "visible": true
               }
             },
             "activation": {
               "value": null,
               "type": "action",
               "condition": "",
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -680,21 +676,21 @@
               }
             },
             "duration": {
-              "units": "instantaneous",
               "concentration": false,
-              "override": false
+              "override": false,
+              "unit": "instantaneous"
             },
             "range": {
               "override": false,
-              "units": ""
+              "unit": ""
             },
             "magical": false,
             "target": {
               "template": {
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot",
-                "type": ""
+                "type": "",
+                "unit": "foot"
               },
               "affects": {
                 "choice": false,
@@ -707,47 +703,75 @@
               "spent": 0,
               "consumeQuantity": false,
               "recovery": [],
-              "min": "",
               "max": ""
             },
             "name": "CON Save",
-            "img": ""
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           }
         },
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
           "recovery": [],
-          "min": "",
           "max": ""
         },
-        "advancement": {},
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage, and the target must succeed on a [[/save con 12 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute. If the save fails by 5 or more, the target is instead poisoned for 5 ([[/r 1d10]]) minutes and &amp;Reference[unconscious]{unconscious} while poisoned in this way.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must succeed on a [[/save con 12 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute. If the save fails by 5 or more, the target is instead poisoned for 5 ([[/r 1d10]]) minutes and &amp;Reference[unconscious]{unconscious} while poisoned in this way.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
         },
         "identifier": {
-          "associated": "",
           "value": "bite"
         },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
         "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
+          "category": "natural",
+          "value": "melee"
         },
         "overrides": {
           "proficiency": null
-        }
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 4,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
       },
       "effects": [],
       "folder": null,
@@ -761,13 +785,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.I7x76LkmXueM9UB5",
         "duplicateSource": null,
+        "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748935664,
+        "modifiedTime": 1756751962258,
+        "lastModifiedBy": "blackflag0000000"
       },
       "sort": 900000,
       "ownership": {
