@@ -192,7 +192,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 		tags.set("activation", this.activation.label);
 		tags.set("duration", this.duration.label);
 		if (this.range.unit) tags.set("range", this.range.label);
-		if (this.target.affects.type) tags.set("affects", this.target.affects.label);
+		if (this.target.affects.type) tags.set("affects", this.target.affects.labels.sheet);
 		if (this.target.template.unit) tags.set("template", this.target.template.label);
 		return tags;
 	}

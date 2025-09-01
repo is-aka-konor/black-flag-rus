@@ -464,14 +464,9 @@ export default class AttackActivity extends Activity {
 
 		// Add reach for melee weapons, unless the activity is explicitly specified as a ranged attack
 		if (this.system.validAttackTypes.has("melee")) {
-			const unit = this.item.system.range.unit ?? defaultUnit("distance");
-			let reach = convertDistance(this.actor?.system.isSwarm ? 0 : 5, "foot", { to: unit }).value;
-			if (this.item.system.properties.has("reach")) {
-				reach += this.item.system.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
-			}
 			parts.push(
 				game.i18n.format("BF.RANGE.Formatted.Reach", {
-					reach: formatDistance(reach, unit, { strict: false })
+					reach: formatDistance(this.item.system.range.reach, this.item.system.range.unit, { strict: false })
 				})
 			);
 		}

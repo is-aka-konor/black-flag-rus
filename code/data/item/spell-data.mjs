@@ -143,7 +143,7 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		tags.set("activation", this.casting.label);
 		tags.set("duration", this.duration.label);
 		if (this.range.unit) tags.set("range", this.range.label);
-		if (this.target.affects.type) tags.set("affects", this.target.affects.label);
+		if (this.target.affects.type) tags.set("affects", this.target.affects.labels.sheet);
 		if (this.target.template.unit) tags.set("template", this.target.template.label);
 		tags.set("attuned", this.preparationLabel);
 		return tags;
@@ -402,6 +402,8 @@ export default class SpellData extends ItemDataModel.mixin(ActivitiesTemplate, D
 		prepareFinalValue("target.template.size", "BF.AreaOfEffect.Size.Label");
 		prepareFinalValue("target.template.width", "BF.AreaOfEffect.Size.Width");
 		prepareFinalValue("target.template.height", "BF.AreaOfEffect.Size.Height");
+
+		TargetField.prepareData.call(this, rollData);
 
 		this.prepareFinalActivities(rollData);
 		this.prepareSpellStats();

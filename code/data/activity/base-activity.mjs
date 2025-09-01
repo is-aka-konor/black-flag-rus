@@ -300,6 +300,8 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 		convertAmount(this.range, "distance");
 		convertAmount(this.target.template, "distance", { keys: ["size", "width", "height"] });
 
+		TargetField.prepareData.call(this, rollData);
+
 		this.activation.type ??= "action";
 		this.activation.primary ??= true;
 

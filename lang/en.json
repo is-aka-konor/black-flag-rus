@@ -4088,8 +4088,18 @@
 },
 
 "BF.TARGET": {
-	"Label[one]": "Target",
-	"Label[other]": "Targets",
+	"Action": {
+		"PlaceTemplate": "Place Template"
+	},
+	"Choice": "{number} of your choice",
+	"Count": {
+		"Label": "Target Count",
+		"AnyGeneric": "Any",
+		"AnySpecific": "Any {typeLowercase}",
+		"Counted": "{number} {typeLowercase}",
+		"EveryGeneric": "Every",
+		"EverySpecific": "Every {typeLowercase}"
+	},
 	"FIELDS": {
 		"target": {
 			"affects": {
@@ -4151,18 +4161,9 @@
 			}
 		}
 	},
-	"Action": {
-		"PlaceTemplate": "Place Template"
-	},
-	"Choice": "{number} of your choice",
-	"Count": {
-		"Label": "Target Count",
-		"AnyGeneric": "Any",
-		"AnySpecific": "Any {typeLowercase}",
-		"Counted": "{number} {typeLowercase}",
-		"EveryGeneric": "Every",
-		"EverySpecific": "Every {typeLowercase}"
-	},
+	"InSwarmsSpace": "{target} in the swarm’s space",
+	"Label[one]": "Target",
+	"Label[other]": "Targets",
 	"Type": {
 		"Label": "Target Type",
 		"Ally": {

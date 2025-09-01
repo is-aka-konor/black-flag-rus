@@ -425,7 +425,7 @@ async function enrichAttack(config, label, options) {
 		const parts = [
 			span.outerHTML,
 			activity?.getRangeLabel(config.attackMode),
-			activity?.target?.affects.statblockLabel
+			activity?.target?.affects?.labels?.statBlock
 		];
 		const full = document.createElement("span");
 		full.className = "attack-extended";

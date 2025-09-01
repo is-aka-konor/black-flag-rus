@@ -219,13 +219,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 	 */
 	get reachLabel() {
 		if (this.type.value !== "melee") return "";
-
-		const unit = this.range.unit ?? defaultUnit("distance");
-		let reach = convertDistance(this.parent.actor?.system.isSwarm ? 0 : 5, "foot", { to: unit }).value;
-		if (this.properties.has("reach")) {
-			reach += this.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
-		}
-		return formatDistance(reach, unit, { unitDisplay: "short" });
+		return formatDistance(this.range.reach, this.range.unit, { unitDisplay: "short" });
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -353,6 +347,13 @@ export default class WeaponData extends ItemDataModel.mixin(
 		this.preparePhysicalLabels();
 
 		convertAmount(this.range, "distance", { keys: ["short", "long", "reach"] });
+
+		if (this.type.value === "melee") {
+			const unit = this.range.unit;
+			let reach = convertDistance(this.parent.actor?.system.isSwarm ? 0 : 5, "foot", { to: unit }).value;
+			if (this.properties.has("reach")) reach += this.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
+			this.range.reach = reach;
+		}
 
 		const type = CONFIG.BlackFlag.weapons.allLocalized[this.type.base ?? this.type.category];
 		if (type) this.type.label = `${game.i18n.localize("BF.WEAPON.Label[one]")} (${type})`;

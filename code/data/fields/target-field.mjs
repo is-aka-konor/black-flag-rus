@@ -51,6 +51,7 @@ export default class TargetField extends SchemaField {
 
 	/** @inheritDoc */
 	initialize(value, model, options = {}) {
+		// TODO: Move all this into prepareData instead
 		const obj = super.initialize(value, model, options);
 
 		Object.defineProperty(obj, "aoeSizes", {
@@ -92,25 +93,6 @@ export default class TargetField extends SchemaField {
 			enumerable: false
 		});
 
-		Object.defineProperty(obj.affects, "label", {
-			get() {
-				return TargetField.affectsLabel(obj);
-			},
-			enumerable: false
-		});
-
-		const affectsConfig = CONFIG.BlackFlag.targetTypes[obj.affects.type];
-		Object.defineProperty(obj.affects, "statblockLabel", {
-			value: game.i18n.format(
-				getPluralLocalizationKey(
-					obj.affects.count || 1,
-					pr => `${affectsConfig?.counted ?? "BF.TARGET.Type.Target.Counted"}[${pr}]`
-				),
-				{ number: formatNumber(obj.affects.count || 1, { spelledOut: true }) }
-			),
-			enumerable: false
-		});
-
 		Object.defineProperty(obj.template, "label", {
 			get() {
 				return TargetField.templateLabel(obj);
@@ -128,6 +110,45 @@ export default class TargetField extends SchemaField {
 		});
 
 		return obj;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+	/*           Data Preparation          */
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Prepare data for this field. Should be called during `prepareFinalData` stage.
+	 * @this {ItemDataModel|BaseActivityData}
+	 */
+	static prepareData(rollData, labels = {}) {
+		const actor = this.actor ?? this.parent?.actor;
+		const item = this.item ?? this.parent;
+
+		const affectsConfig = CONFIG.BlackFlag.targetTypes[this.target.affects.type];
+		this.target.affects.labels ??= {};
+		this.target.affects.labels.sheet = TargetField.affectsLabel(this.target);
+		this.target.affects.labels.statBlock = game.i18n.format(
+			getPluralLocalizationKey(
+				this.target.affects.count || 1,
+				pr => `${affectsConfig?.counted ?? "BF.TARGET.Type.Target.Counted"}[${pr}]`
+			),
+			{ number: formatNumber(this.target.affects.count || 1, { spelledOut: true }) }
+		);
+		if (actor?.system.isSwarm && item.type === "weapon" && item.system.range.reach === 0) {
+			this.target.affects.labels.statBlock = game.i18n.format("BF.TARGET.InSwarmsSpace", {
+				target: this.target.affects.labels.statBlock
+			});
+		}
+		Object.defineProperty(this.target.affects, "label", {
+			get() {
+				foundry.utils.logCompatibilityWarning(
+					"`target.affects.label` has been moved to `target.affects.labels.sheet`.",
+					{ since: "Black Flag 2.0", until: "Black Flag 3.0", once: true }
+				);
+				return this.labels.sheet;
+			},
+			enumerable: false
+		});
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
