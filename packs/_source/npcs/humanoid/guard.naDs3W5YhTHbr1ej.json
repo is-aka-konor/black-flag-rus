@@ -400,7 +400,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee or Ranged Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]] or range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {}
         },
         "type": {
@@ -458,10 +458,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024069642,
-        "modifiedTime": 1717281633495,
+        "modifiedTime": 1756758343064,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.eG0Vk1Kr8peAAYhW",
         "duplicateSource": null,

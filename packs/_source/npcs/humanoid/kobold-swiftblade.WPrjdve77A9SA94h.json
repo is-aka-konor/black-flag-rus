@@ -536,14 +536,12 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "poison"
                   }
                 ],
-                "critical": {},
+                "critical": {
+                  "bonus": ""
+                },
                 "includeBase": true
               },
               "attack": {
@@ -552,7 +550,11 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                },
+                "ability": ""
               },
               "effects": []
             },
@@ -589,7 +591,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -606,7 +608,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -622,7 +631,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -684,10 +693,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.MwYjehTr9oJlHb1Z",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756758450208,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!WPrjdve77A9SA94h.y1PB5O4XqvLxuYzq"
@@ -714,14 +723,12 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "poison"
                   }
                 ],
-                "critical": {},
+                "critical": {
+                  "bonus": ""
+                },
                 "includeBase": true
               },
               "attack": {
@@ -730,7 +737,11 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                },
+                "ability": ""
               },
               "effects": []
             },
@@ -765,7 +776,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -782,7 +793,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -798,7 +816,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -864,10 +882,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.b126bs62p8TQIYZ8",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756758466785,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!WPrjdve77A9SA94h.neCt2kkkBjOAszeD"

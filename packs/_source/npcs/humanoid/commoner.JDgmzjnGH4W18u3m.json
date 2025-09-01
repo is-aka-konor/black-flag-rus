@@ -326,7 +326,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "type": {
@@ -382,10 +382,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024039772,
-        "modifiedTime": 1717281132588,
+        "modifiedTime": 1756757909367,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.WhFDR7nOBaBhhwmp",
         "duplicateSource": null,
@@ -482,7 +482,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "type": {
@@ -540,10 +540,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024646635,
-        "modifiedTime": 1717281136508,
+        "modifiedTime": 1756757918914,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.QoMwONkjb7knNonO",
         "duplicateSource": null,

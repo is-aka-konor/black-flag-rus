@@ -815,7 +815,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Melee or Ranged Weapon Attack</em>: [[/attack]], reach 5 ft. or range [[lookup @labels.range]]., one target. <em>Hit</em>: [[/damage average]] acid, cold, fire, or poison damage (the alchemist’s choice). The concoction then causes one of the following effects of the master alchemist’s choice.</p><ul><li><p>@Embed[.Activity.wHjooMTPd68Y0HnZ activate inline]{Disorienting Vapors}</p></li><li><p class=\"p1\">@Embed[.Activity.GMKBrRauaMRxkSy6 activate inline]{Poisonous Cloud}</p></li><li><p class=\"p1\">@Embed[.Activity.BtRWUBhCSY1SC2KN activate inline]{Slick Floor}</p></li></ul><p>When the master alchemist makes a Hasty Concoction attack, it can choose to target a point on the ground it can see within 60 feet instead. If it does so, the concoction causes only one of the above effects centered on that point instead of dealing damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]] (the alchemist’s choice). The concoction then causes one of the following effects of the master alchemist’s choice.</p><ul><li><p>@Embed[.Activity.wHjooMTPd68Y0HnZ activate inline]{Disorienting Vapors}</p></li><li><p class=\"p1\">@Embed[.Activity.GMKBrRauaMRxkSy6 activate inline]{Poisonous Cloud}</p></li><li><p class=\"p1\">@Embed[.Activity.BtRWUBhCSY1SC2KN activate inline]{Slick Floor}</p></li></ul><p>When the master alchemist makes a Hasty Concoction attack, it can choose to target a point on the ground it can see within 60 feet instead. If it does so, the concoction causes only one of the above effects centered on that point instead of dealing damage.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -842,8 +842,8 @@
         "ammunition": {},
         "damage": {
           "base": {
-            "number": null,
-            "denomination": 0,
+            "number": 3,
+            "denomination": 8,
             "additionalTypes": [],
             "type": ""
           }
@@ -856,8 +856,8 @@
           "reach": 5
         },
         "type": {
-          "value": "ranged",
-          "category": ""
+          "value": "melee",
+          "category": "natural"
         },
         "rarity": ""
       },
@@ -882,10 +882,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756758683932,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!ZzDX43iwJ5GE57f4.Y9d7ohg2KOUkrRTW"

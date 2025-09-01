@@ -573,7 +573,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft. or range 20/60 ft., one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -588,7 +588,7 @@
           "trip"
         ],
         "properties": [
-          "reach",
+          "thrown",
           "versatile"
         ],
         "ammunition": {},
@@ -601,8 +601,8 @@
           }
         },
         "range": {
-          "short": null,
-          "long": null,
+          "short": 20,
+          "long": 60,
           "reach": null
         },
         "uses": {
@@ -636,10 +636,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.eG0Vk1Kr8peAAYhW",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756759282182,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!bdVcAUcSnPMT6ZnL.h8lwdYScmJceBe89"

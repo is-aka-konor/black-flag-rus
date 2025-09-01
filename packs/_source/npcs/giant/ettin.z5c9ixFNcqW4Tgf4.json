@@ -908,7 +908,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, and the target must succeed on a [[/save str 15 format=long]] or be &amp;Reference[incapacitated]{incapacitated} until the end of its next turn, as the blow knocks the wind out of the target. This weapon is wielded by the right head.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must succeed on a [[/save str 15 format=long]] or be &amp;Reference[incapacitated]{incapacitated} until the end of its next turn, as the blow knocks the wind out of the target. This weapon is wielded by the right head.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -969,10 +969,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.QAPscsGRbv5l778n",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756757183521,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!z5c9ixFNcqW4Tgf4.alf2eteoMbg61UbG"
@@ -1132,7 +1132,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, and the target must succeed on a [[/save con 15 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute, as bits of rotten meat clinging to the club’s spikes coat the target’s wound. The target can repeat the save at the end of each of its turns, ending the effect on itself on a success. This weapon is wielded by the left head.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]]., and the target must succeed on a [[/save con 15 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute, as bits of rotten meat clinging to the club’s spikes coat the target’s wound. The target can repeat the save at the end of each of its turns, ending the effect on itself on a success. This weapon is wielded by the left head.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1193,10 +1193,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.QAPscsGRbv5l778n",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756757194370,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!z5c9ixFNcqW4Tgf4.G73OhvimuqKo50kn"

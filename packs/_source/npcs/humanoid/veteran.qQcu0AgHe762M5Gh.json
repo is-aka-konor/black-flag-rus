@@ -504,7 +504,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {}
         },
         "type": {
@@ -561,10 +561,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.8.020",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024984406,
-        "modifiedTime": 1713155584859,
+        "modifiedTime": 1756759072021,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.ym1owWiMSNOcZNdO",
         "duplicateSource": null,
@@ -651,7 +651,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "type": {
@@ -708,10 +708,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.8.020",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701025035557,
-        "modifiedTime": 1713155590776,
+        "modifiedTime": 1756759087312,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.C9nwbmL7uTX8t8nr",
         "duplicateSource": null,
@@ -805,7 +805,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "type": {
@@ -867,10 +867,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.8.020",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024654379,
-        "modifiedTime": 1713155625916,
+        "modifiedTime": 1756759094424,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.Z8Wz5qUi16C36QQd",
         "duplicateSource": null,

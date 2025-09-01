@@ -543,7 +543,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Melee or Ranged Spell Attack</em>: [[/attack]], reach 5 ft. or range [[lookup @labels.range]]., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -564,7 +564,6 @@
           "proficiency": null
         },
         "properties": [
-          "reach",
           "thrown"
         ],
         "type": {
@@ -576,7 +575,7 @@
         "damage": {
           "base": {
             "number": null,
-            "denomination": 0,
+            "denomination": 4,
             "type": "",
             "additionalTypes": []
           }
@@ -610,10 +609,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756759303717,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!zzQznETcwztvK2aV.EuK7T5rJxGCqO8RB"
@@ -694,7 +693,7 @@
         },
         "advancement": {},
         "description": {
-          "value": "<p>The wyrdling pronounces the fate, either fortune or doom (the wyrdling’s choice), of one creature it can see within 30 feet of it. The target rolls a [[/r d4]] and adds (fortune) or subtracts (doom) the number rolled to the next attack roll or save it makes before the start of the wyrdling’s next turn.</p><p><em>Note: An inline link is available above to roll the d4.</em></p>",
+          "value": "<p>The wyrdling pronounces the fate, either fortune or doom (the wyrdling’s choice), of one creature it can see within 30 feet of it. The target rolls a [[/r d4]] and adds (fortune) or subtracts (doom) the number rolled to the next attack roll or save it makes before the start of the wyrdling’s next turn.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -741,10 +740,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756759314041,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!zzQznETcwztvK2aV.OiuyQ8xzh7PvULBk"

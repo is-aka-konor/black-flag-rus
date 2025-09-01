@@ -526,7 +526,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage. If the target is paralyzed, prone, stunned, or unconscious, it takes an extra [[/damage 1d4 slashing average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is paralyzed, prone, stunned, or unconscious, it takes an extra [[/damage 1d4 slashing average]] damage.</p>",
           "source": {}
         },
         "type": {
@@ -539,8 +539,7 @@
         ],
         "properties": [
           "finesse",
-          "light",
-          "thrown"
+          "light"
         ],
         "ammunition": {},
         "damage": {
@@ -583,10 +582,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024042732,
-        "modifiedTime": 1717281149993,
+        "modifiedTime": 1756757938023,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.dXe427mkeCAOtVof",
         "duplicateSource": null,
