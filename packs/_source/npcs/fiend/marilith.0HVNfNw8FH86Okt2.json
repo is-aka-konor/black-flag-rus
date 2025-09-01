@@ -745,11 +745,7 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "fire",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "fire"
                   }
                 ],
                 "critical": {
@@ -764,7 +760,10 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                }
               },
               "effects": []
             },
@@ -801,7 +800,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -818,7 +817,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -834,7 +840,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee or Ranged Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]] or range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -898,10 +904,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.3bEIZYDB4eMayC6k",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756468289,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!0HVNfNw8FH86Okt2.LHqa6D9jQ9pGGEEt"
@@ -1013,7 +1019,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1072,10 +1078,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.XOrCLbriQXUoLCTL",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756482630,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!0HVNfNw8FH86Okt2.NC96GmQ6iCmHAseC"
@@ -1102,11 +1108,7 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "fire",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "fire"
                   }
                 ],
                 "critical": {
@@ -1171,113 +1173,17 @@
               "min": "",
               "max": ""
             },
-            "name": "One-Handed Attack",
+            "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
-          },
-          "JM8xyrgiWv2gcRfp": {
-            "type": "attack",
-            "_id": "JM8xyrgiWv2gcRfp",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "attack": {
-                "critical": {
-                  "threshold": null
-                },
-                "flat": false,
-                "type": {
-                  "value": "",
-                  "classification": ""
-                },
-                "ability": "",
-                "bonus": ""
-              },
-              "damage": {
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": false,
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 10,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  },
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "fire",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false
-            },
             "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
               },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "Two-Handed Attack",
-            "img": ""
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -1293,7 +1199,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1356,188 +1262,13 @@
         "compendiumSource": "Compendium.black-flag.items.Item.ym1owWiMSNOcZNdO",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756505798,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!0HVNfNw8FH86Okt2.msdvSFndBJlZ8tmy"
-    },
-    {
-      "name": "Tail",
-      "type": "feature",
-      "_id": "u6bq6mUMsDFqatoz",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
-      "system": {
-        "activities": {
-          "nK9DHZRtdth4i7Kf": {
-            "type": "attack",
-            "_id": "nK9DHZRtdth4i7Kf",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 10,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  },
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "fire",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": true
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "strength",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "10",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "magical": true,
-            "sort": 0
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 10 ft., one creature. <em>Hit:</em> [[/damage average]] damage. If the target is Medium or smaller, it is &amp;Reference[grappled]{grappled} (escape DC 17). Until this grapple ends, the target is &amp;Reference[restrained]{restrained}, the marilith can automatically hit the target with its Tail, and the marilith can’t make Tail attacks against other targets.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "tail"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.JHrpq8E18S7rIjQU",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 2200000,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!0HVNfNw8FH86Okt2.u6bq6mUMsDFqatoz"
     },
     {
       "folder": "gFeMgDslgGsEJoke",
@@ -1963,6 +1694,199 @@
         "default": 0
       },
       "_key": "!actors.items!0HVNfNw8FH86Okt2.deL9kiU4j4MPll6V"
+    },
+    {
+      "name": "Tail",
+      "type": "weapon",
+      "_id": "u6bq6mUMsDFqatoz",
+      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "system": {
+        "activities": {
+          "nK9DHZRtdth4i7Kf": {
+            "type": "attack",
+            "_id": "nK9DHZRtdth4i7Kf",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [
+                  {
+                    "number": 2,
+                    "denomination": 6,
+                    "bonus": "",
+                    "custom": {
+                      "formula": "",
+                      "enabled": false
+                    },
+                    "type": "fire",
+                    "additionalTypes": [],
+                    "scaling": {
+                      "number": 1
+                    }
+                  }
+                ],
+                "critical": {
+                  "bonus": ""
+                },
+                "includeBase": true
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "strength",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "10",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "magical": true,
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is Medium or smaller, it is &amp;Reference[grappled]{grappled} (escape DC 17). Until this grapple ends, the target is &amp;Reference[restrained]{restrained}, the marilith can automatically hit the target with its Tail, and the marilith can’t make Tail attacks against other targets.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "tail"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 3,
+            "denomination": 10,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.JHrpq8E18S7rIjQU",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748926507,
+        "modifiedTime": 1756756522090,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 2200000,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!0HVNfNw8FH86Okt2.u6bq6mUMsDFqatoz"
     }
   ],
   "effects": [],

@@ -879,11 +879,7 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "poison"
                   }
                 ],
                 "critical": {
@@ -948,113 +944,17 @@
               "min": "",
               "max": ""
             },
-            "name": "One-Handed Attack",
+            "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
-          },
-          "hYyoiv7Jjmbf2A0B": {
-            "type": "attack",
-            "_id": "hYyoiv7Jjmbf2A0B",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "attack": {
-                "critical": {
-                  "threshold": null
-                },
-                "flat": false,
-                "type": {
-                  "value": "",
-                  "classification": ""
-                },
-                "ability": "",
-                "bonus": ""
-              },
-              "damage": {
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": false,
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 10,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  },
-                  {
-                    "number": 4,
-                    "denomination": 8,
-                    "bonus": "",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false
-            },
             "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
               },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "Two-Handed Attack",
-            "img": ""
+              "identifier": ""
+            }
           }
         },
         "overrides": {
@@ -1070,7 +970,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1133,10 +1033,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.ym1owWiMSNOcZNdO",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756110087,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!Za8SWZT6BRyG18Kx.9b1HGAfEuRVCM6bl"
@@ -1163,14 +1063,12 @@
                       "formula": "",
                       "enabled": false
                     },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
+                    "type": "poison"
                   }
                 ],
-                "critical": {},
+                "critical": {
+                  "bonus": ""
+                },
                 "includeBase": true
               },
               "attack": {
@@ -1179,7 +1077,11 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                },
+                "ability": ""
               },
               "effects": []
             },
@@ -1215,7 +1117,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -1232,7 +1134,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           },
           "FPrIFQf2Qvxf16lg": {
             "type": "save",
@@ -1316,7 +1225,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage, and the target must succeed on a [[/save con 16 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute. The target can repeat the save at the end of each of its turns, ending the effect on itself on a success.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must succeed on a [[/save con 16 format=long]] or be &amp;Reference[poisoned]{poisoned} for 1 minute. The target can repeat the save at the end of each of its turns, ending the effect on itself on a success.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1383,10 +1292,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.IpWwpPrnKuwHQpVw",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756136975,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!Za8SWZT6BRyG18Kx.4KuoOX6wnRH5QtsA"
@@ -1463,7 +1372,7 @@
         },
         "advancement": {},
         "description": {
-          "value": "<p>The [[lookup @name lowercase]] adds 4 to its AC against one melee attack that would hit it. To do so, the [[lookup @name lowercase]] must see the attacker and be wielding a melee weapon.</p><p><em>Note: An Active Effect is available in the Effects tab of the character sheet to enable the AC bonus.</em></p>",
+          "value": "<p>The [[lookup @name lowercase]] adds 4 to its AC against one melee attack that would hit it. To do so, the [[lookup @name lowercase]] must see the attacker and be wielding a melee weapon.</p><section id=\"secret-3nA3z0hny5GdOUD8\" class=\"secret\"><p><em>Note: An Active Effect is available in the Effects tab of the character sheet to enable the AC bonus.</em></p></section>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -1548,10 +1457,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756756148474,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "sort": 2100000,

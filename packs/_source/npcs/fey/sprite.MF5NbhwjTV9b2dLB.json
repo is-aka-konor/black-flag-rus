@@ -581,7 +581,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {}
         },
         "type": {
@@ -638,10 +638,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701025035557,
-        "modifiedTime": 1717280798699,
+        "modifiedTime": 1756755823825,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.C9nwbmL7uTX8t8nr",
         "duplicateSource": null,
@@ -738,7 +738,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack:</em> [[/attack]], range [[lookup @labels.range]], one target. <em>Hit:</em> [[/damage average]] damage, and the target must succeed on a [[/save constitution 13]] save or become poisoned for 1 minute. If the save fails by 5 or more, the poisoned target falls unconscious for the same duration, or until it takes damage or another creature takes an action to shake it awake.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must succeed on a [[/save constitution 13]] save or become poisoned for 1 minute. If the save fails by 5 or more, the poisoned target falls unconscious for the same duration, or until it takes damage or another creature takes an action to shake it awake.</p>",
           "source": {}
         },
         "type": {
@@ -798,10 +798,10 @@
       },
       "_stats": {
         "systemId": "black-flag",
-        "systemVersion": "0.9.031",
+        "systemVersion": "2.0.068",
         "coreVersion": "13.347",
         "createdTime": 1701024643661,
-        "modifiedTime": 1717280802416,
+        "modifiedTime": 1756755835109,
         "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.items.Item.jqDqlfsNkDCUIYHZ",
         "duplicateSource": null,

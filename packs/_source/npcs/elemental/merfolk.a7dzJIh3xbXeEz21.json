@@ -396,7 +396,7 @@
           "units": "pound"
         },
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach [[lookup @labels.reach]], one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage versatile average]] damage if used with two hands.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage versatile average]] damage if used with two hands.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -459,10 +459,10 @@
         "compendiumSource": "Compendium.black-flag.items.Item.eG0Vk1Kr8peAAYhW",
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756755346532,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!a7dzJIh3xbXeEz21.rOtIIRrG4nadvcgI"
@@ -484,7 +484,10 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                }
               },
               "damage": {
                 "parts": [],
@@ -525,7 +528,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -542,7 +545,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "uses": {
@@ -553,7 +563,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack</em>: [[/attack]], range [[lookup @labels.range]]., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -576,7 +586,7 @@
         "properties": [],
         "type": {
           "value": "ranged",
-          "category": ""
+          "category": "natural"
         },
         "options": [],
         "ammunition": {},
@@ -617,10 +627,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756755365038,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!a7dzJIh3xbXeEz21.2CrXVZhB3Tiu8aNh"
