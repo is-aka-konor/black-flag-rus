@@ -1,6 +1,6 @@
 {
   "name": "Pseudopod",
-  "type": "feature",
+  "type": "weapon",
   "_id": "BM0wnwrOQkmV3utI",
   "img": "icons/creatures/slimes/slime-movement-dripping-pseudopods-green.webp",
   "system": {
@@ -10,31 +10,28 @@
         "_id": "KCmYvkow6vryfUXv",
         "description": "",
         "system": {
-          "type": {
-            "value": "melee",
-            "classification": "weapon"
-          },
           "attack": {
             "flat": true,
-            "bonus": ""
+            "bonus": "",
+            "ability": "",
+            "type": {
+              "value": "",
+              "classification": "weapon"
+            },
+            "critical": {}
           },
           "damage": {
-            "includeBaseDamage": true,
-            "parts": [
-              {
-                "number": 3,
-                "denomination": 6,
-                "bonus": "@mod",
-                "custom": "",
-                "type": "acid"
-              }
-            ]
+            "parts": [],
+            "includeBase": true,
+            "critical": {}
           },
-          "ability": ""
+          "effects": []
         },
         "activation": {
           "type": "action",
-          "condition": ""
+          "condition": "",
+          "override": false,
+          "primary": true
         },
         "consumption": {
           "targets": [],
@@ -45,23 +42,43 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "min": "",
-          "max": ""
+          "max": "",
+          "consumeQuantity": false
         },
         "name": "",
         "img": "",
         "target": {
           "affects": {
             "type": "creature",
-            "count": "1"
+            "count": "1",
+            "choice": false
           },
           "template": {
-            "type": ""
-          }
+            "type": "",
+            "contiguous": false,
+            "unit": "foot"
+          },
+          "prompt": true,
+          "override": false
         },
         "range": {
-          "units": "foot",
-          "value": "5"
+          "value": "5",
+          "unit": "foot",
+          "override": false
+        },
+        "flags": {},
+        "sort": 0,
+        "duration": {
+          "unit": "instantaneous",
+          "concentration": false,
+          "override": false
+        },
+        "magical": false,
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
         }
       }
     },
@@ -69,27 +86,55 @@
       "spent": 0,
       "consumeQuantity": false,
       "recovery": [],
-      "min": "",
       "max": ""
     },
-    "advancement": {},
     "description": {
-      "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one creature. <em>Hit:</em> [[/damage average]] damage.</p>",
+      "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
       "source": {}
     },
     "identifier": {
-      "associated": ""
-    },
-    "restriction": {
-      "filters": []
+      "value": "pseudopod"
     },
     "type": {
-      "category": "monsters",
+      "category": "natural",
+      "value": "melee"
+    },
+    "overrides": {
+      "proficiency": null
+    },
+    "damage": {
+      "base": {
+        "number": 3,
+        "denomination": 6,
+        "type": "acid"
+      }
+    },
+    "unidentified": {
+      "description": "",
+      "value": false
+    },
+    "attunement": {
       "value": ""
     },
-    "level": {
-      "value": null
-    }
+    "container": null,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "unit": "pound"
+    },
+    "properties": [],
+    "ammunition": {},
+    "options": [],
+    "range": {
+      "unit": "foot",
+      "short": null,
+      "long": null
+    },
+    "rarity": ""
   },
   "effects": [],
   "folder": null,
@@ -99,14 +144,14 @@
   },
   "flags": {},
   "_stats": {
-    "systemId": "black-flag",
-    "systemVersion": "0.9.033",
-    "coreVersion": "13.347",
-    "createdTime": 1711683722952,
-    "modifiedTime": 1717868520487,
-    "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
-    "exportSource": null
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "black-flag",
+    "systemVersion": "2.0.068",
+    "createdTime": 1756767709600,
+    "modifiedTime": 1756767744109,
+    "lastModifiedBy": "blackflag0000000"
   },
   "_key": "!items!BM0wnwrOQkmV3utI"
 }

@@ -1,6 +1,6 @@
 {
   "name": "Bite",
-  "type": "feature",
+  "type": "weapon",
   "_id": "0Tp5zlCaSyrSMoYN",
   "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
   "system": {
@@ -10,31 +10,28 @@
         "_id": "sO4yBxIaNViWhQt2",
         "description": "",
         "system": {
-          "type": {
-            "value": "melee",
-            "classification": "weapon"
-          },
           "damage": {
-            "includeBaseDamage": true,
-            "parts": [
-              {
-                "number": 1,
-                "denomination": "6",
-                "bonus": "@mod",
-                "custom": "",
-                "type": "piercing"
-              }
-            ]
+            "parts": [],
+            "includeBase": true,
+            "critical": {}
           },
-          "ability": "",
           "attack": {
             "bonus": "",
-            "flat": false
-          }
+            "flat": false,
+            "ability": "",
+            "type": {
+              "value": "",
+              "classification": "weapon"
+            },
+            "critical": {}
+          },
+          "effects": []
         },
         "activation": {
           "type": "action",
-          "condition": ""
+          "condition": "",
+          "override": false,
+          "primary": true
         },
         "consumption": {
           "targets": [],
@@ -45,23 +42,43 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "min": "",
-          "max": ""
+          "max": "",
+          "consumeQuantity": false
         },
         "name": "",
         "img": "",
         "target": {
           "affects": {
-            "type": "creature",
-            "count": "1"
+            "type": "any",
+            "count": "1",
+            "choice": false
           },
           "template": {
-            "type": ""
-          }
+            "type": "",
+            "contiguous": false,
+            "unit": "foot"
+          },
+          "prompt": true,
+          "override": false
         },
         "range": {
-          "units": "foot",
-          "value": "5"
+          "value": "5",
+          "unit": "foot",
+          "override": false
+        },
+        "flags": {},
+        "sort": 0,
+        "duration": {
+          "unit": "instantaneous",
+          "concentration": false,
+          "override": false
+        },
+        "magical": false,
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
         }
       }
     },
@@ -69,27 +86,55 @@
       "spent": 0,
       "consumeQuantity": false,
       "recovery": [],
-      "min": "",
       "max": ""
     },
-    "advancement": {},
     "description": {
-      "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage.</p>",
+      "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
       "source": {}
     },
     "identifier": {
-      "associated": ""
-    },
-    "restriction": {
-      "filters": []
+      "value": "bite"
     },
     "type": {
-      "category": "monsters",
+      "category": "natural",
+      "value": "melee"
+    },
+    "overrides": {
+      "proficiency": null
+    },
+    "damage": {
+      "base": {
+        "number": 1,
+        "denomination": 6,
+        "type": "piercing"
+      }
+    },
+    "unidentified": {
+      "description": "",
+      "value": false
+    },
+    "attunement": {
       "value": ""
     },
-    "level": {
-      "value": null
-    }
+    "container": null,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "unit": "pound"
+    },
+    "properties": [],
+    "ammunition": {},
+    "options": [],
+    "range": {
+      "unit": "foot",
+      "short": null,
+      "long": null
+    },
+    "rarity": ""
   },
   "effects": [],
   "folder": null,
@@ -99,14 +144,14 @@
   },
   "flags": {},
   "_stats": {
-    "systemId": "black-flag",
-    "systemVersion": "0.9.033",
-    "coreVersion": "13.347",
-    "createdTime": 1711504525397,
-    "modifiedTime": 1717868266611,
-    "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
-    "exportSource": null
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "black-flag",
+    "systemVersion": "2.0.068",
+    "createdTime": 1756767709549,
+    "modifiedTime": 1756767719024,
+    "lastModifiedBy": "blackflag0000000"
   },
   "_key": "!items!0Tp5zlCaSyrSMoYN"
 }

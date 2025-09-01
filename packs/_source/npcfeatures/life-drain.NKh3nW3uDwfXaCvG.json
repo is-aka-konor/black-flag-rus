@@ -1,6 +1,6 @@
 {
   "name": "Life Drain",
-  "type": "feature",
+  "type": "weapon",
   "_id": "NKh3nW3uDwfXaCvG",
   "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
   "system": {
@@ -10,38 +10,39 @@
         "_id": "4ymd0CE3i8jft69S",
         "description": "",
         "system": {
-          "type": {
-            "value": "melee",
-            "classification": "weapon"
-          },
           "damage": {
-            "includeBaseDamage": true,
             "parts": [
               {
-                "number": 1,
-                "denomination": "8",
-                "bonus": "@mod",
-                "custom": "",
-                "type": "slashing"
-              },
-              {
                 "number": 2,
-                "denomination": "6",
+                "denomination": 6,
                 "bonus": "",
-                "custom": "",
+                "custom": {
+                  "enabled": false,
+                  "formula": ""
+                },
                 "type": "necrotic"
               }
-            ]
+            ],
+            "includeBase": true,
+            "critical": {}
           },
-          "ability": "",
           "attack": {
             "bonus": "",
-            "flat": true
-          }
+            "flat": true,
+            "ability": "",
+            "type": {
+              "value": "",
+              "classification": "weapon"
+            },
+            "critical": {}
+          },
+          "effects": []
         },
         "activation": {
           "type": "action",
-          "condition": ""
+          "condition": "",
+          "override": false,
+          "primary": true
         },
         "consumption": {
           "targets": [],
@@ -52,51 +53,176 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "min": "",
-          "max": ""
+          "max": "",
+          "consumeQuantity": false
         },
         "name": "",
         "img": "",
         "target": {
           "affects": {
             "type": "creature",
-            "count": "1"
+            "count": "1",
+            "choice": false
           },
           "template": {
-            "type": ""
-          }
+            "type": "",
+            "contiguous": false,
+            "unit": "foot"
+          },
+          "prompt": true,
+          "override": false
         },
         "range": {
-          "units": "foot",
-          "value": "5"
+          "value": "5",
+          "unit": "foot",
+          "override": false
+        },
+        "flags": {},
+        "sort": 0,
+        "duration": {
+          "unit": "instantaneous",
+          "concentration": false,
+          "override": false
+        },
+        "magical": false,
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
         }
+      },
+      "MFzuf6xVTAitktcX": {
+        "type": "save",
+        "_id": "MFzuf6xVTAitktcX",
+        "description": "",
+        "flags": {},
+        "sort": 0,
+        "system": {
+          "damage": {
+            "onSave": "half",
+            "parts": []
+          },
+          "effects": [],
+          "save": {
+            "ability": [
+              "constitution"
+            ],
+            "dc": {
+              "ability": "custom",
+              "formula": "15"
+            },
+            "visible": true,
+            "bonus": ""
+          }
+        },
+        "activation": {
+          "type": "action",
+          "override": false,
+          "primary": true,
+          "condition": ""
+        },
+        "consumption": {
+          "scale": {
+            "allowed": false
+          },
+          "targets": []
+        },
+        "duration": {
+          "unit": "instantaneous",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "override": false
+        },
+        "magical": false,
+        "target": {
+          "template": {
+            "contiguous": false,
+            "unit": "foot",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false,
+          "identifier": ""
+        },
+        "name": "",
+        "img": ""
       }
     },
     "uses": {
       "spent": 0,
       "consumeQuantity": false,
       "recovery": [],
-      "min": "",
       "max": ""
     },
-    "advancement": {},
     "description": {
-      "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one creature. Hit: [[/damage average]] damage, and the [[lookup @name lowercase]] regain HP equal to half the necrotic damage dealt. The target must succeed on a [[/save constitution 15]] save or its HP maximum is reduced by an amount equal to the necrotic damage taken. This reduction lasts until the creatures finishes a long rest. The target dies if this effect reduces its HP maximum to 0.</p>",
+      "value": "<p>[[/attack extended]]. [[/damage extended]], and the [[lookup @name lowercase]] regain HP equal to half the necrotic damage dealt. The target must succeed on a [[/save]] save or its HP maximum is reduced by an amount equal to the necrotic damage taken. This reduction lasts until the creatures finishes a long rest. The target dies if this effect reduces its HP maximum to 0.</p>",
       "source": {}
     },
     "identifier": {
-      "associated": ""
-    },
-    "restriction": {
-      "filters": []
+      "value": "life-drain"
     },
     "type": {
-      "category": "monsters",
+      "category": "natural",
+      "value": "melee"
+    },
+    "overrides": {
+      "proficiency": null
+    },
+    "damage": {
+      "base": {
+        "number": 1,
+        "denomination": 8,
+        "type": "slashing"
+      }
+    },
+    "unidentified": {
+      "description": "",
+      "value": false
+    },
+    "attunement": {
       "value": ""
     },
-    "level": {
-      "value": null
-    }
+    "container": null,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "unit": "pound"
+    },
+    "properties": [],
+    "ammunition": {},
+    "options": [],
+    "range": {
+      "unit": "foot",
+      "short": null,
+      "long": null
+    },
+    "rarity": ""
   },
   "effects": [],
   "folder": null,
@@ -106,14 +232,14 @@
   },
   "flags": {},
   "_stats": {
-    "systemId": "black-flag",
-    "systemVersion": "0.9.033",
-    "coreVersion": "13.347",
-    "createdTime": 1711423663858,
-    "modifiedTime": 1717868459552,
-    "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
-    "exportSource": null
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "black-flag",
+    "systemVersion": "2.0.068",
+    "createdTime": 1756767709636,
+    "modifiedTime": 1756767847678,
+    "lastModifiedBy": "blackflag0000000"
   },
   "_key": "!items!NKh3nW3uDwfXaCvG"
 }

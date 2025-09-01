@@ -1,6 +1,6 @@
 {
   "name": "Tentacle",
-  "type": "feature",
+  "type": "weapon",
   "_id": "hc2Ip8BiS7gVhomV",
   "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
   "system": {
@@ -10,38 +10,39 @@
         "_id": "iOENQ0u7z0vx84jF",
         "description": "",
         "system": {
-          "type": {
-            "value": "melee",
-            "classification": "weapon"
-          },
           "attack": {
             "flat": false,
-            "bonus": ""
+            "bonus": "",
+            "ability": "",
+            "type": {
+              "value": "",
+              "classification": "weapon"
+            },
+            "critical": {}
           },
           "damage": {
-            "includeBaseDamage": true,
             "parts": [
               {
-                "number": 1,
-                "denomination": "6",
-                "bonus": "@mod",
-                "custom": "",
-                "type": "bludgeoning"
-              },
-              {
                 "number": 2,
-                "denomination": "8",
+                "denomination": 8,
                 "bonus": "",
-                "custom": "",
+                "custom": {
+                  "enabled": false,
+                  "formula": ""
+                },
                 "type": "piercing"
               }
-            ]
+            ],
+            "includeBase": true,
+            "critical": {}
           },
-          "ability": ""
+          "effects": []
         },
         "activation": {
           "type": "action",
-          "condition": ""
+          "condition": "",
+          "override": false,
+          "primary": true
         },
         "consumption": {
           "targets": [],
@@ -52,23 +53,43 @@
         "uses": {
           "spent": 0,
           "recovery": [],
-          "min": "",
-          "max": ""
+          "max": "",
+          "consumeQuantity": false
         },
         "name": "",
         "img": "",
         "target": {
           "affects": {
-            "type": "creatureObject",
-            "count": "1"
+            "type": "any",
+            "count": "1",
+            "choice": false
           },
           "template": {
-            "type": ""
-          }
+            "type": "",
+            "contiguous": false,
+            "unit": "foot"
+          },
+          "prompt": true,
+          "override": false
         },
         "range": {
-          "units": "foot",
-          "value": "10"
+          "value": "10",
+          "unit": "foot",
+          "override": false
+        },
+        "flags": {},
+        "sort": 0,
+        "duration": {
+          "unit": "instantaneous",
+          "concentration": false,
+          "override": false
+        },
+        "magical": false,
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
         }
       }
     },
@@ -76,27 +97,58 @@
       "spent": 0,
       "consumeQuantity": false,
       "recovery": [],
-      "min": "",
       "max": ""
     },
-    "advancement": {},
     "description": {
-      "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 10 ft., one target. Hit: [[/damage average]] damage. If the target is Medium or smaller, it is grappled (escape DC 13). The [[lookup @name lowercase]] has two tentacles, each of which can grapple one target.</p>",
+      "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is Medium or smaller, it is grappled (escape DC 13). The [[lookup @name lowercase]] has two tentacles, each of which can grapple one target.</p>",
       "source": {}
     },
     "identifier": {
-      "associated": ""
-    },
-    "restriction": {
-      "filters": []
+      "value": "tentacle"
     },
     "type": {
-      "category": "monsters",
+      "category": "natural",
+      "value": "melee"
+    },
+    "overrides": {
+      "proficiency": null
+    },
+    "damage": {
+      "base": {
+        "number": 1,
+        "denomination": 6,
+        "type": "bludgeoning"
+      }
+    },
+    "properties": [
+      "reach"
+    ],
+    "range": {
+      "reach": 5,
+      "unit": "foot",
+      "short": null,
+      "long": null
+    },
+    "unidentified": {
+      "description": "",
+      "value": false
+    },
+    "attunement": {
       "value": ""
     },
-    "level": {
-      "value": null
-    }
+    "container": null,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "unit": "pound"
+    },
+    "ammunition": {},
+    "options": [],
+    "rarity": ""
   },
   "effects": [],
   "folder": null,
@@ -106,14 +158,14 @@
   },
   "flags": {},
   "_stats": {
-    "systemId": "black-flag",
-    "systemVersion": "0.9.033",
-    "coreVersion": "13.347",
-    "createdTime": 1712091705582,
-    "modifiedTime": 1717868617113,
-    "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
-    "exportSource": null
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "black-flag",
+    "systemVersion": "2.0.068",
+    "createdTime": 1756767709702,
+    "modifiedTime": 1756767784564,
+    "lastModifiedBy": "blackflag0000000"
   },
   "_key": "!items!hc2Ip8BiS7gVhomV"
 }
