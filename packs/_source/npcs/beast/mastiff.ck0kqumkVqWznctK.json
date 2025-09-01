@@ -234,155 +234,6 @@
   },
   "items": [
     {
-      "name": "Bite",
-      "type": "feature",
-      "_id": "xfZhGAhPTRNRtYIi",
-      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
-      "system": {
-        "activities": {
-          "sO4yBxIaNViWhQt2": {
-            "type": "attack",
-            "_id": "sO4yBxIaNViWhQt2",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "",
-            "target": {
-              "affects": {
-                "type": "",
-                "choice": false
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "prompt": true,
-              "override": false
-            },
-            "range": {
-              "units": "",
-              "override": false
-            },
-            "sort": 0,
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage. If the target is a creature, it must succeed on a [[/save strength 12]] save or be knocked prone.</p>",
-          "source": {}
-        },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 100000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1711504525397,
-        "modifiedTime": 1717282011124,
-        "lastModifiedBy": "blackflag0000000",
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!ck0kqumkVqWznctK.xfZhGAhPTRNRtYIi"
-    },
-    {
       "name": "Protect Friend",
       "type": "feature",
       "system": {
@@ -499,6 +350,173 @@
         "exportSource": null
       },
       "_key": "!actors.items!ck0kqumkVqWznctK.g8MzTWkM0z1QfEj3"
+    },
+    {
+      "name": "Bite",
+      "type": "weapon",
+      "_id": "xfZhGAhPTRNRtYIi",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "system": {
+        "activities": {
+          "sO4yBxIaNViWhQt2": {
+            "type": "attack",
+            "_id": "sO4yBxIaNViWhQt2",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "",
+            "target": {
+              "affects": {
+                "type": "any",
+                "choice": false
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "prompt": true,
+              "override": false
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "sort": 0,
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is a creature, it must succeed on a [[/save strength 12]] save or be knocked prone.</p>",
+          "source": {}
+        },
+        "identifier": {
+          "value": "bite"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 6,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748933321,
+        "modifiedTime": 1756750475462,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!ck0kqumkVqWznctK.xfZhGAhPTRNRtYIi"
     }
   ],
   "effects": [],

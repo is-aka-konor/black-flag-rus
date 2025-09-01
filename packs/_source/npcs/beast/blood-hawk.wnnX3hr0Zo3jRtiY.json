@@ -305,167 +305,6 @@
       "_key": "!actors.items!wnnX3hr0Zo3jRtiY.57LvsSGSFiRC3ZBt"
     },
     {
-      "name": "Beak",
-      "type": "feature",
-      "_id": "YhsM5CKBsYVu8GkH",
-      "img": "icons/commodities/bones/beak-orange-green.webp",
-      "system": {
-        "activities": {
-          "2R0pp9F44evzbtoT": {
-            "type": "attack",
-            "_id": "2R0pp9F44evzbtoT",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": true,
-                "bonus": "4",
-                "ability": "strength",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 4,
-                    "bonus": "2",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {
-                  "bonus": ""
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "5",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "magical": false,
-            "sort": 0
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one creature. <em>Hit:</em> [[/damage average]] damage.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "beak"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.9J9kSmX7r4uCWdHF",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!wnnX3hr0Zo3jRtiY.YhsM5CKBsYVu8GkH"
-    },
-    {
       "folder": null,
       "system": {
         "activities": {
@@ -765,6 +604,181 @@
         "default": 0
       },
       "_key": "!actors.items!wnnX3hr0Zo3jRtiY.fTt1T9m1CSMqpv0m"
+    },
+    {
+      "name": "Beak",
+      "type": "weapon",
+      "_id": "YhsM5CKBsYVu8GkH",
+      "img": "icons/commodities/bones/beak-orange-green.webp",
+      "system": {
+        "activities": {
+          "2R0pp9F44evzbtoT": {
+            "type": "attack",
+            "_id": "2R0pp9F44evzbtoT",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": true,
+                "bonus": "4",
+                "ability": "strength",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {
+                  "bonus": ""
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "beak"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 4,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.9J9kSmX7r4uCWdHF",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748936113,
+        "modifiedTime": 1756749812300,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!wnnX3hr0Zo3jRtiY.YhsM5CKBsYVu8GkH"
     }
   ],
   "effects": [],

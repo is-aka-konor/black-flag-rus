@@ -70,7 +70,9 @@
       "size": "tiny",
       "condition": {
         "resistances": {
-          "value": [],
+          "value": [
+            "poisoned"
+          ],
           "custom": []
         },
         "immunities": {
@@ -114,7 +116,7 @@
         "proficient": false
       },
       "dexterity": {
-        "mod": null,
+        "mod": 0,
         "proficient": false
       },
       "constitution": {
@@ -249,7 +251,7 @@
   "items": [
     {
       "name": "Sting",
-      "type": "feature",
+      "type": "weapon",
       "_id": "O1T2o343ToL0fMhM",
       "img": "icons/commodities/biological/stinger-insect-grey.webp",
       "system": {
@@ -264,7 +266,7 @@
                 "bonus": "",
                 "ability": "",
                 "type": {
-                  "value": "melee",
+                  "value": "",
                   "classification": "weapon"
                 },
                 "critical": {
@@ -272,24 +274,11 @@
                 }
               },
               "damage": {
-                "parts": [
-                  {
-                    "number": null,
-                    "denomination": 0,
-                    "bonus": "1",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
+                "parts": [],
                 "includeBase": true,
-                "critical": {}
+                "critical": {
+                  "bonus": ""
+                }
               },
               "effects": []
             },
@@ -297,7 +286,8 @@
               "type": "action",
               "condition": "",
               "value": null,
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -308,7 +298,6 @@
             "uses": {
               "spent": 0,
               "recovery": [],
-              "min": "",
               "max": "",
               "consumeQuantity": false
             },
@@ -316,59 +305,98 @@
             "img": "",
             "target": {
               "affects": {
-                "type": "",
-                "choice": false
+                "type": "creature",
+                "choice": false,
+                "count": "1",
+                "special": ""
               },
               "template": {
                 "type": "",
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot"
+                "unit": "foot"
               },
               "prompt": true,
               "override": false
             },
             "range": {
-              "units": "",
-              "override": false
+              "override": false,
+              "unit": ""
             },
             "sort": 0,
             "duration": {
-              "units": "instantaneous",
               "concentration": false,
-              "override": false
+              "override": false,
+              "unit": "instantaneous"
             },
-            "magical": false
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false,
+              "identifier": ""
+            }
           }
         },
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
           "recovery": [],
-          "min": "",
           "max": ""
         },
-        "advancement": {},
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one creature. Hit: [[/damage]] damage, and the target must make a [[/save constitution 9]] save, taking [[/damage 1d8 poison average]] damage on a failed save, or half as much damage on a successful one.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must make a [[/save constitution 10]] save or take [[/damage 1d4 poison average]] damage.</p>",
           "source": {}
         },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
+        "identifier": {
+          "value": "sting"
         },
         "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
+          "category": "natural",
+          "value": "melee"
         },
         "overrides": {
           "proficiency": null
-        }
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 4,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
       },
       "effects": [],
       "folder": null,
@@ -384,15 +412,15 @@
         }
       },
       "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1712946973269,
-        "modifiedTime": 1717280925403,
-        "lastModifiedBy": "blackflag0000000",
         "compendiumSource": "Compendium.black-flag.npcfeatures.Item.lA42gzSugdKluuYF",
         "duplicateSource": null,
-        "exportSource": null
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748929347,
+        "modifiedTime": 1756750787276,
+        "lastModifiedBy": "blackflag0000000"
       },
       "_key": "!actors.items!FIdfBlHC564JtPUH.O1T2o343ToL0fMhM"
     }
@@ -405,10 +433,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.10.049",
+    "systemVersion": "2.0.068",
     "coreVersion": "13.347",
     "createdTime": 1709697835872,
-    "modifiedTime": 1729607937641,
+    "modifiedTime": 1756750735861,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null

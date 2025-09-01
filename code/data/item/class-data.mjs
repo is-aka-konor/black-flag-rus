@@ -170,6 +170,6 @@ export default class ClassData extends ItemDataModel.mixin(AdvancementTemplate, 
 	/** @inheritDoc */
 	async _onDelete(options, userId) {
 		await super._onDelete(options, userId);
-		this.onDeleteRevertAdvancement(options, userId);
+		this._onDeleteRevertAdvancement(options, userId);
 	}
 }

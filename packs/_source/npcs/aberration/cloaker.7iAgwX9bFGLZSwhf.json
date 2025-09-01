@@ -705,472 +705,6 @@
       "_key": "!actors.items!7iAgwX9bFGLZSwhf.MaE0xfcgpc6nwh0u"
     },
     {
-      "name": "Bite",
-      "type": "feature",
-      "_id": "cnLOJJc6aQhqO8P3",
-      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
-      "system": {
-        "activities": {
-          "sO4yBxIaNViWhQt2": {
-            "type": "attack",
-            "_id": "sO4yBxIaNViWhQt2",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 4,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": true
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "strength",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "Main Attack",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "5",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "sort": 0,
-            "magical": false
-          },
-          "DZnltp7MZOfwsg3W": {
-            "type": "damage",
-            "_id": "DZnltp7MZOfwsg3W",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "damage": {
-                "critical": {
-                  "allow": false
-                },
-                "parts": [
-                  {
-                    "number": 4,
-                    "denomination": 6,
-                    "bonus": "4",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false,
-              "units": "foot",
-              "value": "0",
-              "special": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": "Creature the Cloaker is attached to"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "Subsequent Piercing Damage",
-            "img": ""
-          },
-          "W2Nv7HkscsusK2HH": {
-            "type": "check",
-            "_id": "W2Nv7HkscsusK2HH",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "check": {
-                "associated": [],
-                "dc": {
-                  "calculation": "",
-                  "formula": "15"
-                },
-                "visible": true,
-                "ability": "strength"
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false,
-              "units": "foot",
-              "value": "0",
-              "special": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": "Creature the Cloaker is attached to"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "STR Check to Remove Cloaker",
-            "img": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage., and if the target is Large or smaller, the cloaker attaches to it. If the cloaker has advantage on the attack roll, the cloaker attaches to the target’s head, and the target is blinded and unable to breathe while the cloaker is attached. While attached, the cloaker can’t make Bite attacks, and at the start of each of the cloaker’s turns, the target takes [[/damage 4d6 + 4 piercing average]] damage.</p><p>The attached cloaker moves with the target whenever the target moves, requiring none of the cloaker’s movement. It can detach itself by spending 5 feet of its movement on its turn. A creature, including the target, can take its action to detach the cloaker by succeeding on a [[/check str 15 format=long]].</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "bite"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 1300000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "duplicateSource": null,
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!7iAgwX9bFGLZSwhf.cnLOJJc6aQhqO8P3"
-    },
-    {
-      "name": "Tail",
-      "type": "feature",
-      "_id": "xMq4bvwiCsALIPS1",
-      "img": "icons/creatures/abilities/tail-swipe-green.webp",
-      "system": {
-        "activities": {
-          "nK9DHZRtdth4i7Kf": {
-            "type": "attack",
-            "_id": "nK9DHZRtdth4i7Kf",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 8,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "strength",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "10",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 10 ft., one creature. <em>Hit:</em> [[/damage average]] damage.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "tail"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 2250000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "duplicateSource": null,
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.b8zfKznhQRxpJ1ru",
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!7iAgwX9bFGLZSwhf.xMq4bvwiCsALIPS1"
-    },
-    {
       "folder": "SqwWQFk8kEBlAaLd",
       "system": {
         "activities": {
@@ -1476,6 +1010,517 @@
         "exportSource": null
       },
       "_key": "!actors.items!7iAgwX9bFGLZSwhf.dYfDDJwnuHnS3aAu"
+    },
+    {
+      "name": "Bite",
+      "type": "weapon",
+      "_id": "cnLOJJc6aQhqO8P3",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "system": {
+        "activities": {
+          "sO4yBxIaNViWhQt2": {
+            "type": "attack",
+            "_id": "sO4yBxIaNViWhQt2",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "critical": {
+                  "bonus": ""
+                },
+                "includeBase": true
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "strength",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "Main Attack",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "any",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          },
+          "DZnltp7MZOfwsg3W": {
+            "type": "damage",
+            "_id": "DZnltp7MZOfwsg3W",
+            "description": "",
+            "sort": 0,
+            "system": {
+              "damage": {
+                "critical": {
+                  "allow": false
+                },
+                "parts": [
+                  {
+                    "number": 4,
+                    "denomination": 6,
+                    "bonus": "4",
+                    "custom": {
+                      "formula": "",
+                      "enabled": false
+                    },
+                    "type": "piercing",
+                    "additionalTypes": [],
+                    "scaling": {
+                      "number": 1
+                    }
+                  }
+                ]
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "override": false,
+              "value": "0",
+              "special": "",
+              "unit": "foot"
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "creature",
+                "count": "1",
+                "special": "Creature the Cloaker is attached to"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "Subsequent Piercing Damage",
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          },
+          "W2Nv7HkscsusK2HH": {
+            "type": "check",
+            "_id": "W2Nv7HkscsusK2HH",
+            "description": "",
+            "sort": 0,
+            "system": {
+              "check": {
+                "associated": [],
+                "dc": {
+                  "calculation": "",
+                  "formula": "15"
+                },
+                "visible": true,
+                "ability": "strength"
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "override": false,
+              "value": "0",
+              "special": "",
+              "unit": "foot"
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "creature",
+                "count": "1",
+                "special": "Creature the Cloaker is attached to"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "STR Check to Remove Cloaker",
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and if the target is Large or smaller, the cloaker attaches to it. If the cloaker has advantage on the attack roll, the cloaker attaches to the target’s head, and the target is blinded and unable to breathe while the cloaker is attached. While attached, the cloaker can’t make Bite attacks, and at the start of each of the cloaker’s turns, the target takes [[/damage 4d6 + 4 piercing average]] damage.</p><p>The attached cloaker moves with the target whenever the target moves, requiring none of the cloaker’s movement. It can detach itself by spending 5 feet of its movement on its turn. A creature, including the target, can take its action to detach the cloaker by succeeding on a [[/check str 15 format=long]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "bite"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 4,
+            "denomination": 6,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 1300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "duplicateSource": null,
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748927811,
+        "modifiedTime": 1756749181098,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!7iAgwX9bFGLZSwhf.cnLOJJc6aQhqO8P3"
+    },
+    {
+      "name": "Tail",
+      "type": "weapon",
+      "_id": "xMq4bvwiCsALIPS1",
+      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "system": {
+        "activities": {
+          "nK9DHZRtdth4i7Kf": {
+            "type": "attack",
+            "_id": "nK9DHZRtdth4i7Kf",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "strength",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "10",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "tail"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 3,
+            "denomination": 8,
+            "type": "slashing",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 2250000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "duplicateSource": null,
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.b8zfKznhQRxpJ1ru",
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748927811,
+        "modifiedTime": 1756749192136,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!7iAgwX9bFGLZSwhf.xMq4bvwiCsALIPS1"
     }
   ],
   "effects": [],

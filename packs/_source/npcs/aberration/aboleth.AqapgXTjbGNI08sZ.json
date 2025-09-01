@@ -1080,324 +1080,6 @@
       "_key": "!actors.items!AqapgXTjbGNI08sZ.pQTjCidopPZrb4HX"
     },
     {
-      "name": "Tentacle",
-      "type": "feature",
-      "_id": "IF1fMHYNl5r77E5G",
-      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
-      "system": {
-        "activities": {
-          "iOENQ0u7z0vx84jF": {
-            "type": "attack",
-            "_id": "iOENQ0u7z0vx84jF",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creatureObject",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "10",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack: </em>[[/attack]], reach 10 ft., one target. <em>Hit: </em>[[/damage 3d6 + 5 bludgeoning average]] damage.<span class=\"Apple-converted-space\"> </span></p>",
-          "source": {
-            "fallback": ""
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "tentacle"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 6800000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "duplicateSource": null,
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.hc2Ip8BiS7gVhomV",
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!AqapgXTjbGNI08sZ.IF1fMHYNl5r77E5G"
-    },
-    {
-      "folder": "SqwWQFk8kEBlAaLd",
-      "system": {
-        "activities": {
-          "U8xn7hY9vBs7EfSF": {
-            "type": "attack",
-            "_id": "U8xn7hY9vBs7EfSF",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "charisma",
-                "type": {
-                  "value": "ranged",
-                  "classification": "spell"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "psychic",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "units": "foot",
-              "value": "120",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Ranged Spell Attack</em>: [[/attack]], range 120 ft., one target. <em>Hit</em>: [[/damage 3d6 + 4 psychic average]] damage.</p>",
-          "source": {
-            "fallback": ""
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Psychic Bolt",
-      "type": "feature",
-      "_id": "XRhBgal0Qpe2KeDG",
-      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-      "effects": [],
-      "sort": 6900000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!AqapgXTjbGNI08sZ.XRhBgal0Qpe2KeDG"
-    },
-    {
       "folder": "SqwWQFk8kEBlAaLd",
       "system": {
         "activities": {
@@ -1946,6 +1628,355 @@
         "exportSource": null
       },
       "_key": "!actors.items!AqapgXTjbGNI08sZ.M2oT7dGUsRKArvOD"
+    },
+    {
+      "name": "Tentacle",
+      "type": "weapon",
+      "_id": "IF1fMHYNl5r77E5G",
+      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
+      "system": {
+        "activities": {
+          "iOENQ0u7z0vx84jF": {
+            "type": "attack",
+            "_id": "iOENQ0u7z0vx84jF",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "any",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "10",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": ""
+          }
+        },
+        "identifier": {
+          "value": "tentacle"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 3,
+            "denomination": 6,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 6800000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "duplicateSource": null,
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.hc2Ip8BiS7gVhomV",
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748928354,
+        "modifiedTime": 1756748961724,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!AqapgXTjbGNI08sZ.IF1fMHYNl5r77E5G"
+    },
+    {
+      "folder": "SqwWQFk8kEBlAaLd",
+      "system": {
+        "activities": {
+          "U8xn7hY9vBs7EfSF": {
+            "type": "attack",
+            "_id": "U8xn7hY9vBs7EfSF",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "charisma",
+                "type": {
+                  "value": "",
+                  "classification": "spell"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "120",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "any",
+                "count": "1",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": ""
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "ranged"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 3,
+            "denomination": 6,
+            "type": "psychic",
+            "additionalTypes": []
+          }
+        },
+        "range": {
+          "short": 120,
+          "unit": "foot",
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "name": "Psychic Bolt",
+      "type": "weapon",
+      "_id": "XRhBgal0Qpe2KeDG",
+      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+      "effects": [],
+      "sort": 6900000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748928354,
+        "modifiedTime": 1756749139474,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!AqapgXTjbGNI08sZ.XRhBgal0Qpe2KeDG"
     }
   ],
   "effects": [],

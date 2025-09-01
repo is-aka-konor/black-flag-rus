@@ -448,165 +448,6 @@
       "_key": "!actors.items!vlB6jIBlQqXBM2QF.8r9SJkJnXFp9INTZ"
     },
     {
-      "name": "Tentacles",
-      "type": "feature",
-      "_id": "vRXUJpXUF4pIa3Rd",
-      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
-      "system": {
-        "activities": {
-          "iOENQ0u7z0vx84jF": {
-            "type": "attack",
-            "_id": "iOENQ0u7z0vx84jF",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "target": {
-              "affects": {
-                "type": "creatureObject",
-                "count": "1",
-                "choice": false,
-                "special": ""
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "override": false,
-              "prompt": true
-            },
-            "range": {
-              "units": "foot",
-              "value": "15",
-              "special": "",
-              "override": false
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 15 ft., one target. Hit: [[/damage average]] damage, and the target is &amp;Reference[grappled]{grappled} (escape DC 13), if it is a Huge or smaller creature. Until this grapple ends, the target is &amp;Reference[restrained]{restrained}. The octopus can grapple up to two creatures at one time.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "identifier": {
-          "associated": "",
-          "value": "tentacle"
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.Y78OEXGxUCy8u1wE",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!vlB6jIBlQqXBM2QF.vRXUJpXUF4pIa3Rd"
-    },
-    {
       "folder": "aeUscVxK8tCv3G9v",
       "system": {
         "activities": {
@@ -902,6 +743,182 @@
         "exportSource": null
       },
       "_key": "!actors.items!vlB6jIBlQqXBM2QF.QlG9ZpISK6qQrOYc"
+    },
+    {
+      "name": "Tentacles",
+      "type": "weapon",
+      "_id": "vRXUJpXUF4pIa3Rd",
+      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
+      "system": {
+        "activities": {
+          "iOENQ0u7z0vx84jF": {
+            "type": "attack",
+            "_id": "iOENQ0u7z0vx84jF",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "target": {
+              "affects": {
+                "type": "any",
+                "count": "1",
+                "choice": false,
+                "special": ""
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "override": false,
+              "prompt": true
+            },
+            "range": {
+              "value": "15",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target is &amp;Reference[grappled]{grappled} (escape DC 13), if it is a Huge or smaller creature. Until this grapple ends, the target is &amp;Reference[restrained]{restrained}. The octopus can grapple up to two creatures at one time.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "identifier": {
+          "value": "tentacle"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 10,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.Y78OEXGxUCy8u1wE",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748935830,
+        "modifiedTime": 1756750240834,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!vlB6jIBlQqXBM2QF.vRXUJpXUF4pIa3Rd"
     }
   ],
   "effects": [],

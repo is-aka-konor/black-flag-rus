@@ -382,167 +382,6 @@
       "_key": "!actors.items!Cdi71IHxNif3sV33.8VBoDbgCNCwJ2vTi"
     },
     {
-      "folder": null,
-      "system": {
-        "activities": {
-          "fFwQcapwNHa5fOsg": {
-            "type": "attack",
-            "_id": "fFwQcapwNHa5fOsg",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 8,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {
-                  "bonus": ""
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "value": "5",
-              "units": "foot",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "count": "1",
-                "type": "creature",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "magical": false,
-            "sort": 0
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 5 ft., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Hooves",
-      "type": "feature",
-      "_id": "I5CW4yIoBNlggQbs",
-      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
-      "effects": [],
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.ZIm20cCuTFtXthhI",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!Cdi71IHxNif3sV33.I5CW4yIoBNlggQbs"
-    },
-    {
       "folder": "aeUscVxK8tCv3G9v",
       "system": {
         "activities": {
@@ -670,6 +509,181 @@
         "exportSource": null
       },
       "_key": "!actors.items!Cdi71IHxNif3sV33.BYlGJx8Z2X3PM9Ta"
+    },
+    {
+      "folder": null,
+      "system": {
+        "activities": {
+          "fFwQcapwNHa5fOsg": {
+            "type": "attack",
+            "_id": "fFwQcapwNHa5fOsg",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {
+                  "bonus": ""
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "count": "1",
+                "type": "any",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "magical": false,
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 8,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "name": "Hooves",
+      "type": "weapon",
+      "_id": "I5CW4yIoBNlggQbs",
+      "img": "icons/commodities/bones/hooves-cloven-brown.webp",
+      "effects": [],
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.ZIm20cCuTFtXthhI",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748928679,
+        "modifiedTime": 1756751040816,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!Cdi71IHxNif3sV33.I5CW4yIoBNlggQbs"
     }
   ],
   "effects": [],

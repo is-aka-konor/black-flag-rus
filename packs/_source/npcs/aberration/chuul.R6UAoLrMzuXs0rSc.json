@@ -703,165 +703,6 @@
       "folder": "SqwWQFk8kEBlAaLd",
       "system": {
         "activities": {
-          "YXcxiHyliIdOlqTs": {
-            "type": "attack",
-            "_id": "YXcxiHyliIdOlqTs",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 8,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "units": "foot",
-              "value": "10",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "sort": 0,
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 10 ft., one target. <em>Hit</em>: [[/damage average]] damage. If the target is Large or smaller, it is &amp;Reference[grappled]{grappled} (escape DC 14). The chuul has two pincers, each of which can grapple only one target.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Pincer",
-      "type": "feature",
-      "_id": "gviWn6S72YUUCuOw",
-      "img": "icons/creatures/claws/pincer-crab-brown.webp",
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!R6UAoLrMzuXs0rSc.gviWn6S72YUUCuOw"
-    },
-    {
-      "folder": "SqwWQFk8kEBlAaLd",
-      "system": {
-        "activities": {
           "bH0bvpcmu8meuTNo": {
             "type": "save",
             "_id": "bH0bvpcmu8meuTNo",
@@ -1164,6 +1005,182 @@
         "exportSource": null
       },
       "_key": "!actors.items!R6UAoLrMzuXs0rSc.Wcxq1V9zqUIvbMnE"
+    },
+    {
+      "folder": "SqwWQFk8kEBlAaLd",
+      "system": {
+        "activities": {
+          "YXcxiHyliIdOlqTs": {
+            "type": "attack",
+            "_id": "YXcxiHyliIdOlqTs",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "10",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "any",
+                "count": "1",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is Large or smaller, it is &amp;Reference[grappled]{grappled} (escape DC 14). The chuul has two pincers, each of which can grapple only one target.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 3,
+            "denomination": 8,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "name": "Pincer",
+      "type": "weapon",
+      "_id": "gviWn6S72YUUCuOw",
+      "img": "icons/creatures/claws/pincer-crab-brown.webp",
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748931511,
+        "modifiedTime": 1756749161466,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!R6UAoLrMzuXs0rSc.gviWn6S72YUUCuOw"
     }
   ],
   "effects": [],

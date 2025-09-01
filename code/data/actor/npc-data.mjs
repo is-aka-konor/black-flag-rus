@@ -152,6 +152,16 @@ export default class NPCData extends ActorDataModel.mixin(
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Does this NPC represent a swarm?
+	 * @type {boolean}
+	 */
+	get isSwarm() {
+		return !!this.traits.type.swarm;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * XP value for this NPC based on its CR.
 	 * @type {number}
 	 */

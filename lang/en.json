@@ -4178,8 +4178,8 @@
 			"Label[other]": "Creatures"
 		},
 		"CreatureObject": {
-			"Counted[one]": "{number} creatures or object",
-			"Counted[other]": "{number} creautres or objects",
+			"Counted[one]": "{number} creature or object",
+			"Counted[other]": "{number} creatures or objects",
 			"Label[one]": "Creature or Object",
 			"Label[other]": "Creatures or Objects"
 		},

@@ -512,390 +512,6 @@
       "_key": "!actors.items!xi88QgskH6ueJ6Ma.sj3xGgnvUzbes5qE"
     },
     {
-      "folder": null,
-      "system": {
-        "activities": {
-          "kktp5Ej8djIHZFLV": {
-            "type": "attack",
-            "_id": "kktp5Ej8djIHZFLV",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {
-                  "bonus": ""
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "value": "10",
-              "units": "foot",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "count": "1",
-                "type": "creature",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "magical": false,
-            "sort": 0
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 10 ft., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Ram",
-      "type": "feature",
-      "_id": "OPZM1cpSgClzUDVH",
-      "img": "icons/creatures/mammals/goat-horned-blue.webp",
-      "effects": [],
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.knhoCURaWyYXDK0P",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!xi88QgskH6ueJ6Ma.OPZM1cpSgClzUDVH"
-    },
-    {
-      "folder": null,
-      "system": {
-        "activities": {
-          "idOFduXzjNMRwb8k": {
-            "type": "attack",
-            "_id": "idOFduXzjNMRwb8k",
-            "description": "",
-            "system": {
-              "attack": {
-                "critical": {
-                  "threshold": null
-                },
-                "flat": false,
-                "type": {},
-                "bonus": ""
-              },
-              "damage": {
-                "critical": {
-                  "bonus": ""
-                },
-                "includeBase": true,
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 4,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false,
-              "value": "5",
-              "units": "foot",
-              "special": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "count": "1",
-                "type": "creature",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "",
-            "sort": 0
-          },
-          "RPi8thCzTXmU9TAE": {
-            "type": "save",
-            "_id": "RPi8thCzTXmU9TAE",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "damage": {
-                "parts": []
-              },
-              "effects": [],
-              "save": {
-                "ability": [
-                  "strength"
-                ],
-                "dc": {
-                  "ability": "custom",
-                  "formula": "14"
-                }
-              }
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "range": {
-              "override": false,
-              "units": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": ""
-              },
-              "prompt": true,
-              "override": false
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "STR Save",
-            "img": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 5 ft., one creature. <em>Hit</em>: [[/damage average]] damage, and if the target is a Large or smaller creature, it must succeed on a [[/save str 14 format=long]] or be pushed up to 15 feet away from the elk.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Kick",
-      "type": "feature",
-      "_id": "KWFEbVzZztpMwUte",
-      "img": "icons/skills/wounds/injury-pain-body-orange.webp",
-      "effects": [],
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.i9hXZziDgPoYmBlf",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!xi88QgskH6ueJ6Ma.KWFEbVzZztpMwUte"
-    },
-    {
       "folder": "ZBvX0FQVF5mTcDNg",
       "system": {
         "activities": {
@@ -1023,6 +639,432 @@
         "exportSource": null
       },
       "_key": "!actors.items!xi88QgskH6ueJ6Ma.tsjwhLwoMHiRqocg"
+    },
+    {
+      "folder": null,
+      "system": {
+        "activities": {
+          "kktp5Ej8djIHZFLV": {
+            "type": "attack",
+            "_id": "kktp5Ej8djIHZFLV",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {
+                  "bonus": ""
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "10",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "count": "1",
+                "type": "any",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "magical": false,
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "name": "Ram",
+      "type": "weapon",
+      "_id": "OPZM1cpSgClzUDVH",
+      "img": "icons/creatures/mammals/goat-horned-blue.webp",
+      "effects": [],
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.knhoCURaWyYXDK0P",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748936282,
+        "modifiedTime": 1756750165603,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!xi88QgskH6ueJ6Ma.OPZM1cpSgClzUDVH"
+    },
+    {
+      "folder": null,
+      "system": {
+        "activities": {
+          "idOFduXzjNMRwb8k": {
+            "type": "attack",
+            "_id": "idOFduXzjNMRwb8k",
+            "description": "",
+            "system": {
+              "attack": {
+                "critical": {
+                  "threshold": null
+                },
+                "flat": false,
+                "type": {
+                  "value": ""
+                },
+                "bonus": ""
+              },
+              "damage": {
+                "critical": {
+                  "bonus": ""
+                },
+                "includeBase": true,
+                "parts": []
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "override": false,
+              "value": "5",
+              "special": "",
+              "unit": "foot"
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "count": "1",
+                "type": "creature",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "",
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          },
+          "RPi8thCzTXmU9TAE": {
+            "type": "save",
+            "_id": "RPi8thCzTXmU9TAE",
+            "description": "",
+            "sort": 0,
+            "system": {
+              "damage": {
+                "parts": [],
+                "onSave": "half"
+              },
+              "effects": [],
+              "save": {
+                "ability": [
+                  "strength"
+                ],
+                "dc": {
+                  "ability": "custom",
+                  "formula": "14"
+                },
+                "visible": true
+              }
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "STR Save",
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and if the target is a Large or smaller creature, it must succeed on a [[/save str 14 format=long]] or be pushed up to 15 feet away from the elk.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 4,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "name": "Kick",
+      "type": "weapon",
+      "_id": "KWFEbVzZztpMwUte",
+      "img": "icons/skills/wounds/injury-pain-body-orange.webp",
+      "effects": [],
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.i9hXZziDgPoYmBlf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748936282,
+        "modifiedTime": 1756750187987,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!xi88QgskH6ueJ6Ma.KWFEbVzZztpMwUte"
     }
   ],
   "effects": [],

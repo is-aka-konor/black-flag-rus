@@ -465,7 +465,7 @@ export default class AttackActivity extends Activity {
 		// Add reach for melee weapons, unless the activity is explicitly specified as a ranged attack
 		if (this.system.validAttackTypes.has("melee")) {
 			const unit = this.item.system.range.unit ?? defaultUnit("distance");
-			let reach = convertDistance(5, "foot", { to: unit }).value;
+			let reach = convertDistance(this.actor?.system.isSwarm ? 0 : 5, "foot", { to: unit }).value;
 			if (this.item.system.properties.has("reach")) {
 				reach += this.item.system.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
 			}
@@ -512,9 +512,7 @@ export default class AttackActivity extends Activity {
 			// Add `@mod` unless it is an off-hand attack with a positive modifier
 			const isDeterministic = new Roll(roll.parts[0]).isDeterministic;
 			const includeMod =
-				(!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mod < 0) &&
-				!isDeterministic &&
-				!(this.system.attack.type.classification === "spell" && this.item.system.type.category === "natural");
+				(!["offhand", "thrownOffhand"].includes(rollConfig.attackMode) || roll.data.mod < 0) && !isDeterministic;
 			if (includeMod && !roll.parts.some(p => p.includes("@mod"))) roll.parts.push("@mod");
 
 			// Add magical bonus

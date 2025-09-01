@@ -239,247 +239,6 @@
   },
   "items": [
     {
-      "folder": null,
-      "system": {
-        "activities": {
-          "0BgMR6xOla38XHLe": {
-            "type": "attack",
-            "_id": "0BgMR6xOla38XHLe",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 8,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "instantaneous",
-              "override": false,
-              "concentration": false
-            },
-            "range": {
-              "units": "foot",
-              "value": "5",
-              "special": "",
-              "override": false
-            },
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": "creature",
-                "count": "1",
-                "special": ""
-              },
-              "override": false,
-              "prompt": true
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "",
-            "img": "systems/black-flag/artwork/activities/attack.svg",
-            "sort": 0,
-            "magical": false
-          },
-          "9wN9viWyq9bJkzwh": {
-            "type": "save",
-            "_id": "9wN9viWyq9bJkzwh",
-            "description": "",
-            "sort": 0,
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 3,
-                    "denomination": 6,
-                    "bonus": "",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "poison",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ]
-              },
-              "effects": [],
-              "save": {
-                "ability": [
-                  "constitution"
-                ],
-                "dc": {
-                  "ability": "custom",
-                  "formula": "12"
-                }
-              }
-            },
-            "activation": {
-              "value": null,
-              "type": "action",
-              "condition": "",
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "duration": {
-              "units": "hour",
-              "concentration": false,
-              "override": false,
-              "value": "1"
-            },
-            "range": {
-              "override": false,
-              "units": ""
-            },
-            "magical": false,
-            "target": {
-              "template": {
-                "count": 1,
-                "contiguous": false,
-                "units": "foot",
-                "type": ""
-              },
-              "affects": {
-                "choice": false,
-                "type": ""
-              },
-              "prompt": true,
-              "override": false
-            },
-            "uses": {
-              "spent": 0,
-              "consumeQuantity": false,
-              "recovery": [],
-              "min": "",
-              "max": ""
-            },
-            "name": "CON Save",
-            "img": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 5 ft., one creature. <em>Hit</em>: [[/damage average]] damage, and the target must succeed on a [[/save con 12 format=long]] or take [[/damage 3d6 poison average]] damage. If the poison damage reduces the target to 0 HP, the target is stable but &amp;Reference[poisoned]{poisoned} for 1 hour, even after regaining HP, and is &amp;Reference[paralyzed]{paralyzed} while poisoned in this way.</p>",
-          "source": {
-            "fallback": "Black Flag Reference Document"
-          }
-        },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "overrides": {
-          "proficiency": null
-        },
-        "identifier": {
-          "value": "item",
-          "associated": ""
-        },
-        "level": {
-          "value": null
-        }
-      },
-      "name": "Sting",
-      "type": "feature",
-      "_id": "uQLTCmuRIYwt69U1",
-      "img": "icons/creatures/abilities/stinger-poison-green.webp",
-      "effects": [],
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.1m9GJ9Hmn4L8liS9",
-        "duplicateSource": null,
-        "coreVersion": "13.347",
-        "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
-      },
-      "sort": 200000,
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!NDPrxKEbOwhpsm7t.uQLTCmuRIYwt69U1"
-    },
-    {
       "folder": "aeUscVxK8tCv3G9v",
       "system": {
         "activities": {
@@ -611,6 +370,270 @@
         "exportSource": null
       },
       "_key": "!actors.items!NDPrxKEbOwhpsm7t.kJ6MomKKnM6GFz0Z"
+    },
+    {
+      "folder": null,
+      "system": {
+        "activities": {
+          "0BgMR6xOla38XHLe": {
+            "type": "attack",
+            "_id": "0BgMR6xOla38XHLe",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "override": false,
+              "concentration": false,
+              "unit": "instantaneous"
+            },
+            "range": {
+              "value": "5",
+              "special": "",
+              "override": false,
+              "unit": "foot"
+            },
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": "creature",
+                "count": "1",
+                "special": ""
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "",
+            "img": "systems/black-flag/artwork/activities/attack.svg",
+            "sort": 0,
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          },
+          "9wN9viWyq9bJkzwh": {
+            "type": "save",
+            "_id": "9wN9viWyq9bJkzwh",
+            "description": "",
+            "sort": 0,
+            "system": {
+              "damage": {
+                "parts": [
+                  {
+                    "number": 3,
+                    "denomination": 6,
+                    "bonus": "",
+                    "custom": {
+                      "formula": "",
+                      "enabled": false
+                    },
+                    "type": "poison",
+                    "additionalTypes": [],
+                    "scaling": {
+                      "number": 1
+                    }
+                  }
+                ],
+                "onSave": "half"
+              },
+              "effects": [],
+              "save": {
+                "ability": [
+                  "constitution"
+                ],
+                "dc": {
+                  "ability": "custom",
+                  "formula": "12"
+                },
+                "visible": true
+              }
+            },
+            "activation": {
+              "value": null,
+              "type": "action",
+              "condition": "",
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "value": "1",
+              "unit": "hour"
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "magical": false,
+            "target": {
+              "template": {
+                "count": "1",
+                "contiguous": false,
+                "type": "",
+                "unit": "foot"
+              },
+              "affects": {
+                "choice": false,
+                "type": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "consumeQuantity": false,
+              "recovery": [],
+              "max": ""
+            },
+            "name": "CON Save",
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the target must succeed on a [[/save con 12 format=long]] or take [[/damage 3d6 poison average]] damage. If the poison damage reduces the target to 0 HP, the target is stable but &amp;Reference[poisoned]{poisoned} for 1 hour, even after regaining HP, and is &amp;Reference[paralyzed]{paralyzed} while poisoned in this way.</p>",
+          "source": {
+            "fallback": "Black Flag Reference Document"
+          }
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "identifier": {
+          "value": "item"
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 8,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "name": "Sting",
+      "type": "weapon",
+      "_id": "uQLTCmuRIYwt69U1",
+      "img": "icons/creatures/abilities/stinger-poison-green.webp",
+      "effects": [],
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.1m9GJ9Hmn4L8liS9",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748930677,
+        "modifiedTime": 1756750354729,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!NDPrxKEbOwhpsm7t.uQLTCmuRIYwt69U1"
     }
   ],
   "effects": [],

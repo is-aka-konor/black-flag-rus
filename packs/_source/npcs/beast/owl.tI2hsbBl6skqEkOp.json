@@ -459,7 +459,7 @@
                 "bonus": "",
                 "ability": "dexterity",
                 "type": {
-                  "value": "melee",
+                  "value": "",
                   "classification": "weapon"
                 },
                 "critical": {
@@ -467,22 +467,7 @@
                 }
               },
               "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 4,
-                    "bonus": "@mod",
-                    "custom": {
-                      "formula": "",
-                      "enabled": false
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
+                "parts": [],
                 "includeBase": true,
                 "critical": {}
               },
@@ -492,7 +477,8 @@
               "value": null,
               "type": "action",
               "condition": "",
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -501,27 +487,27 @@
               }
             },
             "duration": {
-              "units": "instantaneous",
               "override": false,
-              "concentration": false
+              "concentration": false,
+              "unit": "instantaneous"
             },
             "range": {
               "value": "5",
-              "units": "foot",
               "special": "",
-              "override": false
+              "override": false,
+              "unit": "foot"
             },
             "target": {
               "template": {
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot",
-                "type": ""
+                "type": "",
+                "unit": "foot"
               },
               "affects": {
                 "choice": false,
                 "count": "1",
-                "type": "creature",
+                "type": "any",
                 "special": ""
               },
               "override": false,
@@ -531,52 +517,80 @@
               "spent": 0,
               "consumeQuantity": false,
               "recovery": [],
-              "min": "",
               "max": ""
             },
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           }
         },
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
           "recovery": [],
-          "min": "",
           "max": ""
         },
-        "advancement": {},
         "description": {
-          "value": "<p><em>Melee Weapon Attack</em>: [[/attack]], reach 5 ft., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
         },
-        "restriction": {
-          "allowMultipleTimes": false,
-          "filters": [],
-          "items": [],
-          "requireAll": true
-        },
         "type": {
-          "category": "monsters",
-          "value": ""
+          "category": "natural",
+          "value": "melee"
         },
         "overrides": {
           "proficiency": null
         },
         "identifier": {
-          "value": "item",
-          "associated": ""
+          "value": "item"
         },
-        "level": {
-          "value": null
-        }
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 4,
+            "type": "slashing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
       },
       "name": "Talons",
-      "type": "feature",
+      "type": "weapon",
       "_id": "1eSOMX846KHFpjJY",
       "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
       "effects": [],
@@ -590,13 +604,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.TMF6fh3mCjAVhIYb",
         "duplicateSource": null,
+        "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748935469,
+        "modifiedTime": 1756750508657,
+        "lastModifiedBy": "blackflag0000000"
       },
       "sort": 2800000,
       "ownership": {

@@ -626,11 +626,17 @@
                 "critical": {
                   "threshold": null
                 },
-                "type": {}
+                "type": {
+                  "value": "",
+                  "classification": ""
+                },
+                "ability": ""
               },
               "damage": {
                 "parts": [],
-                "critical": {},
+                "critical": {
+                  "bonus": ""
+                },
                 "includeBase": true
               },
               "effects": []
@@ -665,7 +671,7 @@
               },
               "affects": {
                 "choice": false,
-                "type": "creature",
+                "type": "",
                 "count": "1",
                 "special": ""
               },
@@ -682,7 +688,14 @@
             "name": "",
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "sort": 0,
-            "magical": false
+            "magical": false,
+            "visibility": {
+              "level": {
+                "min": null,
+                "max": null
+              },
+              "identifier": ""
+            }
           }
         },
         "uses": {
@@ -693,7 +706,7 @@
           "max": ""
         },
         "description": {
-          "value": "<p><em>Ranged Weapon Attack</em>: [[/attack]], range [[lookup @labels.range]]., one target. <em>Hit</em>: [[/damage average]] damage.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]].</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
@@ -716,7 +729,7 @@
         "properties": [],
         "type": {
           "value": "ranged",
-          "category": ""
+          "category": "natural"
         },
         "options": [],
         "ammunition": {},
@@ -757,10 +770,10 @@
         "duplicateSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
+        "systemVersion": "2.0.068",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
+        "modifiedTime": 1756751188319,
+        "lastModifiedBy": "blackflag0000000",
         "exportSource": null
       },
       "_key": "!actors.items!MFiYHnCH5sJ1TMF9.7uneVTLIvkQP5QcS"

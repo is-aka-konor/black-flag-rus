@@ -221,7 +221,7 @@ export default class WeaponData extends ItemDataModel.mixin(
 		if (this.type.value !== "melee") return "";
 
 		const unit = this.range.unit ?? defaultUnit("distance");
-		let reach = convertDistance(5, "foot", { to: unit }).value;
+		let reach = convertDistance(this.parent.actor?.system.isSwarm ? 0 : 5, "foot", { to: unit }).value;
 		if (this.properties.has("reach")) {
 			reach += this.range.reach ?? convertDistance(5, "foot", { to: unit }).value;
 		}

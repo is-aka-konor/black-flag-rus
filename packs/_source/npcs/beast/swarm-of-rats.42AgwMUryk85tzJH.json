@@ -530,158 +530,6 @@
       "_key": "!actors.items!42AgwMUryk85tzJH.dG7hBNUJ05WKqgPL"
     },
     {
-      "name": "Bites",
-      "type": "feature",
-      "_id": "aXzupVXOIUaY0YZ8",
-      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
-      "system": {
-        "activities": {
-          "sO4yBxIaNViWhQt2": {
-            "type": "attack",
-            "_id": "sO4yBxIaNViWhQt2",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "",
-            "target": {
-              "affects": {
-                "type": "",
-                "choice": false
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "prompt": true,
-              "override": false
-            },
-            "range": {
-              "units": "",
-              "override": false
-            },
-            "sort": 0,
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 0 ft., one target. <em>Hit:</em> [[/damage average]] damage, or [[/damage 1d6 piercing average]] damage if the swarm has half of its HP or fewer. If the target is a creature, it must make a [[/save constitution 9]] save. On a failure, the target contracts the <em>rat plague</em> disease or is poisoned until the end of its next turn (the GM’s choice).</p>",
-          "source": {}
-        },
-        "identifier": {
-          "associated": ""
-        },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 3400000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1711504525397,
-        "modifiedTime": 1717280988858,
-        "lastModifiedBy": "blackflag0000000",
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!42AgwMUryk85tzJH.aXzupVXOIUaY0YZ8"
-    },
-    {
       "name": "Rat Plague",
       "type": "feature",
       "system": {
@@ -742,6 +590,176 @@
         "exportSource": null
       },
       "_key": "!actors.items!42AgwMUryk85tzJH.EW51IzeYlLDxRz0L"
+    },
+    {
+      "name": "Bites",
+      "type": "weapon",
+      "_id": "aXzupVXOIUaY0YZ8",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "system": {
+        "activities": {
+          "sO4yBxIaNViWhQt2": {
+            "type": "attack",
+            "_id": "sO4yBxIaNViWhQt2",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "",
+            "target": {
+              "affects": {
+                "type": "any",
+                "choice": false
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "prompt": true,
+              "override": false
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "sort": 0,
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]], or [[/damage 1d6 piercing average]] damage if the swarm has half of its HP or fewer. If the target is a creature, it must make a [[/save constitution 9]] save. On a failure, the target contracts the <em>rat plague</em> disease or is poisoned until the end of its next turn (the GM’s choice).</p>",
+          "source": {}
+        },
+        "identifier": {
+          "value": "bites"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 0,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 3400000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748927220,
+        "modifiedTime": 1756750932550,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!42AgwMUryk85tzJH.aXzupVXOIUaY0YZ8"
     }
   ],
   "effects": [],

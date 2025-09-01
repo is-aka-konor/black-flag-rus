@@ -239,6 +239,7 @@
 		}
 	}
 	.reference-link .content-link i { display: none; }
+	enriched-content[enricher^="blackFlag"] { display: contents; }
 }
 
 .content-embed, document-embed {

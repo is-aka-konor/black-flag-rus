@@ -327,7 +327,7 @@
     },
     {
       "name": "Claw",
-      "type": "feature",
+      "type": "weapon",
       "_id": "YwV3aHXvdvPcmhuS",
       "img": "icons/skills/wounds/injury-triple-slash-bleed.webp",
       "system": {
@@ -338,22 +338,7 @@
             "description": "",
             "system": {
               "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 4,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "slashing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
+                "parts": [],
                 "includeBase": true,
                 "critical": {}
               },
@@ -362,7 +347,7 @@
                 "flat": false,
                 "ability": "",
                 "type": {
-                  "value": "melee",
+                  "value": "",
                   "classification": "weapon"
                 },
                 "critical": {
@@ -375,7 +360,8 @@
               "type": "action",
               "condition": "",
               "value": null,
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -386,7 +372,6 @@
             "uses": {
               "spent": 0,
               "recovery": [],
-              "min": "",
               "max": "",
               "consumeQuantity": false
             },
@@ -394,31 +379,38 @@
             "img": "systems/black-flag/artwork/activities/attack.svg",
             "target": {
               "affects": {
-                "type": "creature",
+                "type": "any",
                 "count": "1",
                 "choice": false
               },
               "template": {
                 "type": "",
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot"
+                "unit": "foot"
               },
               "override": false,
               "prompt": true
             },
             "range": {
-              "units": "foot",
               "value": "5",
-              "override": false
+              "override": false,
+              "unit": "foot"
             },
             "duration": {
-              "units": "instantaneous",
               "override": false,
-              "concentration": false
+              "concentration": false,
+              "unit": "instantaneous"
             },
             "magical": false,
-            "sort": 0
+            "sort": 0,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           },
           "eodC6b8l0IO4O8Qm": {
             "type": "damage",
@@ -453,7 +445,8 @@
               "value": null,
               "type": "action",
               "condition": "",
-              "override": false
+              "override": false,
+              "primary": true
             },
             "consumption": {
               "targets": [],
@@ -462,21 +455,21 @@
               }
             },
             "duration": {
-              "units": "instantaneous",
               "concentration": false,
-              "override": false
+              "override": false,
+              "unit": "instantaneous"
             },
             "range": {
               "override": false,
-              "units": ""
+              "unit": ""
             },
             "magical": false,
             "target": {
               "template": {
-                "count": 1,
+                "count": "1",
                 "contiguous": false,
-                "units": "foot",
-                "type": ""
+                "type": "",
+                "unit": "foot"
               },
               "affects": {
                 "choice": false,
@@ -489,47 +482,75 @@
               "spent": 0,
               "consumeQuantity": false,
               "recovery": [],
-              "min": "",
               "max": ""
             },
             "name": "Subsequent Slashing Damage",
-            "img": ""
+            "img": "",
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
           }
         },
         "uses": {
           "spent": 0,
           "consumeQuantity": false,
           "recovery": [],
-          "min": "",
           "max": ""
         },
-        "advancement": {},
         "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage, and the crab attaches to the target. While attached, the crab can’t attack, and at the start of each of the crab’s turns, the target takes [[/damage average]] damage. The attached crab moves with the target whenever the target moves, requiring none of the crab’s movement. It can detach itself by spending 5 feet of its movement on its turn. A creature, including the target, can use its action to detach the crab.</p>",
+          "value": "<p>[[/attack extended]]. [[/damage extended]], and the crab attaches to the target. While attached, the crab can’t attack, and at the start of each of the crab’s turns, the target takes [[/damage average]] damage. The attached crab moves with the target whenever the target moves, requiring none of the crab’s movement. It can detach itself by spending 5 feet of its movement on its turn. A creature, including the target, can use its action to detach the crab.</p>",
           "source": {
             "fallback": "Black Flag Reference Document"
           }
         },
         "identifier": {
-          "associated": "",
           "value": "claws"
         },
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
         "type": {
-          "category": "monsters",
-          "value": ""
-        },
-        "level": {
-          "value": null
+          "category": "natural",
+          "value": "melee"
         },
         "overrides": {
           "proficiency": null
-        }
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 4,
+            "type": "slashing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
       },
       "effects": [],
       "folder": null,
@@ -543,13 +564,13 @@
       "_stats": {
         "compendiumSource": "Compendium.kp-tov-monster-vault.kp-tov-mv-npc-features.Item.Jr00Z1fIby1cJtbS",
         "duplicateSource": null,
+        "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "black-flag",
-        "systemVersion": "0.10.049",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "exportSource": null
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748931238,
+        "modifiedTime": 1756749897441,
+        "lastModifiedBy": "blackflag0000000"
       },
       "sort": 1300000,
       "ownership": {

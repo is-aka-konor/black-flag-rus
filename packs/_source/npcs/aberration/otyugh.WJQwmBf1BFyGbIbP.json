@@ -670,318 +670,6 @@
       "_key": "!actors.items!WJQwmBf1BFyGbIbP.tMP6cDX4JHMQRxzU"
     },
     {
-      "name": "Bite",
-      "type": "feature",
-      "_id": "y2shCUBGNJLLKMGQ",
-      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
-      "system": {
-        "activities": {
-          "sO4yBxIaNViWhQt2": {
-            "type": "attack",
-            "_id": "sO4yBxIaNViWhQt2",
-            "description": "",
-            "system": {
-              "damage": {
-                "parts": [
-                  {
-                    "number": 2,
-                    "denomination": 8,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "attack": {
-                "bonus": "",
-                "flat": false,
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "",
-            "target": {
-              "affects": {
-                "type": "",
-                "choice": false
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "prompt": true,
-              "override": false
-            },
-            "range": {
-              "units": "",
-              "override": false
-            },
-            "sort": 0,
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 5 ft., one target. <em>Hit:</em> [[/damage average]] damage. If the target is a creature, it must succeed on a [[/save constitution 15]] save or become infected with a disease. Until the disease is cured, the target is poisoned. Every 24 hours that elapse, the infected creature must repeat the save, reducing its HP maximum by 5 ([[/healing -1d10 max]]{1d10}) no a failure. The disease is cured on a success. The creature dies if the disease reduces its HP maximum to 0. This reduction to the creature’s HP maximum lasts until it finishes a long rest after the disease is cured.</p>",
-          "source": {}
-        },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 100000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1711504525397,
-        "modifiedTime": 1717280471319,
-        "lastModifiedBy": "blackflag0000000",
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!WJQwmBf1BFyGbIbP.y2shCUBGNJLLKMGQ"
-    },
-    {
-      "name": "Tentacle",
-      "type": "feature",
-      "_id": "VPmpPaBIAPsY5Wgk",
-      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
-      "system": {
-        "activities": {
-          "iOENQ0u7z0vx84jF": {
-            "type": "attack",
-            "_id": "iOENQ0u7z0vx84jF",
-            "description": "",
-            "system": {
-              "attack": {
-                "flat": false,
-                "bonus": "",
-                "ability": "",
-                "type": {
-                  "value": "melee",
-                  "classification": "weapon"
-                },
-                "critical": {
-                  "threshold": null
-                }
-              },
-              "damage": {
-                "parts": [
-                  {
-                    "number": 1,
-                    "denomination": 6,
-                    "bonus": "@mod",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "bludgeoning",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  },
-                  {
-                    "number": 2,
-                    "denomination": 8,
-                    "bonus": "",
-                    "custom": {
-                      "enabled": false,
-                      "formula": ""
-                    },
-                    "type": "piercing",
-                    "additionalTypes": [],
-                    "scaling": {
-                      "number": 1
-                    }
-                  }
-                ],
-                "includeBase": true,
-                "critical": {}
-              },
-              "effects": []
-            },
-            "activation": {
-              "type": "action",
-              "condition": "",
-              "value": null,
-              "override": false
-            },
-            "consumption": {
-              "targets": [],
-              "scale": {
-                "allowed": false
-              }
-            },
-            "uses": {
-              "spent": 0,
-              "recovery": [],
-              "min": "",
-              "max": "",
-              "consumeQuantity": false
-            },
-            "name": "",
-            "img": "",
-            "target": {
-              "affects": {
-                "type": "",
-                "choice": false
-              },
-              "template": {
-                "type": "",
-                "count": 1,
-                "contiguous": false,
-                "units": "foot"
-              },
-              "prompt": true,
-              "override": false
-            },
-            "range": {
-              "units": "",
-              "override": false
-            },
-            "sort": 0,
-            "duration": {
-              "units": "instantaneous",
-              "concentration": false,
-              "override": false
-            },
-            "magical": false
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "consumeQuantity": false,
-          "recovery": [],
-          "min": "",
-          "max": ""
-        },
-        "advancement": {},
-        "description": {
-          "value": "<p><em>Melee Weapon Attack:</em> [[/attack]], reach 10 ft., one target. Hit: [[/damage average]] damage. If the target is Medium or smaller, it is grappled (escape DC 13). The [[lookup @name lowercase]] has two tentacles, each of which can grapple one target.</p>",
-          "source": {}
-        },
-        "identifier": {},
-        "restriction": {
-          "filters": [],
-          "allowMultipleTimes": false,
-          "items": [],
-          "requireAll": true
-        },
-        "type": {
-          "category": "monsters"
-        },
-        "level": {
-          "value": null
-        },
-        "overrides": {
-          "proficiency": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 5600000,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "black-flag": {
-          "relationship": {
-            "enabled": true
-          }
-        }
-      },
-      "_stats": {
-        "systemId": "black-flag",
-        "systemVersion": "0.9.031",
-        "coreVersion": "13.347",
-        "createdTime": 1712091705582,
-        "modifiedTime": 1717280486507,
-        "lastModifiedBy": "blackflag0000000",
-        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.hc2Ip8BiS7gVhomV",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!WJQwmBf1BFyGbIbP.VPmpPaBIAPsY5Wgk"
-    },
-    {
       "name": "Tentacle Slam",
       "type": "feature",
       "_id": "F4Xu62mxDABAMuPz",
@@ -1120,6 +808,358 @@
         "exportSource": null
       },
       "_key": "!actors.items!WJQwmBf1BFyGbIbP.F4Xu62mxDABAMuPz"
+    },
+    {
+      "name": "Bite",
+      "type": "weapon",
+      "_id": "y2shCUBGNJLLKMGQ",
+      "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
+      "system": {
+        "activities": {
+          "sO4yBxIaNViWhQt2": {
+            "type": "attack",
+            "_id": "sO4yBxIaNViWhQt2",
+            "description": "",
+            "system": {
+              "damage": {
+                "parts": [],
+                "includeBase": true,
+                "critical": {}
+              },
+              "attack": {
+                "bonus": "",
+                "flat": false,
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "",
+            "target": {
+              "affects": {
+                "type": "any",
+                "choice": false
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "prompt": true,
+              "override": false
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "sort": 0,
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is a creature, it must succeed on a [[/save constitution 15]] save or become infected with a disease. Until the disease is cured, the target is poisoned. Every 24 hours that elapse, the infected creature must repeat the save, reducing its HP maximum by 5 ([[/healing -1d10 max]]{1d10}) no a failure. The disease is cured on a success. The creature dies if the disease reduces its HP maximum to 0. This reduction to the creature’s HP maximum lasts until it finishes a long rest after the disease is cured.</p>",
+          "source": {}
+        },
+        "identifier": {
+          "value": "bite"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 2,
+            "denomination": 8,
+            "type": "piercing",
+            "additionalTypes": []
+          }
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "properties": [],
+        "ammunition": {},
+        "options": [],
+        "range": {
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.0Tp5zlCaSyrSMoYN",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748932469,
+        "modifiedTime": 1756749581216,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!WJQwmBf1BFyGbIbP.y2shCUBGNJLLKMGQ"
+    },
+    {
+      "name": "Tentacle",
+      "type": "weapon",
+      "_id": "VPmpPaBIAPsY5Wgk",
+      "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
+      "system": {
+        "activities": {
+          "iOENQ0u7z0vx84jF": {
+            "type": "attack",
+            "_id": "iOENQ0u7z0vx84jF",
+            "description": "",
+            "system": {
+              "attack": {
+                "flat": false,
+                "bonus": "",
+                "ability": "",
+                "type": {
+                  "value": "",
+                  "classification": "weapon"
+                },
+                "critical": {
+                  "threshold": null
+                }
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "number": 2,
+                    "denomination": 8,
+                    "bonus": "",
+                    "custom": {
+                      "enabled": false,
+                      "formula": ""
+                    },
+                    "type": "piercing",
+                    "additionalTypes": [],
+                    "scaling": {
+                      "number": 1
+                    }
+                  }
+                ],
+                "includeBase": true,
+                "critical": {}
+              },
+              "effects": []
+            },
+            "activation": {
+              "type": "action",
+              "condition": "",
+              "value": null,
+              "override": false,
+              "primary": true
+            },
+            "consumption": {
+              "targets": [],
+              "scale": {
+                "allowed": false
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": "",
+              "consumeQuantity": false
+            },
+            "name": "",
+            "img": "",
+            "target": {
+              "affects": {
+                "type": "any",
+                "choice": false
+              },
+              "template": {
+                "type": "",
+                "count": "1",
+                "contiguous": false,
+                "unit": "foot"
+              },
+              "prompt": true,
+              "override": false
+            },
+            "range": {
+              "override": false,
+              "unit": ""
+            },
+            "sort": 0,
+            "duration": {
+              "concentration": false,
+              "override": false,
+              "unit": "instantaneous"
+            },
+            "magical": false,
+            "flags": {},
+            "visibility": {
+              "level": {},
+              "requireAttunement": false,
+              "requireIdentification": false,
+              "requireMagic": false
+            }
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "consumeQuantity": false,
+          "recovery": [],
+          "max": ""
+        },
+        "description": {
+          "value": "<p>[[/attack extended]]. [[/damage extended]]. If the target is Medium or smaller, it is grappled (escape DC 13). The [[lookup @name lowercase]] has two tentacles, each of which can grapple one target.</p>",
+          "source": {}
+        },
+        "identifier": {
+          "value": "tentacle"
+        },
+        "type": {
+          "category": "natural",
+          "value": "melee"
+        },
+        "overrides": {
+          "proficiency": null
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 6,
+            "type": "bludgeoning",
+            "additionalTypes": []
+          }
+        },
+        "properties": [
+          "reach"
+        ],
+        "range": {
+          "reach": 5,
+          "unit": "foot",
+          "short": null,
+          "long": null
+        },
+        "unidentified": {
+          "description": "",
+          "value": false
+        },
+        "attunement": {
+          "value": ""
+        },
+        "container": null,
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "unit": "pound"
+        },
+        "ammunition": {},
+        "options": [],
+        "rarity": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 5600000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "black-flag": {
+          "relationship": {
+            "enabled": true
+          }
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.black-flag.npcfeatures.Item.hc2Ip8BiS7gVhomV",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "black-flag",
+        "systemVersion": "2.0.068",
+        "createdTime": 1756748932469,
+        "modifiedTime": 1756749595275,
+        "lastModifiedBy": "blackflag0000000"
+      },
+      "_key": "!actors.items!WJQwmBf1BFyGbIbP.VPmpPaBIAPsY5Wgk"
     }
   ],
   "effects": [],

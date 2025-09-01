@@ -92,6 +92,6 @@ export default class HeritageData extends ItemDataModel.mixin(
 	/** @inheritDoc */
 	async _onDelete(options, userId) {
 		await super._onDelete(options, userId);
-		this.onDeleteRevertAdvancement(options, userId);
+		this._onDeleteRevertAdvancement(options, userId);
 	}
 }
