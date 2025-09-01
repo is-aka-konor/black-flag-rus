@@ -177,3 +177,13 @@
 		}
 	}
 }
+
+.black-flag blackFlag-advancement {
+	.advancement-title {
+		width: min(30%, 200px);
+	}
+	.advancement-controls {
+		width: 40px;
+	}
+	tr:nth-child(even) { background: var(--bf-background-color-half-white); }
+}

@@ -38,8 +38,7 @@ export default class ConceptSheet extends BaseItemSheet {
 		},
 		advancement: {
 			container: { id: "sheet-body" },
-			template: "systems/black-flag/templates/item/advancement.hbs",
-			templates: ["systems/black-flag/templates/item/parts/advancement-section.hbs"],
+			template: "systems/black-flag/templates/item/concept-advancement.hbs",
 			scrollable: [""]
 		},
 		description: {
