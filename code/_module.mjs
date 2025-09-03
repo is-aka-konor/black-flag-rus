@@ -65,7 +65,6 @@ Hooks.once("init", function () {
 	data.registerDataModels(Actor);
 	data.registerDataModels(Item);
 	CONFIG.ChatMessage.dataModels = data.chatMessage.config;
-	CONFIG.RegionBehavior.dataModels = data.regionBehavior.config;
 	Object.assign(CONFIG.RegionBehavior.dataModels, data.regionBehavior.config);
 	Object.assign(CONFIG.RegionBehavior.typeIcons, data.regionBehavior.icons);
 	data.registerDataModels(JournalEntryPage);
