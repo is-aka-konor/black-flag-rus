@@ -265,16 +265,6 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
-	 * Is this activity a rider for a non-applied enchantment?
-	 * @type {boolean}
-	 */
-	get isRider() {
-		return this.item.flags[game.system.id]?.rider?.activities?.includes(this.id);
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/**
 	 * Is this activity on a spell item, or something else?
 	 * @type {boolean}
 	 */

@@ -177,6 +177,16 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 	/* <><><><> <><><><> <><><><> <><><><> */
 
 	/**
+	 * Is this activity a rider for a non-applied enchantment?
+	 * @type {boolean}
+	 */
+	get isRider() {
+		return this.item.flags[game.system.id]?.rider?.activities?.includes(this.id);
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
 	 * Determine the level used to determine visibility limits, based on the spell circle for spells or either the
 	 * character or class level, depending on whether `classIdentifier` is set.
 	 * @type {number}

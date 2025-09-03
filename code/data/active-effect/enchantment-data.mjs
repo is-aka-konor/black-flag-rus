@@ -59,7 +59,7 @@ export default class EchantmentData extends ActiveEffectDataModel {
 
 	/** @override */
 	get applicableType() {
-		return "Item";
+		return this.isApplied ? "Item" : "";
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

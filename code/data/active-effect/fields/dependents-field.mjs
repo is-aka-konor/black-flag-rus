@@ -17,7 +17,7 @@ const { ArrayField, SchemaField } = foundry.data.fields;
 export default class DependentsField extends ArrayField {
 	constructor({ type, ...fields } = {}, options = {}) {
 		fields = {
-			uuid: new DocumentUUIDField({ type: type in CONST.ALL_DOCUMENT_TYPES ? type : undefined }),
+			uuid: new DocumentUUIDField({ type }),
 			...fields
 		};
 		super(new SchemaField(fields), { ...options, type });
