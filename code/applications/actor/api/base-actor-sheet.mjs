@@ -1,4 +1,5 @@
 import { formatWeight } from "../../../utils/_module.mjs";
+import EditImageMixin from "../../api/edit-image-mixin.mjs";
 import ApplicationV2Mixin from "../../api/mixin.mjs";
 import PrimarySheetMixin from "../../api/primary-sheet-mixin.mjs";
 import EffectsElement from "../../components/effects.mjs";
@@ -22,7 +23,7 @@ import TypeConfig from "../config/type-config.mjs";
  * Sheet class containing implementation shared across all actor types.
  */
 export default class BaseActorSheet extends PrimarySheetMixin(
-	ApplicationV2Mixin(foundry.applications.sheets.ActorSheetV2)
+	EditImageMixin(ApplicationV2Mixin(foundry.applications.sheets.ActorSheetV2))
 ) {
 	/** @override */
 	static DEFAULT_OPTIONS = {
