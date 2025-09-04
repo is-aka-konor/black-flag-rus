@@ -11,13 +11,6 @@ export default class SiegeWeaponSheet extends BaseStatBlockSheet {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @override */
-	static enrichedFields = {
-		description: "system.description.value"
-	};
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
 	/** @inheritDoc */
 	static PARTS = {
 		...super.PARTS,
@@ -42,14 +35,6 @@ export default class SiegeWeaponSheet extends BaseStatBlockSheet {
 			)}`
 		};
 
-		return context;
-	}
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
-	/** @override */
-	async _prepareBiographyContext(context, options) {
-		context.portrait = this._preparePortrait(context);
 		return context;
 	}
 

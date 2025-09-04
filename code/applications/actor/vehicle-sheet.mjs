@@ -12,13 +12,6 @@ export default class VehicleSheet extends BaseStatBlockSheet {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
-	/** @override */
-	static enrichedFields = {
-		description: "system.description.value"
-	};
-
-	/* <><><><> <><><><> <><><><> <><><><> */
-
 	/** @inheritDoc */
 	static PARTS = {
 		...super.PARTS,

@@ -15,6 +15,13 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 
 	/* <><><><> <><><><> <><><><> <><><><> */
 
+	/** @override */
+	static enrichedFields = {
+		description: "system.description.value"
+	};
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
 	/**
 	 * Item types that will be displayed with full descriptions on the main tab of the sheet.
 	 * @type {Set<string>}
@@ -108,6 +115,10 @@ export default class BaseStatBlockSheet extends BaseActorSheet {
 	 * @protected
 	 */
 	async _prepareBiographyContext(context, options) {
+		context.description = {
+			path: "system.description.value",
+			value: context.source.description.value
+		};
 		context.enriched = await this._prepareDescriptions(context);
 		context.portrait = this._preparePortrait(context);
 		return context;

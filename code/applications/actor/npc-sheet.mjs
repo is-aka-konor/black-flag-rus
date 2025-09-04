@@ -35,7 +35,7 @@ export default class NPCSheet extends BaseStatBlockSheet {
 
 	/** @override */
 	static enrichedFields = {
-		biography: "system.biography.value"
+		description: "system.biography.value"
 	};
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -82,6 +82,18 @@ export default class NPCSheet extends BaseStatBlockSheet {
 				full: formatNumber(context.system.attributes.baseStealth)
 			});
 
+		return context;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/** @inheritDoc */
+	async _prepareBiographyContext(context, options) {
+		context = await super._prepareBiographyContext(context, options);
+		context.description = {
+			path: "system.biography.value",
+			value: context.source.biography.value
+		};
 		return context;
 	}
 

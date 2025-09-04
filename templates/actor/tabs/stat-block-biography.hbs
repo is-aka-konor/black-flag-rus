@@ -22,8 +22,13 @@
 		{{/if}}
 	</div>
 
-	<prose-mirror name="system.description.value" value="{{ source.description.value }}"
-	              data-document-uuid="{{ document.uuid }}" collaborate toggled>{{{ enriched.description }}}</prose-mirror>
+	{{#if editable}}
+		<prose-mirror name="{{ description.path }}" value="{{ description.value }}"></prose-mirror>
+	{{else}}
+		<div class="editor editor-content">
+			{{{ enriched.description }}}
+		</div>
+	{{/if}}
 
 	{{> "blackFlag.document-source" }}
 </section>
