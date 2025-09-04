@@ -22,6 +22,11 @@
               "key": "system.attributes.luck.formula",
               "mode": 5,
               "value": "1d4 + 1"
+            },
+            {
+              "key": "system.attributes.luck.failureAmount",
+              "mode": 4,
+              "value": "2"
             }
           ]
         },
@@ -32,7 +37,7 @@
         "flags": {},
         "title": "Touch of Luck",
         "icon": "",
-        "hint": "If you have 5 Luck and would gain a 6th, your Luck total resets to 1d4 + 1."
+        "hint": "When you would gain 1 Luck as a result of failing an attack roll or save, you instead gain 2 Luck. If you have 5 Luck and would gain a 6th, your Luck total resets to 1d4 + 1."
       }
     },
     "restriction": {
@@ -51,10 +56,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.9.029",
-    "coreVersion": "13.347",
+    "systemVersion": "2.0.071",
+    "coreVersion": "13.348",
     "createdTime": 1695925612918,
-    "modifiedTime": 1716348912246,
+    "modifiedTime": 1757008942523,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null
