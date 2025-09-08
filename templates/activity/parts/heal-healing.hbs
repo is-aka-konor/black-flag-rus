@@ -5,7 +5,8 @@
 				<li>
 					<fieldset class="unfieldset">
 						{{> "systems/black-flag/templates/activity/parts/damage-part.hbs" scalingOptions=scalingOptions
-					    	data=source.system.healing prefix="$." typeOptions=CONFIG.healingTypes.localized }}
+					    	data=source.system.healing prefix="$." fields=systemFields.healing.fields
+								typeOptions=CONFIG.healingTypes.localizedOptions }}
 					</fieldset>
 				</li>
 			</ul>
