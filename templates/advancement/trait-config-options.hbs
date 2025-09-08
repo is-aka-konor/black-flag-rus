@@ -3,7 +3,7 @@
 	{{ formField selectedTrait.field name="selectedTrait" value=selectedTrait.value options=selectedTrait.options
 	             rootId=partId }}
 	{{#if choice.fields}}
-		{{ formField choice.fields.count value=choice.data.count rootId=partId }}
+		{{ formField choice.fields.count name="configuration.count" value=choice.data.count rootId=partId }}
 	{{/if}}
 
 	{{> "blackFlag.trait-list" choices=choice.options prefix="configuration.checked" }}
