@@ -21,11 +21,18 @@
                 "custom": "",
                 "type": "piercing"
               }
-            ]
+            ],
+            "onSave": "none"
           },
           "dc": {
             "ability": "custom",
             "formula": "15"
+          },
+          "save": {
+            "dc": {
+              "ability": ""
+            },
+            "bonus": ""
           }
         },
         "activation": {
@@ -45,7 +52,25 @@
           "max": ""
         },
         "name": "Spread",
-        "img": ""
+        "img": "",
+        "target": {
+          "affects": {
+            "type": ""
+          },
+          "template": {
+            "type": ""
+          }
+        },
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        },
+        "range": {
+          "unit": ""
+        }
       }
     },
     "uses": {
@@ -85,10 +110,10 @@
   "flags": {},
   "_stats": {
     "systemId": "black-flag",
-    "systemVersion": "0.8.021",
-    "coreVersion": "13.347",
+    "systemVersion": "2.0.072",
+    "coreVersion": "13.348",
     "createdTime": 1707362946398,
-    "modifiedTime": 1713284338035,
+    "modifiedTime": 1757721923308,
     "lastModifiedBy": "blackflag0000000",
     "duplicateSource": null,
     "exportSource": null
