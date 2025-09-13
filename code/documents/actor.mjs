@@ -2,6 +2,7 @@ import SkillRollConfigurationDialog from "../applications/dice/skill-configurati
 import ActivationsField from "../data/chat-message/fields/activations-field.mjs";
 import ActorDeltasField from "../data/chat-message/fields/deltas-field.mjs";
 import { buildRoll, formatNumber, getPluralLocalizationKey, log, Trait } from "../utils/_module.mjs";
+import BlackFlagActiveEffect from "./active-effect.mjs";
 import DocumentMixin from "./mixins/document.mjs";
 import NotificationsCollection from "./notifications.mjs";
 import Proficiency from "./proficiency.mjs";
@@ -2070,11 +2071,19 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/** @inheritDoc */
 	async _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
-		if (userId === game.userId && collection === "items") {
-			await this.system.updateEncumbrance?.(options);
-			if (!options.keepRelationship) {
-				const updates = documents.map(d => ({ _id: d.id, [`flags.${game.system.id}.relationship.enabled`]: true }));
-				await this.updateEmbeddedDocuments("Item", updates);
+		if (userId === game.userId) {
+			if (
+				collection === "effects" &&
+				documents.find(d => d.id === BlackFlagActiveEffect.ID.EXHAUSTION) &&
+				!this._source.system.attributes?.exhaustion
+			)
+				await this.update({ "system.attributes.exhaustion": 1 });
+			if (collection === "items") {
+				await this.system.updateEncumbrance?.(options);
+				if (!options.keepRelationship) {
+					const updates = documents.map(d => ({ _id: d.id, [`flags.${game.system.id}.relationship.enabled`]: true }));
+					await this.updateEmbeddedDocuments("Item", updates);
+				}
 			}
 		}
 		super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
@@ -2101,7 +2110,12 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 
 	/** @inheritDoc */
 	async _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
-		if (userId === game.userId && collection === "items") await this.system.updateEncumbrance?.(options);
+		if (userId === game.userId) {
+			if (collection === "effects" && ids.includes(BlackFlagActiveEffect.ID.EXHAUSTION)) {
+				await this.update({ "system.attributes.exhaustion": 0 });
+			}
+			if (collection === "items") await this.system.updateEncumbrance?.(options);
+		}
 		super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
 	}
 }
