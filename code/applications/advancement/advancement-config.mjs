@@ -1,3 +1,4 @@
+import { formatIdentifier } from "../../utils/_module.mjs";
 import PseudoDocumentSheet from "../api/pseudo-document-sheet.mjs";
 
 /**
@@ -81,7 +82,7 @@ export default class AdvancementConfig extends PseudoDocumentSheet {
 		context.default = {
 			title: game.i18n.localize(this.advancement.metadata.title),
 			icon: this.advancement.metadata.icon,
-			identifier: this.advancement.title.slugify({ strict: true }),
+			identifier: formatIdentifier(this.advancement.title),
 			identifierHint: this.advancement.metadata.identifier.hint
 		};
 		context.levels = Object.fromEntries(levels);

@@ -1,3 +1,5 @@
+import { formatIdentifier } from "../../utils/_module.mjs";
+
 const { SchemaField, StringField } = foundry.data.fields;
 
 /**
@@ -48,7 +50,7 @@ export default class SourceField extends SchemaField {
 		}
 
 		this.value = this.book || (pkg?.title ?? "");
-		this.slug = this.value.slugify({ strict: true });
+		this.slug = formatIdentifier(this.value);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

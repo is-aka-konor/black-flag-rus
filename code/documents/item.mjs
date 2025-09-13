@@ -1,7 +1,7 @@
 import ActivityChoiceDialog from "../applications/activity/activity-choice-dialog.mjs";
 import ActivitiesTemplate from "../data/item/templates/activities-template.mjs";
 import PhysicalTemplate from "../data/item/templates/physical-template.mjs";
-import { slugify } from "../utils/text.mjs";
+import { formatIdentifier } from "../utils/text.mjs";
 import DocumentMixin from "./mixins/document.mjs";
 import NotificationsCollection from "./notifications.mjs";
 import Scaling from "./scaling.mjs";
@@ -85,7 +85,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 	/** @inheritDoc */
 	get identifier() {
 		if (this.system.identifier?.value) return this.system.identifier.value;
-		return slugify(identifier, { strict: true });
+		return formatIdentifier(identifier);
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -148,7 +148,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 				else if (data.type === "savingThrow") data.type = "save";
 			});
 		if (!data.system?.identifier?.value) {
-			foundry.utils.setProperty(data, "system.identifier.value", slugify(data.name, { strict: true }));
+			foundry.utils.setProperty(data, "system.identifier.value", formatIdentifier(data.name));
 		}
 		return super._initializeSource(data, options);
 	}
@@ -543,7 +543,7 @@ export default class BlackFlagItem extends DocumentMixin(Item) {
 
 		// Create class identifier based on name
 		if (Object.hasOwn(this.system.identifier ?? {}, "value") && !this.system.identifier.value) {
-			await this.updateSource({ "system.identifier.value": slugify(data.name, { strict: true }) });
+			await this.updateSource({ "system.identifier.value": formatIdentifier(data.name) });
 		}
 	}
 

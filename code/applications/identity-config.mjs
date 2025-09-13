@@ -1,4 +1,4 @@
-import { slugify } from "../utils/_module.mjs";
+import { formatIdentifier } from "../utils/_module.mjs";
 import BFDocumentSheet from "./api/document-sheet.mjs";
 
 /**
@@ -49,7 +49,7 @@ export default class SourceConfig extends BFDocumentSheet {
 		if (Object.hasOwn(this.document.system.identifier ?? {}, "value"))
 			context.identifier = {
 				field: this.document.system.schema.fields.identifier.fields.value,
-				placeholder: slugify(this.document.name, { strict: true }),
+				placeholder: formatIdentifier(this.document.name),
 				value: this.document.system.identifier.value
 			};
 		if (Object.hasOwn(this.document.system.description ?? {}, "source"))

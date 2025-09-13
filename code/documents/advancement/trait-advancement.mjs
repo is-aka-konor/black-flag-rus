@@ -1,8 +1,6 @@
 import { TraitConfigurationData, TraitValueData } from "../../data/advancement/trait-data.mjs";
 import SelectChoices from "../../documents/select-choices.mjs";
-import { formatNumber } from "../../utils/number.mjs";
-import { filteredKeys } from "../../utils/object.mjs";
-import * as Trait from "../../utils/trait.mjs";
+import { filteredKeys, formatIdentifier, formatNumber, Trait } from "../../utils/_module.mjs";
 import Advancement from "./advancement.mjs";
 
 export default class TraitAdvancement extends Advancement {
@@ -37,7 +35,7 @@ export default class TraitAdvancement extends Advancement {
 		const traitConfig = CONFIG.BlackFlag.traits[this.bestGuessTrait()];
 		this.title = this.title || game.i18n.localize(traitConfig?.labels.title || this.metadata.title);
 		this.icon = this.icon || traitConfig?.icon || this.metadata.icon;
-		this.identifier = this.identifier || this.title.slugify({ strict: true });
+		this.identifier = this.identifier || formatIdentifier(this.title);
 		if (!this.metadata.multiLevel) this.level ??= this.minimumLevel;
 	}
 
@@ -45,7 +43,7 @@ export default class TraitAdvancement extends Advancement {
 
 	/** @override */
 	warningKey(levels) {
-		return `${this.relativeID}.${this.relavantLevel(levels)}.select-${this.title.slugify()}`;
+		return `${this.relativeID}.${this.relavantLevel(levels)}.select-${formatIdentifier(this.title)}`;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

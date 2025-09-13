@@ -1,7 +1,7 @@
 import SelectChoices from "../documents/select-choices.mjs";
 import { sortObjectEntries } from "../utils/object.mjs";
 import log from "../utils/logging.mjs";
-import { slugify } from "../utils/text.mjs";
+import { formatIdentifier } from "../utils/text.mjs";
 
 /**
  * @typedef {object} ItemRegistration
@@ -185,7 +185,7 @@ async function _registerItemType(type, indexes) {
 
 	indexes = await (indexes ?? _indexCompendiums());
 	const registerItem = (item, uuidPrefix) => {
-		const identifier = item.system?.identifier?.value || slugify(item.name, { strict: true });
+		const identifier = item.system?.identifier?.value || formatIdentifier(item.name);
 		registrations[identifier] ??= { sources: [] };
 		registrations[identifier].name = item.name;
 		registrations[identifier].img = item.img;

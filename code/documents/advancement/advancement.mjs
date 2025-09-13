@@ -1,5 +1,6 @@
 import AdvancementFlow from "../../applications/advancement/advancement-flow.mjs";
 import BaseAdvancement from "../../data/advancement/base-advancement.mjs";
+import { formatIdentifier } from "../../utils/_module.mjs";
 import PseudoDocumentMixin from "../mixins/pseudo-document.mjs";
 
 /**
@@ -151,7 +152,7 @@ export default class Advancement extends PseudoDocumentMixin(BaseAdvancement) {
 	prepareData() {
 		this.title = this.title || game.i18n.localize(this.metadata.title);
 		this.icon = this.icon || this.metadata.icon;
-		this.identifier = this.identifier || this.title.slugify({ strict: true });
+		this.identifier = this.identifier || formatIdentifier(this.title);
 		if (!this.metadata.multiLevel) this.level.value ??= this.minimumLevel;
 		if (foundry.utils.getType(this.configuration?.prepareData) === "function") this.configuration.prepareData();
 		if (foundry.utils.getType(this.value?.prepareData) === "function") this.value.prepareData();

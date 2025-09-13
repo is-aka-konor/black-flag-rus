@@ -1,5 +1,5 @@
 import * as Filter from "./filter.mjs";
-import { slugify } from "./text.mjs";
+import { formatIdentifier } from "./text.mjs";
 
 /**
  * Search compendiums for documents that match the given options.
@@ -48,7 +48,7 @@ export async function compendiums(documentClass, {
 			// Ensure all values have identifier if required
 			.map(i => {
 				if ( deduplicate && !i.system?.identifier?.value ) {
-					foundry.utils.setProperty(i, "system.identifier.value", slugify(i.name, { strict: true }));
+					foundry.utils.setProperty(i, "system.identifier.value", formatIdentifier(i.name));
 				}
 				return i;
 			})
