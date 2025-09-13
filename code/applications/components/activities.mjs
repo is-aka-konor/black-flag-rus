@@ -92,29 +92,30 @@ export default class ActivitiesElement extends DocumentSheetAssociatedElement {
 	 * @returns {ContextMenuEntry[]} - Context menu entries.
 	 */
 	_getContextMenuOptions(activity) {
+		if (!activity?.canConfigure) return [];
 		return [
 			{
 				name: "BF.ACTIVITY.Core.Action.View",
 				icon: "<i class='fa-solid fa-eye fa-fw'></i>",
-				condition: li => activity && !this.isEditable,
+				condition: li => !this.isEditable,
 				callback: li => this._onAction(li[0], "view")
 			},
 			{
 				name: "BF.ACTIVITY.Core.Action.Edit",
 				icon: "<i class='fa-solid fa-edit fa-fw'></i>",
-				condition: li => activity && this.isEditable,
+				condition: li => this.isEditable,
 				callback: li => this._onAction(li[0], "edit")
 			},
 			{
 				name: "BF.ACTIVITY.Core.Action.Duplicate",
 				icon: "<i class='fa-solid fa-copy fa-fw'></i>",
-				condition: li => activity && this.isEditable,
+				condition: li => this.isEditable,
 				callback: li => this._onAction(li[0], "duplicate")
 			},
 			{
 				name: "BF.ACTIVITY.Core.Action.Delete",
 				icon: "<i class='fa-solid fa-trash fa-fw'></i>",
-				condition: li => activity && this.isEditable,
+				condition: li => this.isEditable,
 				callback: li => this._onAction(li[0], "delete"),
 				group: "destructive"
 			}

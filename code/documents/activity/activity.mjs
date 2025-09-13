@@ -124,6 +124,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get canConfigure() {
 		if (CONFIG.Activity.types[this.type]?.configurable === false) return false;
+		if (this.riderOrigin?.disabled) return false;
 		if (this.visibility?.requireIdentification && !this.item.system.identified && !game.user.isGM) return false;
 		return true;
 	}
@@ -162,6 +163,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get canUse() {
 		if (this.isRider) return false;
+		if (this.riderOrigin?.disabled) return false;
 		if (this.visibility?.requireAttunement && !this.item.system.attuned) return false;
 		if (this.visibility?.requireMagic && !this.item.system.magicAvailable) return false;
 		if (this.visibility?.requireIdentification && !this.item.system.identified) return false;
@@ -322,6 +324,16 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 */
 	get relativeUUID() {
 		return `.Item.${this.item.id}.Activity.${this.id}`;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Active effect that granted this activity as a rider.
+	 * @type {BlackFlagActiveEffect|null}
+	 */
+	get riderOrigin() {
+		return fromUuidSync(this.flags[game.system.id]?.riderOrigin, { relative: this.item, strict: false }) ?? null;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

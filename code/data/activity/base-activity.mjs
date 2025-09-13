@@ -4,7 +4,6 @@ import ActivationField from "../fields/activation-field.mjs";
 import DurationField from "../fields/duration-field.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import IdentifierField from "../fields/identifier-field.mjs";
-import MappingField from "../fields/mapping-field.mjs";
 import RangeField from "../fields/range-field.mjs";
 import TargetField from "../fields/target-field.mjs";
 import TypeField from "../fields/type-field.mjs";
@@ -13,12 +12,12 @@ import ConsumptionTargetsField from "./fields/consumption-targets-field.mjs";
 
 const {
 	BooleanField,
+	DocumentFlagsField,
 	DocumentIdField,
 	FilePathField,
 	HTMLField,
 	IntegerSortField,
 	NumberField,
-	ObjectField,
 	SchemaField,
 	StringField
 } = foundry.data.fields;
@@ -122,7 +121,7 @@ export default class BaseActivity extends foundry.abstract.DataModel {
 			name: new StringField({ initial: undefined }),
 			img: new FilePathField({ blank: true, initial: undefined, categories: ["IMAGE"], base64: false }),
 			description: new HTMLField(),
-			flags: new MappingField(new ObjectField()),
+			flags: new DocumentFlagsField(),
 			sort: new IntegerSortField(),
 			system: new TypeField({ modelLookup: type => this.metadata.dataModel ?? null }),
 			activation: new ActivationField({

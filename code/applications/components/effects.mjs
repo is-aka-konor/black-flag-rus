@@ -130,6 +130,7 @@ export default class EffectsElement extends DocumentSheetAssociatedElement {
 		};
 
 		for (const effect of effects) {
+			if (effect.riderOrigin?.disabled) continue;
 			const data = {
 				...effect,
 				id: effect.id

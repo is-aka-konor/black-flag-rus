@@ -223,6 +223,7 @@ export default class BaseItemSheet extends PrimarySheetMixin(BFDocumentSheet) {
 	 * @protected
 	 */
 	async _prepareDetailsContext(context, options) {
+		context.activities = this.item.system.activities?.filter(a => a.canConfigure);
 		return context;
 	}
 

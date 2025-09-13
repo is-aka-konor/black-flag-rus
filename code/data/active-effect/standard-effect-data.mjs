@@ -45,7 +45,7 @@ export default class StandardEffectData extends ActiveEffectDataModel {
 
 	/** @override */
 	get applicableType() {
-		return this.isRider ? "" : "Actor";
+		return this.isRider || this.parent.riderOrigin?.disabled ? "" : "Actor";
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

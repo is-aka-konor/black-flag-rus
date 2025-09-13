@@ -71,7 +71,7 @@ export default class ActionsElement extends DocumentSheetAssociatedElement {
 			{
 				name: "BF.ACTIVITY.Core.Action.View",
 				icon: "<i class='fa-solid fa-eye fa-fw'></i>",
-				condition: li => activity && !this.isEditable,
+				condition: li => activity?.canConfigure && !this.isEditable,
 				callback: li => this._onAction(li[0], "view"),
 				group: "activity"
 			},
@@ -85,14 +85,14 @@ export default class ActionsElement extends DocumentSheetAssociatedElement {
 			{
 				name: "BF.ACTIVITY.Core.Action.Edit",
 				icon: '<i class="fa-solid fa-edit fa-fw" inert></i>',
-				condition: li => activity && this.isEditable,
+				condition: li => activity?.canConfigure && this.isEditable,
 				callback: li => this._onAction(li[0], "edit"),
 				group: "activity"
 			},
 			{
 				name: "BF.ACTIVITY.Core.Action.Delete",
 				icon: '<i class="fa-solid fa-trash fa-fw destructive" inert></i>',
-				condition: li => activity && this.isEditable,
+				condition: li => activity?.canConfigure && this.isEditable,
 				callback: li => this._onAction(li[0], "delete"),
 				group: "activity"
 			},

@@ -2,7 +2,7 @@
 	<fieldset>
 		<legend>{{ localize "BF.ACTIVITY.Label[other]" }}</legend>
 		<ul class="items-list activity-list configuration-list">
-			{{#each system.activities}}
+			{{#each activities}}
 				<li class="item activity-entry" data-activity-id="{{ id }}">
 					<div class="item-name activity-name">
 						{{ blackFlag-icon img alt=name classes="icon" }}

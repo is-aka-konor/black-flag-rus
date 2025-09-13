@@ -59,8 +59,20 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 
 	/** @override */
 	get isSuppressed() {
+		if (super.isSuppressed) return true;
 		if (!this.parent?.isEmbedded || this.type === "enchantment") return false;
 		return this.suppressionReasons.length > 0;
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Another effect that granted this effect as a rider.
+	 * @type {BlackFlagActiveEffect|null}
+	 */
+	get riderOrigin() {
+		if (!(this.parent instanceof Item)) return null;
+		return fromUuidSync(this.flags[game.system.id]?.riderOrigin, { relative: this.parent, strict: false }) ?? null;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
