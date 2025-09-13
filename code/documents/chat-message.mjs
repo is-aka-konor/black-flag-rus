@@ -278,20 +278,19 @@ export default class BlackFlagChatMessage extends ChatMessage {
 	 * @protected
 	 */
 	_splitDamageRoll(roll) {
-		const data = { constant: 0, dice: [], total: roll.total, type: roll.options.damageType };
+		const data = { constant: 0, dice: [], icon: null, method: null, total: roll.total, type: roll.options.damageType };
 		data.config = CONFIG.BlackFlag.damageTypes[data.type] ?? CONFIG.BlackFlag.healingTypes[data.type];
 		let hasMultiplication = false;
 		for (let i = roll.terms.length - 1; i >= 0; ) {
 			const term = roll.terms[i--];
 			if (!(term instanceof foundry.dice.terms.NumericTerm) && !(term instanceof foundry.dice.terms.DiceTerm)) continue;
 			const value = term.total;
-			if (term instanceof foundry.dice.terms.DiceTerm)
-				data.dice.push(
-					...term.results.map(r => ({
-						result: term.getResultLabel(r),
-						classes: term.getResultCSS(r).filterJoin(" ")
-					}))
-				);
+			if (term instanceof foundry.dice.terms.DiceTerm) {
+				const tooltipData = term.getTooltipData();
+				data.dice.push(...tooltipData.rolls);
+				data.icon ??= tooltipData.icon;
+				data.method ??= tooltipData.method;
+			}
 			let multiplier = 1;
 			let operator = roll.terms[i];
 			while (operator instanceof foundry.dice.terms.OperatorTerm) {
