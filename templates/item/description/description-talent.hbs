@@ -10,9 +10,8 @@
 					{{~ system.restriction.label }}{{else}}{{ localize "None" }}{{/if}}
 			</span>
 			{{#if editable}}
-				<button type="button" class="link-button" data-action="config" data-type="prerequisite"
-								data-tooltip="BF.Prerequisite.Action.Config"
-								aria-label="{{ localize 'BF.Prerequisite.Action.Config' }}">
+				<button type="button" class="link-button" data-action="showConfiguration" data-type="prerequisite"
+								data-tooltip aria-label="{{ localize 'BF.Prerequisite.Action.Config' }}">
 					<i class="fa-solid fa-cog" inert></i>
 				</button>
 			{{/if}}
