@@ -333,7 +333,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 	 * @type {BlackFlagActiveEffect|null}
 	 */
 	get riderOrigin() {
-		return fromUuidSync(this.flags[game.system.id]?.riderOrigin, { relative: this.item, strict: false }) ?? null;
+		return this.item.effects.get(this.flags[game.system.id]?.riderOrigin) ?? null;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

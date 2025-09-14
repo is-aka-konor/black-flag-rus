@@ -72,7 +72,7 @@ export default class BlackFlagActiveEffect extends ActiveEffect {
 	 */
 	get riderOrigin() {
 		if (!(this.parent instanceof Item)) return null;
-		return fromUuidSync(this.flags[game.system.id]?.riderOrigin, { relative: this.parent, strict: false }) ?? null;
+		return this.parent.effects.get(this.flags[game.system.id]?.riderOrigin) ?? null;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

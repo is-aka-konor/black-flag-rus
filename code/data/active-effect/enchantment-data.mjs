@@ -106,7 +106,6 @@ export default class EchantmentData extends ActiveEffectDataModel {
 		// TODO: Support Enchant Activity as origin when added
 		if (!(item instanceof Item)) return riders;
 
-		const relativeUUID = this.parent.getRelativeUUID(this.item);
 		const riderActivities = {};
 		let riderEffects = [];
 
@@ -118,7 +117,7 @@ export default class EchantmentData extends ActiveEffectDataModel {
 					const data = item.getEmbeddedDocument("Activity", id)?.toObject();
 					if (!data) return null;
 					if (this.item.system.activities?.has(data._id)) data._id = foundry.utils.randomID();
-					foundry.utils.setProperty(data, `flags.${game.system.id}.riderOrigin`, relativeUUID);
+					foundry.utils.setProperty(data, `flags.${game.system.id}.riderOrigin`, this.parent.id);
 					return data;
 				})
 				.filter(_ => _),
@@ -144,7 +143,7 @@ export default class EchantmentData extends ActiveEffectDataModel {
 					const data = item.effects.get(id)?.toObject();
 					if (!data) return null;
 					data.origin = this.parent.origin;
-					foundry.utils.setProperty(data, `flags.${game.system.id}.riderOrigin`, relativeUUID);
+					foundry.utils.setProperty(data, `flags.${game.system.id}.riderOrigin`, this.parent.id);
 					return data;
 				})
 				.filter(_ => _),
