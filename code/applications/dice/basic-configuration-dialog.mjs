@@ -31,6 +31,7 @@ export default class BasicRollConfigurationDialog extends BFApplication {
 
 	/** @override */
 	static DEFAULT_OPTIONS = {
+		buildConfig: null,
 		classes: ["roll-configuration", "form-list"],
 		tag: "form",
 		window: {
@@ -251,8 +252,61 @@ export default class BasicRollConfigurationDialog extends BFApplication {
 		const RollType = this.rollType;
 		this.#rolls =
 			config.rolls?.map((config, index) =>
-				RollType.fromConfig(this._buildConfig(config, formData, index), this.config)
+				RollType.fromConfig(this.#buildConfig(config, formData, index), this.config)
 			) ?? [];
+	}
+
+	/* <><><><> <><><><> <><><><> <><><><> */
+
+	/**
+	 * Call the necessary hooks and config building methods before roll is fully built.
+	 * @param {BasicRollConfiguration} config - Roll configuration data.
+	 * @param {FormDataExtended} formData - Data provided by the configuration form.
+	 * @param {number} index - Index of the roll within all rolls being prepared.
+	 * @returns {BasicRollConfiguration}
+	 */
+	#buildConfig(config, formData, index) {
+		config = foundry.utils.mergeObject({ parts: [], data: {}, options: {} }, config);
+
+		/**
+		 * A hook event that fires when a roll config is build within the roll prompt.
+		 * @function blackFlag.buildRollConfig
+		 * @memberof hookEvents
+		 * @param {BasicRollConfigurationDialog} app - Roll configuration dialog.
+		 * @param {BasicRollConfiguration} config - Roll configuration data.
+		 * @param {object} options
+		 * @param {FormDataExtended} [options.formData] - Any data entered into the rolling prompt.
+		 * @param {number} [options.index] - Index of the roll within all rolls being prepared.
+		 */
+		for (const hookName of this.#config.hookNames ?? [""]) {
+			Hooks.callAll(`blackFlag.build${hookName.capitalize()}RollConfig`, this, config, { formData, index });
+		}
+
+		this._buildConfig(config, formData, index);
+		// TODO: Re-implement after dnd5e design
+		// this.options.buildConfig?.(this.config, config, formData, index);
+
+		/**
+		 * A hook event that fires after a roll config has been built using the roll prompt. Multiple hooks
+		 * may be called depending on the rolling method (e.g. `blackFlag.postBuildSkillRollConfig`,
+		 * `blackFlag.postBuildAbilityCheckRollConfig`, `blackFlag.postBuildRollConfig`).
+		 * @function blackFlag.postBuildRollConfig
+		 * @memberof hookEvents
+		 * @param {BasicRollProcessConfiguration} process - Full process configuration data.
+		 * @param {BasicRollConfiguration} config - Roll configuration data.
+		 * @param {number} index - Index of the roll within all rolls being prepared.
+		 * @param {object} [options]
+		 * @param {RollConfigurationDialog} [options.app] - Roll configuration dialog.
+		 * @param {FormDataExtended} [options.formData] - Any data entered into the rolling prompt.
+		 */
+		for (const hookName of this.#config.hookNames ?? [""]) {
+			Hooks.callAll(`blackFlag.postBuild${hookName.capitalize()}RollConfig`, this.config, config, index, {
+				app: this,
+				formData
+			});
+		}
+
+		return config;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */
@@ -262,24 +316,9 @@ export default class BasicRollConfigurationDialog extends BFApplication {
 	 * @param {BasicRollConfiguration} config - Roll configuration data.
 	 * @param {FormDataExtended} formData - Data provided by the configuration form.
 	 * @param {number} index - Index of the roll within all rolls being prepared.
-	 * @returns {BasicRollConfiguration}
 	 * @protected
 	 */
 	_buildConfig(config, formData, index) {
-		config = foundry.utils.mergeObject({ parts: [], data: {}, options: {} }, config);
-
-		/**
-		 * A hook event that fires when a roll config is build within the roll prompt.
-		 * @function blackFlag.buildRollConfig
-		 * @memberof hookEvents
-		 * @param {BasicRollConfigurationDialog} app - Roll configuration dialog.
-		 * @param {BasicRollConfiguration} config - Roll configuration data.
-		 * @param {object} data
-		 * @param {FormDataExtended} data.formData - Any data entered into the rolling prompt.
-		 * @param {number} data.index - Index of the roll within all rolls being prepared.
-		 */
-		Hooks.callAll("blackFlag.buildRollConfig", this, config, { formData, index });
-
 		const situational = formData?.get(`roll.${index}.situational`);
 		if (situational && config.situational !== false) {
 			config.parts.push("@situational");
@@ -287,8 +326,6 @@ export default class BasicRollConfigurationDialog extends BFApplication {
 		} else {
 			config.parts.findSplice(v => v === "@situational");
 		}
-
-		return config;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

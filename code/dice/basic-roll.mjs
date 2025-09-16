@@ -136,11 +136,34 @@ export default class BasicRoll extends Roll {
 	static async buildConfigure(config = {}, dialog = {}, message = {}) {
 		config.hookNames = [...(config.hookNames ?? []), ""];
 
+		/**
+		 * A hook event that fires before a roll is performed. Multiple hooks may be called depending on the rolling
+		 * method (e.g. `blackFlag.preRollSkill`, `blackFlag.preRollAbilityCheck`, `blackFlag.preRoll`). Exact contents
+		 * of the configuration object will also change based on the roll type, but the same objects will always be present.
+		 * @function blackFlag.preRoll
+		 * @memberof hookEvents
+		 * @param {BasicRollProcessConfiguration} config - Configuration data for the pending roll.
+		 * @param {BasicRollDialogConfiguration} dialog - Presentation data for the roll configuration dialog.
+		 * @param {BasicRollMessageConfiguration} message - Configuration data for the roll's message.
+		 * @returns {boolean} - Explicitly return `false` to prevent the roll.
+		 */
+		for (const hookName of config.hookNames) {
+			if (Hooks.call(`blackFlag.preRoll${hookName.capitalize()}`, config, dialog, message) === false) return [];
+		}
+
 		this.applyKeybindings(config, dialog, message);
 
 		let rolls;
 		if (dialog.configure === false) {
-			rolls = config.rolls?.map(c => this.fromConfig(c, config)) ?? [];
+			rolls =
+				config.rolls?.map((c, index) => {
+					// TODO: Re-implement after dnd5e design
+					// dialog.options?.buildConfig?.(config, r, null, index);
+					for (const hookName of config.hookNames) {
+						Hooks.callAll(`blackFlag.postBuild${hookName.capitalize()}RollConfig`, config, r, index);
+					}
+					return this.fromConfig(c, config);
+				}) ?? [];
 		} else {
 			const DialogClass = dialog.applicationClass ?? this.DefaultConfigurationDialog;
 			rolls = await DialogClass.configure(config, dialog, message);

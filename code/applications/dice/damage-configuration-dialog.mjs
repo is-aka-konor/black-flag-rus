@@ -68,12 +68,8 @@ export default class DamageRollConfigurationDialog extends BasicRollConfiguratio
 
 	/** @inheritDoc */
 	_buildConfig(config, formData, index) {
-		config = super._buildConfig(config, formData, index);
-
 		const damageType = formData?.get(`roll.${index}.damageType`);
 		if (damageType) config.options.damageType = damageType;
-
-		return config;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

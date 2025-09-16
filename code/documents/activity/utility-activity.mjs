@@ -67,8 +67,9 @@ export default class UtilityActivity extends Activity {
 		}
 
 		const rollConfig = foundry.utils.deepClone(config);
-		rollConfig.subject = this;
+		rollConfig.hookNames = [...(config.hookNames ?? []), "formula"];
 		rollConfig.rolls = [{ parts: [this.system.roll.formula], data: this.getRollData() }].concat(config.rolls ?? []);
+		rollConfig.subject = this;
 
 		const dialogConfig = foundry.utils.mergeObject({
 			configure: this.system.roll.prompt,

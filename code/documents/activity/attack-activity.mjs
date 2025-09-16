@@ -220,8 +220,9 @@ export default class AttackActivity extends Activity {
 			config
 		);
 		const { rollConfig: roll, rollNotes } = prepareAttackRoll(rollConfig, {});
-		rollConfig.subject = this;
+		rollConfig.hookNames = [...(config.hookNames ?? []), "attack", "d20Test"];
 		rollConfig.rolls = [CONFIG.Dice.ChallengeRoll.mergeConfigs(roll, config.rolls?.shift())].concat(config.rolls ?? []);
+		rollConfig.subject = this;
 
 		const dialogConfig = foundry.utils.mergeObject(
 			{

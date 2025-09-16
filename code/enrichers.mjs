@@ -460,6 +460,7 @@ async function rollAttack(event, target) {
 	const rollConfig = {
 		attackMode,
 		event,
+		hookNames: ["attack", "d20Test"],
 		rolls: [
 			{
 				parts: [formula.replace(/^\s*\+\s*/, "")],
@@ -490,7 +491,6 @@ async function rollAttack(event, target) {
 		}
 	};
 
-	if (Hooks.call("blackFlag.preRollAttack", rollConfig, dialogConfig, messageConfig) === false) return;
 	const rolls = await CONFIG.Dice.ChallengeRoll.build(rollConfig, dialogConfig, messageConfig);
 	if (rolls?.length) {
 		Hooks.callAll("blackFlag.rollAttack", rolls, { ammoUpdate: null, subject: null });
@@ -1261,6 +1261,7 @@ async function rollDamage(event, target) {
 	const rollConfig = {
 		attackMode,
 		event,
+		hookNames: ["damage"],
 		rolls: formulas.map((formula, idx) => {
 			const damageTypes = new Set(types[idx]?.split("|") ?? []);
 			return {
@@ -1292,7 +1293,6 @@ async function rollDamage(event, target) {
 		}
 	};
 
-	if (Hooks.call("blackFlag.preRollDamage", rollConfig, dialogConfig, messageConfig) === false) return;
 	const rolls = await CONFIG.Dice.DamageRoll.build(rollConfig, dialogConfig, messageConfig);
 	if (rolls?.length) Hooks.callAll("blackFlag.postRollDamage", rolls);
 }

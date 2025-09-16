@@ -197,6 +197,7 @@ export class UsesData extends foundry.abstract.DataModel {
 	 */
 	async rollRecharge(target) {
 		const rollConfig = {
+			hookNames: ["recharge"],
 			rolls: [
 				{
 					parts: ["1d6"],
@@ -209,7 +210,7 @@ export class UsesData extends foundry.abstract.DataModel {
 					}
 				}
 			],
-			origin: this.parent
+			subject: this.parent
 		};
 
 		const type = game.i18n.localize("BF.Recovery.Recharge.Label");

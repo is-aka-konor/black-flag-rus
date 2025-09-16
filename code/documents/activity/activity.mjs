@@ -1147,6 +1147,7 @@ export default class Activity extends PseudoDocumentMixin(BaseActivity) {
 		if (!this.item.isEmbedded || this.item.pack) return;
 
 		const rollConfig = this.getDamageConfig(config);
+		rollConfig.hookNames = [...(config.hookNames ?? []), "damage"];
 		rollConfig.subject = this;
 
 		const allModifiers = rollConfig.rolls?.map(c => c.modifierData) ?? [];
