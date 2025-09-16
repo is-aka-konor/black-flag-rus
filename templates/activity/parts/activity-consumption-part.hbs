@@ -3,7 +3,8 @@
 	             classes="label-top" rootId=@root.partId }}
 	{{#if consumption.showTargets}}
 		{{ formField fields.target name=(concat prefix "target") value=consumption.target options=consumption.validTargets
-		             blank=(ifThen consumption.validTargets false "") classes="label-top" rootId=@root.partId }}
+		             blank=(not consumption.validTargets) placeholder=consumption.placeholder classes="label-top"
+		             rootId=@root.partId }}
 	{{/if}}
 	{{ formField fields.value name=(concat prefix "value") value=consumption.value classes="label-top"
 	             rootId=@root.partId }}

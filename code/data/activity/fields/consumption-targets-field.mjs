@@ -80,10 +80,10 @@ export class ConsumptionTargetData extends foundry.abstract.DataModel {
 
 	/**
 	 * Placeholder for the target field.
-	 * @type {string|null}
+	 * @type {string}
 	 */
 	get placeholder() {
-		if (this.type !== "item") return null;
+		if (this.type !== "item") return "";
 		return game.i18n.localize("BF.CONSUMPTION.Type.ItemUses.ThisItem");
 	}
 
