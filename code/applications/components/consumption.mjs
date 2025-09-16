@@ -76,8 +76,14 @@ export default class ConsumptionElement extends FormAssociatedElement {
 				const filteredTypes = types.difference(
 					new Set(foundry.utils.getProperty(this.activity.toObject(), this.#keyPath).map(t => t.type))
 				);
-				const type = filteredTypes.first() ?? types.first();
-				if (!type) return;
+				let type = filteredTypes.first() ?? types.first();
+				if (
+					type === "activity" &&
+					!this.activity.uses.max &&
+					(this.activity.item.system.uses.max || this.activity.item.system.uses.consumeQuantity) &&
+					filteredTypes.has("item")
+				)
+					type = "item";
 				typesCollection.push({
 					type,
 					target: ConsumptionTargetData.getValidTargets(type, this.activity)?.[0]?.value
