@@ -10,6 +10,6 @@ export default class BlackFlagCombatTracker extends foundry.applications.sidebar
 		if (action === "rollInitiative" && combatant?.actor) {
 			return combatant.actor.configureInitiativeRoll({ event });
 		}
-		return super._onCombatantControl(event);
+		return super._onCombatantControl(event, target);
 	}
 }
