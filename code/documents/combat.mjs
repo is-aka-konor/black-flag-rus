@@ -56,6 +56,7 @@ export default class BlackFlagCombat extends Combat {
 	 */
 	async _recoverUses(types) {
 		for (const combatant of this.combatants) {
+			if (combatant.isDefeated) continue;
 			const periods = Object.entries(types)
 				.filter(([, v]) => v === true || v === combatant)
 				.map(([k]) => k);
