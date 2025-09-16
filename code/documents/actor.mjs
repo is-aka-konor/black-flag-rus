@@ -1336,7 +1336,7 @@ export default class BlackFlagActor extends DocumentMixin(Actor) {
 		const rollConfig = foundry.utils.deepClone(config);
 		rollConfig.hookNames = [...(config.hookNames ?? []), "hitDie"];
 		rollConfig.rolls = [
-			CONFIG.Dice.BasicRollRoll.mergeConfigs(
+			CONFIG.Dice.BasicRoll.mergeConfigs(
 				{
 					...buildRoll(
 						{

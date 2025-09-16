@@ -45,12 +45,9 @@ export default class AttackRollConfigurationDialog extends ChallengeRollConfigur
 
 	/** @inheritDoc */
 	_buildConfig(config, formData, index) {
-		config = super._buildConfig(config, formData, index);
 		if (!this.options.buildConfig) return config;
-
 		const { rollConfig, rollNotes } = this.options.buildConfig(this.config, config, formData, index);
 		this.notes = rollNotes;
-		return rollConfig;
 	}
 
 	/* <><><><> <><><><> <><><><> <><><><> */

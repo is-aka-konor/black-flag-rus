@@ -32,7 +32,7 @@ export default class BasicRollConfigurationDialog extends BFApplication {
 	/** @override */
 	static DEFAULT_OPTIONS = {
 		buildConfig: null,
-		classes: ["roll-configuration", "form-list"],
+		classes: ["roll-configuration", "form-list", "standard-form"],
 		tag: "form",
 		window: {
 			title: "BF.Roll.Configuration.LabelGeneric",
