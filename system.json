@@ -1,24 +1,24 @@
 {
-	"id": "black-flag",
-	"title": "Black Flag Roleplaying",
+	"id": "black-flag-rus",
+	"title": "Black Flag RUS Roleplaying",
 	"description": "The official implementation of the Black Flag Roleplaying system, a 5E-compatible game system developed by Kobold Press, within Foundry Virtual Tabletop.",
-	"version": "2.0.072",
+	"version": "2.0.072-rus",
 	"compatibility": {
 		"minimum": "13.348",
 		"verified": "13"
 	},
-	"url": "https://github.com/koboldpress/black-flag/",
-	"manifest": "https://github.com/koboldpress/black-flag/releases/latest/download/system.json",
+	"url": "https://github.com/is-aka-konor/black-flag-rus/",
+	"manifest": "https://github.com/is-aka-konor/black-flag-rus/releases/latest/download/system.json",
 	"download": "",
 	"license": "LICENSE",
 	"readme": "README.md",
 	"authors": [
 		{
-			"name": "Jeff ‘Arbron’ Hitchcock",
-			"url": "https://github.com/arbron",
-			"email": "jeff@szed.co",
-			"discord": "arbron#6515",
-			"twitter": "@arbron",
+			"name": "aka Konor",
+			"url": "https://github.com/is-aka-konor",
+			"email": "",
+			"discord": "",
+			"twitter": "@drag0n_master_",
 			"flags": {}
 		}
 	],
@@ -30,8 +30,7 @@
 	],
 	"documentTypes": {
 		"ActiveEffect": {
-			"enchantment": {},
-			"standard": {}
+			"enchantment": {}
 		},
 		"Actor": {
 			"pc": {
@@ -73,33 +72,18 @@
 		},
 		"Item": {
 			"ammunition": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"armor": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"background": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["description.value"]
 			},
 			"class": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["description.value"]
 			},
 			"consumable": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"container": {
@@ -109,61 +93,33 @@
 				"htmlFields": ["description.value"]
 			},
 			"feature": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"gear": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"],
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"heritage": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["description.value"]
 			},
 			"lineage": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["description.value"]
 			},
 			"spell": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"subclass": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["description.value"]
 			},
 			"sundry": {
 				"htmlFields": ["description.value"]
 			},
 			"talent": {
-				"filePathFields": {
-					"advancement.*.icon": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"tool": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			},
 			"weapon": {
-				"filePathFields": {
-					"activities.*.img": ["IMAGE"]
-				},
 				"htmlFields": ["activities.*.description", "description.value"]
 			}
 		},
@@ -197,9 +153,6 @@
 					"description.introduction"
 				]
 			}
-		},
-		"RegionBehavior": {
-			"black-flag.difficultTerrain": {}
 		}
 	},
 	"packs": [
@@ -382,6 +335,12 @@
 		}
 	],
 	"languages": [
+		{
+			"lang": "ru",
+			"name": "Russian",
+			"path": "./lang/ru.json",
+			"flags": {}
+		},
 		{
 			"lang": "en",
 			"name": "English",
